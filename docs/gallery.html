@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publication Maps: Crop Diversity & Caloric Productivity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #6c757d;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #1a1a2e;
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-wide {
+            grid-template-columns: 1fr;
+        }
+
+        .map-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .map-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-card a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .map-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .map-card .caption {
+            padding: 0.75rem 1rem;
+        }
+
+        .map-card .caption h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 0.3rem;
+        }
+
+        .map-card .caption p {
+            font-size: 0.82rem;
+            color: #6c757d;
+            line-height: 1.45;
+        }
+
+        footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.82rem;
+            color: #adb5bd;
+            text-align: center;
+        }
+
+        footer a {
+            color: #6c757d;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lightbox overlay */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 92%;
+            max-height: 92%;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">&larr; Back to Home</a>
+            <h1>Publication Maps: Crop Diversity & Caloric Productivity</h1>
+            <p class="subtitle">
+                Static choropleth maps covering 755 districts across India. Click any map to view full size.
+            </p>
+        </header>
+
+        <!-- Diversity Indices -->
+        <div class="section">
+            <h2>Diversity Indices</h2>
+            <div class="grid">
+                <div class="map-card">
+                    <a href="maps/map_abi.png" onclick="openLightbox(event, this)">
+                        <img src="maps/map_abi.png" alt="Agro-Biodiversity Index" loading="lazy">
+                        <div class="caption">
+                            <h3>Agro-Biodiversity Index (ABI)</h3>
+                            <p>Composite index combining Shannon diversity, Simpson concentration, and crop richness into a single normalized score (0&ndash;1).</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/map_shannon_index.png" onclick="openLightbox(event, this)">
+                        <img src="maps/map_shannon_index.png" alt="Shannon Index" loading="lazy">
+                        <div class="caption">
+                            <h3>Shannon Diversity Index</h3>
+                            <p>Measures crop diversity accounting for both richness and evenness of area allocation across crops.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/map_simpson_index.png" onclick="openLightbox(event, this)">
+                        <img src="maps/map_simpson_index.png" alt="Simpson Index" loading="lazy">
+                        <div class="caption">
+                            <h3>Simpson Diversity Index</h3>
+                            <p>Probability that two randomly selected hectares grow different crops. Higher values indicate greater evenness.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/map_crop_richness.png" onclick="openLightbox(event, this)">
+                        <img src="maps/map_crop_richness.png" alt="Crop Richness" loading="lazy">
+                        <div class="caption">
+                            <h3>Crop Richness</h3>
+                            <p>Total number of distinct crops cultivated in each district, reflecting breadth of cropping systems.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/map_combined_panel_2x2.png" onclick="openLightbox(event, this)">
+                        <img src="maps/map_combined_panel_2x2.png" alt="Combined 2x2 Panel" loading="lazy">
+                        <div class="caption">
+                            <h3>Combined Index Panel (2x2)</h3>
+                            <p>Side-by-side comparison of all four diversity indices for easy spatial comparison.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/map_top_bottom_20_abi.png" onclick="openLightbox(event, this)">
+                        <img src="maps/map_top_bottom_20_abi.png" alt="Top and Bottom 20 ABI" loading="lazy">
+                        <div class="caption">
+                            <h3>Top & Bottom 20 Districts by ABI</h3>
+                            <p>Highlights the 20 most and least agro-biodiverse districts in India.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Irrigation Analysis -->
+        <div class="section">
+            <h2>Irrigation Analysis</h2>
+            <div class="grid">
+                <div class="map-card">
+                    <a href="maps/map_irrigation_regime.png" onclick="openLightbox(event, this)">
+                        <img src="maps/map_irrigation_regime.png" alt="Irrigation Regime" loading="lazy">
+                        <div class="caption">
+                            <h3>Irrigation Regime Classification</h3>
+                            <p>Districts classified as Rainfed, Semi-Irrigated, or Irrigated based on share of irrigated cropped area.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/map_irrigation_diversity_panel.png" onclick="openLightbox(event, this)">
+                        <img src="maps/map_irrigation_diversity_panel.png" alt="Irrigation-Diversity Panel" loading="lazy">
+                        <div class="caption">
+                            <h3>Irrigation &times; Diversity Panel</h3>
+                            <p>Diversity indices stratified by irrigation regime, revealing how water access shapes cropping patterns.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Temporal Change -->
+        <div class="section">
+            <h2>Temporal Change</h2>
+            <div class="grid">
+                <div class="map-card">
+                    <a href="maps/map_diversity_change.png" onclick="openLightbox(event, this)">
+                        <img src="maps/map_diversity_change.png" alt="Diversity Change" loading="lazy">
+                        <div class="caption">
+                            <h3>Diversity Change Over Time</h3>
+                            <p>Change in Shannon diversity between early and recent periods, showing which districts diversified or concentrated.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calorie-Diversity Overlay -->
+        <div class="section">
+            <h2>Calorie-Diversity Overlay</h2>
+            <div class="grid">
+                <div class="map-card">
+                    <a href="maps/quadrant_map.png" onclick="openLightbox(event, this)">
+                        <img src="maps/quadrant_map.png" alt="Quadrant Map" loading="lazy">
+                        <div class="caption">
+                            <h3>Diversity-Calorie Quadrant Map</h3>
+                            <p>Four-quadrant classification: Diverse & Calorie-Rich, Monoculture Breadbasket, Diverse & Calorie-Poor, and Vulnerable.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/kcal_per_hectare_choropleth.png" onclick="openLightbox(event, this)">
+                        <img src="maps/kcal_per_hectare_choropleth.png" alt="Kcal per Hectare" loading="lazy">
+                        <div class="caption">
+                            <h3>Caloric Productivity (Kcal/ha)</h3>
+                            <p>Total food calories produced per hectare of cropped land, highlighting India's breadbaskets.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/bivariate_abi_kcal_map.png" onclick="openLightbox(event, this)">
+                        <img src="maps/bivariate_abi_kcal_map.png" alt="Bivariate ABI-Kcal Map" loading="lazy">
+                        <div class="caption">
+                            <h3>Bivariate Map: ABI vs Kcal/ha</h3>
+                            <p>Two-dimensional choropleth showing the joint distribution of diversity and caloric productivity.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/abi_vs_kcal_scatter.png" onclick="openLightbox(event, this)">
+                        <img src="maps/abi_vs_kcal_scatter.png" alt="ABI vs Kcal Scatter" loading="lazy">
+                        <div class="caption">
+                            <h3>ABI vs Kcal/ha Scatter Plot</h3>
+                            <p>District-level scatter showing the relationship between agro-biodiversity and caloric output.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/nutritionally_hollow_map.png" onclick="openLightbox(event, this)">
+                        <img src="maps/nutritionally_hollow_map.png" alt="Nutritionally Hollow Districts" loading="lazy">
+                        <div class="caption">
+                            <h3>Nutritionally Hollow Districts</h3>
+                            <p>Districts where caloric output is dominated by a narrow set of staples, lacking nutritional diversity.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Independent research by Mridul &middot; <a href="index.html">Home</a> &middot; <a href="https://github.com/mridlll/crop-diversity">GitHub Repository</a></p>
+        </footer>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="">
+    </div>
+
+    <script>
+        function openLightbox(event, el) {
+            event.preventDefault();
+            var src = el.getAttribute('href');
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

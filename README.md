@@ -2,9 +2,11 @@
 
 District-level analysis of crop diversification patterns across 755 Indian districts, 54 crops, and 24 agricultural years — examining the relationship between irrigation infrastructure and agricultural biodiversity.
 
-## Interactive Map
+## Interactive Maps
 
-**[Explore the interactive hover map](https://mridlll.github.io/crop-diversity/)** — hover over any district to see diversity indices, irrigation status, dominant crops, and crop composition.
+**[Crop Diversity Map](https://mridlll.github.io/crop-diversity/diversity.html)** — hover over any district to see diversity indices, irrigation status, dominant crops, and crop composition.
+
+**[Calorie-Diversity Map](https://mridlll.github.io/crop-diversity/calorie-diversity.html)** — hover over any district to see diversity indices alongside caloric productivity and quadrant classification.
 
 ## Key Findings
 
@@ -25,6 +27,27 @@ District-level analysis of crop diversification patterns across 755 Indian distr
 
 ABI is computed as the equal-weighted mean of min-max normalized Shannon, Simpson, and Richness indices. Full methodology with worked examples and robustness checks is in the [Jupyter notebook](notebooks/crop_diversity_analysis.ipynb).
 
+## Calorie-Diversity Overlay
+
+**[Explore the calorie-diversity interactive map](https://mridlll.github.io/crop-diversity/calorie-diversity.html)** — hover over any district to see diversity indices alongside caloric productivity, with quadrant classification.
+
+District-level calorie production is computed by multiplying crop production (tonnes) by IFCT 2017 energy conversion factors (kcal per 100g), yielding total kcal produced per hectare of gross cropped area. This caloric productivity metric is then overlaid with the Agro-Biodiversity Index to classify districts into four quadrants:
+
+| Quadrant | ABI | Kcal/ha | Description |
+|----------|-----|---------|-------------|
+| **Diverse & Calorie-Rich** | High | High | Best of both worlds — high biodiversity with strong caloric output |
+| **Monoculture Breadbasket** | Low | High | High caloric productivity driven by specialization in few crops |
+| **Diverse & Calorie-Poor** | High | Low | Biodiverse cropping but low caloric output per hectare |
+| **Vulnerable** | Low | Low | Low diversity and low caloric productivity — most at-risk districts |
+
+**Quadrant distribution** (755 districts):
+- Diverse & Calorie-Rich: 23.6%
+- Monoculture Breadbasket: 26.3%
+- Diverse & Calorie-Poor: 26.2%
+- Vulnerable: 23.9%
+
+**Key insight:** The correlation between diversity (ABI) and caloric productivity (kcal/ha) is weakly negative — the assumed tradeoff between biodiversity and food production is overstated. Many districts achieve both high diversity and high caloric output, suggesting that crop diversification need not come at the cost of food security.
+
 ## Repository Structure
 
 ```
@@ -34,16 +57,24 @@ scripts/
   59_crop_diversity_static_maps.py         # Publication-quality static maps + GIFs
   60_crop_diversity_hover_map.py           # Folium interactive hover map
   61_generate_notebook.py                  # Generates the analysis notebook
+  62_district_calorie_production.py        # Kcal/ha computation using IFCT 2017 factors
+  63_calorie_diversity_hover_map.py        # Calorie-diversity quadrant interactive map
 
 notebooks/
   crop_diversity_analysis.ipynb            # Full analysis with methodology & results
 
 outputs/crop_diversity_analysis/
   district_diversity_indices.csv           # Main dataset: 755 districts, all indices
+  district_diversity_calorie_merged.csv    # Diversity + caloric productivity merged
   district_year_diversity_panel.csv        # Yearly panel (14,136 observations)
   district_diversity_change.csv            # Early vs Late period comparison
   state_diversity_summary.csv              # State-level rankings
   crop_diversity_hover_map.html            # Self-contained interactive map
+  calorie_diversity_hover_map.html         # Calorie-diversity quadrant map
+  kcal_per_hectare_choropleth.png          # Kcal/ha choropleth
+  quadrant_map.png                         # Four-quadrant classification map
+  bivariate_abi_kcal_map.png              # Bivariate ABI × kcal map
+  abi_vs_kcal_scatter.png                  # ABI vs kcal/ha scatter plot
   maps/                                    # 9 static maps (PNG)
 ```
 
@@ -53,6 +84,7 @@ outputs/crop_diversity_analysis/
 |--------|-------------|----------|
 | **[ISB India Data Portal](https://www.india-data-portal.org/)** | District-level area, production, and yield for 54 crops | 755 districts, 1997-2021 |
 | **Government of India (scraped)** | District-level gross irrigated area as % of gross cropped area | 503 districts classified |
+| **IFCT 2017 (NIN, Hyderabad)** | Energy conversion factors (kcal per 100g) for Indian food items | 54 crops mapped |
 | **Census of India 2011** | District boundary shapefiles | 735 districts |
 
 ### Crop Production Data
@@ -102,7 +134,13 @@ python scripts/60_crop_diversity_hover_map.py
 # 4. Generate Jupyter notebook
 python scripts/61_generate_notebook.py
 
-# 5. Launch interactive dashboard (opens at http://127.0.0.1:8050)
+# 5. Compute district-level calorie production (requires IFCT 2017 factors)
+python scripts/62_district_calorie_production.py
+
+# 6. Generate calorie-diversity interactive map
+python scripts/63_calorie_diversity_hover_map.py
+
+# 7. Launch interactive dashboard (opens at http://127.0.0.1:8050)
 python scripts/58_crop_diversity_dashboard.py
 ```
 

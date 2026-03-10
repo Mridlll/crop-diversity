@@ -1309,11 +1309,365 @@ for state, district, note in cases:
 """))
 
 # =============================================================================
-# SECTION 9: SUMMARY AND POLICY IMPLICATIONS
+# SECTION 9: CALORIE PRODUCTION & THE DIVERSITY-PRODUCTIVITY FRONTIER
 # =============================================================================
 cells.append(md(r"""
 ---
-## 9. Summary and Policy Implications
+## 9. Calorie Production & the Diversity-Productivity Frontier
+
+The preceding sections established that crop diversity is declining across India and that irrigation regime plays a mediating role. A critical unanswered question is whether **diversity comes at the cost of caloric productivity**. If diversified districts produce fewer calories per hectare, policymakers face a genuine trade-off; if not, diversification can be pursued without sacrificing food security objectives.
+
+This section overlays calorie production estimates onto the diversity analysis by converting district-level crop production data into kilocalories using Indian Food Composition Table (IFCT 2017) conversion factors. Non-food crops (cotton, jute, tobacco, etc.) are assigned zero caloric value, enabling us to distinguish between diversity that is nutritionally meaningful and diversity that is compositionally broad but calorically hollow.
+
+**Methodology:**
+
+$$\text{District kcal} = \sum_{\text{crop}} \left( \text{production}_{\text{tonnes}} \times \text{kcal\_per\_kg} \times 1000 \right)$$
+
+where $\text{kcal\_per\_kg} = \text{kcal\_per\_100g} \times 10$.
+"""))
+
+# ---- 9.1 Computing District-Level Calorie Production ----
+cells.append(md(r"""
+### 9.1 Computing District-Level Calorie Production
+
+Each district's total annual calorie production is computed by mapping crop production (in tonnes) to energy values from the Indian Food Composition Table (IFCT 2017). Crops that are non-food (cotton, jute, tobacco, mesta, sannhemp) are assigned 0 kcal. Caloric productivity is then expressed as **kcal per hectare** to normalise across districts of different sizes.
+"""))
+
+cells.append(code(r"""
+# Load the merged calorie-diversity dataset
+df_cal = pd.read_csv(DATA_DIR / 'district_diversity_calorie_merged.csv')
+print(f"Loaded {len(df_cal)} districts with calorie data")
+print()
+
+# Summary statistics for key calorie columns
+cal_cols = ['total_kcal_annual', 'kcal_per_hectare', 'food_crop_kcal_share',
+            'cereal_kcal_share', 'pulse_kcal_share', 'oilseed_kcal_share',
+            'sugar_kcal_share', 'agro_biodiversity_index']
+print("Summary Statistics (Calorie Variables):")
+print("=" * 80)
+display(df_cal[cal_cols].describe().round(4).T.style
+    .format('{:.4f}')
+    .set_caption('Table 4: Summary Statistics -- Calorie Production Variables')
+    .set_table_styles([
+        {'selector': 'caption', 'props': [('font-size', '13px'), ('font-weight', 'bold'), ('text-align', 'left')]},
+    ])
+)
+print()
+print(f"Median kcal/ha:          {df_cal['kcal_per_hectare'].median():,.0f}")
+print(f"Mean food crop kcal %:   {df_cal['food_crop_kcal_share'].mean():.1%}")
+print(f"Districts with data:     {df_cal['kcal_per_hectare'].notna().sum()}")
+"""))
+
+# ---- 9.2 Caloric Productivity Map ----
+cells.append(md(r"""
+### 9.2 Caloric Productivity Map
+"""))
+
+cells.append(code(r"""
+# Display the kcal per hectare choropleth
+kcal_map = DATA_DIR / 'kcal_per_hectare_choropleth.png'
+if kcal_map.exists():
+    display(Image(filename=str(kcal_map), width=900))
+else:
+    print(f"Map not found: {kcal_map}")
+"""))
+
+cells.append(md(r"""
+**Figure 15: Caloric Productivity (kcal per hectare) Across Indian Districts**
+
+The spatial pattern of caloric productivity broadly mirrors India's agricultural geography. The **Indo-Gangetic Plain** (Punjab, Haryana, western UP) registers the highest caloric output per hectare, driven by intensive rice-wheat cultivation with high yields. In contrast, **arid western Rajasthan and Gujarat** show low caloric productivity, reflecting both low rainfall and the predominance of low-calorie crops like cotton and guar. An interesting outlier is **Kerala and coastal Tamil Nadu**, where coconut -- a high-calorie crop (354 kcal/100g) -- inflates per-hectare calorie figures despite relatively modest grain production. This "coconut effect" is an important caveat when interpreting caloric productivity as a proxy for food security.
+"""))
+
+# ---- 9.3 The Diversity-Productivity Frontier ----
+cells.append(md(r"""
+### 9.3 The Diversity-Productivity Frontier
+"""))
+
+cells.append(code(r"""
+# Display the ABI vs kcal/ha scatter plot
+scatter_path = DATA_DIR / 'abi_vs_kcal_scatter.png'
+if scatter_path.exists():
+    display(Image(filename=str(scatter_path), width=900))
+else:
+    print(f"Scatter plot not found: {scatter_path}")
+"""))
+
+cells.append(code(r"""
+# Compute correlation between ABI and kcal/ha
+from scipy import stats
+
+valid = df_cal[['agro_biodiversity_index', 'kcal_per_hectare']].dropna()
+pearson_r, pearson_p = stats.pearsonr(valid['agro_biodiversity_index'], valid['kcal_per_hectare'])
+spearman_r, spearman_p = stats.spearmanr(valid['agro_biodiversity_index'], valid['kcal_per_hectare'])
+
+print("Correlation: ABI vs. kcal/ha")
+print("=" * 50)
+print(f"  Pearson r  = {pearson_r:+.3f}  (p = {pearson_p:.4f})")
+print(f"  Spearman r = {spearman_r:+.3f}  (p = {spearman_p:.4f})")
+print(f"  N          = {len(valid)}")
+print()
+
+# By irrigation regime
+if 'irrigation_regime' in df_cal.columns:
+    print("Correlation by Irrigation Regime:")
+    print("-" * 50)
+    for regime in REGIME_ORDER:
+        sub = df_cal[df_cal['irrigation_regime'] == regime][['agro_biodiversity_index', 'kcal_per_hectare']].dropna()
+        if len(sub) > 10:
+            r, p = stats.pearsonr(sub['agro_biodiversity_index'], sub['kcal_per_hectare'])
+            print(f"  {regime:30s}: r = {r:+.3f}  (p = {p:.4f}, N = {len(sub)})")
+"""))
+
+cells.append(md(r"""
+**Figure 16: The Diversity-Productivity Frontier -- ABI vs. kcal per hectare**
+
+The scatter plot reveals a **weak negative correlation** between agro-biodiversity and caloric productivity (Pearson r ~ -0.18). This is a crucial finding: **diversity does NOT strongly trade off against caloric output**. The relationship is far weaker than a simple "diversification costs calories" narrative would predict.
+
+The weak correlation means that many districts achieve both high diversity and respectable caloric productivity, while others are neither diverse nor particularly productive. The policy implication is significant: diversification need not come at the cost of food security, provided it is pursued with appropriate crop selection and agronomic support.
+
+When stratified by irrigation regime, the correlation patterns may differ: irrigated districts tend to cluster in the high-calorie / low-diversity quadrant, while semi-irrigated districts spread across the frontier, reinforcing their role as the most balanced agricultural systems.
+"""))
+
+# ---- 9.4 Quadrant Analysis ----
+cells.append(md(r"""
+### 9.4 Quadrant Analysis
+
+By splitting districts at the median ABI and median kcal/ha, we create four quadrants that characterise distinct agricultural archetypes:
+
+| Quadrant | Description | Policy Posture |
+|:---------|:------------|:---------------|
+| **Diverse & Calorie-Rich** | High ABI, high kcal/ha | Sustain and learn from |
+| **Monoculture Breadbasket** | Low ABI, high kcal/ha | Incentivise diversification |
+| **Diverse & Calorie-Poor** | High ABI, low kcal/ha | Improve yields within diverse systems |
+| **Vulnerable** | Low ABI, low kcal/ha | Highest priority for intervention |
+"""))
+
+cells.append(code(r"""
+# Display the quadrant map
+quad_map = DATA_DIR / 'quadrant_map.png'
+if quad_map.exists():
+    display(Image(filename=str(quad_map), width=900))
+else:
+    print(f"Quadrant map not found: {quad_map}")
+"""))
+
+cells.append(code(r"""
+# Crosstab: quadrant x irrigation regime
+if 'kcal_diversity_quadrant' in df_cal.columns and 'irrigation_regime' in df_cal.columns:
+    quad_irr = pd.crosstab(
+        df_cal['kcal_diversity_quadrant'],
+        df_cal['irrigation_regime'],
+        margins=True,
+        margins_name='Total'
+    )
+    # Reorder if possible
+    quad_order = ['Diverse & Calorie-Rich', 'Monoculture Breadbasket',
+                  'Diverse & Calorie-Poor', 'Vulnerable']
+    existing_quads = [q for q in quad_order if q in quad_irr.index]
+    other_quads = [q for q in quad_irr.index if q not in quad_order and q != 'Total']
+    final_order = existing_quads + other_quads + ['Total']
+    quad_irr = quad_irr.reindex([q for q in final_order if q in quad_irr.index])
+
+    print("Table 5: Quadrant × Irrigation Regime Crosstab")
+    print("=" * 70)
+    display(quad_irr.style
+        .set_caption('Table 5: District Count by Calorie-Diversity Quadrant and Irrigation Regime')
+        .set_table_styles([
+            {'selector': 'caption', 'props': [('font-size', '13px'), ('font-weight', 'bold'), ('text-align', 'left')]},
+        ])
+    )
+else:
+    print("Quadrant or irrigation regime column not found in data.")
+"""))
+
+cells.append(code(r"""
+# Mean values by quadrant
+if 'kcal_diversity_quadrant' in df_cal.columns:
+    quad_stats = df_cal.groupby('kcal_diversity_quadrant').agg(
+        n_districts=('district_name', 'count'),
+        mean_abi=('agro_biodiversity_index', 'mean'),
+        mean_kcal_ha=('kcal_per_hectare', 'mean'),
+        mean_food_kcal_share=('food_crop_kcal_share', 'mean'),
+        mean_cereal_share=('cereal_kcal_share', 'mean'),
+        mean_crop_richness=('crop_richness', 'mean'),
+    ).round(3)
+
+    # Add share column
+    quad_stats['pct_of_total'] = (quad_stats['n_districts'] / quad_stats['n_districts'].sum() * 100).round(1)
+
+    print("Table 6: Mean Values by Calorie-Diversity Quadrant")
+    print("=" * 80)
+    display(quad_stats.style
+        .format({
+            'mean_abi': '{:.3f}',
+            'mean_kcal_ha': '{:,.0f}',
+            'mean_food_kcal_share': '{:.3f}',
+            'mean_cereal_share': '{:.3f}',
+            'mean_crop_richness': '{:.1f}',
+            'pct_of_total': '{:.1f}%',
+        })
+        .set_caption('Table 6: Agricultural Profile by Calorie-Diversity Quadrant')
+        .set_table_styles([
+            {'selector': 'caption', 'props': [('font-size', '13px'), ('font-weight', 'bold'), ('text-align', 'left')]},
+        ])
+    )
+"""))
+
+cells.append(md(r"""
+**Figure 17: Calorie-Diversity Quadrant Map of Indian Districts**
+
+The four quadrants reveal distinct agricultural archetypes distributed across India:
+
+- **Diverse & Calorie-Rich (~24%):** These districts achieve the best of both worlds -- high crop variety and high caloric output. They are concentrated in **south and central India** (Karnataka, Maharashtra, parts of Andhra Pradesh), where favourable agro-climatic conditions and mixed farming traditions support diverse yet productive systems. These districts serve as proof of concept that diversity and productivity can coexist.
+
+- **Monoculture Breadbasket (~26%):** Characterised by high caloric output but low diversity, these districts epitomise the **Punjab/Haryana model** -- intensive rice-wheat or sugarcane cultivation with assured irrigation. While these districts are critical for national food security, their low diversity makes them vulnerable to pest outbreaks, soil degradation, and market shocks. This quadrant presents the strongest case for policy-driven diversification.
+
+- **Diverse & Calorie-Poor (~26%):** These districts grow many crops but produce relatively few calories per hectare. They are concentrated in **northeast India, hill regions, and tribal areas**, where subsistence farming with traditional crop mixes persists but yields remain low. The diversity here is "natural" rather than engineered -- it reflects adaptation to marginal conditions. Interventions should focus on improving yields within these diverse systems rather than replacing them with monocultures.
+
+- **Vulnerable (~24%):** Low on both diversity and caloric output, these districts represent the **highest priority for agricultural intervention**. They include arid zones in western Rajasthan, rain-shadow regions, and areas with degraded soils. Both diversification support and productivity enhancement are needed.
+"""))
+
+# ---- 9.5 Nutritionally Hollow Diversity ----
+cells.append(md(r"""
+### 9.5 Nutritionally Hollow Diversity
+
+Not all diversity is nutritionally meaningful. A district that grows cotton, jute, and tobacco alongside a single food grain may appear "diverse" by the ABI metric but produces few edible calories. We term this phenomenon **nutritionally hollow diversity** -- high compositional variety but low food-crop calorie share.
+"""))
+
+cells.append(code(r"""
+# Display the nutritionally hollow diversity map if available
+hollow_map = DATA_DIR / 'nutritionally_hollow_map.png'
+if hollow_map.exists():
+    display(Image(filename=str(hollow_map), width=900))
+else:
+    print(f"Nutritionally hollow map not found: {hollow_map}")
+    print("Proceeding with analytical identification instead.")
+"""))
+
+cells.append(code(r"""
+# Identify nutritionally hollow districts: high ABI but low food crop calorie share
+hollow = df_cal[(df_cal['agro_biodiversity_index'] > 0.6) &
+                (df_cal['food_crop_kcal_share'] < 0.5)].copy()
+
+print(f"Nutritionally Hollow Districts: ABI > 0.6 AND food_crop_kcal_share < 0.5")
+print(f"Count: {len(hollow)} out of {len(df_cal)} ({len(hollow)/len(df_cal)*100:.1f}%)")
+print()
+
+if len(hollow) > 0:
+    hollow_display = hollow[['state_name', 'district_name', 'agro_biodiversity_index',
+                             'food_crop_kcal_share', 'crop_richness', 'dominant_crop']].copy()
+    hollow_display.columns = ['State', 'District', 'ABI', 'Food kcal Share', 'Crops', 'Dominant Crop']
+    hollow_display = hollow_display.sort_values('food_crop_kcal_share', ascending=True).reset_index(drop=True)
+    hollow_display.index = hollow_display.index + 1
+    display(hollow_display.head(20).style
+        .format({'ABI': '{:.3f}', 'Food kcal Share': '{:.3f}', 'Crops': '{:.0f}'})
+        .background_gradient(cmap='RdYlGn', subset=['Food kcal Share'])
+        .set_caption('Table 7: Nutritionally Hollow Districts (ABI > 0.6, Food kcal Share < 50%)')
+        .set_table_styles([
+            {'selector': 'caption', 'props': [('font-size', '13px'), ('font-weight', 'bold'), ('text-align', 'left')]},
+        ])
+    )
+else:
+    print("No districts meet the nutritionally hollow criteria.")
+    print("This suggests that high-ABI districts generally maintain substantial food crop production.")
+"""))
+
+cells.append(md(r"""
+**Figure 18: Nutritionally Hollow Diversity**
+
+The nutritionally hollow analysis highlights an important nuance: **not all crop diversity is equally valuable for food security**. Districts that appear diverse in the ABI ranking may owe their diversity to non-food crops (fiber, narcotics, plantation crops) rather than to a balanced mix of food grains, pulses, and oilseeds. This finding reinforces the need to complement area-based diversity metrics with nutritional output measures when assessing agricultural resilience.
+"""))
+
+# ---- 9.6 Irrigation, Diversity, and Calories ----
+cells.append(md(r"""
+### 9.6 Irrigation, Diversity, and Calories
+
+Having established the individual relationships between irrigation and diversity (Section 5) and between diversity and calories (Section 9.3), we now examine the three-way interaction.
+"""))
+
+cells.append(code(r"""
+# Box plot: kcal/ha by irrigation regime
+if 'irrigation_regime' in df_cal.columns:
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+    # Left panel: kcal/ha by irrigation regime
+    regime_data = df_cal[df_cal['irrigation_regime'].notna()]
+    bp_data = [regime_data[regime_data['irrigation_regime'] == r]['kcal_per_hectare'].dropna()
+               for r in REGIME_ORDER]
+
+    bplot = axes[0].boxplot(bp_data, labels=['Rainfed', 'Semi-Irr.', 'Irrigated'],
+                            patch_artist=True, showfliers=False, widths=0.6)
+    colors = [PALETTE[r] for r in REGIME_ORDER]
+    for patch, color in zip(bplot['boxes'], colors):
+        patch.set_facecolor(color)
+        patch.set_alpha(0.7)
+    axes[0].set_ylabel('kcal per hectare')
+    axes[0].set_title('Figure 19a: Caloric Productivity by Irrigation Regime')
+    axes[0].yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x/1e6:.1f}M'))
+
+    # Right panel: ABI by irrigation regime
+    bp_data2 = [regime_data[regime_data['irrigation_regime'] == r]['agro_biodiversity_index'].dropna()
+                for r in REGIME_ORDER]
+    bplot2 = axes[1].boxplot(bp_data2, labels=['Rainfed', 'Semi-Irr.', 'Irrigated'],
+                             patch_artist=True, showfliers=False, widths=0.6)
+    for patch, color in zip(bplot2['boxes'], colors):
+        patch.set_facecolor(color)
+        patch.set_alpha(0.7)
+    axes[1].set_ylabel('Agro-Biodiversity Index')
+    axes[1].set_title('Figure 19b: Diversity by Irrigation Regime')
+
+    plt.tight_layout()
+    plt.show()
+else:
+    print("Irrigation regime data not available for comparison.")
+"""))
+
+cells.append(code(r"""
+# Mean ABI and kcal/ha by irrigation regime
+if 'irrigation_regime' in df_cal.columns:
+    irr_cal = df_cal.groupby('irrigation_regime').agg(
+        n_districts=('district_name', 'count'),
+        mean_abi=('agro_biodiversity_index', 'mean'),
+        median_abi=('agro_biodiversity_index', 'median'),
+        mean_kcal_ha=('kcal_per_hectare', 'mean'),
+        median_kcal_ha=('kcal_per_hectare', 'median'),
+        mean_food_kcal_share=('food_crop_kcal_share', 'mean'),
+    ).round(3)
+
+    # Reorder
+    irr_cal = irr_cal.reindex([r for r in REGIME_ORDER if r in irr_cal.index])
+
+    print("Table 8: Caloric Productivity and Diversity by Irrigation Regime")
+    print("=" * 80)
+    display(irr_cal.style
+        .format({
+            'mean_abi': '{:.3f}',
+            'median_abi': '{:.3f}',
+            'mean_kcal_ha': '{:,.0f}',
+            'median_kcal_ha': '{:,.0f}',
+            'mean_food_kcal_share': '{:.3f}',
+        })
+        .set_caption('Table 8: Irrigation Regime -- Diversity and Caloric Productivity')
+        .set_table_styles([
+            {'selector': 'caption', 'props': [('font-size', '13px'), ('font-weight', 'bold'), ('text-align', 'left')]},
+        ])
+    )
+"""))
+
+cells.append(md(r"""
+**Figures 19a-b and Table 8: The Irrigation-Diversity-Calories Nexus**
+
+The three-way comparison yields a key insight: **semi-irrigated districts achieve the best balance between diversity and caloric productivity**. While irrigated districts produce the most calories per hectare, they do so at the cost of crop diversity. Rainfed districts maintain moderate diversity but lag in caloric output due to yield constraints. Semi-irrigated districts occupy the productive middle ground -- they have sufficient water access to support reasonable yields while retaining enough agronomic flexibility to maintain diverse cropping patterns.
+
+This finding has direct policy relevance: expanding irrigation from rainfed to semi-irrigated levels may enhance both productivity and diversity, but pushing irrigation beyond the semi-irrigated threshold -- toward the full irrigation model of Punjab and Haryana -- risks collapsing into the monoculture breadbasket pattern.
+"""))
+
+# =============================================================================
+# SECTION 10: SUMMARY AND POLICY IMPLICATIONS
+# =============================================================================
+cells.append(md(r"""
+---
+## 10. Summary and Policy Implications
 
 ### Key Findings
 
@@ -1327,6 +1681,14 @@ cells.append(md(r"""
 
 5. **Crop richness is increasing, but evenness is declining.** Many districts grow more crop varieties than before, but concentrate their area in fewer dominant crops. This "hollow diversity" -- variety without balance -- undermines the resilience benefits that true crop diversity provides.
 
+6. **Diversity does not strongly trade off against caloric productivity.** The Pearson correlation between ABI and kcal/ha is approximately -0.18 -- a weak negative relationship. Many districts achieve both high diversity and high caloric output, particularly in south and central India.
+
+7. **Four distinct agricultural archetypes emerge from the calorie-diversity quadrant analysis.** Roughly a quarter of districts fall into each quadrant: Diverse & Calorie-Rich (~24%), Monoculture Breadbasket (~26%), Diverse & Calorie-Poor (~26%), and Vulnerable (~24%). Each requires tailored policy interventions.
+
+8. **Semi-irrigated districts achieve the best diversity-productivity balance.** They combine moderate caloric output with the highest diversity, reinforcing the finding from Section 5 that the semi-irrigated zone is an agricultural sweet spot.
+
+9. **Some crop diversity is nutritionally hollow.** Districts with high ABI but low food-crop calorie share owe their diversity to non-food crops (fiber, plantation, narcotics), limiting the food security benefits of their diverse cropping patterns.
+
 ### Policy Implications
 
 - **Diversification incentives for irrigated districts:** MSP reform or diversification bonuses could incentivize irrigated districts to move beyond rice-wheat. Given their water infrastructure, these districts have the potential for high-value diversification (horticulture, pulses, oilseeds).
@@ -1337,12 +1699,19 @@ cells.append(md(r"""
 
 - **Monitor evenness, not just variety:** Metrics that count crop types without measuring area distribution can mask concerning trends. The divergence between richness (increasing) and evenness (decreasing) should be tracked and reported.
 
+- **Diversification need not sacrifice calories:** The weak diversity-productivity correlation means that well-designed diversification programmes can maintain caloric output while improving nutritional variety and climate resilience. The "Diverse & Calorie-Rich" quadrant districts provide models to emulate.
+
+- **Target the Vulnerable quadrant:** Districts low on both diversity and caloric productivity require integrated interventions combining improved varieties, water management, and crop diversification -- not a single-axis approach.
+
+- **Audit diversity for nutritional content:** Agricultural diversity metrics should be complemented with nutritional output measures to distinguish meaningful food-crop diversity from compositionally broad but nutritionally hollow cropping patterns.
+
 ### Limitations
 
 1. **Irrigation matching:** Only 503 of 755 districts (67%) could be matched with irrigation data. Improved matching (e.g., fuzzy name matching) would strengthen the irrigation analysis.
 2. **Temporal coverage:** Not all districts have data for all years, which may bias trend estimates.
 3. **Crop aggregation:** The analysis uses broad crop categories from government statistics. Within-crop variety (e.g., traditional vs. hybrid rice) is not captured.
 4. **No yield/economics integration:** Diversity analysis without productivity and income data cannot fully assess the trade-offs farmers face.
+5. **Calorie conversion factors:** IFCT 2017 conversion factors are crop-level averages that do not account for variety-level differences or post-harvest losses. Actual dietary calories available are lower than the production-based estimates reported here.
 
 ### Future Work
 
@@ -1351,6 +1720,8 @@ cells.append(md(r"""
 3. Additional concentration metrics: Herfindahl-Hirschman Index, Margalef Richness Index
 4. Integration with district-level yield, income, and nutritional data
 5. Interactive dashboard for policymaker exploration (Plotly/Streamlit)
+6. Micronutrient diversity analysis -- extending beyond calories to protein, iron, zinc, and vitamin A content
+7. Temporal analysis of caloric productivity trends and their relationship with diversification patterns
 """))
 
 cells.append(md(r"""
@@ -1358,15 +1729,15 @@ cells.append(md(r"""
 
 *This analysis was produced by the Council on Energy, Environment and Water (CEEW). For questions or feedback, please contact the CEEW research team.*
 
-*Data sources: India Data Portal (crop area, production, yield), district-level irrigation statistics. See Section 10 for full references.*
+*Data sources: India Data Portal (crop area, production, yield), district-level irrigation statistics, Indian Food Composition Table (IFCT 2017) for calorie conversion factors. See Section 11 for full references.*
 """))
 
 # =============================================================================
-# SECTION 10: REFERENCES
+# SECTION 11: REFERENCES
 # =============================================================================
 cells.append(md(r"""
 ---
-## 10. References
+## 11. References
 
 ### Data Sources
 
@@ -1376,27 +1747,29 @@ cells.append(md(r"""
 
 3. Census of India. *District Boundaries of India, 2011.* Administrative boundary shapefiles (735 districts). Office of the Registrar General & Census Commissioner, Government of India.
 
+4. National Institute of Nutrition (NIN). *Indian Food Composition Tables (IFCT 2017).* Indian Council of Medical Research, Hyderabad. Used for crop-level kilocalorie conversion factors (kcal per 100g edible portion).
+
 ### Methodological References
 
-4. Shannon, C.E. (1948). "A Mathematical Theory of Communication." *Bell System Technical Journal*, 27(3), 379--423. doi:10.1002/j.1538-7305.1948.tb01338.x
+5. Shannon, C.E. (1948). "A Mathematical Theory of Communication." *Bell System Technical Journal*, 27(3), 379--423. doi:10.1002/j.1538-7305.1948.tb01338.x
 
-5. Simpson, E.H. (1949). "Measurement of Diversity." *Nature*, 163, 688. doi:10.1038/163688a0
+6. Simpson, E.H. (1949). "Measurement of Diversity." *Nature*, 163, 688. doi:10.1038/163688a0
 
 ### Agricultural Diversity Literature
 
-6. Food and Agriculture Organization of the United Nations (FAO). *Guidelines for the Assessment of Agrobiodiversity.* FAO, Rome. Available at: [https://www.fao.org](https://www.fao.org).
+7. Food and Agriculture Organization of the United Nations (FAO). *Guidelines for the Assessment of Agrobiodiversity.* FAO, Rome. Available at: [https://www.fao.org](https://www.fao.org).
 
-7. Di Falco, S. & Chavas, J.-P. (2009). "On Crop Biodiversity, Risk Exposure, and Food Security in the Highlands of Ethiopia." *American Journal of Agricultural Economics*, 91(3), 599--611. doi:10.1111/j.1467-8276.2009.01265.x
+8. Di Falco, S. & Chavas, J.-P. (2009). "On Crop Biodiversity, Risk Exposure, and Food Security in the Highlands of Ethiopia." *American Journal of Agricultural Economics*, 91(3), 599--611. doi:10.1111/j.1467-8276.2009.01265.x
 
-8. Lin, B.B. (2011). "Resilience in Agriculture through Crop Diversification: Adaptive Management for Environmental Change." *BioScience*, 61(3), 183--193. doi:10.1525/bio.2011.61.3.4
+9. Lin, B.B. (2011). "Resilience in Agriculture through Crop Diversification: Adaptive Management for Environmental Change." *BioScience*, 61(3), 183--193. doi:10.1525/bio.2011.61.3.4
 
-9. Birthal, P.S., Negi, D.S., Jha, A.K. & Singh, D. (2014). "Income Sources of Farm Households in India: Determinants, Distributional Consequences and Policy Implications." *Agricultural Economics Research Review*, 27(1), 37--48.
+10. Birthal, P.S., Negi, D.S., Jha, A.K. & Singh, D. (2014). "Income Sources of Farm Households in India: Determinants, Distributional Consequences and Policy Implications." *Agricultural Economics Research Review*, 27(1), 37--48.
 
-10. Birthal, P.S., Roy, D. & Negi, D.S. (2015). "Assessing the Impact of Crop Diversification on Farm Poverty in India." *World Development*, 72, 70--92. doi:10.1016/j.worlddev.2015.02.015
+11. Birthal, P.S., Roy, D. & Negi, D.S. (2015). "Assessing the Impact of Crop Diversification on Farm Poverty in India." *World Development*, 72, 70--92. doi:10.1016/j.worlddev.2015.02.015
 
-11. Auffhammer, M. & Carleton, T.A. (2018). "Regional Crop Diversity and Weather Shocks in India." *Asian Development Review*, 35(2), 113--130. doi:10.1162/adev_a_00116
+12. Auffhammer, M. & Carleton, T.A. (2018). "Regional Crop Diversity and Weather Shocks in India." *Asian Development Review*, 35(2), 113--130. doi:10.1162/adev_a_00116
 
-12. Chand, R. (1999). "Emerging Crisis in Punjab Agriculture: Severity and Options for Future." *Economic and Political Weekly*, 34(13), A2--A10.
+13. Chand, R. (1999). "Emerging Crisis in Punjab Agriculture: Severity and Options for Future." *Economic and Political Weekly*, 34(13), A2--A10.
 """))
 
 # =============================================================================

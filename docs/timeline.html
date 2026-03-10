@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diversity Timeline: 1997&ndash;2020</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f8f9fa;
+        }
+
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 12px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.92);
+            padding: 6px 14px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 13px;
+            color: #6c757d;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #1a1a2e;
+            text-decoration: underline;
+        }
+
+        .map-title {
+            position: fixed;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255,255,255,0.92);
+            padding: 8px 24px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a2e;
+            white-space: nowrap;
+        }
+
+        .control-panel {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255,255,255,0.96);
+            padding: 16px 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            text-align: center;
+            min-width: 420px;
+        }
+
+        .control-panel .year-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .control-panel .year-range {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-bottom: 4px;
+        }
+
+        .control-panel input[type="range"] {
+            width: 100%;
+            margin: 8px 0;
+            cursor: pointer;
+            accent-color: #0f3460;
+        }
+
+        .control-panel .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .control-panel select {
+            padding: 4px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 13px;
+            background: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .control-panel button {
+            padding: 4px 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 13px;
+            background: white;
+            cursor: pointer;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .control-panel button:hover {
+            background: #f0f0f0;
+        }
+
+        .control-panel button.active {
+            background: #0f3460;
+            color: white;
+            border-color: #0f3460;
+        }
+
+        .legend-panel {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 10px 14px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 11px;
+        }
+
+        .legend-panel .legend-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1a1a2e;
+        }
+
+        .legend-gradient {
+            width: 160px;
+            height: 14px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            margin-bottom: 4px;
+        }
+
+        .legend-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #666;
+        }
+
+        .stats-panel {
+            position: fixed;
+            top: 60px;
+            left: 60px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 10px 14px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 12px;
+        }
+
+        .stats-panel .stat-label {
+            color: #6c757d;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stats-panel .stat-value {
+            font-weight: 600;
+            color: #1a1a2e;
+            font-size: 14px;
+        }
+
+        .district-tooltip {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 6px 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <a href="index.html" class="back-link">&larr; Home</a>
+
+    <div class="map-title" id="mapTitle">Crop Diversity Timeline: Shannon Index</div>
+
+    <div class="stats-panel" id="statsPanel">
+        <div class="stat-label">Districts with data</div>
+        <div class="stat-value" id="statCount">--</div>
+        <div class="stat-label" style="margin-top:6px;">Mean value</div>
+        <div class="stat-value" id="statMean">--</div>
+    </div>
+
+    <div class="legend-panel" id="legendPanel">
+        <div class="legend-title" id="legendTitle">Shannon Index</div>
+        <div class="legend-gradient" id="legendGradient"></div>
+        <div class="legend-labels">
+            <span id="legendMin">0.00</span>
+            <span id="legendMax">2.81</span>
+        </div>
+        <div style="margin-top:4px; color:#999; font-size:10px;">
+            <span style="display:inline-block; width:12px; height:10px; background:#d3d3d3; border:1px solid #ccc; vertical-align:middle;"></span> No data
+        </div>
+    </div>
+
+    <div class="control-panel">
+        <div class="year-display" id="yearDisplay">1997</div>
+        <div class="year-range">1997 &mdash; 2020</div>
+        <input type="range" id="yearSlider" min="0" max="23" value="0" step="1">
+        <div class="controls-row">
+            <select id="indexSelect">
+                <option value="shannon">Shannon Index</option>
+                <option value="richness">Crop Richness</option>
+            </select>
+            <button id="playBtn" onclick="togglePlay()">Play</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize map
+        var map = L.map('map', {
+            center: [22.5, 82.0],
+            zoom: 5,
+            zoomControl: true,
+            preferCanvas: true
+        });
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+            attribution: 'CartoDB',
+        }).addTo(map);
+
+        var geojsonData = null;
+        var currentLayer = null;
+        var years = [];
+        var metadata = {};
+        var playInterval = null;
+        var isPlaying = false;
+
+        // Color interpolation (YlGnBu-like)
+        var colorStops = [
+            [255, 255, 204],  // light yellow
+            [161, 218, 180],  // light green
+            [65, 182, 196],   // teal
+            [44, 127, 184],   // blue
+            [37, 52, 148]     // dark blue
+        ];
+
+        function interpolateColor(t) {
+            // t is 0..1
+            t = Math.max(0, Math.min(1, t));
+            var n = colorStops.length - 1;
+            var idx = t * n;
+            var i = Math.floor(idx);
+            var f = idx - i;
+            if (i >= n) { i = n - 1; f = 1; }
+            var c1 = colorStops[i];
+            var c2 = colorStops[i + 1];
+            var r = Math.round(c1[0] + f * (c2[0] - c1[0]));
+            var g = Math.round(c1[1] + f * (c2[1] - c1[1]));
+            var b = Math.round(c1[2] + f * (c2[2] - c1[2]));
+            return 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+
+        function getGradientCSS() {
+            var stops = [];
+            for (var i = 0; i <= 10; i++) {
+                stops.push(interpolateColor(i / 10));
+            }
+            return 'linear-gradient(to right, ' + stops.join(', ') + ')';
+        }
+
+        function getCurrentIndex() {
+            return document.getElementById('indexSelect').value;
+        }
+
+        function getMinMax() {
+            var idx = getCurrentIndex();
+            if (idx === 'shannon') {
+                return { min: metadata.shannon_min, max: metadata.shannon_max };
+            } else {
+                return { min: metadata.richness_min, max: metadata.richness_max };
+            }
+        }
+
+        function getPropertyKey(year) {
+            var idx = getCurrentIndex();
+            return (idx === 'shannon' ? 's_' : 'r_') + year;
+        }
+
+        function getLabel() {
+            return getCurrentIndex() === 'shannon' ? 'Shannon Index' : 'Crop Richness';
+        }
+
+        function formatVal(val) {
+            if (val === null || val === undefined) return 'N/A';
+            return getCurrentIndex() === 'shannon' ? val.toFixed(2) : Math.round(val).toString();
+        }
+
+        function updateMap() {
+            var sliderVal = parseInt(document.getElementById('yearSlider').value);
+            var year = years[sliderVal];
+            var propKey = getPropertyKey(year);
+            var mm = getMinMax();
+            var range = mm.max - mm.min;
+            if (range === 0) range = 1;
+
+            document.getElementById('yearDisplay').textContent = year;
+            document.getElementById('mapTitle').textContent = 'Crop Diversity Timeline: ' + getLabel();
+            document.getElementById('legendTitle').textContent = getLabel();
+            document.getElementById('legendMin').textContent = getCurrentIndex() === 'shannon' ? mm.min.toFixed(2) : Math.round(mm.min);
+            document.getElementById('legendMax').textContent = getCurrentIndex() === 'shannon' ? mm.max.toFixed(2) : Math.round(mm.max);
+            document.getElementById('legendGradient').style.background = getGradientCSS();
+
+            if (currentLayer) {
+                map.removeLayer(currentLayer);
+            }
+
+            var count = 0;
+            var sum = 0;
+
+            currentLayer = L.geoJson(geojsonData, {
+                style: function(feature) {
+                    var val = feature.properties[propKey];
+                    var fillColor;
+                    if (val === null || val === undefined) {
+                        fillColor = '#d3d3d3';
+                    } else {
+                        var t = (val - mm.min) / range;
+                        fillColor = interpolateColor(t);
+                        count++;
+                        sum += val;
+                    }
+                    return {
+                        fillColor: fillColor,
+                        weight: 0.4,
+                        color: '#888',
+                        fillOpacity: 0.85
+                    };
+                },
+                onEachFeature: function(feature, layer) {
+                    var val = feature.properties[propKey];
+                    var name = feature.properties.name || 'Unknown';
+                    var state = feature.properties.state || '';
+                    var html = '<div style="font-weight:600; font-size:13px;">' + name + '</div>' +
+                               '<div style="color:#666; font-size:11px; margin-bottom:4px;">' + state + '</div>' +
+                               '<div style="font-size:12px;">' + getLabel() + ': <b>' + formatVal(val) + '</b></div>';
+                    layer.bindTooltip(html, {
+                        sticky: true,
+                        direction: 'auto',
+                        className: 'district-tooltip'
+                    });
+                    layer.on({
+                        mouseover: function(e) {
+                            e.target.setStyle({ weight: 2, color: '#333' });
+                            e.target.bringToFront();
+                        },
+                        mouseout: function(e) {
+                            currentLayer.resetStyle(e.target);
+                        }
+                    });
+                }
+            }).addTo(map);
+
+            document.getElementById('statCount').textContent = count;
+            document.getElementById('statMean').textContent = count > 0 ? formatVal(sum / count) : '--';
+        }
+
+        function togglePlay() {
+            var btn = document.getElementById('playBtn');
+            if (isPlaying) {
+                clearInterval(playInterval);
+                isPlaying = false;
+                btn.textContent = 'Play';
+                btn.classList.remove('active');
+            } else {
+                isPlaying = true;
+                btn.textContent = 'Pause';
+                btn.classList.add('active');
+                playInterval = setInterval(function() {
+                    var slider = document.getElementById('yearSlider');
+                    var val = parseInt(slider.value);
+                    if (val >= years.length - 1) {
+                        slider.value = 0;
+                    } else {
+                        slider.value = val + 1;
+                    }
+                    updateMap();
+                }, 800);
+            }
+        }
+
+        // Load data
+        fetch('data/district_timeline.geojson')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                geojsonData = data;
+                metadata = data.metadata;
+                years = data.metadata.years;
+
+                var slider = document.getElementById('yearSlider');
+                slider.max = years.length - 1;
+                slider.value = 0;
+
+                slider.addEventListener('input', function() {
+                    updateMap();
+                });
+
+                document.getElementById('indexSelect').addEventListener('change', function() {
+                    updateMap();
+                });
+
+                document.getElementById('legendGradient').style.background = getGradientCSS();
+                updateMap();
+            })
+            .catch(function(err) {
+                console.error('Failed to load GeoJSON:', err);
+                document.getElementById('mapTitle').textContent = 'Error loading data';
+            });
+    </script>
+</body>
+</html>
