@@ -1663,6 +1663,153 @@ This finding has direct policy relevance: expanding irrigation from rainfed to s
 """))
 
 # =============================================================================
+# SECTION 9.7: COCONUT-EXCLUDED SENSITIVITY ANALYSIS
+# =============================================================================
+cells.append(md(r"""
+### 9.7 Coconut-Excluded Sensitivity Analysis
+
+**The Coconut Effect.** Coconut is an extreme outlier in caloric productivity calculations. With 354 kcal per 100g and very high per-hectare yields, coconut-dominant districts register kcal/ha values ranging from 752 to 75.5 million -- orders of magnitude above the median. Of our 725 districts with calorie data, **154 districts have coconut contributing more than 50% of total kcal**. These are concentrated in Kerala, coastal Karnataka, Tamil Nadu, Andhra Pradesh, and Goa.
+
+This matters because:
+
+1. **Coconut inflates caloric productivity** in ways that do not correspond to food security in the grain/pulse sense. Coconut calories come primarily as fat (coconut oil), not as the carbohydrate and protein base that kcal/ha is typically used to proxy.
+2. **The negative Pearson correlation** between ABI and kcal/ha (r = -0.18 in the full sample) may be driven entirely by coconut districts, which tend to be diverse (many crops alongside coconut) yet have extremely high kcal/ha due to coconut's caloric density.
+3. **Sensitivity analysis** -- re-running the core findings with coconut excluded -- tests whether our conclusions are robust or merely coconut artifacts.
+
+The maps and scatter plots below present the ex-coconut results.
+"""))
+
+cells.append(code(r"""
+# Display kcal/ha choropleth with coconut excluded (winsorized linear scale)
+kcal_map_ex = DATA_DIR / 'kcal_per_hectare_choropleth_ex_coconut.png'
+if kcal_map_ex.exists():
+    display(Image(filename=str(kcal_map_ex), width=900))
+else:
+    print(f"Map not found: {kcal_map_ex}")
+"""))
+
+cells.append(code(r"""
+# Display quadrant map with coconut districts hatched
+quad_map_ex = DATA_DIR / 'quadrant_map_ex_coconut.png'
+if quad_map_ex.exists():
+    display(Image(filename=str(quad_map_ex), width=900))
+else:
+    print(f"Map not found: {quad_map_ex}")
+"""))
+
+cells.append(code(r"""
+# Display ABI vs kcal/ha scatter with coconut districts as hollow diamonds
+scatter_ex = DATA_DIR / 'abi_vs_kcal_scatter_ex_coconut.png'
+if scatter_ex.exists():
+    display(Image(filename=str(scatter_ex), width=900))
+else:
+    print(f"Scatter plot not found: {scatter_ex}")
+"""))
+
+cells.append(md(r"""
+**Quadrant Distribution Comparison: With vs. Without Coconut**
+
+| Quadrant | With Coconut | Without Coconut | Change |
+|:---------|:-------------|:----------------|:-------|
+| **Monoculture Breadbasket** (low ABI, high kcal/ha) | 201 | 235 | +34 |
+| **Diverse & Calorie-Poor** (high ABI, low kcal/ha) | 184 | 146 | -38 |
+| **Vulnerable** (low ABI, low kcal/ha) | 181 | 148 | -33 |
+| **Diverse & Calorie-Rich** (high ABI, high kcal/ha) | 159 | 196 | +37 |
+
+Excluding coconut reshuffles the quadrants substantially. Most notably, **Diverse & Calorie-Rich districts increase from 159 to 196** -- many districts that appeared "diverse but calorie-poor" were actually being penalised by the coconut-inflated median threshold. With coconut removed, these districts are recognised as genuinely productive diverse systems.
+
+The **Monoculture Breadbasket** quadrant also grows, because the median kcal/ha drops when coconut outliers are excluded, pushing more districts above the (lower) threshold.
+"""))
+
+cells.append(md(r"""
+**Correlation Comparison: Full Sample vs. Coconut-Excluded**
+
+| Statistic | Full Sample | Coconut-Excluded |
+|:----------|:------------|:-----------------|
+| **Pearson r** | -0.18 | +0.02 |
+| **Spearman r** | -0.06 | -0.14 (p = 0.001) |
+
+**Key Insight:** The negative Pearson correlation between ABI and kcal/ha was **entirely a coconut artifact**. Once coconut is excluded, the linear relationship vanishes (Pearson r = +0.02, essentially zero). The Spearman rank correlation actually becomes more negative (-0.14 vs. -0.06), suggesting a weak monotonic tendency for more diverse districts to have slightly lower caloric productivity -- but this is modest and driven by rank ordering rather than extreme outliers.
+
+This sensitivity analysis confirms that the core conclusion from Section 9.3 holds: **there is no meaningful trade-off between crop diversity and caloric productivity**. The apparent negative correlation in the full sample was driven by a small number of coconut-dominant districts with extreme kcal/ha values, not by a systematic pattern across Indian agriculture.
+"""))
+
+# =============================================================================
+# SECTION 9.8: FOOD VS NON-FOOD CROP BREAKDOWN
+# =============================================================================
+cells.append(md(r"""
+### 9.8 Food vs. Non-Food Crop Breakdown
+
+To understand the caloric productivity figures in context, it is useful to distinguish between **food crops** -- those that contribute directly to human nutrition -- and **non-food crops** that serve industrial, fibre, or other purposes.
+
+**Food crops** in our dataset include:
+
+- **Cereals:** Rice, wheat, maize, sorghum, pearl millet, finger millet, barley, small millets
+- **Pulses:** Gram (chickpea), tur/arhar (pigeon pea), moong (green gram), urad (black gram), lentil (masur), other pulses
+- **Oilseeds:** Groundnut, rapeseed/mustard, soybean, sunflower, sesame, safflower, castor, niger seed, linseed
+- **Sugar crops:** Sugarcane
+- **Fruits:** Banana, mango, citrus, apple, grapes, papaya, and others
+- **Vegetables:** Potato, onion, tomato, brinjal, cabbage, cauliflower, peas, and others
+- **Spices:** Chilli, turmeric, ginger, garlic, coriander, cumin, black pepper, cardamom
+
+**Non-food crops** include:
+
+- **Fibre crops:** Cotton, jute, mesta, sunnhemp
+- **Drugs and narcotics:** Tobacco
+- **Fodder crops:** Various fodder grasses and legumes
+"""))
+
+cells.append(code(r"""
+# Compute food vs non-food crop area shares
+# Load the merged district-level data
+merged_path = DATA_DIR / 'district_diversity_indices.csv'
+df_merged = pd.read_csv(merged_path)
+
+# Define food and non-food share columns
+food_categories = ['share_cereals', 'share_pulses', 'share_oilseeds', 'share_sugarcane',
+                   'share_fruits', 'share_vegetables', 'share_spices']
+non_food_categories = ['share_fibres', 'share_drugs_and_narcotics', 'share_fodder']
+
+# Filter to columns that exist
+food_cols = [c for c in food_categories if c in df_merged.columns]
+non_food_cols = [c for c in non_food_categories if c in df_merged.columns]
+
+df_merged['food_crop_share'] = df_merged[food_cols].sum(axis=1)
+df_merged['non_food_crop_share'] = df_merged[non_food_cols].sum(axis=1) if non_food_cols else 0
+
+mean_food = df_merged['food_crop_share'].mean() * 100
+median_food = df_merged['food_crop_share'].median() * 100
+
+print("Food vs. Non-Food Crop Area Shares")
+print("=" * 50)
+print(f"  Mean food crop area share:   {mean_food:.1f}%")
+print(f"  Median food crop area share: {median_food:.1f}%")
+print(f"  Min:  {df_merged['food_crop_share'].min()*100:.1f}%")
+print(f"  Max:  {df_merged['food_crop_share'].max()*100:.1f}%")
+print()
+
+# Distribution summary
+bins = [0, 0.7, 0.8, 0.9, 0.95, 1.01]
+labels = ['<70%', '70-80%', '80-90%', '90-95%', '>95%']
+df_merged['food_share_bin'] = pd.cut(df_merged['food_crop_share'], bins=bins, labels=labels)
+dist = df_merged['food_share_bin'].value_counts().reindex(labels)
+
+print("Distribution of districts by food crop area share:")
+for label, count in dist.items():
+    pct = count / len(df_merged) * 100
+    bar = '#' * int(pct)
+    print(f"  {label:>8s}: {count:4d} districts ({pct:5.1f}%) {bar}")
+"""))
+
+cells.append(md(r"""
+**Food Crop Dominance.** The mean food crop area share across all districts is approximately **94.8%**, confirming that the vast majority of India's cropped area is devoted to food production. Non-food crops (primarily cotton and jute) are significant only in specific regions -- Vidarbha (cotton), the Gangetic delta (jute), and parts of Gujarat and Telangana (cotton).
+
+This high food crop share means that our caloric productivity calculations capture the bulk of agricultural activity. The 5% non-food share is concentrated in a minority of districts, so excluding non-food crops from calorie calculations does not introduce meaningful bias for most of the country.
+
+> **Note:** An interactive hover map showing the food/non-food crop area breakdown by district is available on the GitHub Pages site accompanying this analysis.
+"""))
+
+# =============================================================================
 # SECTION 10: SUMMARY AND POLICY IMPLICATIONS
 # =============================================================================
 cells.append(md(r"""

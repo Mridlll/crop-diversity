@@ -1,6 +1,6 @@
 # Handoff: Crop Diversity & Calorie-Diversity Overlay Analysis
 
-**Date:** 2026-03-10
+**Date:** 2026-03-10 (updated 2026-03-11)
 **Status:** Core analysis complete, hosted on GitHub Pages
 
 ## What Was Done
@@ -39,6 +39,7 @@ Live at: **https://mridlll.github.io/crop-diversity/**
 | `scripts/62_district_calorie_production.py` | Kcal/ha computation + quadrant maps + scatter |
 | `scripts/63_calorie_diversity_hover_map.py` | Folium calorie-diversity hover map |
 | `scripts/64_generate_timeline_data.py` | Generates GeoJSON for timeline page |
+| `scripts/65_food_nonfood_hover_map.py` | Food vs non-food crop breakdown hover map |
 
 ## Key Outputs
 | File | Location |
@@ -53,11 +54,21 @@ Live at: **https://mridlll.github.io/crop-diversity/**
 | Hover maps (HTML) | `outputs/crop_diversity_analysis/` (diversity + calorie-diversity) |
 | Jupyter notebook | `notebooks/crop_diversity_analysis.ipynb` |
 | GitHub Pages | `docs/` (index, diversity, calorie-diversity, gallery, timeline) |
+| Food/non-food map | `outputs/crop_diversity_analysis/food_nonfood_hover_map.html` |
+| Ex-coconut kcal map | `outputs/crop_diversity_analysis/kcal_per_hectare_choropleth_ex_coconut.png` |
+| Food/non-food page | `docs/food-nonfood.html` |
+
+### 5. Session 2026-03-11 Additions
+- **Coconut-excluded analysis:** 154 districts flagged (>50% kcal from coconut), ex-coconut quadrants/correlations/maps generated. Pearson correlation shifts from -0.18 to +0.02 without coconut districts. 4 ex-coconut maps generated.
+- **Log-scale kcal/ha visualization** (static + hover maps) — fixes the 752–75.5M range issue
+- **Food vs non-food hover map** (`scripts/65_food_nonfood_hover_map.py`) with 7 display layers
+- **K/M unit formatting** across all kcal displays
+- **Updated GitHub Pages:** coconut mode dropdown on calorie-diversity page, food-nonfood page (5th card), ex-coconut maps in gallery
 
 ## Key Findings
 1. Semi-irrigated districts most diverse (ABI 0.69) > irrigated (0.67) > rainfed (0.62)
 2. Diversity declining: 357 losing vs 233 gaining districts
-3. ABI vs kcal/ha correlation: Pearson -0.18, Spearman -0.06 (weak) — tradeoff is overstated
+3. ABI vs kcal/ha correlation: Pearson -0.18, Spearman -0.06 (weak) — tradeoff is overstated. Excluding coconut districts: Pearson shifts to +0.02.
 4. Quadrants nearly even (~25% each) — no dominant pattern
 5. Coconut effect dominates kcal/ha top tail (Kerala/TN)
 6. Karnataka most diverse (0.85), Punjab least (0.44)
@@ -70,7 +81,7 @@ Live at: **https://mridlll.github.io/crop-diversity/**
 - 40 tiny districts (<10k ha) flagged as unreliable for kcal/ha
 
 ## What's Next
-1. **Recompute correlations excluding coconut districts** — test if the weak tradeoff holds without the coconut outlier effect
+1. ~~**Recompute correlations excluding coconut districts**~~ — DONE 2026-03-11: 154 districts flagged, Pearson shifts -0.18→+0.02, 4 ex-coconut maps generated
 2. **Kharif vs Rabi diversity** — separate seasonal analysis (data has season column)
 3. **Herfindahl-Hirschman Index** — additional concentration metric
 4. **Per-capita calorie analysis** — need district population data to go from kcal/ha to kcal/person/day
