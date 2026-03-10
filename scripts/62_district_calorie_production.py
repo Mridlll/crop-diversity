@@ -718,36 +718,84 @@ def add_map_furniture(ax, title, source_note=True):
         )
 
 
-# --- Map 1: Kcal per hectare choropleth ---
-print("  [1/5] Kcal per hectare choropleth...")
+# --- Map 1a: Kcal per hectare choropleth (log scale, full dataset) ---
+print("  [1a/5] Kcal per hectare choropleth (log scale)...")
 fig, ax = plt.subplots(1, 1, figsize=(12, 14))
 gdf_valid = gdf[gdf["kcal_per_hectare"].notna()].copy()
 gdf_valid["kcal_per_hectare"] = pd.to_numeric(gdf_valid["kcal_per_hectare"], errors="coerce")
+gdf_valid["log_kcal_ha"] = np.log10(gdf_valid["kcal_per_hectare"].clip(lower=1))
 
 # Plot background (no data)
 gdf.plot(ax=ax, color="#f0f0f0", edgecolor="#ccc", linewidth=0.3)
-# Plot data
+# Plot data on log scale
 gdf_valid.plot(
-    ax=ax, column="kcal_per_hectare", cmap="YlOrRd", scheme="quantiles", k=7,
+    ax=ax, column="log_kcal_ha", cmap="YlOrRd", scheme="equal_interval", k=7,
     edgecolor="#888", linewidth=0.2, legend=True,
-    legend_kwds={"title": "Kcal/ha", "fontsize": 8, "title_fontsize": 9, "loc": "lower left"},
+    legend_kwds={"title": "Kcal/ha (log scale)", "fontsize": 8, "title_fontsize": 9, "loc": "lower left"},
 )
-# Reformat legend labels to use K/M suffixes
+# Reformat legend labels from log10 values to human-readable
 leg = ax.get_legend()
 if leg:
     for txt in leg.get_texts():
         old = txt.get_text()
         try:
-            parts = old.replace(",", "").split(" - ")
-            parts = [fmt_kcal(float(p.strip())) for p in parts]
+            # mapclassify uses ", " as separator
+            parts = [p.strip() for p in old.split(",")]
+            parts = [fmt_kcal(10 ** float(p)) for p in parts]
             txt.set_text(" - ".join(parts))
         except (ValueError, IndexError):
             pass
-add_map_furniture(ax, "District-Level Caloric Productivity (Mean Annual Kcal/ha)")
+add_map_furniture(ax, "District-Level Caloric Productivity (Log Scale, All Districts)")
 fig.tight_layout()
 fig.savefig(str(OUT_DIR / "kcal_per_hectare_choropleth.png"), dpi=200, bbox_inches="tight")
 plt.close(fig)
 print("    Saved: kcal_per_hectare_choropleth.png")
+
+# --- Map 1b: Kcal per hectare choropleth (ex-coconut, linear scale) ---
+print("  [1b/5] Kcal per hectare choropleth (ex-coconut, linear)...")
+fig, ax = plt.subplots(1, 1, figsize=(12, 14))
+gdf_valid["coco_flag"] = gdf_valid["coconut_dominant"].fillna(False).astype(bool)
+gdf_non_coco = gdf_valid[~gdf_valid["coco_flag"]].copy()
+gdf_coco = gdf_valid[gdf_valid["coco_flag"]].copy()
+
+# Winsorize at P2/P98 for the non-coconut districts to remove data artifacts
+p2 = gdf_non_coco["kcal_per_hectare"].quantile(0.02)
+p98 = gdf_non_coco["kcal_per_hectare"].quantile(0.98)
+gdf_non_coco["kcal_clipped"] = gdf_non_coco["kcal_per_hectare"].clip(p2, p98)
+
+gdf.plot(ax=ax, color="#f0f0f0", edgecolor="#ccc", linewidth=0.3)
+gdf_non_coco.plot(
+    ax=ax, column="kcal_clipped", cmap="YlOrRd", scheme="quantiles", k=7,
+    edgecolor="#888", linewidth=0.2, legend=True,
+    legend_kwds={"title": "Kcal/ha", "fontsize": 8, "title_fontsize": 9, "loc": "lower left"},
+)
+# Hatch coconut districts
+if len(gdf_coco) > 0:
+    gdf_coco.plot(ax=ax, facecolor="#d3d3d3", edgecolor="black", linewidth=1.0,
+                  hatch="///", alpha=0.7)
+# Reformat legend labels
+leg = ax.get_legend()
+if leg:
+    for txt in leg.get_texts():
+        old = txt.get_text()
+        try:
+            parts = [p.strip() for p in old.split(",")]
+            parts = [fmt_kcal(float(p)) for p in parts]
+            txt.set_text(" - ".join(parts))
+        except (ValueError, IndexError):
+            pass
+# Add hatching legend entry
+from matplotlib.patches import Patch
+handles = list(ax.get_legend().legend_handles) if ax.get_legend() else []
+handles.append(Patch(facecolor="#d3d3d3", edgecolor="black", hatch="///",
+                     label=f"Coconut-dominant (n={len(gdf_coco)})"))
+ax.legend(handles=handles, loc="lower left", fontsize=8, title="Kcal/ha (ex-coconut)", title_fontsize=9)
+
+add_map_furniture(ax, f"Caloric Productivity Excl. Coconut Districts (P2-P98: {fmt_kcal(p2)}-{fmt_kcal(p98)})")
+fig.tight_layout()
+fig.savefig(str(OUT_DIR / "kcal_per_hectare_choropleth_ex_coconut.png"), dpi=200, bbox_inches="tight")
+plt.close(fig)
+print("    Saved: kcal_per_hectare_choropleth_ex_coconut.png")
 
 # --- Map 2: Quadrant map ---
 print("  [2/5] Quadrant map...")

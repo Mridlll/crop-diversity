@@ -304,10 +304,19 @@
                 </div>
                 <div class="map-card">
                     <a href="maps/kcal_per_hectare_choropleth.png" onclick="openLightbox(event, this)">
-                        <img src="maps/kcal_per_hectare_choropleth.png" alt="Kcal per Hectare" loading="lazy">
+                        <img src="maps/kcal_per_hectare_choropleth.png" alt="Kcal per Hectare (log scale)" loading="lazy">
                         <div class="caption">
-                            <h3>Caloric Productivity (Kcal/ha)</h3>
-                            <p>Total food calories produced per hectare of cropped land, highlighting India's breadbaskets.</p>
+                            <h3>Caloric Productivity (Log Scale)</h3>
+                            <p>Log-scaled kcal/ha across all districts. Reveals gradients masked by coconut outliers in linear scale.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="map-card">
+                    <a href="maps/kcal_per_hectare_choropleth_ex_coconut.png" onclick="openLightbox(event, this)">
+                        <img src="maps/kcal_per_hectare_choropleth_ex_coconut.png" alt="Kcal per Hectare (excl. Coconut)" loading="lazy">
+                        <div class="caption">
+                            <h3>Caloric Productivity (excl. Coconut)</h3>
+                            <p>Linear scale with coconut districts hatched out. P2-P98 winsorized for clean gradients.</p>
                         </div>
                     </a>
                 </div>

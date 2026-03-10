@@ -296,17 +296,21 @@ INDEX_CONFIG = {
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 
-def get_color_scale(values, cmap_name, n_bins=8):
+def get_color_scale(values, cmap_name, n_bins=8, log_scale=False):
     valid = [v for v in values if v is not None and not (isinstance(v, float) and np.isnan(v))]
     if not valid:
-        return [], []
+        return [], [], False
     vmin, vmax = min(valid), max(valid)
     if vmin == vmax:
         vmax = vmin + 1
-    edges = np.linspace(vmin, vmax, n_bins + 1)
+    if log_scale and vmin > 0:
+        edges = np.logspace(np.log10(max(vmin, 1)), np.log10(vmax), n_bins + 1)
+    else:
+        edges = np.linspace(vmin, vmax, n_bins + 1)
+        log_scale = False
     cmap = plt.get_cmap(cmap_name, n_bins)
     colors = [mcolors.to_hex(cmap(i)) for i in range(n_bins)]
-    return edges, colors
+    return edges, colors, log_scale
 
 # Quadrant colors
 QUAD_COLORS = {
@@ -445,12 +449,16 @@ print(f"  {len(features)} features prepared")
 
 # Compute color scales for continuous indices
 color_scales = {}
+log_scale_keys = set()
 for idx_key in ["agro_biodiversity_index", "shannon_index", "simpson_index",
                  "crop_richness", "kcal_per_hectare", "food_crop_kcal_share"]:
     vals = [f["properties"][idx_key] for f in features]
     cfg = INDEX_CONFIG[idx_key]
-    edges, colors = get_color_scale(vals, cfg["cmap"])
+    use_log = (idx_key == "kcal_per_hectare")
+    edges, colors, is_log = get_color_scale(vals, cfg["cmap"], log_scale=use_log)
     color_scales[idx_key] = (edges, colors)
+    if is_log:
+        log_scale_keys.add(idx_key)
     for f in features:
         val = f["properties"][idx_key]
         if val is None or (isinstance(val, float) and np.isnan(val)):
