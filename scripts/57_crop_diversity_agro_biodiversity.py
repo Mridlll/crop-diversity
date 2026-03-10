@@ -52,6 +52,68 @@ df = df[df['area'] > 0]
 
 print(f"  Loaded {len(df):,} rows | {df.district_name.nunique()} districts | {df.crop_name.nunique()} crops | {df.year.nunique()} years")
 
+# ---- DATA CLEANING: Remove bogus district-state entries ----
+print("\nCleaning bogus district-state entries...")
+pre_clean = len(df)
+
+# 1. Remove 7 bogus district-state combinations (wrong state assignments)
+bogus_pairs = [
+    ('Delhi', 'Chandigarh'),
+    ('Goa', 'Chandigarh'),
+    ('The Dadra And Nagar Haveli And Daman And Diu', 'Chandigarh'),
+    ('Delhi', 'Surguja'),
+    ('Goa', 'Surguja'),
+    ('The Dadra And Nagar Haveli And Daman And Diu', 'Surguja'),
+    ('Andaman And Nicobar Islands', 'Purulia'),
+]
+bogus_mask = df.apply(lambda r: (r['state_name'], r['district_name']) in bogus_pairs, axis=1)
+n_bogus = bogus_mask.sum()
+df = df[~bogus_mask]
+print(f"  Removed {n_bogus} rows from {len(bogus_pairs)} bogus district-state pairs")
+
+# 2. Remap state-split duplicates to modern state names
+#    Only remap districts that actually appear under BOTH old and new state names.
+remap_rules = {
+    # (old_state, district) -> new_state
+    # Uttarakhand districts under "Uttar Pradesh" -> "Uttarakhand"
+    ('Uttar Pradesh', 'Almora'): 'Uttarakhand',
+    ('Uttar Pradesh', 'Bageshwar'): 'Uttarakhand',
+    ('Uttar Pradesh', 'Chamoli'): 'Uttarakhand',
+    ('Uttar Pradesh', 'Champawat'): 'Uttarakhand',
+    ('Uttar Pradesh', 'Dehradun'): 'Uttarakhand',
+    ('Uttar Pradesh', 'Haridwar'): 'Uttarakhand',
+    ('Uttar Pradesh', 'Nainital'): 'Uttarakhand',
+    ('Uttar Pradesh', 'Pauri Garhwal'): 'Uttarakhand',
+    ('Uttar Pradesh', 'Pithoragarh'): 'Uttarakhand',
+    # Chhattisgarh districts under "Madhya Pradesh" -> "Chhattisgarh"
+    ('Madhya Pradesh', 'Bastar'): 'Chhattisgarh',
+    ('Madhya Pradesh', 'Bilaspur'): 'Chhattisgarh',
+    ('Madhya Pradesh', 'Dhamtari'): 'Chhattisgarh',
+    ('Madhya Pradesh', 'Durg'): 'Chhattisgarh',
+    ('Madhya Pradesh', 'Jashpur'): 'Chhattisgarh',
+    ('Madhya Pradesh', 'Kanker'): 'Chhattisgarh',
+    ('Madhya Pradesh', 'Korba'): 'Chhattisgarh',
+    ('Madhya Pradesh', 'Mahasamund'): 'Chhattisgarh',
+    ('Madhya Pradesh', 'Raipur'): 'Chhattisgarh',
+    ('Madhya Pradesh', 'Rajnandgaon'): 'Chhattisgarh',
+    ('Madhya Pradesh', 'Surguja'): 'Chhattisgarh',
+    # Jharkhand districts under "Bihar" -> "Jharkhand"
+    ('Bihar', 'Deoghar'): 'Jharkhand',
+    ('Bihar', 'Dhanbad'): 'Jharkhand',
+    ('Bihar', 'Garhwa'): 'Jharkhand',
+}
+
+n_remapped = 0
+for (old_state, district), new_state in remap_rules.items():
+    mask = (df['state_name'] == old_state) & (df['district_name'] == district)
+    count = mask.sum()
+    if count > 0:
+        df.loc[mask, 'state_name'] = new_state
+        n_remapped += count
+
+print(f"  Remapped {n_remapped} rows across {len(remap_rules)} district-state pairs to modern states")
+print(f"  Rows removed/changed: {pre_clean - len(df)} removed, {n_remapped} remapped")
+
 # Extract start year for grouping
 df['year_start'] = df['year'].apply(lambda x: int(x.split('-')[0]))
 
@@ -111,6 +173,7 @@ def compute_diversity(group):
 
     # Shannon: H' = -Σ(pi * ln(pi))
     shannon = -np.sum(props * np.log(props))
+    shannon = max(0.0, shannon)  # clip floating-point -0.0 artifact
 
     # Simpson: 1 - Σ(pi²)
     simpson = 1 - np.sum(props ** 2)
