@@ -222,6 +222,8 @@ merge_cols = [
     "share_cereals", "share_pulses", "share_oilseeds",
     "total_kcal_annual", "food_crop_kcal_annual", "kcal_per_hectare",
     "food_crop_kcal_share", "kcal_diversity_quadrant",
+    "kcal_diversity_quadrant_ex_coconut",
+    "coconut_dominant", "coconut_kcal_share",
     "cereal_kcal_share", "pulse_kcal_share", "oilseed_kcal_share",
     "sugar_kcal_share", "vegetable_kcal_share", "fruit_kcal_share",
     "top_crops_by_kcal",
@@ -242,6 +244,9 @@ for idx, row in gdf.iterrows():
 
 gdf["irrigation_regime"] = gdf["irrigation_regime"].fillna("Unknown")
 gdf["kcal_diversity_quadrant"] = gdf["kcal_diversity_quadrant"].fillna("No Data")
+gdf["kcal_diversity_quadrant_ex_coconut"] = gdf["kcal_diversity_quadrant_ex_coconut"].fillna("No Data")
+gdf["coconut_dominant"] = gdf["coconut_dominant"].fillna(False)
+gdf["coconut_kcal_share"] = gdf["coconut_kcal_share"].fillna(0)
 
 # Simplify geometries
 print("Simplifying geometries...")
@@ -266,7 +271,15 @@ def fmt_num(val, fmt=".2f"):
 def fmt_kcal(val):
     if val is None or (isinstance(val, float) and np.isnan(val)):
         return "N/A"
-    return f"{float(val):,.0f}"
+    v = float(val)
+    if abs(v) >= 1e9:
+        return f"{v/1e9:.1f}B"
+    elif abs(v) >= 1e6:
+        return f"{v/1e6:.1f}M"
+    elif abs(v) >= 1e3:
+        return f"{v/1e3:.0f}K"
+    else:
+        return f"{v:,.0f}"
 
 # Index configs for the dropdown
 INDEX_CONFIG = {
@@ -274,7 +287,7 @@ INDEX_CONFIG = {
     "shannon_index": {"label": "Shannon Index", "cmap": "YlGnBu", "fmt": ".2f", "type": "continuous"},
     "simpson_index": {"label": "Simpson Index", "cmap": "YlGnBu", "fmt": ".2f", "type": "continuous"},
     "crop_richness": {"label": "Crop Richness", "cmap": "YlGnBu", "fmt": ".0f", "type": "continuous"},
-    "kcal_per_hectare": {"label": "Kcal per Hectare", "cmap": "YlOrRd", "fmt": ",.0f", "type": "continuous"},
+    "kcal_per_hectare": {"label": "Kcal/ha", "cmap": "YlOrRd", "fmt": ",.0f", "type": "continuous"},
     "kcal_diversity_quadrant": {"label": "Diversity-Calorie Quadrant", "cmap": None, "fmt": None, "type": "categorical"},
     "food_crop_kcal_share": {"label": "Food Crop Kcal Share", "cmap": "RdYlGn", "fmt": ".1%", "type": "continuous"},
 }
@@ -337,6 +350,17 @@ def build_tooltip_html(row):
 
     quad_color = QUAD_COLORS.get(quadrant, "#999")
 
+    # Coconut badge
+    coconut_dom = row.get("coconut_dominant")
+    coconut_share = row.get("coconut_kcal_share")
+    coconut_badge = ""
+    if coconut_dom and str(coconut_dom).lower() not in ("false", "0", "nan", "none", ""):
+        pct = fmt_pct(coconut_share)
+        coconut_badge = f'''
+      <div style="display:inline-block; padding:2px 8px; border-radius:3px; background:#8B4513; color:white; font-size:11px; font-weight:600; margin-bottom:4px;">
+        &#x1F965; Coconut-dominant ({pct} kcal)
+      </div>'''
+
     return f"""
     <div style="font-family:'Segoe UI',Arial,sans-serif; font-size:13px; line-height:1.5; min-width:280px; max-width:340px;">
       <div style="font-size:15px; font-weight:700; color:#1a1a2e; border-bottom:2px solid #0f3460; padding-bottom:4px; margin-bottom:6px;">
@@ -345,7 +369,7 @@ def build_tooltip_html(row):
       <div style="color:#555; font-size:12px; margin-bottom:4px;">{state}</div>
       <div style="display:inline-block; padding:2px 8px; border-radius:3px; background:{quad_color}; color:white; font-size:11px; font-weight:600; margin-bottom:8px;">
         {quadrant}
-      </div>
+      </div>{coconut_badge}
       <div style="color:#666; font-size:11px; margin-bottom:6px;">Irrigation: {irr}</div>
 
       <table style="width:100%; font-size:12px; border-collapse:collapse;">
@@ -392,6 +416,9 @@ for idx, row in gdf.iterrows():
         "state_name": str(row.get("state_name") or row.get("stname") or ""),
         "irrigation_regime": str(row.get("irrigation_regime") or "Unknown"),
         "kcal_diversity_quadrant": str(row.get("kcal_diversity_quadrant") or "No Data"),
+        "kcal_diversity_quadrant_ex_coconut": str(row.get("kcal_diversity_quadrant_ex_coconut") or "No Data"),
+        "coconut_dominant": bool(row.get("coconut_dominant") and str(row.get("coconut_dominant")).lower() not in ("false", "0", "nan", "none", "")),
+        "coconut_kcal_share": float(row.get("coconut_kcal_share") or 0),
     }
 
     # Add numeric values for all continuous indices
@@ -442,6 +469,8 @@ for idx_key in ["agro_biodiversity_index", "shannon_index", "simpson_index",
 for f in features:
     q = f["properties"]["kcal_diversity_quadrant"]
     f["properties"]["color_kcal_diversity_quadrant"] = QUAD_COLORS.get(q, "#d3d3d3")
+    q_ex = f["properties"]["kcal_diversity_quadrant_ex_coconut"]
+    f["properties"]["color_kcal_diversity_quadrant_ex_coconut"] = QUAD_COLORS.get(q_ex, "#d3d3d3")
 
 # ---------------------------------------------------------------------------
 # 5. Create Folium map
@@ -571,7 +600,7 @@ custom_html = f"""
     <option value="shannon_index">Shannon Index</option>
     <option value="simpson_index">Simpson Index</option>
     <option value="crop_richness">Crop Richness</option>
-    <option value="kcal_per_hectare">Kcal per Hectare</option>
+    <option value="kcal_per_hectare">Kcal/ha</option>
     <option value="kcal_diversity_quadrant">Diversity-Calorie Quadrant</option>
     <option value="food_crop_kcal_share">Food Crop Kcal Share</option>
   </select>
@@ -581,6 +610,11 @@ custom_html = f"""
     <option value="Rainfed">Rainfed</option>
     <option value="Semi-Irrigated">Semi-Irrigated</option>
     <option value="Irrigated">Irrigated</option>
+  </select>
+  <label>Quadrant Mode</label>
+  <select id="coconutSelect" onchange="updateMap()">
+    <option value="including">Including Coconut</option>
+    <option value="excluding">Excluding Coconut</option>
   </select>
 </div>
 
@@ -596,7 +630,7 @@ var indexLabels = {{
   "shannon_index": "Shannon Index",
   "simpson_index": "Simpson Index",
   "crop_richness": "Crop Richness",
-  "kcal_per_hectare": "Kcal per Hectare",
+  "kcal_per_hectare": "Kcal/ha",
   "kcal_diversity_quadrant": "Diversity-Calorie Quadrant",
   "food_crop_kcal_share": "Food Crop Kcal Share"
 }};
@@ -611,9 +645,17 @@ function valToColor(val, edges, colors) {{
   return colors[colors.length - 1];
 }}
 
+function fmtKcal(val) {{
+  if (val === null || val === undefined) return "N/A";
+  var v = Math.abs(val);
+  if (v >= 1e9) return (val/1e9).toFixed(1) + "B";
+  if (v >= 1e6) return (val/1e6).toFixed(1) + "M";
+  if (v >= 1e3) return Math.round(val/1e3) + "K";
+  return Math.round(val).toLocaleString();
+}}
 function formatNum(val, isKcal) {{
   if (val === null || val === undefined) return "N/A";
-  if (isKcal) return Math.round(val).toLocaleString();
+  if (isKcal) return fmtKcal(val);
   return val.toFixed(2);
 }}
 
@@ -633,8 +675,8 @@ function updateLegend(indexKey) {{
     for (var i = 0; i < cs.colors.length; i++) {{
       var lo, hi;
       if (isKcal) {{
-        lo = Math.round(cs.edges[i]).toLocaleString();
-        hi = Math.round(cs.edges[i+1]).toLocaleString();
+        lo = fmtKcal(cs.edges[i]);
+        hi = fmtKcal(cs.edges[i+1]);
       }} else if (isPct) {{
         lo = (cs.edges[i] * 100).toFixed(1) + "%";
         hi = (cs.edges[i+1] * 100).toFixed(1) + "%";
@@ -656,8 +698,17 @@ function updateLegend(indexKey) {{
 function updateMap() {{
   var indexKey = document.getElementById("indexSelect").value;
   var irrFilter = document.getElementById("irrSelect").value;
+  var coconutMode = document.getElementById("coconutSelect").value;
 
-  document.getElementById("mapTitle").innerHTML = "Calorie-Diversity Analysis: " + indexLabels[indexKey];
+  // Show/hide coconut dropdown - only relevant for quadrant layer
+  var coconutRow = document.getElementById("coconutSelect").parentElement;
+  // Always visible, but label indicates relevance
+
+  var titleSuffix = "";
+  if (indexKey === "kcal_diversity_quadrant" && coconutMode === "excluding") {{
+    titleSuffix = " (excl. Coconut)";
+  }}
+  document.getElementById("mapTitle").innerHTML = "Calorie-Diversity Analysis: " + indexLabels[indexKey] + titleSuffix;
 
   var filtered = {{type: "FeatureCollection", features: []}};
   for (var i = 0; i < geojsonData.features.length; i++) {{
@@ -675,11 +726,14 @@ function updateMap() {{
   var isCateg = (indexKey === "kcal_diversity_quadrant");
   var cs = isCateg ? null : colorScales[indexKey];
 
+  // Determine which quadrant property to use based on coconut mode
+  var quadProp = (coconutMode === "excluding") ? "kcal_diversity_quadrant_ex_coconut" : "kcal_diversity_quadrant";
+
   currentLayer = L.geoJson(filtered, {{
     style: function(feature) {{
       var fillColor;
       if (isCateg) {{
-        var q = feature.properties.kcal_diversity_quadrant || "No Data";
+        var q = feature.properties[quadProp] || "No Data";
         fillColor = quadColors[q] || "#d3d3d3";
       }} else {{
         var val = feature.properties[indexKey];
