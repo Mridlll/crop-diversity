@@ -1,0 +1,6 @@
+,shannon_index,shannon_index,shannon_index,shannon_index,shannon_index,simpson_index,simpson_index,simpson_index,crop_richness,crop_richness,crop_richness,crop_richness,agro_biodiversity_index,agro_biodiversity_index,agro_biodiversity_index,dominant_crop_share,dominant_crop_share,district_key
+,mean,median,std,min,max,mean,median,std,mean,median,min,max,mean,median,std,mean,median,count
+irrigation_regime,,,,,,,,,,,,,,,,,,
+Irrigated (>60%),1.5668,1.5625,0.456,0.0593,2.6095,0.6815,0.6962,0.1298,32.5185,34.0,3,45,0.6715,0.6934,0.1485,0.4471,0.4406,162
+Rainfed (<40%),1.4937,1.4489,0.5391,-0.0,2.7811,0.602,0.6354,0.2025,30.9083,32.0,1,45,0.6218,0.6252,0.1665,0.5468,0.532,240
+Semi-Irrigated (40-60%),1.6637,1.7247,0.5576,0.0678,2.8111,0.679,0.7295,0.1881,33.7822,36.0,4,45,0.6916,0.7364,0.1672,0.4584,0.4387,101

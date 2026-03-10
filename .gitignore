@@ -1,0 +1,17 @@
+# Large files
+outputs/crop_diversity_analysis/maps/*.gif
+Package_Maps_Share_20251120_FINAL/
+outputs/all_crops_apy_1997_2021_india_data_portal.csv
+outputs/rainfed_irrigated_separate_maps_20251118_100436/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temp
+outputs/crop_diversity_analysis/maps/_tmp_frames*/

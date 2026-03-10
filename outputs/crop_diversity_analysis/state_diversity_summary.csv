@@ -1,0 +1,36 @@
+state_name,shannon_index,simpson_index,crop_richness,agro_biodiversity_index,n_districts
+Karnataka,2.114,0.797,42.467,0.854,30
+Andhra Pradesh,1.958,0.744,38.5,0.786,20
+Rajasthan,1.873,0.776,35.758,0.767,33
+Nagaland,1.998,0.735,35.545,0.765,11
+Uttarakhand,1.866,0.773,30.308,0.723,13
+Madhya Pradesh,1.74,0.694,35.742,0.721,66
+Tamil Nadu,1.736,0.666,32.73,0.687,37
+Uttar Pradesh,1.597,0.708,32.08,0.681,87
+Bihar,1.452,0.65,35.146,0.666,41
+Gujarat,1.781,0.722,26.152,0.663,33
+Meghalaya,1.797,0.7,26.364,0.659,11
+Maharashtra,1.733,0.677,24.833,0.631,36
+Haryana,1.414,0.668,29.864,0.628,22
+Himachal Pradesh,1.394,0.662,27.667,0.607,12
+Telangana,1.461,0.661,25.424,0.598,33
+Ladakh,1.699,0.764,15.5,0.588,2
+West Bengal,1.312,0.563,30.364,0.582,22
+Chhattisgarh,1.102,0.435,37.929,0.568,28
+Jharkhand,1.314,0.508,29.583,0.556,24
+Kerala,1.331,0.606,24.429,0.555,14
+Manipur,1.407,0.534,25.111,0.543,9
+Sikkim,1.675,0.699,12.75,0.541,4
+Arunachal Pradesh,1.41,0.634,18.84,0.532,25
+Jammu And Kashmir,1.188,0.603,19.762,0.501,21
+Odisha,0.879,0.33,33.867,0.473,30
+Puducherry,1.158,0.547,18.25,0.466,4
+Assam,1.046,0.406,26.515,0.464,33
+Mizoram,1.137,0.468,20.875,0.455,8
+Punjab,1.031,0.583,15.636,0.444,22
+Andaman And Nicobar Islands,0.965,0.42,16.0,0.38,4
+Tripura,0.667,0.221,25.25,0.343,8
+Chandigarh,0.903,0.397,12.0,0.334,1
+Goa,0.691,0.341,7.0,0.251,4
+The Dadra And Nagar Haveli And Daman And Diu,0.298,0.119,5.2,0.11,5
+Delhi,0.0,0.0,1.0,0.0,2
