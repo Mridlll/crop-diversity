@@ -248,7 +248,54 @@ print(f"  Shannon range: {stats['shannon_min']:.2f} - {stats['shannon_max']:.2f}
 print(f"  Richness range: {stats['richness_min']:.0f} - {stats['richness_max']:.0f}")
 
 # ---------------------------------------------------------------------------
-# 6. Build GeoJSON features
+# 6. Compute Shannon change per district (first vs last available year)
+# ---------------------------------------------------------------------------
+print("Computing Shannon change per district...")
+change_map = {}  # district_key -> {"shannon_change": float, "n_years": int}
+
+for dk in panel_pivot_shannon.index:
+    row_vals = panel_pivot_shannon.loc[dk].dropna()
+    n_years = len(row_vals)
+    if n_years >= 5:
+        first_val = row_vals.iloc[0]
+        last_val = row_vals.iloc[-1]
+        change_map[dk] = {"shannon_change": float(last_val - first_val), "n_years": n_years}
+    else:
+        change_map[dk] = {"shannon_change": None, "n_years": n_years}
+
+# Classify: top/bottom 15% of districts with valid change
+valid_changes = [v["shannon_change"] for v in change_map.values() if v["shannon_change"] is not None]
+valid_changes_arr = np.array(valid_changes)
+change_p15 = float(np.percentile(valid_changes_arr, 15))
+change_p85 = float(np.percentile(valid_changes_arr, 85))
+
+for dk, info in change_map.items():
+    sc = info["shannon_change"]
+    if sc is None:
+        info["change_class"] = "Insufficient Data"
+    elif sc >= change_p85:
+        info["change_class"] = "Top Gainer"
+    elif sc <= change_p15:
+        info["change_class"] = "Top Loser"
+    else:
+        info["change_class"] = "Stable"
+
+n_gainers = sum(1 for v in change_map.values() if v["change_class"] == "Top Gainer")
+n_losers = sum(1 for v in change_map.values() if v["change_class"] == "Top Loser")
+n_stable = sum(1 for v in change_map.values() if v["change_class"] == "Stable")
+n_insuf = sum(1 for v in change_map.values() if v["change_class"] == "Insufficient Data")
+
+print(f"  Change thresholds: p15={change_p15:.3f}, p85={change_p85:.3f}")
+print(f"  Gainers: {n_gainers}, Losers: {n_losers}, Stable: {n_stable}, Insufficient: {n_insuf}")
+
+stats["change_p15"] = change_p15
+stats["change_p85"] = change_p85
+stats["n_gainers"] = n_gainers
+stats["n_losers"] = n_losers
+stats["n_stable"] = n_stable
+
+# ---------------------------------------------------------------------------
+# 7. Build GeoJSON features
 # ---------------------------------------------------------------------------
 print("Building GeoJSON features...")
 features = []
@@ -276,6 +323,15 @@ for idx, row in gdf.iterrows():
             props[f"s_{yr}"] = None
             props[f"r_{yr}"] = None
 
+    # Add change classification
+    if dk and dk in change_map:
+        info = change_map[dk]
+        props["shannon_change"] = round(info["shannon_change"], 3) if info["shannon_change"] is not None else None
+        props["change_class"] = info["change_class"]
+    else:
+        props["shannon_change"] = None
+        props["change_class"] = "Insufficient Data"
+
     feat = {
         "type": "Feature",
         "geometry": json.loads(gpd.GeoSeries([geom]).to_json())["features"][0]["geometry"],
@@ -292,7 +348,7 @@ geojson_data = {
 print(f"  {len(features)} features built")
 
 # ---------------------------------------------------------------------------
-# 7. Save
+# 8. Save
 # ---------------------------------------------------------------------------
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 with open(OUT_PATH, "w") as f:

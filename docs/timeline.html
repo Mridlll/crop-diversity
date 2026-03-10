@@ -233,6 +233,12 @@
                 <option value="shannon">Shannon Index</option>
                 <option value="richness">Crop Richness</option>
             </select>
+            <select id="changeFilter">
+                <option value="all">All Districts</option>
+                <option value="gainers">Top Gainers</option>
+                <option value="losers">Top Losers</option>
+                <option value="stable">Stable</option>
+            </select>
             <button id="playBtn" onclick="togglePlay()">Play</button>
         </div>
     </div>
@@ -318,6 +324,24 @@
             return getCurrentIndex() === 'shannon' ? val.toFixed(2) : Math.round(val).toString();
         }
 
+        function getChangeFilter() {
+            return document.getElementById('changeFilter').value;
+        }
+
+        function matchesFilter(feature, filter) {
+            if (filter === 'all') return true;
+            var cc = feature.properties.change_class;
+            if (filter === 'gainers') return cc === 'Top Gainer';
+            if (filter === 'losers') return cc === 'Top Loser';
+            if (filter === 'stable') return cc === 'Stable';
+            return true;
+        }
+
+        function formatChange(val) {
+            if (val === null || val === undefined) return 'N/A';
+            return (val >= 0 ? '+' : '') + val.toFixed(2);
+        }
+
         function updateMap() {
             var sliderVal = parseInt(document.getElementById('yearSlider').value);
             var year = years[sliderVal];
@@ -325,6 +349,7 @@
             var mm = getMinMax();
             var range = mm.max - mm.min;
             if (range === 0) range = 1;
+            var filter = getChangeFilter();
 
             document.getElementById('yearDisplay').textContent = year;
             document.getElementById('mapTitle').textContent = 'Crop Diversity Timeline: ' + getLabel();
@@ -343,8 +368,15 @@
             currentLayer = L.geoJson(geojsonData, {
                 style: function(feature) {
                     var val = feature.properties[propKey];
+                    var passes = matchesFilter(feature, filter);
                     var fillColor;
-                    if (val === null || val === undefined) {
+                    var opacity = 0.85;
+
+                    if (!passes) {
+                        // Greyed out for non-matching districts
+                        fillColor = '#d3d3d3';
+                        opacity = 0.3;
+                    } else if (val === null || val === undefined) {
                         fillColor = '#d3d3d3';
                     } else {
                         var t = (val - mm.min) / range;
@@ -356,16 +388,24 @@
                         fillColor: fillColor,
                         weight: 0.4,
                         color: '#888',
-                        fillOpacity: 0.85
+                        fillOpacity: opacity
                     };
                 },
                 onEachFeature: function(feature, layer) {
                     var val = feature.properties[propKey];
                     var name = feature.properties.name || 'Unknown';
                     var state = feature.properties.state || '';
+                    var sc = feature.properties.shannon_change;
+                    var cc = feature.properties.change_class || '';
+                    var changeLine = '';
+                    if (sc !== null && sc !== undefined) {
+                        changeLine = '<div style="font-size:11px; margin-top:2px; color:#555;">Change: <b>' +
+                                     formatChange(sc) + '</b> (' + cc + ')</div>';
+                    }
                     var html = '<div style="font-weight:600; font-size:13px;">' + name + '</div>' +
                                '<div style="color:#666; font-size:11px; margin-bottom:4px;">' + state + '</div>' +
-                               '<div style="font-size:12px;">' + getLabel() + ': <b>' + formatVal(val) + '</b></div>';
+                               '<div style="font-size:12px;">' + getLabel() + ': <b>' + formatVal(val) + '</b></div>' +
+                               changeLine;
                     layer.bindTooltip(html, {
                         sticky: true,
                         direction: 'auto',
@@ -428,6 +468,10 @@
                 });
 
                 document.getElementById('indexSelect').addEventListener('change', function() {
+                    updateMap();
+                });
+
+                document.getElementById('changeFilter').addEventListener('change', function() {
                     updateMap();
                 });
 
