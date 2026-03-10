@@ -379,9 +379,25 @@ print("\n" + "=" * 70)
 print("STEP 4: Classifying districts into diversity-calorie quadrants")
 print("=" * 70)
 
+# Flag small-area districts where kcal/ha is unreliable
+area_col = [c for c in merged.columns if "total_cropped_area" in c][-1]
+merged["small_area_flag"] = merged[area_col] < 10000  # < 10,000 ha
+n_small = merged["small_area_flag"].sum()
+print(f"  Small-area districts (<10k ha, kcal/ha unreliable): {n_small}")
+
+# Log-transformed kcal/ha for visualization (distribution is extremely right-skewed)
+merged["log_kcal_per_hectare"] = np.log10(merged["kcal_per_hectare"].clip(lower=1))
+
+# Use only reliable districts (>=10k ha) for median calculation
 valid = merged.dropna(subset=["agro_biodiversity_index", "kcal_per_hectare"])
-abi_median = valid["agro_biodiversity_index"].median()
-kcal_ha_median = valid["kcal_per_hectare"].median()
+reliable = valid[~valid["small_area_flag"]]
+abi_median = reliable["agro_biodiversity_index"].median()
+kcal_ha_median = reliable["kcal_per_hectare"].median()
+
+print(f"  Note: P75={valid['kcal_per_hectare'].quantile(0.75):,.0f}, "
+      f"P90={valid['kcal_per_hectare'].quantile(0.90):,.0f} — "
+      f"60x jump due to coconut-dominant districts (Kerala/TN)")
+print(f"  Using reliable districts (>10k ha, n={len(reliable)}) for median thresholds")
 
 print(f"  ABI median: {abi_median:.4f}")
 print(f"  Kcal/ha median: {kcal_ha_median:,.0f}")
