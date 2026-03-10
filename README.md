@@ -122,4 +122,4 @@ pandas, geopandas, numpy, matplotlib, plotly, dash, dash-bootstrap-components, f
 
 ## License
 
-This work is part of research at the [Council on Energy, Environment and Water (CEEW)](https://www.ceew.in/).
+This work is independent research by Mridul.
