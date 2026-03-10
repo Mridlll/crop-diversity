@@ -15,6 +15,9 @@ Outputs:
     outputs/crop_diversity_analysis/bivariate_abi_kcal_map.png
     outputs/crop_diversity_analysis/nutritionally_hollow_map.png
     outputs/crop_diversity_analysis/abi_vs_kcal_scatter.png
+    outputs/crop_diversity_analysis/quadrant_map_ex_coconut.png
+    outputs/crop_diversity_analysis/bivariate_abi_kcal_map_ex_coconut.png
+    outputs/crop_diversity_analysis/abi_vs_kcal_scatter_ex_coconut.png
 """
 
 import re
@@ -27,7 +30,9 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.collections import PatchCollection
 from matplotlib.lines import Line2D
+from scipy.stats import pearsonr, spearmanr
 from thefuzz import fuzz
 
 warnings.filterwarnings("ignore")
@@ -258,9 +263,24 @@ top_crops = (
     .rename(columns={0: "top_crops_by_kcal"})
 )
 
+# Compute coconut kcal share per district
+print("  Computing coconut kcal share per district...")
+coconut_kcal = (
+    mean_annual[mean_annual["crop_name"] == "Coconut"]
+    .groupby(["state_name", "district_name"])
+    .agg(coconut_kcal=("mean_kcal", "sum"))
+    .reset_index()
+)
+
 # Merge everything
 print("  Merging district-level kcal data...")
 district_kcal = district_total.merge(district_food, on=["state_name", "district_name"], how="left")
+district_kcal = district_kcal.merge(coconut_kcal, on=["state_name", "district_name"], how="left")
+district_kcal["coconut_kcal"] = district_kcal["coconut_kcal"].fillna(0)
+district_kcal["coconut_kcal_share"] = district_kcal["coconut_kcal"] / district_kcal["total_kcal_annual"]
+district_kcal["coconut_dominant"] = district_kcal["coconut_kcal_share"] > 0.50
+n_coco = district_kcal["coconut_dominant"].sum()
+print(f"  Coconut-dominant districts (>50% kcal from coconut): {n_coco}")
 district_kcal = district_kcal.merge(top_crops, on=["state_name", "district_name"], how="left")
 
 # Compute kcal per hectare
@@ -422,6 +442,51 @@ quad_counts = merged["kcal_diversity_quadrant"].value_counts()
 print("\n  Quadrant distribution:")
 for q, c in quad_counts.items():
     print(f"    {q}: {c}")
+
+# ---------------------------------------------------------------------------
+# Step 4b: Ex-coconut quadrant classification
+# ---------------------------------------------------------------------------
+print("\n  --- Ex-coconut analysis ---")
+
+# Ensure coconut_dominant column is present
+if "coconut_dominant" not in merged.columns:
+    merged["coconut_dominant"] = False
+    merged["coconut_kcal_share"] = 0.0
+
+non_coco = reliable[reliable.index.isin(
+    merged[~merged["coconut_dominant"]].index
+)]
+abi_median_ex_coco = non_coco["agro_biodiversity_index"].median()
+kcal_ha_median_ex_coco = non_coco["kcal_per_hectare"].median()
+
+print(f"  Ex-coconut reliable districts: {len(non_coco)}")
+print(f"  ABI median (ex-coco): {abi_median_ex_coco:.4f}")
+print(f"  Kcal/ha median (ex-coco): {kcal_ha_median_ex_coco:,.0f}")
+print(f"  (Full medians were: ABI={abi_median:.4f}, Kcal/ha={kcal_ha_median:,.0f})")
+
+def classify_quadrant_ex_coco(row):
+    abi = row.get("agro_biodiversity_index")
+    kph = row.get("kcal_per_hectare")
+    if pd.isna(abi) or pd.isna(kph):
+        return "No Data"
+    if abi > abi_median_ex_coco and kph > kcal_ha_median_ex_coco:
+        return "Diverse & Calorie-Rich"
+    elif abi <= abi_median_ex_coco and kph > kcal_ha_median_ex_coco:
+        return "Monoculture Breadbasket"
+    elif abi > abi_median_ex_coco and kph <= kcal_ha_median_ex_coco:
+        return "Diverse & Calorie-Poor"
+    else:
+        return "Vulnerable"
+
+merged["kcal_diversity_quadrant_ex_coconut"] = merged.apply(classify_quadrant_ex_coco, axis=1)
+
+quad_counts_ex = merged["kcal_diversity_quadrant_ex_coconut"].value_counts()
+print("\n  Ex-coconut quadrant distribution:")
+for q, c in quad_counts_ex.items():
+    print(f"    {q}: {c}")
+
+n_coco_total = merged["coconut_dominant"].sum()
+print(f"\n  Coconut-dominant districts: {n_coco_total}")
 
 # Save merged CSV
 OUT_CSV = OUT_DIR / "district_diversity_calorie_merged.csv"
@@ -589,7 +654,9 @@ print(f"  Shapefile match: {matched_count}/{len(gdf)} ({matched_count/len(gdf)*1
 # Transfer data to geodataframe
 transfer_cols = [
     "kcal_per_hectare", "total_kcal_annual", "food_crop_kcal_annual",
-    "kcal_diversity_quadrant", "agro_biodiversity_index",
+    "kcal_diversity_quadrant", "kcal_diversity_quadrant_ex_coconut",
+    "coconut_dominant", "coconut_kcal_share",
+    "agro_biodiversity_index",
     "food_crop_kcal_share", "irrigation_regime",
     "cereal_kcal_share", "pulse_kcal_share", "oilseed_kcal_share",
     "sugar_kcal_share", "vegetable_kcal_share", "fruit_kcal_share",
@@ -616,6 +683,16 @@ gdf = gdf.to_crs(epsg=4326)
 print("\n" + "=" * 70)
 print("STEP 6: Generating static maps")
 print("=" * 70)
+
+
+def fmt_kcal(x, _pos=None):
+    """Format large kcal values: 1.2M, 350K, etc."""
+    if abs(x) >= 1e6:
+        return f"{x/1e6:.1f}M"
+    elif abs(x) >= 1e3:
+        return f"{x/1e3:.0f}K"
+    else:
+        return f"{x:.0f}"
 
 
 def add_map_furniture(ax, title, source_note=True):
@@ -653,9 +730,20 @@ gdf.plot(ax=ax, color="#f0f0f0", edgecolor="#ccc", linewidth=0.3)
 gdf_valid.plot(
     ax=ax, column="kcal_per_hectare", cmap="YlOrRd", scheme="quantiles", k=7,
     edgecolor="#888", linewidth=0.2, legend=True,
-    legend_kwds={"title": "Kcal/ha (quantiles)", "fontsize": 8, "title_fontsize": 9, "loc": "lower left"},
+    legend_kwds={"title": "Kcal/ha", "fontsize": 8, "title_fontsize": 9, "loc": "lower left"},
 )
-add_map_furniture(ax, "District-Level Caloric Productivity (Mean Annual Kcal per Hectare)")
+# Reformat legend labels to use K/M suffixes
+leg = ax.get_legend()
+if leg:
+    for txt in leg.get_texts():
+        old = txt.get_text()
+        try:
+            parts = old.replace(",", "").split(" - ")
+            parts = [fmt_kcal(float(p.strip())) for p in parts]
+            txt.set_text(" - ".join(parts))
+        except (ValueError, IndexError):
+            pass
+add_map_furniture(ax, "District-Level Caloric Productivity (Mean Annual Kcal/ha)")
 fig.tight_layout()
 fig.savefig(str(OUT_DIR / "kcal_per_hectare_choropleth.png"), dpi=200, bbox_inches="tight")
 plt.close(fig)
@@ -681,6 +769,33 @@ fig.tight_layout()
 fig.savefig(str(OUT_DIR / "quadrant_map.png"), dpi=200, bbox_inches="tight")
 plt.close(fig)
 print("    Saved: quadrant_map.png")
+
+# --- Map 2b: Quadrant map (ex-coconut thresholds) ---
+print("  [2b/5] Quadrant map (ex-coconut thresholds)...")
+
+fig, ax = plt.subplots(1, 1, figsize=(12, 14))
+gdf["quad_color_ex"] = gdf["kcal_diversity_quadrant_ex_coconut"].map(QUAD_COLORS).fillna("#f0f0f0")
+
+# Plot all districts with ex-coconut quadrant colors
+gdf.plot(ax=ax, color=gdf["quad_color_ex"], edgecolor="#888", linewidth=0.2)
+
+# Overlay hatching on coconut-dominant districts
+gdf["coco_flag"] = gdf["coconut_dominant"].fillna(False).astype(bool)
+coco_gdf = gdf[gdf["coco_flag"]].copy()
+if len(coco_gdf) > 0:
+    coco_gdf.plot(ax=ax, facecolor="none", edgecolor="black", linewidth=1.5,
+                  hatch="///", alpha=0.7)
+
+legend_patches = [mpatches.Patch(color=c, label=q) for q, c in QUAD_COLORS.items()]
+legend_patches.append(mpatches.Patch(facecolor="none", edgecolor="black", hatch="///",
+                                      label=f"Coconut-dominant (n={len(coco_gdf)})"))
+ax.legend(handles=legend_patches, loc="lower left", fontsize=8,
+          title="Quadrant (ex-coconut thresholds)", title_fontsize=9)
+add_map_furniture(ax, "Diversity-Calorie Quadrant (Coconut-Excluded Thresholds)")
+fig.tight_layout()
+fig.savefig(str(OUT_DIR / "quadrant_map_ex_coconut.png"), dpi=200, bbox_inches="tight")
+plt.close(fig)
+print("    Saved: quadrant_map_ex_coconut.png")
 
 # --- Map 3: Bivariate map (ABI x Kcal/ha) ---
 print("  [3/5] Bivariate map...")
@@ -737,6 +852,56 @@ legend_ax.tick_params(length=0)
 fig.savefig(str(OUT_DIR / "bivariate_abi_kcal_map.png"), dpi=200, bbox_inches="tight")
 plt.close(fig)
 print("    Saved: bivariate_abi_kcal_map.png")
+
+# --- Map 3b: Bivariate map (ex-coconut terciles) ---
+print("  [3b/5] Bivariate map (ex-coconut terciles)...")
+
+gdf_biv_ex = gdf.copy()
+gdf_biv_ex["abi_f"] = pd.to_numeric(gdf_biv_ex["agro_biodiversity_index"], errors="coerce")
+gdf_biv_ex["kcal_f"] = pd.to_numeric(gdf_biv_ex["kcal_per_hectare"], errors="coerce")
+gdf_biv_ex["coco_flag"] = gdf_biv_ex["coconut_dominant"].fillna(False).astype(bool)
+
+# Compute terciles from non-coconut districts only
+non_coco_biv = gdf_biv_ex[~gdf_biv_ex["coco_flag"]]
+abi_t_ex = non_coco_biv["abi_f"].quantile([1/3, 2/3]).values
+kcal_t_ex = non_coco_biv["kcal_f"].quantile([1/3, 2/3]).values
+
+gdf_biv_ex["biv_color"] = gdf_biv_ex.apply(
+    lambda r: bivariate_color(r["abi_f"], r["kcal_f"], abi_t_ex, kcal_t_ex), axis=1
+)
+
+fig, ax = plt.subplots(1, 1, figsize=(12, 14))
+gdf_biv_ex.plot(ax=ax, color=gdf_biv_ex["biv_color"], edgecolor="#888", linewidth=0.2)
+
+# Hatch coconut-dominant districts
+coco_biv = gdf_biv_ex[gdf_biv_ex["coco_flag"]]
+if len(coco_biv) > 0:
+    coco_biv.plot(ax=ax, facecolor="none", edgecolor="black", linewidth=1.5,
+                  hatch="///", alpha=0.7)
+
+add_map_furniture(ax, "Bivariate Map: ABI vs Kcal/ha (Ex-Coconut Terciles)")
+
+# Bivariate legend (reuse palette)
+legend_ax = fig.add_axes([0.12, 0.08, 0.12, 0.12])
+for i in range(3):
+    for j in range(3):
+        legend_ax.add_patch(plt.Rectangle((j, i), 1, 1, facecolor=palette[i][j], edgecolor="white", lw=0.5))
+legend_ax.set_xlim(0, 3)
+legend_ax.set_ylim(0, 3)
+legend_ax.set_xlabel("ABI  \u2192", fontsize=8)
+legend_ax.set_ylabel("Kcal/ha  \u2192", fontsize=8)
+legend_ax.set_xticks([0.5, 1.5, 2.5])
+legend_ax.set_xticklabels(["Low", "Mid", "High"], fontsize=7)
+legend_ax.set_yticks([0.5, 1.5, 2.5])
+legend_ax.set_yticklabels(["Low", "Mid", "High"], fontsize=7)
+legend_ax.tick_params(length=0)
+
+# Add hatching note to legend area
+fig.text(0.12, 0.065, "/// = Coconut-dominant districts", fontsize=7, fontstyle="italic")
+
+fig.savefig(str(OUT_DIR / "bivariate_abi_kcal_map_ex_coconut.png"), dpi=200, bbox_inches="tight")
+plt.close(fig)
+print("    Saved: bivariate_abi_kcal_map_ex_coconut.png")
 
 # --- Map 4: Nutritionally hollow diversity map ---
 print("  [4/5] Nutritionally hollow diversity map...")
@@ -823,7 +988,8 @@ ax.text((xlim[1] + abi_median) / 2, (ylim[0] + kcal_ha_median) / 2,
         "Diverse &\nCalorie-Poor", **label_props)
 
 ax.set_xlabel("Agro-Biodiversity Index (ABI)", fontsize=11)
-ax.set_ylabel("Caloric Productivity (Kcal per Hectare)", fontsize=11)
+ax.set_ylabel("Caloric Productivity (Kcal/ha)", fontsize=11)
+ax.yaxis.set_major_formatter(plt.FuncFormatter(fmt_kcal))
 ax.set_title("Crop Diversity vs Caloric Productivity Across Indian Districts", fontsize=13, fontweight="bold")
 ax.legend(fontsize=9, loc="upper right")
 ax.grid(True, alpha=0.2)
@@ -837,6 +1003,85 @@ fig.tight_layout()
 fig.savefig(str(OUT_DIR / "abi_vs_kcal_scatter.png"), dpi=200, bbox_inches="tight")
 plt.close(fig)
 print("    Saved: abi_vs_kcal_scatter.png")
+
+# --- Map 5b (Scatter): ABI vs Kcal/ha (ex-coconut) ---
+print("  [5b/5] ABI vs Kcal/ha scatter plot (ex-coconut)...")
+fig, ax = plt.subplots(figsize=(12, 8))
+
+scatter_df_ex = merged.dropna(subset=["agro_biodiversity_index", "kcal_per_hectare"]).copy()
+scatter_df_ex["kcal_per_hectare"] = pd.to_numeric(scatter_df_ex["kcal_per_hectare"])
+scatter_df_ex["agro_biodiversity_index"] = pd.to_numeric(scatter_df_ex["agro_biodiversity_index"])
+scatter_df_ex["coconut_dominant"] = scatter_df_ex["coconut_dominant"].fillna(False).astype(bool)
+
+non_coco_scatter = scatter_df_ex[~scatter_df_ex["coconut_dominant"]]
+coco_scatter = scatter_df_ex[scatter_df_ex["coconut_dominant"]]
+
+# Plot non-coconut districts as filled markers, colored by irrigation regime
+for irr, color in irr_colors.items():
+    mask = non_coco_scatter["irrigation_regime"] == irr
+    sub = non_coco_scatter[mask]
+    ax.scatter(sub["agro_biodiversity_index"], sub["kcal_per_hectare"],
+               c=color, alpha=0.5, s=20, label=irr, edgecolors="none")
+
+# Non-coconut districts without irrigation data
+mask_other = ~non_coco_scatter["irrigation_regime"].isin(irr_colors.keys())
+sub_other = non_coco_scatter[mask_other]
+if len(sub_other) > 0:
+    ax.scatter(sub_other["agro_biodiversity_index"], sub_other["kcal_per_hectare"],
+               c="#999", alpha=0.3, s=15, label="Unknown irrigation", edgecolors="none")
+
+# Plot coconut-dominant districts as hollow/outlined markers
+if len(coco_scatter) > 0:
+    ax.scatter(coco_scatter["agro_biodiversity_index"], coco_scatter["kcal_per_hectare"],
+               facecolors="none", edgecolors="#d62728", s=50, linewidths=1.5,
+               label=f"Coconut-dominant (n={len(coco_scatter)})", zorder=5, marker="D")
+
+# Quadrant lines using ex-coconut medians
+ax.axvline(x=abi_median_ex_coco, color="#333", linestyle="--", linewidth=1, alpha=0.6)
+ax.axhline(y=kcal_ha_median_ex_coco, color="#333", linestyle="--", linewidth=1, alpha=0.6)
+
+# Quadrant labels
+xlim = ax.get_xlim()
+ylim = ax.get_ylim()
+label_props = dict(fontsize=8, alpha=0.5, ha="center", va="center", fontstyle="italic")
+ax.text((xlim[0] + abi_median_ex_coco) / 2, (ylim[1] + kcal_ha_median_ex_coco) / 2,
+        "Monoculture\nBreadbasket", **label_props)
+ax.text((xlim[1] + abi_median_ex_coco) / 2, (ylim[1] + kcal_ha_median_ex_coco) / 2,
+        "Diverse &\nCalorie-Rich", **label_props)
+ax.text((xlim[0] + abi_median_ex_coco) / 2, (ylim[0] + kcal_ha_median_ex_coco) / 2,
+        "Vulnerable", **label_props)
+ax.text((xlim[1] + abi_median_ex_coco) / 2, (ylim[0] + kcal_ha_median_ex_coco) / 2,
+        "Diverse &\nCalorie-Poor", **label_props)
+
+# Correlation stats annotation (both full and ex-coconut)
+full_pr, full_pp = pearsonr(scatter_df_ex["agro_biodiversity_index"], scatter_df_ex["kcal_per_hectare"])
+full_sr, full_sp = spearmanr(scatter_df_ex["agro_biodiversity_index"], scatter_df_ex["kcal_per_hectare"])
+ex_pr, ex_pp = pearsonr(non_coco_scatter["agro_biodiversity_index"], non_coco_scatter["kcal_per_hectare"])
+ex_sr, ex_sp = spearmanr(non_coco_scatter["agro_biodiversity_index"], non_coco_scatter["kcal_per_hectare"])
+
+stats_text = (
+    f"Full (n={len(scatter_df_ex)}): Pearson={full_pr:.3f}, Spearman={full_sr:.3f}\n"
+    f"Ex-coconut (n={len(non_coco_scatter)}): Pearson={ex_pr:.3f}, Spearman={ex_sr:.3f}"
+)
+ax.text(0.02, 0.97, stats_text, transform=ax.transAxes, fontsize=8,
+        verticalalignment="top", bbox=dict(boxstyle="round,pad=0.4", facecolor="white", alpha=0.8))
+
+ax.set_xlabel("Agro-Biodiversity Index (ABI)", fontsize=11)
+ax.set_ylabel("Caloric Productivity (Kcal/ha)", fontsize=11)
+ax.yaxis.set_major_formatter(plt.FuncFormatter(fmt_kcal))
+ax.set_title("Crop Diversity vs Caloric Productivity (Ex-Coconut Thresholds)", fontsize=13, fontweight="bold")
+ax.legend(fontsize=9, loc="upper right")
+ax.grid(True, alpha=0.2)
+ax.annotate(
+    "Source: India Data Portal (1997-2021) | CEEW Analysis",
+    xy=(0.01, 0.01), xycoords="axes fraction",
+    fontsize=7, color="#666", fontstyle="italic",
+)
+
+fig.tight_layout()
+fig.savefig(str(OUT_DIR / "abi_vs_kcal_scatter_ex_coconut.png"), dpi=200, bbox_inches="tight")
+plt.close(fig)
+print("    Saved: abi_vs_kcal_scatter_ex_coconut.png")
 
 # ---------------------------------------------------------------------------
 # Step 7: Summary statistics
@@ -872,17 +1117,38 @@ bot10 = valid_merged.nsmallest(10, "kcal_per_hectare")[["state_name", "district_
 for _, r in bot10.iterrows():
     print(f"    {r['state_name']:20s} {r['district_name']:25s}  {r['kcal_per_hectare']:>12,.0f} kcal/ha  ABI={r['agro_biodiversity_index']:.3f}")
 
-# Correlation
-corr = valid_merged[["agro_biodiversity_index", "kcal_per_hectare"]].corr().iloc[0, 1]
-print(f"\n  Pearson correlation (ABI vs Kcal/ha): {corr:.4f}")
+# Ex-coconut quadrant distribution
+print("\n  Ex-coconut quadrant distribution:")
+for q, c in merged["kcal_diversity_quadrant_ex_coconut"].value_counts().items():
+    pct = c / len(merged) * 100
+    print(f"    {q:30s}  {c:4d} ({pct:.1f}%)")
 
-# Spearman
-from scipy.stats import spearmanr
-sp_corr, sp_pval = spearmanr(
-    valid_merged["agro_biodiversity_index"],
-    valid_merged["kcal_per_hectare"],
-)
-print(f"  Spearman correlation (ABI vs Kcal/ha): {sp_corr:.4f} (p={sp_pval:.2e})")
+# Correlation — full and ex-coconut side by side
+valid_all = valid_merged.dropna(subset=["agro_biodiversity_index"])
+valid_ex = valid_all[~valid_all["coconut_dominant"].fillna(False).astype(bool)]
+
+corr_full = valid_all[["agro_biodiversity_index", "kcal_per_hectare"]].corr().iloc[0, 1]
+sp_full, sp_pval_full = spearmanr(valid_all["agro_biodiversity_index"], valid_all["kcal_per_hectare"])
+
+corr_ex = valid_ex[["agro_biodiversity_index", "kcal_per_hectare"]].corr().iloc[0, 1]
+sp_ex, sp_pval_ex = spearmanr(valid_ex["agro_biodiversity_index"], valid_ex["kcal_per_hectare"])
+
+print(f"\n  Correlation: ABI vs Kcal/ha")
+print(f"  {'':30s}  {'Full':>12s}  {'Ex-Coconut':>12s}")
+print(f"  {'Pearson r':30s}  {corr_full:>12.4f}  {corr_ex:>12.4f}")
+print(f"  {'Spearman rho':30s}  {sp_full:>12.4f}  {sp_ex:>12.4f}")
+print(f"  {'Spearman p-value':30s}  {sp_pval_full:>12.2e}  {sp_pval_ex:>12.2e}")
+print(f"  {'N districts':30s}  {len(valid_all):>12d}  {len(valid_ex):>12d}")
+
+# Coconut-dominant district details
+coco_districts = valid_all[valid_all["coconut_dominant"].fillna(False).astype(bool)]
+if len(coco_districts) > 0:
+    print(f"\n  Coconut-dominant districts (n={len(coco_districts)}):")
+    for _, r in coco_districts.sort_values("kcal_per_hectare", ascending=False).iterrows():
+        coco_share = r.get("coconut_kcal_share", 0)
+        print(f"    {r['state_name']:20s} {r['district_name']:25s}  "
+              f"{r['kcal_per_hectare']:>12,.0f} kcal/ha  "
+              f"coconut={coco_share:.0%}  ABI={r['agro_biodiversity_index']:.3f}")
 
 print("\n" + "=" * 70)
 print("DONE. All outputs saved to:", OUT_DIR)
