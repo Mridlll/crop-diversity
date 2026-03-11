@@ -32,6 +32,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.collections import PatchCollection
 from matplotlib.lines import Line2D
+import plotly.graph_objects as go
 from scipy.stats import pearsonr, spearmanr
 from thefuzz import fuzz
 
@@ -712,7 +713,7 @@ def add_map_furniture(ax, title, source_note=True):
     )
     if source_note:
         ax.annotate(
-            "Source: India Data Portal (1997-2021) | CEEW Analysis",
+            "Source: India Data Portal (1997-2021) | Independent Analysis",
             xy=(0.01, 0.01), xycoords="axes fraction",
             fontsize=7, color="#666", fontstyle="italic",
         )
@@ -1042,7 +1043,7 @@ ax.set_title("Crop Diversity vs Caloric Productivity Across Indian Districts", f
 ax.legend(fontsize=9, loc="upper right")
 ax.grid(True, alpha=0.2)
 ax.annotate(
-    "Source: India Data Portal (1997-2021) | CEEW Analysis",
+    "Source: India Data Portal (1997-2021) | Independent Analysis",
     xy=(0.01, 0.01), xycoords="axes fraction",
     fontsize=7, color="#666", fontstyle="italic",
 )
@@ -1051,6 +1052,96 @@ fig.tight_layout()
 fig.savefig(str(OUT_DIR / "abi_vs_kcal_scatter.png"), dpi=200, bbox_inches="tight")
 plt.close(fig)
 print("    Saved: abi_vs_kcal_scatter.png")
+
+# --- Map 5 (Interactive Plotly): ABI vs Kcal/ha ---
+print("  [5-html] ABI vs Kcal/ha interactive scatter...")
+fig_plotly = go.Figure()
+
+for irr, color in irr_colors.items():
+    mask = scatter_df["irrigation_regime"] == irr
+    sub = scatter_df[mask]
+    if len(sub) == 0:
+        continue
+    hover_texts = [
+        f"<b>{row['district_name']}, {row['state_name']}</b><br>"
+        f"ABI: {row['agro_biodiversity_index']:.2f}<br>"
+        f"Kcal/ha: {row['kcal_per_hectare']:,.0f}<br>"
+        f"Irrigation: {irr}<br>"
+        f"Quadrant: {row.get('kcal_diversity_quadrant', 'N/A')}"
+        for _, row in sub.iterrows()
+    ]
+    fig_plotly.add_trace(go.Scatter(
+        x=sub["agro_biodiversity_index"],
+        y=sub["kcal_per_hectare"],
+        mode="markers",
+        marker=dict(color=color, size=6, opacity=0.55),
+        name=irr,
+        text=hover_texts,
+        hoverinfo="text",
+    ))
+
+mask_other = ~scatter_df["irrigation_regime"].isin(irr_colors.keys())
+sub_other = scatter_df[mask_other]
+if len(sub_other) > 0:
+    hover_texts_unk = [
+        f"<b>{row['district_name']}, {row['state_name']}</b><br>"
+        f"ABI: {row['agro_biodiversity_index']:.2f}<br>"
+        f"Kcal/ha: {row['kcal_per_hectare']:,.0f}<br>"
+        f"Irrigation: Unknown<br>"
+        f"Quadrant: {row.get('kcal_diversity_quadrant', 'N/A')}"
+        for _, row in sub_other.iterrows()
+    ]
+    fig_plotly.add_trace(go.Scatter(
+        x=sub_other["agro_biodiversity_index"],
+        y=sub_other["kcal_per_hectare"],
+        mode="markers",
+        marker=dict(color="#999", size=5, opacity=0.35),
+        name="Unknown",
+        text=hover_texts_unk,
+        hoverinfo="text",
+    ))
+
+# Quadrant divider lines
+fig_plotly.add_vline(x=abi_median, line_dash="dash", line_color="#888", line_width=1)
+fig_plotly.add_hline(y=kcal_ha_median, line_dash="dash", line_color="#888", line_width=1)
+
+# Quadrant label annotations
+x_range = scatter_df["agro_biodiversity_index"]
+y_range = scatter_df["kcal_per_hectare"]
+x_lo, x_hi = x_range.min(), x_range.max()
+y_lo, y_hi = y_range.min(), y_range.max()
+
+for qx, qy, qlabel in [
+    ((x_lo + abi_median) / 2, (y_hi + kcal_ha_median) / 2, "Monoculture<br>Breadbasket"),
+    ((x_hi + abi_median) / 2, (y_hi + kcal_ha_median) / 2, "Diverse &<br>Calorie-Rich"),
+    ((x_lo + abi_median) / 2, (y_lo + kcal_ha_median) / 2, "Vulnerable"),
+    ((x_hi + abi_median) / 2, (y_lo + kcal_ha_median) / 2, "Diverse &<br>Calorie-Poor"),
+]:
+    fig_plotly.add_annotation(
+        x=qx, y=qy, text=qlabel, showarrow=False,
+        font=dict(size=11, color="rgba(100,100,100,0.5)"),
+    )
+
+fig_plotly.update_layout(
+    title=dict(text="Crop Diversity vs Caloric Productivity Across Indian Districts", font=dict(size=16)),
+    xaxis_title="Agro-Biodiversity Index (ABI)",
+    yaxis_title="Caloric Productivity (Kcal/ha)",
+    legend=dict(x=0.78, y=0.98, bgcolor="rgba(255,255,255,0.8)", bordercolor="#ccc", borderwidth=1),
+    plot_bgcolor="white",
+    xaxis=dict(showgrid=True, gridcolor="rgba(200,200,200,0.3)"),
+    yaxis=dict(showgrid=True, gridcolor="rgba(200,200,200,0.3)", separatethousands=True),
+    width=1000, height=700,
+    annotations=[
+        dict(
+            text="Source: India Data Portal (1997-2021) | Independent Analysis",
+            xref="paper", yref="paper", x=0.01, y=-0.06,
+            showarrow=False, font=dict(size=10, color="#666"),
+        ),
+    ] + list(fig_plotly.layout.annotations),  # keep quadrant labels
+)
+
+fig_plotly.write_html(str(OUT_DIR / "abi_vs_kcal_scatter.html"), include_plotlyjs="cdn")
+print("    Saved: abi_vs_kcal_scatter.html")
 
 # --- Map 5b (Scatter): ABI vs Kcal/ha (ex-coconut) ---
 print("  [5b/5] ABI vs Kcal/ha scatter plot (ex-coconut)...")
@@ -1121,7 +1212,7 @@ ax.set_title("Crop Diversity vs Caloric Productivity (Ex-Coconut Thresholds)", f
 ax.legend(fontsize=9, loc="upper right")
 ax.grid(True, alpha=0.2)
 ax.annotate(
-    "Source: India Data Portal (1997-2021) | CEEW Analysis",
+    "Source: India Data Portal (1997-2021) | Independent Analysis",
     xy=(0.01, 0.01), xycoords="axes fraction",
     fontsize=7, color="#666", fontstyle="italic",
 )
@@ -1130,6 +1221,134 @@ fig.tight_layout()
 fig.savefig(str(OUT_DIR / "abi_vs_kcal_scatter_ex_coconut.png"), dpi=200, bbox_inches="tight")
 plt.close(fig)
 print("    Saved: abi_vs_kcal_scatter_ex_coconut.png")
+
+# --- Map 5b (Interactive Plotly): ABI vs Kcal/ha (ex-coconut) ---
+print("  [5b-html] ABI vs Kcal/ha interactive scatter (ex-coconut)...")
+fig_plotly_ex = go.Figure()
+
+# Non-coconut districts by irrigation regime
+for irr, color in irr_colors.items():
+    mask = non_coco_scatter["irrigation_regime"] == irr
+    sub = non_coco_scatter[mask]
+    if len(sub) == 0:
+        continue
+    hover_texts = [
+        f"<b>{row['district_name']}, {row['state_name']}</b><br>"
+        f"ABI: {row['agro_biodiversity_index']:.2f}<br>"
+        f"Kcal/ha: {row['kcal_per_hectare']:,.0f}<br>"
+        f"Irrigation: {irr}<br>"
+        f"Quadrant: {row.get('kcal_diversity_quadrant_ex_coconut', 'N/A')}"
+        for _, row in sub.iterrows()
+    ]
+    fig_plotly_ex.add_trace(go.Scatter(
+        x=sub["agro_biodiversity_index"],
+        y=sub["kcal_per_hectare"],
+        mode="markers",
+        marker=dict(color=color, size=6, opacity=0.55),
+        name=irr,
+        text=hover_texts,
+        hoverinfo="text",
+    ))
+
+# Non-coconut unknown irrigation
+mask_other_ex = ~non_coco_scatter["irrigation_regime"].isin(irr_colors.keys())
+sub_other_ex = non_coco_scatter[mask_other_ex]
+if len(sub_other_ex) > 0:
+    hover_texts_unk_ex = [
+        f"<b>{row['district_name']}, {row['state_name']}</b><br>"
+        f"ABI: {row['agro_biodiversity_index']:.2f}<br>"
+        f"Kcal/ha: {row['kcal_per_hectare']:,.0f}<br>"
+        f"Irrigation: Unknown<br>"
+        f"Quadrant: {row.get('kcal_diversity_quadrant_ex_coconut', 'N/A')}"
+        for _, row in sub_other_ex.iterrows()
+    ]
+    fig_plotly_ex.add_trace(go.Scatter(
+        x=sub_other_ex["agro_biodiversity_index"],
+        y=sub_other_ex["kcal_per_hectare"],
+        mode="markers",
+        marker=dict(color="#999", size=5, opacity=0.35),
+        name="Unknown irrigation",
+        text=hover_texts_unk_ex,
+        hoverinfo="text",
+    ))
+
+# Coconut-dominant districts as diamond-open markers
+if len(coco_scatter) > 0:
+    hover_texts_coco = [
+        f"<b>{row['district_name']}, {row['state_name']}</b><br>"
+        f"ABI: {row['agro_biodiversity_index']:.2f}<br>"
+        f"Kcal/ha: {row['kcal_per_hectare']:,.0f}<br>"
+        f"Irrigation: {row.get('irrigation_regime', 'N/A')}<br>"
+        f"Quadrant: {row.get('kcal_diversity_quadrant_ex_coconut', 'N/A')}<br>"
+        f"<i>Coconut-dominant district</i>"
+        for _, row in coco_scatter.iterrows()
+    ]
+    fig_plotly_ex.add_trace(go.Scatter(
+        x=coco_scatter["agro_biodiversity_index"],
+        y=coco_scatter["kcal_per_hectare"],
+        mode="markers",
+        marker=dict(
+            symbol="diamond-open", size=9, color="rgba(0,0,0,0)",
+            line=dict(color="#d62728", width=1.5),
+        ),
+        name=f"Coconut-dominant (n={len(coco_scatter)})",
+        text=hover_texts_coco,
+        hoverinfo="text",
+    ))
+
+# Quadrant divider lines (ex-coconut medians)
+fig_plotly_ex.add_vline(x=abi_median_ex_coco, line_dash="dash", line_color="#888", line_width=1)
+fig_plotly_ex.add_hline(y=kcal_ha_median_ex_coco, line_dash="dash", line_color="#888", line_width=1)
+
+# Quadrant label annotations
+x_range_ex = scatter_df_ex["agro_biodiversity_index"]
+y_range_ex = scatter_df_ex["kcal_per_hectare"]
+x_lo_ex, x_hi_ex = x_range_ex.min(), x_range_ex.max()
+y_lo_ex, y_hi_ex = y_range_ex.min(), y_range_ex.max()
+
+for qx, qy, qlabel in [
+    ((x_lo_ex + abi_median_ex_coco) / 2, (y_hi_ex + kcal_ha_median_ex_coco) / 2, "Monoculture<br>Breadbasket"),
+    ((x_hi_ex + abi_median_ex_coco) / 2, (y_hi_ex + kcal_ha_median_ex_coco) / 2, "Diverse &<br>Calorie-Rich"),
+    ((x_lo_ex + abi_median_ex_coco) / 2, (y_lo_ex + kcal_ha_median_ex_coco) / 2, "Vulnerable"),
+    ((x_hi_ex + abi_median_ex_coco) / 2, (y_lo_ex + kcal_ha_median_ex_coco) / 2, "Diverse &<br>Calorie-Poor"),
+]:
+    fig_plotly_ex.add_annotation(
+        x=qx, y=qy, text=qlabel, showarrow=False,
+        font=dict(size=11, color="rgba(100,100,100,0.5)"),
+    )
+
+# Correlation stats annotation
+stats_annotation_text = (
+    f"Full (n={len(scatter_df_ex)}): Pearson={full_pr:.3f}, Spearman={full_sr:.3f}<br>"
+    f"Ex-coconut (n={len(non_coco_scatter)}): Pearson={ex_pr:.3f}, Spearman={ex_sr:.3f}"
+)
+
+fig_plotly_ex.update_layout(
+    title=dict(text="Crop Diversity vs Caloric Productivity (Ex-Coconut Thresholds)", font=dict(size=16)),
+    xaxis_title="Agro-Biodiversity Index (ABI)",
+    yaxis_title="Caloric Productivity (Kcal/ha)",
+    legend=dict(x=0.72, y=0.98, bgcolor="rgba(255,255,255,0.8)", bordercolor="#ccc", borderwidth=1),
+    plot_bgcolor="white",
+    xaxis=dict(showgrid=True, gridcolor="rgba(200,200,200,0.3)"),
+    yaxis=dict(showgrid=True, gridcolor="rgba(200,200,200,0.3)", separatethousands=True),
+    width=1000, height=700,
+    annotations=[
+        dict(
+            text=stats_annotation_text,
+            xref="paper", yref="paper", x=0.01, y=0.98,
+            showarrow=False, font=dict(size=10), align="left",
+            bgcolor="rgba(255,255,255,0.85)", bordercolor="#ccc", borderwidth=1, borderpad=6,
+        ),
+        dict(
+            text="Source: India Data Portal (1997-2021) | Independent Analysis",
+            xref="paper", yref="paper", x=0.01, y=-0.06,
+            showarrow=False, font=dict(size=10, color="#666"),
+        ),
+    ] + list(fig_plotly_ex.layout.annotations),  # keep quadrant labels
+)
+
+fig_plotly_ex.write_html(str(OUT_DIR / "abi_vs_kcal_scatter_ex_coconut.html"), include_plotlyjs="cdn")
+print("    Saved: abi_vs_kcal_scatter_ex_coconut.html")
 
 # ---------------------------------------------------------------------------
 # Step 7: Summary statistics

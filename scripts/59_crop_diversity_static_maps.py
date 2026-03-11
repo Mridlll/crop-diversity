@@ -38,7 +38,7 @@ SHP_PATH = BASE_DIR / "Package_Maps_Share_20251120_FINAL" / "shapefiles" / "in_d
 OUT_DIR = DATA_DIR / "maps"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-SOURCE_NOTE = "Data: India Data Portal, 1997\u20132021 | Analysis: CEEW"
+SOURCE_NOTE = "Data: India Data Portal, 1997\u20132021"
 
 # ---------------------------------------------------------------------------
 # Style helpers
