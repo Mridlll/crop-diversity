@@ -174,6 +174,18 @@ apy = apy.dropna(subset=["production", "area"])
 apy = apy[apy["production"] > 0]
 print(f"  Rows with valid production: {len(apy):,}")
 
+# Drop rows with implausible yield (data quality filter).
+# Sugarcane can reach ~100 t/ha; beyond 200 t/ha is erroneous for any non-coconut crop.
+# Coconut yields are in nuts/ha (thousands) so they legitimately exceed 200.
+apy["_yield"] = apy["production"] / apy["area"]
+non_coconut_mask = apy["crop_name"].str.strip().str.lower() != "coconut"
+bad_yield = non_coconut_mask & (apy["_yield"] > 200)
+n_dropped = bad_yield.sum()
+if n_dropped > 0:
+    print(f"  Dropped {n_dropped} rows with implausible yield >200 t/ha (data errors)")
+apy = apy[~bad_yield]
+apy = apy.drop(columns=["_yield"])
+
 # Map kcal values
 apy["kcal_per_100g"] = apy["crop_name"].map(KCAL_PER_100G)
 unmapped = apy[apy["kcal_per_100g"].isna()]["crop_name"].unique()
@@ -181,9 +193,16 @@ if len(unmapped) > 0:
     print(f"  WARNING: No kcal mapping for: {unmapped}")
 apy["kcal_per_100g"] = apy["kcal_per_100g"].fillna(0)
 
-# Compute kcal for each row: production(tonnes) * 1000(kg/tonne) * kcal_per_100g / 100
-# = production * 1000 * kcal_per_100g / 100 = production * 10 * kcal_per_100g
-apy["row_kcal"] = apy["production"] * 10 * apy["kcal_per_100g"]
+# Compute kcal for each row: production(tonnes) * 1e6(g/tonne) * kcal_per_100g / 100
+# = production * 10000 * kcal_per_100g
+#
+# Special case: Coconut production in India Data Portal is in NUMBER OF NUTS,
+# mislabelled as "Tonnes". Typical yield is 5,000-8,000 nuts/ha, not tonnes.
+# Convert nuts to edible meat mass: ~150g meat per nut = 0.00015 tonnes/nut.
+is_coconut = apy["crop_name"].str.strip().str.lower() == "coconut"
+apy["production_tonnes"] = apy["production"].copy()
+apy.loc[is_coconut, "production_tonnes"] = apy.loc[is_coconut, "production"] * 0.00015
+apy["row_kcal"] = apy["production_tonnes"] * 10000 * apy["kcal_per_100g"]
 
 # Flag food crops
 apy["is_food_crop"] = apy["crop_type"].isin(FOOD_CROP_TYPES)
