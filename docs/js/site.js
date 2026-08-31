@@ -566,3 +566,143 @@ async function choropleth(sel, field, o) {
         t.textContent = opts.label; svg.appendChild(t);
     }
 }
+
+/* ---------- categorical and log choropleth -------------------------------
+   choropleth() handles a magnitude with one hue. Two layers need more: food
+   energy per hectare spans two orders of magnitude and wants a log scale, and
+   the quadrant is four named classes rather than a magnitude, so it takes the
+   validated categorical palette in fixed order.
+------------------------------------------------------------------------- */
+const QUAD_COLOUR = {
+    'diverse and energy-rich':      PAL[0],   // cyan
+    'concentrated and energy-rich': PAL[1],   // violet
+    'diverse and energy-poor':      PAL[2],   // green
+    'concentrated and energy-poor': PAL[3],   // magenta
+};
+
+async function mapLayer(sel, cfg) {
+    const host = document.querySelector(sel); if (!host) return;
+    const geo = await loadGeo(cfg.geo);
+    host.innerHTML = '';
+
+    const isCat = cfg.kind === 'category';
+    let lo = 0, hi = 1;
+    if (!isCat) {
+        const raw = geo.features.map(f => f.properties[cfg.field])
+                                .filter(v => v !== null && v !== undefined && v > (cfg.log ? 0 : -Infinity));
+        const vals = (cfg.log ? raw.map(Math.log10) : raw).sort((a, b) => a - b);
+        lo = cfg.lo !== undefined ? cfg.lo : vals[Math.floor(vals.length * 0.02)];
+        hi = cfg.hi !== undefined ? cfg.hi : vals[Math.floor(vals.length * 0.98)];
+    }
+
+    let x0 = 180, x1 = -180, y0 = 90, y1 = -90;
+    const walk = c => {
+        if (typeof c[0] === 'number') {
+            x0 = Math.min(x0, c[0]); x1 = Math.max(x1, c[0]);
+            y0 = Math.min(y0, c[1]); y1 = Math.max(y1, c[1]);
+        } else c.forEach(walk);
+    };
+    geo.features.forEach(f => walk(f.geometry.coordinates));
+
+    const W = host.clientWidth || 900, H = cfg.height || Math.min(640, W * 1.02), pad = 8;
+    const kx = Math.cos((y0 + y1) / 2 * Math.PI / 180);
+    const s = Math.min((W - pad * 2) / ((x1 - x0) * kx), (H - pad * 2 - 36) / (y1 - y0));
+    const ox = pad + ((W - pad * 2) - (x1 - x0) * kx * s) / 2;
+    const oy = pad + ((H - pad * 2 - 36) - (y1 - y0) * s) / 2;
+    const PX = v => ox + (v - x0) * kx * s, PY = v => oy + (y1 - v) * s;
+
+    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', height: H, class: 'chart' });
+    host.appendChild(svg);
+    const marks = [];
+    const path = (c, d) => d === 1
+        ? c.map((p, i) => (i ? 'L' : 'M') + PX(p[0]).toFixed(1) + ',' + PY(p[1]).toFixed(1)).join('') + 'Z'
+        : c.map(k => path(k, d - 1)).join('');
+
+    geo.features.forEach(f => {
+        const pr = f.properties, v = pr[cfg.field];
+        const d = path(f.geometry.coordinates, f.geometry.type === 'Polygon' ? 2 : 3);
+        if (!d) return;
+        const has = v !== null && v !== undefined && v !== '';
+        let fill = 'rgba(255,255,255,0.035)';
+        if (has) {
+            if (isCat) fill = QUAD_COLOUR[v] || 'rgba(255,255,255,0.2)';
+            else {
+                const t = ((cfg.log ? Math.log10(v) : v) - lo) / (hi - lo || 1);
+                fill = rampCyan(Math.max(0, Math.min(1, t)));
+            }
+        }
+        const el = svgEl('path', { d, fill, stroke: 'rgba(11,11,12,0.85)', 'stroke-width': 0.4 });
+        el.addEventListener('mousemove', ev => {
+            el.setAttribute('stroke', '#EDEDEB'); el.setAttribute('stroke-width', 1.1);
+            showTip(cfg.tipFn(pr), ev);
+        });
+        el.addEventListener('mouseleave', () => {
+            el.setAttribute('stroke', 'rgba(11,11,12,0.85)');
+            el.setAttribute('stroke-width', 0.4); hideTip();
+        });
+        svg.appendChild(el);
+        marks.push({ el: el, pr: pr });
+    });
+
+    if (isCat) {
+        // a categorical legend is always present; colour never carries identity alone
+        const keys = Object.keys(QUAD_COLOUR);
+        const bw = Math.min(300, W * 0.42);
+        keys.forEach((k, i) => {
+            const yy = H - 36 + (i % 2) * 17, xx = W - bw * 2 - 12 + Math.floor(i / 2) * bw;
+            svg.appendChild(svgEl('rect', { x: xx, y: yy - 8, width: 10, height: 10, fill: QUAD_COLOUR[k] }));
+            const t = svgEl('text', { x: xx + 15, y: yy + 1, fill: MUTED, 'font-size': 10.5 });
+            t.textContent = k; svg.appendChild(t);
+        });
+    } else {
+        const kw = Math.min(240, W * 0.34), kx0 = W - kw - 10, ky = H - 26;
+        const gid = 'g' + Math.random().toString(36).slice(2, 8);
+        const defs = svgEl('defs', {}), lg = svgEl('linearGradient', { id: gid, x1: '0', x2: '1', y1: '0', y2: '0' });
+        for (let i = 0; i <= 10; i++) lg.appendChild(svgEl('stop', { offset: i * 10 + '%', 'stop-color': rampCyan(i / 10) }));
+        defs.appendChild(lg); svg.appendChild(defs);
+        svg.appendChild(svgEl('rect', { x: kx0, y: ky, width: kw, height: 9, fill: `url(#${gid})`, stroke: 'rgba(255,255,255,0.18)', 'stroke-width': .6 }));
+        [[kx0, lo, 'start'], [kx0 + kw, hi, 'end']].forEach(([xx, vv, a]) => {
+            const t = svgEl('text', { x: xx, y: ky - 6, 'text-anchor': a, fill: MUTED, 'font-size': 10.5, 'font-family': 'JetBrains Mono, monospace' });
+            t.textContent = cfg.fmt(cfg.log ? Math.pow(10, vv) : vv); svg.appendChild(t);
+        });
+        if (cfg.label) {
+            const t = svgEl('text', { x: kx0 + kw / 2, y: ky + 22, 'text-anchor': 'middle', fill: MUTED, 'font-size': 10.5 });
+            t.textContent = cfg.label; svg.appendChild(t);
+        }
+    }
+    return {
+        lo: lo, hi: hi, svg: svg,
+        // Redrawing 735 polygons per frame is far too slow to animate, so a
+        // caller that steps through time recolours the marks already on screen.
+        recolour: function (valueOf, rlo, rhi) {
+            const a = rlo === undefined ? lo : rlo, b = rhi === undefined ? hi : rhi;
+            marks.forEach(function (m) {
+                const v = valueOf(m.pr);
+                m.el.setAttribute('fill', (v === null || v === undefined)
+                    ? 'rgba(255,255,255,0.035)'
+                    : rampCyan(Math.max(0, Math.min(1, (v - a) / (b - a || 1)))));
+            });
+        },
+    };
+}
+
+/* ---------- layer switcher ---------- */
+function layerTabs(sel, layers, onPick) {
+    const host = document.querySelector(sel); if (!host) return;
+    host.innerHTML = '';
+    layers.forEach((l, i) => {
+        const b = document.createElement('button');
+        b.textContent = l.name;
+        b.style.cssText = 'background:none;border:0;border-bottom:1px solid transparent;' +
+            'color:inherit;font:inherit;font-size:.84rem;cursor:pointer;padding:0 0 .25rem 0;';
+        b.addEventListener('click', () => {
+            [...host.children].forEach((c, j) => {
+                c.style.opacity = j === i ? '1' : '.45';
+                c.style.borderBottomColor = j === i ? PAL[0] : 'transparent';
+            });
+            onPick(l, i);
+        });
+        host.appendChild(b);
+    });
+    host.children[0].click();
+}

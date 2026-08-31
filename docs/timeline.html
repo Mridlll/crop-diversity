@@ -1,487 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diversity Timeline: 1997 to 2019</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: #f8f9fa;
-        }
-
-        #map {
-            width: 100%;
-            height: 100vh;
-        }
-
-        .back-link {
-            position: fixed;
-            top: 12px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255,255,255,0.92);
-            padding: 6px 14px;
-            border-radius: 6px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-            font-family: 'Segoe UI', Arial, sans-serif;
-            font-size: 13px;
-            color: #6c757d;
-            text-decoration: none;
-        }
-
-        .back-link:hover {
-            color: #1a1a2e;
-            text-decoration: underline;
-        }
-
-        .map-title {
-            position: fixed;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            background: rgba(255,255,255,0.92);
-            padding: 8px 24px;
-            border-radius: 6px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-            font-family: 'Segoe UI', Arial, sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            color: #1a1a2e;
-            white-space: nowrap;
-        }
-
-        .control-panel {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            background: rgba(255,255,255,0.96);
-            padding: 16px 28px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-            font-family: 'Segoe UI', Arial, sans-serif;
-            text-align: center;
-            min-width: 420px;
-        }
-
-        .control-panel .year-display {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1a1a2e;
-            margin-bottom: 8px;
-        }
-
-        .control-panel .year-range {
-            font-size: 0.8rem;
-            color: #6c757d;
-            margin-bottom: 4px;
-        }
-
-        .control-panel input[type="range"] {
-            width: 100%;
-            margin: 8px 0;
-            cursor: pointer;
-            accent-color: #0f3460;
-        }
-
-        .control-panel .controls-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 8px;
-        }
-
-        .control-panel select {
-            padding: 4px 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 13px;
-            background: white;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-
-        .control-panel button {
-            padding: 4px 14px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 13px;
-            background: white;
-            cursor: pointer;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-
-        .control-panel button:hover {
-            background: #f0f0f0;
-        }
-
-        .control-panel button.active {
-            background: #0f3460;
-            color: white;
-            border-color: #0f3460;
-        }
-
-        .legend-panel {
-            position: fixed;
-            bottom: 140px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255,255,255,0.95);
-            padding: 10px 14px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            font-family: 'Segoe UI', Arial, sans-serif;
-            font-size: 11px;
-        }
-
-        .legend-panel .legend-title {
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: #1a1a2e;
-        }
-
-        .legend-gradient {
-            width: 160px;
-            height: 14px;
-            border: 1px solid #ccc;
-            border-radius: 2px;
-            margin-bottom: 4px;
-        }
-
-        .legend-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 10px;
-            color: #666;
-        }
-
-        .stats-panel {
-            position: fixed;
-            top: 60px;
-            left: 60px;
-            z-index: 1000;
-            background: rgba(255,255,255,0.95);
-            padding: 10px 14px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            font-family: 'Segoe UI', Arial, sans-serif;
-            font-size: 12px;
-        }
-
-        .stats-panel .stat-label {
-            color: #6c757d;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .stats-panel .stat-value {
-            font-weight: 600;
-            color: #1a1a2e;
-            font-size: 14px;
-        }
-
-        .district-tooltip {
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            padding: 6px 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-            font-family: 'Segoe UI', Arial, sans-serif;
-            font-size: 12px;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crop Diversity Year by Year</title>
+<meta name="description" content="District crop diversity animated across 1997-98 to 2019-20.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/analysis.css?v=593ba334">
 </head>
 <body>
-    <div id="map"></div>
 
-    <a href="index.html" class="back-link">&larr; Home</a>
-
-    <div class="map-title" id="mapTitle">Crop Diversity Timeline: Shannon Index</div>
-
-    <div class="stats-panel" id="statsPanel">
-        <div class="stat-label">Districts with data</div>
-        <div class="stat-value" id="statCount">--</div>
-        <div class="stat-label" style="margin-top:6px;">Mean value</div>
-        <div class="stat-value" id="statMean">--</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html">Crop Diversity &middot; India</a>
+    <div class="nav__links">
+      <a href="index.html">Overview</a>
+      <a href="irrigation.html">Irrigation</a>
+      <a href="markets.html">Markets</a>
+      <a href="data.html">Data &amp; methods</a>
+      <a href="diversity.html">Maps</a>
     </div>
+  </div>
+</nav>
 
-    <div class="legend-panel" id="legendPanel">
-        <div class="legend-title" id="legendTitle">Shannon Index</div>
-        <div class="legend-gradient" id="legendGradient"></div>
-        <div class="legend-labels">
-            <span id="legendMin">0.00</span>
-            <span id="legendMax">2.81</span>
-        </div>
-        <div style="margin-top:4px; color:#999; font-size:10px;">
-            <span style="display:inline-block; width:12px; height:10px; background:#d3d3d3; border:1px solid #ccc; vertical-align:middle;"></span> No data
-        </div>
+<header class="mast">
+  <div class="prose">
+    <p class="mast__label">District map</p>
+    <h1 class="mast__title">Year by year</h1>
+    <div class="mast__rule"></div>
+    <p class="mast__sub">Twenty-three years of district cropping, one year at a time.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="lead">The national picture barely moves across two decades. Individual
+    districts move a great deal, and rather more of them lost variety than gained it.</p>
+  </div>
+
+  <div class="figure figure--wide fade">
+    <div class="figure__frame">
+      <p class="figure__label">Interactive</p>
+      <p class="figure__title">Effective number of crops, by year</p>
+      <p class="figure__sub">Drag the slider or press play. Districts with no record that year are grey.</p>
+      <div class="legend" style="align-items:center;gap:1rem">
+        <button id="play" style="background:none;border:1px solid rgba(255,255,255,.14);
+          color:inherit;font:inherit;font-size:.8rem;cursor:pointer;padding:.25rem .8rem;
+          border-radius:2px">Play</button>
+        <input id="yr" type="range" min="0" max="22" value="22" step="1"
+          style="flex:1;min-width:200px;accent-color:#0E9BB5">
+        <span id="yrlab" style="font-family:var(--font-mono);font-size:.85rem;
+          min-width:5.5em"></span>
+      </div>
+      <div id="themap" class="chart"></div>
+      <p class="figure__note">A district enters the record when it is formed, so the number of districts shown climbs across the period. Comparisons across years are made on the districts reporting in every year.</p>
     </div>
+  </div>
 
-    <div class="control-panel">
-        <div class="year-display" id="yearDisplay">1997</div>
-        <div class="year-range">1997 &mdash; 2020</div>
-        <input type="range" id="yearSlider" min="0" max="23" value="0" step="1">
-        <div class="controls-row">
-            <select id="indexSelect">
-                <option value="shannon">Shannon Index</option>
-                <option value="richness">Crop Richness</option>
-            </select>
-            <select id="changeFilter">
-                <option value="all">All Districts</option>
-                <option value="gainers">Top Gainers</option>
-                <option value="losers">Top Losers</option>
-                <option value="stable">Stable</option>
-            </select>
-            <button id="playBtn" onclick="togglePlay()">Play</button>
-        </div>
+  <div class="prose prose--flow fade">
+    <h3>What to watch</h3>
+    <p>The colour is the effective number of crops, on the same scale in every frame, so a district
+    darkening means it genuinely spread its land wider that year rather than the scale shifting
+    underneath it.</p>
+    <p>The early frames carry fewer districts because districts enter the record as they are
+    created. That is why the aggregate figures quoted elsewhere use only the districts reporting in
+    every year: comparing 1997 against 2019 on all available districts would measure administrative
+    reorganisation as much as farming.</p>
+    <h3>The direction of travel</h3>
+    <p>Comparing each district's first seven years against its last seven, 264 districts ended with
+    a lower effective number of crops and 165 with a higher one. Weighting districts by their
+    cropped area, the national series is flat, because the losses fall in districts holding less of
+    the country's land.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">The other views</p>
+    <h2 class="section__heading">Same districts, different question</h2>
+    <ul style="list-style:none;margin-left:0">
+      <li><a href="diversity.html">How varied the cropping is</a></li>
+      <li><a href="calorie-diversity.html">How much food energy the land produces</a></li>
+      <li><a href="food-nonfood.html">How much of the land feeds people</a></li>
+      <li><a href="timeline.html">How it moved, year by year</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <h4>Sources</h4>
+      <p style="font-size:.9rem">Crop area and production at district level from the ISB India
+      Data Portal, originally published by the Ministry of Agriculture and Farmers Welfare.
+      District characteristics from SHRUG 2.1.</p>
     </div>
+    <div>
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="irrigation.html">Irrigation</a></li>
+        <li><a href="markets.html">Markets</a></li>
+        <li><a href="data.html">Data &amp; methods</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Reference</h4>
+      <ul><li><a href="https://github.com/mridlll/crop-diversity">Repository</a></li></ul>
+    </div>
+  </div>
+</footer>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        // Initialize map
-        var map = L.map('map', {
-            center: [22.5, 82.0],
-            zoom: 5,
-            zoomControl: true,
-            preferCanvas: true
-        });
+<script src="js/site.js?v=6b8a5936"></script>
+<script>
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-            attribution: 'CartoDB',
-        }).addTo(map);
+let TL = null, HANDLE = null, LO = 0, HI = 1;
+async function drawAll(){
+  if (!TL) TL = await (await fetch('data/timeline.json')).json();
+  const geo = await loadGeo();
+  const norm = s => s.toLowerCase().replace(/[^a-z0-9 |]/g,' ').replace(/\s+/g,' ').trim();
+  const byNorm = {};
+  Object.keys(TL.districts).forEach(k => { byNorm[norm(k)] = TL.districts[k]; });
+  let hit = 0;
+  geo.features.forEach(f => {
+    const t = byNorm[norm(f.properties.s + '|' + f.properties.n)];
+    f.properties._tl = t || null;
+    if (t) hit++;
+  });
 
-        var geojsonData = null;
-        var currentLayer = null;
-        var years = [];
-        var metadata = {};
-        var playInterval = null;
-        var isPlaying = false;
+  const all = [];
+  Object.keys(TL.districts).forEach(k =>
+    TL.districts[k].D1.forEach(v => { if (v != null) all.push(v); }));
+  all.sort((a,b)=>a-b);
+  LO = all[Math.floor(all.length*0.02)]; HI = all[Math.floor(all.length*0.98)];
 
-        // Color interpolation (YlGnBu-like)
-        var colorStops = [
-            [255, 255, 204],  // light yellow
-            [161, 218, 180],  // light green
-            [65, 182, 196],   // teal
-            [44, 127, 184],   // blue
-            [37, 52, 148]     // dark blue
-        ];
+  const slider = document.getElementById('yr');
+  const lab = document.getElementById('yrlab');
+  const play = document.getElementById('play');
+  slider.max = TL.years.length - 1;
+  let i = TL.years.length - 1;
 
-        function interpolateColor(t) {
-            // t is 0..1
-            t = Math.max(0, Math.min(1, t));
-            var n = colorStops.length - 1;
-            var idx = t * n;
-            var i = Math.floor(idx);
-            var f = idx - i;
-            if (i >= n) { i = n - 1; f = 1; }
-            var c1 = colorStops[i];
-            var c2 = colorStops[i + 1];
-            var r = Math.round(c1[0] + f * (c2[0] - c1[0]));
-            var g = Math.round(c1[1] + f * (c2[1] - c1[1]));
-            var b = Math.round(c1[2] + f * (c2[2] - c1[2]));
-            return 'rgb(' + r + ',' + g + ',' + b + ')';
-        }
+  function label(){
+    const y = TL.years[i];
+    lab.textContent = y + '–' + String(y+1).slice(2);
+  }
+  function tip(pr){
+    const y = TL.years[i];
+    const t = pr._tl, v = t ? t.D1[i] : null, d0 = t ? t.D0[i] : null;
+    if (v == null) return '<strong>'+pr.n+'</strong><br>'+pr.s+'<br>no record in '+y;
+    return '<strong>'+pr.n+'</strong><br>'+pr.s+'<br>'+y+'–'+String(y+1).slice(2)+
+           '<br>'+v.toFixed(1)+' effective crops'+
+           (d0 != null ? '<br>'+d0+' crops grown' : '');
+  }
 
-        function getGradientCSS() {
-            var stops = [];
-            for (var i = 0; i <= 10; i++) {
-                stops.push(interpolateColor(i / 10));
-            }
-            return 'linear-gradient(to right, ' + stops.join(', ') + ')';
-        }
+  // The geometry is drawn once. A frame only changes the fills, so stepping
+  // through the years stays smooth instead of rebuilding 735 polygons.
+  HANDLE = await mapLayer('#themap', {
+    field:'_none', lo:LO, hi:HI, height:600, fmt:v=>v.toFixed(1),
+    label:'effective number of crops', tipFn:tip
+  });
 
-        function getCurrentIndex() {
-            return document.getElementById('indexSelect').value;
-        }
+  function paint(){
+    label();
+    HANDLE.recolour(pr => pr._tl ? pr._tl.D1[i] : null, LO, HI);
+  }
+  slider.value = i; paint();
 
-        function getMinMax() {
-            var idx = getCurrentIndex();
-            if (idx === 'shannon') {
-                return { min: metadata.shannon_min, max: metadata.shannon_max };
-            } else {
-                return { min: metadata.richness_min, max: metadata.richness_max };
-            }
-        }
+  slider.oninput = () => { i = +slider.value; paint(); };
+  let timer = null;
+  play.onclick = () => {
+    if (timer) { clearInterval(timer); timer = null; play.textContent = 'Play'; return; }
+    if (i >= TL.years.length - 1) i = 0;
+    play.textContent = 'Pause';
+    timer = setInterval(() => {
+      i = i + 1;
+      if (i >= TL.years.length) {
+        i = TL.years.length - 1;
+        clearInterval(timer); timer = null; play.textContent = 'Play';
+      }
+      slider.value = i; paint();
+    }, 620);
+  };
+  console.log('timeline: matched ' + hit + ' of ' + geo.features.length + ' districts');
+}
+window.drawAll = drawAll; drawAll();
 
-        function getPropertyKey(year) {
-            var idx = getCurrentIndex();
-            return (idx === 'shannon' ? 's_' : 'r_') + year;
-        }
-
-        function getLabel() {
-            return getCurrentIndex() === 'shannon' ? 'Shannon Index' : 'Crop Richness';
-        }
-
-        function formatVal(val) {
-            if (val === null || val === undefined) return 'N/A';
-            return getCurrentIndex() === 'shannon' ? val.toFixed(2) : Math.round(val).toString();
-        }
-
-        function getChangeFilter() {
-            return document.getElementById('changeFilter').value;
-        }
-
-        function matchesFilter(feature, filter) {
-            if (filter === 'all') return true;
-            var cc = feature.properties.change_class;
-            if (filter === 'gainers') return cc === 'Top Gainer';
-            if (filter === 'losers') return cc === 'Top Loser';
-            if (filter === 'stable') return cc === 'Stable';
-            return true;
-        }
-
-        function formatChange(val) {
-            if (val === null || val === undefined) return 'N/A';
-            return (val >= 0 ? '+' : '') + val.toFixed(2);
-        }
-
-        function updateMap() {
-            var sliderVal = parseInt(document.getElementById('yearSlider').value);
-            var year = years[sliderVal];
-            var propKey = getPropertyKey(year);
-            var mm = getMinMax();
-            var range = mm.max - mm.min;
-            if (range === 0) range = 1;
-            var filter = getChangeFilter();
-
-            document.getElementById('yearDisplay').textContent = year;
-            document.getElementById('mapTitle').textContent = 'Crop Diversity Timeline: ' + getLabel();
-            document.getElementById('legendTitle').textContent = getLabel();
-            document.getElementById('legendMin').textContent = getCurrentIndex() === 'shannon' ? mm.min.toFixed(2) : Math.round(mm.min);
-            document.getElementById('legendMax').textContent = getCurrentIndex() === 'shannon' ? mm.max.toFixed(2) : Math.round(mm.max);
-            document.getElementById('legendGradient').style.background = getGradientCSS();
-
-            if (currentLayer) {
-                map.removeLayer(currentLayer);
-            }
-
-            var count = 0;
-            var sum = 0;
-
-            currentLayer = L.geoJson(geojsonData, {
-                style: function(feature) {
-                    var val = feature.properties[propKey];
-                    var passes = matchesFilter(feature, filter);
-                    var fillColor;
-                    var opacity = 0.85;
-
-                    if (!passes) {
-                        // Greyed out for non-matching districts
-                        fillColor = '#d3d3d3';
-                        opacity = 0.3;
-                    } else if (val === null || val === undefined) {
-                        fillColor = '#d3d3d3';
-                    } else {
-                        var t = (val - mm.min) / range;
-                        fillColor = interpolateColor(t);
-                        count++;
-                        sum += val;
-                    }
-                    return {
-                        fillColor: fillColor,
-                        weight: 0.4,
-                        color: '#888',
-                        fillOpacity: opacity
-                    };
-                },
-                onEachFeature: function(feature, layer) {
-                    var val = feature.properties[propKey];
-                    var name = feature.properties.name || 'Unknown';
-                    var state = feature.properties.state || '';
-                    var sc = feature.properties.shannon_change;
-                    var cc = feature.properties.change_class || '';
-                    var changeLine = '';
-                    if (sc !== null && sc !== undefined) {
-                        changeLine = '<div style="font-size:11px; margin-top:2px; color:#555;">Change: <b>' +
-                                     formatChange(sc) + '</b> (' + cc + ')</div>';
-                    }
-                    var html = '<div style="font-weight:600; font-size:13px;">' + name + '</div>' +
-                               '<div style="color:#666; font-size:11px; margin-bottom:4px;">' + state + '</div>' +
-                               '<div style="font-size:12px;">' + getLabel() + ': <b>' + formatVal(val) + '</b></div>' +
-                               changeLine;
-                    layer.bindTooltip(html, {
-                        sticky: true,
-                        direction: 'auto',
-                        className: 'district-tooltip'
-                    });
-                    layer.on({
-                        mouseover: function(e) {
-                            e.target.setStyle({ weight: 2, color: '#333' });
-                            e.target.bringToFront();
-                        },
-                        mouseout: function(e) {
-                            currentLayer.resetStyle(e.target);
-                        }
-                    });
-                }
-            }).addTo(map);
-
-            document.getElementById('statCount').textContent = count;
-            document.getElementById('statMean').textContent = count > 0 ? formatVal(sum / count) : '--';
-        }
-
-        function togglePlay() {
-            var btn = document.getElementById('playBtn');
-            if (isPlaying) {
-                clearInterval(playInterval);
-                isPlaying = false;
-                btn.textContent = 'Play';
-                btn.classList.remove('active');
-            } else {
-                isPlaying = true;
-                btn.textContent = 'Pause';
-                btn.classList.add('active');
-                playInterval = setInterval(function() {
-                    var slider = document.getElementById('yearSlider');
-                    var val = parseInt(slider.value);
-                    if (val >= years.length - 1) {
-                        slider.value = 0;
-                    } else {
-                        slider.value = val + 1;
-                    }
-                    updateMap();
-                }, 800);
-            }
-        }
-
-        // Load data
-        fetch('data/district_timeline.geojson')
-            .then(function(r) { return r.json(); })
-            .then(function(data) {
-                geojsonData = data;
-                metadata = data.metadata;
-                years = data.metadata.years;
-
-                var slider = document.getElementById('yearSlider');
-                slider.max = years.length - 1;
-                slider.value = 0;
-
-                slider.addEventListener('input', function() {
-                    updateMap();
-                });
-
-                document.getElementById('indexSelect').addEventListener('change', function() {
-                    updateMap();
-                });
-
-                document.getElementById('changeFilter').addEventListener('change', function() {
-                    updateMap();
-                });
-
-                document.getElementById('legendGradient').style.background = getGradientCSS();
-                updateMap();
-            })
-            .catch(function(err) {
-                console.error('Failed to load GeoJSON:', err);
-                document.getElementById('mapTitle').textContent = 'Error loading data';
-            });
-    </script>
+</script>
 </body>
 </html>
