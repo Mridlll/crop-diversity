@@ -15,3 +15,6 @@ Thumbs.db
 
 # Temp
 outputs/crop_diversity_analysis/maps/_tmp_frames*/
+
+# Deck QA exports
+deck/qa_png/

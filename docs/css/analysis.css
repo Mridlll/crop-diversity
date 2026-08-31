@@ -35,14 +35,14 @@
     --font-body:    'Source Serif 4', Georgia, 'Times New Roman', serif;
     --font-mono:    'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
 
-    --prose:   730px;
-    --figure:  1040px;
-    --wide:    1280px;
+    --prose:   1120px;   /* the reading column, wide enough not to read as a pillar */
+    --figure:  1320px;
+    --wide:    1440px;
     --px:      1.5rem;
     --section-py: 4.5rem;
 }
 
-@media (min-width: 1024px) { :root { --px: 3rem; --section-py: 5.5rem; } }
+@media (min-width: 1024px) { :root { --px: 3.5rem; --section-py: 5rem; } }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -90,6 +90,27 @@ a:hover { color: #3FC2DA; border-bottom-color: #3FC2DA; }
 
 /* ---------- layout: no alternating blocks, only spacing and hairlines ---------- */
 .prose { max-width: var(--prose); margin: 0 auto; padding: 0 var(--px); }
+
+/* A wide column would give an unreadable measure, so running prose sets in two
+   columns on a wide screen and collapses to one on a narrow screen. Headings,
+   leads, notes and tables stay full width by opting out. */
+.prose--flow { column-count: 1; }
+@media (min-width: 1000px) {
+  .prose--flow { column-count: 2; column-gap: 3.2rem; }
+  .prose--flow > h2, .prose--flow > h3, .prose--flow > .section__label,
+  .prose--flow > .lead, .prose--flow > .note, .prose--flow > .tbl-wrap {
+      column-span: all;
+  }
+}
+.prose--flow > h3 { margin-top: 2rem; }
+.prose p:last-child { margin-bottom: 0; }
+
+/* two explicit columns, for a page that wants text beside a table */
+.cols { max-width: var(--figure); margin: 0 auto; padding: 0 var(--px);
+        display: grid; gap: 2.4rem; }
+@media (min-width: 900px) { .cols { grid-template-columns: 1fr 1fr; } }
+.cols--wide-left { }
+@media (min-width: 900px) { .cols--wide-left { grid-template-columns: 1.25fr 1fr; } }
 .section { padding: var(--section-py) 0; }
 .section + .section { border-top: 1px solid var(--hair); }
 
@@ -134,7 +155,7 @@ h3 { font-size: 1.3rem; margin: 2.4rem 0 .85rem; }
 h4 { font-size: 1.02rem; margin: 1.8rem 0 .6rem; font-family: var(--font-body);
      font-weight: 600; color: var(--tx); }
 p { margin-bottom: 1.15rem; color: var(--tx-2); }
-p.lead { font-size: 1.2rem; line-height: 1.62; color: var(--tx); }
+p.lead { font-size: 1.22rem; line-height: 1.6; color: var(--tx); max-width: 62ch; }
 strong { font-weight: 600; color: var(--tx); }
 em { color: var(--tx); }
 ul, ol { margin: 0 0 1.15rem 1.35rem; color: var(--tx-2); }
@@ -192,7 +213,14 @@ th {
     letter-spacing: .06em; text-transform: uppercase; color: var(--tx-3);
     border-bottom: 1px solid var(--hair-2); padding: .5rem .7rem; white-space: nowrap;
 }
-td { padding: .5rem .7rem; border-bottom: 1px solid var(--hair); color: var(--tx-2); }
+td { padding: .52rem .7rem; border-bottom: 1px solid var(--hair); color: var(--tx-2); }
+table.tight td, table.tight th { padding: .4rem .6rem; }
+.tbl-wrap table { background: var(--l1); }
+.tbl-wrap { border: 1px solid var(--hair); border-radius: 3px; }
+caption { padding: .7rem .7rem .5rem; }
+td.pos { color: #3FC2DA; } td.neg { color: #D07BE6; }
+.tbl-note { font-size: .82rem; color: var(--tx-3); padding: .6rem .75rem;
+            border-top: 1px solid var(--hair); line-height: 1.55; }
 td strong { color: var(--tx); }
 td.num, th.num { text-align: right; font-family: var(--font-mono); font-size: .83rem; }
 tbody tr:hover { background: var(--l1); }
