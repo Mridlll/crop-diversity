@@ -1,0 +1,61 @@
+
+==============================================================================
+1. KEYS
+==============================================================================
+shrid -> pc11 district key: 596,393 shrids, 631 districts
+loc names: 596,389 shrids
+district name table: 631 districts, 35 states
+
+==============================================================================
+2. MISSION ANTYODAYA (2019-20)
+==============================================================================
+antyodaya shrid rows: 521,223
+  QC village outliers: cultivable>100k ha = 1; irrigated>3x GCA = 12561; net sown>cultivable = 0
+  set 1 impossible cultivable-area values to NaN
+  irrigation source flags sum: p50=1.00  share==0: 0.000  share in (0,1.05]: 1.000  share>1.05: 0.000
+  merge antyodaya x key: left=521223 right=596393 -> 521223 (both=521223 left_only=0 right_only=0)
+antyodaya districts: 617
+
+==============================================================================
+3. PC11 VILLAGE DIRECTORY (land use, 2011)
+==============================================================================
+vd11 shrid rows: 588,973
+  merge vd11 x key: left=588973 right=596393 -> 588973 (both=588973 left_only=0 right_only=0)
+vd11 districts: 625
+
+==============================================================================
+4. PC11 POPULATION ABSTRACT (caste, workers, 2011)
+==============================================================================
+pca11 shrid rows: 596,393
+  merge pca11 x key: left=596393 right=596393 -> 596393 (both=596393 left_only=0 right_only=0)
+pca11 districts: 631
+
+==============================================================================
+5. SECC 2012 (MoRD rural)
+==============================================================================
+secc shrid rows: 564,075
+  merge secc x key: left=564075 right=596393 -> 564075 (both=564075 left_only=0 right_only=0)
+secc districts: 609
+
+==============================================================================
+6. ASSEMBLE DISTRICT TABLE
+==============================================================================
+  merge base x antyodaya: left=631 right=617 -> 631 (both=617 left_only=14 right_only=0)
+  merge base x vd11: left=631 right=625 -> 631 (both=625 left_only=6 right_only=0)
+  merge base x pca11: left=631 right=631 -> 631 (both=631 left_only=0 right_only=0)
+  merge base x secc: left=631 right=609 -> 631 (both=609 left_only=22 right_only=0)
+assembled: (631, 72)
+
+==============================================================================
+7. DERIVED VARIABLES
+==============================================================================
+
+==============================================================================
+8. COVERAGE FLAGS
+==============================================================================
+  low antyodaya coverage (<25% of PC11 villages): 12
+  no antyodaya at all: 14
+  irrigation share > 1 even on GCA: 0
+
+WROTE D:/crop-diversity/outputs/shrug_covariates/shrug_district_covariates.csv  (631, 123)
+WROTE D:/crop-diversity/outputs/shrug_covariates/provenance.csv  93 variables documented

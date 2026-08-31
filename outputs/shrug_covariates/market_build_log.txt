@@ -1,0 +1,40 @@
+antyodaya shrids: 521,223
+antyodaya districts: 617
+
+viirs district rows: 15,360, years 2012-2023, categories ['average-masked', 'median-masked']
+rows per category in 2023: {'average-masked': 640, 'median-masked': 640}
+viirs districts (2023 , category 'average-masked'): 640
+economic census districts: 640
+
+merged: 617 districts. nightlights missing 0, econ census missing 0.
+idx_output_market    from mandi, regular_market, weekly_haat
+idx_input_supply     from fert_shop, seed_centre, soil_test, custohire
+idx_postharvest      from storage, farmgate_proc
+idx_connectivity     from pucca_road, public_transport, bank, railway
+
+Village share of districts, mean across 617 districts:
+
+| facility | mean village share | districts with none |
+|---|---|---|
+| mandi | 0.029 | 52 |
+| regular_market | 0.099 | 9 |
+| weekly_haat | 0.144 | 33 |
+| fpo | 0.230 | 7 |
+| fert_shop | 0.174 | 18 |
+| seed_centre | 0.099 | 16 |
+| soil_test | 0.044 | 44 |
+| custom_hire | 0.091 | 21 |
+| storage | 0.083 | 21 |
+| farmgate_proc | 0.113 | 21 |
+| pasture | 0.241 | 21 |
+| livestock_ext | 0.273 | 11 |
+| pds | 0.559 | 1 |
+| pucca_road | 0.476 | 0 |
+| public_transport | 0.722 | 1 |
+| bank | 0.152 | 6 |
+| atm | 0.102 | 17 |
+| railway | 0.028 | 60 |
+| no_electricity | 0.031 | 75 |
+| vet | 0.155 | 6 |
+| milk_route | 0.216 | 39 |
+| csc | 0.325 | 7 |
