@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Irrigation and Crop Diversity</title>
+<meta name="description" content="Crop diversity rises with irrigation and then falls. Where the turning point sits, and why the source of the water matters as much as the amount.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/analysis.css">
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html">Crop Diversity · India</a>
+    <div class="nav__links">
+      <a href="index.html">Overview</a>
+      <a href="irrigation.html" aria-current="page">Irrigation</a>
+      <a href="markets.html">Markets</a>
+      <a href="data.html">Data &amp; methods</a>
+      <a href="diversity.html">Maps</a>
+    </div>
+  </div>
+</nav>
+
+<header class="mast">
+  <div class="prose">
+    <p class="mast__label">Lens one</p>
+    <h1 class="mast__title">Irrigation, and <em>the shape nobody expects</em></h1>
+    <div class="mast__rule"></div>
+    <p class="mast__sub">The usual claim is that irrigation drives monoculture. What the data
+    show is a rise, a turn, and then a fall, with the source of the water carrying information
+    the quantity does not.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="lead">Irrigation is the variable most often held responsible for the narrowing of
+    Indian cropping. The mechanism is plausible and widely repeated: assured water makes the
+    high-value cereal package viable, the cereal package pays, and everything else is squeezed out
+    of the rotation. If that were the whole story, diversity would fall steadily as irrigation
+    rises.</p>
+
+    <p>It does not. The relationship turns.</p>
+
+    <p>Irrigation is measured here from village records that report irrigated and unirrigated
+    land separately, as irrigated land over the sum of the two. The measure is closed by
+    construction and needs no external denominator, and it reproduces published state irrigation
+    shares closely enough to be trusted at district level.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 1</p>
+      <p class="figure__title">Effective crop diversity against irrigation</p>
+      <p class="figure__sub">Each point is a district. The line is a fitted quadratic, with the
+      vertical rule marking where it turns.</p>
+      <div id="fig-scatter" class="chart"></div>
+      <p class="figure__note">The rising arm is easy to rationalise: water relaxes the constraint
+      that forces rainfed districts into a small set of hardy crops. The falling arm is the part
+      that needs an explanation, and the market lens takes it up.</p>
+    </div>
+  </div>
+
+  <div class="figure figure--wide fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 2</p>
+      <p class="figure__title">Share of sown area irrigated</p>
+      <p class="figure__sub">Built from village records of irrigated against unirrigated land.</p>
+      <div id="map-irr" class="chart"></div>
+      <p class="figure__note">The northwestern belt and the Gangetic plain run near-fully
+      irrigated. Reading this against the diversity map on the overview is the whole of the
+      relationship in two pictures.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <p>Binning districts into deciles of irrigation, rather than fitting a curve through them,
+    gives the same shape without imposing a functional form. The pattern holds on the count of
+    crops grown as well as on the effective count, which matters because the two can move
+    independently.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 3</p>
+      <p class="figure__title">The same shape, without fitting a curve</p>
+      <p class="figure__sub">District means by decile of irrigation. Bars are standard errors of
+      the decile mean.</p>
+      <div class="legend">
+        <span class="legend__item"><span class="legend__swatch" style="background:#0E9BB5"></span>effective crops</span>
+        <span class="legend__item"><span class="legend__swatch" style="background:#EDEDEB"></span>crops grown, right-hand scale removed by rescaling</span>
+      </div>
+      <div id="fig-decile" class="chart"></div>
+      <p class="figure__note">Both series are shown on one axis by expressing each as a share of
+      its own maximum, since plotting two different units against two vertical scales invites
+      exactly the misreading it appears to resolve.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Interrogation</p>
+    <h2 class="section__heading">Does the shape survive being attacked?</h2>
+
+    <p>A quadratic fitted to a cross-section will often produce a turning point whether or not one
+    exists, so the curvature was re-estimated across a series of deliberately awkward variations.
+    Eight of them change the sample: dropping fixed effects, swapping in an entirely independent
+    irrigation measure built from the 2011 Village Directory rather than Mission Antyodaya,
+    removing the districts that share a pre-2011 parent and therefore carry duplicated covariates,
+    weighting by cropped area, and so on. Six more change the index rather than the sample.</p>
+
+    <p>Standard errors throughout are clustered on the pre-2011 parent district, because a number
+    of present-day districts were carved out of a common ancestor and inherit identical rural
+    structure.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 4</p>
+      <p class="figure__title">Curvature across specifications and indices</p>
+      <p class="figure__sub">Coefficient on irrigation squared. A negative value means the curve
+      bends downward, which is what a turning point requires.</p>
+      <div id="fig-rob" class="chart"></div>
+      <p class="figure__note">Hollow markers would indicate a coefficient not distinguishable
+      from zero at conventional levels. There are none across fourteen variations.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <p>One qualification belongs with that figure. The turning point is not a fixed quantity. It
+    moves depending on which index is used and whether state fixed effects are included, so it is
+    better quoted as a range somewhere between a third and a half of sown area than as a point
+    estimate. What does not move is the sign of the curvature, which is negative everywhere.</p>
+
+    <p>The shape also appears on the plain count of crops, on both effective counts, and on
+    evenness taken by itself. That last one is worth pausing on, because it means irrigation is
+    doing two things at once rather than one: it is associated with how many crops a district
+    grows, and separately with how evenly the land is divided between them.</p>
+
+    <div class="note">
+      <span class="note__label">What this is not</span>
+      Nothing here identifies an effect of irrigation. Canal commands and tubewell belts were
+      developed where soils, aquifers, terrain and politics already favoured particular
+      agriculture. The curve describes how the cross-section is arranged, and a district that
+      installed irrigation tomorrow would not travel along it.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Composition</p>
+    <h2 class="section__heading">Where the water comes from</h2>
+
+    <p>Irrigation is usually treated as a quantity. It is also a technology, and the technologies
+    behave differently. A canal command delivers water on a schedule set by an authority, in a
+    rotation that suits the crop the system was designed around. A tubewell delivers water when the
+    farmer decides to switch on a pump. Surface sources sit between the two and are the least
+    reliable.</p>
+
+    <p>Mission Antyodaya records the dominant irrigation source for each village, and the four
+    categories partition cleanly. Groundwater is the most common by a wide margin.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 5</p>
+      <p class="figure__title">Dominant irrigation source across villages</p>
+      <p class="figure__sub">Mean share of a district's villages reporting each source as
+      dominant.</p>
+      <div id="fig-srcmix" class="chart"></div>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <p>Entering the source shares alongside irrigation and its square, with groundwater as the
+    omitted category, separates two effects that a single irrigation variable cannot. The
+    comparison is therefore between a district irrigated mainly by canal or by surface water and an
+    otherwise similar district irrigated mainly by tubewell.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 6</p>
+      <p class="figure__title">Source composition, holding the level of irrigation constant</p>
+      <p class="figure__sub">Coefficients relative to groundwater, with state fixed effects and
+      errors clustered on the parent district.</p>
+      <div class="legend">
+        <span class="legend__item"><span class="legend__swatch" style="background:#7C5CE0"></span>canal, against groundwater</span>
+        <span class="legend__item"><span class="legend__swatch" style="background:#1FA35A"></span>surface water, against groundwater</span>
+      </div>
+      <div id="fig-source" class="chart"></div>
+      <p class="figure__note">Hollow markers are not distinguishable from zero at the five percent
+      level. Outcomes are in different units, so compare within a row and not across rows.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <p>The pattern that emerges is not the one the canal-command hypothesis predicts. Canal
+    dependence is associated with a shorter crop list, cutting the count of crops grown, but it
+    leaves the effective count largely alone and it goes with a somewhat <em>larger</em> pulse
+    share. Surface-water dependence behaves quite differently: it is associated with lower
+    diversity on the effective measures and with a substantially larger cereal share.</p>
+
+    <p>Read together, the simple claim that canals force monoculture does not survive. Canals
+    narrow the range of crops without concentrating land onto one of them. Surface-water reliance,
+    which is the least controllable of the three, is what goes with cereal concentration. That is
+    consistent with a risk story rather than a scheduling story, though this design cannot
+    adjudicate between them.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Context</p>
+    <h2 class="section__heading">Irrigation against everything else</h2>
+    <p>Irrigation is one of several district characteristics that could be lined up against
+    diversity. Placing them on a common footing, each entered on its own and then again with
+    irrigation, holding size and state fixed effects, gives a sense of what else is in play before
+    the market lens takes over.</p>
+  </div>
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 7</p>
+      <p class="figure__title">Associations with the effective number of crops</p>
+      <p class="figure__sub">Adjusted coefficients. Variables are on different scales, so the
+      ordering matters more than the magnitudes.</p>
+      <div id="fig-dims" class="chart"></div>
+      <p class="figure__note">Mean holding size sits at essentially zero throughout. The inverse
+      relationship between farm size and diversity, which is well established in the household
+      literature, does not appear at district level here. That is at least as likely to be a
+      comment on the proxy as on the relationship.</p>
+    </div>
+  </div>
+  <div class="prose fade">
+    <p style="margin-top:2rem"><a href="markets.html" class="next">Markets and inputs &rarr;</a></p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <h4>Sources</h4>
+      <p style="font-size:.9rem">Irrigation level, source composition and the district covariates
+      are built from village-level records in SHRUG 2.1. Cropping comes from district
+      area&ndash;production statistics.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="data.html">Measurement</a></li>
+        <li><a href="markets.html">Markets</a></li>
+        <li><a href="data.html">Data &amp; methods</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources</h4>
+      <ul>
+        <li><a href="https://www.devdatalab.org/shrug">SHRUG 2.1</a></li>
+        <li><a href="https://github.com/mridlll/crop-diversity">Repository</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+const LBL = {
+  D1_exp_shannon: 'effective crops (D1)',
+  D0_richness: 'crops grown (D0)',
+  D2_inv_simpson: 'dominant-weighted (D2)',
+  evenness_D1_D0: 'evenness',
+  share_cereals: 'cereal share',
+  share_pulses: 'pulse share',
+  share_oilseeds: 'oilseed share'
+};
+
+async function drawAll() {
+  const ir = await loadJSON('data/site_irrigation.json');
+
+  /* Fig 1: scatter with fitted quadratic */
+  scatterQuad('#fig-scatter', ir.scatter.filter(p => p.x != null && p.y != null), {
+    height: 420, quad: true, y0: 0,
+    xLab: 'Share of sown area irrigated', yLab: 'Effective number of crops',
+    tipFn: p => `<strong>${p.k.split('|')[1].toLowerCase()}</strong><br>`+
+                `${p.s.toLowerCase()}<br>${(p.x*100).toFixed(0)}% irrigated<br>`+
+                `${p.y.toFixed(1)} effective crops<br>${p.d0.toFixed(1)} crops grown`
+  });
+
+  /* Fig 2: decile profile, both series rescaled to their own maximum so one axis suffices */
+  (function () {
+    const host = document.querySelector('#fig-decile'); if (!host) return;
+    host.innerHTML = '';
+    const p = ir.profile;
+    const maxD1 = Math.max(...p.map(r=>r.D1)), maxD0 = Math.max(...p.map(r=>r.D0));
+    const W = host.clientWidth || 900, H = 340, m = {t:16,r:24,b:48,l:62};
+    const iw = W-m.l-m.r, ih = H-m.t-m.b;
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('width','100%');
+    svg.setAttribute('height',H); svg.setAttribute('class','chart'); host.appendChild(svg);
+    const mk=(t,a)=>{const e=document.createElementNS('http://www.w3.org/2000/svg',t);
+      for(const k in a)e.setAttribute(k,a[k]);return e;};
+    const x0=Math.min(...p.map(r=>r.irr)), x1=Math.max(...p.map(r=>r.irr));
+    const y0=0.68, y1=1.03;
+    const X=v=>m.l+(v-x0)/(x1-x0)*iw, Y=v=>m.t+ih-(v-y0)/(y1-y0)*ih;
+    [0.7,0.8,0.9,1.0].forEach(t=>{
+      svg.appendChild(mk('line',{x1:m.l,x2:m.l+iw,y1:Y(t),y2:Y(t),stroke:'rgba(255,255,255,0.075)'}));
+      const a=mk('text',{x:m.l-9,y:Y(t)+4,'text-anchor':'end',fill:'#7E7E7C','font-size':11,
+        'font-family':'JetBrains Mono, monospace'});
+      a.textContent=(t*100).toFixed(0)+'%'; svg.appendChild(a);});
+    [0.2,0.4,0.6,0.8].forEach(t=>{
+      const b=mk('text',{x:X(t),y:m.t+ih+20,'text-anchor':'middle',fill:'#7E7E7C','font-size':11,
+        'font-family':'JetBrains Mono, monospace'});
+      b.textContent=(t*100).toFixed(0)+'%'; svg.appendChild(b);});
+    svg.appendChild(mk('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:'#EDEDEB'}));
+    [['D1','D1se',maxD1,'#0E9BB5','effective crops'],
+     ['D0','D0se',maxD0,'#EDEDEB','crops grown']].forEach(([k,sek,mx,col,nm])=>{
+      let dp='';
+      p.forEach((r,i)=>{ dp += (i?'L':'M')+X(r.irr)+','+Y(r[k]/mx); });
+      svg.appendChild(mk('path',{d:dp,fill:'none',stroke:col,'stroke-width':2.2}));
+      p.forEach(r=>{
+        const se=(r[sek]||0)/mx;
+        if(se) svg.appendChild(mk('line',{x1:X(r.irr),x2:X(r.irr),
+          y1:Y(r[k]/mx-se),y2:Y(r[k]/mx+se),stroke:col,'stroke-opacity':.4,'stroke-width':1.2}));
+        const c=mk('circle',{cx:X(r.irr),cy:Y(r[k]/mx),r:4,fill:col});
+        const h=mk('circle',{cx:X(r.irr),cy:Y(r[k]/mx),r:11,fill:'transparent'});
+        h.addEventListener('mousemove',ev=>showTip(
+          `<strong>decile ${r.dec}</strong><br>${(r.irr*100).toFixed(0)}% irrigated<br>`+
+          `${nm}: ${r[k].toFixed(2)}<br>${r.n} districts`,ev));
+        h.addEventListener('mouseleave',hideTip);
+        svg.appendChild(c); svg.appendChild(h);
+      });
+    });
+    const xl=mk('text',{x:m.l+iw/2,y:H-6,'text-anchor':'middle',fill:'#7E7E7C','font-size':11.5});
+    xl.textContent='Share of sown area irrigated (decile mean)'; svg.appendChild(xl);
+    const yl=mk('text',{transform:`rotate(-90) translate(${-(m.t+ih/2)},14)`,
+      'text-anchor':'middle',fill:'#7E7E7C','font-size':11.5});
+    yl.textContent='Share of each series maximum'; svg.appendChild(yl);
+  })();
+
+  choropleth('#map-irr', 'irr', {
+    label: 'share of sown area irrigated', height: 560,
+    fmt: v => (v*100).toFixed(0) + '%',
+    tipFn: pr => pr.irr == null
+      ? `<strong>${pr.n}</strong><br>${pr.s}<br>no record`
+      : `<strong>${pr.n}</strong><br>${pr.s}<br>${(pr.irr*100).toFixed(0)}% irrigated<br>`+
+        `${pr.canal!=null?(pr.canal*100).toFixed(0)+'% of villages on canal<br>':''}`+
+        `${pr.D1!=null?pr.D1.toFixed(1)+' effective crops':''}`
+  });
+
+  /* Fig 4: robustness ladder */
+  coefPlot('#fig-rob', ir.robustness.slice().reverse().map(r => ({
+      label: r.spec, b: r.b2, p: r.p2, tp: r.tp, n: r.n,
+      color: r.spec.indexOf('D1:') === 0 ? '#EDEDEB' : '#7C5CE0'
+    })), {
+    labelW: 230, rowH: 24, xLab: 'Coefficient on irrigation squared',
+    tipFn: r => `<strong>${r.label}</strong><br>curvature ${r.b.toFixed(3)}<br>`+
+                `p = ${r.p < 0.0001 ? '<0.0001' : r.p.toFixed(4)}<br>`+
+                `turning point ${(r.tp*100).toFixed(0)}%<br>${r.n} districts`
+  });
+
+  /* Fig 5: source mix */
+  const sm = ir.source_mix;
+  coefPlot('#fig-srcmix', [
+      {label:'other', b:sm.other, color:'#7C5CE0'},
+      {label:'surface water', b:sm.surface, color:'#1FA35A'},
+      {label:'canal', b:sm.canal, color:'#7C5CE0'},
+      {label:'groundwater', b:sm.ground, color:'#EDEDEB'}
+    ], {
+    labelW: 150, rowH: 30, xLab: 'Mean share of a district’s villages',
+    tipFn: r => `<strong>${r.label}</strong><br>${(r.b*100).toFixed(1)}% of villages`
+  });
+
+  /* Fig 6: source decomposition, canal and surface side by side */
+  (function () {
+    const rows = [];
+    ir.source.slice().reverse().forEach(s => {
+      rows.push({label: (LBL[s.outcome]||s.outcome) + '  — surface',
+                 b: s.b_surface, p: s.p_surface, color: '#1FA35A', out: s.outcome, which:'surface'});
+      rows.push({label: (LBL[s.outcome]||s.outcome) + '  — canal',
+                 b: s.b_canal, p: s.p_canal, color: '#7C5CE0', out: s.outcome, which:'canal'});
+    });
+    coefPlot('#fig-source', rows, {
+      labelW: 250, rowH: 22, xLab: 'Coefficient relative to groundwater',
+      tipFn: r => `<strong>${LBL[r.out]||r.out}</strong><br>${r.which} against groundwater<br>`+
+                  `${r.b >= 0 ? '+' : ''}${r.b.toFixed(3)}<br>`+
+                  `p = ${r.p < 0.0001 ? '<0.0001' : r.p.toFixed(4)}`
+    });
+  })();
+
+  /* Fig 7: the dimension ladder */
+  coefPlot('#fig-dims', ir.dimensions.slice().reverse().map(r => ({
+      label: r.dimension, b: r.adj_b, p: r.adj_p, raw: r.raw_b, n: r.n
+    })), {
+    labelW: 240, rowH: 24, xLab: 'Adjusted coefficient on the effective number of crops',
+    tipFn: r => `<strong>${r.label}</strong><br>adjusted ${r.b >= 0 ? '+' : ''}${r.b.toFixed(3)}<br>`+
+                `p = ${r.p < 0.0001 ? '<0.0001' : r.p.toFixed(4)}<br>`+
+                `unadjusted ${r.raw >= 0 ? '+' : ''}${r.raw.toFixed(3)}`
+  });
+}
+window.drawAll = drawAll;
+drawAll();
+</script>
+</body>
+</html>

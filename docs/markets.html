@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markets, Inputs and Crop Diversity</title>
+<meta name="description" content="Mandis, weekly haats, fertiliser shops and cold stores against what Indian districts grow. One of them behaves unlike all the others.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/analysis.css">
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html">Crop Diversity · India</a>
+    <div class="nav__links">
+      <a href="index.html">Overview</a>
+      <a href="irrigation.html">Irrigation</a>
+      <a href="markets.html" aria-current="page">Markets</a>
+      <a href="data.html">Data &amp; methods</a>
+      <a href="diversity.html">Maps</a>
+    </div>
+  </div>
+</nav>
+
+<header class="mast">
+  <div class="prose">
+    <p class="mast__label">Lens two</p>
+    <h1 class="mast__title">Markets, inputs, and <em>the one institution that behaves differently</em></h1>
+    <div class="mast__rule"></div>
+    <p class="mast__sub">Rural market infrastructure is usually treated as a single quantity called
+    access. It is not one thing, and the pieces pull in opposite directions.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="lead">A farmer's cropping decision is bounded by what can be sold and what can be
+    bought. Both sides of that constraint are physical infrastructure sitting in specific villages:
+    a regulated market yard, a weekly gathering in a field, a shop selling urea, a cold store. The
+    village records in this data locate all of them, which makes it possible to ask what kind of
+    market a district's agriculture is arranged around rather than simply how much market it
+    has.</p>
+
+    <p>The distinction matters because the institutions are built for different transactions. A
+    regulated mandi exists to move graded, storable commodity in bulk, which in most of India means
+    cereals under assured procurement. A weekly haat clears small quantities of perishables between
+    people who came on foot. A fertiliser shop is the retail end of a purchased-input package. A
+    cold store makes a perishable sellable at all. Treating these as interchangeable measures of
+    access loses the entire question.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 1</p>
+      <p class="figure__title">How common each facility is</p>
+      <p class="figure__sub">Mean share of a district's villages reporting each facility.</p>
+      <div id="fig-desc" class="chart"></div>
+      <p class="figure__note">Regulated mandis are rare. Weekly haats are several times commoner,
+      and the asymmetry is the point rather than a nuisance: most Indian villages are closer to a
+      periodic market than to a market yard.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Structure</p>
+    <h2 class="section__heading">Nine facilities and an outlier</h2>
+
+    <p>Before asking what any of this is associated with, it is worth looking at how the facilities
+    co-locate. If they all appear together, there is really only one variable here and it is called
+    development. That is very nearly true.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame figure--wide">
+      <p class="figure__label">Figure 2</p>
+      <p class="figure__title">Which facilities travel together</p>
+      <p class="figure__sub">Correlation between district village-shares. Cyan is positive,
+      magenta negative.</p>
+      <div id="fig-corr" class="chart"></div>
+      <p class="figure__note">Seed centres, soil testing, custom hiring, fertiliser shops,
+      farm-gate processing and producer organisations form a single tight block. Read down the
+      weekly haat row.</p>
+    </div>
+  </div>
+
+  <div class="figure figure--wide fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 3</p>
+      <p class="figure__title">Where the weekly haat is common</p>
+      <p class="figure__sub">Share of a district's villages holding a periodic market.</p>
+      <div id="map-haat" class="chart"></div>
+      <p class="figure__note">Periodic markets concentrate in the eastern and central belt and in
+      the northeast, which is close to the inverse of where the input-supply network is dense.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <p>Nine of the ten facilities load onto one factor, correlating with each other in a band that
+    runs from moderate to very strong. The weekly haat does not. It correlates
+    <em>negatively</em> with regulated mandis, with regular markets and with custom hiring, at
+    around zero with night-time lights, and negatively with the density of non-farm
+    establishments.</p>
+
+    <p>That is a substantive result rather than a data quirk. The haat is not a lesser version of a
+    mandi on the way to becoming one. It sits in a different kind of place, and it is the only
+    piece of rural market infrastructure in this data that is not simply a marker of commercial
+    development. Everything that follows depends on that separation, which is also why the models
+    below carry night-time lights, non-farm establishment density and a connectivity index: without
+    them, any facility would mostly be standing in for prosperity.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Association</p>
+    <h2 class="section__heading">What each facility goes with</h2>
+
+    <p>Entering each facility on its own, with the full control set and state fixed effects,
+    against four outcomes: the count of crops a district grows, the effective count, and the share
+    of land under cereals and under pulses.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 4</p>
+      <p class="figure__title">Facilities against the count of crops grown</p>
+      <p class="figure__sub">Each row is a separate model. Hollow markers are not distinguishable
+      from zero at the five percent level.</p>
+      <div id="fig-solo-d0" class="chart"></div>
+    </div>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 5</p>
+      <p class="figure__title">The same facilities against the share of land under pulses</p>
+      <p class="figure__sub">Same specifications, different outcome.</p>
+      <div id="fig-solo-pulse" class="chart"></div>
+      <p class="figure__note">Pulses are the crop group that moves. Cereal share, by contrast,
+      shows little consistent association with any of these facilities once state and irrigation
+      are accounted for.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <p>Two patterns come out of those two figures and both survive entering all ten facilities
+    simultaneously.</p>
+
+    <h3>Weekly haats go with more crops</h3>
+
+    <p>Districts where a larger share of villages hold a weekly haat grow more distinct crops. The
+    association is stable across every variation tried, including one that controls for the other
+    nine facilities at once, so it is not the haat standing in for general market access.</p>
+
+    <p>The magnitude deserves care. A one standard deviation difference in haat coverage
+    corresponds to roughly one additional crop against a district mean of about twenty. This is a
+    real and robust association, and it is small. It is also, importantly, an association with the
+    <em>count</em> and not with the balance: the effective number of crops barely moves, and
+    evenness if anything declines slightly.</p>
+
+    <div class="note">
+      <span class="note__label">What that combination means</span>
+      <p>More crops grown, no change in effective diversity, evenness flat to falling. Haat
+      districts are adding crops at the margin, on small plots, around a staple that stays
+      dominant. The periodic market is supporting a garden economy alongside the main field crop
+      rather than restructuring the field crop itself. A composite index would have reported this
+      as "haats make districts diverse", which is a stronger and less accurate claim.</p>
+    </div>
+
+    <h3>Input and commercial infrastructure goes with fewer pulses</h3>
+
+    <p>Fertiliser shops, cold storage and regular markets are each associated with a smaller share
+    of land under pulses, consistently and at conventional significance. The fertiliser-shop result
+    survives a correction for testing across all ten crop categories. Pulses are the crop group
+    displaced where the purchased-input economy is denser, which is the pattern that the
+    agronomic literature on cereal intensification would predict.</p>
+
+    <h3>Producer organisations run the other way</h3>
+
+    <p>Farmer producer organisations are the only facility positively associated with the effective
+    number of crops, and they go with a smaller cereal share and larger shares under vegetables and
+    fruit. Notably they lift the effective count <em>without</em> lifting the count of crops grown,
+    which is the mirror image of the haat result: haats add crops at the margin, producer
+    organisations rebalance the land already in use. Only an index family that keeps count and
+    balance apart can distinguish the two.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Two things that did not hold</p>
+    <h2 class="section__heading">Hypotheses that failed</h2>
+
+    <p>Both of the following were set out before estimation and neither survived. They are here
+    because a lens that only reports what worked is not a lens.</p>
+
+    <h3>Mandis do not push districts toward cereals</h3>
+
+    <p>The expectation was straightforward: where assured procurement is physically close, the
+    crops it procures should take more land. The association runs the other way. Within a state and
+    at a given level of irrigation, denser mandi coverage goes with a somewhat <em>smaller</em>
+    cereal share. Whatever regulated markets are doing to cropping patterns, it is not the simple
+    thing.</p>
+
+    <h3>Market infrastructure does not sharpen the irrigation turn</h3>
+
+    <p>Diversity rises with irrigation and then falls. The standard account of the falling arm is
+    that heavy irrigation plus assured procurement plus dense input supply makes the cereal package
+    the only rational choice, which implies the fall should be steeper where that infrastructure is
+    dense. Interacting each infrastructure measure with irrigation and its square gives the
+    opposite sign in every case: the curve is flatter, not steeper, where markets and input supply
+    are dense, and none of the interactions is convincingly distinguishable from zero.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 6</p>
+      <p class="figure__title">Curvature at low and high infrastructure density</p>
+      <p class="figure__sub">Coefficient on irrigation squared, evaluated one standard deviation
+      below and above the mean of each infrastructure measure. A more negative value means a
+      sharper turn.</p>
+      <div class="legend">
+        <span class="legend__item"><span class="legend__swatch" style="background:rgba(255,255,255,0.30);border:1px solid rgba(255,255,255,0.5)"></span>low density</span>
+        <span class="legend__item"><span class="legend__swatch" style="background:#0E9BB5"></span>high density</span>
+      </div>
+      <div id="fig-inter" class="chart"></div>
+      <p class="figure__note">If the procurement account were right, the filled markers would sit
+      to the left of the hollow ones. They sit to the right in all five cases.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <div class="note">
+      <span class="note__label">Reading these associations</span>
+      <p>Mandis, cold stores and fertiliser dealerships are built where there is already surplus to
+      trade, and the causality plausibly runs in both directions with cropping pattern. Controlling
+      for night-time lights, non-farm density and connectivity narrows that problem without
+      resolving it. These are descriptions of how the cross-section is arranged.</p>
+    </div>
+    <p><a href="data.html" class="next">Data and methods &rarr;</a></p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <h4>Sources</h4>
+      <p style="font-size:.9rem">Facility locations come from village-level rural infrastructure
+      records in SHRUG 2.1, aggregated to district. Night-time lights and establishment counts
+      provide the development controls.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="irrigation.html">Irrigation</a></li>
+        <li><a href="data.html">Data &amp; methods</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Reference</h4>
+      <ul>
+        <li><a href="https://www.devdatalab.org/shrug">SHRUG 2.1</a></li>
+        <li><a href="https://github.com/mridlll/crop-diversity">Repository</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+async function drawAll() {
+  const mk = await loadJSON('data/site_markets.json');
+
+  /* Fig 1: how common each facility is */
+  coefPlot('#fig-desc', mk.descriptives.slice().sort((a,b)=>a.mean-b.mean).map(x => ({
+      label: x.name, b: x.mean, p10: x.p10, p90: x.p90, zero: x.zero
+    })), {
+    labelW: 190, rowH: 27, xLab: 'Share of a district’s villages',
+    tipFn: r => `<strong>${r.label}</strong><br>mean ${(r.b*100).toFixed(1)}% of villages<br>`+
+                `tenth to ninetieth percentile ${(r.p10*100).toFixed(1)}% to ${(r.p90*100).toFixed(1)}%<br>`+
+                `${r.zero} districts report none`
+  });
+
+  /* Fig 2: correlation matrix */
+  corrMatrix('#fig-corr', mk.corr.labels, mk.corr.matrix, {});
+
+  choropleth('#map-haat', 'haat', {
+    label: 'share of villages with a weekly haat', height: 560,
+    fmt: v => (v*100).toFixed(0) + '%',
+    tipFn: pr => pr.haat == null
+      ? `<strong>${pr.n}</strong><br>${pr.s}<br>no record`
+      : `<strong>${pr.n}</strong><br>${pr.s}<br>`+
+        `${(pr.haat*100).toFixed(0)}% of villages hold a haat<br>`+
+        `${pr.fert!=null?(pr.fert*100).toFixed(0)+'% have a fertiliser shop<br>':''}`+
+        `${pr.D0!=null?pr.D0.toFixed(1)+' crops grown':''}`
+  });
+
+  /* Figs 4 and 5: one-at-a-time associations */
+  const byOutcome = (out) => mk.solo.filter(r => r.outcome === out)
+      .sort((a,b) => a.b - b.b)
+      .map(r => ({label: r.facility, b: r.b, p: r.p,
+                  color: r.facility === 'weekly haat' ? '#0E9BB5'
+                       : (r.facility === 'FPO' ? '#1FA35A' : '#EDEDEB')}));
+
+  coefPlot('#fig-solo-d0', byOutcome('D0_richness'), {
+    labelW: 190, rowH: 26, xLab: 'Change in the number of crops grown',
+    tipFn: r => `<strong>${r.label}</strong><br>${r.b>=0?'+':''}${r.b.toFixed(2)} crops<br>`+
+                `p = ${r.p < 0.0001 ? '<0.0001' : r.p.toFixed(4)}`
+  });
+  coefPlot('#fig-solo-pulse', byOutcome('share_pulses'), {
+    labelW: 190, rowH: 26, xLab: 'Change in the share of land under pulses',
+    tipFn: r => `<strong>${r.label}</strong><br>${r.b>=0?'+':''}${(r.b*100).toFixed(1)} `+
+                `percentage points<br>p = ${r.p < 0.0001 ? '<0.0001' : r.p.toFixed(4)}`
+  });
+
+  /* Fig 5: interaction, low against high */
+  pairedDot('#fig-inter', mk.interaction.slice().reverse().map(r => ({
+      label: r.measure, a: r.curv_lo, b: r.curv_hi, p: r.p_inter, n: r.n
+    })), {
+    labelW: 230, rowH: 30, xLab: 'Coefficient on irrigation squared',
+    tipFn: (r,k) => `<strong>${r.label}</strong><br>`+
+                    `${k==='a'?'low':'high'} density: curvature ${r[k].toFixed(3)}<br>`+
+                    `interaction p = ${r.p.toFixed(3)}<br>${r.n} districts`
+  });
+}
+window.drawAll = drawAll;
+drawAll();
+</script>
+</body>
+</html>

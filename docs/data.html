@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data and Methods</title>
+<meta name="description" content="Sources, the diversity measure, how districts were matched across boundary changes, and what a cross-section like this can and cannot establish.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/analysis.css">
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html">Crop Diversity · India</a>
+    <div class="nav__links">
+      <a href="index.html">Overview</a>
+      <a href="irrigation.html">Irrigation</a>
+      <a href="markets.html">Markets</a>
+      <a href="data.html" aria-current="page">Data &amp; methods</a>
+      <a href="diversity.html">Maps</a>
+    </div>
+  </div>
+</nav>
+
+<header class="mast">
+  <div class="prose">
+    <p class="mast__label">Underneath</p>
+    <h1 class="mast__title">Data, <em>and what it can carry</em></h1>
+    <div class="mast__rule"></div>
+    <p class="mast__sub">Sources, the diversity measure, how districts were reconciled across a
+    decade of boundary changes, and the limits of a cross-section.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Sources</p>
+    <h2 class="section__heading">Two datasets, joined at the district</h2>
+
+    <p>Cropping comes from district-level area, production and yield statistics covering
+    fifty-four crops across kharif, rabi and whole-year seasons, from 1997&ndash;98 to
+    2019&ndash;20. The series is compiled by the ISB India Data Portal from Ministry of Agriculture
+    and Farmers Welfare publications.</p>
+
+    <p>Everything on the explanatory side comes from SHRUG 2.1, an open geographic platform that
+    harmonises Indian administrative datasets onto a stable village identifier. Four of its modules
+    are used, all measured at village level and aggregated upward.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>What each module contributes.</caption>
+        <thead><tr><th>Module</th><th>Variables used</th></tr></thead>
+        <tbody>
+          <tr><td>Mission Antyodaya, 2019&ndash;20</td><td>irrigated and unirrigated land, dominant irrigation source, seasonal sown area, farmer counts, and the market, input-supply and post-harvest facilities</td></tr>
+          <tr><td>Population Census village directory, 2011</td><td>land use, irrigated area by source, agricultural electricity supply</td></tr>
+          <tr><td>Population Census abstract, 2011</td><td>scheduled caste and tribe population, cultivators against agricultural labourers</td></tr>
+          <tr><td>Socio-Economic and Caste Census, 2012</td><td>land ownership, owned acreage, caste shares</td></tr>
+          <tr><td>Night-time lights and Economic Census</td><td>development controls: luminosity and non-farm establishment density</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>SHRUG carries no crop-area information of any kind, which fixes the design. Diversity has to
+    be measured at district level from the agricultural statistics, and the village data supplies
+    the characteristics a district is described by. Analysis is therefore a district cross-section
+    of roughly six hundred districts across thirty states.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">The measure</p>
+    <h2 class="section__heading">Effective numbers of crops</h2>
+
+    <p>A district's cropping pattern is a set of crops and the share of land each takes. Two
+    features of that pattern matter and they are not the same feature: how many crops appear, and
+    how evenly the land divides between them. Rather than compress both into one score, each is
+    expressed as the number of <em>equally-common</em> crops that would produce the diversity
+    observed. That quantity is directly interpretable, needs no rescaling against the sample, and
+    is comparable across places and years.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>The three orders, and the ratio between the first two.</caption>
+        <thead><tr><th>Index</th><th>Definition</th><th>How much a rare crop counts</th></tr></thead>
+        <tbody>
+          <tr><td><strong>D0</strong></td><td>crop richness, a plain count</td><td>fully: a crop on one hectare counts as much as the staple</td></tr>
+          <tr><td><strong>D1</strong></td><td>exp(Shannon)</td><td>in proportion to its share of land</td></tr>
+          <tr><td><strong>D2</strong></td><td>1 / &Sigma;p&sup2;</td><td>barely: governed by the dominant crops</td></tr>
+          <tr><td><strong>evenness</strong></td><td>D1 / D0</td><td>balance alone, with the count divided out</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>D1 is the primary outcome throughout. Because the unit is crops, a doubling of D1 means
+    diversity genuinely doubled, which is not true of an entropy in logarithms and certainly not of
+    an index rescaled to run between zero and one. The ordering D0 &ge; D1 &ge; D2 holds by
+    construction, which makes the family self-checking.</p>
+
+    <p>Each index is computed within a year and then averaged across the years a district has,
+    rather than computed once on land pooled across the whole period. That matters because coverage
+    is uneven: roughly a quarter of districts are observed for fewer than twenty of the twenty-three
+    years, mostly because districts were being created throughout. Pooling would let a district
+    accumulate crops it grew once, so a long-observed district would look more diverse than an
+    identical short-observed one purely as a function of how long it had been watched.</p>
+
+    <p>Reconstructed national gross cropped area from these files lands in the range published
+    figures put it, which is the check that summing across seasons counts land once rather than
+    twice.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 1</p>
+      <p class="figure__title">The three orders across districts</p>
+      <p class="figure__sub">Distribution of each index. As rare crops stop counting, the
+      distribution collapses toward the staples.</p>
+      <div id="fig-hill" class="chart"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Geography</p>
+    <h2 class="section__heading">Reconciling districts across boundary change</h2>
+
+    <p>The two datasets sit on different maps. SHRUG is built on 2011 census boundaries; the
+    cropping series uses present-day district names. Between them lie a decade of reorganisations,
+    including the creation of Telangana, whose districts do not exist in the census frame at all
+    and have to be traced back to the parents they were carved from.</p>
+
+    <p>Matching proceeds in three steps: exact name match, then an explicit parent map for
+    districts created after 2011, then conservative fuzzy matching within state with every accepted
+    match reviewed by eye. Manual mappings are asserted against the census district list before
+    use, so a mistyped target fails loudly rather than silently dropping a district.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 2</p>
+      <p class="figure__title">How districts were matched</p>
+      <p class="figure__sub">Method used for each district in the cropping series.</p>
+      <div id="fig-cw" class="chart"></div>
+      <p class="figure__note">Three districts go unmatched: Mumbai and the two island territories
+      of Daman and Diu, none of which carries meaningful agriculture.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <p>One consequence needs stating plainly. Where several present-day districts descend from a
+    single pre-2011 parent, they necessarily carry identical village-level characteristics. Around
+    a fifth of the analysis sample is in that position. Every model therefore clusters its standard
+    errors on the parent district, and each headline result is re-estimated both with inverse
+    weighting by the number of siblings and on a sample that drops shared parents entirely.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Checks</p>
+    <h2 class="section__heading">What the covariates were tested against</h2>
+
+    <p>Village aggregates were validated before use. Irrigation shares built from 2019 village
+    records were compared against an entirely independent measure built from the 2011 census
+    village directory, and against published state irrigation statistics. Caste shares from the
+    census were compared against the same quantity from the socio-economic census. District
+    aggregates were reproduced against the platform's own district files.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 3</p>
+      <p class="figure__title">Validation outcomes</p>
+      <p class="figure__sub">Each check and its result.</p>
+      <div id="tbl-checks"></div>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <p>Two coverage limits carry through into the results. Mission Antyodaya covers under a quarter
+    of villages in a small number of districts, concentrated in Tripura, Kerala and parts of the
+    northeast; those districts are flagged and excluded rather than averaged in. And in
+    Maharashtra, Jharkhand and Assam the survey reports irrigation levels well above published
+    figures, which is a property of self-reported panchayat data. Dropping those three states
+    leaves the irrigation results unchanged, but their levels should not be quoted.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Limits</p>
+    <h2 class="section__heading">What this design cannot do</h2>
+
+    <p>The central limitation is not statistical. Irrigation systems, market yards, cold stores and
+    fertiliser dealerships are placed where terrain, aquifers, politics and existing agriculture
+    already favoured them. Nothing here is randomly assigned and nothing here is an experiment.
+    Every association reported is a description of how the cross-section is arranged, and a
+    district that installed a mandi tomorrow would not travel along any of these curves.</p>
+
+    <p>Three narrower limits are worth naming. The rural infrastructure data is a single
+    2019&ndash;20 cross-section matched against cropping averaged over two decades, which is
+    defensible for slow-moving infrastructure and not for anything that should be called a change.
+    Mean holding size is inferred from cultivable area over the number of farmers rather than
+    measured from an agricultural census, and it is null on every outcome, which is at least as
+    likely to be a comment on the proxy as on the relationship. And procurement volumes, which
+    would be the natural companion to the market results, are not available at district level from
+    any open source and are absent here.</p>
+
+    <p>The whole pipeline, from the raw agricultural statistics through to every figure on this
+    site, runs end to end from a single command and produces the numbers shown without manual
+    transcription.</p>
+    <p><a href="index.html" class="next">&larr; Back to the overview</a></p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <h4>Sources</h4>
+      <p style="font-size:.9rem">Crop area and production from the ISB India Data Portal. Rural
+      structure, infrastructure and development controls from SHRUG 2.1, Development Data Lab.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="irrigation.html">Irrigation</a></li>
+        <li><a href="markets.html">Markets</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Reference</h4>
+      <ul>
+        <li><a href="https://www.devdatalab.org/shrug">SHRUG 2.1</a></li>
+        <li><a href="https://www.india-data-portal.org/">India Data Portal</a></li>
+        <li><a href="https://github.com/mridlll/crop-diversity">Repository</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+const el = (t, a) => { const e = document.createElementNS(NS, t);
+  for (const k in a) e.setAttribute(k, a[k]); return e; };
+
+async function drawAll() {
+  const [idx, meta] = await Promise.all([
+    loadJSON('data/site_indices.json'), loadJSON('data/site_meta.json')
+  ]);
+
+  /* Fig 1: the three Hill orders */
+  (function () {
+    const host = document.querySelector('#fig-hill'); if (!host) return;
+    host.innerHTML = '';
+    const rows = idx.districts.filter(r => r.D0 && r.D1 && r.D2);
+    const W = host.clientWidth || 900, H = 340, m = {t:18,r:24,b:50,l:62};
+    const iw = W-m.l-m.r, ih = H-m.t-m.b;
+    const svg = el('svg',{viewBox:`0 0 ${W} ${H}`,width:'100%',height:H,class:'chart'});
+    host.appendChild(svg);
+    const series = [['D0','#EDEDEB','crops grown'],
+                    ['D1','#0E9BB5','effective crops'],
+                    ['D2','#7C5CE0','dominant-weighted']];
+    const hi = Math.max(...rows.map(r=>r.D0))*1.02, nb = 46, bw = hi/nb;
+    let maxc = 0;
+    const all = series.map(([k])=>{
+      const c = new Array(nb).fill(0);
+      rows.forEach(r=>{ const v=r[k]; if(v!=null) c[Math.min(nb-1,Math.floor(v/bw))]++; });
+      maxc = Math.max(maxc, ...c); return c;
+    });
+    const X = v => m.l + v/hi*iw, Y = v => m.t + ih - v/maxc*ih;
+    for (let i=0;i<=4;i++){ const t=maxc*i/4;
+      svg.appendChild(el('line',{x1:m.l,x2:m.l+iw,y1:Y(t),y2:Y(t),stroke:'rgba(255,255,255,0.075)'}));
+      const a=el('text',{x:m.l-9,y:Y(t)+4,'text-anchor':'end',fill:'#7E7E7C','font-size':11,
+        'font-family':'JetBrains Mono, monospace'}); a.textContent=t.toFixed(0); svg.appendChild(a);}
+    for (let i=0;i<=5;i++){ const t=hi*i/5;
+      const b=el('text',{x:X(t),y:m.t+ih+20,'text-anchor':'middle',fill:'#7E7E7C','font-size':11,
+        'font-family':'JetBrains Mono, monospace'}); b.textContent=t.toFixed(0); svg.appendChild(b);}
+    svg.appendChild(el('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:'rgba(255,255,255,0.22)'}));
+    all.forEach((c,si)=>{
+      const [k,col,nm] = series[si];
+      let d='';
+      c.forEach((v,i)=>{ d += (i?'L':'M') + X(bw*(i+.5)) + ',' + Y(v); });
+      svg.appendChild(el('path',{d,fill:'none',stroke:col,'stroke-width':2.2}));
+      const pk = c.reduce((mx,v,i)=> v>c[mx]?i:mx, 0);
+      const t = el('text',{x:X(bw*(pk+.5))+7,y:Y(c[pk])-7,fill:col,'font-size':11.5,
+        'font-weight':600}); t.textContent = nm; svg.appendChild(t);
+      c.forEach((v,i)=>{
+        const h = el('rect',{x:X(bw*i),y:m.t,width:Math.max(2,iw/nb),height:ih,fill:'transparent'});
+        h.addEventListener('mousemove',ev=>showTip(
+          `<strong>${nm}</strong><br>${v} districts between `+
+          `${(bw*i).toFixed(1)} and ${(bw*(i+1)).toFixed(1)}`,ev));
+        h.addEventListener('mouseleave',hideTip);
+        svg.appendChild(h);
+      });
+    });
+    const xl=el('text',{x:m.l+iw/2,y:H-8,'text-anchor':'middle',fill:'#7E7E7C','font-size':11.5});
+    xl.textContent='Number of crops'; svg.appendChild(xl);
+    const yl=el('text',{transform:`rotate(-90) translate(${-(m.t+ih/2)},14)`,
+      'text-anchor':'middle',fill:'#7E7E7C','font-size':11.5});
+    yl.textContent='Districts'; svg.appendChild(yl);
+  })();
+
+  /* Fig 2: crosswalk composition */
+  const NAMES = {exact:'exact name match', parent_map:'mapped to pre-2011 parent',
+                 fuzzy_auto:'fuzzy match, auto-accepted', fuzzy_review:'fuzzy match, reviewed',
+                 unmatched:'unmatched', rejected_fuzzy:'fuzzy match rejected'};
+  const cw = Object.entries(meta.crosswalk)
+      .map(([k,v]) => ({label: NAMES[k]||k, b: v}))
+      .sort((a,b)=>a.b-b.b);
+  coefPlot('#fig-cw', cw, {
+    labelW: 230, rowH: 30, xLab: 'Districts',
+    tipFn: r => `<strong>${r.label}</strong><br>${r.b} districts`
+  });
+
+  /* Fig 3: validation table */
+  (function () {
+    const host = document.querySelector('#tbl-checks'); if (!host) return;
+    const COL = {PASS:'#1FA35A', WARN:'#7C5CE0', FAIL:'#C63FD8'};
+    host.innerHTML = '<div class="tbl-wrap"><table><thead><tr>'+
+      '<th>Check</th><th>Result</th><th>Detail</th></tr></thead><tbody>'+
+      meta.checks.map(c =>
+        `<tr><td><strong>${c.check}</strong></td>`+
+        `<td style="color:${COL[c.status]||'#B3B3B0'};font-family:JetBrains Mono,monospace;`+
+        `font-size:.78rem;letter-spacing:.06em">${c.status}</td>`+
+        `<td>${c.detail}</td></tr>`).join('')+
+      '</tbody></table></div>';
+  })();
+}
+window.drawAll = drawAll;
+drawAll();
+</script>
+</body>
+</html>
