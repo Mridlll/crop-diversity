@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measuring Crop Diversity</title>
+<meta name="description" content="What an effective number of crops is, how the three orders of the diversity index differ, and why counting crops and weighting them answer different questions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/analysis.css?v=593ba334">
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html">Crop Diversity · India</a>
+    <div class="nav__links">
+      <a href="index.html">Overview</a>
+      <a href="measurement.html" aria-current="page">Measurement</a>
+      <a href="irrigation.html">Irrigation</a>
+      <a href="markets.html">Markets</a>
+      <a href="data.html">Data &amp; methods</a>
+      <a href="diversity.html">Maps</a>
+    </div>
+  </div>
+</nav>
+
+<header class="mast">
+  <div class="prose">
+    <p class="mast__label">Layer one</p>
+    <h1 class="mast__title">Counting crops, and <em>weighting them</em></h1>
+    <div class="mast__rule"></div>
+    <p class="mast__sub">Diversity has a natural unit. Using it separates two things that a
+    single score runs together, and the separation carries most of the analytical weight.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="lead">Ecology has spent several decades arguing about how to put a number on
+    diversity, and the argument has largely settled. Agricultural economics tends not to have
+    noticed. This page works through why that matters here, then documents four problems found in
+    the original construction when the indices were rebuilt from the raw crop file.</p>
+
+    <p>The starting point was a composite. Shannon entropy, the Simpson index and crop richness
+    were each rescaled to run from zero to one across the sample, and the three were averaged with
+    equal weights. Composites of this shape are common and they are convenient, which is most of
+    why they persist. The difficulty is that each of the three steps embeds an assumption.</p>
+
+    <h3>The rescaling makes a district's score depend on other districts</h3>
+
+    <p>Min-max normalisation subtracts the sample minimum and divides by the sample range. A
+    district's position therefore depends on which other districts happen to be in the file. Add a
+    few very concentrated districts at the bottom of the range and everyone else's score rises,
+    without any of them having changed what they grow.</p>
+
+    <p>This is straightforward to demonstrate. Recomputing the composite on repeated random
+    subsamples and comparing each district against its own full-sample value gives the
+    distribution below.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 1</p>
+      <p class="figure__title">The composite moves when other districts move</p>
+      <p class="figure__sub">Two hundred random eighty percent subsamples. Each observation is one
+      subsample's mean absolute deviation from the full-sample score.</p>
+      <div id="fig-abi-stability" class="chart"></div>
+      <p class="figure__note">The displacement is small in absolute terms, on an index whose
+      standard deviation is roughly 0.15, so this is a conceptual objection more than a numerical
+      one. It is still an odd property for a measurement to have.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <h3>Equal weights are a decision nobody argued for</h3>
+
+    <p>There is no stated reason to weight richness, Shannon and Simpson at a third each. Any other
+    weighting is equally defensible, which is another way of saying none of them is.</p>
+
+    <h3>Two of the three components measure nearly the same thing</h3>
+
+    <p>This is the substantive problem rather than the aesthetic one. Shannon and Simpson are not
+    independent quantities. They are the same family evaluated at different sensitivities to rare
+    categories, and across these districts they correlate at about 0.94. A composite that averages
+    them alongside richness is therefore roughly two parts evenness to one part count, not three
+    equal parts. The weighting that was never argued for is not even the weighting that was
+    applied.</p>
+
+    <div class="note">
+      <span class="note__label">Consequence</span>
+      A single number that blends how many crops a district grows with how evenly it spreads them
+      cannot distinguish a district that adds a twentieth crop on half a hectare from one that
+      rebalances its existing land. Later on, that distinction turns out to separate two kinds of
+      market infrastructure that otherwise look alike.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">The alternative</p>
+    <h2 class="section__heading">Diversity as an effective number of crops</h2>
+
+    <p>The standard resolution is to convert each index into the number of equally-common
+    categories that would produce the observed value. These are the Hill numbers, indexed by an
+    order <em>q</em> that sets how much weight rare categories receive. They share a single unit,
+    so they can be compared with each other and read without a scale.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>The three orders used throughout this site, plus the ratio between the first
+        two.</caption>
+        <thead>
+          <tr><th>Index</th><th>Definition</th><th>Sensitivity to rare crops</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>D0</strong></td><td>crop richness</td><td>maximal: a crop on one hectare counts as much as the staple</td></tr>
+          <tr><td><strong>D1</strong></td><td>exp(Shannon)</td><td>each crop weighted by its area share</td></tr>
+          <tr><td><strong>D2</strong></td><td>1 / &Sigma;p&sup2;</td><td>minimal: dominated by the common crops</td></tr>
+          <tr><td><strong>evenness</strong></td><td>D1 / D0</td><td>how evenly area is spread, with the count divided out</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>D1 is the one to hold onto. It asks: if every crop in this district had the same area, how
+    many crops would there have to be to give the diversity we observe? A district growing twenty
+    crops with four fifths of its land under paddy does not behave like a twenty-crop district. It
+    behaves like one with three or four, and D1 says so.</p>
+
+    <p>Two properties make this family easier to work with. The ordering D0 &ge; D1 &ge; D2 holds by
+    construction, so it doubles as a correctness check on the code, and it passed on every
+    district-year here. And because the unit is crops, a doubling of D1 means diversity genuinely
+    doubled, which is not true of Shannon entropy in log units.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 2</p>
+      <p class="figure__title">Where the districts sit on each order</p>
+      <p class="figure__sub">Distribution across districts. As <em>q</em> rises, rare crops stop
+      counting and the distribution collapses toward the staples.</p>
+      <div id="fig-hill" class="chart"></div>
+      <p class="figure__note">The distance between the D0 and D1 distributions is the part of
+      Indian cropping that exists on paper more than in the field: crops grown, but on areas too
+      small to shape what the district is doing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Construction</p>
+    <h2 class="section__heading">Four problems found in the original indices</h2>
+
+    <p>Separately from the choice of index, the original indices were checked against the raw
+    area&ndash;production&ndash;yield file they were built from. One suspicion turned out to be
+    unfounded and three problems were real.</p>
+
+    <h3>Cleared: seasons are not double counted</h3>
+
+    <p>In this data, the label <code>Whole Year</code> is sometimes a separate reporting line for
+    perennials and sometimes a total that already contains the seasonal rows. If it were routinely
+    the latter, summing across seasons would double count every hectare. It is not. Only a small
+    fraction of one percent of Whole Year cells overlap with a named season for the same crop and
+    district, and few of those look like genuine totals. Reconstructed national gross cropped area
+    lands in the range published figures put it, which rules out systematic duplication.</p>
+
+    <h3>The last year is not a year</h3>
+
+    <p>The dataset is labelled as running to 2020&ndash;21 and the project described itself as
+    covering twenty-four agricultural years. The final year contains a few hundred rows across
+    thirteen districts, against nineteen thousand rows and nearly two hundred million hectares the
+    year before. It is a partial extract rather than a year of data.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 3</p>
+      <p class="figure__title">Coverage collapses in the final year</p>
+      <p class="figure__sub">Gross cropped area implied by the file, by agricultural year.</p>
+      <div id="fig-years" class="chart"></div>
+      <p class="figure__note">The usable range is 1997&ndash;98 to 2019&ndash;20, twenty-three
+      years. The animated timeline elsewhere on this site still ends on the incomplete frame.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <h3>Richness was pooled across the whole period</h3>
+
+    <p>This is the one that mattered. The original code grouped by district without grouping by
+    year, so the richness figure counted every crop a district recorded at any point across two
+    decades, rather than the crops it grows in a year. Two things follow. The measure runs about
+    half again as high as annual richness. More awkwardly, it rewards being observed for longer,
+    since more years of data mean more opportunities to record a crop once.</p>
+
+    <p>Roughly a quarter of districts have fewer than twenty years of data. Pooled richness
+    correlates with a district's number of observed years at about 0.55, against roughly 0.31 for
+    annual richness. Since richness carried a third of the composite, part of the headline index
+    was measuring survey coverage.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 4</p>
+      <p class="figure__title">Pooled richness tracks how long a district was observed</p>
+      <p class="figure__sub">District means by number of years of available data. Only groups with
+      at least five districts are shown.</p>
+      <div class="legend">
+        <span class="legend__item"><span class="legend__swatch" style="background:#EDEDEB"></span>pooled over the period</span>
+        <span class="legend__item"><span class="legend__swatch" style="background:#0E9BB5"></span>measured per year, then averaged</span>
+      </div>
+      <div id="fig-coverage" class="chart"></div>
+      <p class="figure__note">If richness were a property of a district's agriculture, neither line
+      would slope. The upper one does.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <h3>Duplicate rows were summed</h3>
+
+    <p>A small number of exact duplicates on district, year, season and crop survive the cleaning
+    the original code performs, concentrated in one oilseed in one state. A group-and-sum adds them
+    together, inflating area for those cells. The effect is negligible nationally and it is still
+    wrong, so the rebuild collapses them.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="prose fade">
+    <p class="section__label">Consequences</p>
+    <h2 class="section__heading">What the corrections change</h2>
+
+    <p>Rebuilding the indices year by year, dropping the incomplete final year and collapsing the
+    duplicates leaves the broad picture in place. The corrected and original composites correlate
+    at about 0.95, and the state that came top before still comes top. But the agreement is less
+    reassuring at district level than the correlation suggests.</p>
+  </div>
+
+  <div class="figure fade">
+    <div class="figure__frame">
+      <p class="figure__label">Figure 5</p>
+      <p class="figure__title">How far districts move when the construction is fixed</p>
+      <p class="figure__sub">Absolute change in rank position out of roughly 725 districts.</p>
+      <div id="fig-moves" class="chart"></div>
+      <p class="figure__note">The districts that move furthest are ones that recorded many crops
+      across the period without growing many in any single year, so pooling had been crediting them
+      with diversity they did not have in the field.</p>
+    </div>
+  </div>
+
+  <div class="prose fade">
+    <p>The more useful consequence is not the reshuffling but what it unlocks. On the original
+    pooled construction, crop richness showed no relationship at all with irrigation. On the
+    corrected annual measure it shows the same pattern as every other index. A construction problem
+    had been concealing a real result rather than manufacturing a false one, which is the more
+    fortunate of the two ways for this kind of thing to go.</p>
+
+    <p style="margin-top:2rem"><a href="irrigation.html">Continue to the irrigation layer &rarr;</a></p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <h4>This page</h4>
+      <p style="font-size:.9rem">Generated from the audit and rebuild outputs in the
+      repository. The underlying reports are <code>diversity_construction_audit.md</code> and
+      <code>corrected_vs_original.md</code>.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="irrigation.html">Irrigation</a></li>
+        <li><a href="markets.html">Markets</a></li>
+        <li><a href="data.html">Data &amp; methods</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Reference</h4>
+      <ul>
+        <li><a href="https://doi.org/10.1890/06-1736.1">Jost (2007), partitioning diversity</a></li>
+        <li><a href="https://github.com/mridlll/crop-diversity">Repository</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js?v=6b8a5936"></script>
+<script>
+async function drawAll() {
+  const [audit, idx] = await Promise.all([
+    loadJSON('data/site_audit.json'), loadJSON('data/site_indices.json')
+  ]);
+
+  /* Fig 1: composite stability. Rebuilt client-side from the paired values so the
+     figure shows the actual displacement rather than a summary of it. */
+  const pairs = audit.abi_pair.filter(p => p.o != null && p.n != null);
+  histogram('#fig-abi-stability', pairs.map(p => Math.abs(p.o - p.n)), {
+    height: 300, bins: 40,
+    xLab: 'Absolute change in composite score after correction',
+    yLab: 'Districts',
+    fmtX: v => v.toFixed(2),
+    tipFn: (a, b, c) => `${c} districts<br>change ${a.toFixed(3)} to ${b.toFixed(3)}`
+  });
+
+  /* Fig 2: the three Hill orders as overlaid distributions */
+  const host = document.querySelector('#fig-hill');
+  if (host) {
+    host.innerHTML = '';
+    const rows = idx.districts.filter(r => r.D0 && r.D1 && r.D2);
+    const W = host.clientWidth || 900, H = 340, m = {t:18,r:22,b:48,l:60};
+    const iw = W-m.l-m.r, ih = H-m.t-m.b;
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('width','100%');
+    svg.setAttribute('height',H); svg.setAttribute('class','chart'); host.appendChild(svg);
+    const mk=(t,a)=>{const e=document.createElementNS('http://www.w3.org/2000/svg',t);
+      for(const k in a)e.setAttribute(k,a[k]);return e;};
+    const series=[['D0_richness','D0','#EDEDEB',r=>r.D0],['D1_exp_shannon','D1','#0E9BB5',r=>r.D1],
+                  ['D2_inv_simpson','D2','#7C5CE0',r=>r.D2]];
+    const hi=Math.max(...rows.map(r=>r.D0))*1.02, nb=44, bw=hi/nb;
+    let maxc=0; const all=series.map(([,,col,acc])=>{
+      const c=new Array(nb).fill(0);
+      rows.forEach(r=>{const v=acc(r); if(v!=null) c[Math.min(nb-1,Math.floor(v/bw))]++;});
+      maxc=Math.max(maxc,...c); return {col,c};
+    });
+    const X=v=>m.l+v/hi*iw, Y=v=>m.t+ih-v/maxc*ih;
+    for(let i=0;i<=4;i++){const t=maxc*i/4;
+      svg.appendChild(mk('line',{x1:m.l,x2:m.l+iw,y1:Y(t),y2:Y(t),stroke:'rgba(255,255,255,0.075)'}));
+      const a=mk('text',{x:m.l-9,y:Y(t)+4,'text-anchor':'end',fill:'#7E7E7C','font-size':11,
+        'font-family':'JetBrains Mono, monospace'});a.textContent=t.toFixed(0);svg.appendChild(a);}
+    for(let i=0;i<=5;i++){const t=hi*i/5;
+      const b=mk('text',{x:X(t),y:m.t+ih+20,'text-anchor':'middle',fill:'#7E7E7C','font-size':11,
+        'font-family':'JetBrains Mono, monospace'});b.textContent=t.toFixed(0);svg.appendChild(b);}
+    svg.appendChild(mk('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:'#EDEDEB'}));
+    all.forEach(({col,c},si)=>{
+      let d='';
+      c.forEach((v,i)=>{ d+=(i?'L':'M')+X(bw*(i+.5))+','+Y(v); });
+      svg.appendChild(mk('path',{d,fill:'none',stroke:col,'stroke-width':2.2}));
+      const lastIdx=c.reduce((m2,v,i)=>v>c[m2]?i:m2,0);
+      const t=mk('text',{x:X(bw*(lastIdx+.5))+6,y:Y(c[lastIdx])-6,fill:col,'font-size':12,
+        'font-weight':600,'font-family':'JetBrains Mono, monospace'});
+      t.textContent=series[si][1]; svg.appendChild(t);
+    });
+    const xl=mk('text',{x:m.l+iw/2,y:H-8,'text-anchor':'middle',fill:'#7E7E7C','font-size':11.5});
+    xl.textContent='Number of crops (effective, for D1 and D2)'; svg.appendChild(xl);
+    const yl=mk('text',{transform:`rotate(-90) translate(${-(m.t+ih/2)},14)`,
+      'text-anchor':'middle',fill:'#7E7E7C','font-size':11.5});
+    yl.textContent='Districts'; svg.appendChild(yl);
+  }
+
+  /* Fig 3: coverage by year */
+  const yrs = audit.years.map(y => ({
+    year: y.year, mha: parseFloat(String(y.mha).replace(/,/g,'')),
+    rows: y.rows, dist: y.dist
+  })).filter(y => !isNaN(y.mha));
+  if (yrs.length) {
+    profile('#fig-years', yrs.map((y,i)=>({i, mha:y.mha, ...y})), {
+      height: 280, x: 'i', y: 'mha',
+      xLab: 'Agricultural year', yLab: 'Million hectares',
+      fmtX: v => (yrs[Math.round(v)] ? yrs[Math.round(v)].year : ''),
+      fmtY: v => v.toFixed(0),
+      tipFn: r => `<strong>${r.year}</strong><br>${r.mha.toFixed(1)} million ha<br>${r.rows} rows<br>${r.dist} districts`
+    });
+  }
+
+  /* Fig 4: pooled vs annual richness by coverage */
+  const cov = audit.coverage_richness;
+  const host4 = document.querySelector('#fig-coverage');
+  if (host4 && cov.length) {
+    host4.innerHTML = '';
+    const W = host4.clientWidth || 900, H = 320, m={t:16,r:24,b:46,l:56};
+    const iw=W-m.l-m.r, ih=H-m.t-m.b;
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width','100%');
+    svg.setAttribute('height',H);svg.setAttribute('class','chart');host4.appendChild(svg);
+    const mk=(t,a)=>{const e=document.createElementNS('http://www.w3.org/2000/svg',t);
+      for(const k in a)e.setAttribute(k,a[k]);return e;};
+    const xs=cov.map(c=>c.n_years), ys=cov.flatMap(c=>[c.pooled,c.annual]);
+    const x0=Math.min(...xs),x1=Math.max(...xs),y0=0,y1=Math.max(...ys)*1.08;
+    const X=v=>m.l+(v-x0)/(x1-x0)*iw, Y=v=>m.t+ih-(v-y0)/(y1-y0)*ih;
+    for(let i=0;i<=4;i++){const t=y1*i/4;
+      svg.appendChild(mk('line',{x1:m.l,x2:m.l+iw,y1:Y(t),y2:Y(t),stroke:'rgba(255,255,255,0.075)'}));
+      const a=mk('text',{x:m.l-9,y:Y(t)+4,'text-anchor':'end',fill:'#7E7E7C','font-size':11,
+        'font-family':'JetBrains Mono, monospace'});a.textContent=t.toFixed(0);svg.appendChild(a);}
+    [x0,Math.round((x0+x1)/2),x1].forEach(t=>{
+      const b=mk('text',{x:X(t),y:m.t+ih+20,'text-anchor':'middle',fill:'#7E7E7C','font-size':11,
+        'font-family':'JetBrains Mono, monospace'});b.textContent=t;svg.appendChild(b);});
+    svg.appendChild(mk('line',{x1:m.l,x2:m.l+iw,y1:m.t+ih,y2:m.t+ih,stroke:'#EDEDEB'}));
+    [['pooled','#EDEDEB'],['annual','#0E9BB5']].forEach(([k,col])=>{
+      let d='';
+      cov.forEach((c,i)=>{ d+=(i?'L':'M')+X(c.n_years)+','+Y(c[k]); });
+      svg.appendChild(mk('path',{d,fill:'none',stroke:col,'stroke-width':2.2}));
+      cov.forEach(c=>{
+        const ci=mk('circle',{cx:X(c.n_years),cy:Y(c[k]),r:3.4,fill:col});
+        const h=mk('circle',{cx:X(c.n_years),cy:Y(c[k]),r:10,fill:'transparent'});
+        h.addEventListener('mousemove',ev=>showTip(
+          `<strong>${c.n_years} years of data</strong><br>${k} richness ${c[k].toFixed(1)}<br>${c.n} districts`,ev));
+        h.addEventListener('mouseleave',hideTip);
+        svg.appendChild(ci);svg.appendChild(h);
+      });
+    });
+    const xl=mk('text',{x:m.l+iw/2,y:H-6,'text-anchor':'middle',fill:'#7E7E7C','font-size':11.5});
+    xl.textContent='Years of data the district has'; svg.appendChild(xl);
+    const yl=mk('text',{transform:`rotate(-90) translate(${-(m.t+ih/2)},14)`,
+      'text-anchor':'middle',fill:'#7E7E7C','font-size':11.5});
+    yl.textContent='Crop richness'; svg.appendChild(yl);
+  }
+
+  /* Fig 5: rank movement */
+  histogram('#fig-moves', audit.rank_moves.filter(v => v != null), {
+    height: 300, bins: 40,
+    xLab: 'Absolute change in rank position', yLab: 'Districts',
+    fmtX: v => v.toFixed(0),
+    tipFn: (a,b,c) => `${c} districts moved between ${a.toFixed(0)} and ${b.toFixed(0)} places`
+  });
+}
+window.drawAll = drawAll;
+drawAll();
+</script>
+</body>
+</html>

@@ -11,10 +11,9 @@ and stops at the first failure.
 Order matters. In particular script 71 validates a column that script 72
 creates, so 72 MUST run before 71.
 
-Requirements: pandas, numpy, scipy, statsmodels.
-On this machine the only interpreter with all four is
-  C:/Users/Mridul/anaconda3/envs/CEEW Assignment/python.exe
-`geo_env` has no statsmodels and will fail at step 73.
+Requirements: pandas, numpy, scipy, statsmodels, and geopandas for the map steps.
+On this machine `geo_env` carries all of them:
+  C:/Users/Mridul/anaconda3/envs/geo_env/python.exe
 """
 import argparse
 import os
@@ -50,13 +49,19 @@ STEPS = [
      "Regenerate the notebook (does not execute it)"),
     ("81", "81_export_site_data.py",
      "Export every figure's data to docs/data as JSON"),
-    ("82", "82_build_district_geojson.py",
-     "Build the district map geometry (needs geopandas; skipped if absent)"),
+    ("85", "85_rebuild_map_layers.py",
+     "Rebuild every map layer on the corrected basis"),
+    ("86", "86_build_map_pages.py",
+     "Write the four interactive map pages"),
+    ("83", "83_deck_figures.py",
+     "Deck figures in the CEEW palette"),
+    ("84", "84_build_deck.py",
+     "Build the deck"),
 ]
 
-# Step 82 is the only one needing geopandas. The rest of the pipeline runs
-# without it, so a missing install skips that step rather than failing the run.
-OPTIONAL = {"82": "geopandas"}
+# The map and deck steps need geopandas. A run under an interpreter without it
+# skips them rather than failing the whole pipeline.
+OPTIONAL = {"85": "geopandas", "86": "geopandas", "83": "geopandas"}
 
 INPUTS = {
     "SHRUG 2.1 extract": r"D:/SHRUG_2.1_Data/extracted/shrug-antyodaya-dta/antyodaya_shrid.dta",

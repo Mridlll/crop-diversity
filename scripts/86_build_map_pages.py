@@ -10,9 +10,20 @@ crops it grows in a year.
 
 Outputs: docs/{diversity,calorie-diversity,food-nonfood,timeline}.html
 """
+import hashlib
 import os
 
 DOCS = r"D:/crop-diversity/docs"
+
+
+def stamp(rel):
+    """Content hash for a shared asset, so a deploy cannot serve a cached copy
+    of the script or the stylesheet against markup that has moved on."""
+    with open(os.path.join(DOCS, rel), "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()[:8]
+
+
+VCSS, VJS = stamp("css/analysis.css"), stamp("js/site.js")
 
 HEAD = """<!doctype html>
 <html lang="en">
@@ -24,7 +35,7 @@ HEAD = """<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/analysis.css">
+<link rel="stylesheet" href="css/analysis.css?v={vcss}">
 </head>
 <body>
 
@@ -108,7 +119,7 @@ HEAD = """<!doctype html>
   </div>
 </footer>
 
-<script src="js/site.js"></script>
+<script src="js/site.js?v={vjs}"></script>
 <script>
 {script}
 </script>
@@ -399,5 +410,5 @@ window.drawAll = drawAll; drawAll();
 
 for name, cfg in PAGES.items():
     with open(os.path.join(DOCS, name), "w", encoding="utf-8") as f:
-        f.write(HEAD.format(**cfg))
+        f.write(HEAD.format(vcss=VCSS, vjs=VJS, **cfg))
     print("WROTE {}".format(name))

@@ -467,9 +467,9 @@ table(s, CX, 1.66, [2.30, 1.25], ["Facility", "Mean share"],
 bare_lines(s, CX, 5.01, CW, 0.28,
            [("40 districts have no mandi and 30 have no weekly haat.",
              10.5, False, MUTED)], where="s3 block c tail")
-close(s, T, "Cereals take 57 percent of India's cropped area and fruit and "
-            "vegetables take 1.5 percent",
-      "A mandi sits in 3 of every hundred villages and a weekly haat in 14.",
+close(s, T, "Cereals take 57 percent of India's cropped area",
+      "Fruit and vegetables together take 1.5 percent, and a mandi sits in 3 of "
+      "every hundred villages against a weekly haat in 14.",
       "Percentiles are across the 606 districts. Crop shares are weighted by each "
       "district's mean annual cropped area. Village shares come from the 2019 "
       "village records.")
@@ -748,7 +748,40 @@ close(s, T, "Surface-water districts average two fewer effective crops at the sa
       "they read from none to all. State fixed effects, errors clustered on the "
       "pre-2011 parent district.")
 
-# =============================================================== 12. findings
+# ================================================== 12. identifying hypotheses
+T = "How the rural facilities sit together"
+s = page(T, "Correlation across districts between the share of villages carrying "
+            "each facility", "", "")
+place(s, "f15_facility_matrix", 0.43, 1.22, 5.05, 4.02)
+RX, RW = 5.85, 7.03
+block_head(s, RX, 1.30, RW, "The weekly haat against the other nine")
+table(s, RX, 1.58, [2.55, 1.15],
+      ["Facility", "Correlation"],
+      [["Regular market", "-0.21"], ["Mandi", "-0.15"], ["Seed centre", "-0.10"],
+       ["Custom hiring", "-0.09"], ["Farm-gate processing", "-0.09"],
+       ["Soil testing", "-0.04"], ["Fertiliser shop", "-0.02"],
+       ["Producer organisation", "+0.05"], ["Cold storage", "+0.06"]],
+      row_h=0.222, head_h=0.24, pt=10.0, where="s12 haat row")
+stack_panel(s, RX + 4.05, 1.58, RW - 4.05, 2.28, [
+    ("What the block means", 12.5, True, INK),
+    ("Nine of the ten facilities correlate between 0.24 and 0.83 with each other. "
+     "A district that has one tends to have the rest, so they carry one piece of "
+     "information between them and not nine.", 12.0, False, INK)],
+    where="s12 block note")
+stack_panel(s, RX, 4.02, RW, 1.22, [
+    ("Why the weekly haat is treated on its own", 12.5, True, INK),
+    ("It correlates at -0.21 with regular markets and -0.15 with mandis, at 0.04 "
+     "with night-time lights and -0.16 with the density of non-farm establishments. "
+     "A periodic market sits where the rest of this infrastructure does not, which "
+     "is what lets H3 be asked separately from H4.", 12.0, False, INK)],
+    where="s12 haat note")
+close(s, T, "Nine of the ten facilities move together across districts",
+      "The weekly haat is the only one that does not, and it runs mildly negative "
+      "against the output markets.",
+      "Each cell is the correlation across 606 districts between the share of "
+      "villages carrying one facility and the share carrying the other.")
+
+# =============================================================== 13. findings
 T = "Rural facilities and cropping"
 s = page(T, "H3 and H4, each facility entered on its own with the full control set",
          "", "")
@@ -780,7 +813,7 @@ close(s, T, "Weekly haat coverage goes with 7.3 more crops grown in an average y
       "weekly haat runs -0.21 to +0.06 against them. Errors cluster on the pre-2011 "
       "parent district.")
 
-# =============================================================== 13. findings
+# =============================================================== 14. findings
 T = "Market density and the fall after the peak"
 s = page(T, "H5, curvature of the irrigation relationship where infrastructure is "
             "thin and where it is dense", "", "")
@@ -812,7 +845,7 @@ close(s, T, "All five interaction terms run the opposite way to the hypothesis",
       "Curvature is the coefficient on the square of the irrigation share of sown "
       "area, read one standard deviation below and above the mean of each measure.")
 
-# =============================================================== 14. findings
+# =============================================================== 15. findings
 T = "The five hypotheses and their verdicts"
 s = page(T, "Five hypotheses, the test applied and the number that decides each",
          "", "")

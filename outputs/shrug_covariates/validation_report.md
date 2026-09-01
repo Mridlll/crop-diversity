@@ -69,8 +69,8 @@ around 2018-19). They are used for RANK agreement only, not level matching.
 | assam | 26 | 1.66 | 1.50 | +0.16 |
 | rajasthan | 33 | 1.68 | 1.47 | +0.21 |
 | bihar | 38 | 1.94 | 1.44 | +0.50 |
-| maharashtra | 33 | 1.69 | 1.35 | +0.34 |
 | kerala | 14 | 1.17 | 1.35 | -0.18 |
+| maharashtra | 33 | 1.69 | 1.35 | +0.34 |
 | andhra pradesh | 22 | 1.64 | 1.30 | +0.34 |
 | gujarat | 26 | 1.80 | 1.28 | +0.52 |
 | chhattisgarh | 18 | 1.35 | 1.25 | +0.10 |

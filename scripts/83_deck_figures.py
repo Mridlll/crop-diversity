@@ -373,3 +373,43 @@ save(fig, "f14_interaction_wide")
 
 
 print("\n{} figures in {}".format(len(os.listdir(OUT)), OUT))
+
+# ------------------------------------------- 15. facility matrix, deck size
+# The one page where the structure is the finding: nine facilities move together
+# and the weekly haat does not. Drawn large, with the haat row and column set off
+# by a rule so the eye lands on it without needing the caption.
+FAC15 = [("mandi", "m_mandi_vshare"), ("regular market", "m_regular_market_vshare"),
+         ("weekly haat", "m_weekly_haat_vshare"),
+         ("fertiliser shop", "m_fert_shop_vshare"),
+         ("seed centre", "m_seed_centre_vshare"), ("soil testing", "m_soil_test_vshare"),
+         ("custom hiring", "m_custom_hire_vshare"), ("cold storage", "m_storage_vshare"),
+         ("farm-gate processing", "m_farmgate_proc_vshare"), ("producer organisation", "m_fpo_vshare")]
+cm15 = dm[[c for _, c in FAC15]].corr().values
+lab15 = [l for l, _ in FAC15]
+HAAT = lab15.index("weekly haat")
+
+fig, ax = plt.subplots(figsize=(6.6, 5.4))
+im = ax.imshow(cm15, cmap=DIV_BO, vmin=-1, vmax=1)
+ax.set_xticks(range(len(lab15))); ax.set_yticks(range(len(lab15)))
+ax.set_xticklabels(lab15, rotation=42, ha="left", fontsize=9.4)
+ax.xaxis.set_ticks_position("top")
+ax.set_yticklabels(lab15, fontsize=9.4)
+for i in range(len(lab15)):
+    for j in range(len(lab15)):
+        v = cm15[i, j]
+        ax.text(j, i, "{:.2f}".format(v).replace("0.", ".").replace("1.00", "1"),
+                ha="center", va="center", fontsize=7.4,
+                color="white" if abs(v) > .55 else INK)
+# set the haat row and column off from the block it does not belong to
+for k in (HAAT - .5, HAAT + .5):
+    ax.axhline(k, color="white", lw=2.4)
+    ax.axvline(k, color="white", lw=2.4)
+ax.grid(False)
+for sp in ax.spines.values():
+    sp.set_visible(False)
+ax.tick_params(length=0)
+cb = fig.colorbar(im, ax=ax, fraction=.030, pad=.02, ticks=[-1, -0.5, 0, 0.5, 1])
+cb.outline.set_edgecolor(FAINT)
+cb.ax.tick_params(labelsize=8, colors=MUTED, length=2)
+cb.set_label("correlation across districts", fontsize=8, color=MUTED, labelpad=4)
+save(fig, "f15_facility_matrix")
