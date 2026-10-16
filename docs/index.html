@@ -42,27 +42,24 @@
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">The average Indian district records about twenty crops in a year and spreads
-    its land as though it grew about five. Counting the crops a district records and weighting
-    them by the area each takes give different answers, and the two diverge by a factor of about
-    four.</p>
+    <p class="lead">The average Indian district records about twenty crops in a year, but its land
+    is spread as if it grew about five. Counting crops and weighting them by area give answers
+    that differ by a factor of about four.</p>
   </div>
 
   <div class="prose prose--flow fade">
-    <p>Take a district that reports twenty distinct crops in a season. If its land were split
-    evenly across those twenty, the count would describe it well. In practice one cereal usually
-    takes most of the area and the remaining nineteen split what is left, often on areas of well
-    under a percent of the district's cropped land each. A plain count treats those two districts
-    identically. Sipahijala in Tripura records twenty crops in an average year and puts 93 percent
+    <p>Say a district reports twenty crops in a season. If its land were split evenly across all
+    twenty, the count would describe it well. Usually, though, one cereal takes most of the area
+    and the other nineteen share the rest, often each on well under a percent of the district's
+    cropped land. A plain count gives both cases the same score. Sipahijala in Tripura records twenty crops in an average year and puts 93 percent
     of its land under rice.</p>
 
     <p>The measure used throughout is the <em>effective number of crops</em>: the exponential of
-    Shannon entropy computed on area shares, the Hill number of order one. Take each crop's share
-    of a district's cropped area and ask how many crops of identical size would give the same
-    spread. A district where one crop takes 90 percent of the land scores close to one however
+    Shannon entropy computed on area shares, the Hill number of order one. It is the number of
+    equal-sized crops that would give the same spread of area as the district's actual shares. A district where one crop takes 90 percent of the land scores close to one however
     many crops it lists, and the effective count can never rise above the number of crops grown.
-    <a href="data.html">The measure is set out in full</a> alongside crop richness and the inverse
-    Simpson count.</p>
+    <a href="data.html">Full definitions</a> of this measure, crop richness and the inverse
+    Simpson count are on the data page.</p>
 
     <p>Evenness is the effective number of crops divided by the count of crops grown. It runs from
     near zero to one, and one means every crop a district records takes the same area. The national
@@ -70,8 +67,8 @@
 
     <p>The inverse Simpson count squares the area shares before summing, so a crop on 1 percent of
     the land contributes a hundredth of what a crop on 10 percent contributes. It asks the same
-    question as the effective number of crops and discounts rare crops harder, which is why it is
-    always the smaller of the two.</p>
+    question as the effective number of crops but discounts rare crops more, so it is always the
+    smaller of the two.</p>
   </div>
 
   <div class="figure fade">
@@ -83,10 +80,9 @@
       <div id="fig-d0d1" class="chart"></div>
       <p class="figure__note">The five points on the diagonal are Mumbai, Mumbai Suburban, Daman,
       Diu and South Salmara Mancachar, each with a single recorded crop, where one crop makes the
-      distribution trivially even. They sit at the bottom of the effective-count ranking. Above a
-      dozen crops grown, no district reaches an effective count of 15, and the vertical drop from
-      the diagonal is the quantity of interest. Both axes are counts of crops, so the vertical gap
-      is itself a number of crops.</p>
+      distribution trivially even. They sit at the bottom of the effective-count ranking. No
+      district with more than a dozen crops reaches an effective count of 15. Both axes are counts
+      of crops, so the vertical distance below the diagonal is also a number of crops.</p>
     </div>
   </div>
 
@@ -117,8 +113,8 @@
           <tr>
             <td><strong>Inverse Simpson count</strong> (Hill q = 2)</td>
             <td class="num">3.3</td>
-            <td>The same question with rare crops discounted harder, so it tracks the leading two
-            or three crops.</td>
+            <td>The same question with rare crops discounted more, so it mostly reflects the top
+            two or three crops.</td>
           </tr>
           <tr>
             <td><strong>Evenness</strong> (effective count divided by crops grown)</td>
@@ -182,13 +178,12 @@
       </table>
       <p class="tbl-note">District means within each state, for the 29 states with at least four
       districts in the panel. Ranked on the effective number of crops.</p>
-      <p class="tbl-note">Chhattisgarh appears in neither block. It records 31.7 crops in an
-      average year, more than any other state, and holds an effective count of 3.2 on an evenness
-      of 0.11, the lowest of the 29. A high crop count and a narrow cropping system sit together
-      comfortably.</p>
+      <p class="tbl-note">Chhattisgarh is in neither list. It records 31.7 crops in an average
+      year, more than any other state, but has an effective count of 3.2 and an evenness of 0.11,
+      the lowest of the 29. A high crop count can go with a narrow cropping system.</p>
       <p class="tbl-note">Punjab has the second-lowest crop count of any state at 9.1 and an
-      evenness of 0.32, above the national mean. Its narrowness comes from the small number of
-      crops grown, and its area is spread relatively evenly across them.</p>
+      evenness of 0.32, above the national mean. It is narrow because it grows few crops, not
+      because its area is uneven across them.</p>
     </div>
   </div>
 
@@ -201,13 +196,13 @@
       <div class="legend" id="map-toggle"></div>
       <div id="map-main" class="chart"></div>
       <p class="figure__note">Grey districts carry no crop area in the source, which is mostly
-      urban and metropolitan territory. The eastern rice belt and the northwestern wheat belt read narrow on the
-      effective count even where the plain crop count does not.</p>
+      urban and metropolitan territory. The eastern rice belt and the northwestern wheat belt score low on the
+      effective count even where the plain crop count is high.</p>
     </div>
   </div>
 
   <div class="prose prose--flow fade">
-    <p>What sits underneath that ranking is concentration in two cereals. Of the 725 districts,
+    <p>Two cereals drive this ranking. Of the 725 districts,
     350 are rice-dominant and another 147 wheat-dominant, so about seven in ten Indian districts
     have one of two crops as their largest single land use. No other crop leads in more than 36
     districts.</p>
@@ -232,7 +227,7 @@
     groups of roughly 180. Q1 is the least diverse quarter, Q4 the most diverse. Cereals take 77
     percent of cropped area in Q1 and 50 percent in Q4.</p>
 
-    <p>As the effective count rises, cereal area gives way to two field-crop groups. Pulses rise
+    <p>As the effective count rises, pulses and oilseeds take the place of cereals. Pulses rise
     from 5 percent of area in Q1 to 17 percent in Q4, and oilseeds from 10 percent to 17. Fruit
     stays between 0.3 and 1.2 percent of area across the four quartiles and vegetables between
     0.8 and 2.2 percent.</p>
@@ -320,8 +315,8 @@
     politics and existing agriculture already favoured them, so every estimate is a
     cross-sectional association within states.</p>
 
-    <p>Every estimate carries state fixed effects. Each state is allowed its own baseline level of
-    diversity, so only differences between districts in the same state carry the estimate, and
+    <p>Every estimate includes state fixed effects. Each state gets its own baseline level of
+    diversity, so the estimates use only differences between districts in the same state, and
     Punjab is never compared with Karnataka. Adding them cuts the estimated irrigation turning
     point from 0.51 of cropped area irrigated to 0.28, and lifts the share of variation explained
     from 0.07 to 0.53.</p>
@@ -337,7 +332,7 @@
     many small villages and one large market town scores low even if most people live near a
     market.</p>
 
-    <p>Three district counts run through the work. 725 districts have a usable crop record, and
+    <p>The work uses three sets of districts. 725 districts have a usable crop record, and
     the descriptive figures use all of them. 606 of those also match the rural-structure data and
     clear the coverage threshold, and every estimate uses that set. 429 report in every one of the
     23 years, and the national series uses those.</p>
@@ -371,8 +366,7 @@
   <div class="prose fade">
     <p class="section__label">Going further</p>
     <h2 class="section__heading">Exploring the cropping data directly</h2>
-    <p>These are interactive views of the cropping series, at the level of the individual district.
-    They carry crop composition, food energy produced per hectare, and the share of land under food
+    <p>These are interactive district-level views of the cropping data. They show crop composition, food energy produced per hectare, and the share of land under food
     crops, none of which is covered above.</p>
 
     <div class="note">
@@ -380,9 +374,9 @@
       <p>The diversity values on these four maps come from a first pass at the indices, which
       counted the crops a district recorded at any point across the period rather than the crops it
       grows in a year. That runs about ten crops higher per district than the annual measure used
-      everywhere else on this site, and it rises with how long a district was observed. The
-      geography is broadly the same and individual districts move, so read them for a district's
-      crop composition and caloric output rather than for its diversity value. Districts with only
+      everywhere else on this site, and it rises with how long a district was observed. The broad
+      geography is the same but individual districts shift, so use these maps for a district's
+      crop composition and caloric output, not its diversity value. Districts with only
       a year or two of record are drawn the same way as districts with twenty-three.</p>
     </div>
     <ul style="list-style:none;margin-left:0;margin-top:1.5rem">
@@ -423,7 +417,7 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=6b8a5936"></script>
+<script src="js/site.js?v=e2b6885b"></script>
 <script>
 const NS = 'http://www.w3.org/2000/svg';
 const mk = (t, a) => { const e = document.createElementNS(NS, t);

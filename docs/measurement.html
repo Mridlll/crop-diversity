@@ -31,33 +31,32 @@
     <p class="mast__label">Layer one</p>
     <h1 class="mast__title">Counting crops, and <em>weighting them</em></h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">Diversity has a natural unit. Using it separates two things that a
-    single score runs together, and the separation carries most of the analytical weight.</p>
+    <p class="mast__sub">Diversity can be measured in crops. Doing so separates two things that a
+    single score mixes together: how many crops a district grows, and how evenly it grows them.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">Ecology has spent several decades arguing about how to put a number on
-    diversity, and the argument has largely settled. Agricultural economics tends not to have
-    noticed. This page works through why that matters here, then documents four problems found in
-    the original construction when the indices were rebuilt from the raw crop file.</p>
+    <p class="lead">Ecologists have largely agreed on how to measure diversity. Agricultural
+    economics mostly has not adopted their approach. This page explains why that matters here, then
+    lists four problems found in the original indices when they were rebuilt from the raw crop
+    file.</p>
 
-    <p>The starting point was a composite. Shannon entropy, the Simpson index and crop richness
-    were each rescaled to run from zero to one across the sample, and the three were averaged with
-    equal weights. Composites of this shape are common and they are convenient, which is most of
-    why they persist. The difficulty is that each of the three steps embeds an assumption.</p>
+    <p>The original measure was a composite. Shannon entropy, the Simpson index and crop richness
+    were each rescaled from zero to one across the sample, then averaged with equal weights. This
+    kind of composite is common and convenient. But each of the three steps carries an
+    assumption.</p>
 
     <h3>The rescaling makes a district's score depend on other districts</h3>
 
-    <p>Min-max normalisation subtracts the sample minimum and divides by the sample range. A
-    district's position therefore depends on which other districts happen to be in the file. Add a
-    few very concentrated districts at the bottom of the range and everyone else's score rises,
-    without any of them having changed what they grow.</p>
+    <p>Min-max normalisation subtracts the sample minimum and divides by the sample range. So a
+    district's score depends on which other districts are in the file. Add a few very concentrated
+    districts at the bottom of the range and every other score rises, even though no district
+    changed what it grows.</p>
 
-    <p>This is straightforward to demonstrate. Recomputing the composite on repeated random
-    subsamples and comparing each district against its own full-sample value gives the
-    distribution below.</p>
+    <p>To test this, the composite was recomputed on repeated random subsamples and each district
+    was compared with its full-sample value. The result is below.</p>
   </div>
 
   <div class="figure fade">
@@ -67,32 +66,31 @@
       <p class="figure__sub">Two hundred random eighty percent subsamples. Each observation is one
       subsample's mean absolute deviation from the full-sample score.</p>
       <div id="fig-abi-stability" class="chart"></div>
-      <p class="figure__note">The displacement is small in absolute terms, on an index whose
-      standard deviation is roughly 0.15, so this is a conceptual objection more than a numerical
-      one. It is still an odd property for a measurement to have.</p>
+      <p class="figure__note">The shifts are small next to the index's standard deviation of
+      roughly 0.15, so this is more a problem in principle than in practice. A measure still should
+      not behave this way.</p>
     </div>
   </div>
 
   <div class="prose fade">
-    <h3>Equal weights are a decision nobody argued for</h3>
+    <h3>The equal weights have no stated reason</h3>
 
-    <p>There is no stated reason to weight richness, Shannon and Simpson at a third each. Any other
-    weighting is equally defensible, which is another way of saying none of them is.</p>
+    <p>Nothing explains why richness, Shannon and Simpson should get a third each. Any other
+    weighting would be just as easy to defend.</p>
 
     <h3>Two of the three components measure nearly the same thing</h3>
 
-    <p>This is the substantive problem rather than the aesthetic one. Shannon and Simpson are not
-    independent quantities. They are the same family evaluated at different sensitivities to rare
-    categories, and across these districts they correlate at about 0.94. A composite that averages
-    them alongside richness is therefore roughly two parts evenness to one part count, not three
-    equal parts. The weighting that was never argued for is not even the weighting that was
-    applied.</p>
+    <p>This is the bigger problem. Shannon and Simpson come from the same family of measures and
+    differ only in how much weight they give rare categories. Across these districts they correlate
+    at about 0.94. So the composite is roughly two parts evenness to one part count, not three
+    equal parts. The weights actually applied are not even the equal weights that were
+    chosen.</p>
 
     <div class="note">
       <span class="note__label">Consequence</span>
-      A single number that blends how many crops a district grows with how evenly it spreads them
-      cannot distinguish a district that adds a twentieth crop on half a hectare from one that
-      rebalances its existing land. Later on, that distinction turns out to separate two kinds of
+      A single number that mixes how many crops a district grows with how evenly it spreads them
+      cannot tell apart a district that adds a twentieth crop on half a hectare from one that
+      rebalances its existing land. Later pages show that this difference separates two kinds of
       market infrastructure that otherwise look alike.
     </div>
   </div>
@@ -103,10 +101,10 @@
     <p class="section__label">The alternative</p>
     <h2 class="section__heading">Diversity as an effective number of crops</h2>
 
-    <p>The standard resolution is to convert each index into the number of equally-common
-    categories that would produce the observed value. These are the Hill numbers, indexed by an
-    order <em>q</em> that sets how much weight rare categories receive. They share a single unit,
-    so they can be compared with each other and read without a scale.</p>
+    <p>The standard fix is to convert each index into the number of equally common categories
+    that would give the observed value. These are the Hill numbers. Each has an order <em>q</em>
+    that sets how much weight rare categories get. They all share one unit, so they can be compared
+    directly and read without rescaling.</p>
 
     <div class="tbl-wrap">
       <table>
@@ -124,27 +122,25 @@
       </table>
     </div>
 
-    <p>D1 is the one to hold onto. It asks: if every crop in this district had the same area, how
-    many crops would there have to be to give the diversity we observe? A district growing twenty
-    crops with four fifths of its land under paddy does not behave like a twenty-crop district. It
-    behaves like one with three or four, and D1 says so.</p>
+    <p>D1 is the main measure. It gives the number of equal-area crops that would produce the
+    diversity we observe. A district growing twenty crops with four fifths of its land under paddy
+    has a D1 of about three or four, not twenty.</p>
 
-    <p>Two properties make this family easier to work with. The ordering D0 &ge; D1 &ge; D2 holds by
-    construction, so it doubles as a correctness check on the code, and it passed on every
-    district-year here. And because the unit is crops, a doubling of D1 means diversity genuinely
-    doubled, which is not true of Shannon entropy in log units.</p>
+    <p>Two properties make these measures easier to use. The ordering D0 &ge; D1 &ge; D2 always
+    holds, so it works as a check on the code. It passed for every district-year here. And because
+    the unit is crops, a doubling of D1 means diversity doubled. That is not true of Shannon entropy
+    in log units.</p>
   </div>
 
   <div class="figure fade">
     <div class="figure__frame">
       <p class="figure__label">Figure 2</p>
       <p class="figure__title">Where the districts sit on each order</p>
-      <p class="figure__sub">Distribution across districts. As <em>q</em> rises, rare crops stop
-      counting and the distribution collapses toward the staples.</p>
+      <p class="figure__sub">Distribution across districts. As <em>q</em> rises, rare crops count
+      for less and the distribution shifts toward the staples.</p>
       <div id="fig-hill" class="chart"></div>
-      <p class="figure__note">The distance between the D0 and D1 distributions is the part of
-      Indian cropping that exists on paper more than in the field: crops grown, but on areas too
-      small to shape what the district is doing.</p>
+      <p class="figure__note">The gap between the D0 and D1 distributions shows crops that are
+      grown, but on areas too small to change the district's overall cropping.</p>
     </div>
   </div>
 </section>
@@ -154,25 +150,25 @@
     <p class="section__label">Construction</p>
     <h2 class="section__heading">Four problems found in the original indices</h2>
 
-    <p>Separately from the choice of index, the original indices were checked against the raw
-    area&ndash;production&ndash;yield file they were built from. One suspicion turned out to be
-    unfounded and three problems were real.</p>
+    <p>The original indices were also checked against the raw
+    area&ndash;production&ndash;yield file they were built from. One suspected problem turned out
+    to be fine. Three were real.</p>
 
     <h3>Cleared: seasons are not double counted</h3>
 
-    <p>In this data, the label <code>Whole Year</code> is sometimes a separate reporting line for
-    perennials and sometimes a total that already contains the seasonal rows. If it were routinely
-    the latter, summing across seasons would double count every hectare. It is not. Only a small
-    fraction of one percent of Whole Year cells overlap with a named season for the same crop and
-    district, and few of those look like genuine totals. Reconstructed national gross cropped area
-    lands in the range published figures put it, which rules out systematic duplication.</p>
+    <p>In this data, the label <code>Whole Year</code> is sometimes a separate line for perennials
+    and sometimes a total that already includes the seasonal rows. If it were usually a total,
+    summing across seasons would double count every hectare. It is not. Well under one percent of
+    Whole Year cells overlap with a named season for the same crop and district, and few of those
+    look like real totals. Rebuilt national gross cropped area falls within the range of published
+    figures, which rules out systematic duplication.</p>
 
-    <h3>The last year is not a year</h3>
+    <h3>The last year is incomplete</h3>
 
-    <p>The dataset is labelled as running to 2020&ndash;21 and the project described itself as
-    covering twenty-four agricultural years. The final year contains a few hundred rows across
+    <p>The dataset is labelled as running to 2020&ndash;21, and the project described itself as
+    covering twenty-four agricultural years. But the final year has only a few hundred rows across
     thirteen districts, against nineteen thousand rows and nearly two hundred million hectares the
-    year before. It is a partial extract rather than a year of data.</p>
+    year before. It is a partial extract, not a full year of data.</p>
   </div>
 
   <div class="figure fade">
@@ -189,16 +185,16 @@
   <div class="prose fade">
     <h3>Richness was pooled across the whole period</h3>
 
-    <p>This is the one that mattered. The original code grouped by district without grouping by
-    year, so the richness figure counted every crop a district recorded at any point across two
-    decades, rather than the crops it grows in a year. Two things follow. The measure runs about
-    half again as high as annual richness. More awkwardly, it rewards being observed for longer,
-    since more years of data mean more opportunities to record a crop once.</p>
+    <p>This was the most important problem. The original code grouped by district but not by year.
+    So richness counted every crop a district recorded at any point across two decades, not the
+    crops it grows in a year. As a result, it runs about one and a half times as high as annual
+    richness. It also rewards districts observed for longer, since more years of data give more
+    chances to record a crop once.</p>
 
     <p>Roughly a quarter of districts have fewer than twenty years of data. Pooled richness
     correlates with a district's number of observed years at about 0.55, against roughly 0.31 for
-    annual richness. Since richness carried a third of the composite, part of the headline index
-    was measuring survey coverage.</p>
+    annual richness. Since richness made up a third of the composite, part of the main index was
+    measuring survey coverage.</p>
   </div>
 
   <div class="figure fade">
@@ -212,18 +208,18 @@
         <span class="legend__item"><span class="legend__swatch" style="background:#0E9BB5"></span>measured per year, then averaged</span>
       </div>
       <div id="fig-coverage" class="chart"></div>
-      <p class="figure__note">If richness were a property of a district's agriculture, neither line
-      would slope. The upper one does.</p>
+      <p class="figure__note">If richness only reflected a district's farming, neither line would
+      slope. The pooled line does.</p>
     </div>
   </div>
 
   <div class="prose fade">
     <h3>Duplicate rows were summed</h3>
 
-    <p>A small number of exact duplicates on district, year, season and crop survive the cleaning
-    the original code performs, concentrated in one oilseed in one state. A group-and-sum adds them
-    together, inflating area for those cells. The effect is negligible nationally and it is still
-    wrong, so the rebuild collapses them.</p>
+    <p>A small number of exact duplicates on district, year, season and crop survive the original
+    code's cleaning, mostly in one oilseed in one state. A group-and-sum adds them together and
+    inflates area for those cells. The effect is negligible nationally but still wrong, so the
+    rebuild collapses them.</p>
   </div>
 </section>
 
@@ -234,8 +230,8 @@
 
     <p>Rebuilding the indices year by year, dropping the incomplete final year and collapsing the
     duplicates leaves the broad picture in place. The corrected and original composites correlate
-    at about 0.95, and the state that came top before still comes top. But the agreement is less
-    reassuring at district level than the correlation suggests.</p>
+    at about 0.95, and the top state is unchanged. At district level, though, the agreement is
+    weaker than the correlation suggests.</p>
   </div>
 
   <div class="figure fade">
@@ -244,18 +240,17 @@
       <p class="figure__title">How far districts move when the construction is fixed</p>
       <p class="figure__sub">Absolute change in rank position out of roughly 725 districts.</p>
       <div id="fig-moves" class="chart"></div>
-      <p class="figure__note">The districts that move furthest are ones that recorded many crops
-      across the period without growing many in any single year, so pooling had been crediting them
-      with diversity they did not have in the field.</p>
+      <p class="figure__note">The districts that move most recorded many crops across the period
+      but grew few in any single year. Pooling had credited them with diversity they did not have in
+      the field.</p>
     </div>
   </div>
 
   <div class="prose fade">
-    <p>The more useful consequence is not the reshuffling but what it unlocks. On the original
-    pooled construction, crop richness showed no relationship at all with irrigation. On the
-    corrected annual measure it shows the same pattern as every other index. A construction problem
-    had been concealing a real result rather than manufacturing a false one, which is the more
-    fortunate of the two ways for this kind of thing to go.</p>
+    <p>The bigger change is in the results. With the original pooled measure, crop richness showed
+    no relationship with irrigation. With the corrected annual measure, it shows the same pattern as
+    every other index. The construction error had hidden a real result rather than created a false
+    one.</p>
 
     <p style="margin-top:2rem"><a href="irrigation.html">Continue to the irrigation layer &rarr;</a></p>
   </div>
@@ -288,7 +283,7 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=6b8a5936"></script>
+<script src="js/site.js?v=e2b6885b"></script>
 <script>
 async function drawAll() {
   const [audit, idx] = await Promise.all([

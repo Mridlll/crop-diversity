@@ -41,9 +41,9 @@
   <div class="prose fade">
     <p class="lead">The effective number of crops rises with the irrigated share of sown area and
     then falls. It averages 4.1 crops in the least irrigated tenth of districts, peaks at 5.9 in
-    the fourth tenth, and falls to 3.7 in the most irrigated tenth. One mechanism runs in a single
-    direction: assured water makes irrigated cereals viable and would, on its own, push other crops
-    out of the rotation, which gives a steady decline.</p>
+    the fourth tenth, and falls to 3.7 in the most irrigated tenth. If assured water only made
+    irrigated cereals viable and pushed other crops out of the rotation, diversity would instead
+    decline steadily.</p>
   </div>
 
   <div class="prose prose--flow fade">
@@ -51,11 +51,11 @@
     the land, so the number of equally-sized crops that would give the same diversity is about 5.
     That second number is the effective number of crops: the Hill number of order one, the
     exponential of Shannon entropy. It moves when land shifts between crops even if the list of
-    crops grown does not change at all.</p>
+    crops grown does not change.</p>
 
     <p>Irrigation is measured from village records that report irrigated and unirrigated land
-    separately, as irrigated land over the sum of the two. The measure is closed by construction
-    and needs no external denominator. At state level it tracks published irrigation shares at a
+    separately, as irrigated land over the sum of the two. Both parts come from the same records,
+    so it needs no outside denominator. At state level it tracks published irrigation shares at a
     rank correlation of 0.85 with a mean absolute difference of 0.087, running high by 0.24 to 0.33
     in Maharashtra, Jharkhand and Assam. An independent measure built from the 2011 census village
     directory agrees at a rank correlation of 0.81.</p>
@@ -73,9 +73,9 @@
       <p class="figure__sub">Each point is a district. The line is a quadratic fit, allowed to bend
       once, with the vertical rule marking where it turns.</p>
       <div id="fig-scatter" class="chart"></div>
-      <p class="figure__note">Water relaxes the constraint that holds rainfed districts to a small
-      set of hardy crops, which accounts for the rising arm. Above the turning point the effective
-      count falls back to 3.7 crops in the most irrigated tenth of districts, close to the 4.1 of
+      <p class="figure__note">Without water, rainfed districts are limited to a few hardy crops.
+      Irrigation lifts that limit, which explains the rising part of the curve. Above the turning
+      point the effective count falls back to 3.7 crops in the most irrigated tenth of districts, close to the 4.1 of
       the least irrigated tenth.</p>
     </div>
   </div>
@@ -113,8 +113,8 @@
       <p class="figure__note">Each series is shown as a share of its own maximum so both fit one
       axis. The effective count peaks in the fourth group at 5.9 crops. The plain count peaks in
       the eighth at 24.3, so the two turn at different points along the irrigation range. The bars
-      carry the spread of a group mean across roughly 60 districts, so single points are noisy and
-      the shape is the result.</p>
+      show the spread of a group mean across roughly 60 districts. Single groups are noisy, so
+      read the overall shape.</p>
     </div>
   </div>
 
@@ -153,7 +153,7 @@
       <p class="tbl-note">The effective count peaks in the fourth group at 5.86 and falls to 3.71
       in the tenth. The plain count peaks two groups later, in the eighth at 24.3. Cereal area
       share falls from 0.718 to 0.574 by the seventh group and then climbs to 0.793 in the tenth,
-      which is the composition behind the falling arm. Dominant-weighted is the effective count
+      and this shift drives the falling part of the curve. Dominant-weighted is the effective count
       weighted toward the crops that take the most land, and evenness is the effective count
       divided by the count of crops grown.</p>
     </div>
@@ -178,16 +178,15 @@
     of sibling districts, and weighting by cropped area. Six change the diversity index.</p>
 
     <p>State fixed effects mean each district is compared with districts in its own state, so
-    Punjab is set against Punjab and not against Kerala, and anything a state shares (its policy,
-    its rainfall regime, its recording practice) drops out. Without them the fitted turning point
+    Punjab is set against Punjab and not against Kerala. Anything common to a state, such as
+    policy, rainfall or recording practice, drops out. Without them the fitted turning point
     sits at 0.51 of sown area and the model accounts for 6 percent of the variation across
     districts. With them it sits at 0.28 and accounts for 53 percent.</p>
 
     <p>Standard errors throughout are clustered on the pre-2011 parent district. 64 of the 606
     districts were carved out of a shared parent and inherit identical village records, so they are
-    not independent observations, and treating them as if they were would make the standard errors
-    too small. Clustering widens them to allow for it. Two of the fourteen rows answer the same
-    problem directly: dropping the shared-parent districts leaves the curvature at -6.38, and
+    not independent observations. Treating them as independent would make the standard errors
+    too small, and clustering corrects for this. Two of the fourteen rows also test this directly: dropping the shared-parent districts leaves the curvature at -6.38, and
     weighting each sibling group down leaves it at -6.61, against -6.88 in the headline.</p>
   </div>
 
@@ -196,7 +195,7 @@
       <p class="figure__label">Figure 4</p>
       <p class="figure__title">Curvature across specifications and indices</p>
       <p class="figure__sub">Coefficient on irrigation squared. A negative value means the curve
-      bends downward, which is what a turning point requires.</p>
+      bends downward, which a turning point requires.</p>
       <div id="fig-rob" class="chart"></div>
       <p class="figure__note">All fourteen coefficients are negative and significant at the five
       percent level. The weakest is evenness, at p = 0.013; the rest are below 0.001. D0 is the
@@ -269,9 +268,10 @@
 
     <div class="note">
       <span class="note__label">How to read the curve</span>
-      The curve describes how the cross-section is arranged. Canal commands and tubewell belts were
-      developed where soils, aquifers, terrain and politics already favoured particular
-      agriculture, and a district that installed irrigation tomorrow would not travel along it.
+      The curve compares districts at one point in time; it is not a path a district follows.
+      Canal commands and tubewell belts were built where soils, aquifers, terrain and politics
+      already favoured certain kinds of farming. A district that added irrigation tomorrow would
+      not move along this curve.
     </div>
   </div>
 </section>
@@ -281,11 +281,11 @@
     <p class="section__label">Composition</p>
     <h2 class="section__heading">Where the water comes from</h2>
 
-    <p>Village records report a dominant irrigation source alongside the irrigated share, and the
-    sources deliver water on different terms. A canal command delivers on a schedule set by an
-    authority, in a rotation built around the crop the system was designed for. Under a tubewell
-    the timing is the farmer's, bounded by the pump and the water table. Surface sources, meaning
-    tanks, ponds and lifts from rivers, hold only what the season's rainfall put in them.</p>
+    <p>Village records report a dominant irrigation source alongside the irrigated share. The
+    sources supply water differently. A canal delivers on a schedule set by an authority, in a
+    rotation built around the crop the system was designed for. With a tubewell the farmer sets
+    the timing, within the limits of the pump and the water table. Surface sources (tanks, ponds
+    and lifts from rivers) hold only what that season's rain puts in them.</p>
 
     <p>Mission Antyodaya, a village survey run in 2019 covering most rural villages, records one
     dominant irrigation source per village. Averaged across a district's villages and then across
@@ -315,12 +315,11 @@
 
   <div class="prose prose--flow fade">
     <p>The source shares enter alongside irrigation and its square, with groundwater left out of
-    the set. Every coefficient is therefore read against groundwater: a district whose villages
-    report canal or surface dominance, set against a district on tubewells at the same irrigation
-    level, in the same state and of similar holding size. Because the variable is a village share
-    running from 0 to 1, a coefficient describes the difference between a district where no village
-    reports that source as dominant and one where every village does, which covers the full range
-    of the variable.</p>
+    the set. So every coefficient compares a district whose villages report canal or surface
+    dominance with a district on tubewells at the same irrigation level, in the same state and of
+    similar holding size. The variable is a village share from 0 to 1, so a coefficient is the
+    difference between a district where no village reports that source as dominant and one where
+    every village does.</p>
 
     <p>An area share is the crop group's area over the district's gross cropped area, averaged over
     the years the district is observed. Cereals take most of it nearly everywhere, running from
@@ -387,13 +386,13 @@
     <p>Surface-water dependence goes with 2.03 fewer effective crops (p = 0.026), a
     dominant-weighted count 1.66 lower (p = 0.019), and a cereal area share 0.30 higher (p =
     0.0001). Cereal share across the ten irrigation groups runs from 0.718 down to 0.574 and back
-    up to 0.793, a swing of about 0.22, so a coefficient of 0.30 spans roughly twice that whole
+    up to 0.793, a swing of about 0.22, so a coefficient of 0.30 is larger than that whole
     observed range.</p>
 
     <p>Canals shorten the crop list by 2.6 crops while leaving the effective count where it was, so
     the land does not concentrate onto fewer crops. Cereal concentration sits with surface water
-    instead, at 0.30 of area. Reading that as a matter of how controllable the water is remains an
-    interpretation: nothing here measures reliability of supply. Both results are cross-sectional,
+    instead, at 0.30 of area. One reading is that this reflects how controllable the water is, but
+    nothing here measures reliability of supply. Both results are cross-sectional,
     and the design does not separate a risk mechanism from a scheduling one.</p>
   </div>
 </section>
@@ -402,11 +401,10 @@
   <div class="prose fade">
     <p class="section__label">Context</p>
     <h2 class="section__heading">District characteristics and the effective number of crops</h2>
-    <p>Irrigation is one of several district characteristics that could be lined up against
-    diversity. Placing them on a common footing, each entered on its own and then again with the
-    irrigated share, its square, log mean holding size and state fixed effects, shows which
-    characteristics keep an association once irrigation, holding size and state are held
-    constant.</p>
+    <p>Irrigation is one of several district characteristics that may relate to diversity. Each
+    one is entered on its own, and then again with the irrigated share, its square, log mean
+    holding size and state fixed effects. The second version shows which characteristics keep an
+    association once irrigation, holding size and state are held constant.</p>
   </div>
   <div class="figure fade">
     <div class="figure__frame">
@@ -495,7 +493,7 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=6b8a5936"></script>
+<script src="js/site.js?v=e2b6885b"></script>
 <script>
 const LBL = {
   D1_exp_shannon: 'effective crops (D1)',

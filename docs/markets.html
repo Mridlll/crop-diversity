@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Markets, Inputs and Crop Diversity</title>
-<meta name="description" content="Mandis, weekly haats, fertiliser shops and cold stores against what Indian districts grow. One of them behaves unlike all the others.">
+<meta name="description" content="Mandis, weekly haats, fertiliser shops and cold stores against what Indian districts grow. The weekly haat behaves differently from the rest.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -38,28 +38,26 @@
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">What a district grows is bounded by the output markets and the input suppliers
-    within reach of its villages. Both sides of that constraint are physical infrastructure sitting
-    in specific villages: a regulated mandi, a weekly haat, a fertiliser shop, a cold store. The
-    village records locate all of them, so each facility is measured separately instead of summed
-    into one access score.</p>
+    <p class="lead">What a district grows depends on the markets and input suppliers its villages
+    can reach. These are physical facilities in specific villages, such as a regulated mandi, a
+    weekly haat, a fertiliser shop or a cold store. The village records list each one, so each
+    facility is measured separately rather than added into one access score.</p>
   </div>
 
   <div class="prose prose--flow fade">
-    <p>The four institutions carry different transactions. A regulated mandi moves graded, storable
-    commodity in bulk, which in most of India means cereals under assured procurement. Perishables
-    in small lots clear at the weekly haat, which sits in the village itself and runs one day in
-    seven. Fertiliser shops, seed centres, soil testing and custom hiring of machinery are the
-    retail end of a purchased-input package, and cold storage is what makes a perishable sellable
-    outside its harvest window.</p>
+    <p>Each type handles different trade. A regulated mandi sells graded, storable produce in bulk,
+    which in most of India means cereals under assured procurement. Small lots of perishables are
+    sold at the weekly haat, which is held in the village itself one day a week. Fertiliser shops,
+    seed centres, soil testing and custom hiring of machinery are where farmers buy inputs. Cold
+    storage lets a perishable crop be sold after its harvest season.</p>
 
-    <p>Four of the ten need a word. Custom hiring is the village-level renting out of tractors and
+    <p>Four of the ten need explaining. Custom hiring is the village-level renting out of tractors and
     machinery to farmers who own none. Farm-gate processing is milling, ginning or grading done
     inside the village rather than after the produce has travelled. Seed centres and soil testing
     are extension services, the first supplying certified seed and the second telling a farmer what
     his field is short of. A farmer producer organisation is a registered collective that aggregates
-    its members' produce and buys their inputs jointly, so it sits on both sides of the market at
-    once.</p>
+    its members' produce and buys their inputs jointly, so it works on both the selling and the
+    buying side.</p>
   </div>
 
   <div class="figure fade">
@@ -121,8 +119,8 @@
     <p class="section__label">Structure</p>
     <h2 class="section__heading">How the ten facilities correlate with each other</h2>
 
-    <p>Nine of the ten facilities correlate with each other between 0.24 and 0.83, so they largely
-    stand in for one underlying quantity: how commercially developed a district's countryside is.
+    <p>Nine of the ten facilities correlate with each other between 0.24 and 0.83, so they mostly
+    measure one thing: how commercially developed a district's countryside is.
     The weekly haat is the exception, correlating between &minus;0.21 and +0.06 with the other
     nine.</p>
   </div>
@@ -157,22 +155,22 @@
   </div>
 
   <div class="prose prose--flow fade">
-    <p>Within the nine, the six input-supply and post-harvest measures sit closest together,
-    between 0.63 and 0.83. The weekly haat sits apart from all of them. Its correlation is
+    <p>Within the nine, the six input-supply and post-harvest measures are the most closely linked,
+    between 0.63 and 0.83. The weekly haat is not linked to any of them. Its correlation is
     &minus;0.15 with regulated mandis, &minus;0.21 with regular markets
     and &minus;0.09 with custom hiring. Against the development controls it runs +0.04 with
     night-time lights and &minus;0.16 with the density of non-farm establishments, the only facility
     of the ten with a negative reading on either.</p>
 
-    <p>The weekly haat sits in a different kind of district. It is the only one of the ten
-    facilities that does not rise with the density of non-farm business.</p>
+    <p>So weekly haats are found in a different kind of district. The haat is the only one of the
+    ten facilities that does not rise with the density of non-farm business.</p>
 
     <p>Because nine of the ten rise together with commercial development, every model carries three
     measures of how developed a district's countryside is: night-time light output from satellite
     imagery, which tracks local economic activity; non-farm establishments per thousand people from
     the Economic Census; and a connectivity index built from the share of villages with a paved
-    road, public transport, a bank and a railway station. Without them a facility would largely be
-    standing in for how prosperous its district is.</p>
+    road, public transport, a bank and a railway station. Without these controls, a facility would
+    mostly be measuring how prosperous its district is.</p>
   </div>
 </section>
 
@@ -186,8 +184,8 @@
     exponential of the Shannon entropy: how many equally sized crops it would take to produce the
     diversity actually observed. That averages 4.9. A district growing twenty crops where one cereal
     takes most of the land has an effective count of four or five, because the nineteen crops on
-    slivers barely register. When the count moves and the effective number does not, crops are
-    appearing on small plots without changing the main field crop.</p>
+    small plots count for little. If the count rises and the effective number does not, new crops
+    are being added on small plots while the main field crop stays the same.</p>
   </div>
 
   <div class="prose prose--flow fade">
@@ -198,10 +196,10 @@
 
     <p>Every model holds the share of sown area irrigated and its square, log mean holding size,
     scheduled tribe population share, night-time lights, non-farm establishment density and a
-    connectivity index, and carries a separate intercept for each state. Each state getting its own
-    intercept means a district is only ever compared with other districts of the same state. Nothing
-    in these numbers comes from Punjab being unlike Kerala; it comes from districts within Punjab,
-    and within Kerala, differing from one another.</p>
+    connectivity index, and carries a separate intercept for each state. This means a district is
+    only compared with other districts in the same state. The results come from differences between
+    districts within Punjab, or within Kerala, and not from differences between Punjab and
+    Kerala.</p>
 
     <p>Many present-day districts were carved out of a single pre-2011 parent and inherit identical
     village records, so they are not independent observations. Standard errors are clustered on that
@@ -209,10 +207,10 @@
     them entirely leaves the haat coefficient at +8.0.</p>
 
     <p>Because the facilities correlate up to 0.83 with one another, entering them together splits
-    shared variance and makes individual coefficients unstable enough to flip sign. Entering the
-    four input-supply facilities as a block pushes variance inflation to between 3.4 and 4.1.
-    Entering each on its own is the honest read: it asks what a district with more of that facility
-    looks like, without pretending to hold the others constant.</p>
+    their shared variance and can make individual coefficients flip sign. Entering the four
+    input-supply facilities as a block pushes variance inflation to between 3.4 and 4.1. So each
+    facility is entered on its own. The result shows what a district with more of that facility
+    looks like, without claiming to hold the others constant.</p>
 
     <p>Coefficients are per unit of the village share, which is the gap between no village having
     the facility and every village having one. That contrast never occurs in the data, the highest
@@ -301,9 +299,9 @@
     village share gives the same sign at p = 0.008.</p>
 
     <p>Before any controls the haat coefficient on crop count is +17.0. State fixed effects alone
-    cut it to +7.2 and it holds there through the full control set at +7.3. Most of the raw
-    association is geography rather than the haat, and what survives is what is left within a
-    state.</p>
+    cut it to +7.2, and it stays there with the full control set at +7.3. Most of the raw
+    association reflects geography, not the haat. The remaining estimate compares districts within
+    the same state.</p>
 
     <div class="tbl-wrap">
       <table>
@@ -337,7 +335,7 @@
     <p>A one standard deviation difference in haat coverage, 11.7 percentage points of a district's
     villages, goes with 0.9 more crops grown, against a mean of 21.2 crops.</p>
 
-    <p>The count of crops moves and the balance does not. The effective number of crops rises by
+    <p>The count of crops changes, but the balance between them does not. The effective number of crops rises by
     0.49 (p = 0.56) against a mean of 4.9. Evenness, the effective count divided by the plain count,
     says how equally area is spread across the crops that are grown with the number of crops divided
     out, and it averages 0.254; with the three output-market facilities entered together it falls by
@@ -347,8 +345,8 @@
       <span class="note__label">What that combination means</span>
       <p>Haat districts grow more crops without spreading their area any more evenly across them.
       The extra crops sit on small plots around a staple that keeps most of the area, closer to
-      kitchen gardening than to a change in the main field crop. Keeping the count and the balance
-      as separate outcomes is what makes that distinction visible.</p>
+      kitchen gardening than to a change in the main field crop. This only shows up because the
+      count and the balance are measured as separate outcomes.</p>
     </div>
 
     <h3>Input and commercial infrastructure goes with fewer pulses</h3>
@@ -360,8 +358,8 @@
 
     <p>Each facility is tested against ten crop categories, so at five percent one of them would be
     expected to clear the bar by chance. A Benjamini-Hochberg correction across the ten adjusts for
-    that, and the fertiliser shop result on pulses survives it. Pulses are the crop group that gives
-    way where fertiliser shops, seed centres and custom hiring of machinery are dense.</p>
+    that, and the fertiliser shop result on pulses survives it. Pulses take less land where
+    fertiliser shops, seed centres and custom hiring of machinery are dense.</p>
 
     <h3>Producer organisations go with a higher effective number of crops</h3>
 
@@ -380,8 +378,7 @@
     <p class="section__label">Two things that did not hold</p>
     <h2 class="section__heading">Mandi density and the shape of the irrigation curve</h2>
 
-    <p>Two expectations were set out before estimation and the cross-section does not support
-    either.</p>
+    <p>Two expectations were set out before estimation. The cross-section supports neither.</p>
   </div>
 
   <div class="prose prose--flow fade">
@@ -400,8 +397,8 @@
     with each infrastructure measure asks whether the bend is sharper where infrastructure is
     dense.</p>
 
-    <p>The usual explanation for the falling arm is Punjab: where irrigation is near total and
-    procurement is assured, wheat and rice are the settled choice. If that were the mechanism, the
+    <p>The usual explanation for the fall is Punjab: where irrigation is near total and procurement
+    is assured, farmers settle on wheat and rice. If that were the mechanism, the
     fall would be steeper where mandis and fertiliser shops are dense. Every interaction is
     positive, so the curve is flatter where markets and input supply are dense. The mandi
     interaction is +2.62 (p = 0.033), the input-supply index +2.23 (p = 0.056) and the post-harvest
@@ -434,7 +431,7 @@
       <span class="note__label">Reading these associations</span>
       <p>Mandis, cold stores and fertiliser shops are built where there is already surplus to trade,
       so causality runs in both directions with the cropping pattern. Controlling for night-time
-      lights, non-farm density and connectivity narrows that problem without resolving it. Facilities
+      lights, non-farm density and connectivity reduces that problem but does not solve it. Facilities
       are recorded in 2019&ndash;20 and cropping is averaged across 1997&ndash;98 to 2019&ndash;20,
       so these are associations between a district's current infrastructure and its long-run
       cropping pattern.</p>
@@ -471,7 +468,7 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=6b8a5936"></script>
+<script src="js/site.js?v=e2b6885b"></script>
 <script>
 async function drawAll() {
   const mk = await loadJSON('data/site_markets.json');

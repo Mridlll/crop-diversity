@@ -231,6 +231,8 @@ for _, r in m.iterrows():
     if g is None or g.is_empty:
         continue
     pr = {"n": str(r["dtname"]).title(), "s": str(r["stname"]).title()}
+    # the resolved analysis key, so pages can join timeline.json without re-matching names
+    pr["k"] = r["mk"] if isinstance(r["mk"], str) else None
     for short, col in FIELDS.items():
         v = r.get(col)
         pr[short] = v if isinstance(v, str) else clean(v)

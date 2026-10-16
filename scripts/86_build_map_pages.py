@@ -345,7 +345,8 @@ async function drawAll(){
   Object.keys(TL.districts).forEach(k => { byNorm[norm(k)] = TL.districts[k]; });
   let hit = 0;
   geo.features.forEach(f => {
-    const t = byNorm[norm(f.properties.s + '|' + f.properties.n)];
+    const pr = f.properties;
+    const t = (pr.k && TL.districts[pr.k]) || byNorm[norm(pr.s + '|' + pr.n)];
     f.properties._tl = t || null;
     if (t) hit++;
   });

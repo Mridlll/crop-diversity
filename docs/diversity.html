@@ -30,15 +30,15 @@
     <p class="mast__label">District map</p>
     <h1 class="mast__title">How varied the cropping is</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">Four ways of counting, and what each one says about the same district.</p>
+    <p class="mast__sub">Four measures of crop diversity for each district.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">A district that grows twenty crops and puts four fifths of its land
-    under one of them is not a varied district, and a plain count will call it one anyway. These
-    four measures pull apart what a single count runs together.</p>
+    <p class="lead">A district can grow twenty crops and still put four fifths of its land
+    under one of them. A plain count of crops would call that district varied. The four measures
+    here separate the number of crops from how land is shared among them.</p>
   </div>
 
   <div class="figure figure--wide fade">
@@ -48,26 +48,24 @@
       <p class="figure__sub">Choose a measure. Hover a district for its crop composition.</p>
       <div class="legend" id="tabs"></div>
       <div id="themap" class="chart"></div>
-      <p class="figure__note">Grey districts carry no agricultural record, which is mostly urban territory. Values average each district's own years between 1997&ndash;98 and 2019&ndash;20.</p>
+      <p class="figure__note">Grey districts have no agricultural record; most are urban. Values average each district's own years between 1997&ndash;98 and 2019&ndash;20.</p>
     </div>
   </div>
 
   <div class="prose prose--flow fade">
     <h3>What the four measures do</h3>
-    <p>The count of crops grown treats every crop alike, so a crop on a single hectare weighs as
-    much as the staple. The effective number of crops asks how many equally sized crops would give
-    the diversity actually observed, so a district's answer moves toward the crops that hold its
-    land. The dominant-weighted count goes further still and is governed almost entirely by the
-    largest crops.</p>
-    <p>Evenness is the effective number divided by the plain count. It strips the count out and
-    leaves only how evenly land is spread, which is why a district can grow many crops and still
-    score low.</p>
+    <p>The count of crops grown treats every crop the same. A crop on one hectare counts as much
+    as the staple. The effective number of crops is the number of equally sized crops that would
+    give the observed diversity, so it gives more weight to the crops that cover most of the land.
+    The dominant-weighted count goes further and depends almost entirely on the largest crops.</p>
+    <p>Evenness is the effective number divided by the plain count. It removes the count and
+    measures only how evenly land is spread. A district can grow many crops and still score low.</p>
     <h3>Reading the map</h3>
-    <p>Switch between the count and the effective number and watch the eastern rice belt and the
-    northwestern wheat belt darken and then fade. Those districts grow an ordinary number of crops.
-    What separates them is how much land the leading crop takes.</p>
-    <p>Karnataka, interior Andhra Pradesh, Madhya Pradesh and Rajasthan hold their colour across
-    all four measures, which is what a genuinely varied cropping pattern looks like.</p>
+    <p>When you switch from the count to the effective number, the eastern rice belt and the
+    northwestern wheat belt get lighter. These districts grow an ordinary number of crops, but the
+    leading crop takes much of the land.</p>
+    <p>Karnataka, interior Andhra Pradesh, Madhya Pradesh and Rajasthan keep their colour on all
+    four measures. Their cropping is varied by every measure.</p>
   </div>
 </section>
 
@@ -108,7 +106,7 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=6b8a5936"></script>
+<script src="js/site.js?v=e2b6885b"></script>
 <script>
 
 function crops(pr) {

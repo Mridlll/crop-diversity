@@ -45,8 +45,7 @@
     fifty-four crops across kharif, rabi and whole-year seasons, from 1997&ndash;98 to
     2019&ndash;20. The series is compiled by the ISB India Data Portal from Ministry of Agriculture
     and Farmers Welfare publications. The fifty-four crops group as cereals, pulses, oilseeds,
-    fibre crops, fruits, vegetables, spices, sugar, fodder, and drugs and narcotics. It is reported
-    crop area, so land outside the reporting frame, kitchen gardens among it, never appears.</p>
+    fibre crops, fruits, vegetables, spices, sugar, fodder, and drugs and narcotics. It covers reported crop area only, so land outside the reporting frame, such as kitchen gardens, is not included.</p>
 
     <p>Everything used to describe a district comes from SHRUG 2.1, an open dataset that puts
     Indian administrative records on a single village identifier so sources collected years apart
@@ -54,10 +53,9 @@
     record is summed to the district that contains it, so a district value is the total or the
     share across its villages.</p>
 
-    <p>Mission Antyodaya carries most of what a district is described by. It is a rural survey in
+    <p>Most district characteristics come from Mission Antyodaya. It is a rural survey in
     which each gram panchayat reports what its villages have, from irrigated land to whether there
-    is a mandi or a cold store. The answers are given by the panchayat and not measured, so levels
-    can run high.</p>
+    is a mandi or a cold store. The panchayat reports the answers rather than measuring them, so levels can run high.</p>
 
     <p>A village share is the fraction of a district's villages that report something, so a mandi
     village share of 0.030, which is the average across districts, means three villages in a
@@ -83,9 +81,7 @@
       are measured in different decades.</p>
     </div>
 
-    <p>Diversity is measured at district level from the agricultural statistics, and the village
-    data supplies the characteristics each district is described by, because SHRUG holds no crop
-    areas. That gives one row per district: 606 districts across 30 states, each carrying its
+    <p>SHRUG holds no crop areas, so diversity is measured at district level from the agricultural statistics and the village data supplies each district's characteristics. That gives one row per district: 606 districts across 30 states, each carrying its
     average cropping pattern over 1997&ndash;98 to 2019&ndash;20 alongside its village
     characteristics.</p>
   </div>
@@ -107,8 +103,7 @@
     any district and in any year.</p>
 
     <p>The average district grows 21.2 different crops in a year. Most of its land sits under two or
-    three of them, so the effective number is 4.9. Read that as a district about as diverse as one
-    growing five crops on equal land. The gap between 21.2 and 4.9 is what a plain count hides.</p>
+    three of them, so the effective number is 4.9. That district is about as diverse as one growing five crops on equal land. A plain count of crops misses the gap between 21.2 and 4.9.</p>
 
     <p>The three indices are one family and differ only in how much weight a rare crop gets. The
     subscript is that weight.</p>
@@ -137,8 +132,7 @@
     it has. Coverage is uneven: roughly a quarter of districts are observed for fewer than twenty of
     the twenty-three years, mostly because districts were being created throughout. Pooling land
     over the whole period would let a district accumulate crops it grew once, so a long-observed
-    district would look more diverse than an identical short-observed one purely as a function of
-    how long it had been watched. Across the full cropping series, pooling puts the average district
+    district would look more diverse than an identical short-observed one only because it was observed for longer. Across the full cropping series, pooling puts the average district
     at 29.8 crops and computing each year then averaging puts it at 20.1. The correlation between a district's diversity and the number of years it happens to be
     observed falls from 0.55 to 0.31 when the measure is built year by year.</p>
 
@@ -152,9 +146,7 @@
     where the relationship bends, its square, with a separate intercept for each state and standard
     errors clustered on the pre-2011 parent district. A state fixed effect means each state gets its
     own baseline, so Punjab is compared with Punjab and Kerala with Kerala, and nothing in the result
-    comes from Punjab and Kerala simply being different places. It costs something: anything that
-    varies only between states, state agricultural policy among it, is absorbed and cannot be
-    estimated.</p>
+    comes from Punjab and Kerala simply being different places. The cost is that anything that varies only between states, such as state agricultural policy, is absorbed and cannot be estimated.</p>
 
     <p>Irrigated share and its square account for 6.5 per cent of the variation in the effective
     number of crops without state fixed effects and 53.0 per cent with them, and the turning point
@@ -178,7 +170,7 @@
     <h2 class="section__heading">Reconciling districts across boundary change</h2>
 
     <p>SHRUG is built on 2011 census district boundaries and the cropping series uses present-day
-    district names. Between them lie a decade of reorganisations, including the creation of
+    district names. A decade of reorganisations separates them, including the creation of
     Telangana, whose districts have no counterpart in the 2011 frame and have to be traced back to
     the parents they were carved from.</p>
 
@@ -219,12 +211,9 @@
   </div>
 
   <div class="prose prose--flow fade">
-    <p>Where several present-day districts descend from a single pre-2011 parent, they necessarily
-    carry identical village-level characteristics. Every one of them inherits the same village
-    records, so on the explanatory side they are copies of each other and not independent
-    observations. 64 of the 606 districts analysed, about one in ten, sit on a shared parent.</p>
+    <p>Where several present-day districts descend from a single pre-2011 parent, they carry identical village-level characteristics because they inherit the same village records. On the explanatory side they are copies, not independent observations. 64 of the 606 districts analysed, about one in ten, sit on a shared parent.</p>
 
-    <p>Clustering standard errors on the 2011 parent tells the estimator to count each parent once,
+    <p>Clustering standard errors on the 2011 parent counts each parent once,
     which widens the confidence intervals to what the real number of independent districts supports.
     Each headline result is also re-estimated twice more: once weighting each district by one over
     the number of districts sharing its parent, and once on the 542 districts that have a parent to
@@ -250,7 +239,7 @@
     intensity and mean holding size computed here agree with SHRUG's own district figures at
     correlations above 0.99.</p>
 
-    <p>Against published state land use statistics the two anchors differ. Irrigated share ranks
+    <p>Against published state land use statistics, the two measures agree less well. Irrigated share ranks
     states at rho = 0.852 with a mean absolute difference of 0.087. Cropping intensity ranks them at
     rho = 0.653 with a mean absolute difference of 0.273, which is why it is used to order districts
     and not to state a level.</p>
@@ -294,8 +283,7 @@
     between 0.05 and 0.16. Those districts are excluded from the results.</p>
 
     <p>In Maharashtra, Jharkhand and Assam the survey puts irrigated share at 0.54, 0.45 and 0.35
-    against published state figures of 0.21, 0.12 and 0.11, a gap of 24 to 33 points, which is what
-    a panchayat reporting on itself produces. Dropping those three states leaves the irrigation
+    against published state figures of 0.21, 0.12 and 0.11, a gap of 24 to 33 points, which reflects panchayats reporting on themselves. Dropping those three states leaves the irrigation
     results unchanged. Their levels should not be quoted.</p>
   </div>
 </section>
@@ -306,9 +294,7 @@
     <h2 class="section__heading">How to read these associations</h2>
 
     <p>Irrigation systems, market yards and cold stores are put where terrain, groundwater and
-    existing agriculture already favoured them. Every association reported here describes how the
-    cross-section is arranged. A district that installed a mandi tomorrow would not travel along any
-    of these curves.</p>
+    existing agriculture already favoured them. The associations reported here describe differences between districts at one point in time. They do not show what would happen if a district added a mandi.</p>
 
     <p>The rural infrastructure data is a single 2019&ndash;20 cross-section matched against cropping
     averaged over twenty-three years, which suits infrastructure that moves slowly. It supports no
@@ -317,8 +303,7 @@
 
     <p>Mean holding size is cultivable area divided by the number of farmers, standing in for what an
     agricultural census would measure. It comes out null on every outcome, at +0.019 effective crops
-    once irrigation, holding size and state baselines are in, which may be a comment on the proxy as
-    much as on the relationship.</p>
+    once irrigation, holding size and state baselines are in, which may reflect a weak proxy as much as a weak relationship.</p>
 
     <p>Procurement volumes, which would be the natural companion to the market results, are not
     available at district level from any open source and are absent here.</p>
@@ -355,7 +340,7 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=6b8a5936"></script>
+<script src="js/site.js?v=e2b6885b"></script>
 <script>
 const NS = 'http://www.w3.org/2000/svg';
 const el = (t, a) => { const e = document.createElementNS(NS, t);

@@ -36,8 +36,8 @@
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">The national picture barely moves across two decades. Individual
-    districts move a great deal, and rather more of them lost variety than gained it.</p>
+    <p class="lead">The national figure barely changes over two decades. Individual
+    districts change a lot, and more of them lost variety than gained it.</p>
   </div>
 
   <div class="figure figure--wide fade">
@@ -61,18 +61,17 @@
 
   <div class="prose prose--flow fade">
     <h3>What to watch</h3>
-    <p>The colour is the effective number of crops, on the same scale in every frame, so a district
-    darkening means it genuinely spread its land wider that year rather than the scale shifting
-    underneath it.</p>
-    <p>The early frames carry fewer districts because districts enter the record as they are
-    created. That is why the aggregate figures quoted elsewhere use only the districts reporting in
-    every year: comparing 1997 against 2019 on all available districts would measure administrative
-    reorganisation as much as farming.</p>
-    <h3>The direction of travel</h3>
-    <p>Comparing each district's first seven years against its last seven, 264 districts ended with
-    a lower effective number of crops and 165 with a higher one. Weighting districts by their
-    cropped area, the national series is flat, because the losses fall in districts holding less of
-    the country's land.</p>
+    <p>The colour shows the effective number of crops. The scale is the same in every frame, so when
+    a district gets darker, it spread its land across more crops that year.</p>
+    <p>The early frames show fewer districts because districts enter the record when they are
+    created. So the totals quoted elsewhere use only the districts reporting in every year.
+    Comparing 1997 with 2019 across all available districts would partly measure changes in district
+    boundaries, not farming.</p>
+    <h3>Which way districts moved</h3>
+    <p>Comparing each district's first seven years with its last seven, 264 districts ended with
+    a lower effective number of crops and 165 with a higher one. Weighted by cropped area, the
+    national series is flat, because the losses are in districts that hold less of the country's
+    land.</p>
   </div>
 </section>
 
@@ -113,7 +112,7 @@
   </div>
 </footer>
 
-<script src="js/site.js?v=6b8a5936"></script>
+<script src="js/site.js?v=e2b6885b"></script>
 <script>
 
 let TL = null, HANDLE = null, LO = 0, HI = 1;
@@ -124,8 +123,11 @@ async function drawAll(){
   const byNorm = {};
   Object.keys(TL.districts).forEach(k => { byNorm[norm(k)] = TL.districts[k]; });
   let hit = 0;
+  // Join on the analysis key the build resolved for each polygon (crosswalk and
+  // spelling matches included); the map's own spelling is only a fallback.
   geo.features.forEach(f => {
-    const t = byNorm[norm(f.properties.s + '|' + f.properties.n)];
+    const pr = f.properties;
+    const t = (pr.k && TL.districts[pr.k]) || byNorm[norm(pr.s + '|' + pr.n)];
     f.properties._tl = t || null;
     if (t) hit++;
   });

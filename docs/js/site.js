@@ -32,29 +32,54 @@ function reveal() {
     els.forEach(e => io.observe(e));
 }
 
-/* ---------- tooltip ---------- */
+/* ---------- tooltip ----------
+   The element factory is deliberately not called tip(): pages declare their
+   own global tip(pr) formatters, and a page-level function declaration would
+   silently replace this one and break every hover card on that page.
+   The card is position:fixed (set here so it holds whatever the stylesheet
+   says), measured at the origin so its width is not squeezed by the right
+   edge, then flipped and clamped to stay inside the viewport. */
 let TIP;
-function tip() {
+function tipNode() {
     if (!TIP) {
         TIP = document.createElement('div');
         TIP.className = 'tip';
+        TIP.style.position = 'fixed';
         document.body.appendChild(TIP);
+        // a touch tap or a wheel scroll leaves no mouseleave; drop the card
+        window.addEventListener('scroll', hideTip, { passive: true });
     }
     return TIP;
 }
 function showTip(html, ev) {
-    const t = tip();
-    t.innerHTML = html;
+    const t = tipNode();
+    const s = (html === null || html === undefined) ? '' : String(html);
+    // a formatter that printed a missing value reads "no data", never NaN
+    t.innerHTML = /\b(undefined|NaN|null)\b/.test(s.replace(/<[^>]*>/g, ''))
+        ? s.replace(/\b(undefined|NaN|null)\b/g, 'no data') : (s || 'no data');
+    t.style.left = '0px'; t.style.top = '0px';
     t.classList.add('on');
-    const pad = 14;
-    let x = ev.clientX + pad, y = ev.clientY + pad;
+    const pad = 14, edge = 8, vw = document.documentElement.clientWidth, vh = window.innerHeight;
     const r = t.getBoundingClientRect();
-    if (x + r.width > window.innerWidth - 8) x = ev.clientX - r.width - pad;
-    if (y + r.height > window.innerHeight - 8) y = ev.clientY - r.height - pad;
-    t.style.left = (x + window.scrollX) + 'px';
-    t.style.top = (y + window.scrollY) + 'px';
+    let x = ev.clientX + pad, y = ev.clientY + pad;
+    if (x + r.width > vw - edge) x = ev.clientX - r.width - pad;
+    if (y + r.height > vh - edge) y = ev.clientY - r.height - pad;
+    x = Math.max(edge, Math.min(x, vw - r.width - edge));
+    y = Math.max(edge, Math.min(y, vh - r.height - edge));
+    t.style.left = x + 'px';
+    t.style.top = y + 'px';
 }
 function hideTip() { if (TIP) TIP.classList.remove('on'); }
+
+/* Formatter wrapper for map hover cards: a formatter that throws on a missing
+   field still yields a card with the district name instead of no card at all. */
+function safeTip(fn, pr) {
+    try { return fn(pr); }
+    catch (e) {
+        return '<strong>' + (pr && pr.n || 'unknown district') + '</strong>' +
+               (pr && pr.s ? '<br>' + pr.s : '') + '<br>no data';
+    }
+}
 
 /* ---------- svg scaffolding ---------- */
 function svgEl(tag, attrs) {
@@ -524,7 +549,7 @@ async function choropleth(sel, field, o) {
         el.addEventListener('mousemove', ev => {
             el.setAttribute('stroke', '#EDEDEB');
             el.setAttribute('stroke-width', 1.1);
-            showTip(opts.tipFn ? opts.tipFn(f.properties)
+            showTip(opts.tipFn ? safeTip(opts.tipFn, f.properties)
                 : `<strong>${f.properties.n}</strong><br>${f.properties.s}<br>` +
                   (has ? (opts.label || field) + ': ' + v.toFixed(2) : 'no data'), ev);
         });
@@ -634,7 +659,7 @@ async function mapLayer(sel, cfg) {
         const el = svgEl('path', { d, fill, stroke: 'rgba(11,11,12,0.85)', 'stroke-width': 0.4 });
         el.addEventListener('mousemove', ev => {
             el.setAttribute('stroke', '#EDEDEB'); el.setAttribute('stroke-width', 1.1);
-            showTip(cfg.tipFn(pr), ev);
+            showTip(cfg.tipFn ? safeTip(cfg.tipFn, pr) : `<strong>${pr.n}</strong><br>${pr.s}`, ev);
         });
         el.addEventListener('mouseleave', () => {
             el.setAttribute('stroke', 'rgba(11,11,12,0.85)');
