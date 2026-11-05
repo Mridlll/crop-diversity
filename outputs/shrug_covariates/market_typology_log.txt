@@ -1,0 +1,124 @@
+Analysis set: 606 districts, 30 states; 578 have a polygon in districts.geojson.
+
+## 1. States
+States with >= 8 districts: 23 states, 580 districts.
+
+| variable | between-state share (states >= 8) | adjusted | all 30 states |
+|---|---|---|---|
+| D0 | 0.816 | 0.809 | 0.824 |
+| D1 | 0.486 | 0.465 | 0.490 |
+| evenness | 0.479 | 0.459 | 0.515 |
+| mandi | 0.391 | 0.367 | 0.390 |
+| regular market | 0.726 | 0.715 | 0.722 |
+| weekly haat | 0.462 | 0.441 | 0.471 |
+| fertiliser shop | 0.769 | 0.760 | 0.771 |
+| seed centre | 0.640 | 0.626 | 0.653 |
+| soil testing | 0.499 | 0.480 | 0.500 |
+| custom hiring | 0.759 | 0.749 | 0.757 |
+| cold storage | 0.612 | 0.597 | 0.615 |
+| farm-gate processing | 0.782 | 0.773 | 0.783 |
+| FPO | 0.791 | 0.783 | 0.794 |
+
+| state | n | D0 mean | D0 sd | D1 mean | D1 sd | haat | fert shop | FPO | mandi |
+|---|---|---|---|---|---|---|---|---|---|
+| Karnataka | 30 | 29.7 | 5.4 | 8.02 | 3.01 | 0.150 | 0.143 | 0.332 | 0.015 |
+| Tamil Nadu | 31 | 24.2 | 4.4 | 6.99 | 3.13 | 0.188 | 0.272 | 0.442 | 0.028 |
+| Andhra Pradesh | 20 | 25.9 | 2.9 | 6.87 | 2.44 | 0.121 | 0.322 | 0.411 | 0.017 |
+| Madhya Pradesh | 50 | 25.6 | 2.2 | 6.44 | 1.87 | 0.131 | 0.090 | 0.153 | 0.011 |
+| Nagaland | 11 | 23.9 | 0.9 | 6.38 | 0.48 | 0.089 | 0.021 | 0.107 | 0.007 |
+| Maharashtra | 33 | 18.8 | 3.5 | 6.38 | 2.53 | 0.189 | 0.164 | 0.254 | 0.026 |
+| Uttarakhand | 13 | 21.9 | 2.0 | 6.24 | 1.62 | 0.060 | 0.064 | 0.099 | 0.010 |
+| Rajasthan | 33 | 27.1 | 3.4 | 6.16 | 1.57 | 0.037 | 0.137 | 0.164 | 0.021 |
+| Gujarat | 26 | 19.6 | 2.8 | 6.09 | 2.00 | 0.117 | 0.552 | 0.658 | 0.149 |
+| Uttar Pradesh | 72 | 23.4 | 2.1 | 4.92 | 1.45 | 0.162 | 0.113 | 0.092 | 0.015 |
+| Bihar | 38 | 23.2 | 3.5 | 4.23 | 0.83 | 0.254 | 0.160 | 0.269 | 0.031 |
+| Himachal Pradesh | 12 | 18.4 | 5.5 | 4.03 | 1.28 | 0.012 | 0.080 | 0.103 | 0.012 |
+| Haryana | 20 | 17.7 | 1.3 | 3.94 | 0.95 | 0.016 | 0.227 | 0.157 | 0.053 |
+| Kerala | 14 | 13.2 | 2.0 | 3.78 | 1.06 | 0.053 | 0.831 | 0.856 | 0.098 |
+| Arunachal Pradesh | 16 | 9.8 | 1.3 | 3.66 | 0.74 | 0.035 | 0.010 | 0.032 | 0.017 |
+| West Bengal | 18 | 23.7 | 3.5 | 3.31 | 1.34 | 0.217 | 0.371 | 0.187 | 0.012 |
+| Jharkhand | 24 | 11.2 | 1.1 | 3.29 | 1.20 | 0.278 | 0.054 | 0.144 | 0.020 |
+| Assam | 26 | 29.0 | 1.3 | 3.19 | 0.86 | 0.226 | 0.113 | 0.090 | 0.022 |
+| Chhattisgarh | 18 | 31.6 | 3.1 | 3.11 | 1.25 | 0.311 | 0.096 | 0.190 | 0.006 |
+| Jammu and Kashmir | 17 | 10.2 | 4.1 | 2.86 | 0.48 | 0.016 | 0.275 | 0.045 | 0.013 |
+| Mizoram | 8 | 11.0 | 1.4 | 2.83 | 0.49 | 0.119 | 0.014 | 0.317 | 0.042 |
+| Punjab | 20 | 9.1 | 1.5 | 2.71 | 0.42 | 0.038 | 0.161 | 0.347 | 0.089 |
+| Odisha | 30 | 16.1 | 1.3 | 2.47 | 0.80 | 0.163 | 0.083 | 0.216 | 0.021 |
+
+## 2a. k-means on facility shares
+
+| scaling | k | silhouette | ARI across 20 seeds | bootstrap ARI mean | p10 | sizes |
+|---|---|---|---|---|---|---|
+| z | 3 | 0.318 | 0.98 | 0.84 | 0.71 | [416, 153, 37] |
+| z | 4 | 0.313 | 0.88 | 0.73 | 0.42 | [410, 157, 28, 11] |
+| z | 5 | 0.214 | 0.93 | 0.73 | 0.46 | [311, 161, 96, 27, 11] |
+| z | 6 | 0.216 | 0.90 | 0.71 | 0.54 | [309, 163, 95, 23, 9, 7] |
+| sqrt | 3 | 0.227 | 1.00 | 0.92 | 0.86 | [322, 244, 40] |
+| sqrt | 4 | 0.176 | 0.91 | 0.59 | 0.34 | [240, 191, 135, 40] |
+| sqrt | 5 | 0.176 | 0.88 | 0.63 | 0.39 | [227, 124, 111, 104, 40] |
+| sqrt | 6 | 0.183 | 0.91 | 0.73 | 0.56 | [230, 122, 111, 104, 30, 9] |
+| rank | 3 | 0.183 | 0.98 | 0.79 | 0.66 | [217, 211, 178] |
+| rank | 4 | 0.171 | 0.99 | 0.77 | 0.66 | [169, 152, 144, 141] |
+| rank | 5 | 0.154 | 0.96 | 0.69 | 0.47 | [135, 129, 118, 118, 106] |
+| rank | 6 | 0.157 | 0.85 | 0.61 | 0.46 | [124, 121, 121, 94, 88, 58] |
+| z, no haat | 3 | 0.377 | 0.99 | 0.83 | 0.62 | [417, 152, 37] |
+| z, no haat | 4 | 0.376 | 0.99 | 0.90 | 0.78 | [415, 153, 27, 11] |
+| z, no haat | 5 | 0.376 | 0.93 | 0.82 | 0.46 | [415, 152, 23, 11, 5] |
+| z, no haat | 6 | 0.378 | 0.78 | 0.67 | 0.46 | [415, 151, 20, 10, 7, 3] |
+
+Agreement between scalings at k = 3 (ARI):
+  z vs z, no haat        0.87
+  sqrt vs z              0.49
+  sqrt vs z, no haat     0.49
+  rank vs z              0.26
+  rank vs sqrt           0.39
+  rank vs z, no haat     0.28
+
+Densest z, k=3 cluster: 37 districts, states {'GUJARAT': 23, 'KERALA': 13, 'PUNJAB': 1}
+  best Jaccard match in z            k=3: 1.00
+  best Jaccard match in z            k=4: 0.71
+  best Jaccard match in z            k=5: 0.73
+  best Jaccard match in z            k=6: 0.62
+  best Jaccard match in sqrt         k=3: 0.93
+  best Jaccard match in sqrt         k=4: 0.93
+  best Jaccard match in sqrt         k=5: 0.93
+  best Jaccard match in sqrt         k=6: 0.72
+  best Jaccard match in rank         k=3: 0.21
+  best Jaccard match in rank         k=4: 0.25
+  best Jaccard match in rank         k=5: 0.30
+  best Jaccard match in rank         k=6: 0.56
+  best Jaccard match in z, no haat   k=3: 1.00
+  best Jaccard match in z, no haat   k=4: 0.73
+  best Jaccard match in z, no haat   k=5: 0.58
+  best Jaccard match in z, no haat   k=6: 0.50
+
+## 2b. Rule-based types: facility density x weekly haat
+corr(density, haat share) = 0.017
+density tercile cuts 0.401, 0.597; haat median 0.126
+bootstrap the cut points (500): mean 4.8% of districts change type, 90th pct 7.8%
+density as mean z instead of mean rank: 86.8% same band, 86.8% same type
+rule band vs k-means (rank, k=3) ARI 0.60; vs k-means (z, k=3) ARI 0.27
+D0 variance explained: type 0.073, state 0.824
+D1 variance explained: type 0.052, state 0.490
+evenness variance explained: type 0.068, state 0.515
+mean between-state share of type membership: 0.284
+
+| type | n | top states | D0 | D1 | evenness | cereal | pulse | irrigation | nightlights mean | median |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Few facilities | 100 | Arunachal Pradesh 15, Uttar Pradesh 14, Uttarakhand 10 | 18.5 | 4.57 | 0.286 | 0.768 | 0.092 | 0.481 | 0.94 | 0.36 |
+| Weekly haats, little else | 102 | Uttar Pradesh 20, Assam 19, Jharkhand 19 | 20.9 | 4.21 | 0.222 | 0.724 | 0.098 | 0.493 | 0.82 | 0.65 |
+| Some shops and FPOs, few haats | 91 | Madhya Pradesh 19, Uttar Pradesh 9, Jammu and Kashmir 8 | 19.9 | 5.00 | 0.277 | 0.638 | 0.110 | 0.567 | 1.52 | 0.86 |
+| Some shops and FPOs, with haats | 111 | Uttar Pradesh 26, Madhya Pradesh 12, Chhattisgarh 11 | 23.1 | 4.69 | 0.219 | 0.700 | 0.102 | 0.567 | 1.31 | 0.98 |
+| Shops, FPOs and markets, few haats | 112 | Rajasthan 25, Gujarat 19, Haryana 13 | 20.6 | 5.37 | 0.273 | 0.531 | 0.101 | 0.604 | 1.42 | 1.17 |
+| Shops, FPOs and markets, with haats | 90 | Tamil Nadu 16, Bihar 15, Maharashtra 12 | 24.1 | 5.83 | 0.250 | 0.595 | 0.106 | 0.560 | 1.47 | 1.28 |
+
+Facility means by type:
+                                     mandi  regular market  weekly haat  fertiliser shop  seed centre  soil testing  custom hiring  cold storage  farm-gate processing    FPO
+Few facilities                       0.013           0.056        0.051            0.055        0.041         0.009          0.026         0.039                 0.043  0.089
+Weekly haats, little else            0.015           0.044        0.226            0.076        0.039         0.015          0.024         0.035                 0.045  0.112
+Some shops and FPOs, few haats       0.024           0.104        0.053            0.136        0.077         0.028          0.069         0.072                 0.086  0.186
+Some shops and FPOs, with haats      0.019           0.061        0.224            0.134        0.073         0.026          0.058         0.074                 0.083  0.193
+Shops, FPOs and markets, few haats   0.069           0.212        0.046            0.334        0.210         0.107          0.215         0.145                 0.253  0.410
+Shops, FPOs and markets, with haats  0.036           0.103        0.261            0.309        0.140         0.071          0.154         0.135                 0.168  0.394
+
+k-means dense group: {'n': 37, 'states': {'Gujarat': 23, 'Kerala': 13, 'Punjab': 1}, 'D0': 17.538012, 'D1': 5.273374, 'fac': {'mandi': 0.139998, 'regular market': 0.519755, 'weekly haat': 0.084355, 'fertiliser shop': 0.667078, 'seed centre': 0.394907, 'soil testing': 0.259297, 'custom hiring': 0.481315, 'cold storage': 0.232749, 'farm-gate processing': 0.581015, 'FPO': 0.75992}, 'best_jaccard_across_solutions': {'min': 0.207865, 'median': 0.714238}}

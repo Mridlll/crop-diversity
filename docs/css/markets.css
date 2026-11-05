@@ -1,0 +1,157 @@
+/* ================================================================
+   MARKETS PAGE: scenes on the shared wide reading column.
+   Each scene: mono kicker, plain h2, the visual, then prose in two
+   columns on a wide screen (prose--flow).
+   Builds on analysis.css; nothing here changes other pages.
+   ================================================================ */
+
+.scene-sec { padding: 4.2rem 0 4.4rem; }
+@media (min-width: 1024px) { .scene-sec { padding: 5rem 0 5.2rem; } }
+
+.scene { max-width: var(--prose); margin: 0 auto; padding: 0 var(--px); }
+.scene__kicker {
+    font-family: var(--font-mono); font-size: .7rem; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--tx-3); margin-bottom: .9rem;
+}
+.scene__h {
+    font-size: clamp(1.55rem, 3.2vw, 2.15rem); letter-spacing: -.01em;
+    line-height: 1.16; margin-bottom: 1.3rem; max-width: 30ch;
+}
+.scene p { max-width: 68ch; }
+
+.scene-fig { max-width: var(--prose); margin: 1.6rem auto 0; padding: 0 var(--px); }
+.scene-prose { margin-top: 2.2rem; }
+.scene-fig--wide { max-width: var(--figure); }
+.scene-fig .figure__frame { padding: 1.35rem 1.35rem 1rem; }
+@media (max-width: 560px) { .scene-fig .figure__frame { padding: 1rem .8rem .85rem; } }
+
+/* footnote line with the replay control at its right end */
+.scene-fig .figure__note {
+    display: flex; gap: 1rem; align-items: flex-start; justify-content: space-between;
+    font-family: var(--font-mono); font-size: .72rem; line-height: 1.6;
+}
+.replay {
+    flex: none; background: none; border: 1px solid var(--hair-2); color: var(--tx-3);
+    font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: .3rem .65rem; min-height: 32px; border-radius: 2px; cursor: pointer;
+}
+.replay:hover, .replay:focus-visible { color: var(--tx); border-color: var(--tx-3); }
+.replay::before { content: "\21BB  "; }
+
+/* ---------- controls ---------- */
+.ctl { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; }
+.ctl--sub { margin-bottom: 1rem; }
+.seg {
+    background: transparent; border: 1px solid var(--hair-2); color: var(--tx-3);
+    font-family: var(--font-mono); font-size: .7rem; letter-spacing: .03em;
+    padding: .36rem .7rem; min-height: 32px; border-radius: 2px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: .45rem; line-height: 1.2;
+    transition: color .15s, border-color .15s, background .15s;
+}
+.seg:hover { color: var(--tx); border-color: rgba(255,255,255,.28); }
+.seg[aria-pressed="true"] { color: var(--tx); background: var(--l3); border-color: rgba(255,255,255,.42); }
+.seg:focus-visible, .replay:focus-visible { outline: 2px solid var(--c1); outline-offset: 2px; }
+.seg__sw { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.ctl--sub .seg { font-size: .66rem; }
+/* long button rows scroll sideways on a phone instead of stacking */
+@media (max-width: 560px) {
+    .ctl--scroll { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .3rem;
+                   scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+    .ctl--scroll .seg { flex: none; white-space: nowrap; }
+}
+
+/* ---------- readouts ---------- */
+.readout { font-family: var(--font-mono); color: var(--tx-2); font-size: .8rem; line-height: 1.55; }
+.readout__big { display: block; font-size: clamp(1.6rem, 4vw, 2.3rem); color: var(--tx);
+                line-height: 1.1; margin-bottom: .45rem; font-weight: 500; }
+.readout__name { display: block; color: var(--tx); margin-bottom: .2rem; }
+.readout--sm { font-size: .78rem; margin-top: .6rem; }
+.readout--line { margin: -.2rem 0 .7rem; font-size: .8rem; color: var(--tx); }
+
+/* scene 1: grid beside readout */
+.vgrid { display: grid; gap: 1.4rem; align-items: center; }
+@media (min-width: 700px) { .vgrid { grid-template-columns: minmax(260px, 380px) 1fr; } }
+.vgrid__chart { max-width: 380px; }
+
+/* scene 5 counters */
+.counters { display: flex; flex-wrap: wrap; gap: .6rem 2.2rem; font-family: var(--font-mono);
+            font-size: .8rem; color: var(--tx-3); margin-top: .7rem; }
+.counters b { font-weight: 500; color: var(--tx); font-size: 1.35rem; margin-left: .5rem; }
+
+/* scene 6: the two outcomes side by side */
+.pair { display: grid; gap: 1.6rem; }
+@media (min-width: 900px) { .pair { grid-template-columns: 1fr 1fr; gap: 2.2rem; } }
+
+/* scene 8: grid and coefficients side by side */
+.duo { display: grid; gap: 1.8rem; }
+@media (min-width: 860px) { .duo { grid-template-columns: minmax(260px, 340px) 1fr; } }
+.duo__t { font-family: var(--font-mono); font-size: .7rem; color: var(--tx-3); margin-bottom: .4rem;
+          letter-spacing: .02em; }
+
+.legend svg { flex: none; }
+
+/* ---------- method block ---------- */
+.scene--method { margin-top: 3.6rem; max-width: var(--prose); }
+.method th { white-space: normal; vertical-align: bottom; line-height: 1.35; }
+.method td:first-child { min-width: 10.5rem; }
+.method__body > p { max-width: 70ch; }
+.method { background: var(--l1); border: 1px solid var(--hair); border-radius: 3px; }
+.method summary {
+    font-family: var(--font-mono); font-size: .74rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--tx-2); padding: 1rem 1.2rem; cursor: pointer; list-style: none; min-height: 44px;
+}
+.method summary::-webkit-details-marker { display: none; }
+.method summary::before { content: "+"; display: inline-block; width: 1.2rem; color: var(--c1); }
+.method[open] summary::before { content: "\2212"; }
+.method summary:hover { color: var(--tx); }
+.method__body { padding: .2rem 1.2rem 1.2rem; border-top: 1px solid var(--hair); }
+.method__body > p { font-size: .97rem; margin-top: 1rem; }
+.method .tbl-wrap { margin: 1.4rem 0 0; }
+.method td.num { white-space: nowrap; }
+@media (max-width: 560px) {
+    .method th { font-size: .6rem; letter-spacing: .02em; }
+    .method td, .method th { padding: .35rem .4rem; }
+    .method td { font-size: .78rem; }
+    .method td.num { font-size: .74rem; }
+    .method td:first-child { min-width: 7.5rem; }
+    .method__body { padding: .2rem .7rem 1rem; }
+}
+
+/* svg text */
+.mono { font-family: var(--font-mono); }
+
+@media (prefers-reduced-motion: reduce) {
+    .seg, .replay { transition: none; }
+}
+
+/* ---------- states scene: between / within bar ---------- */
+.split { margin-top: .6rem; }
+
+/* ---------- six groups: map beside profile cards ---------- */
+.tgrid { display: grid; gap: 1.4rem; }
+@media (min-width: 1000px) { .tgrid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; } }
+.tcards { display: grid; gap: .55rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { .tcards { grid-template-columns: 1fr; } }
+.tcard {
+    text-align: left; background: var(--l1); border: 1px solid var(--hair); border-radius: 3px;
+    color: var(--tx-2); padding: .65rem .65rem .6rem; cursor: pointer; font: inherit;
+    display: flex; flex-direction: column; gap: .32rem; min-width: 0;
+    transition: border-color .15s, background .15s;
+}
+.tcard:hover { border-color: rgba(255,255,255,.28); }
+.tcard[aria-pressed="true"] { background: var(--l3); border-color: rgba(255,255,255,.5); }
+.tcard:focus-visible { outline: 2px solid var(--c1); outline-offset: 2px; }
+.tcard__h { display: flex; gap: .55rem; align-items: flex-start; margin-bottom: .2rem; }
+.tcard__sw { flex: none; margin-top: 2px; }
+.tcard__t { display: block; font-family: var(--font-mono); font-size: .7rem; color: var(--tx); line-height: 1.35; }
+.tcard__n { display: block; font-family: var(--font-mono); font-size: .62rem; color: var(--tx-3); line-height: 1.4; margin-top: .15rem; }
+.tcard__row { display: grid; grid-template-columns: 9.6em 1fr 3em; gap: .4rem; align-items: center;
+              font-family: var(--font-mono); font-size: .62rem; }
+.tcard__l { color: var(--tx-3); line-height: 1.25; }
+.tcard__trk { position: relative; height: 12px; }
+.tcard__trk::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(255,255,255,.14); }
+.tcard__trk b { position: absolute; top: 2px; width: 1px; height: 8px; margin-left: -.5px; background: rgba(255,255,255,.32); }
+.tcard__trk i { position: absolute; top: 1px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%;
+                background: var(--tx); box-shadow: 0 0 0 2px var(--bg); }
+.tcard__v { color: var(--tx); text-align: right; }
+@media (prefers-reduced-motion: reduce) { .tcard { transition: none; } }
