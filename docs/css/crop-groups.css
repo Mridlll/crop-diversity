@@ -85,6 +85,8 @@
 .method__body > p { font-size: .97rem; margin-top: 1rem; }
 .method .tbl-wrap { margin: 1.4rem 0 0; }
 .method td.num { white-space: nowrap; }
+.method__body > ul.est { max-width: 70ch; font-size: .93rem; margin: .7rem 0 0 1.2rem; }
+.method__body > ul.est li { margin-bottom: .45rem; }
 @media (max-width: 560px) {
     .method th { font-size: .6rem; letter-spacing: .02em; }
     .method td, .method th { padding: .35rem .4rem; }

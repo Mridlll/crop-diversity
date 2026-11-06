@@ -376,7 +376,7 @@ SC[5] = scene({
     readout() {
         const R = D.rain[this.k], L = RAIN.find(r => r.key === this.k), d = R.dummy;
         const what = this.k === 'millets' ? 'a monsoon 20% or more above normal' : 'a monsoon 20% or more below normal';
-        $('#v5-read').textContent = `${CAP(L.who)}, ${R.units} of them. After ${what}: ${sgn(pct(d.b), 1)}% (log ${sgn(d.b, 3)}, SE ${d.se.toFixed(3)}).`;
+        $('#v5-read').textContent = `${CAP(L.who)}, ${R.units} of them. After ${what}: ${sgn(pct(d.b), 1)}%.`;
     },
     async render() {
         const host = $('#v5'); if (!host) return;
