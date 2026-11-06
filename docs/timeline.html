@@ -17,6 +17,7 @@
     <a class="nav__brand" href="index.html">Crop Diversity &middot; India</a>
     <div class="nav__links">
       <a href="index.html">Overview</a>
+      <a href="measurement.html">Measurement</a>
       <a href="irrigation.html">Irrigation</a>
       <a href="markets.html">Markets</a>
       <a href="data.html">Data &amp; methods</a>
@@ -28,23 +29,34 @@
 <header class="mast">
   <div class="prose">
     <p class="mast__label">District map</p>
-    <h1 class="mast__title">Year by year</h1>
+    <h1 class="mast__title">Effective number of crops in each district, year by year</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">Twenty-three years of district cropping, one year at a time.</p>
+    <p class="mast__sub">Twenty-three crop years, 1997&ndash;98 to 2019&ndash;20.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">The national figure barely changes over two decades. Individual
-    districts change a lot, and more of them lost variety than gained it.</p>
+    <p class="lead">This map shows each district&rsquo;s effective number of crops one crop year
+    at a time. Weighted by cropped area, the national figure stays flat across the period. Among
+    the districts reporting in every year, 264 ended with a lower effective number of crops and 165
+    with a higher one.</p>
+    <div class="note">
+      <span class="note__label">How to read this map</span>
+      <p>Brighter cyan means a higher effective number of crops in the year shown. The colour scale
+      stays the same in every year, so a district that brightens has spread its land across more
+      crops. Drag the slider to pick a year, or press Play to step through them. Hover over a
+      district to see its effective number of crops and its count of crops for that year. Unshaded
+      districts have no record that year. The effective number of crops is the number of equally
+      sized crops that would give the same spread of land.</p>
+    </div>
   </div>
 
   <div class="figure figure--wide fade">
     <div class="figure__frame">
       <p class="figure__label">Interactive</p>
       <p class="figure__title">Effective number of crops, by year</p>
-      <p class="figure__sub">Drag the slider or press play. Districts with no record that year are grey.</p>
+      <p class="figure__sub">Drag the slider or press Play. Districts with no record that year are unshaded.</p>
       <div class="legend" style="align-items:center;gap:1rem">
         <button id="play" style="background:none;border:1px solid rgba(255,255,255,.14);
           color:inherit;font:inherit;font-size:.8rem;cursor:pointer;padding:.25rem .8rem;
@@ -60,13 +72,11 @@
   </div>
 
   <div class="prose prose--flow fade">
-    <h3>What to watch</h3>
-    <p>The colour shows the effective number of crops. The scale is the same in every frame, so when
-    a district gets darker, it spread its land across more crops that year.</p>
-    <p>The early frames show fewer districts because districts enter the record when they are
-    created. So the totals quoted elsewhere use only the districts reporting in every year.
-    Comparing 1997 with 2019 across all available districts would partly measure changes in district
-    boundaries, not farming.</p>
+    <h3>Why the early years show fewer districts</h3>
+    <p>Districts enter the record when they are created, so the early years show fewer of them.
+    The totals quoted on this site use only the districts reporting in every year. A comparison of
+    1997 with 2019 across all available districts would partly pick up changes in district
+    boundaries.</p>
     <h3>Which way districts moved</h3>
     <p>Comparing each district's first seven years with its last seven, 264 districts ended with
     a lower effective number of crops and 165 with a higher one. Weighted by cropped area, the
@@ -77,13 +87,13 @@
 
 <section class="section">
   <div class="prose fade">
-    <p class="section__label">The other views</p>
-    <h2 class="section__heading">Same districts, different question</h2>
+    <p class="section__label">More maps</p>
+    <h2 class="section__heading">The other district maps</h2>
     <ul style="list-style:none;margin-left:0">
-      <li><a href="diversity.html">How varied the cropping is</a></li>
-      <li><a href="calorie-diversity.html">How much food energy the land produces</a></li>
-      <li><a href="food-nonfood.html">How much of the land feeds people</a></li>
-      <li><a href="timeline.html">How it moved, year by year</a></li>
+      <li><a href="diversity.html">Crop diversity in each district, on four measures</a></li>
+      <li><a href="calorie-diversity.html">Food energy each district&rsquo;s harvest produces per hectare</a></li>
+      <li><a href="food-nonfood.html">Share of each district&rsquo;s cropped area under food crops</a></li>
+      <li><a href="timeline.html">Effective number of crops in each district, year by year</a></li>
     </ul>
   </div>
 </section>
@@ -153,8 +163,8 @@ async function drawAll(){
     const t = pr._tl, v = t ? t.D1[i] : null, d0 = t ? t.D0[i] : null;
     if (v == null) return '<strong>'+pr.n+'</strong><br>'+pr.s+'<br>no record in '+y;
     return '<strong>'+pr.n+'</strong><br>'+pr.s+'<br>'+y+'–'+String(y+1).slice(2)+
-           '<br>'+v.toFixed(1)+' effective crops'+
-           (d0 != null ? '<br>'+d0+' crops grown' : '');
+           '<br>effective number of crops '+v.toFixed(1)+
+           (d0 != null ? '<br>count of crops '+d0 : '');
   }
 
   // The geometry is drawn once. A frame only changes the fills, so stepping

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Food Energy and Crop Diversity</title>
+<title>Food Energy per Hectare in Each District</title>
 <meta name="description" content="Food energy produced per hectare against how varied a district's cropping is.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +17,7 @@
     <a class="nav__brand" href="index.html">Crop Diversity &middot; India</a>
     <div class="nav__links">
       <a href="index.html">Overview</a>
+      <a href="measurement.html">Measurement</a>
       <a href="irrigation.html">Irrigation</a>
       <a href="markets.html">Markets</a>
       <a href="data.html">Data &amp; methods</a>
@@ -28,27 +29,38 @@
 <header class="mast">
   <div class="prose">
     <p class="mast__label">District map</p>
-    <h1 class="mast__title">Food energy against variety</h1>
+    <h1 class="mast__title">Food energy each district&rsquo;s harvest produces per hectare</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">Whether growing a wider range of crops costs a district food energy.</p>
+    <p class="mast__sub">Set beside each district&rsquo;s effective number of crops.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">A common worry is that growing more kinds of crops lowers output. If that
-    were true, the diverse districts would produce less food energy from the same land. The data
-    do not show this.</p>
+    <p class="lead">The first view shades each district by the food energy in its harvest per
+    hectare of cropped area. The second sorts districts into four groups by food energy and by the
+    effective number of crops. The group with varied cropping and high food energy holds about as
+    many districts as each of the other three.</p>
+    <div class="note">
+      <span class="note__label">How to read this map</span>
+      <p>In the first view, brighter cyan means more food energy per hectare. The colour key uses a
+      logarithmic scale, where equal steps stand for equal multiples of the value. In the second
+      view each colour is one of the four groups, named in the key under the map. The buttons above
+      the map switch views. Hover over a district to see its food energy, its effective number of
+      crops, its group and its largest crops. Food energy per hectare is the kilocalories in a
+      district&rsquo;s whole harvest divided by its cropped area. The effective number of crops is
+      the number of equally sized crops that would give the same spread of land.</p>
+    </div>
   </div>
 
   <div class="figure figure--wide fade">
     <div class="figure__frame">
       <p class="figure__label">Interactive</p>
       <p class="figure__title">Food energy per hectare, and the four groups</p>
-      <p class="figure__sub">Choose a view. Hover a district for its crops and its energy output.</p>
+      <p class="figure__sub">Choose a view. Hover over a district for its crops and its food energy.</p>
       <div class="legend" id="tabs"></div>
       <div id="themap" class="chart"></div>
-      <p class="figure__note">Energy is the food energy in a district's own harvest, per hectare of its cropped area, averaged across its years. Coconut is counted as edible meat rather than as whole nuts, which is how it is reported.</p>
+      <p class="figure__note">Energy is the food energy in a district's own harvest, per hectare of its cropped area, averaged across its years. Coconut is reported in nuts and is converted using the weight of its edible meat.</p>
     </div>
   </div>
 
@@ -56,29 +68,28 @@
     <h3>What is being measured</h3>
     <p>Each crop's harvest is converted to food energy using standard energy values per hundred
     grams. These are summed across the district's crops and divided by its cropped area. The result
-    is the food energy one hectare in that district produces in a year. It measures what the land
-    yields, not what people eat or who gets it.</p>
-    <p>The median district produces about 5.9 million kilocalories a hectare. Values span two orders
-    of magnitude, so the map uses a logarithmic scale. A linear scale would show almost nothing.</p>
+    is the food energy one hectare in that district produces in a year. It describes the harvest
+    and leaves out what happens to it afterwards, including who eats it.</p>
+    <p>The median district produces about 5.9 million kilocalories a hectare. Values across
+    districts span two orders of magnitude, which is why the map uses a logarithmic scale.</p>
     <h3>The four groups</h3>
-    <p>Splitting districts at the median on both measures gives four groups of roughly equal size.
-    If variety cost energy, the diverse and energy-rich group would be nearly empty. It holds about
-    as many districts as the others.</p>
+    <p>Each district is placed above or below the median district on food energy per hectare and
+    again on the effective number of crops. That gives four groups of roughly equal size. The
+    diverse and energy-rich group has about as many districts as each of the others.</p>
     <p>The concentrated and energy-rich group is the irrigated cereal belt, which gets a lot of
-    energy from a narrow rotation. The diverse and energy-poor group is mostly rainfed and upland.
-    The two groups face different problems.</p>
+    energy from a narrow rotation. The diverse and energy-poor group is mostly rainfed and upland.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="prose fade">
-    <p class="section__label">The other views</p>
-    <h2 class="section__heading">Same districts, different question</h2>
+    <p class="section__label">More maps</p>
+    <h2 class="section__heading">The other district maps</h2>
     <ul style="list-style:none;margin-left:0">
-      <li><a href="diversity.html">How varied the cropping is</a></li>
-      <li><a href="calorie-diversity.html">How much food energy the land produces</a></li>
-      <li><a href="food-nonfood.html">How much of the land feeds people</a></li>
-      <li><a href="timeline.html">How it moved, year by year</a></li>
+      <li><a href="diversity.html">Crop diversity in each district, on four measures</a></li>
+      <li><a href="calorie-diversity.html">Food energy each district&rsquo;s harvest produces per hectare</a></li>
+      <li><a href="food-nonfood.html">Share of each district&rsquo;s cropped area under food crops</a></li>
+      <li><a href="timeline.html">Effective number of crops in each district, year by year</a></li>
     </ul>
   </div>
 </section>
@@ -122,7 +133,7 @@ function tip(pr){
   if (pr.kcal == null) return '<strong>'+pr.n+'</strong><br>'+pr.s+'<br>no agricultural record';
   return '<strong>'+pr.n+'</strong><br>'+pr.s+
     '<br>'+(pr.kcal/1e6).toFixed(1)+' million kcal per hectare'+
-    '<br>'+pr.D1.toFixed(1)+' effective crops'+
+    '<br>effective number of crops '+pr.D1.toFixed(1)+
     '<br>'+pr.quad+crops(pr);
 }
 const LAYERS = [

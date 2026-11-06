@@ -18,6 +18,7 @@
     <a class="nav__brand" href="index.html">Crop Diversity · India</a>
     <div class="nav__links">
       <a href="index.html">Overview</a>
+      <a href="measurement.html">Measurement</a>
       <a href="irrigation.html">Irrigation</a>
       <a href="markets.html" aria-current="page">Markets</a>
       <a href="data.html">Data &amp; methods</a>
@@ -169,11 +170,11 @@
     values of both. The same goes for an average of paved road, public transport, bank and railway
     access, the share of sown area irrigated, average farm size, and the share of people from
     Scheduled Tribes (communities the Constitution lists for protection).</p>
-    <p>Each comparison also sets a district only against others in the same state. This works by
-    giving every state its own baseline, the state baseline (economists call it a state fixed
-    effect), so a district in Bihar is only ever set against other districts in Bihar.
-    The state baseline keeps crop patterns shared across a whole region from being counted as a
-    link with weekly haats.</p>
+    <p>Each comparison also uses a state baseline, which compares each district only with
+    districts in its own state, so a district in Bihar is only ever set against other districts in
+    Bihar. That removes everything a state's districts share, such as policy, rainfall and the way
+    records are kept, and keeps crop patterns common to a whole state from being counted as a link
+    with weekly haats. Economists call it a state fixed effect.</p>
   </div>
 </section>
 
@@ -379,8 +380,8 @@
     <p>Before any adjustment, the weekly haat coefficient is +16.99. Adding the state baseline cuts
     it to +7.18, so most of the raw link came from where weekly haats are, in
     eastern and central India. Adding irrigation and then the full set of development measures
-    leaves it close to +7. Leaving out the 64 districts carved from a 2011 census district that
-    has since been split gives +8.02. The figure is +6.44 once the 30 districts without a weekly
+    leaves it close to +7. Leaving out the 64 districts that share their 2011 district with
+    another district gives +8.02. The figure is +6.44 once the 30 districts without a weekly
     haat are set aside, and +6.87 with all nine other facilities in the same comparison.</p>
     <p>All versions have p &lt; 0.0001. Measuring weekly haats per 100,000 people, in place of the
     share of villages, gives 0.054 more crops for each extra weekly haat per 100,000 people, at p
@@ -548,7 +549,7 @@
         split from the same 2011 district are treated as one group when measuring uncertainty,
         because their figures are likely to rise and fall together. In this sample almost none of
         those districts has a partner from the same 2011 district, so the 606 districts form 605
-        groups. Leaving out all 64 districts carved from a split 2011 district puts the weekly haat
+        groups. Leaving out all 64 districts that share their 2011 district with another district puts the weekly haat
         result at +8.02, across 542 districts.</p>
         <p>The main results put one facility in each comparison, because the facilities overlap
         so much that putting them together blurs each one's estimate. Within the input-supply
@@ -609,7 +610,7 @@
               <tr><td>State baseline only</td><td class="num">606</td><td class="num pos">+7.18</td><td class="num">&lt; 0.0001</td></tr>
               <tr><td>Adding irrigation</td><td class="num">606</td><td class="num pos">+6.99</td><td class="num">&lt; 0.0001</td></tr>
               <tr><td>All measures held constant</td><td class="num">606</td><td class="num pos">+7.33</td><td class="num">&lt; 0.0001</td></tr>
-              <tr><td>Without districts carved from a split 2011 district</td><td class="num">542</td><td class="num pos">+8.02</td><td class="num">&lt; 0.0001</td></tr>
+              <tr><td>Without districts that share a 2011 district</td><td class="num">542</td><td class="num pos">+8.02</td><td class="num">&lt; 0.0001</td></tr>
               <tr><td>Without districts that have no weekly haat</td><td class="num">576</td><td class="num pos">+6.44</td><td class="num">&lt; 0.0001</td></tr>
               <tr><td>With all nine other facilities</td><td class="num">606</td><td class="num pos">+6.87</td><td class="num">&lt; 0.0001</td></tr>
               <tr><td>Weekly haats per 100,000 people</td><td class="num">606</td><td class="num pos">+0.054</td><td class="num">0.008</td></tr>

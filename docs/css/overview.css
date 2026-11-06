@@ -1,0 +1,122 @@
+/* ================================================================
+   OVERVIEW PAGE (index.html): scenes on the shared reading column.
+   Same scene grammar as the Markets page: mono kicker, plain h2,
+   one visual, then prose in two columns on a wide screen.
+   Builds on analysis.css; nothing here changes other pages.
+   ================================================================ */
+
+.scene-sec { padding: 4.2rem 0 4.4rem; }
+@media (min-width: 1024px) { .scene-sec { padding: 5rem 0 5.2rem; } }
+
+.scene { max-width: var(--prose); margin: 0 auto; padding: 0 var(--px); }
+.scene__kicker {
+    font-family: var(--font-mono); font-size: .7rem; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--tx-3); margin-bottom: .9rem;
+}
+.scene__h {
+    font-size: clamp(1.55rem, 3.2vw, 2.15rem); letter-spacing: -.01em;
+    line-height: 1.16; margin-bottom: 1.3rem; max-width: 30ch;
+}
+.scene p { max-width: 68ch; }
+
+.scene-fig { max-width: var(--prose); margin: 1.6rem auto 0; padding: 0 var(--px); }
+.scene-prose { margin-top: 2.2rem; }
+.scene-fig--wide { max-width: var(--figure); }
+.scene-fig .figure__frame { padding: 1.35rem 1.35rem 1rem; }
+@media (max-width: 560px) { .scene-fig .figure__frame { padding: 1rem .8rem .85rem; } }
+
+.scene-fig .figure__note {
+    display: flex; gap: 1rem; align-items: flex-start; justify-content: space-between;
+    font-family: var(--font-mono); font-size: .72rem; line-height: 1.6;
+}
+.replay {
+    flex: none; background: none; border: 1px solid var(--hair-2); color: var(--tx-3);
+    font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: .3rem .65rem; min-height: 32px; border-radius: 2px; cursor: pointer;
+}
+.replay:hover, .replay:focus-visible { color: var(--tx); border-color: var(--tx-3); }
+.replay::before { content: "\21BB  "; }
+
+.mast__meta a { color: var(--tx-3); }
+.mast__meta a:hover { color: var(--tx); }
+
+/* ---------- controls ---------- */
+.ctl { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; }
+.seg {
+    background: transparent; border: 1px solid var(--hair-2); color: var(--tx-3);
+    font-family: var(--font-mono); font-size: .7rem; letter-spacing: .03em;
+    padding: .36rem .7rem; min-height: 32px; border-radius: 2px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: .45rem; line-height: 1.2;
+    transition: color .15s, border-color .15s, background .15s;
+}
+.seg:hover { color: var(--tx); border-color: rgba(255,255,255,.28); }
+.seg[aria-pressed="true"] { color: var(--tx); background: var(--l3); border-color: rgba(255,255,255,.42); }
+.seg:focus-visible, .replay:focus-visible { outline: 2px solid var(--c1); outline-offset: 2px; }
+.seg__sw { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+@media (max-width: 560px) {
+    .ctl--scroll { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .3rem;
+                   scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+    .ctl--scroll .seg { flex: none; white-space: nowrap; }
+}
+
+/* ---------- scene 1: field of plots beside the readout ---------- */
+.vgrid { display: grid; gap: 1.4rem; align-items: center; }
+@media (min-width: 700px) { .vgrid { grid-template-columns: minmax(260px, 380px) 1fr; } }
+.vgrid__chart { max-width: 380px; width: 100%; }
+.readout { font-family: var(--font-mono); color: var(--tx-2); font-size: .8rem; line-height: 1.55; }
+.readout__name { display: block; color: var(--tx); font-size: .95rem; margin-bottom: .55rem; }
+.readout__name small { color: var(--tx-3); font-size: .74rem; margin-left: .4rem; }
+.rd-tbl { display: grid; grid-template-columns: auto auto; gap: .15rem 1.2rem; justify-content: start;
+          margin-bottom: .9rem; }
+.rd-tbl b { color: var(--tx); font-weight: 500; text-align: right; }
+.rd-crops { list-style: none; margin: 0; padding: 0; }
+.rd-crops li { display: flex; align-items: center; gap: .55rem; margin: .12rem 0; }
+.rd-crops i { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+.rd-crops span { color: var(--tx); min-width: 3.4em; text-align: right; }
+.rd-more { color: var(--tx-3); margin-top: .45rem; }
+
+.legend svg { flex: none; }
+.mono { font-family: var(--font-mono); }
+
+/* ---------- onward cards ---------- */
+.ov-onward { margin-top: 1.8rem; }
+.ov-maps .onward__t { display: block; color: var(--tx); text-decoration: none; }
+.ov-maps .onward__t:hover { color: var(--c1); }
+.ov-maps__list { list-style: none; margin: .2rem 0 .8rem; padding: 0; font-size: .9rem;
+                 color: var(--tx-2); line-height: 1.55; }
+.ov-maps__list li { margin: .25rem 0; }
+.ov-maps__note { font-size: .84rem; color: var(--tx-3); line-height: 1.55; margin: 0; }
+
+/* ---------- method block ---------- */
+.scene--method { margin-top: 3.6rem; max-width: var(--prose); }
+.method { background: var(--l1); border: 1px solid var(--hair); border-radius: 3px; }
+.method summary {
+    font-family: var(--font-mono); font-size: .74rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--tx-2); padding: 1rem 1.2rem; cursor: pointer; list-style: none; min-height: 44px;
+}
+.method summary::-webkit-details-marker { display: none; }
+.method summary::before { content: "+"; display: inline-block; width: 1.2rem; color: var(--c1); }
+.method[open] summary::before { content: "\2212"; }
+.method summary:hover { color: var(--tx); }
+.method__body { padding: .2rem 1.2rem 1.2rem; border-top: 1px solid var(--hair); }
+.method__body > p { font-size: .97rem; margin-top: 1rem; max-width: 70ch; }
+.method .tbl-wrap { margin: 1.4rem 0 0; }
+.method th { white-space: normal; vertical-align: bottom; line-height: 1.35; }
+.method td:first-child { min-width: 10.5rem; }
+.method td.num { white-space: nowrap; }
+@media (max-width: 560px) {
+    .method th { font-size: .6rem; letter-spacing: .02em; }
+    .method td, .method th { padding: .35rem .4rem; }
+    .method td { font-size: .78rem; }
+    .method td:first-child { min-width: 7.5rem; }
+    .method__body { padding: .2rem .7rem 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .seg, .replay { transition: none; }
+}
+
+.ov-onward .onward__n, .ov-onward .onward__t { display: block; }
+.ov-maps a.onward__t { border-bottom: 0; }
+.ov-onward .ov-maps { border-top: 2px solid var(--c1); }
+@media (min-width: 760px) { .ov-onward .ov-maps { grid-column: 1 / -1; } }

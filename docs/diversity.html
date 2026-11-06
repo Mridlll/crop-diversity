@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How Varied the Cropping Is</title>
+<title>Crop Diversity in Each District, on Four Measures</title>
 <meta name="description" content="Crop diversity by Indian district, on four measures, with the crop composition of every district.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +17,7 @@
     <a class="nav__brand" href="index.html">Crop Diversity &middot; India</a>
     <div class="nav__links">
       <a href="index.html">Overview</a>
+      <a href="measurement.html">Measurement</a>
       <a href="irrigation.html">Irrigation</a>
       <a href="markets.html">Markets</a>
       <a href="data.html">Data &amp; methods</a>
@@ -28,17 +29,26 @@
 <header class="mast">
   <div class="prose">
     <p class="mast__label">District map</p>
-    <h1 class="mast__title">How varied the cropping is</h1>
+    <h1 class="mast__title">Crop diversity in each district, on four measures</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">Four measures of crop diversity for each district.</p>
+    <p class="mast__sub">Each district&rsquo;s average over the years it reports, 1997&ndash;98 to 2019&ndash;20.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">A district can grow twenty crops and still put four fifths of its land
-    under one of them. A plain count of crops would call that district varied. The four measures
-    here separate the number of crops from how land is shared among them.</p>
+    <p class="lead">This map shades every Indian district by how varied its cropping is. You can
+    switch between four measures of that variety. They differ in how much weight each gives to the
+    small crops a district grows on a little of its land.</p>
+    <div class="note">
+      <span class="note__label">How to read this map</span>
+      <p>Brighter cyan means more varied cropping on the measure you have picked, and dark slate
+      means less. The buttons above the map switch the measure. Hover over a district to see its
+      count of crops, its effective number of crops, its evenness and its largest crops with their
+      share of its land. The count of crops is how many different crops a district grows at all.
+      The effective number of crops is the number of equally sized crops that would give the same
+      spread of land, so a district split evenly across 20 crops scores 20.</p>
+    </div>
   </div>
 
   <div class="figure figure--wide fade">
@@ -48,36 +58,38 @@
       <p class="figure__sub">Choose a measure. Hover a district for its crop composition.</p>
       <div class="legend" id="tabs"></div>
       <div id="themap" class="chart"></div>
-      <p class="figure__note">Grey districts have no agricultural record; most are urban. Values average each district's own years between 1997&ndash;98 and 2019&ndash;20.</p>
+      <p class="figure__note">Unshaded districts have no agricultural record, and most of them are urban. Values average each district's own years between 1997&ndash;98 and 2019&ndash;20.</p>
     </div>
   </div>
 
   <div class="prose prose--flow fade">
     <h3>What the four measures do</h3>
-    <p>The count of crops grown treats every crop the same. A crop on one hectare counts as much
-    as the staple. The effective number of crops is the number of equally sized crops that would
-    give the observed diversity, so it gives more weight to the crops that cover most of the land.
-    The dominant-weighted count goes further and depends almost entirely on the largest crops.</p>
-    <p>Evenness is the effective number divided by the plain count. It removes the count and
-    measures only how evenly land is spread. A district can grow many crops and still score low.</p>
-    <h3>Reading the map</h3>
-    <p>When you switch from the count to the effective number, the eastern rice belt and the
-    northwestern wheat belt get lighter. These districts grow an ordinary number of crops, but the
-    leading crop takes much of the land.</p>
-    <p>Karnataka, interior Andhra Pradesh, Madhya Pradesh and Rajasthan keep their colour on all
-    four measures. Their cropping is varied by every measure.</p>
+    <p>The count of crops treats every crop the same, so a crop on one hectare counts as much as
+    the staple. The effective number of crops weighs each crop by the land it covers. The
+    number of main crops leans harder on the largest crops and depends almost entirely on the
+    one or two that take most of the land.</p>
+    <p>Evenness is the effective number of crops divided by the count of crops. It runs from close
+    to zero up to one and describes only how evenly land is spread across the crops a district
+    grows. A district that grows many crops can still have low evenness.</p>
+    <h3>Where the measures disagree</h3>
+    <p>Chhattisgarh and Assam grow a lot of crops and are bright on the count of crops. Switch to
+    the effective number of crops and they turn dark, because rice takes a large share of their
+    land.</p>
+    <p>Karnataka, interior Andhra Pradesh, Madhya Pradesh and Rajasthan stay among the brighter
+    districts on the count of crops, the effective number of crops and the number of main crops.
+    On evenness they sit near the middle.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="prose fade">
-    <p class="section__label">The other views</p>
-    <h2 class="section__heading">Same districts, different question</h2>
+    <p class="section__label">More maps</p>
+    <h2 class="section__heading">The other district maps</h2>
     <ul style="list-style:none;margin-left:0">
-      <li><a href="diversity.html">How varied the cropping is</a></li>
-      <li><a href="calorie-diversity.html">How much food energy the land produces</a></li>
-      <li><a href="food-nonfood.html">How much of the land feeds people</a></li>
-      <li><a href="timeline.html">How it moved, year by year</a></li>
+      <li><a href="diversity.html">Crop diversity in each district, on four measures</a></li>
+      <li><a href="calorie-diversity.html">Food energy each district&rsquo;s harvest produces per hectare</a></li>
+      <li><a href="food-nonfood.html">Share of each district&rsquo;s cropped area under food crops</a></li>
+      <li><a href="timeline.html">Effective number of crops in each district, year by year</a></li>
     </ul>
   </div>
 </section>
@@ -119,16 +131,16 @@ function crops(pr) {
 const LAYERS = [
   {name:'effective number of crops', field:'D1', fmt:v=>v.toFixed(1),
    label:'effective number of crops'},
-  {name:'crops grown', field:'D0', fmt:v=>v.toFixed(0), label:'crops grown in an average year'},
-  {name:'dominant-weighted', field:'D2', fmt:v=>v.toFixed(1),
-   label:'effective crops, weighted to the largest'},
-  {name:'evenness', field:'E', fmt:v=>v.toFixed(2), label:'how evenly land is spread'}
+  {name:'count of crops', field:'D0', fmt:v=>v.toFixed(0), label:'count of crops'},
+  {name:'number of main crops', field:'D2', fmt:v=>v.toFixed(1),
+   label:'number of main crops'},
+  {name:'evenness', field:'E', fmt:v=>v.toFixed(2), label:'evenness'}
 ];
 function tip(pr, l) {
   if (pr.D1 == null) return '<strong>'+pr.n+'</strong><br>'+pr.s+'<br>no agricultural record';
   return '<strong>'+pr.n+'</strong><br>'+pr.s+
-    '<br>'+pr.D0.toFixed(1)+' crops grown'+
-    '<br>'+pr.D1.toFixed(1)+' effective crops'+
+    '<br>count of crops '+pr.D0.toFixed(1)+
+    '<br>effective number of crops '+pr.D1.toFixed(1)+
     '<br>evenness '+pr.E.toFixed(2)+
     '<br>observed '+pr.yrs+' years'+crops(pr);
 }

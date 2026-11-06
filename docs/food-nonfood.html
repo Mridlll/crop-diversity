@@ -17,6 +17,7 @@
     <a class="nav__brand" href="index.html">Crop Diversity &middot; India</a>
     <div class="nav__links">
       <a href="index.html">Overview</a>
+      <a href="measurement.html">Measurement</a>
       <a href="irrigation.html">Irrigation</a>
       <a href="markets.html">Markets</a>
       <a href="data.html">Data &amp; methods</a>
@@ -28,26 +29,36 @@
 <header class="mast">
   <div class="prose">
     <p class="mast__label">District map</p>
-    <h1 class="mast__title">Land that feeds people</h1>
+    <h1 class="mast__title">Share of each district&rsquo;s cropped area under food crops</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">The share of each district's cropped area that grows food.</p>
+    <p class="mast__sub">Each district&rsquo;s average over the years it reports, 1997&ndash;98 to 2019&ndash;20.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">Most Indian districts grow food on most of their land. Most of the
-    exceptions are cotton districts.</p>
+    <p class="lead">In five of every six districts on this map, food crops cover at least nine
+    tenths of the cropped area. The districts with the lowest shares are mostly cotton districts in
+    Telangana, Gujarat and Maharashtra.</p>
+    <div class="note">
+      <span class="note__label">How to read this map</span>
+      <p>Brighter cyan means a larger share of the cropped area under food crops, and dark slate
+      means a smaller one. Unshaded districts have no agricultural record. Hover over a district to
+      see its food share, its effective number of crops and its largest crops. A crop counts as
+      food when it belongs to a food group, whatever later happens to the harvest. The effective
+      number of crops is the number of equally sized crops that would give the same spread of
+      land.</p>
+    </div>
   </div>
 
   <div class="figure figure--wide fade">
     <div class="figure__frame">
       <p class="figure__label">Interactive</p>
       <p class="figure__title">Share of cropped area under food crops</p>
-      <p class="figure__sub">Hover a district for its composition.</p>
+      <p class="figure__sub">Hover over a district for its largest crops.</p>
 
       <div id="themap" class="chart"></div>
-      <p class="figure__note">Food crops are cereals, pulses, oilseeds, fruit, vegetables, sugar and spices. The remainder is fibre, fodder, and drugs and narcotics.</p>
+      <p class="figure__note">Food crops are cereals, pulses, oilseeds, fruit, vegetables, sugar and spices. The remaining land is under fibre crops, fodder crops, and drugs and narcotics.</p>
     </div>
   </div>
 
@@ -56,25 +67,25 @@
     <p>A crop counts as food if its category does. Cereals, pulses, oilseeds, fruit, vegetables,
     sugar and spices count. Fibre crops, fodder, and drugs and narcotics do not; they make up the
     rest of the land.</p>
-    <p>The split is by crop, not by where the harvest goes. Maize grown for poultry feed counts as
-    food here, even though much of it is not eaten by people.</p>
+    <p>The split goes by crop. Maize counts as food here even when it is grown for poultry
+    feed.</p>
     <h3>Where the land is not growing food</h3>
-    <p>The food share is lowest in the cotton belt across Gujarat, Maharashtra and Telangana. These
-    districts also have a low effective number of crops, because cotton comes first there and other crops come second.</p>
-    <p>Compare this map with the diversity map. A district can have a low food share and high
-    variety, and several in the northeast do.</p>
+    <p>The food share is lowest in the cotton belt across Gujarat, Maharashtra and Telangana, and
+    in the guar districts of western Rajasthan. Of the 63 districts with less than four fifths of
+    their land under food crops, 41 have an effective number of crops above the median district.
+    Cotton shares their land with several other crops.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="prose fade">
-    <p class="section__label">The other views</p>
-    <h2 class="section__heading">Same districts, different question</h2>
+    <p class="section__label">More maps</p>
+    <h2 class="section__heading">The other district maps</h2>
     <ul style="list-style:none;margin-left:0">
-      <li><a href="diversity.html">How varied the cropping is</a></li>
-      <li><a href="calorie-diversity.html">How much food energy the land produces</a></li>
-      <li><a href="food-nonfood.html">How much of the land feeds people</a></li>
-      <li><a href="timeline.html">How it moved, year by year</a></li>
+      <li><a href="diversity.html">Crop diversity in each district, on four measures</a></li>
+      <li><a href="calorie-diversity.html">Food energy each district&rsquo;s harvest produces per hectare</a></li>
+      <li><a href="food-nonfood.html">Share of each district&rsquo;s cropped area under food crops</a></li>
+      <li><a href="timeline.html">Effective number of crops in each district, year by year</a></li>
     </ul>
   </div>
 </section>
@@ -117,11 +128,11 @@ function tip(pr){
   if (pr.food == null) return '<strong>'+pr.n+'</strong><br>'+pr.s+'<br>no agricultural record';
   return '<strong>'+pr.n+'</strong><br>'+pr.s+
     '<br>'+(pr.food*100).toFixed(0)+'% of land under food crops'+
-    '<br>'+pr.D1.toFixed(1)+' effective crops'+crops(pr);
+    '<br>effective number of crops '+pr.D1.toFixed(1)+crops(pr);
 }
 function drawAll(){
   mapLayer('#themap', {field:'food', fmt:v=>(v*100).toFixed(0)+'%', height:620,
-                       label:'share of cropped area under food crops', tipFn:tip});
+                       label:'share under food crops', tipFn:tip});
 }
 window.drawAll = drawAll; drawAll();
 
