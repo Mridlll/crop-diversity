@@ -1,0 +1,181 @@
+Rows after script-76 cleaning: 344,572; duplicate rows collapsed: 91.
+
+Crop mapping (54 APY crop names):
+  rice       Rice
+  wheat      Wheat
+  maize      Maize
+  millets    Bajra, Jowar, Ragi, Small Millets
+  pulses     Gram, Arhar/Tur, Moong(Green Gram), Urad, Moth, Masoor, Other Kharif Pulses, Peas & Beans (Pulses), Horse-Gram, Other  Rabi Pulses, Khesari, Cowpea(Lobia), Other Summer Pulses
+  oilseeds   Soyabean, Groundnut, Rapeseed &Mustard, Niger Seed, Sesamum, Sunflower, Castor Seed, Linseed, Safflower, Other Oilseeds
+  cotton     Cotton(Lint)
+  sugarcane  Sugarcane
+  other      Guar Seed, Coconut, Potato, Jute, Barley, Dry Chillies, Onion, Arecanut, Tobacco, Coriander, Cashewnut, Banana, Black Pepper, Tapioca, Garlic, Turmeric, Other Cereals, Ginger, Mesta, Cardamom, Sweet Potato, Sannhamp
+
+Crop-record districts: 725; 2011 units: 629 (3 without a 2011 parent kept as their own unit).
+
+Checks passed: annual group shares sum to 1; the four seasons sum to annual GCA.
+
+Panel: 629 units, 13686 unit-years, 68430 unit-year-season rows (incl. annual).
+Units holding a 606-sample district: 605 (the 605 clustering groups expected).
+Unit-years in the 606 units: 13291.
+
+Unit-years by year (all units / 606 units):
+  1997-98   484  477  GCA  182.2 Mha
+  1998-99   543  528  GCA  168.0 Mha
+  1999-00   562  546  GCA  164.9 Mha
+  2000-01   546  529  GCA  165.2 Mha
+  2001-02   546  530  GCA  164.6 Mha
+  2002-03   568  552  GCA  154.9 Mha
+  2003-04   583  567  GCA  170.0 Mha
+  2004-05   588  572  GCA  167.9 Mha
+  2005-06   593  577  GCA  168.9 Mha
+  2006-07   597  581  GCA  172.9 Mha
+  2007-08   606  589  GCA  173.8 Mha
+  2008-09   617  600  GCA  172.8 Mha
+  2009-10   619  602  GCA  169.4 Mha
+  2010-11   623  605  GCA  183.0 Mha
+  2011-12   623  605  GCA  177.6 Mha
+  2012-13   622  605  GCA  181.3 Mha
+  2013-14   623  604  GCA  182.5 Mha
+  2014-15   624  605  GCA  177.3 Mha
+  2015-16   625  605  GCA  179.4 Mha
+  2016-17   626  605  GCA  184.9 Mha
+  2017-18   625  605  GCA  186.0 Mha
+  2018-19   626  605  GCA  185.1 Mha
+  2019-20   617  597  GCA  194.9 Mha
+
+Years observed per unit: {'count': 629.0, 'mean': 21.8, 'std': 3.1, 'min': 1.0, '25%': 22.0, '50%': 23.0, '75%': 23.0, 'max': 23.0}
+Units observed all 23 years: 438.
+
+Unit-years with at least one season row (all units):
+  kharif      13582
+  rabi        12355
+  summer      6665
+  whole_year  10657
+
+Flags (unit-years flagged, of 13686; in 606 units):
+  f_odisha_season_collapsed       90     90
+  f_odisha_summer_rice_2012       30     30
+  f_bihar_rice_season_swap       144    144
+  f_bihar_1999_rice_missing       37     37
+  f_tn_rice_single_season        566    566
+  f_whole_year_ge50              685    653
+  f_whole_year_ge20             1594   1521
+  f_gca_jump_severe              457    418
+  f_gca_jump_mild               1099   1035
+  f_child_gap                     15     15
+  f_pre_split_donor              557    526
+  f_late_entrant                1040    960
+  f_before_entry                  41     37
+  flag_season_unreliable        1395   1363
+  flag_annual_unreliable         978    918
+  flag_any                      4080   3898
+
+Pre-2011 split donors detected: 89
+  ARUNACHAL PRADESH|ANJAW (entry 2004) <- ARUNACHAL PRADESH|LOHIT: donor drop 9,284 ha (ratio 0.735) vs late unit 7,209 ha
+  ARUNACHAL PRADESH|KURUNG KUMEY (entry 2002) <- ARUNACHAL PRADESH|LOWER SUBANSIRI: donor drop 12,373 ha (ratio 0.534) vs late unit 10,111 ha
+  ARUNACHAL PRADESH|LOWER DIBANG VALLEY (entry 2002) <- ARUNACHAL PRADESH|DIBANG VALLEY: donor drop 20,898 ha (ratio 0.129) vs late unit 22,732 ha
+  ASSAM|BAKSA (entry 2005) <- ASSAM|BARPETA: donor drop 86,403 ha (ratio 0.674) vs late unit 127,014 ha
+  ASSAM|BAKSA (entry 2005) <- ASSAM|DARRANG: donor drop 152,515 ha (ratio 0.355) vs late unit 127,014 ha
+  ASSAM|BAKSA (entry 2005) <- ASSAM|KAMRUP: donor drop 67,696 ha (ratio 0.701) vs late unit 127,014 ha
+  ASSAM|BAKSA (entry 2005) <- ASSAM|NALBARI: donor drop 86,833 ha (ratio 0.543) vs late unit 127,014 ha
+  ASSAM|CHIRANG (entry 2005) <- ASSAM|BARPETA: donor drop 86,403 ha (ratio 0.674) vs late unit 76,577 ha
+  ASSAM|CHIRANG (entry 2005) <- ASSAM|BONGAIGAON: donor drop 52,396 ha (ratio 0.644) vs late unit 76,577 ha
+  ASSAM|KAMRUP METROPOLITAN (entry 2005) <- ASSAM|DARRANG: donor drop 152,515 ha (ratio 0.355) vs late unit 28,647 ha
+  ASSAM|KAMRUP METROPOLITAN (entry 2005) <- ASSAM|KAMRUP: donor drop 67,696 ha (ratio 0.701) vs late unit 28,647 ha
+  ASSAM|UDALGURI (entry 2005) <- ASSAM|DARRANG: donor drop 152,515 ha (ratio 0.355) vs late unit 123,218 ha
+  BIHAR|ARWAL (entry 2003) <- BIHAR|AURANGABAD: donor drop 67,950 ha (ratio 0.754) vs late unit 47,452 ha
+  BIHAR|ARWAL (entry 2003) <- BIHAR|BHOJPUR: donor drop 56,660 ha (ratio 0.758) vs late unit 47,452 ha
+  BIHAR|ARWAL (entry 2003) <- BIHAR|GAYA: donor drop 83,650 ha (ratio 0.652) vs late unit 47,452 ha
+  BIHAR|ARWAL (entry 2003) <- BIHAR|JEHANABAD: donor drop 71,416 ha (ratio 0.525) vs late unit 47,452 ha
+  BIHAR|ARWAL (entry 2003) <- BIHAR|PATNA: donor drop 30,919 ha (ratio 0.879) vs late unit 47,452 ha
+  CHHATTISGARH|BIJAPUR (entry 2006) <- CHHATTISGARH|DAKSHIN BASTAR DANTEWADA: donor drop 97,758 ha (ratio 0.661) vs late unit 66,556 ha
+  CHHATTISGARH|NARAYANPUR (entry 2006) <- CHHATTISGARH|DAKSHIN BASTAR DANTEWADA: donor drop 97,758 ha (ratio 0.661) vs late unit 33,299 ha
+  GUJARAT|ANAND (entry 2003) <- GUJARAT|KHEDA: donor drop 80,800 ha (ratio 0.808) vs late unit 237,900 ha
+  GUJARAT|DOHAD (entry 2003) <- GUJARAT|PANCH MAHALS: donor drop 119,000 ha (ratio 0.7) vs late unit 306,200 ha
+  GUJARAT|NARMADA (entry 2003) <- GUJARAT|BHARUCH: donor drop 62,200 ha (ratio 0.824) vs late unit 104,900 ha
+  GUJARAT|NAVSARI (entry 2003) <- GUJARAT|VALSAD: donor drop 83,400 ha (ratio 0.51) vs late unit 88,100 ha
+  GUJARAT|PATAN (entry 2003) <- GUJARAT|MAHESANA: donor drop 260,600 ha (ratio 0.515) vs late unit 319,900 ha
+  GUJARAT|TAPI (entry 2008) <- GUJARAT|SURAT: donor drop 69,000 ha (ratio 0.778) vs late unit 116,900 ha
+  HARYANA|MEWAT (entry 2005) <- HARYANA|GURGAON: donor drop 144,109 ha (ratio 0.435) vs late unit 183,557 ha
+  HARYANA|PALWAL (entry 2008) <- HARYANA|FARIDABAD: donor drop 116,197 ha (ratio 0.305) vs late unit 148,255 ha
+  HARYANA|PALWAL (entry 2008) <- HARYANA|MEWAT: donor drop 38,991 ha (ratio 0.788) vs late unit 148,255 ha
+  JAMMU KASHMIR|BANDIPORE (entry 2007) <- JAMMU KASHMIR|BARAMULA: donor drop 15,473 ha (ratio 0.745) vs late unit 16,777 ha
+  JAMMU KASHMIR|BANDIPORE (entry 2007) <- JAMMU KASHMIR|SRINAGAR: donor drop 14,071 ha (ratio 0.178) vs late unit 16,777 ha
+  JAMMU KASHMIR|GANDERBAL (entry 2007) <- JAMMU KASHMIR|ANANTNAG: donor drop 8,036 ha (ratio 0.873) vs late unit 13,526 ha
+  JAMMU KASHMIR|GANDERBAL (entry 2007) <- JAMMU KASHMIR|BARAMULA: donor drop 15,473 ha (ratio 0.745) vs late unit 13,526 ha
+  JAMMU KASHMIR|GANDERBAL (entry 2007) <- JAMMU KASHMIR|SRINAGAR: donor drop 14,071 ha (ratio 0.178) vs late unit 13,526 ha
+  JAMMU KASHMIR|KISHTWAR (entry 2007) <- JAMMU KASHMIR|ANANTNAG: donor drop 8,036 ha (ratio 0.873) vs late unit 19,094 ha
+  JAMMU KASHMIR|KISHTWAR (entry 2007) <- JAMMU KASHMIR|DODA: donor drop 39,253 ha (ratio 0.482) vs late unit 19,094 ha
+  JAMMU KASHMIR|KULGAM (entry 2007) <- JAMMU KASHMIR|ANANTNAG: donor drop 8,036 ha (ratio 0.873) vs late unit 27,711 ha
+  JAMMU KASHMIR|RAMBAN (entry 2007) <- JAMMU KASHMIR|ANANTNAG: donor drop 8,036 ha (ratio 0.873) vs late unit 24,889 ha
+  JAMMU KASHMIR|RAMBAN (entry 2007) <- JAMMU KASHMIR|DODA: donor drop 39,253 ha (ratio 0.482) vs late unit 24,889 ha
+  JAMMU KASHMIR|RAMBAN (entry 2007) <- JAMMU KASHMIR|UDHAMPUR: donor drop 32,206 ha (ratio 0.7) vs late unit 24,889 ha
+  JAMMU KASHMIR|REASI (entry 2007) <- JAMMU KASHMIR|JAMMU: donor drop 36,638 ha (ratio 0.808) vs late unit 37,043 ha
+  JAMMU KASHMIR|REASI (entry 2007) <- JAMMU KASHMIR|UDHAMPUR: donor drop 32,206 ha (ratio 0.7) vs late unit 37,043 ha
+  JAMMU KASHMIR|SAMBA (entry 2007) <- JAMMU KASHMIR|JAMMU: donor drop 36,638 ha (ratio 0.808) vs late unit 49,651 ha
+  JAMMU KASHMIR|SAMBA (entry 2007) <- JAMMU KASHMIR|UDHAMPUR: donor drop 32,206 ha (ratio 0.7) vs late unit 49,651 ha
+  JAMMU KASHMIR|SHUPIYAN (entry 2007) <- JAMMU KASHMIR|ANANTNAG: donor drop 8,036 ha (ratio 0.873) vs late unit 5,830 ha
+  JHARKHAND|JAMTARA (entry 2003) <- JHARKHAND|DEOGHAR: donor drop 19,781 ha (ratio 0.732) vs late unit 37,216 ha
+  JHARKHAND|KHUNTI (entry 2008) <- JHARKHAND|PASHCHIMI SINGHBHUM: donor drop 18,859 ha (ratio 0.862) vs late unit 54,807 ha
+  JHARKHAND|KHUNTI (entry 2008) <- JHARKHAND|RANCHI: donor drop 44,373 ha (ratio 0.757) vs late unit 54,807 ha
+  JHARKHAND|LATEHAR (entry 2003) <- JHARKHAND|PALAMU: donor drop 28,184 ha (ratio 0.645) vs late unit 33,075 ha
+  JHARKHAND|RAMGARH (entry 2008) <- JHARKHAND|HAZARIBAGH: donor drop 40,646 ha (ratio 0.34) vs late unit 12,580 ha
+  JHARKHAND|RAMGARH (entry 2008) <- JHARKHAND|RANCHI: donor drop 44,373 ha (ratio 0.757) vs late unit 12,580 ha
+  KARNATAKA|CHIKKABALLAPURA (entry 2007) <- ANDHRA PRADESH|CHITTOOR: donor drop 54,466 ha (ratio 0.841) vs late unit 147,706 ha
+  KARNATAKA|CHIKKABALLAPURA (entry 2007) <- KARNATAKA|BANGALORE RURAL: donor drop 158,554 ha (ratio 0.329) vs late unit 147,706 ha
+  KARNATAKA|CHIKKABALLAPURA (entry 2007) <- KARNATAKA|KOLAR: donor drop 147,316 ha (ratio 0.399) vs late unit 147,706 ha
+  KARNATAKA|RAMANAGARA (entry 2007) <- KARNATAKA|BANGALORE RURAL: donor drop 158,554 ha (ratio 0.329) vs late unit 141,734 ha
+  KARNATAKA|YADGIR (entry 2010) <- KARNATAKA|GULBARGA: donor drop 456,540 ha (ratio 0.677) vs late unit 370,190 ha
+  MADHYA PRADESH|ALIRAJPUR (entry 2008) <- GUJARAT|DOHAD: donor drop 64,200 ha (ratio 0.799) vs late unit 199,651 ha
+  MADHYA PRADESH|ALIRAJPUR (entry 2008) <- MADHYA PRADESH|JHABUA: donor drop 202,343 ha (ratio 0.512) vs late unit 199,651 ha
+  MADHYA PRADESH|ANUPPUR (entry 2003) <- MADHYA PRADESH|SHAHDOL: donor drop 183,543 ha (ratio 0.528) vs late unit 191,819 ha
+  MADHYA PRADESH|ASHOKNAGAR (entry 2003) <- MADHYA PRADESH|GUNA: donor drop 311,229 ha (ratio 0.556) vs late unit 367,478 ha
+  MADHYA PRADESH|ASHOKNAGAR (entry 2003) <- UTTAR PRADESH|LALITPUR: donor drop 122,922 ha (ratio 0.634) vs late unit 367,478 ha
+  MADHYA PRADESH|BURHANPUR (entry 2003) <- MADHYA PRADESH|EAST NIMAR: donor drop 123,062 ha (ratio 0.75) vs late unit 100,372 ha
+  MADHYA PRADESH|SINGRAULI (entry 2008) <- MADHYA PRADESH|SIDHI: donor drop 201,039 ha (ratio 0.535) vs late unit 230,115 ha
+  MADHYA PRADESH|SINGRAULI (entry 2008) <- UTTAR PRADESH|SONBHADRA: donor drop 66,713 ha (ratio 0.708) vs late unit 230,115 ha
+  MAHARASHTRA|GONDIYA (entry 1999) <- MAHARASHTRA|BHANDARA: donor drop 196,109 ha (ratio 0.504) vs late unit 210,900 ha
+  MAHARASHTRA|HINGOLI (entry 1999) <- MAHARASHTRA|PARBHANI: donor drop 116,918 ha (ratio 0.871) vs late unit 424,600 ha
+  MAHARASHTRA|MUMBAI SUBURBAN (entry 2019) <- MAHARASHTRA|RAIGARH: donor drop 16,362 ha (ratio 0.878) vs late unit 1,046 ha
+  MAHARASHTRA|NANDURBAR (entry 1999) <- MAHARASHTRA|DHULE: donor drop 217,650 ha (ratio 0.644) vs late unit 291,500 ha
+  MAHARASHTRA|WASHIM (entry 1999) <- MAHARASHTRA|AKOLA: donor drop 258,396 ha (ratio 0.673) vs late unit 476,300 ha
+  MIZORAM|LAWNGTLAI (entry 2004) <- MIZORAM|SAIHA: donor drop 7,194 ha (ratio 0.475) vs late unit 7,023 ha
+  MIZORAM|MAMIT (entry 2003) <- MIZORAM|AIZAWL: donor drop 19,574 ha (ratio 0.437) vs late unit 9,458 ha
+  MIZORAM|MAMIT (entry 2003) <- MIZORAM|KOLASIB: donor drop 5,686 ha (ratio 0.683) vs late unit 9,458 ha
+  MIZORAM|SERCHHIP (entry 2004) <- MIZORAM|AIZAWL: donor drop 21,028 ha (ratio 0.395) vs late unit 5,859 ha
+  NAGALAND|KIPHIRE (entry 2008) <- NAGALAND|PHEK: donor drop 8,440 ha (ratio 0.807) vs late unit 21,020 ha
+  NAGALAND|KIPHIRE (entry 2008) <- NAGALAND|TUENSANG: donor drop 13,200 ha (ratio 0.727) vs late unit 21,020 ha
+  NAGALAND|LONGLENG (entry 2008) <- NAGALAND|MOKOKCHUNG: donor drop 5,010 ha (ratio 0.863) vs late unit 15,790 ha
+  NAGALAND|LONGLENG (entry 2008) <- NAGALAND|TUENSANG: donor drop 13,200 ha (ratio 0.727) vs late unit 15,790 ha
+  NAGALAND|PEREN (entry 2008) <- MANIPUR|SENAPATI: donor drop 6,608 ha (ratio 0.793) vs late unit 21,280 ha
+  NAGALAND|PEREN (entry 2008) <- NAGALAND|DIMAPUR: donor drop 18,250 ha (ratio 0.776) vs late unit 21,280 ha
+  NAGALAND|PEREN (entry 2008) <- NAGALAND|KOHIMA: donor drop 11,290 ha (ratio 0.746) vs late unit 21,280 ha
+  PUNJAB|BARNALA (entry 2007) <- PUNJAB|SANGRUR: donor drop 228,400 ha (ratio 0.715) vs late unit 230,800 ha
+  PUNJAB|SAHIBZADA AJIT SINGH NAGAR (entry 2006) <- PUNJAB|RUPNAGAR: donor drop 54,100 ha (ratio 0.691) vs late unit 86,100 ha
+  PUNJAB|TARN TARAN (entry 2006) <- PUNJAB|AMRITSAR: donor drop 359,000 ha (ratio 0.507) vs late unit 364,400 ha
+  RAJASTHAN|PRATAPGARH (entry 2008) <- RAJASTHAN|CHITTAURGARH: donor drop 188,745 ha (ratio 0.707) vs late unit 259,008 ha
+  RAJASTHAN|PRATAPGARH (entry 2008) <- RAJASTHAN|UDAIPUR: donor drop 81,478 ha (ratio 0.782) vs late unit 259,008 ha
+  TAMIL NADU|ARIYALUR (entry 2008) <- TAMIL NADU|PERAMBALUR: donor drop 120,327 ha (ratio 0.436) vs late unit 103,935 ha
+  TAMIL NADU|KRISHNAGIRI (entry 2004) <- TAMIL NADU|DHARMAPURI: donor drop 107,742 ha (ratio 0.616) vs late unit 147,249 ha
+  TAMIL NADU|TIRUPPUR (entry 2008) <- TAMIL NADU|COIMBATORE: donor drop 126,413 ha (ratio 0.551) vs late unit 153,690 ha
+  TAMIL NADU|TIRUPPUR (entry 2008) <- TAMIL NADU|ERODE: donor drop 50,563 ha (ratio 0.778) vs late unit 153,690 ha
+  UTTAR PRADESH|KANSHIRAM NAGAR (entry 2009) <- UTTAR PRADESH|ETAH: donor drop 217,750 ha (ratio 0.553) vs late unit 218,270 ha
+Late-entrant units (entry after 1998-99) with no donor found: 14
+  ANDAMAN NICOBAR ISLANDS|NICOBARS (2000); ANDAMAN NICOBAR ISLANDS|NORTH MIDDLE ANDAMAN (2000); ANDAMAN NICOBAR ISLANDS|SOUTH ANDAMAN (2002); CHHATTISGARH|RAIGARH (2000); GOA|NORTH GOA (2004); GUJARAT|PORBANDAR (2003); JHARKHAND|SARAIKELA KHARSAWAN (2003); JHARKHAND|SIMDEGA (2003); MIZORAM|SAIHA (2003); NAGALAND|DIMAPUR (2000); PUDUCHERRY|MAHE (1999); TAMIL NADU|CHENNAI (2018); THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU|DAMAN (2013); THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU|DIU (2013)
+
+National share of GCA by group, selected years (unflagged and flagged together):
+group       cotton  maize  millets  oilseeds  other  pulses   rice  sugarcane  wheat
+year_start                                                                          
+1998         0.056  0.035    0.133     0.147  0.042   0.142  0.261      0.023  0.162
+2005         0.051  0.044    0.121     0.163  0.065   0.117  0.258      0.025  0.155
+2012         0.066  0.047    0.084     0.142  0.069   0.118  0.281      0.027  0.167
+2019         0.069  0.051    0.072     0.146  0.066   0.146  0.243      0.024  0.184
+
+Same, annual-reliable unit-years only:
+group       cotton  maize  millets  oilseeds  other  pulses   rice  sugarcane  wheat
+year_start                                                                          
+1998         0.054  0.033    0.130     0.148  0.044   0.138  0.263      0.023  0.167
+2005         0.054  0.040    0.122     0.166  0.066   0.116  0.258      0.025  0.153
+2012         0.071  0.050    0.090     0.153  0.074   0.125  0.228      0.029  0.180
+2019         0.070  0.050    0.073     0.146  0.067   0.145  0.241      0.024  0.184

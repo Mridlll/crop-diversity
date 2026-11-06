@@ -1,0 +1,161 @@
+==============================================================================
+Referee checks on script 99 (policy event studies)
+==============================================================================
+R0 reproduce P07 DiD share_gca_pulses: +0.0103 (0.0038)  n 4944 G 432
+R0 reproduce P07 DiD ln_area_ha_pulses: +0.1438 (0.0390)  n 4928 G 432
+
+R1  treated linear trend in script 99
+  share_gca_pulses: design has 13 columns, numerical rank 12 -> RANK DEFICIENT (trend spanned by event dummies + unit FE)
+    R^2 of demeaned treated-trend on demeaned event dummies: 1.0000000000
+    script-99 'avg post with trend' (pinv min-norm, arbitrary): -0.0088 (0.0032)
+    (a) DiD with treated linear trend (post + treat*t): post -0.0050 (0.0044)  trend +0.0025 (0.0008)
+    (a') same, window 2002-2009: post +0.0092 (0.0034)
+    (b) pre-period trend +0.00286/yr extrapolated; post DiD on detrended y: -0.0072 (0.0044) (bootstrap 199)
+  ln_area_ha_pulses: design has 13 columns, numerical rank 12 -> RANK DEFICIENT (trend spanned by event dummies + unit FE)
+    R^2 of demeaned treated-trend on demeaned event dummies: 1.0000000000
+    script-99 'avg post with trend' (pinv min-norm, arbitrary): -0.0568 (0.0291)
+    (a) DiD with treated linear trend (post + treat*t): post -0.2013 (0.0630)  trend +0.0565 (0.0099)
+    (a') same, window 2002-2009: post -0.0734 (0.0593)
+    (b) pre-period trend +0.05991/yr extrapolated; post DiD on detrended y: -0.2219 (0.0698) (bootstrap 199)
+
+R2  P07 pulse share: mean post coefficient minus alternative pre baselines
+  share_gca_pulses   e=-1 only          -0.0030 (0.0027)
+  share_gca_pulses   e=-2..-1           +0.0040 (0.0027)
+  share_gca_pulses   e=-3..-1           +0.0065 (0.0031)
+  share_gca_pulses   e=-3..-2           +0.0113 (0.0039)
+  share_gca_pulses   e=-5..-1           +0.0037 (0.0035)
+  share_gca_pulses   e=-4..-1           +0.0042 (0.0032)
+  share_gca_pulses   e=-10..-1 (all)    +0.0116 (0.0039)
+  ln_area_ha_pulses  e=-1 only          +0.0233 (0.0224)
+  ln_area_ha_pulses  e=-2..-1           -0.0251 (0.0432)
+  ln_area_ha_pulses  e=-3..-1           -0.0487 (0.0538)
+  ln_area_ha_pulses  e=-3..-2           -0.0848 (0.0780)
+  ln_area_ha_pulses  e=-5..-1           +0.0117 (0.0411)
+  ln_area_ha_pulses  e=-4..-1           -0.0111 (0.0447)
+  ln_area_ha_pulses  e=-10..-1 (all)    +0.1732 (0.0407)
+  raw within-state-year deviation of pulse share, treated minus control, by year:
+  1997 +0.0707, 1998 +0.0800, 1999 +0.0809, 2000 +0.0823, 2001 +0.0888, 2002 +0.0929, 2003 +0.1019, 2004 +0.0853, 2005 +0.0828, 2006 +0.1017, 2007 +0.1037, 2008 +0.0916, 2009 +0.0882
+
+R3  short-window DiD (post vs pre within window), P07
+  window 1997-2009 share_gca_pulses   DiD +0.0103 (0.0038)
+  window 1997-2009 ln_area_ha_pulses  DiD +0.1438 (0.0390)
+  window 2000-2009 share_gca_pulses   DiD +0.0059 (0.0036)
+  window 2000-2009 ln_area_ha_pulses  DiD +0.0669 (0.0384)
+  window 2002-2009 share_gca_pulses   DiD +0.0036 (0.0035)
+  window 2002-2009 ln_area_ha_pulses  DiD +0.0089 (0.0410)
+  window 2003-2009 share_gca_pulses   DiD +0.0042 (0.0032)
+  window 2003-2009 ln_area_ha_pulses  DiD -0.0108 (0.0444)
+  window 2004-2009 share_gca_pulses   DiD +0.0066 (0.0030)
+  window 2004-2009 ln_area_ha_pulses  DiD -0.0479 (0.0534)
+
+R4  leave-one-state-out, P07 pulse share: DiD and post-vs-(e-4..-1)
+  drop ANDHRA PRADESH   DiD +0.0110 (0.0038)  post-vs-pre4 +0.0049 (0.0033)  (treated units 14)
+  drop BIHAR            DiD +0.0110 (0.0041)  post-vs-pre4 +0.0049 (0.0035)  (treated units 13)
+  drop CHHATTISGARH     DiD +0.0107 (0.0039)  post-vs-pre4 +0.0047 (0.0033)  (treated units 8)
+  drop GUJARAT          DiD +0.0111 (0.0039)  post-vs-pre4 +0.0043 (0.0034)  (treated units 11)
+  drop HARYANA          DiD +0.0108 (0.0039)  post-vs-pre4 +0.0045 (0.0033)  (treated units 5)
+  drop KARNATAKA        DiD +0.0091 (0.0040)  post-vs-pre4 +0.0036 (0.0034)  (treated units 12)
+  drop MADHYA PRADESH   DiD +0.0062 (0.0037)  post-vs-pre4 +0.0047 (0.0032)  (treated units 20)
+  drop MAHARASHTRA      DiD +0.0116 (0.0040)  post-vs-pre4 +0.0041 (0.0034)  (treated units 18)
+  drop ODISHA           DiD +0.0114 (0.0040)  post-vs-pre4 +0.0046 (0.0034)  (treated units 10)
+  drop PUNJAB           DiD +0.0106 (0.0039)  post-vs-pre4 +0.0043 (0.0033)  (treated units 5)
+  drop RAJASTHAN        DiD +0.0110 (0.0038)  post-vs-pre4 +0.0056 (0.0033)  (treated units 15)
+  drop TAMIL NADU       DiD +0.0088 (0.0037)  post-vs-pre4 +0.0028 (0.0032)  (treated units 12)
+  drop UTTAR PRADESH    DiD +0.0096 (0.0039)  post-vs-pre4 +0.0013 (0.0032)  (treated units 19)
+  drop WEST BENGAL      DiD +0.0111 (0.0039)  post-vs-pre4 +0.0047 (0.0033)  (treated units 5)
+
+R5  2011-parent units with mixed child treatment in NFSM-Pulses 2007
+  mixed units: 22 (ANDHRA PRADESH|ADILABAD, ANDHRA PRADESH|KHAMMAM, ANDHRA PRADESH|MAHBUBNAGAR, ANDHRA PRADESH|NALGONDA, ANDHRA PRADESH|NIZAMABAD, ANDHRA PRADESH|WARANGAL, CHHATTISGARH|BILASPUR, CHHATTISGARH|DURG, CHHATTISGARH|KABEERDHAM, CHHATTISGARH|RAIPUR)
+  P07 pulse share DiD dropping mixed units: +0.0123 (0.0041)
+  confidence of 2007-08 pulses list rows: {'high': 725}
+
+R6  NFSM-Rice and NFSM-Wheat 2007: event coefficients for outcomes not in the headline
+  rice07 share_gca_rice     -10:-0.017, -9:-0.007, -8:-0.016, -7:-0.004, -6:-0.003, -5:+0.009, -4:+0.005, -3:+0.010, -2:+0.005, 0:+0.001, 1:-0.001, 2:+0.002, 3:-0.007, 4:-0.003, 5:-0.002, 6:-0.004
+      DiD with treated linear trend: -0.0127 (0.0043)
+  rice07 ln_area_ha_rice    -10:-0.121, -9:-0.147, -8:-0.206, -7:-0.122, -6:-0.109, -5:-0.018, -4:+0.006, -3:-0.008, -2:-0.038, 0:+0.007, 1:-0.007, 2:+0.026, 3:-0.012, 4:-0.004, 5:+0.054, 6:+0.034
+      DiD with treated linear trend: -0.0495 (0.0208)
+      rice07 TN units in stack: 31
+      rice07 drop Tamil Nadu, share_gca_rice DiD -0.0013 (0.0049)
+      rice07 drop Tamil Nadu, ln_area_ha_rice DiD +0.0782 (0.0352)
+  wheat07 share_gca_wheat    -10:+0.018, -9:+0.003, -8:+0.005, -7:+0.000, -6:+0.010, -5:+0.008, -4:+0.004, -3:+0.014, -2:+0.005, 0:+0.001, 1:+0.000, 2:+0.004, 3:-0.003, 4:-0.002, 5:+0.007, 6:+0.006
+      DiD with treated linear trend: -0.0034 (0.0042)
+  wheat07 ln_area_ha_wheat   -10:+0.054, -9:+0.012, -8:+0.071, -7:+0.081, -6:+0.087, -5:+0.104, -4:+0.026, -3:+0.068, -2:+0.020, 0:-0.029, 1:+0.004, 2:+0.005, 3:+0.003, 4:-0.001, 5:+0.031, 6:+0.018
+      DiD with treated linear trend: -0.0384 (0.0237)
+  wheat07 share_gca_pulses   -10:-0.028, -9:-0.024, -8:-0.016, -7:-0.008, -6:-0.009, -5:-0.005, -4:-0.008, -3:-0.012, -2:-0.013, 0:+0.004, 1:+0.001, 2:-0.002, 3:-0.004, 4:-0.002, 5:-0.006, 6:-0.006
+      DiD with treated linear trend: +0.0011 (0.0051)
+
+R7  Odisha Millets Mission
+  total millet area (ha) by cohort and year:
+c     0.0      2017.0  2018.0  2019.0
+yr                                   
+2005   373.0  52122.0  6382.0  6690.0
+2006   427.0  52040.0  5446.0  7088.0
+2007   325.0  55594.0  5366.0  6242.0
+2008   365.0  55255.0  5670.0  4423.0
+2009   277.0  49257.0  4939.0  4557.0
+2010   281.0  55980.0  5806.0  4107.0
+2011   212.0  48908.0  3498.0  2390.0
+2013    96.0  53309.0  2118.0  1111.0
+2014    81.0  48133.0  2191.0  1073.0
+2015    62.0  41631.0  1380.0  2620.0
+2016    53.0  43163.0  1688.0  2057.0
+2017    42.0  41608.0   587.0   355.0
+2018    28.0  34068.0   588.0  1983.0
+2019   462.0  66246.0  7918.0  1812.0
+  total GCA (ha) by cohort, 2016-2019:
+c        0.0        2017.0     2018.0    2019.0
+yr                                             
+2016  1969117.0   839979.0  1102106.0  738399.0
+2017  1844605.0   776416.0   970429.0  687701.0
+2018  1877873.0   798491.0   989625.0  660029.0
+2019  2131535.0  1204653.0  1280073.0  739327.0
+  untreated districts with any millet area, by year: {2005: 9, 2006: 11, 2007: 11, 2008: 10, 2009: 10, 2010: 10, 2011: 8, 2013: 6, 2014: 6, 2015: 5, 2016: 6, 2017: 3, 2018: 2, 2019: 5}
+  cohort 2017: ln area 2019 - 2016 = +0.428; 2019 - 2018 = +0.665
+  cohort 2018: ln area 2019 - 2016 = +1.546; 2019 - 2018 = +2.600
+  cohort 2019: ln area 2019 - 2016 = -0.127; 2019 - 2018 = -0.090
+  cohort 0: ln area 2019 - 2016 = +2.165; 2019 - 2018 = +2.803
+  MDE (80% power, 5%) for millet share ATT with SE 0.0035: 0.0098; 2017-cohort pre mean share 0.0552
+  2017 cohort millet share 2005-2016 linear slope: -0.00106/yr
+
+R8  MSP C1 checks
+  raw p: rice 0.140, wheat 0.221, maize 0.466, millets 0.412, pulses 0.106, oilseeds 0.805, cotton 0.830, sugarcane 0.243, other 0.062
+  Holm-adjusted min p 0.556; BH min q 0.421
+  rice      2019 alone +0.0036 (0.0028)   post with exposure x linear trend +0.0034 (0.0030)
+  wheat     2019 alone -0.0025 (0.0017)   post with exposure x linear trend +0.0022 (0.0016)
+  maize     2019 alone -0.0001 (0.0016)   post with exposure x linear trend -0.0026 (0.0017)
+  millets   2019 alone +0.0009 (0.0042)   post with exposure x linear trend -0.0046 (0.0025)
+  pulses    2019 alone +0.0050 (0.0022)   post with exposure x linear trend -0.0008 (0.0019)
+  oilseeds  2019 alone +0.0002 (0.0020)   post with exposure x linear trend +0.0048 (0.0020)
+  cotton    2019 alone -0.0005 (0.0017)   post with exposure x linear trend -0.0034 (0.0015)
+  sugarcane 2019 alone +0.0002 (0.0005)   post with exposure x linear trend +0.0014 (0.0004)
+  other     2019 alone -0.0068 (0.0037)   post with exposure x linear trend -0.0005 (0.0029)
+  2013-16 raw APY: Whole Year area 50.29 Mha of 724.07 Mha; Whole Year rows that duplicate a seasonal row of the same crop: 72 rows, 0.11 Mha
+  top crops in those overlaps: {'Maize': 103.0, 'Ginger': 2.0, 'Onion': 1.0, 'Sugarcane': 0.0, 'Garlic': 0.0, 'Coriander': 0.0} (kha)
+
+R9  Odisha APY coverage by year (all Odisha units, kha)
+             gca_ha  area_ha_rice  area_ha_millets  area_ha_pulses  area_ha_oilseeds  area_ha_cotton  area_ha_other
+year_start                                                                                                         
+2004         5735.0        4492.0            102.0           499.0             326.0             0.0          235.0
+2005         5268.0        4479.0             66.0           466.0             163.0             0.0           11.0
+2006         5193.0        4451.0             65.0           435.0             144.0             0.0           13.0
+2007         5261.0        4452.0             68.0           479.0             148.0             0.0           14.0
+2008         5170.0        4455.0             66.0           421.0             135.0             0.0           10.0
+2009         5147.0        4365.0             59.0           485.0             135.0             0.0           11.0
+2010         5067.0        4226.0             66.0           491.0             140.0             0.0           10.0
+2011         4694.0        4005.0             55.0           370.0             135.0             0.0           10.0
+2012        13096.0       12378.0             57.0           441.0             103.0             0.0            7.0
+2013         4831.0        4180.0             57.0           379.0              97.0             0.0            8.0
+2014         4829.0        4166.0             51.0           416.0              85.0             0.0           10.0
+2015         4535.0        3942.0             46.0           397.0              79.0             0.0            7.0
+2016         4650.0        3963.0             47.0           469.0              86.0             0.0            7.0
+2017         4279.0        3766.0             43.0           339.0              75.0             0.0            5.0
+2018         4326.0        3859.0             37.0           298.0              68.0             0.0            5.0
+2019         5356.0        3941.0             76.0           747.0             100.0           170.0          248.0
+  Odisha raw crops reported, by year (count of crop names): {2017: 14, 2018: 14, 2019: 39}
+  crop names present in 2019-20 but not 2018-19: Arhar/Tur, Bajra, Castor Seed, Coriander, Cotton(Lint), Cowpea(Lobia), Dry Chillies, Garlic, Ginger, Gram, Jowar, Linseed, Masoor, Mesta, Onion, Other  Rabi Pulses, Other Kharif Pulses, Peas & Beans (Pulses), Safflower, Sannhamp, Small Millets, Sunflower, Sweet Potato, Tobacco, Turmeric
+
+R10 OMM ATT dropping 2019-20 (coverage break); only the 2017 and 2018 cohorts remain
+  share_gca_millets  with 2019-20     ATT -0.0011 (0.0037)  95% CI -0.0083 to +0.0045
+  share_gca_millets  without 2019-20  ATT -0.0054 (0.0025)  95% CI -0.0104 to -0.0016
+  ln1p_millets       with 2019-20     ATT +0.6385 (0.3555)  95% CI -0.0293 to +1.4225
+  ln1p_millets       without 2019-20  ATT -0.1553 (0.3342)  95% CI -0.8159 to +0.4575

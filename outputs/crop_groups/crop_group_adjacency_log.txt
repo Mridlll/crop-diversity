@@ -1,0 +1,47 @@
+geojson features: 735
+polygon match: {'k_via_crosswalk': 682, 'manual_parent': 37, 'no_unit: no Delhi crop records survive script 76 cleaning': 11, 'no_unit: Pakistan-administered, no crop records': 2, 'no_unit: no crop records (urban)': 1, 'name_override': 1, 'no_unit: no crop records': 1}
+units with a polygon: 629 of 629 panel units
+tolerance    0 m:  1696 undirected links, mean degree 5.39, isolated units 1
+tolerance  250 m:  1705 undirected links, mean degree 5.42, isolated units 1
+tolerance  500 m:  1712 undirected links, mean degree 5.44, isolated units 1
+tolerance 1000 m:  1728 undirected links, mean degree 5.49, isolated units 1
+links present at 500 m but not at 0 m: 16
+   ARUNACHAL PRADESH|LOWER DIBANG VALLEY  --  ASSAM|DHEMAJI
+   ARUNACHAL PRADESH|UPPER SUBANSIRI  --  ASSAM|LAKHIMPUR
+   GOA|NORTH GOA  --  KARNATAKA|UTTARA KANNADA
+   HARYANA|BHIWANI  --  HARYANA|REWARI
+   HARYANA|MEWAT  --  HARYANA|REWARI
+   HIMACHAL PRADESH|SIRMAUR  --  UTTAR PRADESH|SAHARANPUR
+   JAMMU KASHMIR|BADGAM  --  JAMMU KASHMIR|KULGAM
+   JAMMU KASHMIR|BARAMULA  --  JAMMU KASHMIR|GANDERBAL
+   MADHYA PRADESH|MORENA  --  MADHYA PRADESH|SHIVPURI
+   MADHYA PRADESH|RATLAM  --  MADHYA PRADESH|SHAJAPUR
+   MADHYA PRADESH|UJJAIN  --  RAJASTHAN|JHALAWAR
+   MANIPUR|BISHNUPUR  --  MANIPUR|CHANDEL
+   MANIPUR|BISHNUPUR  --  MANIPUR|TAMENGLONG
+   MANIPUR|CHURACHANDPUR  --  MANIPUR|SENAPATI
+   MIZORAM|AIZAWL  --  MIZORAM|LUNGLEI
+   ODISHA|ANUGUL  --  ODISHA|NAYAGARH
+links that 1000 m would add on top of 500 m: 16
+   ASSAM|GOLAGHAT  --  NAGALAND|KOHIMA
+   BIHAR|SAHARSA  --  BIHAR|SAMASTIPUR
+   HARYANA|GURGAON  --  RAJASTHAN|ALWAR
+   HARYANA|HISAR  --  RAJASTHAN|CHURU
+   HARYANA|YAMUNANAGAR  --  UTTARAKHAND|DEHRADUN
+   JAMMU KASHMIR|BADGAM  --  JAMMU KASHMIR|GANDERBAL
+   KARNATAKA|BANGALORE  --  KARNATAKA|KOLAR
+   MADHYA PRADESH|GWALIOR  --  MADHYA PRADESH|SHEOPUR
+   MADHYA PRADESH|SIDHI  --  UTTAR PRADESH|MIRZAPUR
+   MADHYA PRADESH|TIKAMGARH  --  UTTAR PRADESH|MAHOBA
+   MAHARASHTRA|BULDANA  --  MAHARASHTRA|PARBHANI
+   MAHARASHTRA|JALGAON  --  MAHARASHTRA|JALNA
+   ODISHA|NABARANGAPUR  --  ODISHA|RAYAGADA
+   TAMIL NADU|MADURAI  --  TAMIL NADU|PUDUKKOTTAI
+   UTTAR PRADESH|AURAIYA  --  UTTAR PRADESH|MAINPURI
+   WEST BENGAL|PURBA MEDINIPUR  --  WEST BENGAL|SOUTH TWENTY FOUR PARGANAS
+
+panel units without a polygon (0): 
+polygons without a unit (15): Jammu & Kashmir|Muzaffarabad; Jammu & Kashmir|Mirpur; Delhi|North; Delhi|North East; Delhi|West; Delhi|East; Delhi|South West; Delhi|Central; Delhi|New Delhi; Delhi|South; Delhi|Shahdara; Delhi|South East; Delhi|North West; West Bengal|Kolkata; Lakshadweep|Lakshadweep
+isolated units at 500 m (1): ANDAMAN NICOBAR ISLANDS|NICOBARS
+degree distribution at 500 m: {'count': 628.0, 'mean': 5.45, 'std': 1.66, 'min': 1.0, '25%': 4.0, '50%': 5.0, '75%': 7.0, 'max': 11.0}
+units whose polygons span more than one present-day state: 

@@ -1,0 +1,737 @@
+n,s,k,unit_key,match
+Kupwara,Jammu & Kashmir,jammu kashmir|kupwara,JAMMU KASHMIR|KUPWARA,k_via_crosswalk
+Bandipore,Jammu & Kashmir,jammu kashmir|bandipora,JAMMU KASHMIR|BANDIPORE,k_via_crosswalk
+Baramula,Jammu & Kashmir,jammu kashmir|baramulla,JAMMU KASHMIR|BARAMULA,k_via_crosswalk
+Ganderbal,Jammu & Kashmir,jammu kashmir|ganderbal,JAMMU KASHMIR|GANDERBAL,k_via_crosswalk
+Anantnag,Jammu & Kashmir,jammu kashmir|anantnag,JAMMU KASHMIR|ANANTNAG,k_via_crosswalk
+Kishtwar,Jammu & Kashmir,jammu kashmir|kishtwar,JAMMU KASHMIR|KISHTWAR,k_via_crosswalk
+Srinagar,Jammu & Kashmir,jammu kashmir|srinagar,JAMMU KASHMIR|SRINAGAR,k_via_crosswalk
+Badgam,Jammu & Kashmir,jammu kashmir|badgam,JAMMU KASHMIR|BADGAM,k_via_crosswalk
+Pulwama,Jammu & Kashmir,jammu kashmir|pulwama,JAMMU KASHMIR|PULWAMA,k_via_crosswalk
+Punch,Jammu & Kashmir,jammu kashmir|poonch,JAMMU KASHMIR|PUNCH,k_via_crosswalk
+Shupiyan,Jammu & Kashmir,jammu kashmir|shopian,JAMMU KASHMIR|SHUPIYAN,k_via_crosswalk
+Kulgam,Jammu & Kashmir,jammu kashmir|kulgam,JAMMU KASHMIR|KULGAM,k_via_crosswalk
+Rajouri,Jammu & Kashmir,jammu kashmir|rajauri,JAMMU KASHMIR|RAJOURI,k_via_crosswalk
+Ramban,Jammu & Kashmir,jammu kashmir|ramban,JAMMU KASHMIR|RAMBAN,k_via_crosswalk
+Reasi,Jammu & Kashmir,jammu kashmir|reasi,JAMMU KASHMIR|REASI,k_via_crosswalk
+Doda,Jammu & Kashmir,jammu kashmir|doda,JAMMU KASHMIR|DODA,k_via_crosswalk
+Jammu,Jammu & Kashmir,jammu kashmir|jammu,JAMMU KASHMIR|JAMMU,k_via_crosswalk
+Kathua,Jammu & Kashmir,jammu kashmir|kathua,JAMMU KASHMIR|KATHUA,k_via_crosswalk
+Udhampur,Jammu & Kashmir,jammu kashmir|udhampur,JAMMU KASHMIR|UDHAMPUR,k_via_crosswalk
+Samba,Jammu & Kashmir,jammu kashmir|samba,JAMMU KASHMIR|SAMBA,k_via_crosswalk
+Muzaffarabad,Jammu & Kashmir,,,"no_unit: Pakistan-administered, no crop records"
+Mirpur,Jammu & Kashmir,,,"no_unit: Pakistan-administered, no crop records"
+Lahul & Spiti,Himachal Pradesh,himachal pradesh|lahul and spiti,HIMACHAL PRADESH|LAHUL SPITI,k_via_crosswalk
+Chamba,Himachal Pradesh,himachal pradesh|chamba,HIMACHAL PRADESH|CHAMBA,k_via_crosswalk
+Kangra,Himachal Pradesh,himachal pradesh|kangra,HIMACHAL PRADESH|KANGRA,k_via_crosswalk
+Kullu,Himachal Pradesh,himachal pradesh|kullu,HIMACHAL PRADESH|KULLU,k_via_crosswalk
+Mandi,Himachal Pradesh,himachal pradesh|mandi,HIMACHAL PRADESH|MANDI,k_via_crosswalk
+Kinnaur,Himachal Pradesh,himachal pradesh|kinnaur,HIMACHAL PRADESH|KINNAUR,k_via_crosswalk
+Una,Himachal Pradesh,himachal pradesh|una,HIMACHAL PRADESH|UNA,k_via_crosswalk
+Shimla,Himachal Pradesh,himachal pradesh|shimla,HIMACHAL PRADESH|SHIMLA,k_via_crosswalk
+Solan,Himachal Pradesh,himachal pradesh|solan,HIMACHAL PRADESH|SOLAN,k_via_crosswalk
+Sirmaur,Himachal Pradesh,himachal pradesh|sirmaur,HIMACHAL PRADESH|SIRMAUR,k_via_crosswalk
+Hamirpur,Himachal Pradesh,himachal pradesh|hamirpur,HIMACHAL PRADESH|HAMIRPUR,k_via_crosswalk
+Bilaspur,Himachal Pradesh,himachal pradesh|bilaspur,HIMACHAL PRADESH|BILASPUR,k_via_crosswalk
+Gurdaspur,Punjab,punjab|gurdaspur,PUNJAB|GURDASPUR,k_via_crosswalk
+Hoshiarpur,Punjab,punjab|hoshiarpur,PUNJAB|HOSHIARPUR,k_via_crosswalk
+Amritsar,Punjab,punjab|amritsar,PUNJAB|AMRITSAR,k_via_crosswalk
+Jalandhar,Punjab,punjab|jalandhar,PUNJAB|JALANDHAR,k_via_crosswalk
+Tarn Taran,Punjab,punjab|tarn taran,PUNJAB|TARN TARAN,k_via_crosswalk
+Rupnagar,Punjab,punjab|rupnagar,PUNJAB|RUPNAGAR,k_via_crosswalk
+Shahid Bhagat Singh Nagar,Punjab,punjab|shahid bhagat singh nagar,PUNJAB|SHAHID BHAGAT SINGH NAGAR,k_via_crosswalk
+Fazilka,Punjab,punjab|fazilka,PUNJAB|FIROZPUR,k_via_crosswalk
+Moga,Punjab,punjab|moga,PUNJAB|MOGA,k_via_crosswalk
+Ludhiana,Punjab,punjab|ludhiana,PUNJAB|LUDHIANA,k_via_crosswalk
+Sahibzada Ajit Singh Nag*,Punjab,,PUNJAB|SAHIBZADA AJIT SINGH NAGAR,manual_parent
+Faridkot,Punjab,punjab|faridkot,PUNJAB|FARIDKOT,k_via_crosswalk
+Fatehgarh Sahib,Punjab,punjab|fatehgarh sahib,PUNJAB|FATEHGARH SAHIB,k_via_crosswalk
+Sri Muktsar Sahib,Punjab,,PUNJAB|MUKTSAR,manual_parent
+Sangrur,Punjab,punjab|sangrur,PUNJAB|SANGRUR,k_via_crosswalk
+Barnala,Punjab,punjab|barnala,PUNJAB|BARNALA,k_via_crosswalk
+Bathinda,Punjab,punjab|bathinda,PUNJAB|BATHINDA,k_via_crosswalk
+Patiala,Punjab,punjab|patiala,PUNJAB|PATIALA,k_via_crosswalk
+Mansa,Punjab,punjab|mansa,PUNJAB|MANSA,k_via_crosswalk
+Firozpur,Punjab,punjab|fazilka,PUNJAB|FIROZPUR,k_via_crosswalk
+Pathankot,Punjab,punjab|pathankot,PUNJAB|GURDASPUR,k_via_crosswalk
+Kapurthala,Punjab,punjab|kapurthala,PUNJAB|KAPURTHALA,k_via_crosswalk
+Chandigarh,Chandigarh,chandigarh|chandigarh,CHANDIGARH|CHANDIGARH,k_via_crosswalk
+Uttarkashi,Uttarakhand,uttar pradesh|uttar kashi,UTTARAKHAND|UTTARKASHI,k_via_crosswalk
+Chamoli,Uttarakhand,uttarakhand|chamoli,UTTARAKHAND|CHAMOLI,k_via_crosswalk
+Dehradun,Uttarakhand,uttarakhand|dehradun,UTTARAKHAND|DEHRADUN,k_via_crosswalk
+Tehri Garhwal,Uttarakhand,uttarakhand|tehri garhwal,UTTARAKHAND|TEHRI GARHWAL,k_via_crosswalk
+Rudraprayag,Uttarakhand,uttar pradesh|rudra prayag,UTTARAKHAND|RUDRAPRAYAG,k_via_crosswalk
+Pithoragarh,Uttarakhand,uttarakhand|pithoragarh,UTTARAKHAND|PITHORAGARH,k_via_crosswalk
+Bageshwar,Uttarakhand,uttarakhand|bageshwar,UTTARAKHAND|BAGESHWAR,k_via_crosswalk
+Hardwar,Uttarakhand,uttarakhand|haridwar,UTTARAKHAND|HARDWAR,k_via_crosswalk
+Garhwal,Uttarakhand,uttarakhand|pauri garhwal,UTTARAKHAND|GARHWAL,k_via_crosswalk
+"Almora
+",Uttarakhand,uttarakhand|almora,UTTARAKHAND|ALMORA,k_via_crosswalk
+Nainital,Uttarakhand,uttarakhand|nainital,UTTARAKHAND|NAINITAL,k_via_crosswalk
+Champawat,Uttarakhand,uttarakhand|champawat,UTTARAKHAND|CHAMPAWAT,k_via_crosswalk
+Udham Singh Nagar,Uttarakhand,uttar pradesh|udam singh nagar,UTTARAKHAND|UDHAM SINGH NAGAR,k_via_crosswalk
+Jhajjar,Haryana,haryana|jhajjar,HARYANA|JHAJJAR,k_via_crosswalk
+Gurugram,Haryana,,HARYANA|GURGAON,manual_parent
+Faridabad,Haryana,haryana|faridabad,HARYANA|FARIDABAD,k_via_crosswalk
+Mahendragarh,Haryana,haryana|mahendragarh,HARYANA|MAHENDRAGARH,k_via_crosswalk
+Rewari,Haryana,haryana|rewari,HARYANA|REWARI,k_via_crosswalk
+Nuh,Haryana,,HARYANA|MEWAT,manual_parent
+Palwal,Haryana,haryana|palwal,HARYANA|PALWAL,k_via_crosswalk
+Charki Dadri,Haryana,haryana|charki dadri,HARYANA|BHIWANI,k_via_crosswalk
+Yamunanagar,Haryana,haryana|yamunanagar,HARYANA|YAMUNANAGAR,k_via_crosswalk
+Kurukshetra,Haryana,haryana|kurukshetra,HARYANA|KURUKSHETRA,k_via_crosswalk
+Kaithal,Haryana,haryana|kaithal,HARYANA|KAITHAL,k_via_crosswalk
+Sirsa,Haryana,haryana|sirsa,HARYANA|SIRSA,k_via_crosswalk
+Karnal,Haryana,haryana|karnal,HARYANA|KARNAL,k_via_crosswalk
+Jind,Haryana,haryana|jind,HARYANA|JIND,k_via_crosswalk
+Fatehabad,Haryana,haryana|fatehabad,HARYANA|FATEHABAD,k_via_crosswalk
+Hisar,Haryana,haryana|hisar,HARYANA|HISAR,k_via_crosswalk
+Panipat,Haryana,haryana|panipat,HARYANA|PANIPAT,k_via_crosswalk
+Sonipat,Haryana,haryana|sonipat,HARYANA|SONIPAT,k_via_crosswalk
+Bhiwani,Haryana,haryana|bhiwani,HARYANA|BHIWANI,k_via_crosswalk
+Rohtak,Haryana,haryana|rohtak,HARYANA|ROHTAK,k_via_crosswalk
+Panchkula,Haryana,haryana|panchkula,HARYANA|PANCHKULA,k_via_crosswalk
+Ambala,Haryana,haryana|ambala,HARYANA|AMBALA,k_via_crosswalk
+North,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+North East,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+West,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+East,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+South West,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+Central,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+New Delhi,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+South,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+Shahdara,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+South East,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+North West,Delhi,,,no_unit: no Delhi crop records survive script 76 cleaning
+Churu,Rajasthan,rajasthan|churu,RAJASTHAN|CHURU,k_via_crosswalk
+Jhunjhunun,Rajasthan,rajasthan|jhunjhunu,RAJASTHAN|JHUNJHUNUN,k_via_crosswalk
+Jaisalmer,Rajasthan,rajasthan|jaisalmer,RAJASTHAN|JAISALMER,k_via_crosswalk
+Sikar,Rajasthan,rajasthan|sikar,RAJASTHAN|SIKAR,k_via_crosswalk
+Alwar,Rajasthan,rajasthan|alwar,RAJASTHAN|ALWAR,k_via_crosswalk
+Jaipur,Rajasthan,rajasthan|jaipur,RAJASTHAN|JAIPUR,k_via_crosswalk
+Jodhpur,Rajasthan,rajasthan|jodhpur,RAJASTHAN|JODHPUR,k_via_crosswalk
+Bharatpur,Rajasthan,rajasthan|bharatpur,RAJASTHAN|BHARATPUR,k_via_crosswalk
+Nagaur,Rajasthan,rajasthan|nagaur,RAJASTHAN|NAGAUR,k_via_crosswalk
+Dausa,Rajasthan,rajasthan|dausa,RAJASTHAN|DAUSA,k_via_crosswalk
+Karauli,Rajasthan,rajasthan|karauli,RAJASTHAN|KARAULI,k_via_crosswalk
+Dhaulpur,Rajasthan,rajasthan|dholpur,RAJASTHAN|DHAULPUR,k_via_crosswalk
+Barmer,Rajasthan,rajasthan|barmer,RAJASTHAN|BARMER,k_via_crosswalk
+Sawai Madhopur,Rajasthan,rajasthan|sawai madhopur,RAJASTHAN|SAWAI MADHOPUR,k_via_crosswalk
+Tonk,Rajasthan,rajasthan|tonk,RAJASTHAN|TONK,k_via_crosswalk
+Pali,Rajasthan,rajasthan|pali,RAJASTHAN|PALI,k_via_crosswalk
+Bhilwara,Rajasthan,rajasthan|bhilwara,RAJASTHAN|BHILWARA,k_via_crosswalk
+Jalor,Rajasthan,rajasthan|jalore,RAJASTHAN|JALOR,k_via_crosswalk
+Bundi,Rajasthan,rajasthan|bundi,RAJASTHAN|BUNDI,k_via_crosswalk
+Kota,Rajasthan,rajasthan|kota,RAJASTHAN|KOTA,k_via_crosswalk
+Sirohi,Rajasthan,rajasthan|sirohi,RAJASTHAN|SIROHI,k_via_crosswalk
+Baran,Rajasthan,rajasthan|baran,RAJASTHAN|BARAN,k_via_crosswalk
+Udaipur,Rajasthan,rajasthan|udaipur,RAJASTHAN|UDAIPUR,k_via_crosswalk
+Jhalawar,Rajasthan,rajasthan|jhalawar,RAJASTHAN|JHALAWAR,k_via_crosswalk
+Dungarpur,Rajasthan,rajasthan|dungarpur,RAJASTHAN|DUNGARPUR,k_via_crosswalk
+Banswara,Rajasthan,rajasthan|banswara,RAJASTHAN|BANSWARA,k_via_crosswalk
+Ajmer,Rajasthan,rajasthan|ajmer,RAJASTHAN|AJMER,k_via_crosswalk
+Rajsamand,Rajasthan,rajasthan|rajsamand,RAJASTHAN|RAJSAMAND,k_via_crosswalk
+Chittaurgarh,Rajasthan,rajasthan|chittorgarh,RAJASTHAN|CHITTAURGARH,k_via_crosswalk
+Ganganagar,Rajasthan,rajasthan|ganganagar,RAJASTHAN|GANGANAGAR,k_via_crosswalk
+Hanumangarh,Rajasthan,rajasthan|hanumangarh,RAJASTHAN|HANUMANGARH,k_via_crosswalk
+Bikaner,Rajasthan,rajasthan|bikaner,RAJASTHAN|BIKANER,k_via_crosswalk
+Pratapgarh,Rajasthan,rajasthan|pratapgarh,RAJASTHAN|PRATAPGARH,k_via_crosswalk
+Amroha,Uttar Pradesh,uttar pradesh|amroha,UTTAR PRADESH|JYOTIBA PHULE NAGAR,k_via_crosswalk
+Hapur,Uttar Pradesh,uttar pradesh|hapur,UTTAR PRADESH|GHAZIABAD,k_via_crosswalk
+Bareilly,Uttar Pradesh,uttar pradesh|bareilly,UTTAR PRADESH|BAREILLY,k_via_crosswalk
+Pilibhit,Uttar Pradesh,uttar pradesh|pilibhit,UTTAR PRADESH|PILIBHIT,k_via_crosswalk
+Bulandshahr,Uttar Pradesh,uttar pradesh|bulandshahr,UTTAR PRADESH|BULANDSHAHR,k_via_crosswalk
+Gautam Buddha Nagar,Uttar Pradesh,uttar pradesh|gautam buddha nagar,UTTAR PRADESH|GAUTAM BUDDHA NAGAR,k_via_crosswalk
+Kheri,Uttar Pradesh,uttar pradesh|kheri,UTTAR PRADESH|KHERI,k_via_crosswalk
+Budaun,Uttar Pradesh,uttar pradesh|budaun,UTTAR PRADESH|BUDAUN,k_via_crosswalk
+Bahraich,Uttar Pradesh,uttar pradesh|bahraich,UTTAR PRADESH|BAHRAICH,k_via_crosswalk
+Shahjahanpur,Uttar Pradesh,uttar pradesh|shahjahanpur,UTTAR PRADESH|SHAHJAHANPUR,k_via_crosswalk
+Aligarh,Uttar Pradesh,uttar pradesh|aligarh,UTTAR PRADESH|ALIGARH,k_via_crosswalk
+Kasganj,Uttar Pradesh,uttar pradesh|kasganj,UTTAR PRADESH|KANSHIRAM NAGAR,k_via_crosswalk
+Mathura,Uttar Pradesh,uttar pradesh|mathura,UTTAR PRADESH|MATHURA,k_via_crosswalk
+Shrawasti,Uttar Pradesh,uttar pradesh|shravasti,UTTAR PRADESH|SHRAWASTI,k_via_crosswalk
+Sitapur,Uttar Pradesh,uttar pradesh|sitapur,UTTAR PRADESH|SITAPUR,k_via_crosswalk
+Hathras,Uttar Pradesh,uttar pradesh|hathras,UTTAR PRADESH|MAHAMAYA NAGAR,k_via_crosswalk
+Etah,Uttar Pradesh,uttar pradesh|etah,UTTAR PRADESH|ETAH,k_via_crosswalk
+Hardoi,Uttar Pradesh,uttar pradesh|hardoi,UTTAR PRADESH|HARDOI,k_via_crosswalk
+Farrukhabad,Uttar Pradesh,uttar pradesh|farrukhabad,UTTAR PRADESH|FARRUKHABAD,k_via_crosswalk
+Firozabad,Uttar Pradesh,uttar pradesh|firozabad,UTTAR PRADESH|FIROZABAD,k_via_crosswalk
+Siddharthnagar,Uttar Pradesh,uttar pradesh|siddharth nagar,UTTAR PRADESH|SIDDHARTHNAGAR,k_via_crosswalk
+Mainpuri,Uttar Pradesh,uttar pradesh|mainpuri,UTTAR PRADESH|MAINPURI,k_via_crosswalk
+Mahrajganj,Uttar Pradesh,uttar pradesh|maharajganj,UTTAR PRADESH|MAHRAJGANJ,k_via_crosswalk
+Agra,Uttar Pradesh,uttar pradesh|agra,UTTAR PRADESH|AGRA,k_via_crosswalk
+Gonda,Uttar Pradesh,uttar pradesh|gonda,UTTAR PRADESH|GONDA,k_via_crosswalk
+Bara Banki,Uttar Pradesh,uttar pradesh|barabanki,UTTAR PRADESH|BARA BANKI,k_via_crosswalk
+Kushinagar,Uttar Pradesh,uttar pradesh|kushi nagar,UTTAR PRADESH|KUSHINAGAR,k_via_crosswalk
+Kannauj,Uttar Pradesh,uttar pradesh|kannauj,UTTAR PRADESH|KANNAUJ,k_via_crosswalk
+Lucknow,Uttar Pradesh,uttar pradesh|lucknow,UTTAR PRADESH|LUCKNOW,k_via_crosswalk
+Basti,Uttar Pradesh,uttar pradesh|basti,UTTAR PRADESH|BASTI,k_via_crosswalk
+Gorakhpur,Uttar Pradesh,uttar pradesh|gorakhpur,UTTAR PRADESH|GORAKHPUR,k_via_crosswalk
+Sant Kabir Nagar,Uttar Pradesh,uttar pradesh|sant kabeer nagar,UTTAR PRADESH|SANT KABIR NAGAR,k_via_crosswalk
+Unnao,Uttar Pradesh,uttar pradesh|unnao,UTTAR PRADESH|UNNAO,k_via_crosswalk
+Etawah,Uttar Pradesh,uttar pradesh|etawah,UTTAR PRADESH|ETAWAH,k_via_crosswalk
+Kanpur Nagar,Uttar Pradesh,uttar pradesh|kanpur nagar,UTTAR PRADESH|KANPUR NAGAR,k_via_crosswalk
+Auraiya,Uttar Pradesh,uttar pradesh|auraiya,UTTAR PRADESH|AURAIYA,k_via_crosswalk
+Faizabad,Uttar Pradesh,uttar pradesh|faizabad,UTTAR PRADESH|FAIZABAD,k_via_crosswalk
+Kanpur Dehat,Uttar Pradesh,uttar pradesh|kanpur dehat,UTTAR PRADESH|KANPUR DEHAT,k_via_crosswalk
+Deoria,Uttar Pradesh,uttar pradesh|deoria,UTTAR PRADESH|DEORIA,k_via_crosswalk
+Sultanpur,Uttar Pradesh,uttar pradesh|sultanpur,UTTAR PRADESH|SULTANPUR,k_via_crosswalk
+Ambedkar Nagar,Uttar Pradesh,uttar pradesh|ambedkar nagar,UTTAR PRADESH|AMBEDKAR NAGAR,k_via_crosswalk
+Rae Bareli,Uttar Pradesh,uttar pradesh|rae bareli,UTTAR PRADESH|RAE BARELI,k_via_crosswalk
+Jalaun,Uttar Pradesh,uttar pradesh|jalaun,UTTAR PRADESH|JALAUN,k_via_crosswalk
+Azamgarh,Uttar Pradesh,uttar pradesh|azamgarh,UTTAR PRADESH|AZAMGARH,k_via_crosswalk
+Mau,Uttar Pradesh,uttar pradesh|mau,UTTAR PRADESH|MAU,k_via_crosswalk
+Fatehpur,Uttar Pradesh,uttar pradesh|fatehpur,UTTAR PRADESH|FATEHPUR,k_via_crosswalk
+Ballia,Uttar Pradesh,uttar pradesh|ballia,UTTAR PRADESH|BALLIA,k_via_crosswalk
+Jaunpur,Uttar Pradesh,uttar pradesh|jaunpur,UTTAR PRADESH|JAUNPUR,k_via_crosswalk
+Jhansi,Uttar Pradesh,uttar pradesh|jhansi,UTTAR PRADESH|JHANSI,k_via_crosswalk
+Banda,Uttar Pradesh,uttar pradesh|banda,UTTAR PRADESH|BANDA,k_via_crosswalk
+Ghazipur,Uttar Pradesh,uttar pradesh|ghazipur,UTTAR PRADESH|GHAZIPUR,k_via_crosswalk
+Kaushambi,Uttar Pradesh,uttar pradesh|kaushambi,UTTAR PRADESH|KAUSHAMBI,k_via_crosswalk
+Prayagraj,Uttar Pradesh,,UTTAR PRADESH|ALLAHABAD,manual_parent
+Varanasi,Uttar Pradesh,uttar pradesh|varanasi,UTTAR PRADESH|VARANASI,k_via_crosswalk
+Chitrakoot,Uttar Pradesh,uttar pradesh|chitrakoot,UTTAR PRADESH|CHITRAKOOT,k_via_crosswalk
+Chandauli,Uttar Pradesh,uttar pradesh|chandauli,UTTAR PRADESH|CHANDAULI,k_via_crosswalk
+Bhadohi,Uttar Pradesh,,UTTAR PRADESH|SANT RAVIDAS NAGAR BHADOHI,manual_parent
+Mirzapur,Uttar Pradesh,uttar pradesh|mirzapur,UTTAR PRADESH|MIRZAPUR,k_via_crosswalk
+Lalitpur,Uttar Pradesh,uttar pradesh|lalitpur,UTTAR PRADESH|LALITPUR,k_via_crosswalk
+Sonbhadra,Uttar Pradesh,uttar pradesh|sonbhadra,UTTAR PRADESH|SONBHADRA,k_via_crosswalk
+Amethi,Uttar Pradesh,uttar pradesh|amethi,UTTAR PRADESH|SULTANPUR,k_via_crosswalk
+Ghaziabad,Uttar Pradesh,uttar pradesh|ghaziabad,UTTAR PRADESH|GHAZIABAD,k_via_crosswalk
+Sambhal,Uttar Pradesh,uttar pradesh|sambhal,UTTAR PRADESH|MORADABAD,k_via_crosswalk
+Mahoba,Uttar Pradesh,uttar pradesh|mahoba,UTTAR PRADESH|MAHOBA,k_via_crosswalk
+Saharanpur,Uttar Pradesh,uttar pradesh|saharanpur,UTTAR PRADESH|SAHARANPUR,k_via_crosswalk
+Bijnor,Uttar Pradesh,uttar pradesh|bijnor,UTTAR PRADESH|BIJNOR,k_via_crosswalk
+Muzaffarnagar,Uttar Pradesh,uttar pradesh|muzaffarnagar,UTTAR PRADESH|MUZAFFARNAGAR,k_via_crosswalk
+Baghpat,Uttar Pradesh,uttar pradesh|baghpat,UTTAR PRADESH|BAGHPAT,k_via_crosswalk
+Meerut,Uttar Pradesh,uttar pradesh|meerut,UTTAR PRADESH|MEERUT,k_via_crosswalk
+Moradabad,Uttar Pradesh,uttar pradesh|moradabad,UTTAR PRADESH|MORADABAD,k_via_crosswalk
+Rampur,Uttar Pradesh,uttar pradesh|rampur,UTTAR PRADESH|RAMPUR,k_via_crosswalk
+Shamli,Uttar Pradesh,uttar pradesh|shamli,UTTAR PRADESH|MUZAFFARNAGAR,k_via_crosswalk
+Balrampur,Uttar Pradesh,uttar pradesh|balrampur,UTTAR PRADESH|BALRAMPUR,k_via_crosswalk
+Hamirpur,Uttar Pradesh,uttar pradesh|hamirpur,UTTAR PRADESH|HAMIRPUR,k_via_crosswalk
+Pratapgarh,Uttar Pradesh,uttar pradesh|pratapgarh,UTTAR PRADESH|PRATAPGARH,k_via_crosswalk
+Pashchim Champaran,Bihar,bihar|pashchim champaran,BIHAR|PASHCHIM CHAMPARAN,k_via_crosswalk
+Purba Champaran,Bihar,bihar|purbi champaran,BIHAR|PURBA CHAMPARAN,k_via_crosswalk
+Sitamarhi,Bihar,bihar|sitamarhi,BIHAR|SITAMARHI,k_via_crosswalk
+Sheohar,Bihar,bihar|sheohar,BIHAR|SHEOHAR,k_via_crosswalk
+Gopalganj,Bihar,bihar|gopalganj,BIHAR|GOPALGANJ,k_via_crosswalk
+Samastipur,Bihar,bihar|samastipur,BIHAR|SAMASTIPUR,k_via_crosswalk
+Katihar,Bihar,bihar|katihar,BIHAR|KATIHAR,k_via_crosswalk
+Khagaria,Bihar,bihar|khagaria,BIHAR|KHAGARIA,k_via_crosswalk
+Bhojpur,Bihar,bihar|bhojpur,BIHAR|BHOJPUR,k_via_crosswalk
+Buxar,Bihar,bihar|buxar,BIHAR|BUXAR,k_via_crosswalk
+Darbhanga,Bihar,bihar|darbhanga,BIHAR|DARBHANGA,k_via_crosswalk
+Saharsa,Bihar,bihar|saharsa,BIHAR|SAHARSA,k_via_crosswalk
+Kaimur (Bhabua),Bihar,bihar|kaimur bhabua,BIHAR|KAIMUR BHABUA,k_via_crosswalk
+Rohtas,Bihar,bihar|rohtas,BIHAR|ROHTAS,k_via_crosswalk
+Jamui,Bihar,bihar|jamui,BIHAR|JAMUI,k_via_crosswalk
+Banka,Bihar,bihar|banka,BIHAR|BANKA,k_via_crosswalk
+Nawada,Bihar,bihar|nawada,BIHAR|NAWADA,k_via_crosswalk
+Gaya,Bihar,bihar|gaya,BIHAR|GAYA,k_via_crosswalk
+Munger,Bihar,bihar|munger,BIHAR|MUNGER,k_via_crosswalk
+Vaishali,Bihar,bihar|vaishali,BIHAR|VAISHALI,k_via_crosswalk
+Begusarai,Bihar,bihar|begusarai,BIHAR|BEGUSARAI,k_via_crosswalk
+Bhagalpur,Bihar,bihar|bhagalpur,BIHAR|BHAGALPUR,k_via_crosswalk
+Lakhisarai,Bihar,bihar|lakhisarai,BIHAR|LAKHISARAI,k_via_crosswalk
+Sheikhpura,Bihar,bihar|sheikhpura,BIHAR|SHEIKHPURA,k_via_crosswalk
+Arwal,Bihar,bihar|arwal,BIHAR|ARWAL,k_via_crosswalk
+Jehanabad,Bihar,bihar|jehanabad,BIHAR|JEHANABAD,k_via_crosswalk
+Nalanda,Bihar,bihar|nalanda,BIHAR|NALANDA,k_via_crosswalk
+Patna,Bihar,bihar|patna,BIHAR|PATNA,k_via_crosswalk
+Saran,Bihar,bihar|saran,BIHAR|SARAN,k_via_crosswalk
+Siwan,Bihar,bihar|siwan,BIHAR|SIWAN,k_via_crosswalk
+Muzaffarpur,Bihar,bihar|muzaffarpur,BIHAR|MUZAFFARPUR,k_via_crosswalk
+Madhepura,Bihar,bihar|madhepura,BIHAR|MADHEPURA,k_via_crosswalk
+Araria,Bihar,bihar|araria,BIHAR|ARARIA,k_via_crosswalk
+Supaul,Bihar,bihar|supaul,BIHAR|SUPAUL,k_via_crosswalk
+Madhubani,Bihar,bihar|madhubani,BIHAR|MADHUBANI,k_via_crosswalk
+Purnia,Bihar,bihar|purnia,BIHAR|PURNIA,k_via_crosswalk
+Kishanganj,Bihar,bihar|kishanganj,BIHAR|KISHANGANJ,k_via_crosswalk
+Aurangabad,Bihar,bihar|aurangabad,BIHAR|AURANGABAD,k_via_crosswalk
+North  District,Sikkim,sikkim|mangan,SIKKIM|NORTH DISTRICT,k_via_crosswalk
+West District,Sikkim,sikkim|gyalshing,SIKKIM|WEST DISTRICT,k_via_crosswalk
+South District,Sikkim,sikkim|namchi,SIKKIM|SOUTH DISTRICT,k_via_crosswalk
+East District,Sikkim,sikkim|gangtok,SIKKIM|EAST DISTRICT,k_via_crosswalk
+Upper Subansiri,Arunachal Pradesh,arunachal pradesh|upper subansiri,ARUNACHAL PRADESH|UPPER SUBANSIRI,k_via_crosswalk
+Anjaw,Arunachal Pradesh,arunachal pradesh|anjaw,ARUNACHAL PRADESH|ANJAW,k_via_crosswalk
+Changlang,Arunachal Pradesh,arunachal pradesh|changlang,ARUNACHAL PRADESH|CHANGLANG,k_via_crosswalk
+Tawang,Arunachal Pradesh,arunachal pradesh|tawang,ARUNACHAL PRADESH|TAWANG,k_via_crosswalk
+Papum Pare,Arunachal Pradesh,arunachal pradesh|papum pare,ARUNACHAL PRADESH|PAPUM PARE,k_via_crosswalk
+Tirap,Arunachal Pradesh,arunachal pradesh|tirap,ARUNACHAL PRADESH|TIRAP,k_via_crosswalk
+East Siang,Arunachal Pradesh,arunachal pradesh|east siang,ARUNACHAL PRADESH|EAST SIANG,k_via_crosswalk
+Lohit,Arunachal Pradesh,arunachal pradesh|lohit,ARUNACHAL PRADESH|LOHIT,k_via_crosswalk
+Kurung Kumey,Arunachal Pradesh,arunachal pradesh|kurung kumey,ARUNACHAL PRADESH|KURUNG KUMEY,k_via_crosswalk
+Lower Subansiri,Arunachal Pradesh,arunachal pradesh|lower subansiri,ARUNACHAL PRADESH|LOWER SUBANSIRI,k_via_crosswalk
+East Kameng,Arunachal Pradesh,arunachal pradesh|east kameng,ARUNACHAL PRADESH|EAST KAMENG,k_via_crosswalk
+West Kameng,Arunachal Pradesh,arunachal pradesh|west kameng,ARUNACHAL PRADESH|WEST KAMENG,k_via_crosswalk
+Kra Daadi,Arunachal Pradesh,arunachal pradesh|kra daadi,ARUNACHAL PRADESH|KURUNG KUMEY,k_via_crosswalk
+Namsai,Arunachal Pradesh,arunachal pradesh|namsai,ARUNACHAL PRADESH|LOHIT,k_via_crosswalk
+Longding,Arunachal Pradesh,arunachal pradesh|longding,ARUNACHAL PRADESH|TIRAP,k_via_crosswalk
+Upper Siang,Arunachal Pradesh,arunachal pradesh|upper siang,ARUNACHAL PRADESH|UPPER SIANG,k_via_crosswalk
+Lower Siang,Arunachal Pradesh,arunachal pradesh|lower siang,ARUNACHAL PRADESH|WEST SIANG,k_via_crosswalk
+Upper Dibang Valley,Arunachal Pradesh,,ARUNACHAL PRADESH|DIBANG VALLEY,manual_parent
+Lower Dibang Valley,Arunachal Pradesh,arunachal pradesh|lower dibang valley,ARUNACHAL PRADESH|LOWER DIBANG VALLEY,k_via_crosswalk
+Siang,Arunachal Pradesh,arunachal pradesh|siang,ARUNACHAL PRADESH|EAST SIANG,k_via_crosswalk
+Shi Yomi,Arunachal Pradesh,arunachal pradesh|shi yomi,ARUNACHAL PRADESH|WEST SIANG,k_via_crosswalk
+Pakke Kessang,Arunachal Pradesh,arunachal pradesh|pakke kessang,ARUNACHAL PRADESH|EAST KAMENG,k_via_crosswalk
+West Siang,Arunachal Pradesh,arunachal pradesh|west siang,ARUNACHAL PRADESH|WEST SIANG,k_via_crosswalk
+Lepa Rada,Arunachal Pradesh,arunachal pradesh|leparada,ARUNACHAL PRADESH|WEST SIANG,k_via_crosswalk
+Kamle,Arunachal Pradesh,arunachal pradesh|kamle,ARUNACHAL PRADESH|UPPER SUBANSIRI,k_via_crosswalk
+Mon,Nagaland,nagaland|mon,NAGALAND|MON,k_via_crosswalk
+Longleng,Nagaland,nagaland|longleng,NAGALAND|LONGLENG,k_via_crosswalk
+Mokokchung,Nagaland,nagaland|mokokchung,NAGALAND|MOKOKCHUNG,k_via_crosswalk
+Tuensang,Nagaland,nagaland|tuensang,NAGALAND|TUENSANG,k_via_crosswalk
+Kiphire,Nagaland,nagaland|kiphire,NAGALAND|KIPHIRE,k_via_crosswalk
+Peren,Nagaland,nagaland|peren,NAGALAND|PEREN,k_via_crosswalk
+Wokha,Nagaland,nagaland|wokha,NAGALAND|WOKHA,k_via_crosswalk
+Zunheboto,Nagaland,nagaland|zunheboto,NAGALAND|ZUNHEBOTO,k_via_crosswalk
+Phek,Nagaland,nagaland|phek,NAGALAND|PHEK,k_via_crosswalk
+Kohima,Nagaland,nagaland|kohima,NAGALAND|KOHIMA,k_via_crosswalk
+Dimapur,Nagaland,nagaland|dimapur,NAGALAND|DIMAPUR,k_via_crosswalk
+Kamjong,Manipur,,MANIPUR|UKHRUL,manual_parent
+Senapati,Manipur,manipur|senapati,MANIPUR|SENAPATI,k_via_crosswalk
+Tamenglong,Manipur,manipur|tamenglong,MANIPUR|TAMENGLONG,k_via_crosswalk
+Imphal West,Manipur,manipur|imphal west,MANIPUR|IMPHAL WEST,k_via_crosswalk
+Kakching,Manipur,,MANIPUR|THOUBAL,manual_parent
+Bishnupur,Manipur,manipur|bishnupur,MANIPUR|BISHNUPUR,k_via_crosswalk
+Chandel,Manipur,manipur|chandel,MANIPUR|CHANDEL,k_via_crosswalk
+Churachandpur,Manipur,manipur|churachandpur,MANIPUR|CHURACHANDPUR,k_via_crosswalk
+Imphal East,Manipur,manipur|imphal east,MANIPUR|IMPHAL EAST,k_via_crosswalk
+Jiribam,Manipur,,MANIPUR|IMPHAL EAST,manual_parent
+Kangpokpi,Manipur,,MANIPUR|SENAPATI,manual_parent
+Thoubal,Manipur,manipur|thoubal,MANIPUR|THOUBAL,k_via_crosswalk
+Tengnoupal,Manipur,,MANIPUR|CHANDEL,manual_parent
+Ukhrul,Manipur,manipur|ukhrul,MANIPUR|UKHRUL,k_via_crosswalk
+Noney,Manipur,,MANIPUR|TAMENGLONG,manual_parent
+Pherzawl,Manipur,,MANIPUR|CHURACHANDPUR,manual_parent
+Kolasib,Mizoram,mizoram|kolasib,MIZORAM|KOLASIB,k_via_crosswalk
+Mamit,Mizoram,mizoram|mamit,MIZORAM|MAMIT,k_via_crosswalk
+Serchhip,Mizoram,mizoram|serchhip,MIZORAM|SERCHHIP,k_via_crosswalk
+Lunglei,Mizoram,mizoram|lunglei,MIZORAM|LUNGLEI,k_via_crosswalk
+Saiha,Mizoram,mizoram|saiha,MIZORAM|SAIHA,k_via_crosswalk
+Lawngtlai,Mizoram,mizoram|lawngtlai,MIZORAM|LAWNGTLAI,k_via_crosswalk
+Hnahthial,Mizoram,,MIZORAM|LUNGLEI,manual_parent
+Saitual,Mizoram,,MIZORAM|AIZAWL,manual_parent
+Aizawl,Mizoram,mizoram|aizawl,MIZORAM|AIZAWL,k_via_crosswalk
+Champhai,Mizoram,mizoram|champhai,MIZORAM|CHAMPHAI,k_via_crosswalk
+Khawzawl,Mizoram,,MIZORAM|CHAMPHAI,manual_parent
+North Tripura,Tripura,tripura|north tripura,TRIPURA|NORTH TRIPURA,k_via_crosswalk
+Dhalai,Tripura,tripura|dhalai,TRIPURA|DHALAI,k_via_crosswalk
+Sipahijala,Tripura,tripura|sepahijala,TRIPURA|WEST TRIPURA,k_via_crosswalk
+Gomati,Tripura,tripura|gomati,TRIPURA|SOUTH TRIPURA,k_via_crosswalk
+Khowai,Tripura,tripura|khowai,TRIPURA|WEST TRIPURA,k_via_crosswalk
+West Tripura,Tripura,tripura|west tripura,TRIPURA|WEST TRIPURA,k_via_crosswalk
+South Tripura,Tripura,tripura|south tripura,TRIPURA|SOUTH TRIPURA,k_via_crosswalk
+Unokoti,Tripura,,TRIPURA|NORTH TRIPURA,manual_parent
+Ribhoi,Meghalaya,meghalaya|ri bhoi,MEGHALAYA|RIBHOI,k_via_crosswalk
+West Khasi Hills,Meghalaya,meghalaya|west khasi hills,MEGHALAYA|WEST KHASI HILLS,k_via_crosswalk
+East Jaintia Hills,Meghalaya,meghalaya|east jaintia hills,MEGHALAYA|JAINTIA HILLS,k_via_crosswalk
+East Khasi Hills,Meghalaya,meghalaya|east khasi hills,MEGHALAYA|EAST KHASI HILLS,k_via_crosswalk
+South Garo Hills,Meghalaya,meghalaya|south garo hills,MEGHALAYA|SOUTH GARO HILLS,k_via_crosswalk
+West Garo Hills,Meghalaya,meghalaya|west garo hills,MEGHALAYA|WEST GARO HILLS,k_via_crosswalk
+East Garo Hills,Meghalaya,meghalaya|east garo hills,MEGHALAYA|EAST GARO HILLS,k_via_crosswalk
+West Jaintia Hills,Meghalaya,meghalaya|west jaintia hills,MEGHALAYA|JAINTIA HILLS,k_via_crosswalk
+South West Khasi Hills,Meghalaya,meghalaya|south west khasi hills,MEGHALAYA|WEST KHASI HILLS,k_via_crosswalk
+North Garo Hills,Meghalaya,meghalaya|north garo hills,MEGHALAYA|EAST GARO HILLS,k_via_crosswalk
+South West Garo Hills,Meghalaya,meghalaya|south west garo hills,MEGHALAYA|WEST GARO HILLS,k_via_crosswalk
+Tinsukia,Assam,assam|tinsukia,ASSAM|TINSUKIA,k_via_crosswalk
+Dhemaji,Assam,assam|dhemaji,ASSAM|DHEMAJI,k_via_crosswalk
+Dibrugarh,Assam,assam|dibrugarh,ASSAM|DIBRUGARH,k_via_crosswalk
+Lakhimpur,Assam,assam|lakhimpur,ASSAM|LAKHIMPUR,k_via_crosswalk
+Sivasagar,Assam,assam|sivasagar,ASSAM|SIVASAGAR,k_via_crosswalk
+Jorhat,Assam,assam|jorhat,ASSAM|JORHAT,k_via_crosswalk
+Sonitpur,Assam,assam|sonitpur,ASSAM|SONITPUR,k_via_crosswalk
+Golaghat,Assam,assam|golaghat,ASSAM|GOLAGHAT,k_via_crosswalk
+Udalguri,Assam,assam|udalguri,ASSAM|UDALGURI,k_via_crosswalk
+Chirang,Assam,assam|chirang,ASSAM|CHIRANG,k_via_crosswalk
+Baksa,Assam,assam|baksa,ASSAM|BAKSA,k_via_crosswalk
+Nagaon,Assam,assam|nagaon,ASSAM|NAGAON,k_via_crosswalk
+Kokrajhar,Assam,assam|kokrajhar,ASSAM|KOKRAJHAR,k_via_crosswalk
+Darrang,Assam,assam|darrang,ASSAM|DARRANG,k_via_crosswalk
+Barpeta,Assam,assam|barpeta,ASSAM|BARPETA,k_via_crosswalk
+Nalbari,Assam,assam|nalbari,ASSAM|NALBARI,k_via_crosswalk
+Morigaon,Assam,assam|marigaon,ASSAM|MORIGAON,k_via_crosswalk
+Kamrup,Assam,assam|kamrup,ASSAM|KAMRUP,k_via_crosswalk
+Bongaigaon,Assam,assam|bongaigaon,ASSAM|BONGAIGAON,k_via_crosswalk
+Dhubri,Assam,assam|dhubri,ASSAM|DHUBRI,k_via_crosswalk
+Kamrup Metropolitan,Assam,assam|kamrup metro,ASSAM|KAMRUP METROPOLITAN,k_via_crosswalk
+Goalpara,Assam,assam|goalpara,ASSAM|GOALPARA,k_via_crosswalk
+Dima Hasao,Assam,assam|dima hasao,ASSAM|DIMA HASAO,k_via_crosswalk
+Cachar,Assam,assam|cachar,ASSAM|CACHAR,k_via_crosswalk
+Karimganj,Assam,assam|karimganj,ASSAM|KARIMGANJ,k_via_crosswalk
+Hailakandi,Assam,assam|hailakandi,ASSAM|HAILAKANDI,k_via_crosswalk
+Charaideo,Assam,assam|charaideo,ASSAM|SIVASAGAR,k_via_crosswalk
+Majuli,Assam,assam|majuli,ASSAM|JORHAT,k_via_crosswalk
+Biswanath,Assam,assam|biswanath,ASSAM|SONITPUR,k_via_crosswalk
+Hojai,Assam,assam|hojai,ASSAM|NAGAON,k_via_crosswalk
+South Salmara Mancachar,Assam,assam|south salmara mancachar,ASSAM|DHUBRI,k_via_crosswalk
+Karbi Anglong,Assam,assam|karbi anglong,ASSAM|KARBI ANGLONG,k_via_crosswalk
+West Karbi Anglong,Assam,assam|west karbi anglong,ASSAM|KARBI ANGLONG,k_via_crosswalk
+South Twenty Four Pargan*,West Bengal,,WEST BENGAL|SOUTH TWENTY FOUR PARGANAS,manual_parent
+Darjiling,West Bengal,west bengal|darjeeling,WEST BENGAL|DARJILING,k_via_crosswalk
+Jalpaiguri,West Bengal,west bengal|jalpaiguri,WEST BENGAL|JALPAIGURI,k_via_crosswalk
+Dakshin Dinajpur,West Bengal,west bengal|dakshin dinajpur,WEST BENGAL|DAKSHIN DINAJPUR,k_via_crosswalk
+Maldah,West Bengal,west bengal|maldah,WEST BENGAL|MALDAH,k_via_crosswalk
+Murshidabad,West Bengal,west bengal|murshidabad,WEST BENGAL|MURSHIDABAD,k_via_crosswalk
+Birbhum,West Bengal,west bengal|birbhum,WEST BENGAL|BIRBHUM,k_via_crosswalk
+Nadia,West Bengal,west bengal|nadia,WEST BENGAL|NADIA,k_via_crosswalk
+Purba Bardhaman,West Bengal,west bengal|purba bardhaman,WEST BENGAL|BARDDHAMAN,k_via_crosswalk
+Puruliya,West Bengal,west bengal|purulia,WEST BENGAL|PURULIYA,k_via_crosswalk
+Bankura,West Bengal,west bengal|bankura,WEST BENGAL|BANKURA,k_via_crosswalk
+North Twenty Four Pargan*,West Bengal,,WEST BENGAL|NORTH TWENTY FOUR PARGANAS,manual_parent
+Hooghly,West Bengal,west bengal|hooghly,WEST BENGAL|HUGLI,k_via_crosswalk
+Medinipur West,West Bengal,,WEST BENGAL|PASCHIM MEDINIPUR,manual_parent
+Howrah,West Bengal,west bengal|howrah,WEST BENGAL|HAORA,k_via_crosswalk
+Kolkata,West Bengal,,,no_unit: no crop records (urban)
+Purba Medinipur,West Bengal,west bengal|purba medinipur,WEST BENGAL|PURBA MEDINIPUR,k_via_crosswalk
+Alipurduar,West Bengal,west bengal|alipurduar,WEST BENGAL|JALPAIGURI,k_via_crosswalk
+Paschim Bardhaman,West Bengal,west bengal|paschim bardhaman,WEST BENGAL|BARDDHAMAN,k_via_crosswalk
+Kalimpong,West Bengal,west bengal|kalimpong,WEST BENGAL|DARJILING,k_via_crosswalk
+Jhargram,West Bengal,west bengal|jhargram,WEST BENGAL|PASCHIM MEDINIPUR,k_via_crosswalk
+Cooch Behar,West Bengal,west bengal|coochbehar,WEST BENGAL|KOCH BIHAR,k_via_crosswalk
+Uttar Dinajpur,West Bengal,west bengal|uttar dinajpur,WEST BENGAL|UTTAR DINAJPUR,k_via_crosswalk
+Sahibganj,Jharkhand,jharkhand|sahebganj,JHARKHAND|SAHIBGANJ,k_via_crosswalk
+Godda,Jharkhand,jharkhand|godda,JHARKHAND|GODDA,k_via_crosswalk
+Pakur,Jharkhand,jharkhand|pakur,JHARKHAND|PAKUR,k_via_crosswalk
+Giridih,Jharkhand,jharkhand|giridih,JHARKHAND|GIRIDIH,k_via_crosswalk
+Dumka,Jharkhand,jharkhand|dumka,JHARKHAND|DUMKA,k_via_crosswalk
+Deoghar,Jharkhand,jharkhand|deoghar,JHARKHAND|DEOGHAR,k_via_crosswalk
+Palamu,Jharkhand,jharkhand|palamu,JHARKHAND|PALAMU,k_via_crosswalk
+Chatra,Jharkhand,jharkhand|chatra,JHARKHAND|CHATRA,k_via_crosswalk
+Garhwa,Jharkhand,jharkhand|garhwa,JHARKHAND|GARHWA,k_via_crosswalk
+Jamtara,Jharkhand,jharkhand|jamtara,JHARKHAND|JAMTARA,k_via_crosswalk
+Dhanbad,Jharkhand,jharkhand|dhanbad,JHARKHAND|DHANBAD,k_via_crosswalk
+Latehar,Jharkhand,jharkhand|latehar,JHARKHAND|LATEHAR,k_via_crosswalk
+Bokaro,Jharkhand,jharkhand|bokaro,JHARKHAND|BOKARO,k_via_crosswalk
+Ramgarh,Jharkhand,jharkhand|ramgarh,JHARKHAND|RAMGARH,k_via_crosswalk
+Ranchi,Jharkhand,jharkhand|ranchi,JHARKHAND|RANCHI,k_via_crosswalk
+Lohardaga,Jharkhand,jharkhand|lohardaga,JHARKHAND|LOHARDAGA,k_via_crosswalk
+Gumla,Jharkhand,jharkhand|gumla,JHARKHAND|GUMLA,k_via_crosswalk
+Khunti,Jharkhand,jharkhand|khunti,JHARKHAND|KHUNTI,k_via_crosswalk
+Saraikela-Kharsawan,Jharkhand,jharkhand|saraikela kharsawan,JHARKHAND|SARAIKELA KHARSAWAN,k_via_crosswalk
+Purbi Singhbhum,Jharkhand,jharkhand|east singhbum,JHARKHAND|PURBI SINGHBHUM,k_via_crosswalk
+Pashchimi Singhbhum,Jharkhand,jharkhand|west singhbhum,JHARKHAND|PASHCHIMI SINGHBHUM,k_via_crosswalk
+Simdega,Jharkhand,jharkhand|simdega,JHARKHAND|SIMDEGA,k_via_crosswalk
+Kodarma,Jharkhand,jharkhand|koderma,JHARKHAND|KODARMA,k_via_crosswalk
+Hazaribagh,Jharkhand,jharkhand|hazaribagh,JHARKHAND|HAZARIBAGH,k_via_crosswalk
+Bhadrak,Odisha,odisha|bhadrak,ODISHA|BHADRAK,k_via_crosswalk
+Dhenkanal,Odisha,odisha|dhenkanal,ODISHA|DHENKANAL,k_via_crosswalk
+Jajapur,Odisha,odisha|jajapur,ODISHA|JAJAPUR,k_via_crosswalk
+Subarnapur,Odisha,odisha|sonepur,ODISHA|SUBARNAPUR,k_via_crosswalk
+Nuapada,Odisha,odisha|nuapada,ODISHA|NUAPADA,k_via_crosswalk
+Balangir,Odisha,odisha|balangir,ODISHA|BALANGIR,k_via_crosswalk
+Baudh,Odisha,odisha|boudh,ODISHA|BAUDH,k_via_crosswalk
+Cuttack,Odisha,odisha|cuttack,ODISHA|CUTTACK,k_via_crosswalk
+Kandhamal,Odisha,odisha|kandhamal,ODISHA|KANDHAMAL,k_via_crosswalk
+Nayagarh,Odisha,odisha|nayagarh,ODISHA|NAYAGARH,k_via_crosswalk
+Khordha,Odisha,odisha|khordha,ODISHA|KHORDHA,k_via_crosswalk
+Kalahandi,Odisha,odisha|kalahandi,ODISHA|KALAHANDI,k_via_crosswalk
+Jagatsinghapur,Odisha,odisha|jagatsinghapur,ODISHA|JAGATSINGHAPUR,k_via_crosswalk
+Puri,Odisha,odisha|puri,ODISHA|PURI,k_via_crosswalk
+Nabarangapur,Odisha,odisha|nabarangpur,ODISHA|NABARANGAPUR,k_via_crosswalk
+Rayagada,Odisha,odisha|rayagada,ODISHA|RAYAGADA,k_via_crosswalk
+Koraput,Odisha,odisha|koraput,ODISHA|KORAPUT,k_via_crosswalk
+Malkangiri,Odisha,odisha|malkangiri,ODISHA|MALKANGIRI,k_via_crosswalk
+Anugul,Odisha,odisha|anugul,ODISHA|ANUGUL,k_via_crosswalk
+Kendrapara,Odisha,odisha|kendrapara,ODISHA|KENDRAPARA,k_via_crosswalk
+Ganjam,Odisha,odisha|ganjam,ODISHA|GANJAM,k_via_crosswalk
+Gajapati,Odisha,odisha|gajapati,ODISHA|GAJAPATI,k_via_crosswalk
+Mayurbhanj,Odisha,odisha|mayurbhanj,ODISHA|MAYURBHANJ,k_via_crosswalk
+Sundargarh,Odisha,odisha|sundargarh,ODISHA|SUNDARGARH,k_via_crosswalk
+Kendujhar,Odisha,odisha|kendujhar,ODISHA|KENDUJHAR,k_via_crosswalk
+Baleshwar,Odisha,odisha|baleshwar,ODISHA|BALESHWAR,k_via_crosswalk
+Jharsuguda,Odisha,odisha|jharsuguda,ODISHA|JHARSUGUDA,k_via_crosswalk
+Bargarh,Odisha,odisha|bargarh,ODISHA|BARGARH,k_via_crosswalk
+Debagarh,Odisha,odisha|deogarh,ODISHA|DEBAGARH,k_via_crosswalk
+Sambalpur,Odisha,odisha|sambalpur,ODISHA|SAMBALPUR,k_via_crosswalk
+Mahasamund,Chhattisgarh,chhattisgarh|mahasamund,CHHATTISGARH|MAHASAMUND,k_via_crosswalk
+Uttar Bastar Kanker,Chhattisgarh,chhattisgarh|kanker,CHHATTISGARH|UTTAR BASTAR KANKER,k_via_crosswalk
+Narayanpur,Chhattisgarh,chhattisgarh|narayanpur,CHHATTISGARH|NARAYANPUR,k_via_crosswalk
+Dakshin Bastar Dantewada,Chhattisgarh,chhattisgarh|dakshin bastar dantewada,CHHATTISGARH|DAKSHIN BASTAR DANTEWADA,k_via_crosswalk
+Bastar,Chhattisgarh,chhattisgarh|bastar,CHHATTISGARH|BASTAR,k_via_crosswalk
+Kondagaon,Chhattisgarh,chhattisgarh|kondagaon,CHHATTISGARH|BASTAR,k_via_crosswalk
+Gariaband,Chhattisgarh,chhattisgarh|gariyaband,CHHATTISGARH|RAIPUR,k_via_crosswalk
+Raipur,Chhattisgarh,chhattisgarh|raipur,CHHATTISGARH|RAIPUR,k_via_crosswalk
+Durg,Chhattisgarh,chhattisgarh|durg,CHHATTISGARH|DURG,k_via_crosswalk
+Dhamtari,Chhattisgarh,chhattisgarh|dhamtari,CHHATTISGARH|DHAMTARI,k_via_crosswalk
+Balod,Chhattisgarh,chhattisgarh|balod,CHHATTISGARH|DURG,k_via_crosswalk
+Koriya,Chhattisgarh,chhattisgarh|korea,CHHATTISGARH|KORIYA,k_via_crosswalk
+Jashpur,Chhattisgarh,chhattisgarh|jashpur,CHHATTISGARH|JASHPUR,k_via_crosswalk
+Korba,Chhattisgarh,chhattisgarh|korba,CHHATTISGARH|KORBA,k_via_crosswalk
+Kabeerdham,Chhattisgarh,chhattisgarh|kabirdham,CHHATTISGARH|KABEERDHAM,k_via_crosswalk
+Janjgir - Champa,Chhattisgarh,chhattisgarh|janjgir champa,CHHATTISGARH|JANJGIR CHAMPA,k_via_crosswalk
+Bametara,Chhattisgarh,chhattisgarh|bemetara,CHHATTISGARH|DURG,k_via_crosswalk
+Rajnandgaon,Chhattisgarh,chhattisgarh|rajnandgaon,CHHATTISGARH|RAJNANDGAON,k_via_crosswalk
+Surajpur,Chhattisgarh,chhattisgarh|surajpur,CHHATTISGARH|SURGUJA,k_via_crosswalk
+Baloda Bazar,Chhattisgarh,chhattisgarh|baloda bazar,CHHATTISGARH|RAIPUR,k_via_crosswalk
+Mungeli,Chhattisgarh,chhattisgarh|mungeli,CHHATTISGARH|BILASPUR,k_via_crosswalk
+Surguja,Chhattisgarh,chhattisgarh|surguja,CHHATTISGARH|SURGUJA,k_via_crosswalk
+Balrampur,Chhattisgarh,chhattisgarh|balrampur,CHHATTISGARH|SURGUJA,k_via_crosswalk
+Bijapur,Chhattisgarh,chhattisgarh|bijapur,CHHATTISGARH|BIJAPUR,k_via_crosswalk
+Raigarh,Chhattisgarh,chhattisgarh|raigarh,CHHATTISGARH|RAIGARH,k_via_crosswalk
+Bilaspur,Chhattisgarh,chhattisgarh|bilaspur,CHHATTISGARH|BILASPUR,k_via_crosswalk
+Sukma,Chhattisgarh,chhattisgarh|sukma,CHHATTISGARH|DAKSHIN BASTAR DANTEWADA,k_via_crosswalk
+Burhanpur,Madhya Pradesh,madhya pradesh|burhanpur,MADHYA PRADESH|BURHANPUR,k_via_crosswalk
+Morena,Madhya Pradesh,madhya pradesh|morena,MADHYA PRADESH|MORENA,k_via_crosswalk
+Bhind,Madhya Pradesh,madhya pradesh|bhind,MADHYA PRADESH|BHIND,k_via_crosswalk
+Gwalior,Madhya Pradesh,madhya pradesh|gwalior,MADHYA PRADESH|GWALIOR,k_via_crosswalk
+Sheopur,Madhya Pradesh,madhya pradesh|sheopur,MADHYA PRADESH|SHEOPUR,k_via_crosswalk
+Shivpuri,Madhya Pradesh,madhya pradesh|shivpuri,MADHYA PRADESH|SHIVPURI,k_via_crosswalk
+Tikamgarh,Madhya Pradesh,madhya pradesh|tikamgarh,MADHYA PRADESH|TIKAMGARH,k_via_crosswalk
+Neemuch,Madhya Pradesh,madhya pradesh|neemuch,MADHYA PRADESH|NEEMUCH,k_via_crosswalk
+Rewa,Madhya Pradesh,madhya pradesh|rewa,MADHYA PRADESH|REWA,k_via_crosswalk
+Satna,Madhya Pradesh,madhya pradesh|satna,MADHYA PRADESH|SATNA,k_via_crosswalk
+Guna,Madhya Pradesh,madhya pradesh|guna,MADHYA PRADESH|GUNA,k_via_crosswalk
+Ashoknagar,Madhya Pradesh,madhya pradesh|ashoknagar,MADHYA PRADESH|ASHOKNAGAR,k_via_crosswalk
+Mandsaur,Madhya Pradesh,madhya pradesh|mandsaur,MADHYA PRADESH|MANDSAUR,k_via_crosswalk
+Singrauli,Madhya Pradesh,madhya pradesh|singrauli,MADHYA PRADESH|SINGRAULI,k_via_crosswalk
+Sidhi,Madhya Pradesh,madhya pradesh|sidhi,MADHYA PRADESH|SIDHI,k_via_crosswalk
+Sagar,Madhya Pradesh,madhya pradesh|sagar,MADHYA PRADESH|SAGAR,k_via_crosswalk
+Damoh,Madhya Pradesh,madhya pradesh|damoh,MADHYA PRADESH|DAMOH,k_via_crosswalk
+Shajapur,Madhya Pradesh,madhya pradesh|shajapur,MADHYA PRADESH|SHAJAPUR,k_via_crosswalk
+Vidisha,Madhya Pradesh,madhya pradesh|vidisha,MADHYA PRADESH|VIDISHA,k_via_crosswalk
+Rajgarh,Madhya Pradesh,madhya pradesh|rajgarh,MADHYA PRADESH|RAJGARH,k_via_crosswalk
+Shahdol,Madhya Pradesh,madhya pradesh|shahdol,MADHYA PRADESH|SHAHDOL,k_via_crosswalk
+Katni,Madhya Pradesh,madhya pradesh|katni,MADHYA PRADESH|KATNI,k_via_crosswalk
+Umaria,Madhya Pradesh,madhya pradesh|umaria,MADHYA PRADESH|UMARIA,k_via_crosswalk
+Ratlam,Madhya Pradesh,madhya pradesh|ratlam,MADHYA PRADESH|RATLAM,k_via_crosswalk
+Bhopal,Madhya Pradesh,madhya pradesh|bhopal,MADHYA PRADESH|BHOPAL,k_via_crosswalk
+Ujjain,Madhya Pradesh,madhya pradesh|ujjain,MADHYA PRADESH|UJJAIN,k_via_crosswalk
+Raisen,Madhya Pradesh,madhya pradesh|raisen,MADHYA PRADESH|RAISEN,k_via_crosswalk
+Sehore,Madhya Pradesh,madhya pradesh|sehore,MADHYA PRADESH|SEHORE,k_via_crosswalk
+Jabalpur,Madhya Pradesh,madhya pradesh|jabalpur,MADHYA PRADESH|JABALPUR,k_via_crosswalk
+Dewas,Madhya Pradesh,madhya pradesh|dewas,MADHYA PRADESH|DEWAS,k_via_crosswalk
+Anuppur,Madhya Pradesh,madhya pradesh|anuppur,MADHYA PRADESH|ANUPPUR,k_via_crosswalk
+Jhabua,Madhya Pradesh,madhya pradesh|jhabua,MADHYA PRADESH|JHABUA,k_via_crosswalk
+Dindori,Madhya Pradesh,madhya pradesh|dindori,MADHYA PRADESH|DINDORI,k_via_crosswalk
+Narsimhapur,Madhya Pradesh,madhya pradesh|narsinghpur,MADHYA PRADESH|NARSIMHAPUR,k_via_crosswalk
+Dhar,Madhya Pradesh,madhya pradesh|dhar,MADHYA PRADESH|DHAR,k_via_crosswalk
+Indore,Madhya Pradesh,madhya pradesh|indore,MADHYA PRADESH|INDORE,k_via_crosswalk
+Mandla,Madhya Pradesh,madhya pradesh|mandla,MADHYA PRADESH|MANDLA,k_via_crosswalk
+Hoshangabad,Madhya Pradesh,madhya pradesh|hoshangabad,MADHYA PRADESH|HOSHANGABAD,k_via_crosswalk
+Seoni,Madhya Pradesh,madhya pradesh|seoni,MADHYA PRADESH|SEONI,k_via_crosswalk
+Alirajpur,Madhya Pradesh,madhya pradesh|alirajpur,MADHYA PRADESH|ALIRAJPUR,k_via_crosswalk
+Chhindwara,Madhya Pradesh,madhya pradesh|chhindwara,MADHYA PRADESH|CHHINDWARA,k_via_crosswalk
+Harda,Madhya Pradesh,madhya pradesh|harda,MADHYA PRADESH|HARDA,k_via_crosswalk
+West Nimar,Madhya Pradesh,madhya pradesh|khargone,MADHYA PRADESH|WEST NIMAR,k_via_crosswalk
+East Nimar,Madhya Pradesh,madhya pradesh|khandwa,MADHYA PRADESH|EAST NIMAR,k_via_crosswalk
+Balaghat,Madhya Pradesh,madhya pradesh|balaghat,MADHYA PRADESH|BALAGHAT,k_via_crosswalk
+Barwani,Madhya Pradesh,madhya pradesh|barwani,MADHYA PRADESH|BARWANI,k_via_crosswalk
+Agar Malwa,Madhya Pradesh,madhya pradesh|agar malwa,MADHYA PRADESH|SHAJAPUR,k_via_crosswalk
+Datia,Madhya Pradesh,madhya pradesh|datia,MADHYA PRADESH|DATIA,k_via_crosswalk
+Chhatarpur,Madhya Pradesh,madhya pradesh|chhatarpur,MADHYA PRADESH|CHHATARPUR,k_via_crosswalk
+Panna,Madhya Pradesh,madhya pradesh|panna,MADHYA PRADESH|PANNA,k_via_crosswalk
+Betul,Madhya Pradesh,madhya pradesh|betul,MADHYA PRADESH|BETUL,k_via_crosswalk
+Niwari,Madhya Pradesh,madhya pradesh|niwari,MADHYA PRADESH|TIKAMGARH,k_via_crosswalk
+Valsad,Gujarat,gujarat|valsad,GUJARAT|VALSAD,k_via_crosswalk
+Amreli,Gujarat,gujarat|amreli,GUJARAT|AMRELI,k_via_crosswalk
+The Dangs,Gujarat,gujarat|dang,GUJARAT|THE DANGS,k_via_crosswalk
+Banas Kantha,Gujarat,gujarat|banas kantha,GUJARAT|BANAS KANTHA,k_via_crosswalk
+Patan,Gujarat,gujarat|patan,GUJARAT|PATAN,k_via_crosswalk
+Mahesana,Gujarat,gujarat|mahesana,GUJARAT|MAHESANA,k_via_crosswalk
+Gandhinagar,Gujarat,gujarat|gandhinagar,GUJARAT|GANDHINAGAR,k_via_crosswalk
+Ahmadabad,Gujarat,gujarat|ahmadabad,GUJARAT|AHMADABAD,k_via_crosswalk
+Panch Mahals,Gujarat,gujarat|panch mahals,GUJARAT|PANCH MAHALS,k_via_crosswalk
+Dohad,Gujarat,gujarat|dohad,GUJARAT|DOHAD,k_via_crosswalk
+Vadodara,Gujarat,gujarat|vadodara,GUJARAT|VADODARA,k_via_crosswalk
+Bharuch,Gujarat,gujarat|bharuch,GUJARAT|BHARUCH,k_via_crosswalk
+Porbandar,Gujarat,gujarat|porbandar,GUJARAT|PORBANDAR,k_via_crosswalk
+Narmada,Gujarat,gujarat|narmada,GUJARAT|NARMADA,k_via_crosswalk
+Surat,Gujarat,gujarat|surat,GUJARAT|SURAT,k_via_crosswalk
+Tapi,Gujarat,gujarat|tapi,GUJARAT|TAPI,k_via_crosswalk
+Aravalli,Gujarat,gujarat|aravalli,GUJARAT|SABAR KANTHA,k_via_crosswalk
+Botad,Gujarat,gujarat|botad,GUJARAT|BHAVNAGAR,k_via_crosswalk
+Chota Udaipur,Gujarat,,GUJARAT|VADODARA,manual_parent
+Mahisagar,Gujarat,gujarat|mahisagar,GUJARAT|PANCH MAHALS,k_via_crosswalk
+Gir Somnath,Gujarat,gujarat|gir somnath,GUJARAT|JUNAGADH,k_via_crosswalk
+Sabar Kantha,Gujarat,gujarat|sabar kantha,GUJARAT|SABAR KANTHA,k_via_crosswalk
+Kachchh,Gujarat,gujarat|kachchh,GUJARAT|KACHCHH,k_via_crosswalk
+Surendranagar,Gujarat,gujarat|surendranagar,GUJARAT|SURENDRANAGAR,k_via_crosswalk
+Rajkot,Gujarat,gujarat|rajkot,GUJARAT|RAJKOT,k_via_crosswalk
+Kheda,Gujarat,gujarat|kheda,GUJARAT|KHEDA,k_via_crosswalk
+Anand,Gujarat,gujarat|anand,GUJARAT|ANAND,k_via_crosswalk
+Bhavnagar,Gujarat,gujarat|bhavnagar,GUJARAT|BHAVNAGAR,k_via_crosswalk
+Junagadh,Gujarat,gujarat|junagadh,GUJARAT|JUNAGADH,k_via_crosswalk
+Jamnagar,Gujarat,gujarat|jamnagar,GUJARAT|JAMNAGAR,k_via_crosswalk
+Devbhumi Dwarka,Gujarat,gujarat|devbhumi dwarka,GUJARAT|JAMNAGAR,k_via_crosswalk
+Morbi,Gujarat,gujarat|morbi,GUJARAT|RAJKOT,k_via_crosswalk
+Navsari,Gujarat,gujarat|navsari,GUJARAT|NAVSARI,k_via_crosswalk
+Daman,Daman & Diu,,THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU|DAMAN,manual_parent
+Diu,Daman & Diu,,THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU|DIU,manual_parent
+Dadra & Nagar Haveli,Dadra & Nagar Have,,DADRA NAGAR HAVELI|DADRA NAGAR HAVELI,manual_parent
+Gondiya,Maharashtra,maharashtra|gondia,MAHARASHTRA|GONDIYA,k_via_crosswalk
+Bhandara,Maharashtra,maharashtra|bhandara,MAHARASHTRA|BHANDARA,k_via_crosswalk
+Jalgaon,Maharashtra,maharashtra|jalgaon,MAHARASHTRA|JALGAON,k_via_crosswalk
+Wardha,Maharashtra,maharashtra|wardha,MAHARASHTRA|WARDHA,k_via_crosswalk
+Buldana,Maharashtra,maharashtra|buldhana,MAHARASHTRA|BULDANA,k_via_crosswalk
+Akola,Maharashtra,maharashtra|akola,MAHARASHTRA|AKOLA,k_via_crosswalk
+Nashik,Maharashtra,maharashtra|nashik,MAHARASHTRA|NASHIK,k_via_crosswalk
+Gadchiroli,Maharashtra,maharashtra|gadchiroli,MAHARASHTRA|GADCHIROLI,k_via_crosswalk
+Washim,Maharashtra,maharashtra|washim,MAHARASHTRA|WASHIM,k_via_crosswalk
+Chandrapur,Maharashtra,maharashtra|chandrapur,MAHARASHTRA|CHANDRAPUR,k_via_crosswalk
+Yavatmal,Maharashtra,maharashtra|yavatmal,MAHARASHTRA|YAVATMAL,k_via_crosswalk
+Jalna,Maharashtra,maharashtra|jalna,MAHARASHTRA|JALNA,k_via_crosswalk
+Ahmadnagar,Maharashtra,maharashtra|ahmednagar,MAHARASHTRA|AHMADNAGAR,k_via_crosswalk
+Hingoli,Maharashtra,maharashtra|hingoli,MAHARASHTRA|HINGOLI,k_via_crosswalk
+Nanded,Maharashtra,maharashtra|nanded,MAHARASHTRA|NANDED,k_via_crosswalk
+Parbhani,Maharashtra,maharashtra|parbhani,MAHARASHTRA|PARBHANI,k_via_crosswalk
+Pune,Maharashtra,maharashtra|pune,MAHARASHTRA|PUNE,k_via_crosswalk
+Bid,Maharashtra,maharashtra|beed,MAHARASHTRA|BID,k_via_crosswalk
+Mumbai,Maharashtra,maharashtra|mumbai,MAHARASHTRA|MUMBAI,k_via_crosswalk
+Latur,Maharashtra,maharashtra|latur,MAHARASHTRA|LATUR,k_via_crosswalk
+Osmanabad,Maharashtra,maharashtra|osmanabad,MAHARASHTRA|OSMANABAD,k_via_crosswalk
+Solapur,Maharashtra,maharashtra|solapur,MAHARASHTRA|SOLAPUR,k_via_crosswalk
+Satara,Maharashtra,maharashtra|satara,MAHARASHTRA|SATARA,k_via_crosswalk
+Ratnagiri,Maharashtra,maharashtra|ratnagiri,MAHARASHTRA|RATNAGIRI,k_via_crosswalk
+Sangli,Maharashtra,maharashtra|sangli,MAHARASHTRA|SANGLI,k_via_crosswalk
+Kolhapur,Maharashtra,maharashtra|kolhapur,MAHARASHTRA|KOLHAPUR,k_via_crosswalk
+Sindhudurg,Maharashtra,maharashtra|sindhudurg,MAHARASHTRA|SINDHUDURG,k_via_crosswalk
+Thane,Maharashtra,maharashtra|thane,MAHARASHTRA|THANE,k_via_crosswalk
+Palghar,Maharashtra,maharashtra|palghar,MAHARASHTRA|THANE,k_via_crosswalk
+Nandurbar,Maharashtra,maharashtra|nandurbar,MAHARASHTRA|NANDURBAR,k_via_crosswalk
+Amravati,Maharashtra,maharashtra|amravati,MAHARASHTRA|AMRAVATI,k_via_crosswalk
+Dhule,Maharashtra,maharashtra|dhule,MAHARASHTRA|DHULE,k_via_crosswalk
+Nagpur,Maharashtra,maharashtra|nagpur,MAHARASHTRA|NAGPUR,k_via_crosswalk
+Aurangabad,Maharashtra,maharashtra|aurangabad,MAHARASHTRA|AURANGABAD,k_via_crosswalk
+Raigarh,Maharashtra,maharashtra|raigad,MAHARASHTRA|RAIGARH,k_via_crosswalk
+Mumbai Suburban,Maharashtra,maharashtra|mumbai suburban,MAHARASHTRA|MUMBAI SUBURBAN,k_via_crosswalk
+Srikakulam,Andhra Pradesh,andhra pradesh|srikakulam,ANDHRA PRADESH|SRIKAKULAM,k_via_crosswalk
+Vizianagaram,Andhra Pradesh,andhra pradesh|vizianagaram,ANDHRA PRADESH|VIZIANAGARAM,k_via_crosswalk
+Visakhapatnam,Andhra Pradesh,andhra pradesh|visakhapatanam,ANDHRA PRADESH|VISAKHAPATNAM,k_via_crosswalk
+Krishna,Andhra Pradesh,andhra pradesh|krishna,ANDHRA PRADESH|KRISHNA,k_via_crosswalk
+Guntur,Andhra Pradesh,andhra pradesh|guntur,ANDHRA PRADESH|GUNTUR,k_via_crosswalk
+East Godavari,Andhra Pradesh,andhra pradesh|east godavari,ANDHRA PRADESH|EAST GODAVARI,k_via_crosswalk
+Prakasam,Andhra Pradesh,andhra pradesh|prakasam,ANDHRA PRADESH|PRAKASAM,k_via_crosswalk
+Kurnool,Andhra Pradesh,andhra pradesh|kurnool,ANDHRA PRADESH|KURNOOL,k_via_crosswalk
+Anantapur,Andhra Pradesh,andhra pradesh|anantapur,ANDHRA PRADESH|ANANTAPUR,k_via_crosswalk
+Sri Potti Sriramulu Nell*,Andhra Pradesh,andhra pradesh|sri potti sriramulu nellore,ANDHRA PRADESH|SRI POTTI SRIRAMULU NELLORE,k_via_crosswalk
+West Godavari,Andhra Pradesh,andhra pradesh|west godavari,ANDHRA PRADESH|WEST GODAVARI,k_via_crosswalk
+Y.S.R.,Andhra Pradesh,,ANDHRA PRADESH|YSR KADAPA,manual_parent
+Chittoor,Andhra Pradesh,andhra pradesh|chittoor,ANDHRA PRADESH|CHITTOOR,k_via_crosswalk
+Bidar,Karnataka,karnataka|bidar,KARNATAKA|BIDAR,k_via_crosswalk
+Kalaburagi,Karnataka,karnataka|kalaburagi,KARNATAKA|GULBARGA,k_via_crosswalk
+Belagavi,Karnataka,karnataka|belagavi,KARNATAKA|BELGAUM,k_via_crosswalk
+Yadgir,Karnataka,karnataka|yadagiri,KARNATAKA|YADGIR,k_via_crosswalk
+Bagalkote,Karnataka,karnataka|bagalkote,KARNATAKA|BAGALKOT,k_via_crosswalk
+Raichur,Karnataka,karnataka|raichur,KARNATAKA|RAICHUR,k_via_crosswalk
+Koppal,Karnataka,karnataka|koppal,KARNATAKA|KOPPAL,k_via_crosswalk
+Gadag,Karnataka,karnataka|gadag,KARNATAKA|GADAG,k_via_crosswalk
+Ballari,Karnataka,karnataka|ballari,KARNATAKA|BELLARY,k_via_crosswalk
+Dharwad,Karnataka,karnataka|dharwad,KARNATAKA|DHARWAD,k_via_crosswalk
+Uttara Kannada,Karnataka,karnataka|uttara kannada,KARNATAKA|UTTARA KANNADA,k_via_crosswalk
+Haveri,Karnataka,karnataka|haveri,KARNATAKA|HAVERI,k_via_crosswalk
+Chitradurga,Karnataka,karnataka|chitradurga,KARNATAKA|CHITRADURGA,k_via_crosswalk
+Davanagere,Karnataka,karnataka|davangere,KARNATAKA|DAVANAGERE,k_via_crosswalk
+Shivamogga,Karnataka,karnataka|shivamogga,KARNATAKA|SHIMOGA,k_via_crosswalk
+Udupi,Karnataka,karnataka|udupi,KARNATAKA|UDUPI,k_via_crosswalk
+Chikkamagaluru,Karnataka,karnataka|chikkamagaluru,KARNATAKA|CHIKMAGALUR,k_via_crosswalk
+Chikkaballapura,Karnataka,karnataka|chikkaballapura,KARNATAKA|CHIKKABALLAPURA,k_via_crosswalk
+Hassan,Karnataka,karnataka|hassan,KARNATAKA|HASSAN,k_via_crosswalk
+Kolar,Karnataka,karnataka|kolar,KARNATAKA|KOLAR,k_via_crosswalk
+Bengaluru Rural,Karnataka,karnataka|bengaluru urban,KARNATAKA|BANGALORE RURAL,name_override
+Dakshina Kannada,Karnataka,karnataka|dakshina kannada,KARNATAKA|DAKSHINA KANNADA,k_via_crosswalk
+Bangalore,Karnataka,karnataka|bengaluru urban,KARNATAKA|BANGALORE,k_via_crosswalk
+Kodagu,Karnataka,karnataka|kodagu,KARNATAKA|KODAGU,k_via_crosswalk
+Chamarajanagara,Karnataka,karnataka|chamarajanagara,KARNATAKA|CHAMARAJANAGAR,k_via_crosswalk
+Tumakuru,Karnataka,karnataka|tumakuru,KARNATAKA|TUMKUR,k_via_crosswalk
+Ramanagara,Karnataka,karnataka|ramanagara,KARNATAKA|RAMANAGARA,k_via_crosswalk
+Mandya,Karnataka,karnataka|mandya,KARNATAKA|MANDYA,k_via_crosswalk
+Mysuru,Karnataka,karnataka|mysuru,KARNATAKA|MYSORE,k_via_crosswalk
+Vijayapura,Karnataka,karnataka|vijayapura,KARNATAKA|BIJAPUR,k_via_crosswalk
+North Goa,Goa,goa|north goa,GOA|NORTH GOA,k_via_crosswalk
+South Goa,Goa,goa|south goa,GOA|SOUTH GOA,k_via_crosswalk
+Lakshadweep,Lakshadweep,,,no_unit: no crop records
+Kasaragod,Kerala,kerala|kasaragod,KERALA|KASARAGOD,k_via_crosswalk
+Wayanad,Kerala,kerala|wayanad,KERALA|WAYANAD,k_via_crosswalk
+Kozhikode,Kerala,kerala|kozhikode,KERALA|KOZHIKODE,k_via_crosswalk
+Malappuram,Kerala,kerala|malappuram,KERALA|MALAPPURAM,k_via_crosswalk
+Palakkad,Kerala,kerala|palakkad,KERALA|PALAKKAD,k_via_crosswalk
+Thrissur,Kerala,kerala|thrissur,KERALA|THRISSUR,k_via_crosswalk
+Idukki,Kerala,kerala|idukki,KERALA|IDUKKI,k_via_crosswalk
+Ernakulam,Kerala,kerala|ernakulam,KERALA|ERNAKULAM,k_via_crosswalk
+Alappuzha,Kerala,kerala|alappuzha,KERALA|ALAPPUZHA,k_via_crosswalk
+Kottayam,Kerala,kerala|kottayam,KERALA|KOTTAYAM,k_via_crosswalk
+Pathanamthitta,Kerala,kerala|pathanamthitta,KERALA|PATHANAMTHITTA,k_via_crosswalk
+Kollam,Kerala,kerala|kollam,KERALA|KOLLAM,k_via_crosswalk
+Thiruvananthapuram,Kerala,kerala|thiruvananthapuram,KERALA|THIRUVANANTHAPURAM,k_via_crosswalk
+Kannur,Kerala,kerala|kannur,KERALA|KANNUR,k_via_crosswalk
+Krishnagiri,Tamil Nadu,tamil nadu|krishnagiri,TAMIL NADU|KRISHNAGIRI,k_via_crosswalk
+Tiruvannamalai,Tamil Nadu,tamil nadu|tiruvannamalai,TAMIL NADU|TIRUVANNAMALAI,k_via_crosswalk
+Dharmapuri,Tamil Nadu,tamil nadu|dharmapuri,TAMIL NADU|DHARMAPURI,k_via_crosswalk
+Salem,Tamil Nadu,tamil nadu|salem,TAMIL NADU|SALEM,k_via_crosswalk
+Erode,Tamil Nadu,tamil nadu|erode,TAMIL NADU|ERODE,k_via_crosswalk
+The Nilgiris,Tamil Nadu,tamil nadu|the nilgiris,TAMIL NADU|THE NILGIRIS,k_via_crosswalk
+Namakkal,Tamil Nadu,tamil nadu|namakkal,TAMIL NADU|NAMAKKAL,k_via_crosswalk
+Perambalur,Tamil Nadu,tamil nadu|perambalur,TAMIL NADU|PERAMBALUR,k_via_crosswalk
+Coimbatore,Tamil Nadu,tamil nadu|coimbatore,TAMIL NADU|COIMBATORE,k_via_crosswalk
+Tiruchirappalli,Tamil Nadu,tamil nadu|tiruchirappalli,TAMIL NADU|TIRUCHIRAPPALLI,k_via_crosswalk
+Ariyalur,Tamil Nadu,tamil nadu|ariyalur,TAMIL NADU|ARIYALUR,k_via_crosswalk
+Tiruppur,Tamil Nadu,tamil nadu|tiruppur,TAMIL NADU|TIRUPPUR,k_via_crosswalk
+Thanjavur,Tamil Nadu,tamil nadu|thanjavur,TAMIL NADU|THANJAVUR,k_via_crosswalk
+Karur,Tamil Nadu,tamil nadu|karur,TAMIL NADU|KARUR,k_via_crosswalk
+Thiruvarur,Tamil Nadu,tamil nadu|thiruvarur,TAMIL NADU|THIRUVARUR,k_via_crosswalk
+Dindigul,Tamil Nadu,tamil nadu|dindigul,TAMIL NADU|DINDIGUL,k_via_crosswalk
+Madurai,Tamil Nadu,tamil nadu|madurai,TAMIL NADU|MADURAI,k_via_crosswalk
+Theni,Tamil Nadu,tamil nadu|theni,TAMIL NADU|THENI,k_via_crosswalk
+Virudhunagar,Tamil Nadu,tamil nadu|virudhunagar,TAMIL NADU|VIRUDHUNAGAR,k_via_crosswalk
+Thoothukkudi,Tamil Nadu,tamil nadu|tuticorin,TAMIL NADU|THOOTHUKKUDI,k_via_crosswalk
+Kanniyakumari,Tamil Nadu,tamil nadu|kanniyakumari,TAMIL NADU|KANNIYAKUMARI,k_via_crosswalk
+Viluppuram,Tamil Nadu,tamil nadu|kallakurichi,TAMIL NADU|VILUPPURAM,k_via_crosswalk
+Cuddalore,Tamil Nadu,tamil nadu|cuddalore,TAMIL NADU|CUDDALORE,k_via_crosswalk
+Pudukkottai,Tamil Nadu,tamil nadu|pudukkottai,TAMIL NADU|PUDUKKOTTAI,k_via_crosswalk
+Sivaganga,Tamil Nadu,tamil nadu|sivaganga,TAMIL NADU|SIVAGANGA,k_via_crosswalk
+Ramanathapuram,Tamil Nadu,tamil nadu|ramanathapuram,TAMIL NADU|RAMANATHAPURAM,k_via_crosswalk
+Nagapattinam,Tamil Nadu,tamil nadu|nagapattinam,TAMIL NADU|NAGAPATTINAM,k_via_crosswalk
+Kallakurichi,Tamil Nadu,tamil nadu|kallakurichi,TAMIL NADU|VILUPPURAM,k_via_crosswalk
+Tenkasi,Tamil Nadu,tamil nadu|tenkasi,TAMIL NADU|TIRUNELVELI,k_via_crosswalk
+Tirunelveli,Tamil Nadu,tamil nadu|tirunelveli,TAMIL NADU|TIRUNELVELI,k_via_crosswalk
+Vellore,Tamil Nadu,tamil nadu|vellore,TAMIL NADU|VELLORE,k_via_crosswalk
+Ranipet,Tamil Nadu,tamil nadu|ranipet,TAMIL NADU|VELLORE,k_via_crosswalk
+Tirupathur,Tamil Nadu,tamil nadu|tirupathur,TAMIL NADU|VELLORE,k_via_crosswalk
+Kancheepuram,Tamil Nadu,tamil nadu|chengalpattu,TAMIL NADU|KANCHEEPURAM,k_via_crosswalk
+Chengalpattu,Tamil Nadu,tamil nadu|chengalpattu,TAMIL NADU|KANCHEEPURAM,k_via_crosswalk
+Chennai,Tamil Nadu,tamil nadu|chennai,TAMIL NADU|CHENNAI,k_via_crosswalk
+Thiruvallur,Tamil Nadu,tamil nadu|thiruvallur,TAMIL NADU|THIRUVALLUR,k_via_crosswalk
+Puducherry,Puducherry,puducherry|pondicherry,PUDUCHERRY|PUDUCHERRY,k_via_crosswalk
+Karaikal,Puducherry,puducherry|karaikal,PUDUCHERRY|KARAIKAL,k_via_crosswalk
+Mahe,Puducherry,puducherry|mahe,PUDUCHERRY|MAHE,k_via_crosswalk
+Yanam,Puducherry,puducherry|yanam,PUDUCHERRY|YANAM,k_via_crosswalk
+North  & Middle Andaman,Andaman & Nicobar,,ANDAMAN NICOBAR ISLANDS|NORTH MIDDLE ANDAMAN,manual_parent
+South Andaman,Andaman & Nicobar,,ANDAMAN NICOBAR ISLANDS|SOUTH ANDAMAN,manual_parent
+Nicobars,Andaman & Nicobar,,ANDAMAN NICOBAR ISLANDS|NICOBARS,manual_parent
+Adilabad,Telangana,telangana|adilabad,ANDHRA PRADESH|ADILABAD,k_via_crosswalk
+Hyderabad,Telangana,telangana|hyderabad,ANDHRA PRADESH|HYDERABAD,k_via_crosswalk
+Jagitial,Telangana,telangana|jagitial,ANDHRA PRADESH|KARIMNAGAR,k_via_crosswalk
+Jangoan,Telangana,telangana|jangoan,ANDHRA PRADESH|WARANGAL,k_via_crosswalk
+Mulugu,Telangana,telangana|mulugu,ANDHRA PRADESH|WARANGAL,k_via_crosswalk
+Jogulamba Gadwal,Telangana,,ANDHRA PRADESH|MAHBUBNAGAR,manual_parent
+Kamareddy,Telangana,telangana|kamareddy,ANDHRA PRADESH|NIZAMABAD,k_via_crosswalk
+Karimnagar,Telangana,telangana|karimnagar,ANDHRA PRADESH|KARIMNAGAR,k_via_crosswalk
+Khammam,Telangana,telangana|khammam,ANDHRA PRADESH|KHAMMAM,k_via_crosswalk
+Kumuram Bheem Asifabad,Telangana,telangana|komaram bheem asifabad,ANDHRA PRADESH|ADILABAD,k_via_crosswalk
+Mahabubabad,Telangana,telangana|mahabubabad,ANDHRA PRADESH|WARANGAL,k_via_crosswalk
+Mahabubnagar,Telangana,telangana|mahabubnagar,ANDHRA PRADESH|MAHBUBNAGAR,k_via_crosswalk
+Mancherial,Telangana,telangana|mancherial,ANDHRA PRADESH|ADILABAD,k_via_crosswalk
+Medak,Telangana,telangana|medak,ANDHRA PRADESH|MEDAK,k_via_crosswalk
+Medchal Malkajgiri,Telangana,telangana|medchal malkajgiri,ANDHRA PRADESH|RANGAREDDY,k_via_crosswalk
+Nagarkurnool,Telangana,telangana|nagarkurnool,ANDHRA PRADESH|MAHBUBNAGAR,k_via_crosswalk
+Nalgonda,Telangana,telangana|nalgonda,ANDHRA PRADESH|NALGONDA,k_via_crosswalk
+Nirmal,Telangana,telangana|nirmal,ANDHRA PRADESH|ADILABAD,k_via_crosswalk
+Nizamabad,Telangana,telangana|nizamabad,ANDHRA PRADESH|NIZAMABAD,k_via_crosswalk
+Peddapalli,Telangana,telangana|peddapalli,ANDHRA PRADESH|KARIMNAGAR,k_via_crosswalk
+Rajanna Sircilla,Telangana,,ANDHRA PRADESH|KARIMNAGAR,manual_parent
+Ranga Reddy,Telangana,,ANDHRA PRADESH|RANGAREDDY,manual_parent
+Sangareddy,Telangana,telangana|sangareddy,ANDHRA PRADESH|MEDAK,k_via_crosswalk
+Siddipet,Telangana,telangana|siddipet,ANDHRA PRADESH|MEDAK,k_via_crosswalk
+Suryapet,Telangana,telangana|suryapet,ANDHRA PRADESH|NALGONDA,k_via_crosswalk
+Vikarabad,Telangana,telangana|vikarabad,ANDHRA PRADESH|RANGAREDDY,k_via_crosswalk
+Wanaparthy,Telangana,telangana|wanaparthy,ANDHRA PRADESH|MAHBUBNAGAR,k_via_crosswalk
+Warangal Rural,Telangana,,ANDHRA PRADESH|WARANGAL,manual_parent
+Warangal Urban,Telangana,,ANDHRA PRADESH|WARANGAL,manual_parent
+Yadadri Bhuvanagiri,Telangana,,ANDHRA PRADESH|NALGONDA,manual_parent
+Bhadradri Kothagudem,Telangana,,ANDHRA PRADESH|KHAMMAM,manual_parent
+Jayashankar,Telangana,telangana|jayashankar,ANDHRA PRADESH|WARANGAL,k_via_crosswalk
+Narayanpet,Telangana,telangana|narayanapet,ANDHRA PRADESH|MAHBUBNAGAR,k_via_crosswalk
+Leh,Ladakh,,JAMMU KASHMIR|LEH LADAKH,manual_parent
+Kargil,Ladakh,ladakh|kargil,JAMMU KASHMIR|KARGIL,k_via_crosswalk

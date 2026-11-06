@@ -21,3 +21,11 @@ deck/qa_png/
 
 # Jupyter runtime
 notebooks/.jupyter/
+data_raw/
+
+# Crop-group analysis: large files rebuilt by scripts 97-98
+outputs/crop_groups/crop_group_panel.csv
+outputs/crop_groups/crop_group_panel_annual.csv
+outputs/crop_groups/crop_group_panel_long.csv.gz
+outputs/crop_groups/rainfall_district_year.csv
+outputs/crop_groups/raw_sources/

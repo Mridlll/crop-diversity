@@ -1,0 +1,34 @@
+A. reproduce M2 main WD_l1
+  rice      0.0256 (0.0219) p=0.242 n=9866
+  wheat     0.0407 (0.0284) p=0.151 n=9866
+  maize     0.0603 (0.0306) p=0.049 n=9866
+  millets   -0.0366 (0.0309) p=0.236 n=9866
+  pulses    0.0671 (0.0391) p=0.086 n=9866
+  oilseeds  0.0362 (0.0332) p=0.277 n=9866
+  cotton    0.0079 (0.0491) p=0.872 n=9866
+  sugarcane 0.0168 (0.0354) p=0.635 n=9866
+  other     0.1078 (0.0246) p=0.000 n=9866
+
+B. simulated spread on the real graph and real pulses sample mask; true b on W dS(t-1)
+  iid         true b=0.00: lag 0.000 (sd 0.022); mirrored lead 0.005 (sd 0.026); joint lag-lead -0.004
+  iid         true b=0.07: lag 0.062 (sd 0.024); mirrored lead 0.056 (sd 0.024); joint lag-lead 0.005
+  iid         true b=0.25: lag 0.223 (sd 0.025); mirrored lead 0.210 (sd 0.026); joint lag-lead 0.011
+  noisy_level true b=0.00: lag 0.005 (sd 0.019); mirrored lead 0.002 (sd 0.023); joint lag-lead 0.002
+  noisy_level true b=0.07: lag 0.019 (sd 0.015); mirrored lead 0.021 (sd 0.019); joint lag-lead -0.001
+  noisy_level true b=0.25: lag 0.087 (sd 0.021); mirrored lead 0.076 (sd 0.023); joint lag-lead 0.009
+
+C. inference: two-way cluster unit + state-year; state cluster restricted wild bootstrap (Webb, 999)
+  pulses    b=0.0671  two-way SE 0.0450 p=0.136 | state SE 0.0421, wild bootstrap p=0.239  (n=9881; FE kept singletons, so n can differ by a few)
+  millets   b=-0.0366  two-way SE 0.0405 p=0.367 | state SE 0.0353, wild bootstrap p=0.498  (n=9881; FE kept singletons, so n can differ by a few)
+  oilseeds  b=0.0362  two-way SE 0.0452 p=0.424 | state SE 0.0209, wild bootstrap p=0.192  (n=9881; FE kept singletons, so n can differ by a few)
+  maize     b=0.0603  two-way SE 0.0299 p=0.044 | state SE 0.0212, wild bootstrap p=0.018  (n=9881; FE kept singletons, so n can differ by a few)
+  other     b=0.1078  two-way SE 0.0333 p=0.001 | state SE 0.0281, wild bootstrap p=0.002  (n=9881; FE kept singletons, so n can differ by a few)
+
+D. sub-state spatial regions (k-means on centroids within state, about 6 units each) x year FE
+  regions: 109
+  share of neighbours in the same region: 0.55
+  pulses    lag 0.0502 (0.0322) p=0.120 | mirrored lead 0.0871 (0.0386) p=0.024 n=9795
+  millets   lag -0.0061 (0.0289) p=0.834 | mirrored lead -0.0442 (0.0282) p=0.117 n=9795
+  oilseeds  lag 0.0799 (0.0351) p=0.023 | mirrored lead 0.0546 (0.0349) p=0.117 n=9795
+  maize     lag 0.0372 (0.0390) p=0.340 | mirrored lead -0.0343 (0.0685) p=0.617 n=9795
+  other     lag 0.0784 (0.0240) p=0.001 | mirrored lead 0.0937 (0.0447) p=0.036 n=9795

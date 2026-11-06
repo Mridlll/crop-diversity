@@ -1,0 +1,55 @@
+crop_name,crop_type,group,rows,area_mha_summed_all_years,note
+Cotton(Lint),Fiber Crops,cotton,6470,232.223,
+Maize,Cereals,maize,20779,181.226,
+Bajra,Cereals,millets,7759,199.052,
+Jowar,Cereals,millets,9747,178.499,
+Ragi,Cereals,millets,5740,30.815,
+Small Millets,Cereals,millets,6974,21.936,
+Soyabean,Oilseeds,oilseeds,4976,204.436,
+Groundnut,Oilseeds,oilseeds,12565,132.604,
+Rapeseed &Mustard,Oilseeds,oilseeds,11017,130.108,
+Niger Seed,Oilseeds,oilseeds,2919,61.914,
+Sesamum,Oilseeds,oilseeds,13033,38.828,
+Sunflower,Oilseeds,oilseeds,7239,26.14,
+Castor Seed,Oilseeds,oilseeds,4681,19.666,
+Linseed,Oilseeds,oilseeds,5892,7.886,
+Safflower,Oilseeds,oilseeds,1763,5.726,
+Other Oilseeds,Oilseeds,oilseeds,1232,4.263,
+Guar Seed,Fodder,other,2088,71.064,APY crop_type Fodder; a legume but not a pulse
+Coconut,Oilseeds,other,2918,38.682,"APY crop_type Oilseeds; plantation crop, not in the specified oilseed list, so other"
+Potato,Vegetable,other,10717,31.575,
+Jute,Fiber Crops,other,1913,18.144,
+Barley,Cereals,other,5856,14.966,cereal outside the named groups
+Dry Chillies,Spices,other,8967,13.001,
+Onion,Vegetable,other,10662,9.903,
+Arecanut,Spices,other,2180,8.839,
+Tobacco,Drugs And Narcotics,other,3589,8.73,
+Coriander,Spices,other,5037,8.332,
+Cashewnut,Fruits,other,1567,7.248,
+Banana,Fruits,other,4497,7.16,
+Black Pepper,Spices,other,1405,4.366,
+Tapioca,Vegetable,other,2264,4.347,
+Garlic,Spices,other,5020,3.701,
+Turmeric,Spices,other,5938,3.612,
+Other Cereals,Cereals,other,1375,1.927,cereal outside the named groups
+Ginger,Spices,other,4675,1.862,
+Mesta,Fiber Crops,other,2414,1.856,
+Cardamom,Spices,other,575,1.308,
+Sweet Potato,Vegetable,other,5738,1.22,
+Sannhamp,Fiber Crops,other,3017,0.319,
+Gram,Pulses,pulses,10441,177.001,
+Arhar/Tur,Pulses,pulses,10878,82.819,
+Moong(Green Gram),Pulses,pulses,15166,76.453,
+Urad,Pulses,pulses,14562,73.847,
+Moth,Pulses,pulses,1490,29.166,other pulses
+Masoor,Pulses,pulses,6370,26.997,
+Other Kharif Pulses,Pulses,pulses,5695,14.337,
+Peas & Beans (Pulses),Pulses,pulses,7253,13.086,other pulses
+Horse-Gram,Pulses,pulses,5413,12.171,other pulses
+Other  Rabi Pulses,Pulses,pulses,4857,11.314,
+Khesari,Pulses,pulses,1759,9.974,other pulses
+Cowpea(Lobia),Pulses,pulses,1761,1.312,other pulses
+Other Summer Pulses,Pulses,pulses,67,0.019,
+Rice,Cereals,rice,21543,995.034,
+Sugarcane,Sugar,sugarcane,10907,102.906,
+Wheat,Cereals,wheat,11212,663.732,

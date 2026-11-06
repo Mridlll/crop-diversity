@@ -1,0 +1,130 @@
+==============================================================================
+Q2 policy event studies on crop-group shares
+==============================================================================
+606-sample annual unit-years: 13,291 in 605 units
+after dropping flag_annual_unreliable: 12,373
+
+------------------------------------------------------------------------------
+A. NFSM entry, stacked event studies
+------------------------------------------------------------------------------
+NFSM-Pulses unit first-entry year (606 sample units):
+2007.0    168
+2009.0      3
+2010.0    272
+2014.0    103
+2015.0     57
+NaN         2
+units with unknown 2010-13 pulses status (Assam, Jharkhand): 51
+P07 stack: 167 treated units, 267 control units, states 14
+P10 stack: 271 treated, 110 control units (controls are hill / NE / Kerala states)
+rice07 stack: 133 treated, 257 controls, 12 states
+wheat07 stack: 138 treated, 163 controls, 9 states
+
+------------------------------------------------------------------------------
+B. Odisha Millets Mission, Callaway-Sant'Anna within Odisha
+------------------------------------------------------------------------------
+Odisha units: 30; cohorts: {2017.0: 7, 2018.0: 4, 2019.0: 3, inf: 16}
+OMM share_gca_millets      ATT -0.0011 (boot se 0.0035, 95% CI -0.0079 to +0.0055, RI p 0.744); mean pre-period placebo +0.0037; n 420 unit-years, 30 units, 14 treated
+OMM ln1p_millets           ATT +0.6385 (boot se 0.3699, 95% CI -0.0452 to +1.3554, RI p 0.130); mean pre-period placebo -0.0653; n 420 unit-years, 30 units, 14 treated
+OMM kharif_share_millets   ATT -0.0001 (boot se 0.0037, 95% CI -0.0082 to +0.0062, RI p 0.968); mean pre-period placebo +0.0036; n 420 unit-years, 30 units, 14 treated
+Odisha mean millet share by cohort and year:
+c     0.0     2017.0  2018.0  2019.0
+yr                                  
+2005  0.0002  0.0584  0.0050  0.0099
+2006  0.0002  0.0580  0.0043  0.0108
+2007  0.0001  0.0592  0.0042  0.0095
+2008  0.0002  0.0619  0.0045  0.0068
+2009  0.0001  0.0562  0.0037  0.0066
+2010  0.0001  0.0581  0.0046  0.0057
+2011  0.0001  0.0537  0.0032  0.0037
+2013  0.0000  0.0540  0.0018  0.0017
+2014  0.0000  0.0489  0.0017  0.0017
+2015  0.0000  0.0495  0.0011  0.0050
+2016  0.0000  0.0490  0.0015  0.0032
+2017  0.0000  0.0456  0.0006  0.0008
+2018  0.0000  0.0384  0.0005  0.0038
+2019  0.0003  0.0551  0.0069  0.0032
+
+------------------------------------------------------------------------------
+C. 2018-19 MSP increase, shift-share
+------------------------------------------------------------------------------
+MSP log change 2017-18 -> 2018-19, trend 2013-17, excess:
+                  jump_2018  trend_13_17  excess           apy_crop
+crop                                                               
+arhar                0.0405       0.0593 -0.0188          Arhar/Tur
+bajra                0.3137       0.0328  0.2809              Bajra
+barley               0.0211       0.0621 -0.0410             Barley
+cotton               0.2477       0.0207  0.2270       Cotton(Lint)
+gram                 0.0488       0.0876 -0.0388               Gram
+groundnut            0.0943       0.0267  0.0676          Groundnut
+jowar                0.3573       0.0313  0.3260              Jowar
+jute                 0.0556       0.1050 -0.0494               Jute
+maize                0.1765       0.0210  0.1554              Maize
+masur                0.0516       0.0913 -0.0397             Masoor
+moong                0.2240       0.0536  0.1705  Moong(Green Gram)
+nigerseed            0.3723       0.0365  0.3358         Niger Seed
+paddy                0.1214       0.0421  0.0793               Rice
+ragi                 0.4218       0.0591  0.3627               Ragi
+rapeseed_mustard     0.0488       0.0678 -0.0190  Rapeseed &Mustard
+safflower            0.1874       0.0781  0.1093          Safflower
+sesamum              0.1647       0.0409  0.1238            Sesamum
+soybean              0.1083       0.0438  0.0646           Soyabean
+sugarcane            0.0755       0.0485  0.0270          Sugarcane
+sunflower            0.2732       0.0257  0.2475          Sunflower
+urad                 0.0364       0.0569 -0.0206               Urad
+wheat                0.0588       0.0536  0.0051              Wheat
+district exposure X_d: mean 0.0725, sd 0.0389, p10 0.0303, p90 0.1244, n 603
+10 most exposed units: KARNATAKA|BANGALORE, KARNATAKA|BANGALORE RURAL, MAHARASHTRA|SOLAPUR, KARNATAKA|KOLAR, KARNATAKA|RAMANAGARA, MAHARASHTRA|AHMADNAGAR, ANDHRA PRADESH|ANANTAPUR, MAHARASHTRA|BID, MAHARASHTRA|AURANGABAD, KARNATAKA|CHIKKABALLAPURA
+group shocks (area-weighted excess dlnMSP): rice +0.079, wheat +0.005, maize +0.155, millets +0.295, pulses +0.004, oilseeds +0.059, cotton +0.227, sugarcane +0.027, other -0.005
+C1 (share on standardised exposure x post; unit + state-by-year FE):
+    group  avg_post_per_sd      se  post_vs_1416  post_vs_1416_se       p   pre_F   pre_p    n   G  mean_share
+     rice          0.00407 0.00276       0.00383          0.00307 0.14042 2.11253 0.02670 7028 603     0.34477
+    wheat         -0.00179 0.00147       0.00180          0.00154 0.22092 3.22657 0.00078 7028 603     0.16290
+    maize          0.00111 0.00153       0.00018          0.00177 0.46641 2.34624 0.01322 7028 603     0.07610
+  millets         -0.00240 0.00293      -0.00522          0.00280 0.41211 3.22477 0.00078 7028 603     0.06610
+   pulses          0.00302 0.00187      -0.00011          0.00198 0.10606 2.46258 0.00923 7028 603     0.10056
+ oilseeds          0.00046 0.00187       0.00295          0.00199 0.80534 3.73736 0.00014 7028 603     0.10191
+   cotton         -0.00035 0.00164      -0.00117          0.00141 0.83007 1.92863 0.04551 7028 603     0.03490
+sugarcane          0.00071 0.00061       0.00073          0.00044 0.24282 1.75098 0.07465 7028 603     0.02428
+    other         -0.00483 0.00259      -0.00299          0.00320 0.06182 4.35167 0.00002 7028 603     0.08849
+C2: demeaning 111 basis columns on 63,297 rows with 3 FE
+C2 group-level shift-share: avg post coef on s_pre x shock = -0.1408 (se 0.0561); pre-trend F 5.99 p 0.000 (9 leads); RI p over shock permutations 0.596; n 63297 G 603
+  interpretation: 0.1 excess log-MSP gain on a group with pre share 0.3 -> -0.0042 share
+  C2 with rice      shock set to 0: +0.0254 (se 0.0557)
+  C2 with wheat     shock set to 0: -0.1438 (se 0.0553)
+  C2 with maize     shock set to 0: -0.1924 (se 0.0599)
+  C2 with millets   shock set to 0: -0.1263 (se 0.0814)
+  C2 with pulses    shock set to 0: -0.1368 (se 0.0560)
+  C2 with oilseeds  shock set to 0: -0.1670 (se 0.0552)
+  C2 with cotton    shock set to 0: -0.1837 (se 0.0694)
+  C2 with sugarcane shock set to 0: -0.1415 (se 0.0555)
+  C2 with other     shock set to 0: -0.1381 (se 0.0563)
+
+NFSM / stacked summary:
+                              label                 y     did  did_se  did_p  avgpost  avgpost_se  post_vs_pre4  post_vs_pre4_se   pre_F  pre_p  pre_k    n   G  n_treat_units  n_ctrl_units  ymean_treat_pre
+             NFSM-Pulses 2007 [P07]  share_gca_pulses  0.0103  0.0038 0.0061  -0.0030      0.0027        0.0042           0.0032  4.9050 0.0000      9 4944 432            167           265           0.1801
+             NFSM-Pulses 2007 [P07] ln_area_ha_pulses  0.1438  0.0390 0.0002   0.0233      0.0224       -0.0111           0.0447  5.3880 0.0000      9 4928 432            167           265          10.9235
+             NFSM-Pulses 2007 [P07]    share_gca_rice  0.0019  0.0035 0.5814  -0.0010      0.0025       -0.0018           0.0025  0.8098 0.6074      9 4944 432            167           265           0.2440
+             NFSM-Pulses 2007 [P07]   share_gca_wheat -0.0075  0.0027 0.0062   0.0019      0.0025       -0.0045           0.0024  2.4367 0.0104      9 4944 432            167           265           0.1422
+                   P07 drop 1997-98  share_gca_pulses  0.0088  0.0037 0.0158  -0.0030      0.0027        0.0042           0.0032  5.3092 0.0000      8 4691 432            167           265           0.1830
+                 P07 balanced units  share_gca_pulses  0.0101  0.0050 0.0460  -0.0050      0.0041        0.0039           0.0042  4.3954 0.0000      9 2769 213             87           126           0.1859
+         P07 + treated linear trend  share_gca_pulses  0.0103  0.0038 0.0061  -0.0088      0.0032       -0.0059           0.0033  3.6577 0.0002      9 4944 432            167           265           0.1801
+                   P07 year FE only  share_gca_pulses  0.0110  0.0039 0.0047  -0.0034      0.0026        0.0013           0.0033  4.4900 0.0000      9 4945 432            167           265           0.1801
+       P07 incl. flagged unit-years  share_gca_pulses  0.0066  0.0037 0.0765  -0.0046      0.0027        0.0024           0.0032  3.6422 0.0002      9 6694 548            168           380           0.1839
+                   P07 drop 1997-98 ln_area_ha_pulses  0.1107  0.0386 0.0042   0.0233      0.0224       -0.0112           0.0447  4.9201 0.0000      8 4677 432            167           265          10.9687
+                 P07 balanced units ln_area_ha_pulses  0.1302  0.0517 0.0119   0.0154      0.0314       -0.0867           0.0730  4.0032 0.0001      9 2762 213             87           126          11.0515
+         P07 + treated linear trend ln_area_ha_pulses  0.1438  0.0390 0.0002  -0.0568      0.0291       -0.1513           0.0452  3.1308 0.0011      9 4928 432            167           265          10.9235
+                   P07 year FE only ln_area_ha_pulses  0.1601  0.0476 0.0008   0.0386      0.0252       -0.1054           0.0640  6.5432 0.0000      9 4929 432            167           265          10.9235
+       P07 incl. flagged unit-years ln_area_ha_pulses  0.1349  0.0425 0.0015   0.0081      0.0256       -0.0312           0.0457  5.3861 0.0000      9 6183 517            168           349          10.8898
+P07 + NFSM rice/wheat 2007 controls  share_gca_pulses  0.0092  0.0037 0.0116  -0.0041      0.0027        0.0032           0.0031  4.8820 0.0000      9 4944 432            167           265           0.1801
+P07 + NFSM rice/wheat 2007 controls ln_area_ha_pulses  0.1396  0.0387 0.0003   0.0196      0.0222       -0.0147           0.0445  5.3656 0.0000      9 4928 432            167           265          10.9235
+    NFSM-Pulses 2010 [P10, year FE]  share_gca_pulses -0.0042  0.0026 0.1143   0.0041      0.0036        0.0014           0.0027  9.2329 0.0000      6 3890 381            271           110           0.0701
+    NFSM-Pulses 2010 [P10, year FE] ln_area_ha_pulses  0.0204  0.0849 0.8101   0.2098      0.0624       -0.0054           0.0689 12.3073 0.0000      6 3533 361            271            90           8.9978
+                     NFSM-Rice 2007    share_gca_rice -0.0015  0.0048 0.7570  -0.0021      0.0039       -0.0071           0.0038  2.2782 0.0169      9 5822 390            133           257           0.5196
+                     NFSM-Rice 2007   ln_area_ha_rice  0.0824  0.0335 0.0139   0.0142      0.0269        0.0243           0.0271  4.3126 0.0000      9 5722 389            133           256          11.7056
+                     NFSM-Rice 2007  share_gca_pulses  0.0044  0.0039 0.2511   0.0022      0.0028        0.0048           0.0033  1.3422 0.2132      9 5822 390            133           257           0.0999
+                    NFSM-Wheat 2007   share_gca_wheat -0.0047  0.0043 0.2758   0.0018      0.0041       -0.0038           0.0038  3.2053 0.0010      9 4653 301            138           163           0.2789
+                    NFSM-Wheat 2007  ln_area_ha_wheat -0.0456  0.0275 0.0964   0.0046      0.0225       -0.0240           0.0234  2.0218 0.0367      9 4611 299            138           161          11.2537
+                    NFSM-Wheat 2007  share_gca_pulses  0.0096  0.0048 0.0454  -0.0021      0.0033        0.0059           0.0041  2.1552 0.0251      9 4653 301            138           163           0.1269
+   OMM 2017 cohort vs not-in-window share_gca_millets -0.0088  0.0069 0.2026  -0.0026      0.0057       -0.0040           0.0064 33.7311 0.0000     10  322  23              7            16           0.0552
+   OMM 2017 cohort vs not-in-window      ln1p_millets  0.5103  0.3116 0.1015   0.1066      0.2366        0.2424           0.2444  0.8154 0.6176     10  322  23              7            16           7.4584

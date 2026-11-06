@@ -1,0 +1,351 @@
+pre-split donor links: 89 of which cross-state: 5
+                late_unit  entry_year              donor_unit
+KARNATAKA|CHIKKABALLAPURA        2007 ANDHRA PRADESH|CHITTOOR
+ MADHYA PRADESH|ALIRAJPUR        2008           GUJARAT|DOHAD
+MADHYA PRADESH|ASHOKNAGAR        2003  UTTAR PRADESH|LALITPUR
+ MADHYA PRADESH|SINGRAULI        2008 UTTAR PRADESH|SONBHADRA
+           NAGALAND|PEREN        2008        MANIPUR|SENAPATI
+unit-years 1998-2019 in 605 units: 12814 | usable (orig flag): 12033 | usable (cross-state donor fix): 12062
+
+=== 1. NATIONAL ===
+endpoint panel E (>=2 usable yrs in each window): 467 units
+strict balanced panel (all 22 years usable): 352 units
+spec     group  n_units  agg_share0  agg_share1  d_agg_pp  se_agg  d_mean_pp  se_mean  d_area_kha  se_area_kha  n_gain  n_lose  sign_p
+main      rice      467      25.871      23.887    -1.984   0.454     -0.467    0.420     748.249      701.563     199     254   0.011
+main     wheat      467      16.116      17.456     1.340   0.340      0.590    0.206    4708.210      670.706     203     215   0.591
+main     maize      467       3.462       4.730     1.268   0.326      0.742    0.267    2624.789      549.721     220     235   0.512
+main   millets      467      13.403       7.857    -5.547   0.587     -3.162    0.334   -7053.636      930.245      72     358   0.000
+main    pulses      467      12.855      15.119     2.264   0.639      0.597    0.384    5723.853     1243.629     230     235   0.853
+main  oilseeds      467      14.412      14.276    -0.136   0.633     -1.092    0.374    2013.001     1079.010     179     288   0.000
+main    cotton      467       5.508       7.233     1.725   0.534      0.795    0.274    3695.542      928.100     128     156   0.109
+main sugarcane      467       2.512       2.769     0.258   0.141      0.199    0.125     813.872      263.562     159     278   0.000
+main     other      467       5.860       6.673     0.812   0.334      1.798    0.313    2247.435      600.729     268     194   0.001
+
+FE slopes (pp per decade), unit FE, cluster unit:
+    group  slope_mean_pp_dec  se_mean  slope_aw_pp_dec  se_aw  n_units  n_obs
+     rice             -0.205    0.217            0.149  0.162      467  10122
+    wheat              0.391    0.112            0.577  0.146      467  10122
+    maize              0.451    0.144            0.682  0.172      467  10122
+  millets             -1.877    0.171           -3.295  0.317      467  10122
+   pulses              0.285    0.176            0.529  0.294      467  10122
+ oilseeds             -0.589    0.208           -0.703  0.362      467  10122
+   cotton              0.555    0.164            1.106  0.310      467  10122
+sugarcane              0.124    0.071            0.267  0.096      467  10122
+    other              0.866    0.164            0.686  0.180      467  10122
+
+=== ROBUSTNESS (area-weighted and district-mean change, pp) ===
+area-weighted change (pp):
+spec       5yr_windows  drop_wholeyear_ge20  end_2016-18  main  orig_flag  strict_balanced
+group                                                                                     
+rice             -2.08                -1.72        -2.25 -1.98      -1.94            -1.42
+wheat             1.21                 1.37         0.93  1.34       1.31             1.18
+maize             1.16                 1.16         1.24  1.27       1.28             1.37
+millets          -5.29                -5.65        -5.24 -5.55      -5.56            -5.74
+pulses            2.00                 2.14         2.63  2.26       2.21             2.40
+oilseeds          0.48                 0.09         0.02 -0.14      -0.13            -0.77
+cotton            1.60                 2.03         1.42  1.72       1.74             1.85
+sugarcane         0.11                 0.27         0.26  0.26       0.28             0.20
+other             0.81                 0.31         0.98  0.81       0.82             0.93
+n units by spec: {'5yr_windows': 470, 'drop_wholeyear_ge20': 413, 'end_2016-18': 467, 'main': 467, 'orig_flag': 464, 'strict_balanced': 352}
+district-mean change (pp):
+spec       5yr_windows  drop_wholeyear_ge20  end_2016-18  main  orig_flag  strict_balanced
+group                                                                                     
+rice             -0.36                 0.32        -0.34 -0.47      -0.42            -0.77
+wheat             0.58                 0.71         0.36  0.59       0.57             0.40
+maize             0.76                 0.56         0.74  0.74       0.75             0.82
+millets          -3.12                -3.24        -3.13 -3.16      -3.17            -3.49
+pulses            0.50                 0.55         0.83  0.60       0.56             1.07
+oilseeds         -0.76                -0.84        -1.02 -1.09      -1.11            -1.30
+cotton            0.72                 1.01         0.62  0.80       0.80             0.97
+sugarcane         0.09                 0.20         0.20  0.20       0.21             0.19
+other             1.60                 0.71         1.73  1.80       1.81             2.11
+
+all-India JJAS % departure: {1998: 1.9, 1999: -4.2, 2000: -8.5, 2017: -1.9, 2018: -6.6, 2019: 12.5}
+
+=== 2. STATES ===
+group              rice  wheat  maize  millets  pulses  oilseeds  cotton  sugarcane  other   n  gca0_mha
+region                                                                                                  
+UTTAR PRADESH      -0.4    1.2   -1.1     -1.0    -1.2       1.0    -0.0        1.0    0.6  67      22.0
+MAHARASHTRA        -0.3    0.0    3.6    -19.1     2.1       6.7     5.0        1.8    0.2  31      19.2
+RAJASTHAN          -0.1   -1.6   -1.2     -6.0     8.2       1.2    -0.3       -0.1   -0.1  29      16.5
+MADHYA PRADESH     -0.1    5.5    1.3     -3.7     3.1      -7.7    -0.5        0.1    2.1  40      15.6
+KARNATAKA          -4.4   -0.9    7.5    -12.2    11.6      -9.4    -1.0        1.6    7.2  23       9.3
+WEST BENGAL        -6.0   -3.1    3.0     -0.1     2.7       4.7    -0.0       -0.1   -1.1  18       8.1
+ANDHRA PRADESH     -7.3   -0.0    3.3     -1.6     3.8      -1.8     2.7       -1.1    2.1  13       7.1
+GUJARAT             1.0    5.9   -0.8     -7.6   -12.0      -3.0    15.1       -0.1    1.6  12       6.9
+BIHAR               0.7    1.6    1.5     -0.3    -3.2      -0.7    -0.0        2.2   -1.7  32       6.4
+ODISHA             10.2   -0.2   -0.2     -1.4    -2.9      -4.9     0.8       -0.2   -1.3  30       6.2
+PUNJAB              7.0   -0.8   -0.9     -0.0    -0.5      -0.4    -4.2       -0.2    0.0  14       5.3
+HARYANA             3.7   -0.6   -0.2     -5.0    -3.0       1.5     0.4       -0.8    3.9  17       5.1
+TAMIL NADU          3.3   -0.0    4.3     -3.4     2.4      -9.2    -0.2       -1.8    4.7  23       5.0
+TELANGANA           7.8   -0.2    1.6    -11.9    -5.4      -8.4    17.8       -0.6   -0.8   9       4.8
+CHHATTISGARH       -1.1    0.8    0.5     -2.2     2.5      -1.4     0.0        0.7    0.2  14       4.5
+ASSAM              -0.6   -1.7    0.1     -0.1     1.1       0.1    -0.0       -0.1    1.1  17       2.4
+KERALA             -4.3    0.0    0.0     -0.1     0.2      -0.4    -0.3       -0.2    5.3  14       1.9
+UTTARAKHAND         2.3    0.9   -0.6     -9.0     3.3       0.7    -0.0        1.7    0.8  13       1.2
+HIMACHAL PRADESH   -0.2   -1.1    1.8     -0.9     0.4      -0.8    -0.0       -0.0    0.9  12       0.8
+JAMMU KASHMIR      -4.0   13.9   -6.9      1.4    -0.1      -4.6     0.0       -0.0    0.3   7       0.3
+MEGHALAYA          -6.9   -1.2   -0.9      0.2     2.0       1.1    -0.7        0.0    6.2   7       0.2
+ARUNACHAL PRADESH  -2.5   -0.9   -8.9     -0.9     4.5       6.5     0.0        0.4    1.8  10       0.1
+MANIPUR           -24.0    0.5    4.4      0.0     6.6       9.5    -0.0        1.6    1.4   6       0.1
+NAGALAND          -16.2    0.1    1.1     -0.5    13.6       5.6    -0.1        0.7   -4.2   3       0.1
+SIKKIM             -4.7   -9.0   11.6     -0.3     1.2      -2.4     0.0        0.0    3.6   4       0.1
+
+=== 3. TOP DISTRICTS ===
+top lists restricted to units with mean GCA >= 25,000 ha in both windows: 439
+
+pulses gain (share pp):
+  district          state  share0  share1  d_share_pp  d_area_kha
+   Bijapur      Karnataka    14.8    62.7        47.9       528.3
+      Pali      Rajasthan    11.9    49.5        37.6       296.2
+     Gadag      Karnataka    16.4    43.9        27.5       156.7
+Ysr Kadapa Andhra Pradesh     9.5    36.8        27.2        76.0
+     Bundi      Rajasthan     7.1    33.9        26.8       139.6
+   Raichur      Karnataka     7.8    33.0        25.2       179.5
+    Nagaur      Rajasthan    26.5    51.4        24.8       422.2
+ Jaisalmer      Rajasthan     1.2    22.9        21.7       221.5
+     Damoh Madhya Pradesh    33.7    55.3        21.6       225.7
+  Prakasam Andhra Pradesh    26.7    47.4        20.7        86.0
+
+pulses loss (share pp):
+     district          state  share0  share1  d_share_pp  d_area_kha
+        Datia Madhya Pradesh    45.5    25.5       -20.0        10.2
+ Sabar Kantha        Gujarat    25.7     7.4       -18.4       -82.1
+     Jamnagar        Gujarat    23.5     5.7       -17.8      -131.9
+       Rajkot        Gujarat    20.1     3.1       -17.0      -145.5
+        Bhind Madhya Pradesh    22.0     5.5       -16.5       -47.5
+       Amreli        Gujarat    19.2     2.9       -16.3       -97.4
+East Godavari Andhra Pradesh    20.4     5.7       -14.7       -92.3
+ Banas Kantha        Gujarat    16.2     1.5       -14.7      -108.0
+       Jalaun  Uttar Pradesh    51.2    36.7       -14.4       -38.8
+     Banswara      Rajasthan    22.1     7.8       -14.3       -41.8
+
+millets gain (share pp):
+ district          state  share0  share1  d_share_pp  d_area_kha
+    Dausa      Rajasthan    28.4    45.5        17.1        68.3
+   Morena Madhya Pradesh    21.0    36.2        15.2       111.0
+ Namakkal     Tamil Nadu    30.5    41.9        11.4         0.7
+   Jaipur      Rajasthan    27.3    35.8         8.5       101.3
+    Alwar      Rajasthan    28.4    35.6         7.2        87.0
+  Gwalior Madhya Pradesh     2.3     8.7         6.4        22.2
+ Dhaulpur      Rajasthan    33.6    38.8         5.1        30.9
+   Guntur Andhra Pradesh     0.2     5.2         5.0        35.6
+Moradabad  Uttar Pradesh     8.8    12.9         4.1        38.9
+Firozabad  Uttar Pradesh    23.3    27.2         4.0        18.7
+
+millets loss (share pp):
+  district       state  share0  share1  d_share_pp  d_area_kha
+    Nashik Maharashtra    57.1    18.0       -39.1      -341.5
+   Bijapur   Karnataka    50.1    15.9       -34.2      -257.9
+       Bid Maharashtra    56.0    27.1       -28.9      -188.2
+      Pune Maharashtra    62.9    34.2       -28.7      -396.7
+Rangareddy   Telangana    31.9     3.4       -28.6       -76.8
+     Dhule Maharashtra    45.2    17.3       -27.9       -65.0
+Aurangabad Maharashtra    43.9    17.1       -26.9      -211.1
+     Jalna Maharashtra    37.4    12.5       -24.9      -169.9
+   Gondiya Maharashtra    24.8     0.0       -24.8       -50.7
+ The Dangs     Gujarat    37.6    13.2       -24.4       -12.4
+
+oilseeds gain (share pp):
+     district          state  share0  share1  d_share_pp  d_area_kha
+       Washim    Maharashtra    20.8    61.7        40.9       204.9
+      Buldana    Maharashtra    12.0    41.8        29.8       302.0
+        Akola    Maharashtra     8.7    36.3        27.6       165.4
+        Bidar      Karnataka    11.2    38.1        26.9       121.0
+       Nanded    Maharashtra     6.9    33.0        26.1       292.6
+        Latur    Maharashtra    20.8    46.6        25.8       290.2
+     Parbhani    Maharashtra     9.5    31.8        22.3       175.1
+    Dungarpur      Rajasthan     0.7    18.2        17.5        34.8
+West Godavari Andhra Pradesh     1.0    18.2        17.2       117.9
+     Banswara      Rajasthan     3.4    20.2        16.8        61.2
+
+oilseeds loss (share pp):
+   district          state  share0  share1  d_share_pp  d_area_kha
+Hoshangabad Madhya Pradesh    45.5     9.2       -36.2      -144.5
+ Ysr Kadapa Andhra Pradesh    57.1    25.4       -31.7      -145.3
+     Amreli        Gujarat    52.4    22.3       -30.1      -186.6
+    Sheopur Madhya Pradesh    54.6    25.6       -28.9       -15.8
+Narsimhapur Madhya Pradesh    31.5     5.7       -25.8       -93.9
+     Nagpur    Maharashtra    45.7    21.9       -23.8      -123.9
+      Seoni Madhya Pradesh    26.0     3.1       -22.9       -88.8
+ Chhindwara Madhya Pradesh    26.9     4.4       -22.5      -110.2
+      Harda Madhya Pradesh    54.8    33.1       -21.7       -12.0
+    Raichur      Karnataka    25.2     4.2       -21.0      -133.3
+pulses net area change kha by region (top/bottom 5): {'GUJARAT': -832.0, 'ODISHA': -327.0, 'BIHAR': -221.0, 'UTTAR PRADESH': -166.0, 'TELANGANA': -142.0} {'ANDHRA PRADESH': 309.0, 'MAHARASHTRA': 642.0, 'KARNATAKA': 1208.0, 'MADHYA PRADESH': 2416.0, 'RAJASTHAN': 2536.0}
+millets net area change kha by region (top/bottom 5): {'MAHARASHTRA': -3451.0, 'KARNATAKA': -1047.0, 'TELANGANA': -553.0, 'GUJARAT': -526.0, 'MADHYA PRADESH': -407.0} {'NAGALAND': 1.0, 'MEGHALAYA': 1.0, 'ARUNACHAL PRADESH': 3.0, 'JAMMU KASHMIR': 5.0, 'RAJASTHAN': 65.0}
+oilseeds net area change kha by region (top/bottom 5): {'KARNATAKA': -819.0, 'TAMIL NADU': -531.0, 'ODISHA': -327.0, 'TELANGANA': -326.0, 'GUJARAT': -229.0} {'UTTAR PRADESH': 269.0, 'WEST BENGAL': 412.0, 'MADHYA PRADESH': 916.0, 'RAJASTHAN': 1116.0, 'MAHARASHTRA': 1539.0}
+
+=== 4. ANDHRA PRADESH / TELANGANA RICE ===
+AP/TS units in E: 22 {'ANDHRA PRADESH': 13, 'TELANGANA': 9}
+AP/TS units not in E: []
+ds_rice on AP/TS dummies (HC1): const -0.471 (0.431); AP -4.545 (2.288) p=0.047; TS 6.791 (2.075) p=0.001; n=467
+   rice>=10% subsample: const -0.896; AP -4.223 (2.506) p=0.092; TS 7.216 (2.117) p=0.001; n=335
+dl_rice on AP/TS dummies (HC1): const -0.149 (0.054); AP -0.088 (0.092) p=0.343; TS 0.551 (0.095) p=0.000; n=439
+   rice>=10% subsample: const -0.092; AP -0.108 (0.078) p=0.162; TS 0.494 (0.084) p=0.000; n=335
+gi_ds_rice: hot spots z>1.96: 41 units; by region {'ODISHA': 21, 'PUNJAB': 8, 'MADHYA PRADESH': 3, 'TELANGANA': 2, 'HARYANA': 2, 'MAHARASHTRA': 2, 'ANDHRA PRADESH': 1, 'RAJASTHAN': 1}
+   Bonferroni z>3.87: 1 units {'ODISHA': 1}
+   cold spots z<-1.96: 34 units; by region {'KARNATAKA': 10, 'KERALA': 7, 'MANIPUR': 6, 'TAMIL NADU': 3, 'MEGHALAYA': 2, 'WEST BENGAL': 2, 'ANDHRA PRADESH': 1, 'GUJARAT': 1}
+gi_dl_rice: hot spots z>1.96: 21 units; by region {'MADHYA PRADESH': 15, 'HARYANA': 3, 'RAJASTHAN': 3}
+   Bonferroni z>3.87: 5 units {'MADHYA PRADESH': 3, 'RAJASTHAN': 2}
+   cold spots z<-1.96: 20 units; by region {'MAHARASHTRA': 8, 'KARNATAKA': 4, 'KERALA': 3, 'MADHYA PRADESH': 2, 'RAJASTHAN': 2, 'TAMIL NADU': 1}
+AP/TS season-unreliable unit-years 1998-2019: 0
+        region                    district  s0_rice  s1_rice  ds_rice  pct_rank_ds_rice  da_rice  d_rice_kh  d_rice_rb   dgca  gi_ds_rice
+ANDHRA PRADESH                VIZIANAGARAM    35.52    43.96     8.44              0.88    -7.58     -10.51       2.93 -89.84        1.18
+ANDHRA PRADESH SRI POTTI SRIRAMULU NELLORE    71.25    74.95     3.69              0.76     3.23     -27.00      30.23  -9.85       -0.04
+ANDHRA PRADESH               VISAKHAPATNAM    35.16    38.41     3.25              0.74    -9.31     -10.56       1.25 -51.79        2.06
+ANDHRA PRADESH                     KURNOOL    11.96    10.68    -1.28              0.37    12.10      -6.24      18.34 212.56       -0.05
+ANDHRA PRADESH                  YSR KADAPA    17.52    15.42    -2.10              0.32   -21.01     -24.00       2.99 -82.99       -0.97
+ANDHRA PRADESH                  SRIKAKULAM    53.70    50.71    -2.99              0.26    17.62      12.95       4.67  56.57        1.74
+ANDHRA PRADESH               EAST GODAVARI    65.82    62.14    -3.68              0.23   -25.74     -28.66       2.92  -4.32       -0.00
+ANDHRA PRADESH                   ANANTAPUR     6.29     2.50    -3.78              0.22   -30.23     -21.25      -8.98 275.46       -0.56
+ANDHRA PRADESH                    CHITTOOR    21.41    14.35    -7.06              0.11   -30.46     -23.39      -7.07 -17.21        0.62
+ANDHRA PRADESH                      GUNTUR    41.20    32.61    -8.58              0.10   -84.92     -91.22       6.29 -57.90       -0.84
+ANDHRA PRADESH                    PRAKASAM    27.36    13.74   -13.62              0.06   -75.16     -35.90     -39.26 -41.55       -0.59
+ANDHRA PRADESH                     KRISHNA    64.88    49.62   -15.26              0.05  -122.70     -38.30     -84.40 -55.16       -1.44
+ANDHRA PRADESH               WEST GODAVARI    80.32    58.09   -22.23              0.04   -68.05     -41.30     -26.75 103.39       -2.03
+     TELANGANA                  KARIMNAGAR    47.30    64.47    17.16              0.98   177.10      69.67     107.43 131.72        2.21
+     TELANGANA                    NALGONDA    42.61    54.72    12.11              0.94   242.73      69.70     173.03 301.67        0.27
+     TELANGANA                   NIZAMABAD    47.26    55.46     8.20              0.88   145.76      58.47      87.29 209.72        1.48
+     TELANGANA                    WARANGAL    33.36    40.28     6.92              0.85   115.79      47.92      67.88 181.63        2.37
+     TELANGANA                 MAHBUBNAGAR    16.88    22.97     6.09              0.83    62.45      24.23      38.22  37.97       -0.20
+     TELANGANA                       MEDAK    24.02    29.45     5.43              0.82    65.15      23.46      41.69 129.36        1.87
+     TELANGANA                    ADILABAD    14.52    19.13     4.60              0.80    63.98      20.40      43.58 205.52        1.67
+     TELANGANA                     KHAMMAM    42.48    45.14     2.66              0.72    12.68     -39.24      51.92   2.86       -0.76
+     TELANGANA                  RANGAREDDY    20.34    14.05    -6.30              0.13    -3.60      -5.92       2.32 100.24        1.06
+                          region     group  share0  share1  d_share_pp  se_share  d_area_kha  se_area_kha
+                  ANDHRA PRADESH      rice   38.26   30.96       -7.30      1.86     -442.20       141.77
+                  ANDHRA PRADESH     wheat    0.02    0.00       -0.02      0.01       -1.30         0.81
+                  ANDHRA PRADESH     maize    0.86    4.12        3.27      0.72      240.48        59.86
+                  ANDHRA PRADESH   millets    4.81    3.21       -1.60      1.16     -105.50        77.88
+                  ANDHRA PRADESH    pulses   14.43   18.19        3.76      3.16      308.76       256.16
+                  ANDHRA PRADESH  oilseeds   27.02   25.24       -1.78      3.18      -66.17       258.10
+                  ANDHRA PRADESH    cotton    6.10    8.78        2.68      1.33      210.02       142.18
+                  ANDHRA PRADESH sugarcane    2.43    1.31       -1.12      0.49      -76.04        29.37
+                  ANDHRA PRADESH     other    6.06    8.19        2.12      1.02      169.35        70.40
+                  ANDHRA PRADESH       GCA     NaN     NaN         NaN       NaN      237.39       401.81
+                       TELANGANA      rice   31.14   38.99        7.85      1.83      882.04       225.54
+                       TELANGANA     wheat    0.25    0.07       -0.17      0.09       -7.24         3.16
+                       TELANGANA     maize    8.34    9.96        1.62      2.17      206.84       105.63
+                       TELANGANA   millets   13.27    1.33      -11.93      3.07     -552.90       170.79
+                       TELANGANA    pulses   14.12    8.77       -5.36      1.81     -141.90        94.20
+                       TELANGANA  oilseeds   13.98    5.63       -8.35      3.53     -325.93       213.45
+                       TELANGANA    cotton   14.33   32.15       17.82      3.25     1269.57       245.01
+                       TELANGANA sugarcane    1.18    0.56       -0.62      0.48      -22.36        17.39
+                       TELANGANA     other    3.39    2.54       -0.85      0.26       -7.43        17.53
+                       TELANGANA       GCA     NaN     NaN         NaN       NaN     1300.69       259.67
+AP+TS rice-gain districts (n=11)      rice   34.33   42.16        7.83       NaN      871.98          NaN
+AP+TS rice-gain districts (n=11)     wheat    0.18    0.07       -0.11       NaN       -5.25          NaN
+AP+TS rice-gain districts (n=11)     maize    7.29    8.73        1.44       NaN      170.70          NaN
+AP+TS rice-gain districts (n=11)   millets   11.51    1.48      -10.02       NaN     -534.65          NaN
+AP+TS rice-gain districts (n=11)    pulses   13.10    8.22       -4.87       NaN     -181.28          NaN
+AP+TS rice-gain districts (n=11)  oilseeds   14.75    6.54       -8.21       NaN     -382.15          NaN
+AP+TS rice-gain districts (n=11)    cotton   12.46   28.00       15.53       NaN     1146.22          NaN
+AP+TS rice-gain districts (n=11) sugarcane    2.10    1.14       -0.95       NaN      -40.37          NaN
+AP+TS rice-gain districts (n=11)     other    4.29    3.66       -0.63       NaN        3.78          NaN
+AP+TS rice-gain districts (n=11)       GCA     NaN     NaN         NaN       NaN     1048.98          NaN
+AP/TS annual rice area (kha) and share by year:
+             area_ha_rice                   n_units               rice_share          
+region     ANDHRA PRADESH  TELANGANA ANDHRA PRADESH TELANGANA ANDHRA PRADESH TELANGANA
+year_start                                                                            
+1998            2780100.0  1536300.0           13.0       9.0           39.0      31.9
+1999            2634246.0  1379965.0           13.0       9.0           40.2      30.3
+2000            2694741.0  1547969.0           13.0       9.0           35.8      31.2
+2001            2515353.0  1309394.0           13.0       9.0           35.2      28.6
+2002            1867142.0   954925.0           13.0       9.0           28.7      23.9
+2003            1957323.0  1017315.0           13.0       9.0           28.5      23.0
+2004            2227682.0   858520.0           13.0       9.0           29.7      20.2
+2005            2520723.0  1461028.0           13.0       9.0           34.4      30.2
+2006            2488883.0  1489007.0           13.0       9.0           35.9      32.0
+2007            2576000.0  1408000.0           13.0       9.0           35.8      31.1
+2008            2695725.0  1691491.0           13.0       9.0           36.3      33.4
+2009            2325729.0  1115007.0           13.0       9.0           34.9      24.4
+2010            2772377.0  1978932.0           13.0       9.0           36.4      35.8
+2011            2346300.0  1749548.0           13.0       9.0           33.2      32.6
+2012            2210000.0  1418000.0           13.0       9.0           32.0      27.7
+2013            2583440.0  1994437.0           13.0       9.0           35.8      33.6
+2014            2393955.0  1415420.0           13.0       9.0           35.6      28.5
+2015            2160795.0  1046188.0           13.0       9.0           29.6      21.0
+2016            2105019.0  1828574.0           13.0       9.0           27.5      32.6
+2017            2218186.0  1962376.0           13.0       9.0           30.3      34.4
+2018            2208304.0  1931772.0           13.0       9.0           30.1      35.7
+2019            2355982.0  3216213.0           13.0       9.0           32.5      45.1
+ANDHRA PRADESH: rice agg share change pp | main -7.30 | end 2016-18 -8.98 | start 2005-07 -4.39 | 2008-10 to 2016-18 -6.64
+   rice area change kha | main -442 | end 2016-18 -526 | start 2005-07 -268 | 2008-10 to 2016-18 -421
+TELANGANA: rice agg share change pp | main 7.85 | end 2016-18 3.09 | start 2005-07 7.90 | 2008-10 to 2016-18 2.67
+   rice area change kha | main 882 | end 2016-18 419 | start 2005-07 917 | 2008-10 to 2016-18 312
+ANDHRA PRADESH rice share FE slope (area-wtd) pp/decade: -1.85 (1.09) n_units=13 n_obs=286 | to 2018-19 only: -2.08 (1.12)
+TELANGANA rice share FE slope (area-wtd) pp/decade: 3.24 (0.80) n_units=9 n_obs=198 | to 2018-19 only: 1.70 (0.71)
+rainfall matched AP/TS districts: 21 of 22
+mean JJAS % departure by year:
+region  ANDHRA PRADESH  TELANGANA
+year                             
+1998              16.0       17.4
+1999             -26.3      -11.1
+2000              20.6       24.7
+2017              18.6       -7.1
+2018             -14.2        3.1
+2019               8.5       13.9
+
+=== 5. MILLETS DOWN, MAIZE UP ===
+units with millets >= 5% of GCA in W0: 182
+of these, millet share fell >=1pp: 149 | and maize share rose >=1pp: 55 | and millet area fell and maize area rose: 49
+corr(d millets share, d maize share), millet-base units: r=-0.294 [-0.421,-0.155] p=0.0001 n=182
+d maize area on d millet area (ha/ha), HC1: slope -0.195 (0.053) p=0.0003 n=182
+millet-losing (<= -2pp) districts n=141: pooled share/area accounting
+    group  d_share_pp   se  d_area_kha
+     rice       -0.26 0.59      628.26
+    wheat        1.27 0.52     1501.12
+    maize        3.18 0.63     2402.68
+  millets      -13.05 0.99    -7121.86
+   pulses        3.51 1.36     3639.68
+ oilseeds       -0.67 1.36      783.51
+   cotton        4.17 1.16     3614.00
+sugarcane        0.47 0.24      464.54
+    other        1.38 0.61     1314.25
+      GCA         NaN  NaN     7226.18
+substitution districts by region: {'KARNATAKA': 15, 'MAHARASHTRA': 13, 'TAMIL NADU': 7, 'MADHYA PRADESH': 6, 'TELANGANA': 2, 'CHHATTISGARH': 2, 'ODISHA': 1, 'WEST BENGAL': 1, 'ANDHRA PRADESH': 1, 'GUJARAT': 1}
+      district         region  s0_millets  s1_millets  ds_millets  s0_maize  s1_maize  ds_maize  da_millets  da_maize
+        NASHIK    MAHARASHTRA        57.1        18.0       -39.1       2.4      23.1      20.7   -341495.7  154196.0
+    RANGAREDDY      TELANGANA        31.9         3.4       -28.6       3.2      20.6      17.4    -76809.3   69508.0
+       JALGAON    MAHARASHTRA        28.6         9.7       -18.9       1.0      18.2      17.2   -165846.7  188820.0
+    CHHINDWARA MADHYA PRADESH        18.4         2.3       -16.1      13.0      42.3      29.3    -80818.7  261478.7
+         BETUL MADHYA PRADESH        16.5         1.3       -15.3       4.8      22.1      17.3    -69090.7  118750.3
+    DAVANAGERE      KARNATAKA        19.3         5.5       -13.8      26.2      40.5      14.2    -68139.0   31627.0
+       BELLARY      KARNATAKA        27.0        13.4       -13.6       7.9      27.9      19.9    -68576.0  121271.7
+        HASSAN      KARNATAKA        35.0        22.5       -12.5       2.8      22.2      19.4    -38769.0   80261.7
+  VIRUDHUNAGAR     TAMIL NADU        22.9        12.3       -10.6       4.7      22.9      18.2    -22346.7   19437.7
+         DHULE    MAHARASHTRA        45.2        17.3       -27.9       1.1      11.4      10.4    -64965.3   66927.0
+  THOOTHUKKUDI     TAMIL NADU        20.7        11.9        -8.9       3.4      20.5      17.1     -8188.7   35449.7
+      GAJAPATI         ODISHA        11.9         3.5        -8.4       6.5      19.5      12.9     -7427.0    6884.7
+        HAVERI      KARNATAKA        18.8        10.4        -8.3      15.6      47.1      31.5    -37938.3  132160.0
+   CHITRADURGA      KARNATAKA        23.4        15.2        -8.2       8.5      21.4      12.9    -49011.7   51710.3
+        SANGLI    MAHARASHTRA        53.5        41.9       -11.5       2.3      10.4       8.1   -149048.0   40923.3
+   MAHBUBNAGAR      TELANGANA        23.0         3.2       -19.9       4.0      11.7       7.8   -173849.7   72978.7
+CHAMARAJANAGAR      KARNATAKA        27.9        19.2        -8.6       8.7      16.3       7.6    -11171.3   14324.0
+         SEONI MADHYA PRADESH         7.4         0.7        -6.7       2.9      26.8      23.8    -26489.0  162620.0
+   CHIKMAGALUR      KARNATAKA        31.6        19.0       -12.6       0.2       6.7       6.5    -21190.3   17087.7
+       BARWANI MADHYA PRADESH        25.1         8.7       -16.3      12.4      18.9       6.5    -34964.7   30058.7
+    WEST NIMAR MADHYA PRADESH        20.3         1.2       -19.1       4.3      10.6       6.3    -81632.0   56242.3
+         GADAG      KARNATAKA        19.9        13.7        -6.2       4.7      11.0       6.2    -16941.3   36400.3
+     DARJILING    WEST BENGAL        13.9         8.2        -5.7      20.9      38.0      17.1     -5290.3   12616.0
+    VILUPPURAM     TAMIL NADU        13.8         7.8        -6.0       0.1       4.9       4.8    -39818.7   19959.7
+       KURNOOL ANDHRA PRADESH        15.7         6.8        -8.9       0.2       4.7       4.5    -58963.3   47126.0
+substitution districts: total millet area change kha -3984, maize 2359
+TWFE maize share on millet share (pp/pp), millet-base units: -0.150 (0.030) units=182 obs=3959
+TWFE log(1+maize area) on log(1+millet area): 0.034 (0.063)
+millet-base units, area change kha by region:
+                da_millets  da_maize
+region                              
+MAHARASHTRA        -3447.0     753.0
+KARNATAKA          -1038.0     706.0
+TELANGANA           -517.0     176.0
+GUJARAT             -514.0       1.0
+MADHYA PRADESH      -256.0     661.0
+TAMIL NADU          -254.0     148.0
+HARYANA             -182.0       0.0
+UTTARAKHAND         -147.0     -11.0
+ANDHRA PRADESH      -107.0      47.0
+UTTAR PRADESH        -82.0     -49.0
+ODISHA               -73.0      -8.0
+CHHATTISGARH         -54.0      21.0
+RAJASTHAN             96.0     -58.0

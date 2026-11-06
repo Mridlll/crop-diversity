@@ -1,0 +1,157 @@
+unit rainfall rows 19406 units 626
+irrigation units 605 tercile cut points {1: {'min': 0.043, 'max': 0.433, 'mean': 0.297, 'size': 202}, 2: {'min': 0.434, 'max': 0.654, 'mean': 0.535, 'size': 201}, 3: {'min': 0.655, 'max': 0.985, 'mean': 0.806, 'size': 202}}
+
+### 1. reproduce baseline
+baseline                                      rabi_t    sh_millets   s_def      b=+0.393 se=0.108 p=0.000 n=11086 g=586
+baseline                                      rabi_t    sh_rice      s_def      b=-0.307 se=0.091 p=0.001 n=11086 g=586
+baseline                                      rabi_t    la_total     s_def      b=-0.073 se=0.014 p=0.000 n=11086 g=586
+baseline                                      rabi_t    sh_pulses    s_def      b=+0.131 se=0.270 p=0.626 n=11086 g=586
+baseline                                      rabi_t    la_pulses    s_def      b=-0.081 se=0.026 p=0.002 n=11086 g=586
+baseline                                      rabi_t    la_millets   s_def      b=+0.002 se=0.028 p=0.930 n=11086 g=586
+baseline                                      rabi_t    la_rice      s_def      b=-0.005 se=0.012 p=0.676 n=11086 g=586
+baseline                                      kharif_t1 sh_millets   s_exc      b=-0.587 se=0.172 p=0.001 n=11465 g=586
+baseline                                      kharif_t1 la_millets   s_exc      b=-0.011 se=0.034 p=0.746 n=11465 g=586
+baseline                                      kharif_t1 la_total     s_exc      b=+0.003 se=0.008 p=0.762 n=11465 g=586
+baseline                                      kharif_t1 sh_pulses    s_def      b=+0.268 se=0.145 p=0.064 n=11465 g=586
+
+### 2. also drop annual-unreliable unit-years (GCA jumps, pre-split donors, entry)
+drop flag_annual_unreliable                   rabi_t    sh_millets   s_def      b=+0.442 se=0.113 p=0.000 n=10393 g=583
+drop flag_annual_unreliable                   rabi_t    sh_rice      s_def      b=-0.309 se=0.094 p=0.001 n=10393 g=583
+drop flag_annual_unreliable                   rabi_t    la_total     s_def      b=-0.067 se=0.013 p=0.000 n=10393 g=583
+drop flag_annual_unreliable                   rabi_t    sh_pulses    s_def      b=+0.004 se=0.257 p=0.987 n=10393 g=583
+drop flag_annual_unreliable                   rabi_t    la_pulses    s_def      b=-0.087 se=0.025 p=0.001 n=10393 g=583
+drop flag_annual_unreliable                   rabi_t    la_millets   s_def      b=-0.012 se=0.028 p=0.675 n=10393 g=583
+drop flag_annual_unreliable                   rabi_t    la_rice      s_def      b=-0.007 se=0.012 p=0.548 n=10393 g=583
+drop flag_annual_unreliable                   kharif_t1 sh_millets   s_exc      b=-0.430 se=0.154 p=0.005 n=10780 g=583
+drop flag_annual_unreliable                   kharif_t1 la_millets   s_exc      b=-0.001 se=0.034 p=0.981 n=10780 g=583
+drop flag_annual_unreliable                   kharif_t1 la_total     s_exc      b=-0.002 se=0.007 p=0.807 n=10780 g=583
+drop flag_annual_unreliable                   kharif_t1 sh_pulses    s_def      b=+0.152 se=0.140 p=0.277 n=10780 g=583
+drop annual-unreliable + mild jump + 1997     rabi_t    sh_millets   s_def      b=+0.213 se=0.103 p=0.040 n=9735 g=578
+drop annual-unreliable + mild jump + 1997     rabi_t    sh_rice      s_def      b=-0.210 se=0.094 p=0.026 n=9735 g=578
+drop annual-unreliable + mild jump + 1997     rabi_t    la_total     s_def      b=-0.063 se=0.013 p=0.000 n=9735 g=578
+drop annual-unreliable + mild jump + 1997     rabi_t    sh_pulses    s_def      b=+0.116 se=0.256 p=0.650 n=9735 g=578
+drop annual-unreliable + mild jump + 1997     rabi_t    la_pulses    s_def      b=-0.065 se=0.024 p=0.008 n=9735 g=578
+drop annual-unreliable + mild jump + 1997     rabi_t    la_millets   s_def      b=-0.026 se=0.028 p=0.358 n=9735 g=578
+drop annual-unreliable + mild jump + 1997     rabi_t    la_rice      s_def      b=+0.004 se=0.013 p=0.766 n=9735 g=578
+drop annual-unreliable + mild jump + 1997     kharif_t1 sh_millets   s_exc      b=-0.220 se=0.133 p=0.099 n=10096 g=579
+drop annual-unreliable + mild jump + 1997     kharif_t1 la_millets   s_exc      b=+0.024 se=0.034 p=0.477 n=10096 g=579
+drop annual-unreliable + mild jump + 1997     kharif_t1 la_total     s_exc      b=-0.001 se=0.006 p=0.825 n=10096 g=579
+drop annual-unreliable + mild jump + 1997     kharif_t1 sh_pulses    s_def      b=+0.085 se=0.138 p=0.535 n=10096 g=579
+
+### 3. clustering on state (shocks are spatially correlated)
+cluster state                                 rabi_t    sh_millets   s_def      b=+0.393 se=0.173 p=0.032 n=11086 g=26
+cluster state                                 rabi_t    sh_rice      s_def      b=-0.307 se=0.179 p=0.098 n=11086 g=26
+cluster state                                 rabi_t    la_total     s_def      b=-0.073 se=0.027 p=0.012 n=11086 g=26
+cluster state                                 rabi_t    sh_pulses    s_def      b=+0.131 se=0.332 p=0.695 n=11086 g=26
+cluster state                                 rabi_t    la_pulses    s_def      b=-0.081 se=0.035 p=0.029 n=11086 g=26
+cluster state                                 rabi_t    la_millets   s_def      b=+0.002 se=0.050 p=0.961 n=11086 g=26
+cluster state                                 rabi_t    la_rice      s_def      b=-0.005 se=0.010 p=0.597 n=11086 g=26
+cluster state                                 kharif_t1 sh_millets   s_exc      b=-0.587 se=0.156 p=0.001 n=11465 g=26
+cluster state                                 kharif_t1 la_millets   s_exc      b=-0.011 se=0.045 p=0.809 n=11465 g=26
+cluster state                                 kharif_t1 la_total     s_exc      b=+0.003 se=0.011 p=0.821 n=11465 g=26
+cluster state                                 kharif_t1 sh_pulses    s_def      b=+0.268 se=0.262 p=0.317 n=11465 g=26
+
+### 4. unit-specific linear trends (with state-year FE)
+unit linear trends + state-year FE            rabi_t    sh_millets   s_def      b=+0.408 se=0.099 p=0.000 n=11086 g=586
+unit linear trends + state-year FE            rabi_t    sh_rice      s_def      b=-0.282 se=0.090 p=0.002 n=11086 g=586
+unit linear trends + state-year FE            rabi_t    la_total     s_def      b=-0.061 se=0.010 p=0.000 n=11086 g=586
+unit linear trends + state-year FE            rabi_t    sh_pulses    s_def      b=+0.165 se=0.237 p=0.486 n=11086 g=586
+unit linear trends + state-year FE            rabi_t    la_pulses    s_def      b=-0.100 se=0.025 p=0.000 n=11086 g=586
+unit linear trends + state-year FE            rabi_t    la_millets   s_def      b=-0.010 se=0.025 p=0.682 n=11086 g=586
+unit linear trends + state-year FE            rabi_t    la_rice      s_def      b=+0.001 se=0.012 p=0.935 n=11086 g=586
+unit linear trends + state-year FE            kharif_t1 sh_millets   s_exc      b=-0.427 se=0.130 p=0.001 n=11465 g=586
+unit linear trends + state-year FE            kharif_t1 la_millets   s_exc      b=-0.009 se=0.031 p=0.768 n=11465 g=586
+unit linear trends + state-year FE            kharif_t1 la_total     s_exc      b=+0.005 se=0.007 p=0.469 n=11465 g=586
+unit linear trends + state-year FE            kharif_t1 sh_pulses    s_def      b=+0.228 se=0.120 p=0.059 n=11465 g=586
+
+### 5. placebos: lag JJAS(t-1) on rabi(t); lead JJAS(t+2) on kharif(t+1)
+placebo lag JJAS(t-1), with JJAS(t)           rabi_t    sh_millets   lag_def    b=+0.005 se=0.097 p=0.957 n=10932 g=586
+placebo lag JJAS(t-1), with JJAS(t)           rabi_t    sh_millets   lag_exc    b=-0.102 se=0.116 p=0.379 n=10932 g=586
+placebo lag JJAS(t-1), with JJAS(t)           rabi_t    sh_rice      lag_def    b=+0.054 se=0.079 p=0.492 n=10932 g=586
+placebo lag JJAS(t-1), with JJAS(t)           rabi_t    sh_rice      lag_exc    b=+0.172 se=0.099 p=0.083 n=10932 g=586
+placebo lag JJAS(t-1), with JJAS(t)           rabi_t    la_total     lag_def    b=-0.022 se=0.012 p=0.078 n=10932 g=586
+placebo lag JJAS(t-1), with JJAS(t)           rabi_t    la_total     lag_exc    b=-0.004 se=0.011 p=0.715 n=10932 g=586
+placebo lag JJAS(t-1), with JJAS(t)           rabi_t    sh_pulses    lag_def    b=-0.286 se=0.254 p=0.260 n=10932 g=586
+placebo lag JJAS(t-1), with JJAS(t)           rabi_t    sh_pulses    lag_exc    b=+0.335 se=0.256 p=0.191 n=10932 g=586
+placebo lead JJAS(t+2) on kharif(t+1)         kharif_t1 sh_millets   ld_exc     b=-0.138 se=0.169 p=0.415 n=11294 g=586
+placebo lead JJAS(t+2) on kharif(t+1)         kharif_t1 sh_millets   ld_def     b=-0.134 se=0.139 p=0.337 n=11294 g=586
+placebo lead JJAS(t+2) on kharif(t+1)         kharif_t1 la_millets   ld_exc     b=-0.091 se=0.034 p=0.008 n=11294 g=586
+placebo lead JJAS(t+2) on kharif(t+1)         kharif_t1 la_millets   ld_def     b=-0.005 se=0.030 p=0.872 n=11294 g=586
+placebo lead JJAS(t+2) on kharif(t+1)         kharif_t1 la_total     ld_exc     b=-0.017 se=0.009 p=0.065 n=11294 g=586
+placebo lead JJAS(t+2) on kharif(t+1)         kharif_t1 la_total     ld_def     b=+0.007 se=0.007 p=0.313 n=11294 g=586
+same-year kharif(t)                           kharif_t  sh_millets   s_exc      b=+0.004 se=0.145 p=0.979 n=11638 g=586
+same-year kharif(t)                           kharif_t  la_millets   s_exc      b=+0.006 se=0.036 p=0.860 n=11638 g=586
+
+### 6. intensive margin: log area among units that actually grow the crop that season
+log millets area, mean share>=2pp, A>0        rabi_t    ln_millets   s_def      b=+0.025 se=0.048 p=0.602 n=1757 g=103
+log total area, same units (millets,2)        rabi_t    la_total     s_def      b=-0.074 se=0.026 p=0.005 n=1757 g=103
+share, same units (millets,2)                 rabi_t    sh_millets   s_def      b=+1.910 se=0.585 p=0.001 n=1757 g=103
+log millets area, mean share>=5pp, A>0        rabi_t    ln_millets   s_def      b=+0.053 se=0.048 p=0.272 n=1501 g=87
+log total area, same units (millets,5)        rabi_t    la_total     s_def      b=-0.063 se=0.026 p=0.018 n=1501 g=87
+share, same units (millets,5)                 rabi_t    sh_millets   s_def      b=+2.257 se=0.651 p=0.001 n=1501 g=87
+log rice area, mean share>=2pp, A>0           rabi_t    ln_rice      s_def      b=-0.301 se=0.073 p=0.000 n=804 g=47
+log total area, same units (rice,2)           rabi_t    la_total     s_def      b=-0.014 se=0.050 p=0.788 n=804 g=47
+share, same units (rice,2)                    rabi_t    sh_rice      s_def      b=-4.453 se=1.156 p=0.000 n=804 g=47
+log rice area, mean share>=5pp, A>0           rabi_t    ln_rice      s_def      b=-0.254 se=0.071 p=0.001 n=701 g=41
+log total area, same units (rice,5)           rabi_t    la_total     s_def      b=+0.001 se=0.046 p=0.976 n=701 g=41
+share, same units (rice,5)                    rabi_t    sh_rice      s_def      b=-4.369 se=1.216 p=0.001 n=701 g=41
+log pulses area, mean share>=2pp, A>0         rabi_t    ln_pulses    s_def      b=-0.103 se=0.022 p=0.000 n=9065 g=501
+log total area, same units (pulses,2)         rabi_t    la_total     s_def      b=-0.083 se=0.014 p=0.000 n=9065 g=501
+share, same units (pulses,2)                  rabi_t    sh_pulses    s_def      b=+0.247 se=0.300 p=0.411 n=9065 g=501
+log pulses area, mean share>=5pp, A>0         rabi_t    ln_pulses    s_def      b=-0.090 se=0.022 p=0.000 n=7781 g=437
+log total area, same units (pulses,5)         rabi_t    la_total     s_def      b=-0.096 se=0.015 p=0.000 n=7781 g=437
+share, same units (pulses,5)                  rabi_t    sh_pulses    s_def      b=+0.406 se=0.352 p=0.250 n=7781 g=437
+log millets area, mean share>=2pp, A>0        kharif_t1 ln_millets   s_exc      b=-0.054 se=0.017 p=0.002 n=6393 g=323
+log total area, same units (millets,2)        kharif_t1 la_total     s_exc      b=-0.001 se=0.009 p=0.883 n=6393 g=323
+share, same units (millets,2)                 kharif_t1 sh_millets   s_exc      b=-0.815 se=0.261 p=0.002 n=6393 g=323
+log millets area, mean share>=5pp, A>0        kharif_t1 ln_millets   s_exc      b=-0.050 se=0.018 p=0.006 n=4779 g=245
+log total area, same units (millets,5)        kharif_t1 la_total     s_exc      b=-0.001 se=0.011 p=0.889 n=4779 g=245
+share, same units (millets,5)                 kharif_t1 sh_millets   s_exc      b=-1.071 se=0.308 p=0.001 n=4779 g=245
+
+### 7. mechanical check: share change implied by flat crop area and shrinking total
+  rabi_t millets: observed share +0.393; pure-denominator prediction -mean share x dlog total = +0.316
+  rabi_t rice: observed share -0.307; pure-denominator prediction -mean share x dlog total = +0.170
+  kharif_t1 millets: observed share -0.587; pure-denominator prediction -mean share x dlog total = -0.031
+
+### 8. leave-one-state-out and leave-one-year-out
+  LOSO rabi_t sh_millets s_def: range +0.277 (KARNATAKA) to +0.474 (UTTAR PRADESH); min |t| 2.89
+  LOYO rabi_t sh_millets s_def: range +0.253 (1997) to +0.440 (2001); min |t| 2.38
+   shock unit-years by state (top 6): {'UTTAR PRADESH': 528, 'MADHYA PRADESH': 273, 'RAJASTHAN': 237, 'BIHAR': 204, 'GUJARAT': 165, 'MAHARASHTRA': 161}
+   shock unit-years by year (top 6): {2009: 247, 2014: 216, 2002: 213, 2015: 212, 2004: 161, 2018: 158}
+  LOSO rabi_t sh_rice s_def: range -0.369 (UTTAR PRADESH) to -0.169 (ANDHRA PRADESH); min |t| 2.28
+  LOYO rabi_t sh_rice s_def: range -0.354 (2011) to -0.206 (1997); min |t| 2.45
+   shock unit-years by state (top 6): {'UTTAR PRADESH': 528, 'MADHYA PRADESH': 273, 'RAJASTHAN': 237, 'BIHAR': 204, 'GUJARAT': 165, 'MAHARASHTRA': 161}
+   shock unit-years by year (top 6): {2009: 247, 2014: 216, 2002: 213, 2015: 212, 2004: 161, 2018: 158}
+  LOSO rabi_t la_total s_def: range -0.087 (UTTAR PRADESH) to -0.052 (MADHYA PRADESH); min |t| 3.70
+  LOYO rabi_t la_total s_def: range -0.078 (2005) to -0.062 (2000); min |t| 4.66
+   shock unit-years by state (top 6): {'UTTAR PRADESH': 528, 'MADHYA PRADESH': 273, 'RAJASTHAN': 237, 'BIHAR': 204, 'GUJARAT': 165, 'MAHARASHTRA': 161}
+   shock unit-years by year (top 6): {2009: 247, 2014: 216, 2002: 213, 2015: 212, 2004: 161, 2018: 158}
+  LOSO kharif_t1 sh_millets s_exc: range -0.651 (JHARKHAND) to -0.495 (RAJASTHAN); min |t| 2.94
+  LOYO kharif_t1 sh_millets s_exc: range -0.662 (2009) to -0.312 (1997); min |t| 2.03
+   shock unit-years by state (top 6): {'UTTAR PRADESH': 360, 'MADHYA PRADESH': 198, 'RAJASTHAN': 167, 'KARNATAKA': 139, 'GUJARAT': 124, 'MAHARASHTRA': 124}
+   shock unit-years by year (top 6): {2009: 183, 2014: 171, 2008: 164, 2012: 154, 2011: 153, 2004: 144}
+
+### 9. randomization inference: permute whole rainfall years (keeps spatial correlation)
+  RI rabi_t sh_millets s_def: b=+0.393; permutation sd 0.146; RI p=0.007
+  RI rabi_t sh_rice s_def: b=-0.307; permutation sd 0.117; RI p=0.010
+  RI rabi_t la_total s_def: b=-0.073; permutation sd 0.016; RI p=0.003
+  RI kharif_t1 sh_millets s_exc: b=-0.587; permutation sd 0.195; RI p=0.003
+
+### 10. irrigation tercile: low-tercile rabi pulses and wheat
+irrigation terciles baseline                  rabi_t    sh_pulses    def_T1     b=-1.915 se=0.676 p=0.005 n=11086 g=586
+irrigation terciles, cluster state            rabi_t    sh_pulses    def_T1     b=-1.915 se=0.614 p=0.005 n=11086 g=26
+  LOSO low-tercile sh_pulses: range -2.165 (GUJARAT) to -1.475 (ASSAM)
+irrigation terciles baseline                  rabi_t    sh_wheat     def_T1     b=+1.612 se=0.499 p=0.001 n=11086 g=586
+irrigation terciles, cluster state            rabi_t    sh_wheat     def_T1     b=+1.612 se=0.736 p=0.038 n=11086 g=26
+  LOSO low-tercile sh_wheat: range +1.120 (ARUNACHAL PRADESH) to +1.891 (GUJARAT)
+irrigation terciles baseline                  rabi_t    la_pulses    def_T1     b=-0.208 se=0.058 p=0.000 n=11086 g=586
+irrigation terciles, cluster state            rabi_t    la_pulses    def_T1     b=-0.208 se=0.065 p=0.004 n=11086 g=26
+  LOSO low-tercile la_pulses: range -0.227 (GUJARAT) to -0.150 (RAJASTHAN)
+irrigation terciles baseline                  rabi_t    sh_millets   def_T1     b=+0.612 se=0.237 p=0.010 n=11086 g=586
+irrigation terciles, cluster state            rabi_t    sh_millets   def_T1     b=+0.612 se=0.459 p=0.194 n=11086 g=26
+  LOSO low-tercile sh_millets: range +0.133 (KARNATAKA) to +0.681 (UTTARAKHAND)
+irrigation terciles baseline                  rabi_t    la_total     def_T1     b=-0.099 se=0.035 p=0.004 n=11086 g=586
+irrigation terciles, cluster state            rabi_t    la_total     def_T1     b=-0.099 se=0.040 p=0.021 n=11086 g=26
+  LOSO low-tercile la_total: range -0.116 (ASSAM) to -0.079 (ODISHA)
+  low-tercile deficient rabi unit-years by state: {'KARNATAKA': 115, 'ASSAM': 61, 'HIMACHAL PRADESH': 61, 'RAJASTHAN': 58, 'UTTARAKHAND': 50, 'JAMMU KASHMIR': 40, 'CHHATTISGARH': 38, 'GUJARAT': 37}
+  low-tercile mean rabi wheat share by state: {'JAMMU KASHMIR': 81.7, 'UTTARAKHAND': 80.6, 'HIMACHAL PRADESH': 75.5, 'ARUNACHAL PRADESH': 73.8, 'UTTAR PRADESH': 55.7, 'MADHYA PRADESH': 51.5, 'GUJARAT': 43.2, 'RAJASTHAN': 37.0}

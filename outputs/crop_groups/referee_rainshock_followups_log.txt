@@ -1,0 +1,82 @@
+unit rainfall rows 19406 units 626
+irrigation units 605 tercile cut points {1: {'min': 0.043, 'max': 0.433, 'mean': 0.297, 'size': 202}, 2: {'min': 0.434, 'max': 0.654, 'mean': 0.535, 'size': 201}, 3: {'min': 0.655, 'max': 0.985, 'mean': 0.806, 'size': 202}}
+### A. rabi rice-growing units (mean rabi rice share >= 2 pp)
+units by state: {'ANDHRA PRADESH': 22, 'KARNATAKA': 9, 'MEGHALAYA': 6, 'MIZORAM': 5, 'NAGALAND': 5, 'GOA': 2}
+share rice in rabi-rice units                                s_def    b=-3.339 se=0.985 p=0.001 n=982 g=49 ymean=26.01
+share wheat in rabi-rice units                               s_def    b=+0.257 se=0.227 p=0.263 n=982 g=49 ymean=1.03
+share maize in rabi-rice units                               s_def    b=+0.060 se=0.261 p=0.820 n=982 g=49 ymean=5.90
+share millets in rabi-rice units                             s_def    b=+0.678 se=0.472 p=0.157 n=982 g=49 ymean=7.69
+share pulses in rabi-rice units                              s_def    b=+1.852 se=1.106 p=0.101 n=982 g=49 ymean=33.28
+share oilseeds in rabi-rice units                            s_def    b=+0.097 se=0.864 p=0.912 n=982 g=49 ymean=20.32
+share cotton in rabi-rice units                              s_def    b=-0.094 se=0.081 p=0.254 n=982 g=49 ymean=0.05
+share sugarcane in rabi-rice units                           s_def    b=+0.000 se=0.000 p=nan n=982 g=49 ymean=0.00
+share other in rabi-rice units                               s_def    b=+0.488 se=0.632 p=0.443 n=982 g=49 ymean=5.72
+log1p area rice in rabi-rice units                           s_def    b=-0.067 se=0.080 p=0.407 n=982 g=49 ymean=7.25
+log1p area pulses in rabi-rice units                         s_def    b=+0.063 se=0.054 p=0.248 n=982 g=49 ymean=8.40
+log1p area millets in rabi-rice units                        s_def    b=+0.046 se=0.105 p=0.665 n=982 g=49 ymean=5.26
+log1p area oilseeds in rabi-rice units                       s_def    b=-0.024 se=0.094 p=0.799 n=982 g=49 ymean=7.46
+log1p area maize in rabi-rice units                          s_def    b=-0.052 se=0.073 p=0.482 n=982 g=49 ymean=5.37
+log total in rabi-rice units                                 s_def    b=-0.012 se=0.055 p=0.831 n=982 g=49 ymean=9.93
+cluster state: share rice in rabi-rice units                 s_def    b=-3.339 se=0.425 p=0.001 n=982 g=6 ymean=26.01
+log rice area, rabi-rice units, drop flags+1997              s_def    b=-0.255 se=0.063 p=0.000 n=733 g=45 ymean=8.85
+same, cluster state                                          s_def    b=-0.255 se=0.103 p=0.068 n=733 g=5 ymean=8.85
+log rice area, rabi-rice units, excl AP+TG                   s_def    b=-0.512 se=0.165 p=0.005 n=258 g=23 ymean=6.12
+share rice in units with mean rabi rice < 2pp                s_def    b=-0.009 se=0.010 p=0.336 n=10077 g=536 ymean=0.02
+
+### B. next-kharif millet share after an excess monsoon
+excess unit-years with year_start 1997 (shock JJAS 1996): 103 of 444 rows; by state: {'ANDHRA PRADESH': 8, 'BIHAR': 3, 'HARYANA': 12, 'JAMMU KASHMIR': 8, 'JHARKHAND': 2, 'KARNATAKA': 9, 'MADHYA PRADESH': 11, 'MAHARASHTRA': 3, 'PUNJAB': 3, 'RAJASTHAN': 17, 'UTTAR PRADESH': 25, 'UTTARAKHAND': 1, 'WEST BENGAL': 1}
+share millets [baseline]                                     s_exc    b=-0.587 se=0.172 p=0.001 n=11465 g=586 ymean=12.02
+share millets [baseline] cluster state                       s_exc    b=-0.587 se=0.156 p=0.001 n=11465 g=26 ymean=12.02
+log millet area, millet units [baseline]                     s_exc    b=-0.054 se=0.017 p=0.002 n=6393 g=323 ymean=9.52
+share millets [drop 1997]                                    s_exc    b=-0.312 se=0.154 p=0.043 n=11021 g=586 ymean=11.81
+share millets [drop 1997] cluster state                      s_exc    b=-0.312 se=0.144 p=0.040 n=11021 g=26 ymean=11.81
+log millet area, millet units [drop 1997]                    s_exc    b=-0.049 se=0.018 p=0.008 n=5969 g=314 ymean=9.55
+share millets [drop annual flag]                             s_exc    b=-0.430 se=0.154 p=0.005 n=10780 g=583 ymean=11.98
+share millets [drop annual flag] cluster state               s_exc    b=-0.430 se=0.175 p=0.022 n=10780 g=25 ymean=11.98
+log millet area, millet units [drop annual flag]             s_exc    b=-0.055 se=0.017 p=0.002 n=5860 g=314 ymean=9.58
+share millets [drop annual flag + 1997]                      s_exc    b=-0.241 se=0.140 p=0.086 n=10466 g=583 ymean=11.79
+share millets [drop annual flag + 1997] cluster state        s_exc    b=-0.241 se=0.140 p=0.098 n=10466 g=25 ymean=11.79
+log millet area, millet units [drop annual flag + 1997]      s_exc    b=-0.047 se=0.018 p=0.011 n=5557 g=308 ymean=9.60
+share millets [drop annual flag + mild jump + 1997]          s_exc    b=-0.220 se=0.133 p=0.099 n=10096 g=579 ymean=11.73
+share millets [drop annual flag + mild jump + 1997] cluster state s_exc    b=-0.220 se=0.148 p=0.152 n=10096 g=25 ymean=11.73
+log millet area, millet units [drop annual flag + mild jump + 1997] s_exc    b=-0.053 se=0.019 p=0.006 n=5393 g=305 ymean=9.62
+bin share millets [drop annual flag + 1997]                  s_b_p10_p20 b=-0.059 se=0.143 p=0.679 n=10466 g=583 ymean=11.79
+bin share millets [drop annual flag + 1997]                  s_b_p20_p40 b=-0.298 se=0.154 p=0.053 n=10466 g=583 ymean=11.79
+bin share millets [drop annual flag + 1997]                  s_b_ge_p40 b=-0.059 se=0.248 p=0.812 n=10466 g=583 ymean=11.79
+bin share millets [drop annual flag + 1997]                  s_b_le_m40 b=+0.508 se=0.405 p=0.210 n=10466 g=583 ymean=11.79
+bin share millets [drop annual flag + 1997]                  s_b_m40_m20 b=+0.021 se=0.132 p=0.874 n=10466 g=583 ymean=11.79
+lead JJAS(t+2) placebo, log millet area millet units         ld_exc   b=-0.025 se=0.021 p=0.243 n=6302 g=323 ymean=9.53
+   same regression, actual JJAS(t)                           s_exc    b=-0.052 se=0.018 p=0.004 n=6302 g=323 ymean=9.53
+lead JJAS(t+2) placebo, millet share                         ld_exc   b=-0.138 se=0.169 p=0.415 n=11294 g=586 ymean=12.00
+   same regression, actual JJAS(t)                           s_exc    b=-0.576 se=0.175 p=0.001 n=11294 g=586 ymean=12.00
+lead placebo, millet share [drop flag + 1997]                ld_exc   b=+0.087 se=0.137 p=0.528 n=10312 g=583 ymean=11.77
+   same regression, actual JJAS(t)                           s_exc    b=-0.242 se=0.145 p=0.097 n=10312 g=583 ymean=11.77
+
+### C. low-irrigation tercile, rabi
+sh_wheat T1 all                                              def_T1   b=+1.612 se=0.499 p=0.001 n=11086 g=586 ymean=46.29
+la_wheat T1 all                                              def_T1   b=+0.020 se=0.039 p=0.604 n=11086 g=586 ymean=8.60
+sh_pulses T1 all                                             def_T1   b=-1.915 se=0.676 p=0.005 n=11086 g=586 ymean=22.44
+la_pulses T1 all                                             def_T1   b=-0.208 se=0.058 p=0.000 n=11086 g=586 ymean=8.02
+la_total T1 all                                              def_T1   b=-0.099 se=0.035 p=0.004 n=11086 g=586 ymean=10.68
+sh_millets T1 all                                            def_T1   b=+0.612 se=0.237 p=0.010 n=11086 g=586 ymean=4.32
+low-tercile units left after dropping hill/NE states: 109 of 188
+sh_wheat T1 excl hill+NE                                     def_T1   b=+1.043 se=0.570 p=0.068 n=8797 g=463 ymean=48.78
+la_wheat T1 excl hill+NE                                     def_T1   b=-0.046 se=0.054 p=0.387 n=8797 g=463 ymean=9.28
+sh_pulses T1 excl hill+NE                                    def_T1   b=-1.116 se=0.845 p=0.187 n=8797 g=463 ymean=23.46
+la_pulses T1 excl hill+NE                                    def_T1   b=-0.211 se=0.084 p=0.012 n=8797 g=463 ymean=8.72
+la_total T1 excl hill+NE                                     def_T1   b=-0.105 se=0.042 p=0.013 n=8797 g=463 ymean=11.22
+sh_wheat T1 drop flag+1997                                   def_T1   b=+1.626 se=0.551 p=0.003 n=10081 g=583 ymean=46.46
+sh_wheat T2 drop flag+1997                                   def_T2   b=+0.176 se=0.403 p=0.662 n=10081 g=583 ymean=46.46
+sh_wheat T3 drop flag+1997                                   def_T3   b=-0.313 se=0.293 p=0.286 n=10081 g=583 ymean=46.46
+sh_pulses T1 drop flag+1997                                  def_T1   b=-1.681 se=0.673 p=0.013 n=10081 g=583 ymean=22.58
+sh_pulses T2 drop flag+1997                                  def_T2   b=+0.581 se=0.465 p=0.212 n=10081 g=583 ymean=22.58
+sh_pulses T3 drop flag+1997                                  def_T3   b=+0.693 se=0.217 p=0.001 n=10081 g=583 ymean=22.58
+la_pulses T1 drop flag+1997                                  def_T1   b=-0.221 se=0.055 p=0.000 n=10081 g=583 ymean=8.13
+la_pulses T2 drop flag+1997                                  def_T2   b=-0.108 se=0.042 p=0.010 n=10081 g=583 ymean=8.13
+la_pulses T3 drop flag+1997                                  def_T3   b=+0.028 se=0.033 p=0.396 n=10081 g=583 ymean=8.13
+la_total T1 drop flag+1997                                   def_T1   b=-0.095 se=0.035 p=0.007 n=10081 g=583 ymean=10.73
+la_total T2 drop flag+1997                                   def_T2   b=-0.106 se=0.022 p=0.000 n=10081 g=583 ymean=10.73
+la_total T3 drop flag+1997                                   def_T3   b=-0.026 se=0.014 p=0.056 n=10081 g=583 ymean=10.73
+sh_millets T1 drop flag+1997                                 def_T1   b=+0.314 se=0.230 p=0.173 n=10081 g=583 ymean=4.32
+sh_millets T2 drop flag+1997                                 def_T2   b=+0.783 se=0.265 p=0.003 n=10081 g=583 ymean=4.32
+sh_millets T3 drop flag+1997                                 def_T3   b=-0.091 se=0.076 p=0.231 n=10081 g=583 ymean=4.32
