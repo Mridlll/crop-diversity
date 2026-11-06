@@ -46,6 +46,7 @@ HEAD = """<!doctype html>
       <a href="index.html">Overview</a>
       <a href="irrigation.html">Irrigation</a>
       <a href="markets.html">Markets</a>
+      <a href="crop-groups.html">Crop groups</a>
       <a href="data.html">Data &amp; methods</a>
       <a href="diversity.html"{navcur}>Maps</a>
     </div>
@@ -109,6 +110,7 @@ HEAD = """<!doctype html>
         <li><a href="index.html">Overview</a></li>
         <li><a href="irrigation.html">Irrigation</a></li>
         <li><a href="markets.html">Markets</a></li>
+        <li><a href="crop-groups.html">Crop groups</a></li>
         <li><a href="data.html">Data &amp; methods</a></li>
       </ul>
     </div>

@@ -467,6 +467,73 @@ for y in ["share_gca_millets", "ln1p_millets"]:
             y, lab, fmt(est, np.std(bs)), np.percentile(bs, 2.5), np.percentile(bs, 97.5)))
         rows.append(dict(check="R10 OMM " + lab, y=y, est=est, se=np.std(bs), n=len(dfx)))
 
+
+# ---------------------------------------------------------------- R11 OMM on a consistent crop basket
+w("")
+w("R11 OMM with a consistent basket: Odisha reports only 13-14 crops in 2005-18 (millets = ragi")
+w("    only) and 39 in 2019-20. Outcome: ragi area and ragi share of the area of the crops")
+w("    reported in every year 2005-2019.")
+odr = df[(df.state_name == "Odisha") & (df.ys >= 2005) & (df.ys <= 2019) & (df.area > 0)].copy()
+odr["div_key"] = "ODISHA|" + odr.district_name.str.upper()
+odr = odr.merge(cmap, on="div_key", how="inner")
+odr = odr.sort_values("area", ascending=False).drop_duplicates(
+    ["div_key", "year", "season", "crop_name"])
+yrs_c = odr.groupby("crop_name").ys.nunique()
+basket = yrs_c[yrs_c == odr.ys.nunique()].index
+w("  consistent basket ({}): {}".format(len(basket), ", ".join(sorted(basket))))
+cb = odr[odr.crop_name.isin(basket)].groupby(["unit_key", "ys"]).area.sum().rename("gca_c")
+rg = odr[odr.crop_name == "Ragi"].groupby(["unit_key", "ys"]).area.sum().rename("ragi")
+Rg = pd.concat([cb, rg], axis=1).fillna({"ragi": 0}).reset_index().rename(columns={"ys": "yr"})
+Rg = Rg[Rg.yr != 2012]
+Rg["g"] = Rg.unit_key.map(gmap)
+Rg["ragi_share_c"] = Rg.ragi / Rg.gca_c
+Rg["ln1p_ragi"] = np.log1p(Rg.ragi)
+w("  ragi area (kha) by cohort-year 2015-2019:")
+w(Rg.assign(c=Rg.g.replace(np.inf, 0)).pivot_table(index="yr", columns="c", values="ragi",
+  aggfunc="sum").div(1e3).round(1).loc[2015:2019].to_string())
+for y in ["ragi_share_c", "ln1p_ragi"]:
+    att = cs_att(Rg, y)
+    post = att[att.e >= 0]
+    est = np.average(post.att, weights=post.n_t)
+    units = Rg.unit_key.unique()
+    rng = np.random.default_rng(13)
+    bs = []
+    for _ in range(299):
+        dr = rng.choice(units, len(units), replace=True)
+        parts = []
+        for i, u in enumerate(dr):
+            x = Rg[Rg.unit_key == u].copy()
+            x["unit_key"] = u + "#" + str(i)
+            parts.append(x)
+        a = cs_att(pd.concat(parts), y)
+        if len(a) and (a.e >= 0).any():
+            pa = a[a.e >= 0]
+            bs.append(np.average(pa.att, weights=pa.n_t))
+    ri = []
+    gs = Rg.groupby("unit_key").g.first()
+    for _ in range(299):
+        x = Rg.copy()
+        x["g"] = x.unit_key.map(pd.Series(rng.permutation(gs.to_numpy()), gs.index))
+        a = cs_att(x, y)
+        pa = a[a.e >= 0]
+        ri.append(np.average(pa.att, weights=pa.n_t))
+    p_ri = (np.sum(np.abs(ri) >= abs(est)) + 1) / (len(ri) + 1)
+    pre = att[att.e < -1]
+    w("  {:<13} ATT {}  95% CI {:+.4f} to {:+.4f}  RI p {:.2f}; mean pre placebo {:+.4f}".format(
+        y, fmt(est, np.std(bs)), np.percentile(bs, 2.5), np.percentile(bs, 97.5), p_ri,
+        np.average(pre.att, weights=pre.n_t)))
+    rows.append(dict(check="R11 OMM consistent basket", y=y, est=est, se=np.std(bs), n=len(Rg)))
+
+# ---------------------------------------------------------------- R12 MSP C1 without Odisha
+w("")
+w("R12 MSP C1 dropping Odisha (exposure built from a 14-crop basket; 2019-20 coverage break)")
+Cn = C[C.state != "ODISHA"]
+for g_ in GROUPS:
+    y = "share_gca_" + g_
+    r = feols(Cn, y, xc, ["unit_key", "st_yr"], "unit_key")
+    e_ = lincom(r, {"x_2018": .5, "x_2019": .5})
+    w("  {:<9} avg 2018-19 per SD {}".format(g_, fmt(*e_)))
+
 pd.DataFrame(rows).to_csv(OUT + "/referee_policy_es_checks.csv", index=False)
 with open(OUT + "/referee_policy_es_log.txt", "w", encoding="utf-8") as fh:
     fh.write("\n".join(LOG))

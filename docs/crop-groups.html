@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crop Groups: Where Cropped Land Moved</title>
+<meta name="description" content="Nine crop groups and their shares of gross cropped area in 467 districts from 1998&ndash;99 to 2019&ndash;20, with Andhra Pradesh and Telangana rice, the food security missions and monsoon shocks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/analysis.css?v=593ba334">
+<link rel="stylesheet" href="css/crop-groups.css?v=56b69711">
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html">Crop Diversity · India</a>
+    <div class="nav__links">
+      <a href="index.html">Overview</a>
+      <a href="measurement.html">Measurement</a>
+      <a href="irrigation.html">Irrigation</a>
+      <a href="markets.html">Markets</a>
+      <a href="crop-groups.html" aria-current="page">Crop groups</a>
+      <a href="data.html">Data &amp; methods</a>
+      <a href="diversity.html">Maps</a>
+    </div>
+  </div>
+</nav>
+
+<header class="mast">
+  <div class="prose">
+    <p class="mast__label">Crop groups</p>
+    <h1 class="mast__title">Where cropped land moved between crop groups over two decades</h1>
+    <div class="mast__rule"></div>
+    <p class="mast__sub">We split each district's gross cropped area into nine crop groups and follow
+    their shares from 1998&ndash;99 to 2019&ndash;20, then look at the food security missions and at
+    what a failed monsoon does to the next season.</p>
+    <p class="mast__meta"><span>467 districts</span><span>nine crop groups</span><span>cropping 1998&ndash;99 to 2019&ndash;20</span><span>rainfall 1997&ndash;2019</span></p>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 01 ============ -->
+<section class="section scene-sec" id="s1">
+  <div class="scene fade">
+    <p class="scene__kicker">01 · Where each group is grown</p>
+    <h2 class="scene__h">Millets lost ground in three districts out of four, most heavily across the Deccan.</h2>
+  </div>
+  <div class="scene-fig scene-fig--wide fade">
+    <div class="figure__frame">
+      <div class="ctl ctl--scroll" id="v1-group" role="group" aria-label="Crop group"></div>
+      <div class="ctl ctl--sub" id="v1-mode" role="group" aria-label="Measure"></div>
+      <p class="readout readout--line" id="v1-read" aria-live="polite"></p>
+      <div id="v1" class="chart" role="img" aria-label="Map of Indian districts shaded by the change in the millet share of gross cropped area between 1998&ndash;2000 and 2017&ndash;19. Most districts lost share, with the deepest losses in Maharashtra, Karnataka, Gujarat, Telangana and Rajasthan. Buttons switch to the other eight crop groups and to the share in 2017&ndash;19."></div>
+      <p class="figure__note"><span>Share is the group's share of gross cropped area in
+      2017&ndash;18 to 2019&ndash;20. Change is that share minus the share in 1998&ndash;99 to
+      2000&ndash;01, in percentage points.
+      Districts on 2011 boundaries, so a district created later is shaded with the district it was
+      carved from. The top and bottom 2 percent of districts take the end colours. Hatched districts
+      lack a usable record in one of the two windows.</span><button class="replay" data-scene="1" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Gross cropped area counts a field once for every crop it carries in a year, so a field
+    with a kharif and a rabi crop counts twice. We divide it among nine groups: rice, wheat, maize,
+    millets, pulses, oilseeds, cotton, sugarcane and other crops. Millets here are jowar, bajra,
+    ragi and the small millets, and maize is a group of its own. Each group's share is compared
+    between 1998&ndash;99 to 2000&ndash;01 and 2017&ndash;18 to 2019&ndash;20 in 467 districts.</p>
+    <p>Across those districts millets fell from 13.5 to 7.9 percent of gross cropped area, a loss of
+    about 7 million hectares, and the share fell in 357 of them. Almost all of the fall happened
+    inside districts as farmers changed what they grew. Maharashtra carries a large part of it, and
+    leaving the state out brings the national fall to about 3.5 points. Gujarat lost 9.4 points
+    of millets and 8.3 of oilseeds over the same years as its cotton share rose 12.3 points.</p>
+    <p>The national oilseed share barely moved, at &minus;0.7 points with a standard error of 0.7.
+    In the typical district oilseeds lost 1.45 points (standard error 0.4), and 290 districts
+    lost share against 177 that gained. The 13 districts of Andhra Pradesh lost 12.9 points of
+    oilseeds between them, about a million hectares.</p>
+  </div>
+</section>
+
+<!-- ============ 02 ============ -->
+<section class="section scene-sec" id="s2">
+  <div class="scene fade">
+    <p class="scene__kicker">02 · The national mix</p>
+    <h2 class="scene__h">Millets gave up more cropped area than any other group gained.</h2>
+  </div>
+  <div class="scene-fig fade">
+    <div class="figure__frame">
+      <div id="v2" class="chart" role="img" aria-label="Nine small line charts of each crop group's national share of gross cropped area from 1998&ndash;99 to 2019&ndash;20. Millets fall from 13.8 to 7.8 percent. Pulses, maize, cotton and wheat rise by one to three points. Rice, oilseeds, sugarcane and other crops move by about a point or less."></div>
+      <p class="figure__note"><span>Share of gross cropped area by year, summed over the 352
+      districts with a usable record in all 22 years. Every panel's vertical axis spans 8
+      percentage points, so slopes compare across panels. Under each name is the change between
+      1998&ndash;2000 and 2017&ndash;19 across 467 districts, with its standard error in
+      brackets.</span><button class="replay" data-scene="2" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Maize rose 1.3 points (standard error 0.3) and cotton 1.7 points (0.5). Wheat rose about
+    a point. Its end window leans on two very large Madhya Pradesh wheat areas in 2018&ndash;19
+    and 2019&ndash;20, and closing the comparison in 2016&ndash;18 puts the wheat gain at 0.95
+    points (0.29).</p>
+    <p>The national rice share fell 2.0 points because cropped area grew mostly in districts that
+    grow little rice. That shift in weight accounts for &minus;2.3 points, and the change within
+    districts is +0.3. The typical district's rice share moved by &minus;0.4 points (0.4), and rice
+    area across the 467 districts went from 38.6 to 39.3 million hectares, a change too small to
+    tell apart from zero.</p>
+    <p>Pulses gained 2.9 points (0.6), about 6.6 million hectares, and the gain is regional. Most
+    of it is in Rajasthan, Madhya Pradesh and Karnataka; without Rajasthan it halves to 1.3
+    points, and districts split almost evenly, 235 gaining and 230 losing. The western states
+    start from a drought. June&ndash;September rainfall in 1999 and 2000 was 34 and 31 percent
+    short in Rajasthan and 48 and 42 percent short in Gujarat.</p>
+    <p>Maize took over millet land in about 50 districts. Where millets lost 2 points or more,
+    the land they gave up went to pulses (+4.7 points) and cotton (+4.1) at least as much as to
+    maize (+3.2).</p>
+  </div>
+</section>
+
+<!-- ============ 03 ============ -->
+<section class="section scene-sec" id="s3">
+  <div class="scene fade">
+    <p class="scene__kicker">03 · Rice in Andhra Pradesh and Telangana</p>
+    <h2 class="scene__h">Telangana added about 0.4 million hectares of rice by 2016&ndash;18, almost all of it in the rabi season.</h2>
+  </div>
+  <div class="scene-fig scene-fig--wide fade">
+    <div class="figure__frame">
+      <div class="legend" aria-hidden="true">
+        <span class="legend__item"><svg width="12" height="12"><rect x="1" y="1" width="10" height="10" fill="rgba(237,237,235,0.38)"/></svg>kharif rice</span>
+        <span class="legend__item"><svg width="12" height="12"><rect x="1" y="1" width="10" height="10" fill="#0E9BB5"/></svg>rabi rice</span>
+        <span class="legend__item"><svg width="12" height="12"><rect x="1.5" y="1.5" width="9" height="9" fill="none" stroke="#0E9BB5"/></svg>2019&ndash;20</span>
+      </div>
+      <div class="pair">
+        <div><p class="pair__t">Andhra Pradesh, 13 districts</p><div id="v3a" class="chart" role="img" aria-label="Rice area in Andhra Pradesh by year and season, 1998&ndash;99 to 2019&ndash;20. Kharif rice falls from about 1.9 to 1.5 million hectares; rabi rice varies between 0.5 and 1.0 million hectares with no clear trend."></div></div>
+        <div><p class="pair__t">Telangana, 9 districts</p><div id="v3b" class="chart" role="img" aria-label="Rice area in Telangana by year and season, 1998&ndash;99 to 2019&ndash;20. Rabi rice rises from about 0.4 to 0.9 million hectares in 2016&ndash;17 to 2018&ndash;19, and both seasons jump in 2019&ndash;20 to 3.2 million hectares in all."></div></div>
+      </div>
+      <p class="figure__note"><span>Rice area by season in million hectares, on one scale for both
+      states. Districts on 2011 boundaries: the 13 districts that make up Andhra Pradesh today and
+      the 9 that make up Telangana. Hover or tap a bar for the year's figures.</span><button class="replay" data-scene="3" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Between 1998&ndash;2000 and 2016&ndash;18, Telangana's rice area grew by 420 thousand
+    hectares (standard error 146), 398 thousand of it rabi rice. The rice share of its gross
+    cropped area rose 3.1 points (1.5), and rose in 7 of its 9 districts. Set against the rest of
+    India, the gain in rice area holds clearly, at +0.35 in logs with p below 0.001. The matching
+    gain in district rice share, +2.3 points, has p = 0.17.</p>
+    <p>A single season, 2019&ndash;20, added close to half a million hectares more. Counting it,
+    the gain comes to about 0.9 million hectares and 7.8 points of share, 613 thousand hectares
+    of it rabi. Over the same two decades Telangana's millet share fell about 12 points and its
+    cotton share rose about 16.</p>
+    <p>In Andhra Pradesh rice area fell by 442 thousand hectares (143), mostly in the kharif.
+    The Godavari and Krishna delta led the fall: West Godavari lost 16.0 points of rice share,
+    Krishna 14.0, Prakasam 13.3 and Guntur 8.3. Gross cropped area in the state fell by 709
+    thousand hectares (278) at the same time, which leaves the state's rice share 2.7 points
+    lower (2.0), within reach of no change at all.</p>
+  </div>
+</section>
+
+<!-- ============ 04 ============ -->
+<section class="section scene-sec" id="s4">
+  <div class="scene fade">
+    <p class="scene__kicker">04 · Missions and prices</p>
+    <h2 class="scene__h">Districts that joined the pulses mission in 2007 show no rise in pulse share against their 2002&ndash;07 level.</h2>
+  </div>
+  <div class="scene-fig fade">
+    <div class="figure__frame">
+      <div class="ctl ctl--scroll" id="v4-ctl" role="group" aria-label="Mission"></div>
+      <p class="readout readout--line" id="v4-read" aria-live="polite"></p>
+      <div id="v4" class="chart" role="img" aria-label="Difference in pulse share between pulses mission districts and other districts by year around 2007&ndash;08 entry. The gap narrows from about minus 3.4 points in 1997 to near zero by 2003, dips to about minus 1.4 in 2004 and 2005, and stays within a point of zero after entry. Buttons switch to the rice and wheat missions."></div>
+      <p class="figure__note"><span>Difference between mission districts and other districts in
+      the crop's share of gross cropped area, in percentage points, by year around entry in
+      2007&ndash;08, with 2006&ndash;07 set to zero. Bars are 95 percent intervals. Comparisons are
+      within district and within state and year. The pulses comparison ends in 2009&ndash;10,
+      when the mission reached every district in those states.</span><button class="replay" data-scene="4" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>The National Food Security Mission began in 2007&ndash;08 in selected districts, with
+    separate lists for rice, wheat and pulses. Pulse-mission districts were catching up with the
+    rest on pulse share from 1997&ndash;98 until about 2002&ndash;03, and the climb stops there.
+    Measured against 2002&ndash;07, entry brought no detectable change in pulse share, +0.36
+    points (standard error 0.35), or in pulse area, +0.9 percent (4.1). A rise of more than about
+    one point, on a mean share of 18 percent, is ruled out.</p>
+    <p>The rice and wheat missions did not raise their own crop's share either. Rice share moved
+    &minus;0.15 points (0.48) and wheat share &minus;0.47 (0.43). Giving mission districts their
+    own linear trend puts the rice estimate at &minus;1.3 points (0.4), so rice leans
+    negative.</p>
+    <p>The Odisha Millets Mission started in 2017. In its first seven districts, ragi area went
+    from 43 thousand hectares in 2016&ndash;17 to 34 thousand in 2019&ndash;20, continuing a slide
+    from 66 thousand in 2010. Districts outside the mission grow almost no millets, which leaves
+    nothing to compare against and no causal estimate.</p>
+    <p>Minimum support prices rose sharply in 2018&ndash;19, most for millets and cotton. A
+    district's exposure is its earlier crop mix weighted by each crop's price increase. More
+    exposed districts did not move area toward the crops whose price rose most. No group's
+    response survives a correction for testing nine groups, and reshuffling the price increases
+    across groups gives p = 0.60.</p>
+  </div>
+</section>
+
+<!-- ============ 05 ============ -->
+<section class="section scene-sec" id="s5">
+  <div class="scene fade">
+    <p class="scene__kicker">05 · Rainfall shocks</p>
+    <h2 class="scene__h">After a monsoon 20 percent or more below normal, the following rabi is about 6 percent smaller.</h2>
+  </div>
+  <div class="scene-fig fade">
+    <div class="figure__frame">
+      <div class="ctl ctl--scroll" id="v5-ctl" role="group" aria-label="Outcome"></div>
+      <p class="readout readout--line" id="v5-read" aria-live="polite"></p>
+      <div id="v5" class="chart" role="img" aria-label="Change in total rabi area by June&ndash;September rainfall band. Rabi area is about 11 percent smaller after a monsoon 40 percent or more short and about 5 percent smaller after one 20 to 40 percent short, with no clear change in the wetter bands. Buttons switch to rabi rice area, rabi pulse area and next-kharif millet area."></div>
+      <p class="figure__note"><span>Change in area against a year with June&ndash;September
+      rainfall within 10 percent of the district's own 1997&ndash;2019 average, with 95 percent
+      intervals. Comparisons are within district and within state and year. Rabi is matched to the
+      monsoon just before it, and the millet panel to the kharif a year after the monsoon.</span><button class="replay" data-scene="5" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Each district's June&ndash;September rainfall is set against its own average. After a
+    monsoon 20 percent or more short, rabi area comes in about 6 percent smaller, &minus;0.063 in
+    logs with a standard error of 0.013, and the loss grows with the shortfall. It falls on the
+    less irrigated two-thirds of districts, about 10 percent in each of those thirds, against
+    about 3 percent in the most irrigated third.</p>
+    <p>Farmers do not plant more rabi millet after a dry monsoon. Millet area holds steady as the
+    other rabi crops shrink around it, so millet's share rises by 0.2 to 0.4 points on a mean of
+    4.3.</p>
+    <p>Rabi rice gives way. Where it is grown, mostly in Andhra Pradesh, Karnataka and the
+    north-east, a dry monsoon cuts rabi rice area by about a quarter, &minus;0.255 in logs
+    (0.063), and rice loses about 3.3 points of rabi share, some of it to pulses. In the least
+    irrigated third of districts rabi pulse area falls about a fifth, &minus;0.22 in logs
+    (0.055), while wheat area there holds steady.</p>
+    <p>A wet monsoon leaves a smaller mark on the next kharif. In millet-growing districts,
+    millet area is about 5 percent lower after a monsoon 20 percent or more above normal, with
+    total kharif area unchanged. The matching fall in millet share is too weak to report as a
+    finding, and it does not grow with the size of the surplus.</p>
+  </div>
+
+  <div class="scene scene--method fade">
+    <details class="method">
+      <summary>How the comparisons are made</summary>
+      <div class="method__body">
+        <p>Crop area comes from district agricultural statistics by season for 1997&ndash;98 to
+        2019&ndash;20. Districts are held on their 2011 boundaries, and a district created later
+        is added back to the one it was carved from. The trend comparisons use the 467 districts
+        with at least two usable years in each window. Andhra Pradesh and Telangana are separated
+        by their 2011 districts. Season shares are used only where the season split holds: it
+        does not for Odisha in 2001&ndash;02 to 2004&ndash;05, for Bihar rice in 1999&ndash;2001,
+        or for Tamil Nadu rice before 2017&ndash;18, which is reported once a year.</p>
+        <p>Niger seed reported in Andhra Pradesh from 2015&ndash;16 to 2019&ndash;20 and moth
+        reported in Gujarat in 1998&ndash;99 imply far more cropped area than those districts
+        carry in any other year, and both are left out. Madhya Pradesh wheat in 2018&ndash;19 and
+        2019&ndash;20 is well above earlier years but agrees with the state's own production
+        figures, so it stays in, with 2016&ndash;18 as the alternative end window.</p>
+        <p>The national change is the change in summed group area over summed gross cropped area,
+        with a standard error from resampling districts 1,000 times. The typical district's
+        change is the plain mean of district changes.</p>
+
+        <div class="tbl-wrap">
+          <table class="tight" id="tbl-map">
+            <caption>Crop names in the district statistics and the group each belongs to.</caption>
+            <thead><tr><th>Group</th><th>Crops</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <p class="tbl-note">Guar is a legume grown mostly for gum and fodder, and coconut a
+          plantation crop, so both sit with other crops. Barley and other cereals do too.</p>
+        </div>
+
+        <p>The missions are compared with a stacked event study. Each entry year is compared only
+        with districts not yet in the mission, and every comparison holds district and state-year
+        baselines, with uncertainty that lets a 2011 district's years move together. The pulses
+        result depends on the baseline years. Against the single year before entry the change is
+        &minus;0.30 points (0.27); against 2004&ndash;06 it is +1.13 (0.39), because those two
+        years dip. Dropping one state at a time keeps the change against 2003&ndash;07 between
+        +0.13 and +0.56 points. From 2019&ndash;20 the Odisha statistics cover 39 crops in
+        place of 13 or 14, adding jowar, bajra and the small millets in that year alone, so the
+        ragi series is the only millet record that runs unbroken through the mission.</p>
+        <p>The price comparison takes each crop's 2018&ndash;19 increase in the minimum support
+        price in excess of its 2013&ndash;17 average, weights it by the district's 2013&ndash;16
+        crop shares, and follows each group's share from 2008 to 2019. Taking 2019&ndash;20 on its
+        own, only pulses move, +0.50 points (0.22), one result in nine.</p>
+        <p>Rainfall is the IMD 0.25 degree gridded daily series, averaged over each district.
+        Rabi area is set against that crop year's monsoon. Each estimate holds district and
+        state-year baselines and clusters on the 2011 district, 586 in all. District-years whose
+        annual totals are unreliable are left out, as is 1997&ndash;98; the total rabi area
+        estimate also leaves out milder jumps in cropped area. Reshuffling whole rainfall years
+        300 times gives p = 0.003 for total rabi area, and clustering on state gives p = 0.012.
+        By irrigation third the rabi area change is &minus;0.095 (0.035), &minus;0.106 (0.022) and
+        &minus;0.026 (0.014) in logs. Rabi rice is grown in 49 districts, 22 in
+        Andhra Pradesh, 9 in Karnataka, 16 in the north-east and 2 in Goa, and the estimate rests
+        on the 45 of them with usable years. The least irrigated
+        third includes many hill and north-eastern districts, where rabi wheat is mostly rainfed;
+        without them the rabi pulse area change is &minus;0.21 (0.084).</p>
+        <p>We also asked whether a change in one district's crop mix spreads to its neighbours.
+        Within a state and year, adjacent districts' shares move together strongly in the same
+        year, at 0.57 (0.04) for pulses, 0.53 (0.06) for millets and 0.70 (0.05) for oilseeds, and
+        most of that reverses the following year. A district's change in pulse share follows its
+        neighbours' change of the year before by about 0.05 to 0.07 per point, with p between 0.01
+        and 0.24 depending on how uncertainty is measured. Districts in the same state about 100
+        kilometres away, sharing no border, carry the same link, 0.057 (0.019) against 0.053
+        (0.034) for neighbours, which fits a shared regional pattern better than spread across
+        borders. Millet changes show no positive link to neighbours' earlier changes. On a
+        neighbour network where every link runs both ways, these data cannot establish spread
+        from district to district, and cannot rule it out.</p>
+      </div>
+    </details>
+    <p><a href="data.html" class="next">Data and methods &rarr;</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <h4>Sources</h4>
+      <p style="font-size:.9rem">Crop area by district and season from district agricultural
+      statistics for 1997&ndash;98 to 2019&ndash;20, published by the Ministry of Agriculture and
+      Farmers Welfare. Daily gridded rainfall from the India Meteorological Department. Mission
+      district lists from the mission guidelines and orders, minimum support prices from the
+      Economic Survey and the Commission for Agricultural Costs and Prices, and Odisha Millets
+      Mission reports.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="irrigation.html">Irrigation</a></li>
+        <li><a href="markets.html">Markets</a></li>
+        <li><a href="crop-groups.html">Crop groups</a></li>
+        <li><a href="data.html">Data &amp; methods</a></li>
+        <li><a href="diversity.html">Maps</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Reference</h4>
+      <ul>
+        <li><a href="https://github.com/mridlll/crop-diversity">Repository</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js?v=e2b6885b"></script>
+<script src="js/crop-groups.js?v=c445c82e"></script>
+</body>
+</html>

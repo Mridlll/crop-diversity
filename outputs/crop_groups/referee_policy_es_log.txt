@@ -159,3 +159,29 @@ R10 OMM ATT dropping 2019-20 (coverage break); only the 2017 and 2018 cohorts re
   share_gca_millets  without 2019-20  ATT -0.0054 (0.0025)  95% CI -0.0104 to -0.0016
   ln1p_millets       with 2019-20     ATT +0.6385 (0.3555)  95% CI -0.0293 to +1.4225
   ln1p_millets       without 2019-20  ATT -0.1553 (0.3342)  95% CI -0.8159 to +0.4575
+
+R11 OMM with a consistent basket: Odisha reports only 13-14 crops in 2005-18 (millets = ragi
+    only) and 39 in 2019-20. Outcome: ragi area and ragi share of the area of the crops
+    reported in every year 2005-2019.
+  consistent basket (13): Groundnut, Horse-Gram, Jute, Maize, Moong(Green Gram), Potato, Ragi, Rapeseed &Mustard, Rice, Sesamum, Sugarcane, Urad, Wheat
+  ragi area (kha) by cohort-year 2015-2019:
+c     0.0     2017.0  2018.0  2019.0
+yr                                  
+2015     0.1    41.6     1.4     2.6
+2016     0.1    43.2     1.7     2.1
+2017     0.0    41.6     0.6     0.4
+2018     0.0    34.1     0.6     2.0
+2019     0.0    33.8     0.7     1.3
+  ragi_share_c  ATT -0.0052 (0.0030)  95% CI -0.0119 to -0.0012  RI p 0.04; mean pre placebo +0.0032
+  ln1p_ragi     ATT +0.2821 (0.4014)  95% CI -0.4598 to +1.1599  RI p 0.51; mean pre placebo -0.0742
+
+R12 MSP C1 dropping Odisha (exposure built from a 14-crop basket; 2019-20 coverage break)
+  rice      avg 2018-19 per SD +0.0044 (0.0028)
+  wheat     avg 2018-19 per SD -0.0018 (0.0015)
+  maize     avg 2018-19 per SD +0.0012 (0.0015)
+  millets   avg 2018-19 per SD -0.0023 (0.0030)
+  pulses    avg 2018-19 per SD +0.0029 (0.0019)
+  oilseeds  avg 2018-19 per SD +0.0004 (0.0019)
+  cotton    avg 2018-19 per SD -0.0006 (0.0016)
+  sugarcane avg 2018-19 per SD +0.0007 (0.0006)
+  other     avg 2018-19 per SD -0.0049 (0.0026)
