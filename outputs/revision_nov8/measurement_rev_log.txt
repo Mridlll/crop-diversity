@@ -1,0 +1,23 @@
+Area-weighted, 500 districts, 1998-99 to 2019-20
+  raw   21.24 ->  25.35  (+4.11)
+  t01   14.41 ->  14.36  (-0.04)
+  t05   10.39 ->   9.91  (-0.48)
+  t1     8.42 ->   8.04  (-0.38)
+  D1     5.58 ->   5.48  (-0.10)
+  crops under 0.1% of land: 6.83 -> 10.98
+  raw rise to 2019 by start year: {1998: 4.11, 1999: 1.62, 2002: 0.44}
+  window change (2013-19 mean minus 1998-2004 mean): {'raw': -0.321, 't01': -1.123, 't05': -0.768, 't1': -0.485, 'D1': -0.093}
+
+Season sample: 560 districts
+  all  n=560 annual 4.85  within(own) 2.63  within(mon) 3.02  between share 0.418/0.337
+  rw   n=116 annual 4.25  within(own) 1.99  within(mon) 2.13  between share 0.582/0.529
+  rr   n= 39 annual 3.70  within(own) 2.17  within(mon) 2.55  between share 0.423/0.296
+  pr   n=163 annual 5.58  within(own) 2.78  within(mon) 3.13  between share 0.438/0.376
+  r1   n=141 annual 3.67  within(own) 2.41  within(mon) 2.83  between share 0.322/0.210
+  ot   n= 96 annual 6.63  within(own) 3.72  within(mon) 4.40  between share 0.323/0.243
+  [own] rice-then-wheat among 50 largest fallers: 23; mean move of rice-then-wheat -63.9; rice-twice median move 3.0
+  [mon] rice-then-wheat among 50 largest fallers: 37; mean move of rice-then-wheat -74.6; rice-twice median move 18.0
+  example rw: Ludhiana, Punjab annual 2.32 within 1.13/1.16 over 22 years
+  example rr: Purba Bardhaman, West Bengal annual 2.12 within 1.33/1.50 over 22 years
+
+WROTE D:/crop-diversity/docs/data/site_measurement_rev.json

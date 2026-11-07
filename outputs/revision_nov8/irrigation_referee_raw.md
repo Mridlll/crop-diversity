@@ -1,0 +1,123 @@
+# Irrigation panel: referee re-check
+
+## R1 reproduce main
+- main [D1] n=11,074, G=581: irr +1.636 (0.537, p=0.002); irr2 -1.777 (0.464, p=0.000); peak 0.460 (0.057)
+- main linear [D1] n=11,074, G=581: irr -0.225 (0.192, p=0.241)
+
+## R2 decomposition around the district mean (m absorbed; m*dev = between-district slope heterogeneity)
+- share of residual irr^2 variance explained by 2*m*dev: R2 = 0.951
+- decomp irr + m*dev + dev^2 [D1] n=11,074, G=581: irr +1.690 (0.547, p=0.002); mdev -3.673 (0.945, p=0.000); dev2 -1.061 (0.731, p=0.148)
+- decomp irr + m*dev + dev^2 [D0_05] n=11,074, G=581: irr +2.317 (0.724, p=0.001); mdev -5.981 (1.281, p=0.000); dev2 -3.054 (0.898, p=0.001)
+- decomp irr + m*dev + dev^2 [D2] n=11,074, G=581: irr +1.519 (0.490, p=0.002); mdev -2.778 (0.852, p=0.001); dev2 -0.580 (0.659, p=0.379)
+- decomp irr + m*dev + dev^2 [even] n=11,074, G=581: irr +0.054 (0.028, p=0.055); mdev -0.098 (0.047, p=0.036); dev2 -0.018 (0.034, p=0.606)
+- decomp irr + m*dev + dev^2 [D0] n=11,074, G=581: irr +1.502 (0.939, p=0.110); mdev -4.344 (1.848, p=0.019); dev2 -2.521 (1.348, p=0.062)
+
+## R3 mechanical area / denominator
+- main + log NSA + log APY area [D1] n=11,074, G=581: irr +1.584 (0.543, p=0.004); irr2 -1.750 (0.464, p=0.000); lnsa -0.063 (0.169, p=0.708); lapy +0.181 (0.135, p=0.179); peak 0.452 (0.062)
+- log NIA and log NSA entered separately (linear) [D1] n=11,074, G=581: lnia +0.072 (0.033, p=0.027); lnsa -0.095 (0.161, p=0.557); lapy +0.166 (0.134, p=0.216)
+- main + log NSA + log APY area [D0_05] n=11,074, G=581: irr +2.357 (0.712, p=0.001); irr2 -2.994 (0.628, p=0.000); lnsa +0.140 (0.221, p=0.525); lapy +0.017 (0.167, p=0.918); peak 0.394 (0.056)
+- log NIA and log NSA entered separately (linear) [D0_05] n=11,074, G=581: lnia +0.104 (0.053, p=0.051); lnsa +0.138 (0.221, p=0.533); lapy -0.024 (0.167, p=0.886)
+- only years with |dlog NSA| < 0.05 [D1] n=7,954, G=567: irr +0.993 (0.588, p=0.092); irr2 -1.156 (0.541, p=0.033); peak 0.430 (0.092)
+- only years with |dlog NSA| < 0.05, linear [D1] n=7,954, G=567: irr -0.260 (0.196, p=0.186)
+  APY area / LUS GCA: median 0.924; district-years within 20% of own median ratio: 89.3%
+- APY area within 20% of its usual ratio to LUS GCA [D1] n=9,875, G=579: irr +1.360 (0.577, p=0.019); irr2 -1.489 (0.494, p=0.003); peak 0.457 (0.071)
+- APY area within 20% of its usual ratio to LUS GCA [D0_05] n=9,875, G=579: irr -0.875 (0.314, p=0.005)
+
+## R4 crop-data defect flags (crop_groups, 2011-unit level)
+  flagged annual-unreliable district-years in E: 689 of 11,099
+- drop flag_annual_unreliable [D1] n=10,378, G=579: irr +1.475 (0.525, p=0.005); irr2 -1.609 (0.469, p=0.001); peak 0.458 (0.057)
+- drop flag_annual_unreliable, linear [D1] n=10,378, G=579: irr -0.229 (0.173, p=0.187)
+- drop flag_annual_unreliable [D0_05] n=10,378, G=579: irr +2.243 (0.724, p=0.002); irr2 -2.929 (0.632, p=0.000); peak 0.383 (0.059)
+- drop flag_annual_unreliable, linear [D0_05] n=10,378, G=579: irr -0.858 (0.299, p=0.004)
+- drop annual and season flags [D1] n=9,204, G=560: irr +1.444 (0.535, p=0.007); irr2 -1.502 (0.485, p=0.002); peak 0.481 (0.057)
+
+## R5 district-specific linear trends
+- district FE + district trends + state x year FE [D1_dt] n=11,067, G=574: irr_dt +2.359 (0.482, p=0.000); irr_dt2 -2.237 (0.385, p=0.000); peak 0.527 (0.042)
+- same, linear [D1_dtL] n=11,067, G=574: irr_dtL +0.046 (0.200, p=0.818)
+- district FE + district trends + state x year FE [D0_05_dt] n=11,067, G=574: irr_dt +2.274 (0.646, p=0.000); irr_dt2 -2.325 (0.581, p=0.000); peak 0.489 (0.057)
+- same, linear [D0_05_dtL] n=11,067, G=574: irr_dtL -0.130 (0.271, p=0.633)
+- district FE + district trends + state x year FE [D2_dt] n=11,067, G=574: irr_dt +2.104 (0.433, p=0.000); irr_dt2 -1.889 (0.336, p=0.000); peak 0.557 (0.042)
+- same, linear [D2_dtL] n=11,067, G=574: irr_dtL +0.151 (0.175, p=0.387)
+- district FE + district trends + state x year FE [even_dt] n=11,067, G=574: irr_dt +0.091 (0.027, p=0.001); irr_dt2 -0.084 (0.022, p=0.000); peak 0.544 (0.055)
+- same, linear [even_dtL] n=11,067, G=574: irr_dtL +0.004 (0.010, p=0.653)
+
+## R6 timing
+- lead only (t+1 irrigation) [D1] n=10,392, G=574: irr_lead +0.675 (0.477, p=0.157); irr_lead2 -1.062 (0.428, p=0.013); peak 0.318 (0.113)
+- current, same sample as lead [D1] n=10,392, G=574: irr +1.802 (0.541, p=0.001); irr2 -1.950 (0.457, p=0.000); peak 0.462 (0.054)
+- lag only (t-1) [D1] n=10,392, G=574: irr_lag +0.388 (0.459, p=0.398); irr_lag2 -0.715 (0.422, p=0.091); peak 0.271 (0.183)
+- current, same sample as lag [D1] n=10,392, G=574: irr +1.687 (0.554, p=0.002); irr2 -1.734 (0.481, p=0.000); peak 0.487 (0.058)
+- lag, current, lead together [D1] n=9,748, G=574: irr_lag -0.901 (0.338, p=0.008); irr_lag2 +0.473 (0.292, p=0.106); irr +2.549 (0.472, p=0.000); irr2 -2.202 (0.349, p=0.000)
+
+## R7 inference: cluster by state
+- main, state clusters [D1] n=11,074, G=27: irr +1.636 (1.244, p=0.200); irr2 -1.777 (1.058, p=0.105); peak 0.460 (0.091)
+- main, state clusters [D0_05] n=11,074, G=27: irr +2.322 (1.063, p=0.038); irr2 -2.995 (0.930, p=0.003); peak 0.388 (0.073)
+- main, state clusters [D0] n=11,074, G=27: irr +1.527 (0.916, p=0.108); irr2 -2.199 (0.863, p=0.017); peak 0.347 (0.133)
+- main, state clusters [D2] n=11,074, G=27: irr +1.463 (1.098, p=0.194); irr2 -1.327 (0.925, p=0.163); peak 0.551 (0.066)
+- main, state clusters [even] n=11,074, G=27: irr +0.052 (0.048, p=0.290); irr2 -0.047 (0.043, p=0.291); peak 0.560 (0.079)
+- main, state clusters [cereal_share] n=11,074, G=27: irr -0.090 (0.044, p=0.048); irr2 +0.114 (0.051, p=0.035); peak 0.396 (0.099)
+- linear, state clusters [D1] n=11,074, G=27: irr -0.225 (0.251, p=0.379)
+- linear, state clusters [D0_05] n=11,074, G=27: irr -0.815 (0.312, p=0.015)
+
+## R8 D0 thresholds
+- within linear [D0_025] n=11,074, G=581: irr -1.340 (0.332, p=0.000)
+- within linear, drop flags [D0_025] n=10,378, G=579: irr -1.220 (0.346, p=0.000)
+- within linear [D0_05] n=11,074, G=581: irr -0.815 (0.290, p=0.005)
+- within linear, drop flags [D0_05] n=10,378, G=579: irr -0.858 (0.299, p=0.004)
+- within linear [D0_1] n=11,074, G=581: irr -0.609 (0.268, p=0.023)
+- within linear, drop flags [D0_1] n=10,378, G=579: irr -0.626 (0.267, p=0.019)
+- within linear [D0_2] n=11,074, G=581: irr -0.432 (0.242, p=0.075)
+- within linear, drop flags [D0_2] n=10,378, G=579: irr -0.363 (0.243, p=0.136)
+- within linear [top_share] n=11,074, G=581: irr -0.027 (0.017, p=0.105)
+- within linear, drop flags [top_share] n=10,378, G=579: irr -0.022 (0.015, p=0.143)
+
+Long differences: n=407
+- LD state FE [dD1] n=406, G=406: dirr -0.435 (0.440, p=0.323)
+- LD state FE + baseline irr [dD1] n=406, G=406: dirr -0.492 (0.485, p=0.311); irr_0 -0.135 (0.355, p=0.705)
+- LD state FE + baseline irr + baseline outcome [dD1] n=406, G=406: dirr -0.782 (0.437, p=0.074); irr_0 -0.747 (0.327, p=0.023); D1_0 -0.219 (0.040, p=0.000)
+- LD state FE [dD0] n=406, G=406: dirr -2.445 (1.105, p=0.027)
+- LD state FE + baseline irr [dD0] n=406, G=406: dirr -3.218 (1.146, p=0.005); irr_0 -1.817 (0.811, p=0.026)
+- LD state FE + baseline irr + baseline outcome [dD0] n=406, G=406: dirr -2.608 (1.100, p=0.018); irr_0 -2.048 (0.834, p=0.014); D0_0 -0.186 (0.045, p=0.000)
+- LD state FE [dD0_025] n=406, G=406: dirr -3.273 (0.780, p=0.000)
+- LD state FE + baseline irr [dD0_025] n=406, G=406: dirr -4.037 (0.866, p=0.000); irr_0 -1.799 (0.679, p=0.008)
+- LD state FE + baseline irr + baseline outcome [dD0_025] n=406, G=406: dirr -4.264 (0.828, p=0.000); irr_0 -2.532 (0.671, p=0.000); D0_025_0 -0.240 (0.042, p=0.000)
+- LD state FE [dD0_05] n=406, G=406: dirr -2.520 (0.777, p=0.001)
+- LD state FE + baseline irr [dD0_05] n=406, G=406: dirr -3.178 (0.826, p=0.000); irr_0 -1.550 (0.570, p=0.007)
+- LD state FE + baseline irr + baseline outcome [dD0_05] n=406, G=406: dirr -3.624 (0.779, p=0.000); irr_0 -2.410 (0.560, p=0.000); D0_05_0 -0.267 (0.037, p=0.000)
+- LD state FE [dD0_1] n=406, G=406: dirr -1.157 (0.686, p=0.092)
+- LD state FE + baseline irr [dD0_1] n=406, G=406: dirr -1.589 (0.725, p=0.029); irr_0 -1.017 (0.515, p=0.049)
+- LD state FE + baseline irr + baseline outcome [dD0_1] n=406, G=406: dirr -2.393 (0.670, p=0.000); irr_0 -2.099 (0.497, p=0.000); D0_1_0 -0.322 (0.036, p=0.000)
+- LD state FE [dD0_2] n=406, G=406: dirr -0.235 (0.597, p=0.694)
+- LD state FE + baseline irr [dD0_2] n=406, G=406: dirr -0.369 (0.625, p=0.555); irr_0 -0.315 (0.442, p=0.476)
+- LD state FE + baseline irr + baseline outcome [dD0_2] n=406, G=406: dirr -1.053 (0.545, p=0.054); irr_0 -1.325 (0.408, p=0.001); D0_2_0 -0.348 (0.041, p=0.000)
+- LD state FE [dtop_share] n=406, G=406: dirr -0.013 (0.034, p=0.695)
+- LD state FE + baseline irr [dtop_share] n=406, G=406: dirr -0.019 (0.036, p=0.608); irr_0 -0.012 (0.027, p=0.652)
+- LD state FE + baseline irr + baseline outcome [dtop_share] n=406, G=406: dirr -0.012 (0.031, p=0.709); irr_0 +0.029 (0.025, p=0.245); top_share_0 -0.310 (0.042, p=0.000)
+  no NSA break and no defect flag in any year: n=231
+- LD clean [dD1] n=229, G=229: dirr -0.135 (0.763, p=0.860); irr_0 -0.015 (0.411, p=0.970)
+- LD clean [dD0_05] n=229, G=229: dirr -2.956 (1.132, p=0.010); irr_0 -1.789 (0.674, p=0.009)
+- LD clean [dD0_1] n=229, G=229: dirr -1.707 (1.079, p=0.115); irr_0 -0.831 (0.668, p=0.214)
+
+## R9 cross-section of the LUS share, year by year (state FE, district clusters on 2011 parent)
+- 1998: n=434, irr2 -5.98 (1.46), peak 0.290 (0.071)
+- 1999: n=458, irr2 -6.13 (1.31), peak 0.251 (0.068)
+- 2000: n=446, irr2 -6.88 (1.32), peak 0.307 (0.054)
+- 2001: n=474, irr2 -4.49 (1.20), peak 0.232 (0.099)
+- 2002: n=491, irr2 -6.09 (1.26), peak 0.284 (0.061)
+- 2003: n=479, irr2 -4.88 (1.11), peak 0.228 (0.079)
+- 2004: n=517, irr2 -3.55 (1.11), peak 0.173 (0.119)
+- 2005: n=479, irr2 -4.65 (1.21), peak 0.263 (0.076)
+- 2006: n=485, irr2 -5.68 (1.14), peak 0.258 (0.061)
+- 2007: n=517, irr2 -6.25 (1.11), peak 0.265 (0.052)
+- 2008: n=528, irr2 -5.25 (1.08), peak 0.268 (0.059)
+- 2009: n=538, irr2 -6.46 (1.12), peak 0.296 (0.043)
+- 2010: n=539, irr2 -5.46 (1.04), peak 0.250 (0.062)
+- 2011: n=537, irr2 -7.06 (1.12), peak 0.301 (0.040)
+- 2012: n=513, irr2 -6.76 (1.01), peak 0.306 (0.041)
+- 2013: n=504, irr2 -7.64 (1.06), peak 0.319 (0.034)
+- 2014: n=533, irr2 -7.05 (1.03), peak 0.325 (0.032)
+- 2015: n=525, irr2 -6.69 (1.13), peak 0.288 (0.043)
+- 2016: n=525, irr2 -6.61 (1.10), peak 0.309 (0.041)
+- 2017: n=524, irr2 -7.29 (1.07), peak 0.324 (0.034)
+- 2018: n=523, irr2 -6.18 (1.07), peak 0.345 (0.040)
+- 2019: n=523, irr2 -7.06 (1.08), peak 0.353 (0.034)
+  peaks: median 0.289, range 0.173 to 0.353

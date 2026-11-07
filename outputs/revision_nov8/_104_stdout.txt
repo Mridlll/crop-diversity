@@ -1,0 +1,187 @@
+# seasons log
+District-years: 14,089; with a season pool: 14,061
+Reproduces script 76 annual D1: max abs diff 1.78e-15 on 14,089 rows
+District-years with no 2011 unit: 0
+Season-reliable district-years: 12,684 of 14,089
+LUS cropping intensity available for 12,439 district-years (0.9-3.0 kept)
+606 sample districts with >= 5 season-reliable years: 561
+Dropped from the 606 for want of season-reliable years: 45 ({'TAMIL NADU': 31, 'KERALA': 13, 'ANDAMAN AND NICOBAR ISLANDS': 1})
+                 var       mean        se    n     median        p10        p90
+0             D0_ann  21.056469  0.294253  561  22.391304  10.695652  29.521739
+1             D1_ann   4.834941  0.094515  561   4.285098   2.384714   7.909456
+2             D2_ann   3.416881  0.068853  561   3.010175   1.682151   5.589148
+3               D0_K  15.016090  0.246810  561  14.521739   6.900000  22.304348
+4               D1_K   3.411538  0.082098  561   2.843018   1.494586   6.068403
+5               D2_K   2.494813  0.059691  561   2.038645   1.206937   4.372227
+6               D0_R  12.239130  0.207621  560  11.913043   5.821176  19.573913
+7               D1_R   3.842178  0.084788  560   3.391036   1.604190   6.779959
+8               D2_R   2.876456  0.060331  560   2.534693   1.284102   4.811595
+9              D0_ws  13.790101  0.222588  561  13.021060   6.691444  20.813946
+10             D1_ws   3.292354  0.064481  561   2.976808   1.690743   5.235878
+11             D2_ws   2.431142  0.045633  561   2.167131   1.358855   3.860479
+12         D1_ws_noW   2.769706  0.056258  561   2.407655   1.457428   4.560514
+13           A_alpha   2.625632  0.049407  561   2.338540   1.440118   4.309866
+14            B_beta   1.852954  0.016262  561   1.939483   1.268540   2.266776
+15        beta_share   0.419511  0.007169  561   0.418459   0.212239   0.644453
+16            ci_apy   1.451167  0.012585  561   1.434637   1.057461   1.871188
+17             ci_ay   1.771621  0.009559  561   1.810634   1.465074   2.038808
+18            ci_lus   1.414671  0.010989  557   1.370648   1.110412   1.802251
+19  apy_over_lus_gca   0.895438  0.006238  557   0.918834   0.750222   0.991345
+20        secc_2crop   0.345455  0.007907  560   0.313881   0.116369   0.609514
+gap annual - within-season D1: (1.5425869054952033, 0.0456486374381941, 561)
+area-weighted: {'D1_ann': 5.515220475310506, 'D1_ws': 3.636321622487704, 'B_beta': 1.9451114881195901, 'beta_share': 0.4245006893308012, 'ci_apy': 1.4991748963839193}
+                sys    n  D1_ann  D1_ann_se   D1_K  D1_K_se   D1_R  D1_R_se  D1_ws  D1_ws_se  D1_ws_noW  D1_ws_noW_se  A_alpha  A_alpha_se  B_beta  B_beta_se  beta_share  beta_share_se  ci_apy  ci_apy_se  ci_ay  ci_ay_se
+0        rice-wheat  117   4.250      0.138  2.494    0.107  2.248    0.079  2.363     0.079      2.056         0.072    1.986       0.067   2.158      0.016       0.582          0.014   1.806      0.012  1.981     0.009
+1         rice-rice   39   3.690      0.248  2.811    0.216  6.164    0.369  3.327     0.209      2.231         0.155    2.171       0.146   1.702      0.057       0.426          0.026   1.522      0.037  1.724     0.023
+2         rice-only  143   3.656      0.152  2.796    0.123  5.218    0.171  3.043     0.107      2.487         0.093    2.409       0.082   1.480      0.026       0.323          0.013   1.123      0.008  1.590     0.017
+3       maize-wheat   31   4.684      0.316  3.082    0.235  2.396    0.173  2.770     0.199      2.465         0.167    2.389       0.156   1.970      0.042       0.477          0.024   1.617      0.045  1.892     0.027
+4     soybean-wheat   28   5.578      0.281  3.470    0.280  3.109    0.124  3.334     0.195      2.746         0.169    2.644       0.150   2.143      0.039       0.462          0.018   1.590      0.032  1.942     0.023
+5  rice-wheat-light   22   6.150      0.382  4.095    0.355  3.613    0.199  3.668     0.221      3.190         0.165    3.034       0.152   2.008      0.050       0.397          0.013   1.519      0.030  1.885     0.029
+6       cotton-only   16   6.645      0.445  5.175    0.390  3.962    0.324  4.885     0.319      4.431         0.294    4.204       0.253   1.596      0.061       0.244          0.016   1.173      0.015  1.647     0.034
+7      cotton-other   16   6.690      0.632  4.842    0.572  3.042    0.351  4.223     0.475      3.772         0.408    3.395       0.363   2.047      0.068       0.409          0.033   1.547      0.060  1.856     0.053
+8      millet-based   19   7.377      0.605  6.280    0.622  3.921    0.372  5.112     0.459      4.291         0.352    3.794       0.270   1.941      0.060       0.341          0.018   1.379      0.059  1.762     0.035
+9             whole    6   3.500      0.605  2.688    0.587  2.815    0.353  2.601     0.385      1.897         0.292    1.762       0.207   1.952      0.224       0.535          0.057   1.547      0.085  1.546     0.087
+Top risers (more diverse within season than annual rank says):
+        district_name state_name        sys  D1_ann  D1_ws  D1_K   D1_R  B_beta  beta_share  ci_apy  rk_ann  rk_ws  rk_move
+56       KAMRUP METRO      ASSAM  rice-rice    2.35   3.19  1.90  10.49    1.70        0.62    1.52   512.0  246.0   -266.0
+52           GOLAGHAT      ASSAM  rice-only    2.92   3.77  1.96   9.25    1.94        0.62    1.16   441.0  180.0   -261.0
+62             NAGAON      ASSAM  rice-rice    3.49   4.24  2.59  10.13    1.98        0.54    1.40   374.0  129.0   -245.0
+55             KAMRUP      ASSAM  rice-rice    3.46   4.18  2.50  10.26    2.00        0.56    1.50   380.0  135.0   -245.0
+41              BAKSA      ASSAM  rice-only    3.34   3.98  1.97   9.82    2.00        0.58    1.25   397.0  158.0   -239.0
+44             CACHAR      ASSAM  rice-only    2.05   2.89  1.66   8.64    1.61        0.66    1.14   536.0  297.0   -239.0
+63            NALBARI      ASSAM  rice-only    3.13   3.64  2.02   9.15    1.92        0.57    1.27   418.0  187.0   -231.0
+65           SONITPUR      ASSAM  rice-only    3.44   4.02  2.16   8.86    2.05        0.58    1.29   384.0  155.0   -229.0
+53         HAILAKANDI      ASSAM  rice-only    2.19   2.83  1.67   7.41    1.70        0.68    1.12   526.0  300.0   -226.0
+51           GOALPARA      ASSAM  rice-rice    3.67   4.17  2.56  10.55    1.95        0.51    1.48   347.0  137.0   -210.0
+67           UDALGURI      ASSAM  rice-only    3.67   4.11  2.42   9.70    1.99        0.53    1.22   349.0  145.0   -204.0
+257  DAKSHINA KANNADA  KARNATAKA      whole    3.53   3.91  3.72   4.41    1.95        0.53    1.38   372.0  168.0   -204.0
+Top fallers:
+    district_name        state_name           sys  D1_ann  D1_ws  D1_K  D1_R  B_beta  beta_share  ci_apy  rk_ann  rk_ws  rk_move
+575    PRATAPGARH     UTTAR PRADESH    rice-wheat    4.31   2.23  2.74  1.75    2.16        0.53    1.84   278.0  398.0    120.0
+193        KANGRA  HIMACHAL PRADESH   maize-wheat    3.83   2.05  2.62  1.48    2.04        0.53    1.96   327.0  449.0    122.0
+197         MANDI  HIMACHAL PRADESH   maize-wheat    3.94   2.10  2.64  1.53    2.04        0.52    1.94   313.0  435.0    122.0
+76      DARBHANGA             BIHAR    rice-wheat    3.73   1.98  1.45  2.32    2.25        0.62    2.01   339.0  461.0    122.0
+187         SIRSA           HARYANA  cotton-other    4.00   2.10  2.24  1.97    2.05        0.52    1.76   308.0  433.0    125.0
+588     SULTANPUR     UTTAR PRADESH    rice-wheat    4.77   2.40  2.46  2.31    2.22        0.51    1.94   240.0  365.0    125.0
+200         SOLAN  HIMACHAL PRADESH   maize-wheat    3.68   1.90  2.20  1.60    2.02        0.54    1.90   346.0  473.0    127.0
+518     ALLAHABAD     UTTAR PRADESH    rice-wheat    4.71   2.35  2.43  2.29    2.15        0.50    1.82   245.0  372.0    127.0
+104        SUPAUL             BIHAR    rice-wheat    5.33   2.56  2.30  2.83    2.36        0.51    1.81   206.0  341.0    135.0
+89    MUZAFFARPUR             BIHAR    rice-wheat    4.09   2.04  1.56  2.39    2.49        0.65    1.99   303.0  452.0    149.0
+520        AMETHI     UTTAR PRADESH    rice-wheat    3.87   1.85  1.79  1.90    2.10        0.55    1.96   321.0  477.0    156.0
+97        SAHARSA             BIHAR    rice-wheat    4.14   2.01  1.47  2.43    2.29        0.58    2.08   296.0  455.0    159.0
+            ci           y    n  spearman    sp_p  beta_std_stateFE      se       p
+0       ci_lus      D1_ann  557   -0.0824  0.0520           -0.0282  0.0493  0.5668
+1       ci_lus       D1_ws  557   -0.3085  0.0000           -0.1055  0.0439  0.0163
+2       ci_lus     A_alpha  557   -0.3523  0.0000           -0.1746  0.0483  0.0003
+3       ci_lus      B_beta  557    0.5519  0.0000            0.3809  0.0340  0.0000
+4       ci_lus  beta_share  557    0.6237  0.0000            0.3593  0.0455  0.0000
+5       ci_apy      D1_ann  561    0.1580  0.0002            0.1712  0.0573  0.0028
+6       ci_apy       D1_ws  561   -0.1972  0.0000           -0.0152  0.0551  0.7819
+7       ci_apy     A_alpha  561   -0.1892  0.0000           -0.0456  0.0571  0.4248
+8       ci_apy      B_beta  561    0.7188  0.0000            0.4903  0.0458  0.0000
+9       ci_apy  beta_share  561    0.6341  0.0000            0.3170  0.0486  0.0000
+10       ci_ay      D1_ann  561    0.1424  0.0007            0.1055  0.0499  0.0343
+11       ci_ay       D1_ws  561   -0.1517  0.0003            0.0103  0.0473  0.8273
+12       ci_ay     A_alpha  561   -0.1229  0.0035           -0.0240  0.0545  0.6601
+13       ci_ay      B_beta  561    0.6204  0.0000            0.3156  0.0415  0.0000
+14       ci_ay  beta_share  561    0.4888  0.0000            0.1876  0.0429  0.0000
+15  secc_2crop      D1_ann  560    0.1004  0.0174           -0.0643  0.0495  0.1933
+16  secc_2crop       D1_ws  560   -0.1777  0.0000           -0.0801  0.0431  0.0628
+17  secc_2crop     A_alpha  560   -0.1823  0.0000           -0.1716  0.0481  0.0004
+18  secc_2crop      B_beta  560    0.6205  0.0000            0.2629  0.0394  0.0000
+19  secc_2crop  beta_share  560    0.5397  0.0000            0.2570  0.0416  0.0000
+CI cross-validation: {'lus_apy': SignificanceResult(statistic=0.7198104816021302, pvalue=4.8464057620158195e-90), 'lus_ay': SignificanceResult(statistic=0.6611829970780947, pvalue=2.750870188755857e-71), 'lus_secc': SignificanceResult(statistic=0.5869985640310805, pvalue=8.672838020263546e-53), 'apy_ay': SignificanceResult(statistic=0.7110639847433181, pvalue=1.4701571928755707e-87), 'apy_secc': SignificanceResult(statistic=0.6625846223302113, pvalue=4.601184532552718e-72), 'ay_secc': SignificanceResult(statistic=0.6475253080546439, pvalue=7.260284491291754e-68)}
+district+year FE, H_beta on LUS CI: 0.1127 (se 0.0158, p 1.1e-12, n 10398, districts 557)
+district+year FE, bshare_y on LUS CI: 0.0504 (se 0.0116, p 1.3e-05, n 10398, districts 557)
+district+year FE, H_alpha on LUS CI: -0.0252 (se 0.0255, p 0.32, n 10398, districts 557)
+district+year FE, H_ann on LUS CI: 0.0876 (se 0.0289, p 0.0025, n 10398, districts 557)
+main (flags applied): b2 H_ann -1.4927 = H_alpha -1.4527 + H_beta -0.0400
+flags ignored: b2 H_ann -1.4312 = H_alpha -1.3253 + H_beta -0.1058
+drop shared parents: b2 H_ann -1.2901 = H_alpha -1.3551 + H_beta 0.0650
+                  sample               y    n      b1      b2      p2       tp     tp_lo     tp_hi  slope_p2  slope_p98  slope_p98_p      r2
+0   main (flags applied)  D1_exp_shannon  561  4.6308 -7.1593  0.0000   0.3234    0.2310    0.4158    2.6546    -8.9672       0.0000  0.5532
+1   main (flags applied)          D1_ann  561  4.5808 -7.1191  0.0000   0.3217    0.2291    0.4143    2.6158    -8.9408       0.0000  0.5589
+2   main (flags applied)           D1_ws  561  2.6360 -4.3321  0.0000   0.3042    0.2038    0.4047    1.4402    -5.5923       0.0000  0.6156
+3   main (flags applied)       D1_ws_noW  561  1.6139 -3.6863  0.0000   0.2189    0.0893    0.3486    0.5964    -5.3877       0.0000  0.5781
+4   main (flags applied)            D1_K  561  2.4730 -4.4057  0.0003   0.2807    0.1371    0.4242    1.2569    -5.8950       0.0000  0.5575
+5   main (flags applied)            D1_R  514  1.9077 -3.2260  0.0041   0.2957    0.0814    0.5099    0.9454    -4.2280       0.0000  0.7788
+6   main (flags applied)           D0_ws  561  4.0285 -5.9048  0.0047   0.3411    0.1518    0.5305    2.3986    -7.1868       0.0000  0.8536
+7   main (flags applied)           D2_ws  561  1.6391 -2.8778  0.0000   0.2848    0.1680    0.4016    0.8447    -3.8268       0.0000  0.5718
+8   main (flags applied)         A_alpha  561  1.5599 -3.5353  0.0000   0.2206    0.0956    0.3457    0.5841    -5.1549       0.0000  0.5941
+9   main (flags applied)          B_beta  561  0.3730  0.1010  0.7326  -1.8472  -15.6050   11.9107    0.4008     0.5647       0.0232  0.6989
+10  main (flags applied)      beta_share  561 -0.1099  0.4079  0.0018   0.1348   -0.1419    0.4114    0.0026     0.6647       0.0000  0.6866
+11  main (flags applied)           H_ann  561  1.0813 -1.4927  0.0000   0.3622    0.2737    0.4507    0.6693    -1.7538       0.0000  0.6072
+12  main (flags applied)         H_alpha  561  0.7808 -1.4527  0.0000   0.2688    0.1646    0.3729    0.3798    -1.9783       0.0000  0.6071
+13  main (flags applied)          H_beta  561  0.3005 -0.0400  0.8076   3.7590  -21.9818   29.4998    0.2894     0.2245       0.0910  0.7275
+14         flags ignored  D1_exp_shannon  606  3.8738 -6.8768  0.0000   0.2817    0.1784    0.3849    2.1102    -9.1605       0.0000  0.5301
+15         flags ignored          D1_ann  606  3.8496 -6.8691  0.0000   0.2802    0.1766    0.3838    2.0879    -9.1701       0.0000  0.5307
+16         flags ignored           D1_ws  606  2.1078 -4.2711  0.0000   0.2468    0.1196    0.3739    1.0124    -5.9878       0.0000  0.5978
+17         flags ignored       D1_ws_noW  606  1.4798 -3.6711  0.0000   0.2015    0.0764    0.3266    0.5383    -5.4785       0.0000  0.5637
+18         flags ignored            D1_K  606  2.0753 -4.4878  0.0002   0.2312    0.0741    0.3883    0.9243    -6.4310       0.0000  0.5464
+19         flags ignored            D1_R  547  1.4576 -3.0636  0.0044   0.2379   -0.0073    0.4831    0.5296    -4.3643       0.0000  0.7766
+20         flags ignored           D0_ws  606  5.2597 -7.4499  0.0004   0.3530    0.2230    0.4831    3.3491    -8.8610       0.0000  0.8507
+21         flags ignored           D2_ws  606  1.1079 -2.7045  0.0001   0.2048    0.0331    0.3766    0.4143    -4.0183       0.0000  0.5469
+22         flags ignored         A_alpha  606  1.0017 -3.2506  0.0000   0.1541   -0.0057    0.3138    0.1680    -5.1596       0.0000  0.5684
+23         flags ignored          B_beta  606  0.4535  0.0129  0.9624 -17.6100 -772.6235  737.4035    0.4568     0.4779       0.0406  0.6964
+24         flags ignored      beta_share  606 -0.0221  0.3364  0.0068   0.0329   -0.3530    0.4189    0.0641     0.6155       0.0000  0.6875
+25         flags ignored           H_ann  606  0.9307 -1.4312  0.0000   0.3252    0.2283    0.4220    0.5637    -1.7819       0.0000  0.5795
+26         flags ignored         H_alpha  606  0.5697 -1.3253  0.0000   0.2149    0.0874    0.3425    0.2298    -1.9423       0.0000  0.5902
+27         flags ignored          H_beta  606  0.3611 -0.1058  0.4934   1.7056   -1.6044    5.0156    0.3339     0.1604       0.2070  0.7200
+28   drop shared parents  D1_exp_shannon  501  4.1124 -6.5802  0.0000   0.3125    0.2018    0.4231    2.2899    -8.3222       0.0000  0.5602
+29   drop shared parents          D1_ann  501  4.0415 -6.5129  0.0000   0.3103    0.1991    0.4215    2.2376    -8.2660       0.0000  0.5664
+30   drop shared parents           D1_ws  501  2.5498 -4.1888  0.0000   0.3044    0.1936    0.4152    1.3896    -5.3659       0.0000  0.6112
+31   drop shared parents       D1_ws_noW  501  1.4701 -3.4672  0.0000   0.2120    0.0551    0.3689    0.5098    -5.0819       0.0000  0.5643
+32   drop shared parents            D1_K  501  2.6746 -4.4042  0.0007   0.3036    0.1587    0.4486    1.4547    -5.6481       0.0000  0.5556
+33   drop shared parents            D1_R  464  2.4272 -3.7628  0.0010   0.3225    0.1488    0.4963    1.3048    -4.7011       0.0000  0.7905
+34   drop shared parents           D0_ws  501  4.4247 -6.0607  0.0073   0.3650    0.1756    0.5544    2.7461    -7.0282       0.0002  0.8519
+35   drop shared parents           D2_ws  501  1.6225 -2.7978  0.0000   0.2900    0.1622    0.4177    0.8476    -3.6645       0.0000  0.5666
+36   drop shared parents         A_alpha  501  1.4040 -3.3114  0.0000   0.2120    0.0603    0.3637    0.4869    -4.8535       0.0000  0.5795
+37   drop shared parents          B_beta  501  0.2026  0.2447  0.3797  -0.4140   -2.5708    1.7428    0.2703     0.6649       0.0052  0.7131
+38   drop shared parents      beta_share  501 -0.1557  0.4258  0.0014   0.1829   -0.0602    0.4260   -0.0378     0.6489       0.0000  0.6766
+39   drop shared parents           H_ann  501  0.9091 -1.2901  0.0000   0.3523    0.2444    0.4603    0.5517    -1.5289       0.0000  0.6213
+40   drop shared parents         H_alpha  501  0.7295 -1.3551  0.0000   0.2692    0.1474    0.3909    0.3542    -1.8313       0.0000  0.5958
+41   drop shared parents          H_beta  501  0.1795  0.0650  0.6668  -1.3806  -10.2358    7.4746    0.1976     0.3024       0.0145  0.7474
+
+R: {'gap': (1.5425869054952033, 0.0456486374381941, 561), 'ratio': (1.4951614070147046, 0.013384016697055731, 561), 'aw': {'D1_ann': 5.515220475310506, 'D1_ws': 3.636321622487704, 'B_beta': 1.9451114881195901, 'beta_share': 0.4245006893308012, 'ci_apy': 1.4991748963839193}, 'beta_diff_rice-wheat': (0.21008304884039686, 1.7010790659653733e-29, 117, 405), 'beta_diff_rice-rice': (0.054546049563209076, 0.050232053752427445, 39, 405), 'spearman_ann_ws': SignificanceResult(statistic=0.8679669765026683, pvalue=4.653195822576099e-172), 'spearman_ann_K': SignificanceResult(statistic=0.8947078669707934, pvalue=8.107516981789376e-198), 'spearman_ann_R': SignificanceResult(statistic=0.1578321814983922, pvalue=0.00017671038013283608), 'abs_move_median': 58.0, 'move_gt100': 135, 'fall_sys': {'rice-wheat': 28, 'bajra-wheat': 5, 'other': 5, 'maize-wheat': 5, 'soybean-wheat': 3}, 'rise_sys': {'rice-only': 28, 'rice-rice': 16, 'rice-oilseed': 4, 'whole': 1, 'groundnut-based': 1}, 'fall_state': {'UTTAR PRADESH': 27, 'BIHAR': 10, 'HARYANA': 6, 'HIMACHAL PRADESH': 4, 'MADHYA PRADESH': 3}, 'rise_state': {'ASSAM': 26, 'ARUNACHAL PRADESH': 7, 'KARNATAKA': 5, 'ANDHRA PRADESH': 5, 'MEGHALAYA': 2}, 'ci_cross': {'lus_apy': SignificanceResult(statistic=0.7198104816021302, pvalue=4.8464057620158195e-90), 'lus_ay': SignificanceResult(statistic=0.6611829970780947, pvalue=2.750870188755857e-71), 'lus_secc': SignificanceResult(statistic=0.5869985640310805, pvalue=8.672838020263546e-53), 'apy_ay': SignificanceResult(statistic=0.7110639847433181, pvalue=1.4701571928755707e-87), 'apy_secc': SignificanceResult(statistic=0.6625846223302113, pvalue=4.601184532552718e-72), 'ay_secc': SignificanceResult(statistic=0.6475253080546439, pvalue=7.260284491291754e-68)}, 'ann_on_alpha_ci': (1.8075874995849754, 0.045592050737441034, 1.183606850337048, 0.139449151084061, 2.1071103213446448e-17, 557, 0.9290702923342181), 'fe_H_beta_on_ci_lus': (0.1127401759843961, 0.01583881870690762, 1.0953123243981641e-12, 10398, 557), 'fe_bshare_y_on_ci_lus': (0.05039156412871945, 0.011556268005694566, 1.2974210533023603e-05, 10398, 557), 'fe_H_alpha_on_ci_lus': (-0.025186497390074968, 0.025480192860103966, 0.32292076863686714, 10398, 557), 'fe_H_ann_on_ci_lus': (0.08755367859432092, 0.0289284500420208, 0.0024735404060246616, 10398, 557), 'ci_on_irr': (0.4215744297164456, 0.0649996530698281, 8.826506932134183e-11, 557)}
+irr p98 = 0.950, median 0.548
+D1_ann: fall from turning point to p98 -2.807 (-58.1% of mean 4.835)
+D1_ws: fall from turning point to p98 -1.805 (-54.8% of mean 3.292)
+D1_ws_noW: fall from turning point to p98 -1.969 (-71.1% of mean 2.770)
+D1_K: fall from turning point to p98 -1.972 (-57.8% of mean 3.412)
+D1_R: fall from turning point to p98 -1.380 (-36.9% of mean 3.744)
+H_ann: fall from turning point to p98 -0.515 (-35.6% of mean 1.449)
+H_alpha: fall from turning point to p98 -0.674 (-78.1% of mean 0.862)
+H_beta: fall from turning point to p98 0.000 (0.0% of mean 0.587)
+Assam rabi D1 with Whole Year 8.29, without 3.72; rabi share of GCA 0.236
+Share of districts with D1_ws > D1_ann: 0.057; A_alpha > D1_ws: 0.000
+Mean Whole Year share of GCA (sample): 0.047
+                    n  D1_ann  D1_ws      A      B  bshare     ci
+state_name                                                       
+MIZORAM             8   2.816  2.559  2.227  1.255   0.211  1.049
+NAGALAND           11   6.382  4.458  4.265  1.478   0.213  1.216
+ODISHA             30   2.408  2.141  1.979  1.192   0.225  1.133
+ANDHRA PRADESH     20   6.868  5.730  4.322  1.596   0.248  1.389
+ARUNACHAL PRADESH  16   3.676  3.264  2.430  1.507   0.298  1.062
+MAHARASHTRA        33   6.376  4.337  3.758  1.679   0.300  1.291
+JHARKHAND          24   3.293  2.342  2.219  1.407   0.305  1.183
+CHHATTISGARH       18   3.111  2.455  2.191  1.407   0.306  1.145
+KARNATAKA          30   8.006  6.015  4.263  1.877   0.320  1.302
+GUJARAT            26   6.082  4.105  3.157  1.954   0.369  1.289
+JAMMU AND KASHMIR  17   2.855  1.910  1.847  1.563   0.409  1.359
+MADHYA PRADESH     50   6.438  3.910  3.153  2.072   0.412  1.538
+RAJASTHAN          33   6.210  3.765  2.812  2.234   0.451  1.471
+UTTARAKHAND        13   6.275  3.716  2.937  2.190   0.452  1.627
+UTTAR PRADESH      72   4.919  2.645  2.365  2.110   0.498  1.723
+WEST BENGAL        18   3.290  2.517  1.851  1.729   0.503  1.528
+BIHAR              38   4.120  2.407  1.972  2.120   0.543  1.772
+HIMACHAL PRADESH   12   4.032  2.194  2.008  2.020   0.547  1.823
+ASSAM              26   3.192  3.525  1.626  1.929   0.596  1.346
+HARYANA            20   3.941  2.299  1.810  2.208   0.610  1.719
+PUNJAB             20   2.709  1.470  1.278  2.117   0.775  1.898
+D1_ws_noW: spearman with annual 0.890; median |rank move| 51; moves > 100: 92
+A_alpha: spearman with annual 0.882; median |rank move| 52; moves > 100: 109
+risers (A_alpha) states {'ODISHA': 15, 'CHHATTISGARH': 7, 'ARUNACHAL PRADESH': 6, 'MIZORAM': 6} systems {'rice-only': 37, 'rice-rice': 5, 'groundnut-based': 3}
+fallers (A_alpha) states {'BIHAR': 10, 'RAJASTHAN': 10, 'UTTAR PRADESH': 8, 'HARYANA': 7} systems {'rice-wheat': 23, 'soybean-wheat': 5, 'other': 3}
+H_beta linear on irrigation, state FE: 0.2597 (se 0.0431, p 1.6e-09, n 561)
+beta_share linear on irrigation, state FE: 0.3057 (se 0.0369, p 1.1e-16, n 561)
+B_beta linear on irrigation, state FE: 0.4759 (se 0.0779, p 1e-09, n 561)

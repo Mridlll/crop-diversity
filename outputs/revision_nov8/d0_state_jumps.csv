@@ -1,0 +1,69 @@
+state,year,prev_names,names,jump,district_change,new_crops,new_crops_share_of_state_area,mean_years_new_crops_persist,years_after
+Andaman And Nicobar Islands,2010,13,18,5,0,Arhar/Tur; Groundnut; Maize; Moong(Green Gram); Sunflower; Urad,0.06709423395699354,7.5,9
+Andhra Pradesh,2000,24,38,14,0,Arecanut; Arhar/Tur; Banana; Cashewnut; Coconut; Coriander; Ginger; Mesta; Other  Rabi Pulses; Other Kharif Pulses; Potato; Small Millets; Sweet Potato; Tapioca; Turmeric,0.09356253374290066,18.0,19
+Andhra Pradesh,2008,24,39,15,0,Arecanut; Banana; Cashewnut; Coconut; Coriander; Ginger; Linseed; Niger Seed; Potato; Rapeseed &Mustard; Safflower; Soyabean; Sweet Potato; Tapioca; Turmeric,0.045395254284977794,10.933333333333334,11
+Andhra Pradesh,2016,38,42,4,0,Guar Seed; Other  Rabi Pulses; Other Kharif Pulses; Other Oilseeds,0.0013918131988977425,2.5,3
+Arunachal Pradesh,2016,9,22,13,0,Arhar/Tur; Groundnut; Masoor; Moong(Green Gram); Other  Rabi Pulses; Other Kharif Pulses; Other Oilseeds; Peas & Beans (Pulses); Rapeseed &Mustard; Sesamum; Soyabean; Sunflower; Urad,0.17213433725691804,3.0,3
+Assam,2001,26,30,4,0,Masoor; Moong(Green Gram); Peas & Beans (Pulses); Urad,0.027140613249523493,18.0,18
+Assam,2005,25,30,5,4,Arecanut; Banana; Coconut; Maize; Tapioca,0.04732409779850385,14.0,14
+Bihar,2007,21,38,17,1,Banana; Castor Seed; Coriander; Dry Chillies; Garlic; Ginger; Groundnut; Onion; Other  Rabi Pulses; Other Kharif Pulses; Potato; Safflower; Small Millets; Sugarcane; Sweet Potato; Tobacco; Turmeric,0.04474620433264794,7.176470588235294,12
+Bihar,2016,30,36,6,0,Coriander; Garlic; Ginger; Onion; Potato; Turmeric,0.025412795256223714,3.0,3
+Chhattisgarh,1999,15,22,7,0,Castor Seed; Cotton(Lint); Garlic; Ginger; Niger Seed; Onion; Other  Rabi Pulses; Other Kharif Pulses; Potato; Ragi; Safflower; Sweet Potato,0.161985407817021,19.916666666666668,20
+Chhattisgarh,2000,22,41,19,4,Bajra; Banana; Barley; Coriander; Dry Chillies; Groundnut; Horse-Gram; Jowar; Khesari; Masoor; Mesta; Moong(Green Gram); Peas & Beans (Pulses); Sannhamp; Small Millets; Tobacco; Turmeric; Urad; Wheat,0.1721802667909923,18.94736842105263,19
+Goa,2013,6,11,5,0,Arecanut; Banana; Black Pepper; Cashewnut; Coconut,0.6138705922434842,6.0,6
+Haryana,2000,22,28,6,0,Garlic; Ginger; Other Kharif Pulses; Sannhamp; Sweet Potato; Turmeric,0.0008398010503087434,10.666666666666666,19
+Haryana,2010,26,33,7,0,Ginger; Other  Rabi Pulses; Other Kharif Pulses; Rapeseed &Mustard; Sannhamp; Soyabean; Turmeric,0.08802934535033728,4.571428571428571,9
+Himachal Pradesh,2001,21,32,11,0,Coriander; Cotton(Lint); Dry Chillies; Garlic; Ginger; Onion; Other  Rabi Pulses; Potato; Sannhamp; Sweet Potato; Tobacco; Turmeric,0.018125776002457416,11.333333333333334,18
+Himachal Pradesh,2005,7,31,24,0,Arhar/Tur; Coriander; Cotton(Lint); Dry Chillies; Garlic; Gram; Groundnut; Horse-Gram; Linseed; Masoor; Moong(Green Gram); Moth; Onion; Other Kharif Pulses; Peas & Beans (Pulses); Ragi; Rapeseed &Mustard; Sannhamp; Sesamum; Small Millets; Soyabean; Sugarcane; Turmeric; Urad,0.07391362024602419,13.291666666666666,14
+Himachal Pradesh,2011,26,30,4,0,Dry Chillies; Ginger; Onion; Turmeric,0.004612074420959372,6.75,8
+Himachal Pradesh,2018,28,32,4,0,Cotton(Lint); Dry Chillies; Ginger; Sannhamp,0.0037197605387746316,0.75,1
+Jammu And Kashmir,1999,3,11,8,0,Bajra; Barley; Gram; Groundnut; Jowar; Linseed; Rapeseed &Mustard; Sesamum; Sugarcane,0.15075205564867883,15.0,20
+Jammu And Kashmir,2000,11,19,8,0,Dry Chillies; Garlic; Ginger; Onion; Other Oilseeds; Sannhamp; Tobacco; Turmeric; Wheat,0.2944017507627466,14.444444444444445,19
+Jammu And Kashmir,2005,12,25,13,0,Cotton(Lint); Dry Chillies; Ginger; Groundnut; Onion; Other Cereals; Other Oilseeds; Potato; Rapeseed &Mustard; Sannhamp; Sesamum; Sugarcane; Tobacco; Turmeric,0.013716181176255256,11.285714285714286,14
+Jammu And Kashmir,2006,25,30,5,0,Cowpea(Lobia); Garlic; Horse-Gram; Linseed; Masoor; Moth; Other  Rabi Pulses,0.008286936331923442,9.714285714285714,13
+Jammu And Kashmir,2009,14,29,15,1,Bajra; Cotton(Lint); Dry Chillies; Ginger; Groundnut; Horse-Gram; Maize; Moong(Green Gram); Moth; Other Cereals; Other Kharif Pulses; Rice; Sannhamp; Sesamum; Sugarcane; Tobacco; Turmeric,0.6165563518047377,8.0,10
+Jammu And Kashmir,2010,29,34,5,0,Arhar/Tur; Cowpea(Lobia); Gram; Jowar; Small Millets,0.004536896632438099,3.2,9
+Jammu And Kashmir,2014,13,20,7,1,Bajra; Dry Chillies; Maize; Masoor; Other Cereals; Other Kharif Pulses; Rice; Sannhamp; Sesamum; Sugarcane; Tobacco; Urad,0.9941044164645433,4.166666666666667,5
+Jammu And Kashmir,2015,20,28,8,0,Cotton(Lint); Cowpea(Lobia); Garlic; Horse-Gram; Linseed; Moth; Other  Rabi Pulses; Other Oilseeds; Small Millets; Wheat,0.2916397816201381,3.5,4
+Jharkhand,2011,7,11,4,0,Maize; Ragi; Rice; Sugarcane,0.8890110081675108,6.75,8
+Jharkhand,2017,10,24,14,0,Bajra; Castor Seed; Groundnut; Horse-Gram; Jowar; Linseed; Masoor; Moong(Green Gram); Niger Seed; Other  Rabi Pulses; Other Kharif Pulses; Peas & Beans (Pulses); Safflower; Sesamum; Soyabean; Sunflower,0.09480129676936293,2.0,2
+Karnataka,1999,32,41,9,0,Banana; Mesta; Other  Rabi Pulses; Other Kharif Pulses; Sannhamp; Small Millets; Sugarcane; Sweet Potato; Tapioca; Tobacco; Urad,0.07791195427726992,18.636363636363637,20
+Karnataka,2002,37,41,4,0,Banana; Cardamom; Garlic; Sweet Potato; Tapioca; Tobacco,0.014158884798419683,15.5,17
+Kerala,2012,14,29,15,0,Arhar/Tur; Cowpea(Lobia); Garlic; Groundnut; Horse-Gram; Jowar; Maize; Moong(Green Gram); Onion; Ragi; Small Millets; Soyabean; Sweet Potato; Urad; Wheat,0.003118187102485683,5.266666666666667,7
+Ladakh,2006,1,9,8,1,Barley; Masoor; Onion; Other  Rabi Pulses; Peas & Beans (Pulses); Potato; Rapeseed &Mustard; Wheat,0.38813998273457734,10.125,13
+Ladakh,2010,8,12,4,0,Cowpea(Lobia); Horse-Gram; Moth; Onion; Small Millets,0.058831512519508716,2.2,9
+Ladakh,2015,2,11,9,0,Barley; Linseed; Masoor; Other  Rabi Pulses; Peas & Beans (Pulses); Rapeseed &Mustard; Sesamum; Small Millets; Wheat,0.4215565921924871,2.2222222222222223,4
+Madhya Pradesh,1999,17,32,15,-1,Castor Seed; Coriander; Dry Chillies; Garlic; Ginger; Niger Seed; Onion; Other  Rabi Pulses; Other Kharif Pulses; Potato; Ragi; Safflower; Sannhamp; Sweet Potato; Turmeric; Urad,0.11747920569425228,16.25,20
+Madhya Pradesh,2001,30,34,4,0,Banana; Potato; Sweet Potato; Tobacco,0.0033266370561104257,14.5,18
+Madhya Pradesh,2003,35,39,4,2,Horse-Gram; Masoor; Mesta; Moong(Green Gram); Peas & Beans (Pulses); Urad,0.033292789961748046,14.166666666666666,16
+Madhya Pradesh,2006,28,39,11,0,Banana; Coriander; Dry Chillies; Garlic; Ginger; Jute; Khesari; Mesta; Other  Rabi Pulses; Other Kharif Pulses; Safflower; Tobacco; Turmeric,0.01506698372041357,9.461538461538462,13
+Madhya Pradesh,2009,35,40,5,0,Cowpea(Lobia); Dry Chillies; Ginger; Mesta; Moong(Green Gram),0.006913794591140896,7.2,10
+Madhya Pradesh,2015,23,37,14,0,Banana; Castor Seed; Coriander; Dry Chillies; Garlic; Ginger; Jute; Onion; Other  Rabi Pulses; Other Cereals; Potato; Sunflower; Sweet Potato; Turmeric,0.037256863401745194,3.5,4
+Manipur,2002,12,17,5,0,Cashewnut; Potato; Soyabean; Sugarcane; Tapioca; Turmeric,0.031707186175065745,11.5,16
+Manipur,2008,16,21,5,0,Arhar/Tur; Cowpea(Lobia); Gram; Groundnut; Masoor; Moong(Green Gram); Other  Rabi Pulses; Urad; Wheat,0.04417031801041205,10.0,10
+Meghalaya,2000,21,25,4,0,Linseed; Other  Rabi Pulses; Small Millets; Wheat,0.04226409846325012,16.0,19
+Meghalaya,2008,16,26,10,0,Arecanut; Banana; Black Pepper; Dry Chillies; Ginger; Potato; Soyabean; Sweet Potato; Tapioca; Turmeric,0.2804169789717155,10.7,11
+Meghalaya,2010,25,29,4,0,Cashewnut; Dry Chillies; Soyabean; Turmeric,0.05939453116409586,9.0,9
+Mizoram,2005,14,18,4,0,Arhar/Tur; Other  Rabi Pulses; Other Kharif Pulses; Peas & Beans (Pulses); Potato; Sugarcane,0.10749247434165304,11.0,14
+Mizoram,2010,10,15,5,0,Arhar/Tur; Cowpea(Lobia); Onion; Rapeseed &Mustard; Sesamum; Soyabean,0.08395711106615415,8.5,9
+Nagaland,1999,5,19,14,0,Arhar/Tur; Bajra; Castor Seed; Cotton(Lint); Gram; Groundnut; Jowar; Linseed; Moong(Green Gram); Peas & Beans (Pulses); Potato; Rapeseed &Mustard; Sesamum; Soyabean; Sugarcane; Sunflower,0.20585774058577405,18.75,20
+Nagaland,2000,19,25,6,1,Barley; Niger Seed; Other  Rabi Pulses; Other Kharif Pulses; Small Millets; Wheat,0.09706147694921562,13.666666666666666,19
+Nagaland,2014,28,32,4,0,Horse-Gram; Linseed; Other  Rabi Pulses; Other Kharif Pulses; Sugarcane,0.06443990292502236,5.0,5
+Odisha,1999,13,36,23,0,Arhar/Tur; Bajra; Castor Seed; Coriander; Cotton(Lint); Dry Chillies; Garlic; Ginger; Gram; Jowar; Linseed; Masoor; Mesta; Niger Seed; Onion; Safflower; Sannhamp; Small Millets; Soyabean; Sunflower; Sweet Potato; Tobacco; Turmeric,0.10233013823972466,5.304347826086956,20
+Odisha,2019,14,39,25,0,Arhar/Tur; Bajra; Castor Seed; Coriander; Cotton(Lint); Cowpea(Lobia); Dry Chillies; Garlic; Ginger; Gram; Jowar; Linseed; Masoor; Mesta; Onion; Other  Rabi Pulses; Other Kharif Pulses; Peas & Beans (Pulses); Safflower; Sannhamp; Small Millets; Sunflower; Sweet Potato; Tobacco; Turmeric,0.17056950609344856,0.0,0
+Puducherry,1999,14,21,7,0,Banana; Cashewnut; Coconut; Ginger; Jowar; Moong(Green Gram); Other  Rabi Pulses; Rapeseed &Mustard; Urad,0.22092065290149837,14.11111111111111,20
+Puducherry,2007,12,23,11,0,Bajra; Coconut; Coriander; Moong(Green Gram); Other  Rabi Pulses; Ragi; Small Millets; Sunflower; Sweet Potato; Turmeric; Urad,0.2173342718198106,9.909090909090908,12
+Rajasthan,1999,35,39,4,1,Banana; Guar Seed; Small Millets; Tapioca,0.14742904606991933,14.75,20
+Sikkim,2000,7,11,4,0,Other Cereals; Other Kharif Pulses; Other Oilseeds; Small Millets,0.10323187951051145,13.0,19
+Tamil Nadu,2002,12,34,22,1,Arecanut; Banana; Cashewnut; Castor Seed; Coconut; Coriander; Dry Chillies; Garlic; Ginger; Gram; Horse-Gram; Maize; Onion; Other Kharif Pulses; Potato; Rapeseed &Mustard; Small Millets; Sweet Potato; Tapioca; Tobacco; Turmeric; Wheat,0.24886786681149373,14.409090909090908,17
+Tamil Nadu,2005,35,39,4,0,Black Pepper; Mesta; Sannhamp; Soyabean; Tobacco,0.001782595160201534,4.8,14
+Tamil Nadu,2011,14,36,22,0,Arecanut; Bajra; Banana; Black Pepper; Cardamom; Cashewnut; Coconut; Coriander; Dry Chillies; Garlic; Ginger; Jowar; Jute; Onion; Potato; Rapeseed &Mustard; Small Millets; Sweet Potato; Tapioca; Tobacco; Turmeric; Wheat,0.23967876105145533,6.409090909090909,8
+Tamil Nadu,2013,14,34,20,0,Arecanut; Bajra; Banana; Black Pepper; Cardamom; Cashewnut; Coconut; Coriander; Dry Chillies; Garlic; Ginger; Jowar; Onion; Potato; Rapeseed &Mustard; Small Millets; Sweet Potato; Tapioca; Tobacco; Turmeric,0.24871435194868988,6.0,6
+Telangana,2000,21,35,14,0,Arhar/Tur; Banana; Cashewnut; Coconut; Coriander; Mesta; Other  Rabi Pulses; Other Kharif Pulses; Potato; Small Millets; Sunflower; Sweet Potato; Tapioca; Tobacco; Turmeric,0.09695386168921137,13.8,19
+Telangana,2008,21,27,6,0,Cashewnut; Coconut; Coriander; Safflower; Soyabean; Sugarcane; Turmeric,0.07199266146854022,9.285714285714286,11
+Telangana,2013,21,39,18,7,Banana; Cashewnut; Coconut; Coriander; Cowpea(Lobia); Ginger; Linseed; Masoor; Mesta; Other  Rabi Pulses; Other Kharif Pulses; Other Oilseeds; Potato; Rapeseed &Mustard; Safflower; Soyabean; Sweet Potato; Turmeric,0.05555324318690535,4.111111111111111,6
+The Dadra And Nagar Haveli And Daman And Diu,2010,9,15,6,0,Groundnut; Maize; Niger Seed; Sannhamp; Sesamum; Sugarcane,0.04475490196078431,6.166666666666667,9
+The Dadra And Nagar Haveli And Daman And Diu,2015,7,14,7,0,Arhar/Tur; Groundnut; Niger Seed; Other Kharif Pulses; Rapeseed &Mustard; Sugarcane; Urad,0.18021103660866014,3.5714285714285716,4
+Tripura,2004,6,18,12,0,Arhar/Tur; Gram; Groundnut; Jute; Masoor; Mesta; Moong(Green Gram); Other  Rabi Pulses; Other Kharif Pulses; Peas & Beans (Pulses); Rapeseed &Mustard; Sesamum; Urad,0.05156397692332765,15.0,15
+Uttar Pradesh,2006,26,32,6,0,Arhar/Tur; Ginger; Groundnut; Masoor; Other  Rabi Pulses; Other Kharif Pulses,0.09042207939653493,8.666666666666666,13
+Uttarakhand,2000,24,32,8,3,Garlic; Ginger; Horse-Gram; Linseed; Masoor; Other  Rabi Pulses; Other Cereals; Other Kharif Pulses; Other Oilseeds; Sesamum,0.04192100530759509,17.7,19

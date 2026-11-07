@@ -29,3 +29,7 @@ outputs/crop_groups/crop_group_panel_annual.csv
 outputs/crop_groups/crop_group_panel_long.csv.gz
 outputs/crop_groups/rainfall_district_year.csv
 outputs/crop_groups/raw_sources/
+
+# Revision Nov 2026: raw downloads (refetch with the scripts; sources listed in outputs/ANALYSIS_INDEX.md)
+outputs/revision_nov8/raw_cgwb/
+outputs/revision_nov8/raw_lus/

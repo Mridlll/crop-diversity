@@ -1,0 +1,184 @@
+==============================================================================
+KEYS
+shrids with district key: 596,393; districts: 631
+rural shrid universe: 588,978
+
+==============================================================================
+ROUND 1991
+  total repaired from source sum in 211,586 villages (43.8% of villages with a source), adding 23.00 Mha (106.2% of the reported total)
+village rows 564,855; without PC11 district key 6,962 (1.23%)
+rows with non-missing irrigated and unirrigated: 547,395 (98.1%)
+rows implausible (irr+unirr > 1.5x reference area): 6,229 (1.14% of has_land)
+
+==============================================================================
+ROUND 2001
+  total repaired from source sum in 2,505 villages (0.5% of villages with a source), adding 1.43 Mha (2.6% of the reported total)
+village rows 527,920; without PC11 district key 5,798 (1.10%)
+rows with non-missing irrigated and unirrigated: 521,562 (99.9%)
+rows implausible (irr+unirr > 1.5x reference area): 8,057 (1.54% of has_land)
+
+==============================================================================
+ROUND 2011
+  total repaired from source sum in 20,622 villages (3.5% of villages with a source), adding 2.43 Mha (3.3% of the reported total)
+village rows 588,973; without PC11 district key 0 (0.00%)
+rows with non-missing irrigated and unirrigated: 588,461 (99.9%)
+rows implausible (irr+unirr > 1.5x reference area): 3,242 (0.55% of has_land)
+
+==============================================================================
+STATE x ROUND COVERAGE (before validation flags)
+                  state_name  round  n_univ_shrids  cov_villages  cov_area  irr_share  zero_irr_share_of_villages  dropped_area_share
+0              jammu kashmir   1991           6310         0.000     0.000        NaN                         NaN                 NaN
+1              jammu kashmir   2001           6310         0.990     0.993      0.399                       0.157               0.000
+2              jammu kashmir   2011           6310         1.000     0.998      0.401                       0.158               0.000
+3           himachal pradesh   1991          17492         0.950     0.918      0.159                       0.577               0.002
+4           himachal pradesh   2001          17492         0.985     0.969      0.176                       0.589               0.000
+5           himachal pradesh   2011          17492         1.000     1.000      0.199                       0.568               0.000
+6                     punjab   1991          12163         0.918     0.919      0.852                       0.028               0.000
+7                     punjab   2001          12163         0.947     0.951      0.917                       0.026               0.001
+8                     punjab   2011          12163         1.000     1.000      0.979                       0.001               0.000
+9                 chandigarh   1991              1         0.000     0.000        NaN                         NaN                 NaN
+10                chandigarh   2001              1         1.000     1.000      0.825                       0.000               0.000
+11                chandigarh   2011              1         1.000     1.000      0.777                       0.000               0.000
+12               uttarakhand   1991          15708         0.967     0.633      0.356                       0.354               0.002
+13               uttarakhand   2001          15708         0.988     0.916      0.390                       0.441               0.000
+14               uttarakhand   2011          15708         1.000     1.000      0.396                       0.438               0.000
+15                   haryana   1991           6610         0.990     0.986      0.719                       0.016               0.000
+16                   haryana   2001           6610         1.001     0.993      0.795                       0.012               0.002
+17                   haryana   2011           6610         1.000     1.000      0.875                       0.008               0.000
+18              nct of delhi   1991              1         0.000     0.000        NaN                         NaN                 NaN
+19              nct of delhi   2001              1         1.000     1.000      0.805                       0.000               0.000
+20              nct of delhi   2011              1         1.000     1.000      0.864                       0.000               0.000
+21                 rajasthan   1991          39669         0.925     0.919      0.170                       0.161               0.012
+22                 rajasthan   2001          39669         0.993     0.990      0.291                       0.118               0.000
+23                 rajasthan   2011          39669         1.000     1.000      0.307                       0.205               0.000
+24             uttar pradesh   1991          97737         0.977     0.978      0.670                       0.020               0.003
+25             uttar pradesh   2001          97737         0.990     0.963      0.768                       0.045               0.027
+26             uttar pradesh   2011          97737         1.000     0.999      0.835                       0.009               0.001
+27                     bihar   1991          39050         0.973     0.987      0.558                       0.028               0.000
+28                     bihar   2001          39050         0.959     0.954      0.592                       0.043               0.000
+29                     bihar   2011          39050         1.000     1.000      0.645                       0.023               0.000
+30                    sikkim   1991            422         0.993     0.783      0.121                       0.123               0.000
+31                    sikkim   2001            422         1.002     0.793      0.120                       0.126               0.000
+32                    sikkim   2011            422         0.998     0.987      0.153                       0.138               0.001
+33         arunachal pradesh   1991           3355         0.418     0.274        NaN                         NaN               0.000
+34         arunachal pradesh   2001           3355         0.944     0.957        NaN                         NaN               0.000
+35         arunachal pradesh   2011           3355         1.000     0.997      0.296                       0.309               0.003
+36                  nagaland   1991           1262         0.906     0.884      0.324                       0.078               0.032
+37                  nagaland   2001           1262         0.991     0.976      0.217                       0.117               0.008
+38                  nagaland   2011           1262         1.000     1.000      0.162                       0.337               0.000
+39                   manipur   1991           2316         0.850     0.893        NaN                         NaN               0.000
+40                   manipur   2001           2316         0.918     0.890        NaN                         NaN               0.000
+41                   manipur   2011           2316         1.000     1.000      0.071                       0.844               0.000
+42                   mizoram   1991            682         0.809     0.789      0.134                       0.372               0.051
+43                   mizoram   2001            682         0.682     0.675        NaN                         NaN               0.000
+44                   mizoram   2011            682         1.000     1.000        NaN                         NaN               0.000
+45                   tripura   1991            837         0.973     0.928      0.291                       0.243               0.000
+46                   tripura   2001            837         0.984     0.956      0.283                       0.249               0.000
+47                   tripura   2011            837         1.000     1.000      0.283                       0.248               0.000
+48                 meghalaya   1991           5501         0.907     0.912        NaN                         NaN               0.000
+49                 meghalaya   2001           5501         0.687     0.630        NaN                         NaN               0.000
+50                 meghalaya   2011           5501         1.000     1.000        NaN                         NaN               0.000
+51                     assam   1991          25309         0.909     0.911      0.052                       0.885               0.013
+52                     assam   2001          25309         0.910     0.915      0.093                       0.763               0.000
+53                     assam   2011          25309         1.000     1.000      0.061                       0.876               0.000
+54               west bengal   1991          37287         0.981     0.951      0.325                       0.172               0.021
+55               west bengal   2001          37287         0.215     0.219      0.342                       0.089               0.000
+56               west bengal   2011          37287         1.000     0.990      0.518                       0.052               0.010
+57                 jharkhand   1991          29482         0.975     0.988      0.143                       0.139               0.000
+58                 jharkhand   2001          29482         0.987     0.994      0.176                       0.154               0.000
+59                 jharkhand   2011          29482         1.000     0.994      0.134                       0.286               0.005
+60                    odisha   1991          47472         0.970     0.980      0.155                       0.685               0.000
+61                    odisha   2001          47472         0.402     0.389      0.187                       0.503               0.000
+62                    odisha   2011          47472         1.000     1.000      0.222                       0.625               0.000
+63              chhattisgarh   1991          19545         0.584     0.549      0.177                       0.065               0.001
+64              chhattisgarh   2001          19545         1.001     0.997      0.203                       0.312               0.000
+65              chhattisgarh   2011          19545         0.985     0.974      0.265                       0.148               0.008
+66            madhya pradesh   1991          51877         0.937     0.947      0.178                       0.147               0.002
+67            madhya pradesh   2001          51877         0.993     0.996      0.344                       0.104               0.000
+68            madhya pradesh   2011          51877         0.996     0.997      0.444                       0.069               0.000
+69                   gujarat   1991          17801         0.789     0.764      0.285                       0.000               0.001
+70                   gujarat   2001          17801         1.005     0.998      0.327                       0.126               0.000
+71                   gujarat   2011          17801         1.000     1.000      0.419                       0.122               0.000
+72                 daman diu   1991             17         1.353     1.000      0.070                       0.176               0.000
+73                 daman diu   2001             17         1.353     1.000      0.135                       0.000               0.000
+74                 daman diu   2011             17         1.000     1.000      0.122                       0.706               0.000
+75        dadra nagar haveli   1991             65         0.677     0.664      0.267                       0.000               0.000
+76        dadra nagar haveli   2001             65         1.077     1.000      0.064                       0.261               0.000
+77        dadra nagar haveli   2011             65         1.000     1.000      0.117                       0.312               0.000
+78               maharashtra   1991          40810         0.974     0.983      0.110                       0.273               0.001
+79               maharashtra   2001          40810         0.995     0.909      0.167                       0.228               0.079
+80               maharashtra   2011          40810         1.000     0.984      0.827                       0.000               0.015
+81            andhra pradesh   1991          26212         0.975     0.969      0.296                       0.151               0.001
+82            andhra pradesh   2001          26212         0.997     0.996      0.345                       0.121               0.000
+83            andhra pradesh   2011          26212         1.000     1.000      0.331                       0.118               0.000
+84                 karnataka   1991          27237         0.970     0.971      0.158                       0.165               0.005
+85                 karnataka   2001          27237         0.989     0.992      0.217                       0.093               0.000
+86                 karnataka   2011          27237         1.000     1.000      0.271                       0.079               0.000
+87                       goa   1991            320         1.112     0.985      0.044                       0.204               0.006
+88                       goa   2001            320         1.075     0.990      0.054                       0.174               0.000
+89                       goa   2011            320         1.000     1.000      0.111                       0.145               0.000
+90               lakshadweep   1991              6         1.167     0.521      0.050                       0.167               0.000
+91               lakshadweep   2001              6         1.333     0.955      0.000                       1.000               0.000
+92               lakshadweep   2011              6         1.000     1.000      0.000                       1.000               0.000
+93                    kerala   1991            992         1.329     0.997      0.225                       0.112               0.000
+94                    kerala   2001            992         1.333     1.000      0.305                       0.067               0.000
+95                    kerala   2011            992         0.999     0.994      0.279                       0.072               0.000
+96                tamil nadu   1991          14944         0.941     0.856      0.406                       0.043               0.007
+97                tamil nadu   2001          14944         0.992     0.965      0.462                       0.023               0.001
+98                tamil nadu   2011          14944         1.000     1.000      0.570                       0.024               0.000
+99                puducherry   1991             90         0.900     0.864      0.737                       0.000               0.000
+100               puducherry   2001             90         1.022     0.997      0.786                       0.000               0.003
+101               puducherry   2011             90         1.000     1.000      0.886                       0.000               0.000
+102  andaman nicobar islands   1991            396         0.798     0.725      0.003                       0.973               0.000
+103  andaman nicobar islands   2001            396         0.462     0.231      0.046                       0.854               0.000
+104  andaman nicobar islands   2011            396         1.000     1.000      0.003                       0.993               0.000
+site sample: 606 districts in final_panel with in_final, 605 unique SHRUG parents
+
+==============================================================================
+TERRAIN
+area-weighted shrid elevation vs SHRUG district file: corr 0.9777, median abs diff 0.86 m (n=631)
+area-weighted shrid TRI vs SHRUG district file: corr 0.9884, median abs diff 0.040 (n=631)
+
+==============================================================================
+NATIONAL SHARES (all valid villages / usable state-rounds only)
+   round                     basis  n_states  irr_unirr_Mha  irr_share  sh_canal  sh_groundwater  sh_gw_elec  sh_tank_lake  sh_river  sh_other_misc  sh_river_other  sh_unattributed  comp_canal  comp_groundwater  comp_tank_lake  comp_river_other  comp_unattributed
+0   1991        all valid villages        32        144.524      0.297     0.096           0.144       0.078         0.026     0.010          0.015           0.025            0.008       0.322             0.483           0.086             0.083              0.026
+1   1991  usable state-rounds only        25        141.242      0.300     0.095           0.147       0.079         0.026     0.010          0.015           0.025            0.008       0.316             0.488           0.086             0.083              0.026
+2   2001        all valid villages        35        138.841      0.368     0.124           0.135       0.066         0.021     0.011          0.017           0.028            0.061       0.336             0.367           0.056             0.076              0.164
+3   2001  usable state-rounds only        26        135.409      0.372     0.124           0.137       0.067         0.021     0.011          0.017           0.028            0.062       0.334             0.369           0.055             0.075              0.167
+4   2011        all valid villages        35        144.270      0.508     0.124           0.224         NaN         0.023       NaN          0.050           0.050            0.087       0.243             0.440           0.046             0.098              0.172
+5   2011  usable state-rounds only        29        124.856      0.459     0.137           0.243         NaN         0.025       NaN          0.055           0.055            0.000       0.299             0.528           0.053             0.120              0.000
+
+==============================================================================
+CROSS-CHECK AGAINST SHRUG DISTRICT FILES
+                                        0          1          2
+round                           1991.0000  2001.0000  2011.0000
+dist_file_irr_Mha                 22.4639    57.8311    75.1701
+village_irr_all_Mha               44.2894    55.7844    76.0987
+dist_file_unirr_Mha              111.6437   103.5747    73.4905
+village_unirr_all_Mha            104.5930    97.1260    72.4116
+dist_file_share                    0.1675     0.3583     0.5056
+village_all_share                  0.2975     0.3648     0.5124
+village_valid_share                0.2974     0.3684     0.5082
+district_corr_vs_own_file_2011        NaN        NaN     0.9753
+district_median_absdiff_2011          NaN        NaN     0.0007
+
+==============================================================================
+VALIDATION
+                                                                            comparison    n  pearson  spearman  mean_x  mean_y  mean_diff_x_minus_y  mean_abs_diff  slope
+0                                      census 2011 vs Antyodaya 2019-20, all districts  582    0.827     0.829   0.483   0.554               -0.071          0.149  1.137
+1                        census 2011 vs Antyodaya 2019-20, site sample (all districts)  572    0.832     0.832   0.485   0.556               -0.071          0.147  1.142
+2                                   census 2011 vs Antyodaya 2019-20, usable districts  542    0.881     0.881   0.467   0.556               -0.089          0.136  1.151
+3                     census 2011 vs Antyodaya 2019-20, site sample (usable districts)  533    0.886     0.885   0.468   0.559               -0.091          0.135  1.159
+4                  census 2011 vs DES 2010-12, usable districts, unshared parents only  467    0.939     0.938   0.473   0.494               -0.021          0.072  0.944
+5                     census 2011 vs DES 2010-12, all districts, unshared parents only  467    0.939     0.938   0.473   0.494               -0.021          0.072  0.944
+6                  census 2001 vs DES 2000-02, usable districts, unshared parents only  381    0.942     0.939   0.471   0.478               -0.007          0.070  0.916
+7                     census 2001 vs DES 2000-02, all districts, unshared parents only  414    0.907     0.901   0.462   0.462                0.000          0.080  0.894
+8   census 2011 vs DES 2010-12, usable districts, all parents, mean of child districts  520    0.939     0.937   0.467   0.489               -0.022          0.073  0.940
+9      census 2011 vs DES 2010-12, all districts, all parents, mean of child districts  520    0.939     0.937   0.467   0.489               -0.022          0.073  0.940
+10  census 2001 vs DES 2000-02, usable districts, all parents, mean of child districts  423    0.941     0.939   0.466   0.474               -0.008          0.070  0.910
+11     census 2001 vs DES 2000-02, all districts, all parents, mean of child districts  456    0.909     0.904   0.458   0.460               -0.002          0.080  0.890
+12                                          census 2001 vs census 2011, usable in both  496    0.952     0.951   0.439   0.480               -0.041          0.065  0.895
+13                                                     census 1991 vs census 2001, all  551    0.916     0.912   0.342   0.416               -0.075          0.094  0.876
+14                                                     census 1991 vs census 2011, all  550    0.794     0.771   0.340   0.491               -0.151          0.163  0.708
+wrote panel (1875, 47) wide (625, 49)

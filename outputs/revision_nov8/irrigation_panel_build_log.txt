@@ -1,0 +1,50 @@
+APY district-years: 14,089, districts 725
+Check D0>=D1>=D2 violations: 0
+LUS district-years 1998-2019: 12,723; with NIA and NSA: 11,834
+LUS irr_nsa > 1.05 (impossible): 44
+APY->LUS name match: {'exact': 669, 'fuzzy': 29, 'none': 19, 'exact_xstate': 8}
+LUS district-years claimed by two APY districts in the same year (dropped): 0
+
+Analysis-sample (606) coverage
+  districts with any LUS irrigation: 600
+  district-years with diversity: 13,233; with irrigation: 11,099 (83.9%)
+  spike-flagged district-years: 100
+  NSA breaks: 334; APY-area breaks: 1,247
+
+| year | districts with diversity | with irrigation | mean NIA/NSA |
+|---|---|---|---|
+| 1997-98 | 475 | 0 | nan |
+| 1998-99 | 522 | 434 | 0.448 |
+| 1999-00 | 541 | 458 | 0.447 |
+| 2000-01 | 529 | 446 | 0.450 |
+| 2001-02 | 530 | 474 | 0.452 |
+| 2002-03 | 552 | 491 | 0.434 |
+| 2003-04 | 567 | 479 | 0.452 |
+| 2004-05 | 572 | 517 | 0.435 |
+| 2005-06 | 577 | 480 | 0.464 |
+| 2006-07 | 581 | 485 | 0.487 |
+| 2007-08 | 589 | 517 | 0.469 |
+| 2008-09 | 600 | 528 | 0.471 |
+| 2009-10 | 602 | 538 | 0.455 |
+| 2010-11 | 606 | 539 | 0.463 |
+| 2011-12 | 606 | 537 | 0.477 |
+| 2012-13 | 606 | 513 | 0.488 |
+| 2013-14 | 597 | 505 | 0.493 |
+| 2014-15 | 598 | 534 | 0.497 |
+| 2015-16 | 598 | 526 | 0.504 |
+| 2016-17 | 598 | 526 | 0.512 |
+| 2017-18 | 598 | 525 | 0.514 |
+| 2018-19 | 598 | 524 | 0.526 |
+| 2019-20 | 591 | 523 | 0.541 |
+
+States with under 50% irrigation coverage in the sample:
+  ANDAMAN AND NICOBAR ISLANDS: 0% of 28 district-years
+  MAHARASHTRA: 21% of 751 district-years
+  MANIPUR: 9% of 154 district-years
+  SIKKIM: 0% of 92 district-years
+  WEST BENGAL: 4% of 414 district-years
+
+Agreement with the Antyodaya 2019-20 share used by the site:
+  corr(LUS 1998-2019 mean, Antyodaya) = 0.847, n=600
+  corr(LUS 2017-2019 mean, Antyodaya) = 0.871; mean LUS 2017-19 0.528 vs Antyodaya 0.546
+National check, LUS NIA/NSA summed over matched districts: 1998 0.373, 2019 0.564
