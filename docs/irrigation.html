@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Irrigation and Crop Diversity</title>
-<meta name="description" content="Across Indian districts the effective number of crops is highest where about a quarter to a third of sown area is irrigated. Within a district over time, rising irrigation barely moves it.">
+<meta name="description" content="Within the same state, the effective number of crops changes little across Indian districts until irrigation covers about half of sown area, and falls beyond that. Districts already heavily irrigated in 1991 grow fewer crops today.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -33,9 +33,9 @@
     <p class="mast__label">Irrigation</p>
     <h1 class="mast__title">How irrigation lines up with crop diversity</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">The effective number of crops is highest in districts that irrigate a
-    moderate share of their sown area. When a district's own irrigation rises over the years, it
-    barely moves.</p>
+    <p class="mast__sub">Set against other districts of the same state, crop diversity changes
+    little until irrigation covers about half of sown area, and falls once it covers more. When a
+    district's own irrigation rises over the years, its diversity barely moves.</p>
   </div>
 </header>
 
@@ -44,66 +44,150 @@
 <!-- ============ 01 ============ -->
 <section class="section scene-sec" id="s1">
   <div class="scene fade">
-    <p class="scene__kicker">01 · The curve</p>
-    <h2 class="scene__h">In a comparison within state (state fixed effects), the effective number of crops peaks where about 28 percent of sown area is irrigated.</h2>
+    <p class="scene__kicker">01 · The shape</p>
+    <h2 class="scene__h">In a comparison within state (state fixed effects), the effective number of crops is roughly flat across the less irrigated districts and falls once irrigation covers more than about half of sown area.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
-      <div class="ctl ctl--scroll" id="v1-y" role="group" aria-label="Measure of diversity"></div>
-      <div class="ctl ctl--sub ctl--scroll" id="v1-cmp" role="group" aria-label="Comparison"></div>
-      <div id="v1" class="chart" role="img" aria-label="Scatter of districts, with the effective number of crops against the share of sown area irrigated. A curve fitted within state rises from about 5.4 in the least irrigated district to a peak of about 5.8 at 28 percent irrigated and falls to about 2.4 in the most irrigated. Buttons switch to the count of crops, which peaks at 46 percent within state, and to a curve across all districts together, which peaks at 51 percent."></div>
+      <div class="ctl ctl--scroll" id="v1-view" role="group" aria-label="Grouping"></div>
+      <div id="v1" class="chart" role="img" aria-label="The effective number of crops in each quintile of districts by irrigated share, against the least irrigated quintile of the same state. The second quintile, 35 to 47 percent irrigated, sits 0.12 higher and the third, 47 to 60 percent, 0.55 lower, neither statistically significant. The fourth, 60 to 77 percent, sits 1.05 lower and the most irrigated, 77 to 98 percent, 2.14 lower. Buttons switch to deciles and to every district."></div>
       <p class="readout readout--line" id="v1-read" aria-live="polite"></p>
-      <p class="figure__note"><span>Each dot is a district, shaded by its irrigation group, and the
-      curve is a quadratic fit within state with a 95 percent band. Hover or tap a dot for the
-      district.</span><button class="replay" data-scene="1" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>Difference from the least irrigated group of districts in the
+      same state, 1998&ndash;99 to 2019&ndash;20. Each step spans its group's irrigation range,
+      whiskers are 95 percent intervals and filled dots have p &lt; 0.05. Hover or tap for
+      values.</span><button class="replay" data-scene="1" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
     <p>The average district grows 21.4 crops in a year, yet its
     <a href="measurement.html#s1">effective number of crops</a> is only 4.9, because the largest
     crop alone usually holds close to half the land.</p>
-    <p>Set against every other district in the country, the effective number peaks at 51 percent
-    irrigated. Within state, where districts share policy, rainfall and the way records are kept,
-    the peak comes down to 28 percent, while the count of crops peaks later, at 46 percent.</p>
+    <p>Set against districts in its own state, a district in the least irrigated quintile, where
+    irrigation covers up to about a third of sown area, has much the same effective number of
+    crops as one in the second or third quintile, which run up to 60 percent irrigated. The gaps
+    are +0.12 and &minus;0.55, and neither is statistically significant. Past 60 percent the
+    effective number drops, by 1.05 in the fourth quintile (p = 0.07) and by 2.14 in the most
+    irrigated, above 77 percent (p = 0.013), about two-fifths of what the average
+    district grows. By deciles, none of the first seven differs significantly from the least irrigated.</p>
+    <p>A straight line drawn through districts below 30 percent irrigated has a slope that is not
+    statistically significant (p = 0.12), whereas above 30 percent the effective number of crops
+    falls by about 0.4 for every 10 more points of sown area irrigated (p = 0.022).</p>
     <p>Because canal commands and tubewell belts were built where soils, aquifers and terrain
-    already favoured some kinds of farming, the curve describes how districts differ from one
-    another. A district that added irrigation need not travel along it.</p>
+    already favoured some kinds of farming, these figures describe how districts differ from one
+    another. A district that added irrigation need not follow them.</p>
   </div>
 </section>
 
-<!-- ============ inside each district ============ -->
+<!-- ============ 02 recent years ============ -->
+<section class="section scene-sec" id="s11">
+  <div class="scene fade">
+    <p class="scene__kicker">02 · Recent years</p>
+    <h2 class="scene__h">The fall in heavily irrigated districts holds in 2015&ndash;16 to 2019&ndash;20, in 2017&ndash;18 to 2021&ndash;22, and in 2020&ndash;21 and 2021&ndash;22 alone.</h2>
+  </div>
+  <div class="scene-fig fade">
+    <div class="figure__frame">
+      <div class="legend" aria-hidden="true" id="v11-leg"></div>
+      <div id="v11" class="chart" role="img" aria-label="The effective number of crops by quintile of irrigation against the least irrigated quintile of the same state, in four sets of years. The most irrigated quintile sits between 1.98 and 2.67 below the least irrigated in every set. The second and third quintiles stay within 0.55 of it."></div>
+      <p class="readout readout--line" id="v11-read" aria-live="polite"></p>
+      <p class="figure__note"><span>Difference from the least irrigated quintile of the same state,
+      with 95 percent intervals. Filled dots have p &lt; 0.05. Hover or tap a quintile for
+      values.</span><button class="replay" data-scene="11" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Crop records now run to 2021&ndash;22. Over 2015&ndash;16 to 2019&ndash;20 the most irrigated
+    quintile grows 2.11 fewer effective crops than the least irrigated quintile of the same state,
+    over 2017&ndash;18 to 2021&ndash;22 it grows 1.98 fewer, and in 2020&ndash;21 and 2021&ndash;22
+    alone 2.67 fewer, with p between 0.009 and 0.023.</p>
+    <p>The second and third quintiles stay within a third of a crop of the least irrigated in every
+    recent set of years, and none of those gaps is statistically significant. Above 30 percent
+    irrigated, the effective number of crops in 2017&ndash;18 to 2021&ndash;22 falls by about 0.3
+    for every 10 more points of sown area irrigated (p = 0.044), while below 30 percent the slope is
+    close to zero (p = 0.60).</p>
+  </div>
+</section>
+
+<!-- ============ 03 1991 ============ -->
+<section class="section scene-sec" id="s12">
+  <div class="scene fade">
+    <p class="scene__kicker">03 · Irrigation in 1991</p>
+    <h2 class="scene__h">Districts already heavily irrigated in 1991, before the crop record begins, grow fewer crops in effective terms today.</h2>
+  </div>
+  <div class="scene-fig fade">
+    <div class="figure__frame">
+      <div class="ctl ctl--scroll" id="v12-win" role="group" aria-label="Years of crop records"></div>
+      <div id="v12" class="chart" role="img" aria-label="The effective number of crops by quintile of the share of sown area irrigated in 1991, against the least irrigated quintile of the same state. In 2017–18 to 2021–22 the most irrigated 1991 quintile, 63 to 99 percent irrigated, sits 1.78 lower. The second and third quintiles sit slightly above the least irrigated and the fourth 0.62 below, none statistically significant."></div>
+      <p class="readout readout--line" id="v12-read" aria-live="polite"></p>
+      <p class="figure__note"><span>Share of sown area irrigated in the 1991 census village records.
+      Difference from the least irrigated quintile of the same state, at the same elevation and
+      ruggedness, with 95 percent intervals. Filled dots have p &lt; 0.05.</span><button class="replay" data-scene="12" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>The 1991 census recorded each village's irrigated land seven years before the crop record
+    on this site begins. Irrigation was lower almost everywhere then, at 34 percent of sown area in
+    the average district, yet the districts that irrigated most in 1991 are still, by and large, the
+    ones that irrigate most today, and the two shares correlate at 0.79.</p>
+    <p>Districts in the top 1991 quintile, which already irrigated more than about 63 percent of
+    their sown area, grow 1.78 fewer effective crops in 2017&ndash;18 to 2021&ndash;22 than the least
+    irrigated quintile of the same state (p = 0.002), and 1.95 fewer over 1998&ndash;99 to
+    2019&ndash;20 (p = 0.003). The fourth quintile sits lower as well, by 0.62 and 0.84, although
+    neither gap is statistically significant.</p>
+  </div>
+</section>
+
+<!-- ============ 04 1991-2011 change ============ -->
+<section class="section scene-sec" id="s13">
+  <div class="scene fade">
+    <p class="scene__kicker">04 · Where irrigation spread</p>
+    <h2 class="scene__h">Districts where irrigation spread faster between 1991 and 2011 did not end up with a different effective number of crops from others in their state.</h2>
+  </div>
+  <div class="scene-fig fade">
+    <div class="figure__frame">
+      <div id="v13" class="chart" role="img" aria-label="Change in the effective number of crops for 10 more points of sown area irrigated gained between 1991 and 2011, in four versions. Every estimate lies between +0.02 and +0.06 and every 95 percent interval crosses zero."></div>
+      <p class="readout readout--line" id="v13-read" aria-live="polite"></p>
+      <p class="figure__note"><span>Change in the effective number of crops from 1998&ndash;99 to
+      2002&ndash;03, within state, for 10 more percentage points of sown area irrigated gained between
+      the 1991 and 2011 censuses. Whiskers are 95 percent intervals.</span><button class="replay" data-scene="13" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Between the 1991 and 2011 censuses irrigation spread to another 12 percent of sown area in
+    the average district, most of it from wells and tubewells. A district that gained 10 points more than
+    others in its state saw its effective number of crops change by between +0.02 and +0.06 from
+    the turn of the century to 2009&ndash;10 to 2013&ndash;14 or to 2015&ndash;16 to 2019&ndash;20, and
+    none of these changes is statistically significant (p between 0.30 and 0.78).</p>
+    <p>The answer stays the same when districts whose cropped area grew by more than half or shrank
+    by more than a third are left out, since such large moves can mark a change of district boundaries rather than of
+    farming.</p>
+  </div>
+</section>
+
+<!-- ============ 05 inside each district ============ -->
 <section class="section scene-sec" id="s9">
   <div class="scene fade">
-    <p class="scene__kicker">02 · Inside each district</p>
+    <p class="scene__kicker">05 · Inside each district</p>
     <h2 class="scene__h">When a district's own irrigated share rises over the years, its effective number of crops barely moves.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
-      <div class="ctl ctl--scroll" id="v9-mode" role="group" aria-label="Measure"></div>
-      <div id="v9" class="chart" role="img" aria-label="What 10 more percentage points of irrigated sown area goes with. Across districts in the same state, the effective number of crops rises by about 0.3 in the driest districts, passes zero at 27 percent irrigated and falls by about 0.9 in the most irrigated. Within the same district over time, the line stays flat between about minus 0.06 and plus 0.02. A second view shows twenty-year changes: about 0.25 fewer crops holding at least half a percent of cropped land for every 10 points of irrigation, and no clear change on the effective number of crops or at a 2 percent threshold."></div>
+      <div id="v9" class="chart" role="img" aria-label="What 10 more percentage points of irrigated sown area goes with. Across districts in the same state, above 30 percent irrigated, the effective number of crops is about 0.41 lower. Within the same district over time, the change is between minus 0.06 and plus 0.02."></div>
       <p class="readout readout--line" id="v9-read" aria-live="polite"></p>
-      <p class="figure__note"><span>Net irrigated over net sown area, yearly land-use statistics,
-      1998&ndash;99 to 2019&ndash;20. Bands and whiskers are 95 percent intervals. In the second
-      view, which sets 1998&ndash;2000 against 2017&ndash;19, filled dots have p &lt; 0.05.</span><button class="replay" data-scene="9" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>Change in the effective number of crops for 10 more percentage
+      points of sown area irrigated, with 95 percent intervals. The district's own change uses net
+      irrigated over net sown area from the yearly land-use statistics, 1998&ndash;99 to
+      2019&ndash;20.</span><button class="replay" data-scene="9" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Across districts within state, the yearly land-use statistics show the same bend, with the
-    effective number of crops highest at 27 percent of net sown area irrigated. Year by year the
-    peak lies between 17 and 35 percent, and it has drifted up from about a quarter around 2000 to
-    about a third by 2017&ndash;19.</p>
-    <p>Inside a district the line goes flat. Holding the district and its state's year fixed, 10
-    more percentage points of irrigation go with a change of between &minus;0.06 and +0.02 in the
-    effective number of crops, on a mean of 4.9. Districts that were already well irrigated show a
-    more negative slope over time than drier ones, which is the bend across districts appearing
-    again, although once uncertainty is allowed to run across whole states that curvature is not
+    <p>Across districts of the same state, once irrigation passes 30 percent of sown area, every 10
+    more points goes with about 0.4 fewer effective crops. Inside a district the line goes flat.
+    Holding the district and its state's year fixed, 10 more percentage points of irrigation go
+    with a change of between &minus;0.06 and +0.02 in the effective number of crops, on a mean of
+    4.9.</p>
+    <p>Districts that were already well irrigated show a more negative slope over time than drier
+    ones, although once uncertainty is allowed to run across whole states that difference is not
     statistically significant (p = 0.11).</p>
-    <p>Over twenty years, rising irrigation went with the loss of minor crops. The irrigated share
-    rose by about 12 points in the average district between 1998&ndash;2000 and 2017&ndash;19, and
-    for every 10 points a district ended up with about a quarter of a crop fewer among those
-    holding at least half a percent of its cropped land. Counting crops down to a quarter of a
-    percent, the loss is a third of a crop. At 1 percent it is smaller and at 2 percent it
-    vanishes, while the leading crop's share of land does not change.</p>
     <p>None of this measures what irrigation itself does to cropping. Because the same state
     offices compile irrigation and crop area, an error in one can travel with the other. Neither a
     district's starting mix of canal, tank and well water nor the depth of its groundwater predicts
@@ -113,38 +197,40 @@
   </div>
 </section>
 
-<!-- ============ 02 ============ -->
+<!-- ============ 06 deciles ============ -->
 <section class="section scene-sec" id="s2">
   <div class="scene fade">
-    <p class="scene__kicker">03 · Deciles of irrigation</p>
-    <h2 class="scene__h">The effective number of crops peaks at 5.9 in the fourth decile of districts by irrigation and falls to 3.7 in the most irrigated decile.</h2>
+    <p class="scene__kicker">06 · Deciles of irrigation</p>
+    <h2 class="scene__h">Raw averages put the most effective crops in the fourth decile of irrigation, although within state none of the first seven deciles differs significantly from the least irrigated.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
       <div class="ctl ctl--scroll" id="v2-tab" role="group" aria-label="Top panel measure"></div>
-      <div id="v2" class="chart" role="img" aria-label="Two panels across deciles of districts ordered by irrigation. The effective number of crops rises from 4.1 in decile 1 to a peak of 5.9 in decile 4 and falls to 3.7 in decile 10. The count of crops stays between 19.3 and 22.4 until a peak of 24.5 in decile 8 and falls to 18.1 in decile 10."></div>
+      <div id="v2" class="chart" role="img" aria-label="Two panels across deciles of districts ordered by irrigation, without the comparison within state. The effective number of crops is 4.1 in decile 1, 5.9 in decile 4 and 3.7 in decile 10. The count of crops stays between 19.3 and 22.4 up to decile 7, reaches 24.5 in decile 8 and is 18.1 in decile 10."></div>
       <p class="readout readout--line" id="v2-read" aria-live="polite"></p>
-      <p class="figure__note"><span>District means by decile of irrigated share, with whiskers of one
-      standard error. Hover or tap a decile for its values.</span><button class="replay" data-scene="2" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>District means by decile of irrigated share across all districts,
+      with whiskers of one standard error. Hover or tap a decile for its values.</span><button class="replay" data-scene="2" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>With no curve fitted, the deciles run from 16.5 percent of sown area irrigated on average in
-    the driest to 92.2 percent in the most irrigated. The effective number of crops climbs from
-    4.13 in the driest decile to 5.89 in the fourth, where irrigation averages 44 percent, then
-    falls to 3.69 in the most irrigated, about 2.2 below the peak. A dip in the fifth decile and a
-    recovery in the sixth are the kind of wobble one decile's mean can show by chance.</p>
-    <p>The count of crops peaks two deciles later, at 24.5 in the eighth, before falling to 18.1 in
+    <p>Taken across the whole country, the deciles run from 16.5 percent of sown area irrigated on
+    average in the driest to 92.2 percent in the most irrigated. The effective number of crops is
+    4.13 in the driest decile and 5.89 in the fourth, where irrigation averages 44 percent, before
+    it drops to 3.69 in the most irrigated. Those raw averages mix irrigation with everything else
+    that separates one state from another. Compared only with districts in its own state, the
+    fourth decile sits 0.44 above the least irrigated, which is not statistically significant
+    (p = 0.13).</p>
+    <p>The count of crops is highest two deciles later, at 24.5 in the eighth, and falls to 18.1 in
     the most irrigated. Although the eighth decile grows the longest list of crops, it spreads its
     land least evenly, with an <a href="measurement.html#s2">evenness</a> of 0.212 against 0.282
     in the fourth.</p>
   </div>
 </section>
 
-<!-- ============ 03 ============ -->
+<!-- ============ 07 where ============ -->
 <section class="section scene-sec" id="s3">
   <div class="scene fade">
-    <p class="scene__kicker">04 · Where</p>
+    <p class="scene__kicker">07 · Where</p>
     <h2 class="scene__h">Districts in Punjab, Haryana and Uttar Pradesh irrigate more than four-fifths of their sown area on average.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
@@ -164,22 +250,23 @@
     percent across its districts, Haryana 86 and Uttar Pradesh 84. The least irrigated districts are
     in Kerala, the Himalayan states, the northeast and Chhattisgarh. Kerala averages 23 percent and
     Himachal Pradesh 25.</p>
-    <p>Districts irrigating between 40 and 60 percent of their sown area average 5.58 on the
-    effective number of crops, against 4.69 below 40 percent and 4.62 above 60, even though the
-    count of crops barely differs across the three, from 20.7 to 21.6. On the irrigation figures of
-    the 2011 census village directory the middle group again comes out highest, at 5.66.</p>
+    <p>Districts irrigating more than 60 percent of their sown area average 4.62 on the effective
+    number of crops, even though they grow about as many crops as anywhere else, 20.7 to 21.6 across
+    the three groups. Because the least irrigated group gathers Kerala, the hills and the northeast,
+    its average of 4.69 says as much about those regions as about water, which is why the estimates
+    on this page set each district against others in its own state.</p>
   </div>
 </section>
 
-<!-- ============ 04 ============ -->
+<!-- ============ 08 land use ============ -->
 <section class="section scene-sec" id="s4">
   <div class="scene fade">
-    <p class="scene__kicker">05 · What the land is used for</p>
+    <p class="scene__kicker">08 · What the land is used for</p>
     <h2 class="scene__h">Cereals take 79 percent of gross cropped area in the most irrigated decile of districts, against 58 percent in the seventh.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
-      <div id="v4" class="chart" role="img" aria-label="Three panels across deciles of irrigation. Cereal share falls from 0.72 in decile 1 to 0.58 in decile 7 and climbs to 0.79 in decile 10. Pulse share peaks at 0.14 in decile 8 and drops to 0.02 in decile 10. Oilseed share peaks at 0.18 in decile 7 and drops to 0.04."></div>
+      <div id="v4" class="chart" role="img" aria-label="Three panels across deciles of irrigation. Cereal share falls from 0.72 in decile 1 to 0.58 in decile 7 and climbs to 0.79 in decile 10. Pulse share is highest, at 0.14, in decile 8 and drops to 0.02 in decile 10. Oilseed share is highest, at 0.18, in decile 7 and drops to 0.04."></div>
       <p class="readout readout--line" id="v4-read" aria-live="polite"></p>
       <p class="figure__note"><span>A crop group's share of gross cropped area, with whiskers of one
       standard error. The shaded band marks the three most irrigated deciles.</span><button class="replay" data-scene="4" aria-label="Replay animation">replay</button></p>
@@ -197,50 +284,46 @@
   </div>
 </section>
 
-<!-- ============ 05 ============ -->
+<!-- ============ 09 robustness ============ -->
 <section class="section scene-sec" id="s5">
   <div class="scene fade">
-    <p class="scene__kicker">06 · How firm the bend is</p>
-    <h2 class="scene__h">The fitted curve bends downward in all fourteen versions of the estimate.</h2>
+    <p class="scene__kicker">09 · How firm the decline is</p>
+    <h2 class="scene__h">The effective number of crops curves downward at high irrigation in all eight versions of the estimate.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
-      <div class="ctl ctl--scroll" id="v5-mode" role="group" aria-label="What to show"></div>
       <div class="legend" aria-hidden="true">
-        <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#0E9BB5"/></svg>effective number of crops</span>
-        <span class="legend__item" id="v5-leg-other"><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#7C5CE0"/></svg>other measures of diversity</span>
-        <span class="legend__item"><svg width="14" height="14"><circle cx="7" cy="7" r="4" fill="#0E9BB5"/><circle cx="7" cy="7" r="6.3" fill="none" stroke="#EDEDEB" stroke-width="1.2"/></svg>headline</span>
+        <span class="legend__item"><svg width="14" height="14"><circle cx="7" cy="7" r="4" fill="#0E9BB5"/><circle cx="7" cy="7" r="6.3" fill="none" stroke="#EDEDEB" stroke-width="1.2"/></svg>main estimate</span>
       </div>
-      <div id="v5" class="chart" role="img" aria-label="Fourteen versions of the irrigation curve. Every one bends downward. On the effective number of crops the peak falls between 24 and 35 percent irrigated in the seven versions within state and at 51 percent across all districts together. Other diversity measures peak between 16 percent, for evenness, and 46 percent, for the count of crops."></div>
+      <div id="v5" class="chart" role="img" aria-label="Eight versions of the squared term on irrigation for the effective number of crops, each with its 95 percent interval. All are negative, from −5.44 to −10.42, and no interval reaches zero."></div>
       <p class="readout readout--line" id="v5-read" aria-live="polite"></p>
-      <p class="figure__note"><span>The turning point is the irrigated share at which the fitted
-      curve peaks. Filled dots have p &lt; 0.05 on the squared term, and every version except the
-      first is within state.</span><button class="replay" data-scene="5" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>The squared term measures how sharply the effective number of
+      crops falls away at high irrigation. Filled dots have p &lt; 0.05, and every version except
+      the first is within state.</span><button class="replay" data-scene="5" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>A quadratic can show a peak where the true relationship only levels off. Changing the
-    irrigation record, the set of districts or the weight each district carries never pushes the
-    peak on the effective number of crops outside 24 to 35 percent irrigated within state, and the
-    median version puts it at 27. What does move it is giving up the comparison within state.
-    Set against every district in the country, the peak shifts out to 51 percent, which places the
-    higher figure in differences between states.</p>
-    <p>Other measures of diversity bend as well, although their peaks spread more widely.
-    Evenness, which ignores how many crops there are, peaks earliest, at 16 percent, and bends
-    least firmly (p = 0.023), while the count of crops peaks latest, at 46 percent.</p>
+    <p>Whether irrigation comes from the 2019&ndash;20 village records or the 2011 census, whichever
+    districts are kept and however each is weighted, the squared term stays between &minus;5.44 and
+    &minus;8.18 within state, against &minus;6.84 in the main estimate. Leaving out one state at a
+    time in 2017&ndash;18 to 2021&ndash;22 keeps it between &minus;7.27 and &minus;4.61, so no single
+    state carries the result.</p>
+    <p>The count of crops curves downward as well (p = 0.0001). Evenness, which ignores how many
+    crops there are, curves least firmly over the full period (p = 0.023), and in the recent sets of
+    years it is not statistically significant.</p>
   </div>
 </section>
 
-<!-- ============ 06 ============ -->
+<!-- ============ 10 source mix ============ -->
 <section class="section scene-sec" id="s6">
   <div class="scene fade">
-    <p class="scene__kicker">07 · Where the water comes from</p>
+    <p class="scene__kicker">10 · Where the water comes from</p>
     <h2 class="scene__h">Groundwater is the main irrigation source in half of a district's villages on average.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
       <div class="legend" aria-hidden="true" id="v6-leg"></div>
-      <div id="v6" class="chart" role="img" aria-label="Main irrigation source across villages. On average groundwater is 51 percent, other 21, canal 17 and surface water 11. From the least to the most irrigated decile of districts, groundwater rises from 23 to 78 percent of villages, surface water falls from 24 to 2 and other from 40 to 7. Canal peaks at 23 percent in the seventh decile."></div>
+      <div id="v6" class="chart" role="img" aria-label="Main irrigation source across villages. On average groundwater is 51 percent, other 21, canal 17 and surface water 11. From the least to the most irrigated decile of districts, groundwater rises from 23 to 78 percent of villages, surface water falls from 24 to 2 and other from 40 to 7. Canal reaches 23 percent in the seventh decile."></div>
       <p class="readout readout--line" id="v6-read" aria-live="polite"></p>
       <p class="figure__note"><span>Mean share of a district's villages naming each source as their
       main one, 2019&ndash;20.</span><button class="replay" data-scene="6" aria-label="Replay animation">replay</button></p>
@@ -261,10 +344,10 @@
   </div>
 </section>
 
-<!-- ============ 07 ============ -->
+<!-- ============ 11 source at the same share ============ -->
 <section class="section scene-sec" id="s7">
   <div class="scene fade">
-    <p class="scene__kicker">08 · Source at the same irrigated share</p>
+    <p class="scene__kicker">11 · Source at the same irrigated share</p>
     <h2 class="scene__h">At the same irrigated share, districts where more villages rely on surface water have a lower effective number of crops and more land in cereals.</h2>
   </div>
   <div class="scene-fig fade">
@@ -305,10 +388,41 @@
   </div>
 </section>
 
-<!-- ============ 08 ============ -->
+<!-- ============ 12 canals, wells and tanks ============ -->
+<section class="section scene-sec" id="s14">
+  <div class="scene fade">
+    <p class="scene__kicker">12 · Canals, wells and tanks</p>
+    <h2 class="scene__h">The fall at high irrigation appears whether the water comes from canals or wells, and the data cannot tell the two apart.</h2>
+  </div>
+  <div class="scene-fig fade">
+    <div class="figure__frame">
+      <div id="v14" class="chart" role="img" aria-label="Change in the effective number of crops for one within-state standard deviation more of sown area irrigated from each source in the 2011 census. Tanks and lakes minus 0.48, canals minus 0.27, wells and tubewells minus 0.25, rivers and other sources minus 0.22. Only the tank estimate has p below 0.05."></div>
+      <p class="readout readout--line" id="v14-read" aria-live="polite"></p>
+      <p class="figure__note"><span>Share of sown area irrigated from each source, 2011 census village
+      records, against the effective number of crops in 2009&ndash;10 to 2013&ndash;14, within state
+      and at the same elevation and ruggedness. Values are per within-state standard deviation, read
+      at the average district. Whiskers are 95 percent intervals and filled dots have
+      p &lt; 0.05.</span><button class="replay" data-scene="14" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>The 2011 census splits each district's irrigated land by source. Within state, one standard
+    deviation more of sown area under canals goes with 0.27 fewer effective crops at the average
+    district's mix, and one more under wells and tubewells with 0.25 fewer. Neither is statistically
+    significant on its own (p = 0.095 and 0.37). When the curve is allowed to change with the
+    share of irrigated land that comes from groundwater, the difference has p = 0.61, so the data cannot
+    tell canal water from well water.</p>
+    <p>Districts with more tank irrigation grow fewer crops in effective terms. One within-state
+    standard deviation of sown area under tanks and lakes, about 5 percentage points, goes with 0.48
+    fewer (p = 0.009). Although tanks are concentrated in Tamil Nadu, Andhra Pradesh, Telangana and
+    Karnataka, the association holds when all four states are left out (p = 0.010).</p>
+  </div>
+</section>
+
+<!-- ============ 13 characteristics ============ -->
 <section class="section scene-sec" id="s8">
   <div class="scene fade">
-    <p class="scene__kicker">09 · Other district characteristics</p>
+    <p class="scene__kicker">13 · Other district characteristics</p>
     <h2 class="scene__h">Producer organisations and cropping intensity are the two district characteristics still linked to the effective number of crops within state once irrigation and holding size are held constant.</h2>
   </div>
   <div class="scene-fig fade">
@@ -321,8 +435,8 @@
       </div>
       <div id="v8" class="chart" role="img" aria-label="Twelve district characteristics against the effective number of crops, alone and adjusted. After adjustment only producer organisations, at +0.36 per standard deviation, and cropping intensity, at +0.56, remain clearly positive. Food storage warehouses, regular markets, canal dependence, cultivator share and holding size shrink toward zero."></div>
       <p class="readout readout--line" id="v8-read" aria-live="polite"></p>
-      <p class="figure__note"><span>Adjusted means within state, with the irrigation curve and mean
-      holding size held constant. Facilities are shares of villages, and values are per standard
+      <p class="figure__note"><span>Adjusted means within state, with irrigated share, its square and
+      mean holding size held constant. Facilities are shares of villages, and values are per standard
       deviation of each characteristic.</span><button class="replay" data-scene="8" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
@@ -351,50 +465,74 @@
         year and averaged over 1998&ndash;99 to 2019&ndash;20. Their district means are 21.4 for the
         count of crops, 4.9 for the effective number, 3.5 for the number of main crops and 0.250 for
         evenness, and area shares are over gross cropped area.</p>
+        <p><strong>Quintiles and deciles.</strong> Districts are cut into quintiles or deciles of the
+        irrigated share across the whole sample, and the effective number of crops is regressed on
+        the group indicators with state fixed effects, so each figure is the gap to the least
+        irrigated group among districts of the same state. In the view of every district, each dot is
+        the district's effective number of crops less its state's fixed effect, and the dots in each
+        quintile average exactly to that quintile's gap. Intervals use standard errors clustered by
+        state with critical values from a t distribution with one fewer degree of freedom than the
+        number of states. Every p-value in the first four charts and in the source chart comes from
+        a wild cluster bootstrap by state (restricted, Webb weights, 9,999 draws), which is more
+        cautious than the intervals drawn, so a whisker can just clear zero while p sits a little
+        above 0.05. The two-piece line has a single change of slope at 30 percent irrigated, and 85
+        percent of districts lie above that point.</p>
+        <p><strong>Recent years.</strong> Crop records extend to 2021&ndash;22. From 2020&ndash;21 a
+        few crops are listed differently, so the windows reaching past 2019&ndash;20 leave out six
+        minor crops (niger seed, coriander, garlic, turmeric, cashewnut and banana) in every year,
+        together with state-years whose returns are unreliable: Manipur, Madhya Pradesh and Jammu and
+        Kashmir from 2020&ndash;21, and Meghalaya, Nagaland, Dadra and Nagar Haveli and Daman and Diu
+        in 2021&ndash;22. A district needs at least three of five years in a window and both years in
+        2020&ndash;21 and 2021&ndash;22. Removing the six crops lowers the count of crops by about two
+        everywhere and barely moves any estimate.</p>
+        <p><strong>Irrigation in 1991 and 2011.</strong> The 1991, 2001 and 2011 census village
+        directories give irrigated area by source. Where a 1991 village leaves its total blank but
+        reports irrigation by source, the larger of the two is used. The 1991 comparison keeps the
+        539 districts with a usable 1991 record and holds mean elevation and ruggedness constant. The
+        long differences regress the change in the effective number of crops, from 1998&ndash;99 to
+        2002&ndash;03 to either 2009&ndash;10 to 2013&ndash;14 or 2015&ndash;16 to 2019&ndash;20, on the
+        1991 to 2011 change in irrigated share, with state fixed effects and terrain controls; the
+        stable-area sample keeps districts whose mean gross cropped area stays within two-thirds and
+        one and a half times its early level.</p>
+        <p><strong>Sources.</strong> The source comparison enters the 2011 shares of sown area
+        irrigated by canals and by wells and tubewells, each with its square, and the tank and river
+        shares, with elevation, ruggedness and state fixed effects, on 534 districts outside
+        Maharashtra. Canal and well effects are read at the average district. The test of whether the
+        curve differs with the source enters irrigated share and its square, each interacted with
+        groundwater's share of irrigated land.</p>
         <p>The village-record share runs above published state irrigation figures in Maharashtra,
         Jharkhand and Assam. Leaving those three states out gives a squared term of &minus;6.09
-        (p &lt; 0.0001), with the peak at 21 percent irrigated. Against the 2011 census village
-        directory the district measure agrees at a rank correlation of 0.81.</p>
-        <p>The model is D = b0 + b1 &middot; irr + b2 &middot; irr&sup2;, with state fixed effects in
-        every version but one. The turning point is &minus;b1 / (2 &middot; b2). The within-state curve
-        in the first chart takes its intercept from the state fixed effects averaged over the
-        districts, so its mean equals the sample mean of 4.95. R&sup2; is 0.067 across all districts
-        together and 0.534 within state.</p>
-        <p>Standard errors allow for uneven scatter and group districts by the 2011 district whose
-        village records they carry. Leaving out districts whose 2011 records also cover another
-        district gives a squared term of &minus;6.38, and weighting each district by one over the
-        number of districts sharing its 2011 records gives &minus;6.60, against &minus;6.84 in the
-        headline.</p>
-        <p>The three irrigation groups are cut at 40 and 60 percent irrigated. The source comparison
-        enters the shares of villages relying on canals and on surface water together with the
-        irrigation curve, log mean holding size, the Scheduled Tribe population share and state fixed
-        effects. The characteristic comparison enters each characteristic first on its own and then
-        with the irrigation curve, log mean holding size and state fixed effects, leaving out the
-        holding term when the characteristic is holding size. Its facility measures are shares of a
-        district's villages that have each facility.</p>
+        (p &lt; 0.0001). Against the 2011 census village directory the district measure agrees at a
+        rank correlation of 0.81.</p>
+        <p>The robustness chart fits D = b0 + b1 &middot; irr + b2 &middot; irr&sup2;, with state fixed
+        effects in every version but one. R&sup2; is 0.067 across all districts together and 0.534
+        within state.</p>
+        <p>Unless stated otherwise, standard errors allow for uneven scatter and group districts by
+        the 2011 district whose village records they carry. Leaving out districts whose 2011 records
+        also cover another district gives a squared term of &minus;6.38, and weighting each district
+        by one over the number of districts sharing its 2011 records gives &minus;6.60, against
+        &minus;6.84 in the main estimate.</p>
+        <p>The three irrigation groups are cut at 40 and 60 percent irrigated. The village source
+        comparison enters the shares of villages relying on canals and on surface water together with
+        irrigated share and its square, log mean holding size, the Scheduled Tribe population share
+        and state fixed effects. The characteristic comparison enters each characteristic first on
+        its own and then with irrigated share and its square, log mean holding size and state fixed
+        effects, leaving out the holding term when the characteristic is holding size. Its facility
+        measures are shares of a district's villages that have each facility.</p>
         <p>The village source record is a single 2019&ndash;20 cross-section set against two decades of
         cropping, and cropping intensity agrees only moderately with published state figures.</p>
         <p>The comparison of each district with itself uses net irrigated over net sown area from
         the district land-use statistics, 1998&ndash;99 to 2019&ndash;20, for 600 of the districts.
-        Its 2017&ndash;19 average correlates with the village-record share at 0.87, and the
-        cross-section of district means with state fixed effects puts the peak at 27.3 percent
-        (standard error 4.7 points). With district and state-by-year fixed effects, the
-        straight-line slope of the effective number of crops on the irrigated share is &minus;0.225
-        (0.192), or &minus;0.225 (0.251) with errors clustered by state. A quadratic in the same
-        setting has a squared term of &minus;1.78 (0.46), but nearly all of that curvature comes
-        from districts with higher average irrigation having more negative slopes over time
-        (&minus;3.67, 0.95). Curvature along a district's own path is &minus;1.06 (0.73), and with
-        state clusters the squared term has p = 0.11. Lagging irrigation by a year weakens the bend
-        and next year's irrigation shows one of its own, which points to year-specific reporting
-        moving both series.</p>
-        <p>The twenty-year comparison sets 1998&ndash;2000 against 2017&ndash;19 in 406 districts with
-        state fixed effects. Per unit of irrigated share, crops holding at least 0.5 percent of
-        cropped area change by &minus;2.52 (0.78), or &minus;3.18 (0.83) with starting irrigation
-        held constant. At thresholds of 0.25, 1 and 2 percent the change is &minus;3.27 (0.78),
-        &minus;1.16 (0.69) and &minus;0.24 (0.60). The effective number of crops changes by
-        &minus;0.44 (0.44) and the leading crop's share by &minus;0.013 (0.034). Year on year within
-        districts, the 0.5 percent count falls by 0.82 (0.29) per unit, and that disappears once
-        each district has its own trend.</p>
+        Its 2017&ndash;19 average correlates with the village-record share at 0.87. With district and
+        state-by-year fixed effects, the straight-line slope of the effective number of crops on the
+        irrigated share is &minus;0.225 (0.192), or &minus;0.225 (0.251) with errors clustered by
+        state. A quadratic in the same setting has a squared term of &minus;1.78 (0.46), but nearly
+        all of that curvature comes from districts with higher average irrigation having more
+        negative slopes over time (&minus;3.67, 0.95). Curvature along a district's own path is
+        &minus;1.06 (0.73), and with state clusters the squared term has p = 0.11. Lagging irrigation
+        by a year weakens the curvature and next year's irrigation shows some of its own, which
+        points to year-specific reporting moving both series. The comparison across districts in the
+        same chart is the slope above 30 percent irrigated from the two-piece line.</p>
         <p>No source of variation in irrigation clears both hurdles of a strong first stage and a
         credible exclusion. Shift-share instruments built from each district's starting mix of
         canal, tank and well irrigation and each source's growth in other states mostly track
@@ -403,6 +541,13 @@
         2013, gives F between 2.9 and 6.5, and partly reflects the pumping it would predict. The
         river-gradient design of Duflo and Pande (2007) needs slope and river-network layers and the
         national register of dams with completion dates.</p>
+        <div class="tbl-wrap">
+          <table class="tight" id="tbl-q">
+            <caption>Effective number of crops by quintile of the irrigated share, against the least irrigated quintile of the same state. Wild cluster bootstrap p in brackets.</caption>
+            <thead><tr><th>Years</th><th class="num">Districts</th><th class="num">Quintile 2</th><th class="num">Quintile 3</th><th class="num">Quintile 4</th><th class="num">Quintile 5</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
         <div class="tbl-wrap">
           <table class="tight" id="tbl-1">
             <caption>District means by decile of the irrigated share.</caption>
@@ -419,8 +564,8 @@
         </div>
         <div class="tbl-wrap">
           <table class="tight" id="tbl-2">
-            <caption>The bend on the irrigated share, fourteen ways. The measure is the effective number of crops unless the version names another, and every version except the first is within state.</caption>
-            <thead><tr><th>Version</th><th class="num">Districts</th><th class="num">Linear term</th><th class="num">Squared term</th><th class="num">p</th><th class="num">Turning point</th><th class="num">R&sup2;</th></tr></thead>
+            <caption>The squared term on the irrigated share, fourteen ways. The measure is the effective number of crops unless the version names another, and every version except the first is within state.</caption>
+            <thead><tr><th>Version</th><th class="num">Districts</th><th class="num">Linear term</th><th class="num">Squared term</th><th class="num">p</th><th class="num">R&sup2;</th></tr></thead>
             <tbody></tbody>
           </table>
           <p class="tbl-note">The last six rows sit on different scales, so their squared terms compare by sign and p only.</p>
@@ -452,9 +597,10 @@
       <h4>Sources</h4>
       <p style="font-size:.9rem">Irrigated share, irrigation source and district characteristics
       come from village records in SHRUG 2.1 by the Development Data Lab, drawing on the Mission
-      Antyodaya 2019&ndash;20 village survey and the 2011 census village directory. Yearly irrigation
-      comes from the district land-use statistics of the Directorate of Economics and Statistics.
-      Cropping is district crop area statistics for 1998&ndash;99 to 2019&ndash;20.</p>
+      Antyodaya 2019&ndash;20 village survey and the 1991, 2001 and 2011 census village directories.
+      Yearly irrigation comes from the district land-use statistics of the Directorate of Economics
+      and Statistics. Cropping is district crop area statistics for 1998&ndash;99 to
+      2021&ndash;22.</p>
     </div>
     <div>
       <h4>Sections</h4>
@@ -477,6 +623,6 @@
   </div>
 </footer>
 <script src="js/site.js?v=e2b6885b"></script>
-<script src="js/irrigation.js?v=b44c9ff7"></script>
+<script src="js/irrigation.js?v=c4911b1c"></script>
 </body>
 </html>

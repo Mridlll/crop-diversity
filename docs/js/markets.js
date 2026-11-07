@@ -1047,9 +1047,8 @@ SC[10] = scene({
         const a = pk(p.cl, p.tl), b = pk(p.ch, p.th);
         this.kLo.setAttribute('cx', a[0]); this.kLo.setAttribute('cy', a[1]);
         this.kHi.setAttribute('cx', b[0]); this.kHi.setAttribute('cy', b[1]);
-        this.tLo.setAttribute('x', a[0]); this.tLo.setAttribute('y', a[1] - 11); this.tLo.textContent = 'peak ' + Math.round(p.tl * 100) + '%';
-        /* the high-share label goes below its peak so the two never collide */
-        this.tHi.setAttribute('x', b[0]); this.tHi.setAttribute('y', b[1] + 20); this.tHi.textContent = 'peak ' + Math.round(p.th * 100) + '%';
+        this.tLo.setAttribute('x', a[0]); this.tLo.setAttribute('y', a[1] - 11); this.tLo.textContent = '';
+        this.tHi.setAttribute('x', b[0]); this.tHi.setAttribute('y', b[1] + 20); this.tHi.textContent = '';
         const sw = $('#v10-sw'); if (sw) sw.setAttribute('stroke', M.color);
     },
     reveal(u) {
@@ -1058,12 +1057,13 @@ SC[10] = scene({
         const a = easeOut(Math.max(0, Math.min(1, ms / 900))), b = easeOut(Math.max(0, Math.min(1, (ms - 900) / 900)));
         this.clipLo.setAttribute('width', (this.mg.l + (W - this.mg.l) * a + (a >= 1 ? 20 : 0)).toFixed(1));
         this.clipHi.setAttribute('width', (this.mg.l + (W - this.mg.l) * b + (b >= 1 ? 20 : 0)).toFixed(1));
-        this.kLo.setAttribute('opacity', a >= 1 ? 1 : 0); this.tLo.setAttribute('opacity', a >= 1 ? 1 : 0);
-        this.kHi.setAttribute('opacity', b >= 1 ? 1 : 0); this.tHi.setAttribute('opacity', b >= 1 ? 1 : 0);
+        /* no marker at the top of either curve: the rise at low irrigation is not supported */
+        this.kLo.setAttribute('opacity', 0); this.tLo.setAttribute('opacity', 0);
+        this.kHi.setAttribute('opacity', 0); this.tHi.setAttribute('opacity', 0);
     },
     readout() {
         const r = this.rec(this.m), el = $('#v10-read'); if (!el) return;
-        el.textContent = `How sharply the curve bends down: ${sgn(r.curv_lo, 2)} one standard deviation below average, ${sgn(r.curv_hi, 2)} one standard deviation above (p = ${r.p_inter.toFixed(3)} for the difference).`;
+        el.textContent = `How sharply the effective number of crops falls away at high irrigation: ${sgn(r.curv_lo, 2)} one standard deviation below average, ${sgn(r.curv_hi, 2)} one standard deviation above (p = ${r.p_inter.toFixed(3)} for the difference).`;
     },
     morph(k) {
         const from = Object.assign({}, this.par), r = this.rec(k);

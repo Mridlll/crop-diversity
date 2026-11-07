@@ -422,7 +422,7 @@
 <section class="section scene-sec" id="s10">
   <div class="scene fade">
     <p class="scene__kicker">13 · Markets and irrigation</p>
-    <h2 class="scene__h">At high irrigation the effective number of crops falls more gently where more people live near a mandi, a difference just short of statistical significance.</h2>
+    <h2 class="scene__h">Where more people live near a mandi, the effective number of crops falls less steeply at high irrigation, although the difference is not statistically significant.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
@@ -431,7 +431,7 @@
         <span class="legend__item"><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="#9A9A98" stroke-width="2" stroke-dasharray="4 3"/></svg>one standard deviation below the average district</span>
         <span class="legend__item"><svg width="26" height="10"><line id="v10-sw" x1="1" y1="5" x2="25" y2="5" stroke="#C63FD8" stroke-width="2.5"/></svg>one standard deviation above</span>
       </div>
-      <div id="v10" class="chart" role="img" aria-label="Two curves of the effective number of crops against irrigation. Where few people live near a mandi, the curve rises to a peak at 36 percent irrigated and then falls steeply. Where more do, it peaks at 15 percent and bends down more gently. Both end between 2.3 and 2.8 below an unirrigated district. Tabs show four other measures, where the two curves are closer."></div>
+      <div id="v10" class="chart" role="img" aria-label="Two curves of the effective number of crops against irrigation. Where few people live near a mandi, the curve falls steeply at high irrigation. Where more do, it falls more gently and runs below the other curve at low irrigation. Both end between 2.3 and 2.8 below an unirrigated district. Tabs show four other measures, where the two curves are closer."></div>
       <p class="readout readout--line" id="v10-read" aria-live="polite"></p>
       <p class="figure__note"><span>Curves start at zero for an unirrigated district, and only their
       shape is estimated. Low and high are one standard deviation below and above each measure's
@@ -439,16 +439,14 @@
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Across districts, the effective number of crops climbs with irrigation up to somewhere
-    between a quarter and a half of sown area irrigated, and falls after that. If markets and
-    input supply sped the move into a few irrigated staples, that fall would be steeper where they
-    are common.</p>
-    <p>For mandis it runs the other way. The bend, a number for how sharply the curve turns down at
-    high irrigation, is &minus;8.21 where mandis reach one standard deviation fewer people than
-    average and &minus;4.06 where they reach one standard deviation more (p = 0.060 for the
-    difference). The curve also peaks earlier in the better-served districts, at about 15 percent
-    irrigated against 36 percent, and because it barely rises before turning it runs below the
-    other curve all the way along.</p>
+    <p>Within state, the effective number of crops changes little until irrigation covers about
+    half of sown area, and falls once it covers more. If markets and input supply sped the move
+    into a few irrigated staples, that fall would be steeper where they are common.</p>
+    <p>For mandis it runs the other way. The curvature, a number for how sharply the effective
+    number of crops falls away at high irrigation, is &minus;8.21 where mandis reach one standard
+    deviation fewer people than average and &minus;4.06 where they reach one standard deviation
+    more (p = 0.060 for the difference). Because the curve for the better-served districts sits
+    lower at low irrigation, it runs below the other curve all the way along.</p>
     <p>Fertiliser shops make no difference to the shape (p = 0.95). Where output markets, input
     supply or post-harvest facilities are more common, the fall is gentler too, though none of
     those differences is statistically significant (p between 0.24 and 0.69).</p>
@@ -515,11 +513,11 @@
         coefficient is +7.36 on the count of crops and +0.46 on the effective number, and producer
         organisations are +1.92 on the effective number. On village shares mandis go with a cereal
         share 23.5 points lower (p = 0.054), food storage warehouses with a pulse share 17.1 points
-        lower (p = 0.009), and the mandi bend differs between low and high shares at p = 0.030.
+        lower (p = 0.009), and the mandi curvature differs between low and high shares at p = 0.030.
         None of these three reaches p &lt; 0.05 on population shares, and the fertiliser-shop link
         to cereals is clearer on population shares.</p>
         <p>In the irrigation comparison, the curve's shape is allowed to change with each
-        facility's share. The bend and peak are read at one standard deviation below and above the
+        facility's share. The curvature is read at one standard deviation below and above the
         mean.</p>
 
         <p>The six groups of district rest on two measures. Facility supply is a district's average
@@ -612,6 +610,6 @@
 </footer>
 
 <script src="js/site.js?v=e2b6885b"></script>
-<script src="js/markets.js?v=e1a68ab1"></script>
+<script src="js/markets.js?v=f387e2a5"></script>
 </body>
 </html>

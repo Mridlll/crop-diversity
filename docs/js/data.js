@@ -851,7 +851,7 @@ SC[8] = scene({
         } else {
             const r = MOD.rows[this.sel.i];
             let h = `<span class="readout__name">${esc(r.name)} · ${r.n} districts</span>${esc(r.note)}`;
-            if (this.sel.i === 0) h += '<div class="ro-cols" style="margin-top:.35rem">' + MOD.robust.map(o => `<div>${esc(o.name)}: peak <b>${o.tp.toFixed(3)}</b> <span>(${o.n})</span></div>`).join('') + '</div>';
+            if (this.sel.i === 0) h += '<div class="ro-cols" style="margin-top:.35rem">' + MOD.robust.map(o => `<div>${esc(o.name)}: p <b>${o.p2 < 0.0001 ? '&lt; 0.0001' : o.p2.toFixed(4)}</b> <span>(${o.n})</span></div>`).join('') + '</div>';
             host.innerHTML = h;
         }
     },
@@ -876,7 +876,7 @@ function tables() {
     const rb = $('#tbl-rob tbody');
     if (rb) {
         const ord = MOD.robust.slice();
-        rb.innerHTML = ord.map(o => `<tr><td>${esc(o.name[0].toUpperCase() + o.name.slice(1))}</td><td class="num">${o.n}</td><td class="num">${o.tp.toFixed(3)}</td><td class="num">${(o.r2 * 100).toFixed(1)}%</td></tr>`).join('');
+        rb.innerHTML = ord.map(o => `<tr><td>${esc(o.name[0].toUpperCase() + o.name.slice(1))}</td><td class="num">${o.n}</td><td class="num">${o.p2 < 0.0001 ? '&lt; 0.0001' : o.p2.toFixed(4)}</td><td class="num">${(o.r2 * 100).toFixed(1)}%</td></tr>`).join('');
     }
     const ex = $('#excl');
     if (ex) {
@@ -913,10 +913,9 @@ async function init() {
         if (c.id === 'fe') { c.name = 'within state (state fixed effects)'; c.def = 'A district is set only against other districts in the same state.'; }
         else { c.name = ws(c.name); c.def = ws(c.def); }
     });
-    const tps = MOD.robust.map(o => o.tp);
     MOD.rows.forEach(r => {
         r.note = ws(r.note);
-        if (r.name === 'irrigation curve') r.note = r.note.replace(/from \d\.\d+ to \d\.\d+/, `from ${Math.min(...tps).toFixed(3)} to ${Math.max(...tps).toFixed(3)}`);
+        if (r.name === 'irrigation curve') r.note = 'Effective number of crops on irrigated share and its square. The squared term is negative at p < 0.0001 in all eight versions of the model and sample; within state, diversity changes little until irrigation covers about half of sown area and falls beyond that.';
     });
     MOD.robust.forEach(o => { o.name = ws(o.name); });
     Object.values(SC).forEach(sc => { if (sc.controls) sc.controls(); });

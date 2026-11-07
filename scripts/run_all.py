@@ -126,6 +126,11 @@ STEPS = [
      "Markets: facilities as shares of rural population"),
     ("112", "112_market_pop_site_data.py",
      "Markets page on population shares (reruns 89 and 90 on them)"),
+    # Irrigation v2 (November 2026). 120-123 extend the crop record, build the census
+    # irrigation panel and estimate; 124 is the referee's check. They run by hand, and
+    # 130 reads their outputs and the referee CSV.
+    ("130", "130_irrigation_v2_site_data.py",
+     "Irrigation page: quintiles, recent years, 1991 irrigation, sources (needs 121-124)"),
     ("83", "83_deck_figures.py",
      "Deck figures in the CEEW palette"),
     ("84", "84_build_deck.py",

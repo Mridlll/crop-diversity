@@ -1,0 +1,336 @@
+# Referee checks on irrigation v2
+
+## R0. Reproduction
+
+- Q1 D1 (b) flags drop6: n 591 (G 29): b1 3.85 (p 0.007/0.022), b2 -6.46 (SE 1.40; 1.89, p 0.000/0.001), peak 0.30 [note says -6.46]
+- Q1 D1 (a) all: n 598 (G 30): b1 3.80 (p 0.011/0.021), b2 -6.78 (SE 1.46; 1.80, p 0.000/0.000), peak 0.28 [note says -6.78]
+- Q1 D0_05 (b): n 591 (G 29): b1 7.64 (p 0.003/0.027), b2 -12.81 (SE 2.47; 3.37, p 0.000/0.000), peak 0.30 [note says -12.81]
+- Q2 spec D tank, D1: -9.28 (state SE 0.93) n 534 [note -9.28 (0.93)]
+- Q2 E gw-majority D1: n 231 (G 17): b1 3.95 (p 0.176/0.334), b2 -5.68 (SE 2.33; 3.33, p 0.015/0.089), peak 0.35
+- Q2 E canal-majority D1: n 136 (G 21): b1 0.97 (p 0.552/0.647), b2 -2.42 (SE 1.63; 1.76, p 0.139/0.169), peak 0.20
+- Q3 D1 1991 full : n 539 (G 24): b1 -0.78 (p 0.508/0.646), b2 -2.58 (SE 1.09; 1.56, p 0.018/0.097), peak -0.15
+- Q3 D1 1991 w1517 : n 532 (G 24): b1 -0.35 (p 0.772/0.829), b2 -3.17 (SE 1.11; 1.57, p 0.004/0.044), peak -0.05
+- Q3 D1 1991 w1721 : n 532 (G 24): b1 0.10 (p 0.935/0.945), b2 -3.51 (SE 1.09; 1.35, p 0.001/0.009), peak 0.01
+- Q4 dD0_05 to cs0913: -1.75 (state SE 0.64) n 454
+- Q4 dD0_05 to w1517: -1.47 (state SE 0.86) n 447
+
+## R1. Few-cluster inference: state clusters, t(G-1), wild cluster restricted bootstrap
+
+| test | b | state SE | G | n | p normal | p t(G-1) | p wild cluster |
+|---|---|---|---|---|---|---|---|
+| Q1 D1 (a) 2015-20 all | -6.780 | 1.799 | 30 | 598 | 0.000 | 0.001 | 0.005 |
+| Q1 D1 (b) flags drop6 | -6.464 | 1.889 | 29 | 591 | 0.001 | 0.002 | 0.012 |
+| Q1 D1 (b) raw | -6.155 | 2.025 | 30 | 598 | 0.002 | 0.005 | 0.024 |
+| Q1 D0_05 (b) flags drop6 | -12.814 | 3.368 | 29 | 591 | 0.000 | 0.001 | 0.004 |
+| Q1 D2 (b) raw | -3.621 | 1.400 | 30 | 598 | 0.010 | 0.015 | 0.058 |
+| Q1 E (b) flags drop6 | -0.165 | 0.094 | 29 | 591 | 0.077 | 0.088 | 0.166 |
+| Q2 E gw-majority D1 | -5.677 | 3.334 | 17 | 231 | 0.089 | 0.108 | 0.143 |
+| Q2 E canal-majority D1 | -2.417 | 1.757 | 21 | 136 | 0.169 | 0.184 | 0.165 |
+| Q2 C interaction irr^2 x gw, D1 | -2.699 | 4.975 | 25 | 531 | 0.587 | 0.592 | 0.614 |
+| Q2 E gw-majority D0_05 | -12.080 | 4.756 | 17 | 231 | 0.011 | 0.022 | 0.042 |
+| Q2 E canal-majority D0_05 | -4.560 | 2.610 | 21 | 136 | 0.081 | 0.096 | 0.058 |
+| Q2 C interaction irr^2 x gw, D0_05 | -1.576 | 6.865 | 25 | 531 | 0.818 | 0.820 | 0.817 |
+| Q2 E gw-majority D0 | -15.645 | 6.671 | 17 | 231 | 0.019 | 0.032 | 0.136 |
+| Q2 E canal-majority D0 | -4.485 | 4.612 | 21 | 136 | 0.331 | 0.342 | 0.235 |
+| Q2 C interaction irr^2 x gw, D0 | -8.016 | 10.794 | 25 | 531 | 0.458 | 0.465 | 0.502 |
+| Q2 D tank share, D1 | -9.281 | 0.927 | 25 | 534 | 0.000 | 0.000 | 0.008 |
+| Q2 D gw square, D1 | -2.773 | 2.597 | 25 | 534 | 0.286 | 0.296 | 0.348 |
+| Q2 D canal square, D1 | -2.099 | 2.430 | 25 | 534 | 0.388 | 0.396 | 0.445 |
+| Q2 D tank share, D0_05 | -10.742 | 1.451 | 25 | 534 | 0.000 | 0.000 | 0.046 |
+| Q2 D gw square, D0_05 | -4.872 | 3.891 | 25 | 534 | 0.210 | 0.223 | 0.270 |
+| Q2 D canal square, D0_05 | -5.490 | 3.181 | 25 | 534 | 0.084 | 0.097 | 0.118 |
+| Q3 1991 full D1 | -2.580 | 1.557 | 24 | 539 | 0.097 | 0.111 | 0.111 |
+| Q3 1991 full D0_05 | -5.580 | 2.628 | 24 | 539 | 0.034 | 0.045 | 0.077 |
+| Q3 1991 full D0 | -8.469 | 4.288 | 24 | 539 | 0.048 | 0.060 | 0.083 |
+| Q3 1991 (a) D1 | -3.166 | 1.574 | 24 | 532 | 0.044 | 0.056 | 0.056 |
+| Q3 1991 (a) D0_05 | -4.936 | 3.012 | 24 | 532 | 0.101 | 0.115 | 0.168 |
+| Q3 1991 (a) D0 | -10.001 | 4.302 | 24 | 532 | 0.020 | 0.029 | 0.033 |
+| Q3 1991 (b) D1 | -3.515 | 1.351 | 24 | 532 | 0.009 | 0.016 | 0.010 |
+| Q3 1991 (b) D0_05 | -4.657 | 2.910 | 24 | 532 | 0.110 | 0.123 | 0.179 |
+| Q3 1991 (b) D0 | -10.285 | 3.691 | 24 | 532 | 0.005 | 0.010 | 0.005 |
+| Q4 dD0_05 to cs0913 all | -1.755 | 0.639 | 21 | 454 | 0.006 | 0.012 | 0.023 |
+| Q4 dD1 to cs0913 all | 0.160 | 0.554 | 21 | 454 | 0.773 | 0.776 | 0.781 |
+| Q4 dD0_05 to cs0913 area-stable | -1.737 | 0.714 | 21 | 403 | 0.015 | 0.025 | 0.029 |
+| Q4 dD1 to cs0913 area-stable | 0.282 | 0.619 | 21 | 403 | 0.648 | 0.653 | 0.651 |
+| Q4 dD0_05 to w1517 all | -1.466 | 0.860 | 21 | 447 | 0.088 | 0.104 | 0.116 |
+| Q4 dD1 to w1517 all | 0.420 | 0.660 | 21 | 447 | 0.525 | 0.532 | 0.536 |
+| Q4 dD0_05 to w1517 area-stable | -1.479 | 0.848 | 20 | 352 | 0.081 | 0.097 | 0.111 |
+| Q4 dD1 to w1517 area-stable | 0.649 | 0.613 | 20 | 352 | 0.289 | 0.303 | 0.299 |
+
+## R2. Q1 extras
+
+Extension-only window: 2020-21 and 2021-22, flagged state-years dropped, six crops removed, district needs both years.
+- D1: n 506 (G 25): b1 3.88 (p 0.016/0.019), b2 -6.71 (SE 1.57; 1.86, p 0.000/0.000), peak 0.29
+- D0_05: n 506 (G 25): b1 8.05 (p 0.006/0.021), b2 -13.35 (SE 2.78; 3.34, p 0.000/0.000), peak 0.30
+- D0: n 506 (G 25): b1 12.86 (p 0.000/0.000), b2 -13.49 (SE 3.29; 2.70, p 0.000/0.000), peak 0.48
+- E: n 506 (G 25): b1 0.02 (p 0.868/0.863), b2 -0.15 (SE 0.09; 0.09, p 0.105/0.104), peak 0.06
+- single year 2019-20, D1 six removed: n 591 (G 29): b1 3.27 (p 0.028/0.080), b2 -6.05 (SE 1.45; 2.12, p 0.000/0.004), peak 0.27
+- single year 2020-21, D1 six removed: n 524 (G 27): b1 4.18 (p 0.010/0.013), b2 -6.86 (SE 1.60; 1.92, p 0.000/0.000), peak 0.30
+- single year 2021-22, D1 six removed: n 506 (G 25): b1 3.89 (p 0.015/0.019), b2 -6.72 (SE 1.56; 1.83, p 0.000/0.000), peak 0.29
+
+Leave-one-state-out on the main (b) D1 bend (flags dropped, six removed):
+b2 range -7.27 to -4.61; max state p 0.023 (dropping UTTAR PRADESH); peak range 0.26 to 0.32
+Most influential: UTTAR PRADESH -4.61; GUJARAT -7.27; MADHYA PRADESH -7.12; ASSAM -5.87
+
+Binned means (state FE + nothing else; * state p < .05), Antyodaya share, site sample:
+- full D1 bins=5 (upper edges [0.35, 0.47, 0.6, 0.77, 0.98]): +0.12, -0.55, -1.05*, -2.14*
+- full D0_05 bins=5 (upper edges [0.35, 0.47, 0.6, 0.77, 0.98]): +0.24, -0.24, -1.25, -2.60*
+- full D1 bins=10 (upper edges [0.23, 0.35, 0.41, 0.47, 0.53, 0.6, 0.68, 0.77, 0.88, 0.98]): +0.24, +0.12, +0.44, -0.62, -0.11, -0.64, -1.17*, -1.85*, -2.56*
+- full D0_05 bins=10 (upper edges [0.23, 0.35, 0.41, 0.47, 0.53, 0.6, 0.68, 0.77, 0.88, 0.98]): +0.51, +0.17, +0.99, -0.18, +0.45, -0.41, -1.47, -1.92*, -3.62*
+- w1721 D1 bins=5 (upper edges [0.35, 0.47, 0.6, 0.77, 0.98]): +0.10, -0.21, -0.81*, -1.98*
+- w1721 D0_05 bins=5 (upper edges [0.35, 0.47, 0.6, 0.77, 0.98]): +0.09, -0.55, -1.89*, -3.38*
+- w1721 D1 bins=10 (upper edges [0.23, 0.35, 0.41, 0.47, 0.53, 0.6, 0.68, 0.77, 0.88, 0.98]): -0.19, -0.02, -0.01, -0.60, -0.02, -0.80*, -1.01*, -1.86*, -2.66*
+- w1721 D0_05 bins=10 (upper edges [0.23, 0.35, 0.41, 0.47, 0.53, 0.6, 0.68, 0.77, 0.88, 0.98]): +0.01, -0.05, +0.29, -0.76, -0.23, -1.48*, -2.27*, -2.90*, -4.67*
+- spline knot 0.30, full D1: slope below 2.91 (t(G-1) p 0.105, wild 0.119); above -4.10 (t(G-1) p 0.005, wild 0.022)
+- spline knot 0.30, full D0_05: slope below 6.84 (t(G-1) p 0.035, wild 0.045); above -5.56 (t(G-1) p 0.010, wild 0.033)
+- spline knot 0.30, w1721 D1: slope below 1.13 (t(G-1) p 0.588, wild 0.601); above -3.31 (t(G-1) p 0.019, wild 0.044)
+- spline knot 0.30, w1721 D0_05: slope below 5.94 (t(G-1) p 0.085, wild 0.100); above -7.21 (t(G-1) p 0.000, wild 0.008)
+Share of districts above the D1 peak (0.30): 85%
+Share of districts above the D0_05 peak (0.30): 85%
+
+## R3. Q2: canal vs groundwater, tank
+
+Spread of the source shares (share of sown area) in the spec D sample, n 534:
+- sh_can: mean 0.148, sd 0.180, within-state sd 0.152, p90 0.380, max 0.956
+- sh_gw: mean 0.233, sd 0.232, within-state sd 0.148, p90 0.557, max 0.982
+- sh_tk: mean 0.027, sd 0.061, within-state sd 0.051, p90 0.060, max 0.679
+- sh_ro: mean 0.061, sd 0.098, within-state sd 0.071, p90 0.152, max 0.791
+- D1 effect of +1 within-state SD of sh_can at its mean: -0.272
+- D1 effect of +1 within-state SD of sh_gw at its mean: -0.248
+- D1 effect of +1 within-state SD of sh_tk: -0.476; of sh_ro: -0.223
+
+Tank share by state (spec D sample): n with tank share > 0.05, state mean tank share
+                 n  mean_tank  n_gt_05
+state_name                            
+TAMIL NADU      31      0.134       14
+ANDHRA PRADESH  20      0.067        9
+WEST BENGAL     18      0.060       11
+JHARKHAND       24      0.059       13
+TELANGANA        2      0.036        0
+BIHAR           38      0.035        5
+GOA              2      0.028        0
+KARNATAKA       30      0.028        4
+
+Leave-one-state-out, spec D tank coefficient:
+- D1: range -10.58 to -8.78; max state p 0.002; biggest moves: TAMIL NADU -10.58; MADHYA PRADESH -8.78; KARNATAKA -8.87; UTTAR PRADESH -8.90
+  drop Tamil Nadu: b -10.584, state SE 3.481, t -3.04, G 24, n 503: p normal 0.002, p t(G-1) 0.006, p wild-cluster (Webb, 9999 draws) 0.002
+  drop Andhra Pradesh+Telangana: b -9.626, state SE 1.082, t -8.90, G 23, n 512: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.059
+  drop Karnataka: b -8.873, state SE 0.838, t -10.59, G 24, n 504: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.005
+  drop Tamil Nadu+Andhra Pradesh+Telangana+Karnataka: b -11.626, state SE 3.289, t -3.53, G 21, n 451: p normal 0.000, p t(G-1) 0.002, p wild-cluster (Webb, 9999 draws) 0.010
+- D0_05: range -11.68 to -8.53; max state p 0.095; biggest moves: TAMIL NADU -8.53; ANDHRA PRADESH -11.68; MADHYA PRADESH -10.05; UTTAR PRADESH -10.18
+  drop Tamil Nadu: b -8.535, state SE 5.118, t -1.67, G 24, n 503: p normal 0.095, p t(G-1) 0.109, p wild-cluster (Webb, 9999 draws) 0.119
+  drop Andhra Pradesh+Telangana: b -11.673, state SE 1.212, t -9.63, G 23, n 512: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.034
+  drop Karnataka: b -10.840, state SE 1.448, t -7.48, G 24, n 504: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.063
+  drop Tamil Nadu+Andhra Pradesh+Telangana+Karnataka: b -14.995, state SE 4.880, t -3.07, G 21, n 451: p normal 0.002, p t(G-1) 0.006, p wild-cluster (Webb, 9999 draws) 0.025
+- tank, D1, districts with tank share <= 0.3 only (5 dropped): b -10.993, state SE 2.519, t -4.36, G 25, n 529: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.001
+- tank, D1, districts with tank share <= 0.15 only (16 dropped): b -13.599, state SE 3.350, t -4.06, G 25, n 518: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.001
+- tank, D1, without the four highest-tank states (TN, AP+TG, WB, JH): b -16.165, state SE 3.818, t -4.23, G 20, n 439: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.018
+- tank share alone + terrain + state FE, D1: b -8.215, state SE 0.932, t -8.81, G 25, n 534: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.044
+- tank share + total irrigated quadratic, D1: b -7.080, state SE 0.936, t -7.56, G 25, n 534: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.098
+
+Canal-majority vs groundwater-majority districts: support of the irrigated share
+- gw-majority: n 231, states 17, irr share p10/p50/p90 0.19/0.51/0.98, within-state sd 0.144; share above 0.5 53%
+- canal-majority: n 136, states 21, irr share p10/p50/p90 0.09/0.36/0.88, within-state sd 0.171; share above 0.5 40%
+- neither: n 164, states 18, irr share p10/p50/p90 0.05/0.29/0.85, within-state sd 0.150; share above 0.5 35%
+- D1: canal-majority minus rest, squared term: b 1.640, state SE 1.683, t 0.97, G 25, n 534: p normal 0.330, p t(G-1) 0.340, p wild-cluster (Webb, 9999 draws) 0.316; minimum detectable difference (80% power, 5%) about 4.7
+- D0_05: canal-majority minus rest, squared term: b 1.854, state SE 3.649, t 0.51, G 25, n 534: p normal 0.611, p t(G-1) 0.616, p wild-cluster (Webb, 9999 draws) 0.619; minimum detectable difference (80% power, 5%) about 10.2
+
+## R4. Q3: irrigation measured in 1991
+
+1991 villages: total field present 85.0%; source sum present 85.5%; total 0 or blank with sources > 0: 38.1%; both present and source sum > total + 0.5: 0.1%; both present and total > source sum + 0.5: 0.8%
+- main (max of total, sources): national share 0.297 (valid villages 541,166)
+- reported total only: national share 0.203 (valid villages 467,986)
+- sum of sources only: national share 0.295 (valid villages 528,169)
+- check main variant vs panel c1991_irr_share: max abs diff 1.11e-16
+- correlation with Antyodaya 2019-20 share: main 0.794, reported-only 0.373, sources-only 0.794; with census 2001 share: 0.916 / 0.469 / 0.903
+- share of usable districts where the repair raises the 1991 share by > 0.10: 22%; by state (top): UTTAR PRADESH 0.65; ANDHRA PRADESH 0.24; RAJASTHAN 0.23; UTTARAKHAND 0.19; TELANGANA 0.11; TAMIL NADU 0.00
+
+| 1991 measure | window | outcome | n | G | linear (p par/st) | squared (SE par; st) p par/st | peak | p wild (squared) |
+|---|---|---|---|---|---|---|---|---|
+| main | full | D1 | 539 | 24 | -0.78 (0.508/0.646) | -2.58 (1.09; 1.56) 0.018/0.097 | -0.15 | 0.110 |
+| main | full | D0_05 | 539 | 24 | 1.44 (0.396/0.576) | -5.58 (1.67; 2.63) 0.001/0.034 | 0.13 | 0.076 |
+| main | full | D0 | 539 | 24 | 4.10 (0.105/0.354) | -8.47 (2.35; 4.29) 0.000/0.048 | 0.24 | 0.085 |
+| main | (a) | D1 | 532 | 24 | -0.35 (0.772/0.829) | -3.17 (1.11; 1.57) 0.004/0.044 | -0.05 | 0.054 |
+| main | (a) | D0_05 | 532 | 24 | 0.47 (0.787/0.862) | -4.94 (1.75; 3.01) 0.005/0.101 | 0.05 | 0.173 |
+| main | (a) | D0 | 532 | 24 | 3.69 (0.181/0.365) | -10.00 (2.64; 4.30) 0.000/0.020 | 0.18 | 0.032 |
+| main | (b) | D1 | 532 | 24 | 0.10 (0.935/0.945) | -3.51 (1.09; 1.35) 0.001/0.009 | 0.01 | 0.011 |
+| main | (b) | D0_05 | 532 | 24 | -0.09 (0.957/0.972) | -4.66 (1.72; 2.91) 0.007/0.110 | -0.01 | 0.182 |
+| main | (b) | D0 | 532 | 24 | 4.88 (0.044/0.142) | -10.28 (2.29; 3.69) 0.000/0.005 | 0.24 | 0.005 |
+| reported total only | full | D1 | 456 | 21 | -1.14 (0.365/0.394) | -2.30 (1.25; 1.74) 0.066/0.188 | -0.25 | 0.162 |
+| reported total only | full | D0_05 | 456 | 21 | 0.75 (0.677/0.720) | -4.85 (1.85; 2.89) 0.009/0.093 | 0.08 | 0.078 |
+| reported total only | full | D0 | 456 | 21 | 0.58 (0.832/0.856) | -5.64 (2.81; 4.57) 0.045/0.217 | 0.05 | 0.239 |
+| reported total only | (a) | D1 | 449 | 21 | -0.62 (0.634/0.678) | -2.91 (1.27; 2.04) 0.022/0.153 | -0.11 | 0.136 |
+| reported total only | (a) | D0_05 | 449 | 21 | 0.29 (0.878/0.911) | -4.05 (1.95; 3.60) 0.038/0.261 | 0.04 | 0.283 |
+| reported total only | (a) | D0 | 449 | 21 | 2.47 (0.418/0.520) | -9.69 (3.13; 5.46) 0.002/0.076 | 0.13 | 0.046 |
+| reported total only | (b) | D1 | 449 | 21 | -0.35 (0.787/0.811) | -3.03 (1.25; 1.93) 0.015/0.116 | -0.06 | 0.113 |
+| reported total only | (b) | D0_05 | 449 | 21 | 0.08 (0.968/0.976) | -4.07 (1.91; 3.45) 0.033/0.238 | 0.01 | 0.264 |
+| reported total only | (b) | D0 | 449 | 21 | 3.01 (0.273/0.374) | -9.44 (2.77; 4.88) 0.001/0.053 | 0.16 | 0.027 |
+| sum of sources only | full | D1 | 539 | 24 | -1.27 (0.342/0.497) | -2.17 (1.21; 1.67) 0.073/0.195 | -0.29 | 0.211 |
+| sum of sources only | full | D0_05 | 539 | 24 | 1.57 (0.401/0.581) | -5.68 (1.79; 2.80) 0.002/0.043 | 0.14 | 0.097 |
+| sum of sources only | full | D0 | 539 | 24 | 4.57 (0.109/0.352) | -8.85 (2.59; 4.66) 0.001/0.058 | 0.26 | 0.096 |
+| sum of sources only | (a) | D1 | 532 | 24 | -0.86 (0.524/0.620) | -2.73 (1.23; 1.65) 0.026/0.098 | -0.16 | 0.107 |
+| sum of sources only | (a) | D0_05 | 532 | 24 | 0.64 (0.739/0.829) | -5.06 (1.88; 3.17) 0.007/0.110 | 0.06 | 0.183 |
+| sum of sources only | (a) | D0 | 532 | 24 | 4.37 (0.158/0.330) | -10.59 (2.90; 4.61) 0.000/0.022 | 0.21 | 0.040 |
+| sum of sources only | (b) | D1 | 532 | 24 | -0.35 (0.791/0.813) | -3.14 (1.20; 1.41) 0.009/0.026 | -0.06 | 0.024 |
+| sum of sources only | (b) | D0_05 | 532 | 24 | 0.05 (0.979/0.986) | -4.76 (1.86; 3.08) 0.011/0.122 | 0.01 | 0.196 |
+| sum of sources only | (b) | D0 | 532 | 24 | 5.70 (0.035/0.113) | -10.97 (2.51; 3.89) 0.000/0.005 | 0.26 | 0.008 |
+
+Dropping weak 1991 state-rounds (main 1991 measure, D1 and D0_05):
+- states with 1991/2001 share ratio < 0.67: andaman nicobar islands (0.06), assam (0.56), daman diu (0.52), madhya pradesh (0.52), maharashtra (0.66), rajasthan (0.58)
+- states with 1991 area coverage < 80%: andaman nicobar islands, arunachal pradesh, chandigarh, chhattisgarh, dadra nagar haveli, gujarat, jammu kashmir, lakshadweep, mizoram, nct of delhi, sikkim, uttarakhand
+- drop Rajasthan, full, D1: n 506 (G 23): b1 -1.28 (p 0.313/0.487), b2 -2.12 (SE 1.14; 1.62, p 0.064/0.189), peak -0.30; p wild 0.193
+- drop Rajasthan, full, D0_05: n 506 (G 23): b1 1.17 (p 0.520/0.685), b2 -5.27 (SE 1.74; 2.85, p 0.003/0.065), peak 0.11; p wild 0.119
+- drop Rajasthan, (a), D1: n 499 (G 23): b1 -0.38 (p 0.769/0.837), b2 -3.09 (SE 1.16; 1.71, p 0.008/0.071), peak -0.06; p wild 0.084
+- drop Rajasthan, (a), D0_05: n 499 (G 23): b1 0.69 (p 0.713/0.820), b2 -5.03 (SE 1.85; 3.26, p 0.007/0.123), peak 0.07; p wild 0.194
+- drop Rajasthan, (b), D1: n 499 (G 23): b1 0.44 (p 0.726/0.774), b2 -3.76 (SE 1.14; 1.45, p 0.001/0.009), peak 0.06; p wild 0.011
+- drop Rajasthan, (b), D0_05: n 499 (G 23): b1 0.79 (p 0.676/0.784), b2 -5.33 (SE 1.82; 3.08, p 0.003/0.084), peak 0.07; p wild 0.150
+- drop Rajasthan + Madhya Pradesh, full, D1: n 456 (G 22): b1 -0.06 (p 0.963/0.971), b2 -3.26 (SE 1.18; 1.40, p 0.006/0.020), peak -0.01; p wild 0.026
+- drop Rajasthan + Madhya Pradesh, full, D0_05: n 456 (G 22): b1 3.13 (p 0.109/0.228), b2 -7.08 (SE 1.83; 2.53, p 0.000/0.005), peak 0.22; p wild 0.020
+- drop Rajasthan + Madhya Pradesh, (a), D1: n 449 (G 22): b1 0.78 (p 0.575/0.652), b2 -4.18 (SE 1.23; 1.52, p 0.001/0.006), peak 0.09; p wild 0.008
+- drop Rajasthan + Madhya Pradesh, (a), D0_05: n 449 (G 22): b1 2.51 (p 0.217/0.384), b2 -6.73 (SE 1.94; 3.05, p 0.001/0.028), peak 0.19; p wild 0.070
+- drop Rajasthan + Madhya Pradesh, (b), D1: n 449 (G 22): b1 1.12 (p 0.416/0.490), b2 -4.45 (SE 1.22; 1.44, p 0.000/0.002), peak 0.13; p wild 0.003
+- drop Rajasthan + Madhya Pradesh, (b), D0_05: n 449 (G 22): b1 2.34 (p 0.255/0.407), b2 -6.84 (SE 1.93; 2.95, p 0.000/0.020), peak 0.17; p wild 0.056
+- drop all ratio < 0.67, full, D1: n 397 (G 20): b1 -0.13 (p 0.922/0.947), b2 -2.99 (SE 1.16; 1.51, p 0.010/0.048), peak -0.02; p wild 0.065
+- drop all ratio < 0.67, full, D0_05: n 397 (G 20): b1 2.14 (p 0.293/0.463), b2 -5.90 (SE 1.89; 2.72, p 0.002/0.030), peak 0.18; p wild 0.075
+- drop all ratio < 0.67, (a), D1: n 390 (G 20): b1 0.10 (p 0.944/0.959), b2 -3.37 (SE 1.22; 1.49, p 0.006/0.024), peak 0.01; p wild 0.026
+- drop all ratio < 0.67, (a), D0_05: n 390 (G 20): b1 0.98 (p 0.656/0.754), b2 -5.10 (SE 2.05; 3.19, p 0.013/0.110), peak 0.10; p wild 0.188
+- drop all ratio < 0.67, (b), D1: n 390 (G 20): b1 0.32 (p 0.814/0.850), b2 -3.56 (SE 1.20; 1.34, p 0.003/0.008), peak 0.05; p wild 0.010
+- drop all ratio < 0.67, (b), D0_05: n 390 (G 20): b1 0.85 (p 0.701/0.781), b2 -5.27 (SE 2.04; 3.08, p 0.010/0.087), peak 0.08; p wild 0.161
+- drop ratio < 0.67 or coverage < 80%, full, D1: n 342 (G 15): b1 -1.42 (p 0.350/0.425), b2 -2.10 (SE 1.30; 1.47, p 0.106/0.151), peak -0.34; p wild 0.155
+- drop ratio < 0.67 or coverage < 80%, full, D0_05: n 342 (G 15): b1 1.68 (p 0.453/0.498), b2 -5.66 (SE 2.02; 2.53, p 0.005/0.025), peak 0.15; p wild 0.063
+- drop ratio < 0.67 or coverage < 80%, (a), D1: n 335 (G 15): b1 -1.33 (p 0.406/0.435), b2 -2.38 (SE 1.36; 1.45, p 0.080/0.102), peak -0.28; p wild 0.101
+- drop ratio < 0.67 or coverage < 80%, (a), D0_05: n 335 (G 15): b1 0.16 (p 0.946/0.953), b2 -4.51 (SE 2.17; 3.08, p 0.038/0.143), peak 0.02; p wild 0.263
+- drop ratio < 0.67 or coverage < 80%, (b), D1: n 335 (G 15): b1 -0.93 (p 0.554/0.540), b2 -2.63 (SE 1.34; 1.26, p 0.049/0.036), peak -0.18; p wild 0.038
+- drop ratio < 0.67 or coverage < 80%, (b), D0_05: n 335 (G 15): b1 -0.12 (p 0.961/0.965), b2 -4.50 (SE 2.15; 2.97, p 0.037/0.131), peak -0.01; p wild 0.255
+
+Is the missing rise a units artefact? Same districts, full and (b) windows.
+Common districts with all five measures: 410 (1991 sample 539). States losing districts: ODISHA 30.0; ASSAM 26.0; WEST BENGAL 18.0; JHARKHAND 7.0; NAGALAND 7.0; MIZORAM 7.0; GUJARAT 6.0; MADHYA PRADESH 5.0
+
+Sample: 1991 sample, census 1991 and Antyodaya (n 539).
+
+| measure | window | outcome | level: b2, p st, peak | percentile rank: b1 (p st), b2 (p st), peak pct | quintile means vs Q1 (state FE, * state p<.05) |
+|---|---|---|---|---|---|
+| census 1991 | full | D1 | -2.58, 0.097, -0.15 | 3.85 (0.044), -6.49 (0.001), 0.30 | +0.14, +0.04, -0.84*, -1.95* |
+| Antyodaya 2019-20 | full | D1 | -6.12, 0.001, 0.25 | 1.30 (0.447), -4.22 (0.006), 0.15 | +0.10, -0.49, -1.20, -2.25* |
+| census 2011 | full | D1 | -4.91, 0.015, 0.21 | 2.60 (0.177), -5.72 (0.004), 0.23 | +0.23, -0.35, -1.07*, -1.87* |
+| census 1991 | full | D0_05 | -5.58, 0.034, 0.13 | 5.72 (0.077), -8.64 (0.006), 0.33 | -0.21, -0.04, -0.96, -2.37* |
+| Antyodaya 2019-20 | full | D0_05 | -11.85, 0.001, 0.36 | 4.74 (0.101), -8.47 (0.001), 0.28 | +0.25, -0.24, -1.41, -2.46* |
+| census 2011 | full | D0_05 | -8.13, 0.010, 0.27 | 5.21 (0.128), -9.41 (0.002), 0.28 | +0.20, -0.59, -1.32, -2.87* |
+| census 1991 | (b) | D1 | -3.51, 0.009, 0.01 | 5.10 (0.009), -7.61 (0.001), 0.33 | +0.38, +0.36, -0.62, -1.78* |
+| Antyodaya 2019-20 | (b) | D1 | -6.12, 0.005, 0.29 | 1.90 (0.257), -4.39 (0.012), 0.22 | -0.08, -0.31, -0.95, -2.23* |
+| census 2011 | (b) | D1 | -5.88, 0.001, 0.26 | 3.41 (0.028), -6.59 (0.000), 0.26 | +0.14, -0.20, -0.96*, -2.07* |
+| census 1991 | (b) | D0_05 | -4.66, 0.110, -0.01 | 4.81 (0.180), -8.42 (0.022), 0.29 | -0.31, -0.30, -1.40*, -3.00* |
+| Antyodaya 2019-20 | (b) | D0_05 | -11.23, 0.004, 0.27 | 2.68 (0.385), -7.71 (0.012), 0.17 | -0.17, -0.90, -2.21*, -3.60* |
+| census 2011 | (b) | D0_05 | -7.24, 0.039, 0.17 | 2.95 (0.393), -8.40 (0.015), 0.18 | -0.32, -1.20, -1.99*, -3.93* |
+
+Sample: common five-measure sample (n 410).
+
+| measure | window | outcome | level: b2, p st, peak | percentile rank: b1 (p st), b2 (p st), peak pct | quintile means vs Q1 (state FE, * state p<.05) |
+|---|---|---|---|---|---|
+| census 1991 | full | D1 | -2.42, 0.155, -0.34 | 2.71 (0.155), -6.30 (0.002), 0.22 | -0.42, -0.56, -1.67*, -2.69* |
+| census 2001 | full | D1 | -3.64, 0.024, 0.02 | 1.96 (0.245), -5.35 (0.000), 0.18 | +0.12, -0.64, -1.57*, -2.72* |
+| census 2011 | full | D1 | -5.29, 0.025, 0.18 | 0.58 (0.776), -4.53 (0.029), 0.06 | -0.30, -0.94, -1.88*, -2.74* |
+| DES 1998-2000 | full | D1 | -5.76, 0.017, 0.23 | 4.68 (0.057), -7.63 (0.002), 0.31 | +0.51, -0.24, -1.09, -2.18* |
+| Antyodaya 2019-20 | full | D1 | -4.67, 0.016, 0.08 | -1.31 (0.621), -2.25 (0.267), -0.29 | -0.53, -0.64, -1.57*, -2.82* |
+| census 1991 | full | D0_05 | -6.20, 0.021, 0.10 | 5.48 (0.080), -9.51 (0.003), 0.29 | -0.31, -0.30, -1.37*, -2.75* |
+| census 2001 | full | D0_05 | -6.90, 0.009, 0.18 | 4.69 (0.103), -8.98 (0.000), 0.26 | +0.58, -0.58, -1.59*, -3.16* |
+| census 2011 | full | D0_05 | -9.07, 0.007, 0.25 | 3.02 (0.342), -8.54 (0.004), 0.18 | +0.08, -1.03, -1.86*, -3.67* |
+| DES 1998-2000 | full | D0_05 | -8.42, 0.015, 0.29 | 7.01 (0.052), -10.46 (0.003), 0.33 | +0.78, -0.05, -1.02, -2.36* |
+| Antyodaya 2019-20 | full | D0_05 | -10.83, 0.000, 0.29 | 1.36 (0.670), -6.34 (0.008), 0.11 | -0.33, -0.55, -2.03*, -3.66* |
+| census 1991 | (b) | D1 | -3.42, 0.025, -0.09 | 4.17 (0.017), -7.57 (0.000), 0.28 | +0.19, -0.30, -1.34*, -2.38* |
+| census 2001 | (b) | D1 | -5.15, 0.001, 0.20 | 3.71 (0.016), -6.70 (0.000), 0.28 | +0.39, -0.31, -1.23*, -2.43* |
+| census 2011 | (b) | D1 | -6.45, 0.001, 0.25 | 1.92 (0.188), -5.85 (0.001), 0.16 | -0.14, -0.71, -1.49, -2.70* |
+| DES 1998-2000 | (b) | D1 | -6.63, 0.002, 0.30 | 5.75 (0.006), -8.34 (0.000), 0.34 | +0.56, -0.04, -0.87, -1.97* |
+| Antyodaya 2019-20 | (b) | D1 | -5.08, 0.031, 0.18 | 0.20 (0.935), -3.22 (0.133), 0.03 | -0.56*, -0.41, -1.16*, -2.41* |
+| census 1991 | (b) | D0_05 | -5.00, 0.085, -0.06 | 4.41 (0.180), -9.15 (0.009), 0.24 | -0.24, -0.59, -1.67*, -3.16* |
+| census 2001 | (b) | D0_05 | -6.38, 0.023, 0.10 | 3.76 (0.171), -8.71 (0.002), 0.22 | +0.33, -0.84, -2.19*, -3.79* |
+| census 2011 | (b) | D0_05 | -8.62, 0.014, 0.18 | 1.44 (0.637), -7.98 (0.009), 0.09 | +0.01, -1.37, -2.23*, -4.47* |
+| DES 1998-2000 | (b) | D0_05 | -7.98, 0.023, 0.24 | 6.03 (0.095), -10.03 (0.008), 0.30 | +0.28, -0.33, -1.51*, -2.99* |
+| Antyodaya 2019-20 | (b) | D0_05 | -9.96, 0.001, 0.18 | -0.90 (0.765), -5.20 (0.059), -0.09 | -0.76*, -1.31, -2.65*, -4.36* |
+- 1991 share rescaled to the 2019-20 scale (fitted quadratic map), full window D1: n 410 (G 18): b1 7.06 (p 0.130/0.244), b2 -10.41 (SE 3.46; 4.82, p 0.003/0.031), peak 0.34
+- 1991 share rescaled to the 2019-20 scale (fitted quadratic map), full window D0_05: n 410 (G 18): b1 17.99 (p 0.008/0.068), b2 -19.62 (SE 5.23; 7.82, p 0.000/0.012), peak 0.46
+
+## R5. Q4: long differences
+
+Correlation of the 1991-2011 change in irrigated share with the change in log gross cropped area: to 2009-13 0.207, to 2015-19 0.133; with the 1991 level 0.009
+Check: rebuilt relative-threshold change equals d_D0_05 to 2009-13: max abs diff 4.44e-16
+
+| outcome | diversity to | sample | control | b dirr | state SE | p t(G-1) | p wild | n |
+|---|---|---|---|---|---|---|---|---|
+| D0 at 0.5% (as in note) | cs0913 | all | - | -1.755 | 0.639 | 0.012 | 0.023 | 454 |
+| D0 at 0.5% | cs0913 | all | dlgca_cs0913 | -1.801 | 0.650 | 0.012 | 0.026 | 454 |
+| count >= 0.5% of EARLY area (fixed ha) | cs0913 | all | - | -0.947 | 0.810 | 0.257 | 0.252 | 454 |
+| count >= 0.5% of EARLY area (fixed ha) | cs0913 | all | dlgca_cs0913 | -1.657 | 0.753 | 0.040 | 0.044 | 454 |
+| change in log GCA | cs0913 | all | - | 0.219 | 0.172 | 0.217 | 0.222 | 454 |
+| D0 at 0.5% (as in note) | cs0913 | area-stable | - | -1.737 | 0.714 | 0.025 | 0.031 | 403 |
+| D0 at 0.5% | cs0913 | area-stable | dlgca_cs0913 | -1.729 | 0.718 | 0.026 | 0.030 | 403 |
+| count >= 0.5% of EARLY area (fixed ha) | cs0913 | area-stable | - | -1.292 | 0.747 | 0.099 | 0.103 | 403 |
+| count >= 0.5% of EARLY area (fixed ha) | cs0913 | area-stable | dlgca_cs0913 | -1.501 | 0.798 | 0.075 | 0.074 | 403 |
+| change in log GCA | cs0913 | area-stable | - | 0.071 | 0.088 | 0.429 | 0.430 | 403 |
+| D0 at 0.5% (as in note) | w1517 | all | - | -1.466 | 0.860 | 0.104 | 0.120 | 447 |
+| D0 at 0.5% | w1517 | all | dlgca_w1517 | -1.516 | 0.855 | 0.092 | 0.102 | 447 |
+| count >= 0.5% of EARLY area (fixed ha) | w1517 | all | - | -1.057 | 1.159 | 0.373 | 0.376 | 447 |
+| count >= 0.5% of EARLY area (fixed ha) | w1517 | all | dlgca_w1517 | -1.674 | 0.934 | 0.088 | 0.090 | 447 |
+| change in log GCA | w1517 | all | - | 0.208 | 0.163 | 0.217 | 0.245 | 447 |
+| D0 at 0.5% (as in note) | w1517 | area-stable | - | -1.479 | 0.848 | 0.097 | 0.114 | 352 |
+| D0 at 0.5% | w1517 | area-stable | dlgca_w1517 | -1.474 | 0.855 | 0.101 | 0.117 | 352 |
+| count >= 0.5% of EARLY area (fixed ha) | w1517 | area-stable | - | -1.350 | 0.920 | 0.159 | 0.162 | 352 |
+| count >= 0.5% of EARLY area (fixed ha) | w1517 | area-stable | dlgca_w1517 | -1.413 | 0.925 | 0.143 | 0.130 | 352 |
+| change in log GCA | w1517 | area-stable | - | 0.025 | 0.084 | 0.772 | 0.762 | 352 |
+
+Leave-one-state-out, dD0_05 on dirr 1991-2011 (all districts):
+- to cs0913: b range -2.02 to -1.32; max state p 0.028; states whose removal moves b most: BIHAR -1.32 (p 0.011); NAGALAND -2.02 (p 0.001); PUNJAB -1.98 (p 0.001); WEST BENGAL -1.90 (p 0.003)
+- to w1517: b range -2.04 to -1.01; max state p 0.190; states whose removal moves b most: MADHYA PRADESH -2.04 (p 0.013); BIHAR -1.01 (p 0.190); NAGALAND -1.74 (p 0.046); HARYANA -1.21 (p 0.158)
+
+- adding the 1991 level, to cs0913: b -1.948, state SE 0.733, t -2.66, G 21, n 454: p normal 0.008, p t(G-1) 0.015, p wild-cluster (Webb, 9999 draws) 0.022
+- adding the early D0 at 0.5% (regression to the mean), to cs0913: b -1.576, state SE 0.701, t -2.25, G 21, n 454: p normal 0.025, p t(G-1) 0.036, p wild-cluster (Webb, 9999 draws) 0.040
+- adding the 1991 level, to w1517: b -2.026, state SE 0.994, t -2.04, G 21, n 447: p normal 0.041, p t(G-1) 0.055, p wild-cluster (Webb, 9999 draws) 0.074
+- adding the early D0 at 0.5% (regression to the mean), to w1517: b -1.181, state SE 0.630, t -1.88, G 21, n 447: p normal 0.061, p t(G-1) 0.075, p wild-cluster (Webb, 9999 draws) 0.075
+- 1991 measured as reported total only, dD0_05 to cs0913: b -1.383, state SE 0.704, t -1.96, G 18, n 382: p normal 0.050, p t(G-1) 0.066, p wild-cluster (Webb, 9999 draws) 0.163
+  same, without Odisha/Assam/Sikkim/Goa (where the variants differ): b -1.360, state SE 0.802, t -1.69, G 15, n 326: p normal 0.090, p t(G-1) 0.112, p wild-cluster (Webb, 9999 draws) 0.228
+  main 1991 measure on that same reduced sample: b -1.958, state SE 0.794, t -2.46, G 18, n 398: p normal 0.014, p t(G-1) 0.025, p wild-cluster (Webb, 9999 draws) 0.041
+- 1991 measured as reported total only, dD0_05 to w1517: b -2.652, state SE 0.518, t -5.12, G 18, n 375: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.012
+  same, without Odisha/Assam/Sikkim/Goa (where the variants differ): b -2.799, state SE 0.590, t -4.74, G 15, n 319: p normal 0.000, p t(G-1) 0.000, p wild-cluster (Webb, 9999 draws) 0.025
+  main 1991 measure on that same reduced sample: b -1.457, state SE 1.130, t -1.29, G 18, n 391: p normal 0.197, p t(G-1) 0.215, p wild-cluster (Webb, 9999 draws) 0.225
+- 1991 measured as sum of sources only, dD0_05 to cs0913: b -0.619, state SE 1.206, t -0.51, G 21, n 454: p normal 0.608, p t(G-1) 0.613, p wild-cluster (Webb, 9999 draws) 0.645
+  same, without Odisha/Assam/Sikkim/Goa (where the variants differ): b -1.952, state SE 0.795, t -2.46, G 18, n 398: p normal 0.014, p t(G-1) 0.025, p wild-cluster (Webb, 9999 draws) 0.040
+  main 1991 measure on that same reduced sample: b -1.958, state SE 0.794, t -2.46, G 18, n 398: p normal 0.014, p t(G-1) 0.025, p wild-cluster (Webb, 9999 draws) 0.041
+- 1991 measured as sum of sources only, dD0_05 to w1517: b -0.895, state SE 0.897, t -1.00, G 21, n 447: p normal 0.318, p t(G-1) 0.330, p wild-cluster (Webb, 9999 draws) 0.331
+  same, without Odisha/Assam/Sikkim/Goa (where the variants differ): b -1.459, state SE 1.130, t -1.29, G 18, n 391: p normal 0.197, p t(G-1) 0.214, p wild-cluster (Webb, 9999 draws) 0.225
+  main 1991 measure on that same reduced sample: b -1.457, state SE 1.130, t -1.29, G 18, n 391: p normal 0.197, p t(G-1) 0.215, p wild-cluster (Webb, 9999 draws) 0.220
+- drop Rajasthan, dD0_05 to cs0913: b -1.694, state SE 0.671, t -2.52, G 20, n 422: p normal 0.012, p t(G-1) 0.021, p wild-cluster (Webb, 9999 draws) 0.037
+- drop Rajasthan, dD0_05 to w1517: b -1.459, state SE 0.909, t -1.60, G 20, n 415: p normal 0.109, p t(G-1) 0.125, p wild-cluster (Webb, 9999 draws) 0.141
+- drop Rajasthan + Madhya Pradesh, dD0_05 to cs0913: b -1.574, state SE 0.797, t -1.98, G 19, n 377: p normal 0.048, p t(G-1) 0.064, p wild-cluster (Webb, 9999 draws) 0.069
+- drop Rajasthan + Madhya Pradesh, dD0_05 to w1517: b -2.072, state SE 0.872, t -2.38, G 19, n 370: p normal 0.017, p t(G-1) 0.029, p wild-cluster (Webb, 9999 draws) 0.046
+
+BH across the 32 total-change slopes (4 outcomes x 2 census spans x 2 windows x 2 samples):
+- d_D0_05_cs0913 1991_2011 cs0913 all: b -1.75, p 0.014/0.006, q 0.322/0.192
+- d_D0_05_cs0913 1991_2011 cs0913 gross area within 2/3 to 1.5x: b -1.74, p 0.020/0.015, q 0.322/0.241
+- d_D1_cs0913 2001_2011 cs0913 all: b 0.52, p 0.125/0.067, q 0.780/0.404
+- d_D1_cs0913 2001_2011 cs0913 gross area within 2/3 to 1.5x: b 0.45, p 0.158/0.069, q 0.780/0.404
+- d_D0_05_w1517 2001_2011 w1517 gross area within 2/3 to 1.5x: b -0.89, p 0.219/0.070, q 0.780/0.404
+- d_D0_05_w1517 1991_2011 w1517 gross area within 2/3 to 1.5x: b -1.48, p 0.044/0.081, q 0.353/0.404
+- 2001-2011 change (no 1991 repair involved), dD0_05 to cs0913: b -0.284, state SE 0.646, t -0.44, G 22, n 434: p normal 0.660, p t(G-1) 0.665, p wild-cluster (Webb, 9999 draws) 0.669
+- 2001-2011 change (no 1991 repair involved), dD0_05 to w1517: b -0.529, state SE 0.536, t -0.99, G 22, n 426: p normal 0.324, p t(G-1) 0.335, p wild-cluster (Webb, 9999 draws) 0.311
+
+## R6. Multiple testing across source-split tests
+Source-split tests collected: 216 (Q2 32, Q2ay 8, Q3 48, Q4 128).
+Raw p < 0.05: parent 36 , state 18. Expected under the global null: 10.8.
+BH q < 0.05: parent 10, state 6; BH q < 0.10: parent 11, state 6.
+
+Tests surviving BH q < 0.10 on either clustering:
+- Q2 | D sh_tk | D1: p 0.0000/0.0000, q 0.000/0.000
+- Q2 | D sh_tk | E: p 0.0000/0.0000, q 0.000/0.000
+- Q2 | D sh_tk | D0_05: p 0.0000/0.0000, q 0.000/0.000
+- Q2 | D sh_tk | D0: p 0.0064/0.0000, q 0.115/0.000
+- Q4 | by source dgw_2001_2011 | d_D0_05_cs0913 | 2001_2011 gross area within 2/3 to 1.5x: p 0.0018/0.0004, q 0.039/0.015
+- Q4 | canal - gw diff | d_D0_05_cs0913 | 2001_2011 gross area within 2/3 to 1.5x: p 0.0118/0.0013, q 0.149/0.046
+- Q2 | D sh_ro | D1: p 0.0001/0.0057, q 0.004/0.177
+- Q2 | D sh_ro | D0_05: p 0.0002/0.0288, q 0.005/0.478
+- Q3 | sources I(gw91s ** 2) | D0 | w1721: p 0.0000/0.0451, q 0.002/0.585
+- Q3 | sources I(gw91s ** 2) | D0 | full: p 0.0000/0.0565, q 0.002/0.585
+- Q3 | sources I(gw91s ** 2) | D0 | w1517: p 0.0001/0.0595, q 0.003/0.585
+- Q2 | D I(sh_gw ** 2) | D0: p 0.0014/0.0690, q 0.033/0.593
+- Q3 | sources I(gw91s ** 2) | D0_05 | full: p 0.0034/0.1736, q 0.067/0.736
+Within Q4 alone (128 tests): BH q<0.10 parent 0, state 2.
+done

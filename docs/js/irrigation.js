@@ -1,7 +1,7 @@
 /* ================================================================
    IRRIGATION PAGE: scene visuals.
-   Reads data/site_irrigation_story.json, data/site_irrigation_panel.json
-   and data/districts.geojson.
+   Reads data/site_irrigation_story.json, data/site_irrigation_panel.json,
+   data/site_irrigation_v2.json and data/districts.geojson.
    Depends on site.js for svgEl, showTip, hideTip, loadJSON, loadGeo.
    Helper code follows the markets template; everything is wrapped so
    no name collides with site.js globals.
@@ -125,143 +125,128 @@ let D = null;
 const SC = {};
 
 /* ================================================================
-   01 scatter with the fitted curve
+   shared: within-state gaps by irrigation group (quintiles, deciles)
+   rows: {q, lo, hi, irr, n, b, ci:[lo,hi], p}; the first row is the
+   reference group at zero. Each group is a step across its irrigation
+   range with a whisker at its mean share.
    ================================================================ */
-const YL = { D1: 'effective number of crops', D0: 'count of crops' };
-function curveAt(c, x) {
-    const a = c.b0 != null ? c.b0 : c.c;
-    const y = a + c.b1 * x + c.b2 * x * x;
-    const g = c.b0 != null ? [1, x, x * x] : [x - c.xm, x * x - c.x2m];
-    let v = 0;
-    for (let i = 0; i < g.length; i++) for (let j = 0; j < g.length; j++) v += g[i] * c.V[i][j] * g[j];
-    const s = Math.sqrt(Math.max(v, 0));
-    return [y, y - 1.96 * s, y + 1.96 * s];
+let V = null;
+const clamp01 = v => Math.max(0, Math.min(1, v));
+const fmtPw = p => p == null ? '' : (p < 0.001 ? '< 0.001' : p.toFixed(3));
+const ORD = ['least irrigated', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'most irrigated'];
+function grpName(r, nb) {
+    const word = nb === 5 ? 'quintile' : 'decile';
+    if (r.q === 1) return 'least irrigated ' + word;
+    if (r.q === nb) return 'most irrigated ' + word;
+    return ORD[r.q - 1] + ' ' + word;
 }
-SC[1] = scene({
-    y: 'D1', cmp: 'state',
-    controls() {
-        segs($('#v1-y'), [{ key: 'D1', name: 'effective number of crops' }, { key: 'D0', name: 'count of crops' }],
-            k => { this.y = k; this.switchTo(); }, this.y);
-        segs($('#v1-cmp'), [{ key: 'state', name: 'within each state' }, { key: 'pooled', name: 'all districts together' }],
-            k => { this.cmp = k; this.switchTo(); }, this.cmp);
-    },
-    yDom(y) { return y === 'D1' ? [0, 15] : [0, 40]; },
-    samples(y, cmp) {
-        const c = D.curve[y][cmp], xs = D.districts.map(d => d.x);
-        const x0 = Math.min(...xs), x1 = Math.max(...xs), out = [];
-        for (let i = 0; i <= 90; i++) { const x = x0 + (x1 - x0) * i / 90; out.push([x].concat(curveAt(c, x))); }
-        return out;
-    },
-    render() {
-        const host = $('#v1'); if (!host || !D) return;
-        const W = host.clientWidth || 900, nar = W < 560;
-        const H = nar ? 340 : 440;
-        const m = { t: nar ? 30 : 18, r: 14, b: 40, l: nar ? 34 : 48 };
-        this.W = W; this.H = H; this.m = m; this.nar = nar;
-        const svg = this.svg = svgFor(host, W, H);
-        this.X = lin(0, 1, m.l, W - m.r);
-        this.gAx = E('g', {}, svg);
-        this.gDots = E('g', {}, svg);
-        this.band = E('path', { fill: 'rgba(237,237,235,0.13)', stroke: 'none' }, svg);
-        this.line = E('path', { fill: 'none', stroke: LT, 'stroke-width': 2, 'stroke-linejoin': 'round' }, svg);
-        this.rule = E('line', { stroke: LT, 'stroke-width': 1, 'stroke-dasharray': '4 4', opacity: .8 }, svg);
-        this.ruleT = T(svg, { class: 'mono', 'font-size': 11.5, fill: TX, 'text-anchor': 'start' }, '');
-        this.ring = E('circle', { r: 6.5, fill: 'none', stroke: TX, 'stroke-width': 1.5, opacity: 0 }, svg);
-        T(svg, { class: 'mono', x: (m.l + W - m.r) / 2, y: H - 4, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, 'share of sown area irrigated');
-        this.yLab = T(svg, nar ? { class: 'mono', x: 4, y: 12, fill: TX3, 'font-size': 11 }
-                                : { class: 'mono', x: 12, y: m.t + (H - m.t - m.b) / 2, fill: TX3, 'font-size': 11, 'text-anchor': 'middle',
-                                    transform: `rotate(-90 12 ${m.t + (H - m.t - m.b) / 2})` }, '');
-        this.dots = D.districts.map(d => E('circle', { cx: this.X(d.x), r: nar ? 2.6 : 3, fill: REG[d.g], 'fill-opacity': .72 }, this.gDots));
-        this.cur = { y: this.y, cmp: this.cmp, s: this.samples(this.y, this.cmp), dom: this.yDom(this.y) };
-        this.draw(this.cur, 1, 1);
-        this.hover(svg);
-        this.readDefault();
-    },
-    axes(dom) {
-        const { W, H, m, X } = this;
-        this.gAx.innerHTML = '';
-        const Y = lin(dom[0], dom[1], H - m.b, m.t);
-        const yt = this.y === 'D1' ? [0, 3, 6, 9, 12, 15] : [0, 10, 20, 30, 40];
-        grid(this.gAx, X, Y, [0, .2, .4, .6, .8, 1], yt.filter(v => v >= dom[0] - 1e-9 && v <= dom[1] + 1e-9), v => pct(v), v => v.toFixed(0), m, W, H);
-        return Y;
-    },
-    /* frac: how much of the curve is drawn; a: dot reveal 0..1 sweeping by x */
-    draw(st, frac, a) {
-        const Y = this.Y = this.axes(st.dom), X = this.X, s = st.s;
-        this.yLab.textContent = YL[st.y];
-        D.districts.forEach((d, i) => {
-            const el = this.dots[i];
-            el.setAttribute('cy', Y(d[st.y]).toFixed(1));
-            el.setAttribute('opacity', a >= 1 ? 1 : Math.max(0, Math.min(1, (a * 1.25 - d.x) * 6)));
-        });
-        const n = Math.max(1, Math.round((s.length - 1) * frac));
-        const pts = s.slice(0, n + 1);
-        this.line.setAttribute('d', frac <= 0 ? '' : pts.map((p, i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1)).join(''));
-        this.band.setAttribute('d', frac <= 0 ? '' : pts.map((p, i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ',' + Y(p[3]).toFixed(1)).join('') +
-            pts.slice().reverse().map(p => 'L' + X(p[0]).toFixed(1) + ',' + Y(p[2]).toFixed(1)).join('') + 'Z');
-        const c = D.curve[st.y][st.cmp];
-        const tp = st.tp != null ? st.tp : c.tp;
-        const show = frac >= 1;
-        this.rule.setAttribute('x1', X(tp)); this.rule.setAttribute('x2', X(tp));
-        this.rule.setAttribute('y1', this.m.t); this.rule.setAttribute('y2', this.H - this.m.b);
-        this.rule.setAttribute('opacity', show ? .8 : 0);
-        const lx = X(tp) + 6, right = lx + 80 > this.W - this.m.r;
-        this.ruleT.setAttribute('x', right ? X(tp) - 6 : lx); this.ruleT.setAttribute('text-anchor', right ? 'end' : 'start');
-        this.ruleT.setAttribute('y', this.m.t + 12);
-        this.ruleT.textContent = show ? 'peak ' + pct(tp) : '';
-    },
-    switchTo() {
-        cancel(this); this.played = true;
-        const from = this.cur, to = { y: this.y, cmp: this.cmp, s: this.samples(this.y, this.cmp), dom: this.yDom(this.y) };
-        const tpA = D.curve[from.y][from.cmp].tp, tpB = D.curve[to.y][to.cmp].tp;
-        const fromY = from.y;
-        tween(this, 600, t => {
-            const e = ease(t);
-            const st = {
-                y: to.y, cmp: to.cmp, tp: lerp(tpA, tpB, e),
-                dom: [lerp(from.dom[0], to.dom[0], e), lerp(from.dom[1], to.dom[1], e)],
-                s: to.s.map((p, i) => [p[0], lerp(from.s[i][1], p[1], e), lerp(from.s[i][2], p[2], e), lerp(from.s[i][3], p[3], e)])
-            };
-            this.draw(st, 1, 1);
-            if (fromY !== to.y) {
-                const Y = this.Y;
-                const Yf = lin(from.dom[0], from.dom[1], this.H - this.m.b, this.m.t), Yt = lin(to.dom[0], to.dom[1], this.H - this.m.b, this.m.t);
-                D.districts.forEach((d, i) => this.dots[i].setAttribute('cy', lerp(Yf(d[fromY]), Yt(d[to.y]), e).toFixed(1)));
-                void Y;
+function binChart(sc, host, rows, o) {
+    const W = host.clientWidth || 900, nar = W < 560;
+    const H = nar ? 330 : 390;
+    const m = { t: 26, r: 14, b: 44, l: nar ? 40 : 52 };
+    const svg = sc.svg = svgFor(host, W, H);
+    let lo = Math.min(0, ...rows.map(r => r.ci[0])), hi = Math.max(0, ...rows.map(r => r.ci[1]));
+    if (o.dots) { lo = Math.min(lo, ...o.dots.map(d => d.y)); hi = Math.max(hi, ...o.dots.map(d => d.y)); }
+    const pad = (hi - lo) * .07; lo -= pad; hi += pad;
+    const X = lin(0, 1, m.l, W - m.r), Y = lin(lo, hi, H - m.b, m.t);
+    const yt = niceTicks(lo, hi, nar ? 4 : 6), st = yt.length > 1 ? yt[1] - yt[0] : 1;
+    rows.forEach((r, i) => { if (i % 2) E('rect', { x: X(r.lo), width: X(r.hi) - X(r.lo), y: m.t, height: H - m.t - m.b, fill: 'rgba(255,255,255,0.03)' }, svg); });
+    grid(svg, X, Y, [0, .2, .4, .6, .8, 1], yt, v => pct(v), v => Math.abs(v) < 1e-9 ? '0' : sgn(v, st < 1 ? 1 : 0), m, W, H, { xgrid: false });
+    E('line', { x1: m.l, x2: W - m.r, y1: Y(0), y2: Y(0), stroke: ZERO, 'stroke-width': 1.2 }, svg);
+    T(svg, { class: 'mono', x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, o.xlab);
+    T(svg, { class: 'mono', x: 4, y: 12, fill: TX3, 'font-size': 11 }, nar ? o.ylabN : o.ylab);
+    Object.assign(sc, { X, Y, m, W, H, nar });
+    sc.dotEls = null;
+    if (o.dots) {
+        const g = E('g', {}, svg);
+        sc.dotEls = o.dots.map(d => E('circle', { cx: X(d.x).toFixed(1), cy: Y(d.y).toFixed(1), r: nar ? 2.3 : 2.7, fill: '#5E8F99', 'fill-opacity': .55 }, g));
+        sc.ring = E('circle', { r: 6.5, fill: 'none', stroke: TX, 'stroke-width': 1.5, opacity: 0 }, svg);
+    }
+    sc.items = rows.map((r, i) => {
+        const ref = i === 0, sig = r.p != null && r.p < .05;
+        const g = E('g', {}, svg);
+        const seg = E('line', { x1: X(r.lo), x2: X(r.hi), stroke: ref ? TX2 : CY, 'stroke-width': ref ? 1.6 : 2.6, 'stroke-linecap': 'round' }, g);
+        const wh = ref ? null : E('line', { x1: X(r.irr), x2: X(r.irr), stroke: CY, 'stroke-width': 1.5, opacity: .85 }, g);
+        const dot = E('circle', { cx: X(r.irr), r: nar ? 4.6 : 5.4, fill: sig ? CY : BG, stroke: ref ? TX2 : CY, 'stroke-width': 1.7 }, g);
+        const lab = ref ? T(svg, { class: 'mono', x: X(r.irr), y: Y(0) - 11, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5 }, 'reference') : null;
+        return { r, seg, wh, dot, lab, i };
+    });
+    /* hover: nearest district in the district view, else the group under the pointer */
+    const pick = ev => {
+        const [px, py] = svgPt(svg, ev);
+        const xv = (px - m.l) / (W - m.l - m.r);
+        if (o.dots) {
+            let best = -1, bd = 1e9;
+            o.dots.forEach((d, i) => { const dx = X(d.x) - px, dy = Y(d.y) - py, dd = dx * dx + dy * dy; if (dd < bd) { bd = dd; best = i; } });
+            if (best >= 0 && bd < 400) {
+                const d = o.dots[best];
+                sc.ring.setAttribute('cx', X(d.x)); sc.ring.setAttribute('cy', Y(d.y)); sc.ring.setAttribute('opacity', 1);
+                o.onDot(d); return;
             }
-        }, () => { this.cur = to; this.draw(to, 1, 1); this.readDefault(); });
-        this.cur = to;
+            sc.ring.setAttribute('opacity', 0);
+        }
+        if (xv < -0.02 || xv > 1.02) { o.onRead(null); return; }
+        const r = rows.find(z => xv <= z.hi + 0.002) || rows[rows.length - 1];
+        o.onRead(r);
+    };
+    svg.addEventListener('mousemove', pick);
+    svg.addEventListener('click', pick);
+    svg.addEventListener('mouseleave', () => { if (sc.ring) sc.ring.setAttribute('opacity', 0); o.onRead(null); });
+}
+function placeBins(sc, t) {
+    if (!sc.items) return;
+    const Y = sc.Y, n = sc.items.length;
+    if (sc.dotEls) sc.dotEls.forEach(el => el.setAttribute('opacity', clamp01(t * 2)));
+    sc.items.forEach(it => {
+        const e = easeOut(clamp01(t * 1.5 - it.i * (0.5 / n)));
+        const r = it.r, y = lerp(Y(0), Y(r.b), e);
+        it.seg.setAttribute('y1', y.toFixed(1)); it.seg.setAttribute('y2', y.toFixed(1));
+        it.dot.setAttribute('cy', y.toFixed(1));
+        it.seg.setAttribute('opacity', e > 0 ? 1 : 0); it.dot.setAttribute('opacity', e > 0 ? 1 : 0);
+        if (it.wh) {
+            it.wh.setAttribute('y1', lerp(Y(0), Y(r.ci[0]), e).toFixed(1)); it.wh.setAttribute('y2', lerp(Y(0), Y(r.ci[1]), e).toFixed(1));
+            it.wh.setAttribute('opacity', e > 0 ? .85 : 0);
+        }
+    });
+}
+function binText(r, nb, unit) {
+    return `<b>${grpName(r, nb)}</b>, ${pct(r.lo)} to ${pct(r.hi)} irrigated <span class="dim">·</span> ${r.n} districts` +
+        (r.q === 1 ? ' <span class="dim">· the reference</span>'
+            : ` <span class="dim">·</span> <b>${sgn(r.b, 2)}</b> ${unit} <span class="dim">(95% interval ${sgn(r.ci[0], 2)} to ${sgn(r.ci[1], 2)}; p ${fmtPw(r.p)})</span>`);
+}
+
+/* ================================================================
+   01 the shape: quintiles, deciles, every district
+   ================================================================ */
+SC[1] = scene({
+    view: 'q5', u: 1,
+    controls() {
+        segs($('#v1-view'), [{ key: 'q5', name: 'quintiles' }, { key: 'q10', name: 'deciles' }, { key: 'dist', name: 'every district' }],
+            k => { this.view = k; cancel(this); this.played = true; this.render(); this.play(); }, this.view);
+    },
+    rows() { return this.view === 'q10' ? V.tenths.rows : V.fifths.full.rows; },
+    render() {
+        const host = $('#v1'); if (!host || !V) return;
+        const nb = this.view === 'q10' ? 10 : 5;
+        binChart(this, host, this.rows(), {
+            xlab: 'share of sown area irrigated, 2019–20',
+            ylab: 'effective number of crops, against the least irrigated group in the same state',
+            ylabN: 'effective crops vs least irrigated, same state',
+            dots: this.view === 'dist' ? V.districts : null,
+            onRead: r => r ? setRead('#v1-read', binText(r, nb, 'effective crops')) : this.readDefault(),
+            onDot: d => setRead('#v1-read', `<b>${d.n}</b>, ${d.s} <span class="dim">·</span> ${pct(d.x)} irrigated <span class="dim">·</span> ` +
+                `${sgn(d.y, 2)} effective crops against the least irrigated quintile of its state`),
+        });
+        this.readDefault();
+        placeBins(this, this.u);
     },
     readDefault() {
-        const c = D.curve[this.y][this.cmp];
-        setRead('#v1-read', `<span class="dim">${this.cmp === 'state' ? 'within each state' : 'all districts together'}:</span> ` +
-            `the curve peaks at <b>${pct(c.tp)}</b> irrigated, at ${c.peak.toFixed(this.y === 'D1' ? 2 : 1)} on the ${YL[this.y]}. ` +
-            `<span class="dim">R² ${c.r2.toFixed(2)}.</span>`);
+        const rs = this.rows(), top = rs[rs.length - 1];
+        setRead('#v1-read', `<span class="dim">Hover or tap a group.</span> Most irrigated ${this.view === 'q10' ? 'decile' : 'quintile'}, ` +
+            `above ${pct(top.lo)} irrigated: <b>${sgn(top.b, 2)}</b> effective crops <span class="dim">(p ${fmtPw(top.p)})</span>`);
     },
-    hover(svg) {
-        const pick = ev => {
-            const [px, py] = svgPt(svg, ev);
-            let best = -1, bd = 1e9;
-            D.districts.forEach((d, i) => {
-                const dx = this.X(d.x) - px, dy = this.Y(d[this.y]) - py, dd = dx * dx + dy * dy;
-                if (dd < bd) { bd = dd; best = i; }
-            });
-            if (best < 0 || bd > 900) { this.ring.setAttribute('opacity', 0); this.readDefault(); return; }
-            const d = D.districts[best];
-            this.ring.setAttribute('cx', this.X(d.x)); this.ring.setAttribute('cy', this.Y(d[this.y])); this.ring.setAttribute('opacity', 1);
-            setRead('#v1-read', `<b>${d.n}</b>, ${d.s} <span class="dim">·</span> ${pct(d.x)} irrigated <span class="dim">·</span> ` +
-                `effective number of crops ${d.D1.toFixed(2)} <span class="dim">·</span> count of crops ${d.D0.toFixed(1)}`);
-        };
-        svg.addEventListener('mousemove', pick);
-        svg.addEventListener('click', pick);
-        svg.addEventListener('mouseleave', () => { this.ring.setAttribute('opacity', 0); this.readDefault(); });
-    },
-    prep() { this.draw(this.cur, 0, 0); },
-    play() {
-        this.draw(this.cur, 0, 0);
-        tween(this, 1000, t => this.draw(this.cur, 0, easeOut(t)), () =>
-            tween(this, 800, t => this.draw(this.cur, ease(t) * 0.999, 1), () => this.draw(this.cur, 1, 1)));
-    },
+    prep() { this.u = 0; placeBins(this, 0); },
+    play() { this.u = 0; placeBins(this, 0); tween(this, 1300, t => { this.u = t; placeBins(this, t); }, () => { this.u = 1; placeBins(this, 1); }); },
 });
 
 /* ================================================================
@@ -327,7 +312,7 @@ SC[2] = scene({
         this.show(1);
     },
     read(r) {
-        if (!r) { setRead('#v2-read', '<span class="dim">Hover or tap a decile.</span> Peak of the effective number of crops: <b>5.89</b> in decile 4, 44% irrigated.'); return; }
+        if (!r) { setRead('#v2-read', '<span class="dim">Hover or tap a decile.</span> Highest effective number of crops in the raw averages: <b>5.89</b> in decile 4, 44% irrigated.'); return; }
         setRead('#v2-read', `<b>decile ${r.dec}</b> <span class="dim">·</span> ${r.n} districts <span class="dim">·</span> ${pct(r.irr, 1)} irrigated ` +
             `<span class="dim">(${pct(r.lo, 1)} to ${pct(r.hi, 1)})</span><br>count of crops ${r.D0.toFixed(1)} <span class="dim">·</span> effective number ${r.D1.toFixed(2)} ` +
             `<span class="dim">·</span> number of main crops ${r.D2.toFixed(2)} <span class="dim">·</span> evenness ${r.E.toFixed(3)} <span class="dim">·</span> cereal share ${r.cereal.toFixed(3)}`);
@@ -514,25 +499,17 @@ SC[4] = scene({
    05 robustness strip
    ================================================================ */
 SC[5] = scene({
-    mode: 'tp', u: 1,
-    controls() {
-        segs($('#v5-mode'), [{ key: 'tp', name: 'where it peaks' }, { key: 'b2', name: 'how hard it bends' }],
-            k => { this.mode = k; cancel(this); this.played = true; this.render(); this.play(); }, this.mode);
-    },
+    mode: 'b2', u: 1,
     render() {
         const host = $('#v5'); if (!host || !D) return;
         const W = host.clientWidth || 900, nar = W < 560;
-        const rows = this.mode === 'tp' ? D.robustness : D.robustness.filter(r => r.y === 'D1');
+        const rows = D.robustness.filter(r => r.y === 'D1');
         const rh = nar ? 34 : 30, lw = nar ? 150 : 360;
-        const groups = this.mode === 'tp' ? [['effective number of crops', 0], ['other measures of diversity', 8]] : [['effective number of crops', 0]];
-        const legOther = document.getElementById('v5-leg-other');
-        if (legOther) legOther.style.display = this.mode === 'tp' ? '' : 'none';
+        const groups = [['effective number of crops', 0]];
         const H = 16 + rows.length * rh + groups.length * 24 + 40;
         const m = { l: lw + 14, r: 18, t: 10, b: 40 };
         const svg = svgFor(host, W, H);
-        let X, xt, fx;
-        if (this.mode === 'tp') { X = lin(0, .6, m.l, W - m.r); xt = [0, .1, .2, .3, .4, .5, .6]; fx = v => pct(v); }
-        else { X = lin(-16, 0, m.l, W - m.r); xt = niceTicks(-16, 0, nar ? 4 : 8); fx = v => v.toFixed(0); }
+        const X = lin(-16, 0, m.l, W - m.r), xt = niceTicks(-16, 0, nar ? 4 : 8), fx = v => v.toFixed(0);
         this.X = X;
         const g0 = E('g', { class: 'mono' }, svg);
         xt.forEach(v => {
@@ -540,7 +517,7 @@ SC[5] = scene({
             T(g0, { x: X(v), y: H - m.b + 17, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, fx(v));
         });
         T(svg, { class: 'mono', x: (m.l + W - m.r) / 2, y: H - 4, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 },
-            this.mode === 'tp' ? (nar ? 'turning point, % irrigated' : 'turning point, share of sown area irrigated') : (nar ? 'squared term, 95% interval' : 'squared term on irrigation, with 95% interval'));
+            nar ? 'squared term, 95% interval' : 'squared term on irrigation, with 95% interval');
         this.items = [];
         let y = m.t + 6;
         rows.forEach((r, i) => {
@@ -548,19 +525,19 @@ SC[5] = scene({
             if (gh) { y += 18; T(svg, { class: 'mono', x: 0, y: y - 4, fill: TX3, 'font-size': 10.5, 'letter-spacing': '.08em' }, gh[0].toUpperCase()); y += 6; }
             const cy = y + rh / 2;
             const col = r.y === 'D1' ? CY : VI;
-            const lab = r.lab + (r.n !== 606 ? ` (${r.n})` : '');
+            const lab = r.lab.replace(' (headline)', ', main estimate') + (r.n !== 606 ? ` (${r.n})` : '');
             rowLabel(svg, lw, cy, lab, lw - 4, i === 1 ? TX : TX2, nar ? 10.5 : 11.5);
             E('line', { x1: m.l, x2: W - m.r, y1: cy, y2: cy, stroke: 'rgba(255,255,255,0.04)' }, svg);
             const g = E('g', {}, svg);
             let wl = null;
             if (this.mode === 'b2') wl = E('line', { y1: cy, y2: cy, stroke: col, 'stroke-width': 1.6, opacity: .8 }, g);
-            const v = this.mode === 'tp' ? r.tp : r.b2;
+            const v = r.b2;
             const dot = E('circle', { cy, r: 5, fill: r.p2 < .05 ? col : 'none', stroke: col, 'stroke-width': 1.5 }, g);
             let ring = null;
             if (i === 1) ring = E('circle', { cy, r: 8.5, fill: 'none', stroke: TX, 'stroke-width': 1.2 }, g);
             const hit = E('rect', { x: 0, y: y, width: W, height: rh, fill: 'transparent' }, svg);
             const f = () => setRead('#v5-read', `<b>${r.lab}</b> <span class="dim">·</span> ${r.n} districts <span class="dim">·</span> squared term ${sgn(r.b2, 3)} ` +
-                `<span class="dim">(p ${fmtP(r.p2)})</span> <span class="dim">·</span> turning point ${pct(r.tp, 1)}`);
+                `<span class="dim">(95% interval ${sgn(r.b2 - 1.96 * r.se2, 2)} to ${sgn(r.b2 + 1.96 * r.se2, 2)}; p ${fmtP(r.p2)})</span>`);
             hit.addEventListener('mousemove', f); hit.addEventListener('click', f);
             hit.addEventListener('mouseleave', () => this.readDefault());
             this.items.push({ r, v, dot, ring, wl, i });
@@ -570,16 +547,14 @@ SC[5] = scene({
         this.place(this.u);
     },
     readDefault() {
-        setRead('#v5-read', this.mode === 'tp'
-            ? '<span class="dim">Hover or tap a row.</span> Effective number of crops: peak between <b>24%</b> and <b>51%</b> irrigated, median 27%.'
-            : '<span class="dim">Hover or tap a row.</span> Headline squared term <b>−6.84</b>, from −5.44 to −10.42 across the eight versions.');
+        setRead('#v5-read', '<span class="dim">Hover or tap a row.</span> Main estimate <b>−6.84</b>, from −5.44 to −10.42 across the eight versions.');
     },
     place(t) {
         const X = this.X;
         (this.items || []).forEach(it => {
             const k = Math.max(0, Math.min(1, t * 1.6 - it.i * 0.045));
             const e = easeOut(k);
-            const x0 = this.mode === 'tp' ? X(0) : X(0);
+            const x0 = X(0);
             const x = lerp(x0, X(it.v), e);
             it.dot.setAttribute('cx', x.toFixed(1));
             it.dot.setAttribute('opacity', k > 0 ? 1 : 0);
@@ -819,130 +794,224 @@ SC[8] = scene({
 });
 
 /* ================================================================
-   09 inside each district: slope of the cross-district bend against
-   the slope within a district over time, and twenty-year changes.
-   Reads data/site_irrigation_panel.json.
+   shared: horizontal dot-and-whisker rows
+   rows: {name, b, ci:[lo,hi], p, col}
+   ================================================================ */
+function rowChart(sc, host, rows, o) {
+    const W = host.clientWidth || 800, nar = W < 560;
+    const lw = nar ? (o.lwN || 128) : (o.lw || 250), rowH = nar ? 50 : 46;
+    const m = { t: 14, r: nar ? 14 : 26, b: 46, l: lw };
+    const H = m.t + rows.length * rowH + m.b;
+    const svg = sc.svg = svgFor(host, W, H);
+    let lo = Math.min(0, ...rows.map(r => r.ci[0])), hi = Math.max(0, ...rows.map(r => r.ci[1]));
+    const pad = (hi - lo) * .08; lo -= pad; hi += pad;
+    const X = lin(lo, hi, m.l, W - m.r);
+    const xt = niceTicks(lo, hi, nar ? 4 : 6), st = xt.length > 1 ? xt[1] - xt[0] : 1;
+    const dp = Math.max(0, -Math.floor(Math.log10(st) + 1e-9)) + (Math.abs(st / Math.pow(10, Math.floor(Math.log10(st))) - 2.5) < 1e-6 ? 1 : 0);
+    xt.forEach(v => {
+        E('line', { x1: X(v), x2: X(v), y1: m.t, y2: H - m.b, stroke: Math.abs(v) < 1e-9 ? ZERO : GRID }, svg);
+        T(svg, { class: 'mono', x: X(v), y: H - m.b + 17, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5 }, Math.abs(v) < 1e-9 ? '0' : sgn(v, dp));
+    });
+    E('line', { x1: X(0), x2: X(0), y1: m.t, y2: H - m.b, stroke: ZERO, 'stroke-width': 1.2 }, svg);
+    T(svg, { class: 'mono', x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, nar ? o.xlabN : o.xlab);
+    sc.X = X;
+    sc.items = rows.map((r, i) => {
+        const y = m.t + rowH * (i + .5), col = r.col || CY, sig = r.p != null && r.p < .05;
+        if (i) E('line', { x1: 0, x2: W - m.r, y1: y - rowH / 2, y2: y - rowH / 2, stroke: 'rgba(255,255,255,0.05)' }, svg);
+        rowLabel(svg, m.l - 12, y, r.name, lw - 16, TX2, nar ? 10.5 : 11.5);
+        const wh = E('line', { x1: X(0), x2: X(0), y1: y, y2: y, stroke: col, 'stroke-width': 1.7, opacity: .85 }, svg);
+        const dot = E('circle', { cx: X(0), cy: y, r: 5.5, fill: sig ? col : BG, stroke: col, 'stroke-width': 1.7 }, svg);
+        const val = T(svg, { class: 'mono', x: X(r.b), y: y - 11, 'text-anchor': 'middle', fill: TX, 'font-size': 10.5 }, '');
+        const hit = E('rect', { x: 0, y: y - rowH / 2, width: W, height: rowH, fill: 'transparent' }, svg);
+        const f = () => o.onRead(r);
+        hit.addEventListener('mousemove', f); hit.addEventListener('click', f);
+        hit.addEventListener('mouseleave', () => o.onRead(null));
+        return { r, wh, dot, val, i, dp };
+    });
+}
+function placeRows(sc, u) {
+    if (!sc.items) return;
+    const X = sc.X, n = sc.items.length;
+    sc.items.forEach((it, i) => {
+        const e = easeOut(clamp01((u * (700 + 120 * n) - i * 120) / 700));
+        const r = it.r;
+        it.dot.setAttribute('cx', X(r.b * e).toFixed(1));
+        it.wh.setAttribute('x1', X(r.ci[0] * e).toFixed(1)); it.wh.setAttribute('x2', X(r.ci[1] * e).toFixed(1));
+        it.val.setAttribute('x', X(r.b * e).toFixed(1)); it.val.textContent = e >= 1 ? sgn(r.b, 2) : '';
+    });
+}
+const rowScene = o => scene(Object.assign({
+    u: 1,
+    render() {
+        const host = $(o.host); if (!host || !V) return;
+        rowChart(this, host, this.rows(), { xlab: o.xlab, xlabN: o.xlabN, lw: o.lw, lwN: o.lwN,
+            onRead: r => r ? setRead(o.read, this.text(r)) : this.readDefault() });
+        this.readDefault();
+        placeRows(this, this.u);
+    },
+    prep() { this.u = 0; placeRows(this, 0); },
+    play() { this.u = 0; placeRows(this, 0); tween(this, 1500, t => { this.u = t; placeRows(this, t); }, () => { this.u = 1; placeRows(this, 1); }); },
+}, o));
+
+/* ================================================================
+   05 inside each district: the slope across districts above 30 percent
+   irrigated against the slope inside a district over time.
+   Reads data/site_irrigation_panel.json and site_irrigation_v2.json.
    ================================================================ */
 let DP = null;
-SC[9] = scene({
-    mode: 'slope', u: 1,
-    controls() {
-        segs($('#v9-mode'), [{ key: 'slope', name: 'effective number of crops' }, { key: 'ld', name: 'crops above a share of land' }],
-            k => { this.mode = k; cancel(this); this.played = true; this.u = 1; this.render(); }, this.mode);
+SC[9] = rowScene({
+    host: '#v9', read: '#v9-read', lw: 270, lwN: 132,
+    xlab: 'change in effective number of crops for 10 more points of sown area irrigated',
+    xlabN: 'per 10 points more irrigated',
+    rows() {
+        const s = V.spline.full, w = DP.within;
+        return [
+            { name: 'across districts in a state, above 30% irrigated', b: s.above / 10, ci: [s.above_ci[0] / 10, s.above_ci[1] / 10], p: s.above_p, col: LT },
+            { name: 'same district over time', b: w.b / 10, ci: [(w.b - 1.96 * w.se) / 10, (w.b + 1.96 * w.se) / 10], p: w.p, col: CY },
+        ];
     },
-    acrossAt(x) {
-        const a = DP.across, g = [0.1, 0.2 * x];
-        const y = 0.1 * a.b1 + 0.2 * a.b2 * x;
-        let v = 0;
-        for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) v += g[i] * a.V[i][j] * g[j];
-        const s = Math.sqrt(Math.max(v, 0));
-        return [y, y - 1.96 * s, y + 1.96 * s];
-    },
-    render() {
-        const host = $('#v9'); if (!host || !DP) return;
-        if (this.mode === 'ld') return this.renderLD(host);
-        const W = host.clientWidth || 800, nar = W < 560;
-        const H = nar ? 320 : 380;
-        const m = { t: 22, r: nar ? 12 : 20, b: 44, l: nar ? 44 : 52 };
-        const svg = this.svg = svgFor(host, W, H);
-        const X = lin(0, 1, m.l, W - m.r);
-        const xs = []; for (let i = 0; i <= 80; i++) xs.push(0.02 + 0.96 * i / 80);
-        const A = xs.map(x => [x].concat(this.acrossAt(x)));
-        const lo = Math.min(...A.map(p => p[2])), hi = Math.max(...A.map(p => p[3]));
-        const Y = lin(Math.floor(lo * 10) / 10, Math.ceil(hi * 10) / 10, H - m.b, m.t);
-        Object.assign(this, { X, Y, m, W, H, A, nar });
-        const yt = niceTicks(Math.floor(lo * 10) / 10, Math.ceil(hi * 10) / 10, 5);
-        grid(svg, X, Y, [0, .2, .4, .6, .8, 1], yt, v => pct(v), v => Math.abs(v) < 1e-9 ? '0' : sgn(v, 1), m, W, H, { xgrid: false });
-        E('line', { x1: m.l, x2: W - m.r, y1: Y(0), y2: Y(0), stroke: ZERO, 'stroke-width': 1.2 }, svg);
-        T(svg, { class: 'mono', x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, 'share of net sown area irrigated');
-        T(svg, { class: 'mono', x: m.l, y: 11, fill: TX3, 'font-size': 11 }, nar ? 'change for 10 points more irrigated' : 'change in effective number of crops for 10 more points of sown area irrigated');
-        const path = (pts, k) => pts.map((p, i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ',' + Y(p[k]).toFixed(1)).join('');
-        const band = (pts) => path(pts, 3) + pts.slice().reverse().map(p => 'L' + X(p[0]).toFixed(1) + ',' + Y(p[2]).toFixed(1)).join('') + 'Z';
-        /* across districts */
-        this.aBand = E('path', { d: band(A), fill: 'rgba(237,237,235,0.13)' }, svg);
-        this.aLine = E('path', { d: path(A, 1), fill: 'none', stroke: LT, 'stroke-width': 2 }, svg);
-        const pk = DP.across.peak;
-        this.aPk = E('circle', { cx: X(pk), cy: Y(0), r: 4.5, fill: BG, stroke: LT, 'stroke-width': 1.6 }, svg);
-        this.aLab = T(svg, { class: 'mono', x: X(0.62), y: Y(this.acrossAt(0.62)[0]) - 12, fill: TX, 'font-size': nar ? 10.5 : 11.5, 'text-anchor': 'start' }, 'across districts in a state');
-        this.aPkT = T(svg, { class: 'mono', x: X(pk) + 8, y: Y(DP.within.b / 10 + 1.96 * DP.within.se / 10) - 9, fill: TX2, 'font-size': 10.5 }, 'peak of the bend, ' + pct(pk));
-        /* within a district */
-        const w = DP.within, b = w.b / 10, l = (w.b - 1.96 * w.se) / 10, h = (w.b + 1.96 * w.se) / 10;
-        const W0 = [[0.02, b, l, h], [0.98, b, l, h]];
-        this.wBand = E('path', { d: band(W0), fill: 'rgba(14,155,181,0.28)' }, svg);
-        this.wLine = E('path', { d: path(W0, 1), fill: 'none', stroke: CY, 'stroke-width': 2.4 }, svg);
-        this.wLab = T(svg, { class: 'mono', x: X(0.97), y: Y(l) + (nar ? 15 : 17), fill: '#3FC2DA', 'font-size': nar ? 10.5 : 11.5, 'text-anchor': 'end' }, 'same district over time');
-        this.hover(svg);
-        this.show(this.u);
-        this.readDefault();
-    },
-    show(u) {
-        if (this.mode !== 'slope' || !this.aLine) return;
-        const a = Math.max(0, Math.min(1, u / 0.55)), w = Math.max(0, Math.min(1, (u - 0.6) / 0.4));
-        const len = this.aLine.getTotalLength ? this.aLine.getTotalLength() : 0;
-        if (len) { this.aLine.style.strokeDasharray = len; this.aLine.style.strokeDashoffset = len * (1 - easeOut(a)); }
-        [this.aBand, this.aLab, this.aPk, this.aPkT].forEach(e => e.setAttribute('opacity', a >= 1 ? 1 : a * 0.6));
-        [this.wBand, this.wLine, this.wLab].forEach(e => e.setAttribute('opacity', easeOut(w)));
+    text(r) {
+        return `<b>${r.name}</b> <span class="dim">·</span> <b>${sgn(r.b, 3)}</b> effective crops per 10 points ` +
+            `<span class="dim">(95% interval ${sgn(r.ci[0], 2)} to ${sgn(r.ci[1], 2)}; p ${fmtPw(r.p)})</span>`;
     },
     readDefault() {
         const w = DP.within;
         setRead('#v9-read', `<span class="dim">same district over time:</span> 10 more points irrigated goes with ` +
-            `<b>${sgn(w.b / 10, 3)}</b> effective crops <span class="dim">(95% range ${sgn((w.b - 1.96 * w.se) / 10, 2)} to ${sgn((w.b + 1.96 * w.se) / 10, 2)})</span>`);
+            `<b>${sgn(w.b / 10, 3)}</b> effective crops <span class="dim">(95% interval ${sgn((w.b - 1.96 * w.se) / 10, 2)} to ${sgn((w.b + 1.96 * w.se) / 10, 2)})</span>`);
     },
-    hover(svg) {
-        const pick = ev => {
-            const [px] = svgPt(svg, ev);
-            const x = Math.max(0.02, Math.min(0.98, (px - this.m.l) / (this.W - this.m.l - this.m.r)));
-            const a = this.acrossAt(x), w = DP.within;
-            setRead('#v9-read', `at <b>${pct(x)}</b> irrigated, 10 more points goes with <b>${sgn(a[0], 2)}</b> effective crops across districts ` +
-                `<span class="dim">·</span> <b>${sgn(w.b / 10, 2)}</b> within a district over time`);
-        };
-        svg.addEventListener('mousemove', pick);
-        svg.addEventListener('click', pick);
-        svg.addEventListener('mouseleave', () => this.readDefault());
+});
+
+/* ================================================================
+   02 recent years: quintile gaps in four sets of years
+   ================================================================ */
+const WINS = [{ k: 'full', col: LT }, { k: 'w1517', col: CY }, { k: 'w1721', col: VI }, { k: 'ext', col: GR }];
+SC[11] = scene({
+    u: 1,
+    controls() {
+        const l = $('#v11-leg'); if (!l || !V) return;
+        l.innerHTML = WINS.map(w => `<span class="legend__item"><span class="legend__swatch" style="background:${w.col};border-radius:50%"></span>${V.fifths[w.k].label}</span>`).join('');
     },
-    renderLD(host) {
-        const W = host.clientWidth || 800, nar = W < 560;
-        const rows = DP.longdiff.map(r => ({ name: r.key === 'D1' ? 'effective number of crops' : r.name.replace('crops on at least ', 'crops on ≥').replace(' of cropped area', ' of land'),
-            b: r.b / 10, lo: (r.b - 1.96 * r.se) / 10, hi: (r.b + 1.96 * r.se) / 10, p: r.p, key: r.key }));
-        const lw = nar ? 132 : 230, rowH = nar ? 46 : 44;
-        const m = { t: 18, r: nar ? 16 : 30, b: 46, l: lw };
-        const H = m.t + rows.length * rowH + m.b;
-        const svg = this.svg = svgFor(host, W, H);
-        const X = lin(-0.5, 0.2, m.l, W - m.r);
-        niceTicks(-0.5, 0.2, nar ? 4 : 7).forEach(v => {
-            E('line', { x1: X(v), x2: X(v), y1: m.t, y2: H - m.b, stroke: Math.abs(v) < 1e-9 ? ZERO : GRID }, svg);
-            T(svg, { class: 'mono', x: X(v), y: H - m.b + 17, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5 }, Math.abs(v) < 1e-9 ? '0' : sgn(v, 1));
+    render() {
+        const host = $('#v11'); if (!host || !V) return;
+        const W = host.clientWidth || 900, nar = W < 560;
+        const H = nar ? 320 : 360;
+        const m = { t: 24, r: 10, b: 52, l: nar ? 36 : 50 };
+        const svg = svgFor(host, W, H);
+        const all = WINS.flatMap(w => V.fifths[w.k].rows.slice(1).flatMap(r => r.ci));
+        let lo = Math.min(0, ...all), hi = Math.max(0, ...all);
+        const pad = (hi - lo) * .07; lo -= pad; hi += pad;
+        const Y = lin(lo, hi, H - m.b, m.t);
+        const gw = (W - m.l - m.r) / 4;
+        const yt = niceTicks(lo, hi, 5);
+        yt.forEach(v => {
+            E('line', { x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), stroke: Math.abs(v) < 1e-9 ? ZERO : GRID, 'stroke-width': Math.abs(v) < 1e-9 ? 1.2 : 1 }, svg);
+            T(svg, { class: 'mono', x: m.l - 7, y: Y(v) + 4, 'text-anchor': 'end', fill: TX3, 'font-size': 11 }, Math.abs(v) < 1e-9 ? '0' : sgn(v, 0));
         });
-        T(svg, { class: 'mono', x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, nar ? 'crops per 10 points more irrigated' : 'change in number of crops for 10 more points irrigated, 1998–2000 to 2017–19');
-        this.items = rows.map((r, i) => {
-            const y = m.t + rowH * (i + .5), sig = r.p < 0.05, col = r.key === 'D1' ? LT : CY;
-            rowLabel(svg, m.l - 12, y, r.name, lw - 16, TX2, nar ? 10.5 : 12);
-            const wh = E('line', { x1: X(0), x2: X(0), y1: y, y2: y, stroke: col, 'stroke-width': 1.6, opacity: .8 }, svg);
-            const dot = E('circle', { cx: X(0), cy: y, r: 5.5, fill: sig ? col : BG, stroke: col, 'stroke-width': 1.6 }, svg);
-            const val = T(svg, { class: 'mono', x: X(r.b), y: y - 10, 'text-anchor': 'middle', fill: TX, 'font-size': 10.5 }, '');
-            return { r, wh, dot, val };
-        });
-        this.X = X;
-        this.placeLD(this.u);
-        setRead('#v9-read', `<span class="dim">filled: p &lt; 0.05.</span> The leading crop's share of land does not move ` +
-            `<span class="dim">(${sgn(DP.top_share.b / 10 * 100, 2)} points per 10 points irrigated, p = ${DP.top_share.p.toFixed(2)})</span>`);
+        T(svg, { class: 'mono', x: 4, y: 12, fill: TX3, 'font-size': 11 }, nar ? 'effective crops vs least irrigated quintile' : 'effective number of crops, against the least irrigated quintile in the same state');
+        const ref = V.fifths.full.rows;
+        this.items = [];
+        for (let q = 1; q < 5; q++) {
+            const x0 = m.l + gw * (q - 1);
+            if (q % 2 === 0) { const bg = E('rect', { x: x0, width: gw, y: m.t, height: H - m.t - m.b, fill: 'rgba(255,255,255,0.03)' }, svg); svg.insertBefore(bg, svg.firstChild); }
+            const r0 = ref[q];
+            T(svg, { class: 'mono', x: x0 + gw / 2, y: H - m.b + 18, 'text-anchor': 'middle', fill: TX2, 'font-size': nar ? 10.5 : 11.5 }, (nar ? 'Q' : 'quintile ') + (q + 1));
+            T(svg, { class: 'mono', x: x0 + gw / 2, y: H - m.b + 34, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5 }, `${pct(r0.lo)}–${pct(r0.hi)}`);
+            WINS.forEach((w, j) => {
+                const r = V.fifths[w.k].rows[q], x = x0 + gw * (0.2 + 0.2 * j), sig = r.p < .05;
+                const wh = E('line', { x1: x, x2: x, stroke: w.col, 'stroke-width': 1.6, opacity: .85 }, svg);
+                const dot = E('circle', { cx: x, r: nar ? 4.2 : 5, fill: sig ? w.col : BG, stroke: w.col, 'stroke-width': 1.6 }, svg);
+                this.items.push({ r, wh, dot, w, q, Y });
+            });
+            const hit = E('rect', { x: x0, width: gw, y: m.t, height: H - m.t - m.b, fill: 'transparent' }, svg);
+            const f = () => setRead('#v11-read', `<b>quintile ${q + 1}</b>, ${pct(r0.lo)} to ${pct(r0.hi)} irrigated<br>` +
+                WINS.map(w => { const r = V.fifths[w.k].rows[q]; return `${V.fifths[w.k].label} <b>${sgn(r.b, 2)}</b> <span class="dim">(p ${fmtPw(r.p)})</span>`; }).join(' <span class="dim">·</span> '));
+            hit.addEventListener('mousemove', f); hit.addEventListener('click', f);
+            hit.addEventListener('mouseleave', () => this.readDefault());
+        }
+        this.readDefault();
+        this.place(this.u);
     },
-    placeLD(u) {
-        if (!this.items) return;
-        const X = this.X, n = this.items.length;
-        this.items.forEach((it, i) => {
-            const e = easeOut(Math.max(0, Math.min(1, (u * (700 + 90 * n) - i * 90) / 700)));
-            const r = it.r;
-            it.dot.setAttribute('cx', X(r.b * e));
-            it.wh.setAttribute('x1', X(r.lo * e)); it.wh.setAttribute('x2', X(r.hi * e));
-            it.val.setAttribute('x', X(r.b * e)); it.val.textContent = e >= 1 ? sgn(r.b, 2) : '';
+    readDefault() {
+        const v = WINS.map(w => V.fifths[w.k].rows[4].b);
+        setRead('#v11-read', `<span class="dim">Hover or tap a quintile.</span> Most irrigated quintile: between <b>${sgn(Math.max(...v), 2)}</b> and <b>${sgn(Math.min(...v), 2)}</b> effective crops in every set of years.`);
+    },
+    place(t) {
+        (this.items || []).forEach(it => {
+            const e = easeOut(clamp01(t * 1.6 - (it.q - 1) * 0.15));
+            const Y = it.Y, r = it.r;
+            it.dot.setAttribute('cy', lerp(Y(0), Y(r.b), e).toFixed(1));
+            it.wh.setAttribute('y1', lerp(Y(0), Y(r.ci[0]), e).toFixed(1)); it.wh.setAttribute('y2', lerp(Y(0), Y(r.ci[1]), e).toFixed(1));
+            it.dot.setAttribute('opacity', e > 0 ? 1 : 0); it.wh.setAttribute('opacity', e > 0 ? .85 : 0);
         });
     },
-    prep() { this.u = 0; if (this.mode === 'ld') this.placeLD(0); else this.show(0); },
-    play() {
-        this.u = 0;
-        tween(this, 1800, t => { this.u = t; if (this.mode === 'ld') this.placeLD(t); else this.show(t); },
-            () => { this.u = 1; if (this.mode === 'ld') this.placeLD(1); else this.show(1); });
+    prep() { this.u = 0; this.place(0); },
+    play() { this.u = 0; this.place(0); tween(this, 1400, t => { this.u = t; this.place(t); }, () => { this.u = 1; this.place(1); }); },
+});
+
+/* ================================================================
+   03 irrigation in 1991: quintiles of the 1991 share
+   ================================================================ */
+SC[12] = scene({
+    win: 'w1721', u: 1,
+    controls() {
+        if (!V) return;
+        segs($('#v12-win'), ['w1721', 'full'].map(k => ({ key: k, name: 'crops in ' + V.y1991[k].label })),
+            k => { this.win = k; cancel(this); this.played = true; this.render(); this.play(); }, this.win);
+    },
+    render() {
+        const host = $('#v12'); if (!host || !V) return;
+        binChart(this, host, V.y1991[this.win].rows, {
+            xlab: 'share of sown area irrigated, 1991',
+            ylab: 'effective number of crops, against the least irrigated 1991 quintile in the same state',
+            ylabN: 'effective crops vs least irrigated, same state',
+            onRead: r => r ? setRead('#v12-read', binText(r, 5, 'effective crops').replace('irrigated <span', 'irrigated in 1991 <span')) : this.readDefault(),
+        });
+        this.readDefault();
+        placeBins(this, this.u);
+    },
+    readDefault() {
+        const top = V.y1991[this.win].rows[4];
+        setRead('#v12-read', `<span class="dim">Hover or tap a quintile.</span> Most irrigated in 1991, above ${pct(top.lo)}: ` +
+            `<b>${sgn(top.b, 2)}</b> effective crops in ${V.y1991[this.win].label} <span class="dim">(p ${fmtPw(top.p)})</span>`);
+    },
+    prep() { this.u = 0; placeBins(this, 0); },
+    play() { this.u = 0; placeBins(this, 0); tween(this, 1300, t => { this.u = t; placeBins(this, t); }, () => { this.u = 1; placeBins(this, 1); }); },
+});
+
+/* ================================================================
+   04 where irrigation spread, 1991 to 2011
+   ================================================================ */
+SC[13] = rowScene({
+    host: '#v13', read: '#v13-read', lw: 290, lwN: 140,
+    xlab: 'change in effective number of crops for 10 more points of sown area irrigated gained',
+    xlabN: 'per 10 points of irrigation gained',
+    rows() {
+        return V.change.rows.map(r => ({ name: `${r.sample}, crops to ${r.to}`, b: r.b / 10, ci: [r.ci[0] / 10, r.ci[1] / 10], p: r.p, n: r.n, col: CY }));
+    },
+    text(r) {
+        return `<b>${r.name}</b> <span class="dim">·</span> ${r.n} districts <span class="dim">·</span> <b>${sgn(r.b, 3)}</b> per 10 points ` +
+            `<span class="dim">(95% interval ${sgn(r.ci[0], 2)} to ${sgn(r.ci[1], 2)}; p ${fmtPw(r.p)})</span>`;
+    },
+    readDefault() {
+        setRead('#v13-read', `<span class="dim">Hover or tap a row.</span> Irrigation rose by <b>${(V.change.mean_change * 100).toFixed(0)} points</b> of sown area in the average district between 1991 and 2011.`);
+    },
+});
+
+/* ================================================================
+   12 canals, wells and tanks: per within-state standard deviation
+   ================================================================ */
+const SRCOL = { sh_tk: GR, sh_can: VI, sh_gw: CY, sh_ro: GY };
+SC[14] = rowScene({
+    host: '#v14', read: '#v14-read', lw: 200, lwN: 118,
+    xlab: 'change in effective number of crops for one within-state standard deviation',
+    xlabN: 'per within-state standard deviation',
+    rows() { return V.sources.rows.map(r => Object.assign({}, r, { col: SRCOL[r.key] })); },
+    text(r) {
+        return `<b>${r.name}</b> <span class="dim">·</span> one standard deviation is ${(r.sd * 100).toFixed(1)} points of sown area ` +
+            `<span class="dim">·</span> <b>${sgn(r.b, 2)}</b> effective crops <span class="dim">(95% interval ${sgn(r.ci[0], 2)} to ${sgn(r.ci[1], 2)}; p ${fmtPw(r.p)})</span>`;
+    },
+    readDefault() {
+        setRead('#v14-read', `<span class="dim">Hover or tap a row.</span> Whether the curve differs between canal and well water: <b>p ${V.sources.gw_vs_canal_curve_p.toFixed(2)}</b>.`);
     },
 });
 
@@ -958,7 +1027,9 @@ function tables() {
     const reg = (lab, rs) => rs.map(r => `<tr><td>${REGS[r.g]}, ${lab}</td><td class="num">${r.n}</td>` + n(r.irr, 3) + n(r.D0, 1) + n(r.D1, 2) + n(r.D2, 2) + n(r.E, 3) + n(r.cereal, 3) + '</tr>').join('');
     put('#tbl-r', reg('village records', D.regimes.ay) + reg('2011 directory', D.regimes.vd));
     put('#tbl-2', D.robustness.map((r, i) => `<tr><td>${OUTN[r.y] && r.y !== 'D1' ? r.lab : (r.y === 'D1' ? 'effective number: ' + r.lab : r.lab)}</td><td class="num">${r.n}</td>` +
-        `<td class="num">${sgn(r.b1, 3)}</td><td class="num neg">${sgn(r.b2, 3)}</td><td class="num">${fmtP(r.p2)}</td><td class="num">${pct(r.tp, 1)}</td>` + n(r.r2, 3) + '</tr>').join(''));
+        `<td class="num">${sgn(r.b1, 3)}</td><td class="num neg">${sgn(r.b2, 3)}</td><td class="num">${fmtP(r.p2)}</td>` + n(r.r2, 3) + '</tr>').join(''));
+    if (V) put('#tbl-q', ['full', 'w1517', 'w1721', 'ext'].map(k => { const f = V.fifths[k];
+        return `<tr><td>${f.label}</td><td class="num">${f.n}</td>` + f.rows.slice(1).map(r => `<td class="num">${sgn(r.b, 2)} <span class="dim">(${fmtPw(r.p)})</span></td>`).join('') + '</tr>'; }).join(''));
     put('#tbl-3', D.source.map(r => {
         const dp = r.y.length < 3 ? 2 : 3;
         const c = s => `<td class="num">${sgn(r[s].b, 3)} <span class="dim">(${sgn(r[s].b / 10, dp + 1)})</span></td><td class="num">${fmtP(r[s].p)}</td>`;
@@ -972,12 +1043,13 @@ function tables() {
 /* ================================================================
    wiring
    ================================================================ */
-const HOSTS = { 1: '#v1', 2: '#v2', 3: '#v3', 4: '#v4', 5: '#v5', 6: '#v6', 7: '#v7', 8: '#v8', 9: '#v9' };
+const HOSTS = { 1: '#v1', 2: '#v2', 3: '#v3', 4: '#v4', 5: '#v5', 6: '#v6', 7: '#v7', 8: '#v8', 9: '#v9', 11: '#v11', 12: '#v12', 13: '#v13', 14: '#v14' };
 let inited = false;
 function startPlay(sc) { if (sc.played) return; sc.played = true; sc.play(); }
 
 async function init() {
-    [D, DP] = await Promise.all([loadJSON('data/site_irrigation_story.json'), loadJSON('data/site_irrigation_panel.json')]);
+    [D, DP, V] = await Promise.all([loadJSON('data/site_irrigation_story.json'), loadJSON('data/site_irrigation_panel.json'),
+                                    loadJSON('data/site_irrigation_v2.json')]);
     Object.values(SC).forEach(sc => { if (sc.controls) sc.controls(); });
     tables();
     for (const k of Object.keys(SC)) {

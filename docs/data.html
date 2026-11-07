@@ -276,14 +276,14 @@
   </div>
   <div class="prose prose--flow scene-prose fade">
     <p>Each result is a regression of a crop diversity measure on one district measure, with the
-    square of that measure added where the relationship rises and then falls. Every regression is
+    square of that measure added where the relationship curves. Every regression is
     a comparison within state (state fixed effects), so a district in Punjab is set only against
     other districts in Punjab. Anything that varies only between states, such as state
     agricultural policy, drops out and cannot be estimated.</p>
     <p>Differences between states on their own account for 49 percent of the variation in the
     effective number of crops between districts, and irrigated share with its square raises that
     to 53 percent. Without the within-state comparison the same irrigation terms account for only
-    6.7 percent, while the peak moves from 28 percent of sown area irrigated to 51 percent.</p>
+    6.7 percent of the variation.</p>
     <p>Irrigation, mandis, food storage warehouses and fertiliser shops were put where terrain,
     groundwater and existing farming already favoured them. Since the results compare districts at
     one point in time, they cannot show what adding a mandi to a district would do. Average farm
@@ -354,11 +354,11 @@
 
         <div class="tbl-wrap">
           <table class="tight" id="tbl-rob">
-            <caption>Peak of the irrigation curve for the effective number of crops, by version of the model and sample.</caption>
-            <thead><tr><th>Version</th><th class="num">Districts</th><th class="num">Peak, irrigated share</th><th class="num">Share of variation explained</th></tr></thead>
+            <caption>The irrigation curve for the effective number of crops, by version of the model and sample.</caption>
+            <thead><tr><th>Version</th><th class="num">Districts</th><th class="num">p, squared term</th><th class="num">Share of variation explained</th></tr></thead>
             <tbody></tbody>
           </table>
-          <p class="tbl-note">Every version keeps the squared term negative at p &lt; 0.0001. The peak runs from 0.241 to 0.511, with a median of 0.270.</p>
+          <p class="tbl-note">Every version keeps the squared term negative at p &lt; 0.0001. Within state, the effective number of crops changes little until irrigation covers about half of sown area and falls beyond that.</p>
         </div>
 
         <div class="tbl-wrap">
@@ -426,6 +426,6 @@
 </footer>
 
 <script src="js/site.js?v=e2b6885b"></script>
-<script src="js/data.js?v=ee88b19a"></script>
+<script src="js/data.js?v=5aa478fc"></script>
 </body>
 </html>
