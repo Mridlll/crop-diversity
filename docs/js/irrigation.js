@@ -547,7 +547,7 @@ SC[5] = scene({
         this.place(this.u);
     },
     readDefault() {
-        setRead('#v5-read', '<span class="dim">Hover or tap a row.</span> Main estimate <b>−6.84</b>, from −5.44 to −10.42 across the eight versions.');
+        setRead('#v5-read', '<span class="dim">Hover or tap a row.</span> Main estimate <b>−6.84</b>; every estimate lies between −5.44 and −10.42.');
     },
     place(t) {
         const X = this.X;

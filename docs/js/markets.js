@@ -797,7 +797,8 @@ SC[6] = scene({
 });
 
 /* ================================================================
-   07 specification ladder, read from site_markets_pop.json at init
+   07 how many more crops: raw, within state, all measures, and with
+   district cropped area held constant (built at init)
    ================================================================ */
 let LADDER = [];
 SC[7] = scene({
@@ -823,9 +824,11 @@ SC[7] = scene({
         this.rows = LADDER.map((r, i) => {
             const y = yOf(i);
             const g = E('g', {}, svg);
-            rowLabel(g, m.l - 12, y, r.label + (r.n !== 606 ? ` (${r.n} districts)` : ''), lw - 16, TX2, nar ? 11 : 12.5);
+            rowLabel(g, m.l - 12, y, r.label, lw - 16, TX2, nar ? 11 : 12.5);
             const dot = E('circle', { cx: X(r.b), cy: y, r: 6, fill: '#0E9BB5' }, g);
             T(g, { x: X(r.b) + 11, y: y + 4, fill: TX, 'font-size': 11, 'font-family': MONO }, '+' + r.b.toFixed(2));
+            E('rect', { x: 0, y: y - rowH / 2, width: W, height: rowH, fill: 'transparent' }, g);
+            tipOn(g, () => `<strong>${r.label}</strong><br>${sgn(r.b, 2)} crops if every rural resident had a weekly haat in the village` + (r.tip ? '<br>' + r.tip : ''));
             return { g, dot };
         });
         /* connector from the raw estimate to the within-state estimate */
@@ -1523,7 +1526,17 @@ async function init() {
                                          loadJSON('data/site_markets_v2.json')]);
     /* the page reads population shares; village shares stay for the comparison toggle */
     ['descriptives', 'corr', 'solo', 'solo_village', 'interaction', 'scatter', 'n'].forEach(k => { MK[k] = MP[k]; });
-    LADDER = MP.ladder;
+    {
+        const L = MP.ladder, alt = L.slice(4).map(r => r.b);
+        LADDER = [
+            { label: 'No adjustment', b: L[0].b, tip: 'most of this reflects where haats are, in eastern and central India' },
+            { label: 'Within state', b: L[1].b },
+            { label: 'Development, irrigation and farm size held constant', b: L[3].b,
+              tip: `${sgn(Math.min(...alt), 1)} to ${sgn(Math.max(...alt), 1)} across other samples of districts and alongside the nine other facilities` },
+            { label: 'District cropped area also held constant', b: 3.762,
+              tip: 'larger districts record more crop names; p = 0.05 with districts in a state allowed to move together. Cropped area may itself respond to markets, so this is a floor' },
+        ];
+    }
     MP.descriptives.forEach(d => { SD[d.name] = d.sd; SDV[d.name] = d.sd_village; });
     Object.values(SC).forEach(sc => { if (sc.controls) sc.controls(); });
     tables();
