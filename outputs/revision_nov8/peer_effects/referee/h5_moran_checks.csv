@@ -1,0 +1,61 @@
+var,links,I,p_perm,n_units,n_links,I_lo,I_hi
+D1,within-state links,0.5493718714505615,0.001,470.0,889.0,,
+D1,cross-border links,0.10943015291447779,0.092,266.0,262.0,,
+D1,"cross-border links, AP-TS excluded",0.18319762883540597,0.004,260.0,254.0,,
+D1,within-state links among border units,0.5915092164223311,0.001,250.0,251.0,,
+D1,"within-state links, state means removed",0.176267070268603,0.001,470.0,889.0,,
+D1,"cross-border links, state means removed",0.028794191394951686,0.642,260.0,254.0,,
+D1,"within-state links, random 254-link subsets (mean; 2.5/97.5 pct)",0.5098784130339211,,,254.0,0.40440587633135733,0.6192151642959934
+D1,pair correlation over within links,0.4931323196010499,,,889.0,,
+D1,pair correlation over cross_noapts links,0.20375898310031162,,,254.0,,
+D1,"within(border units) minus cross(no AP-TS), unit bootstrap",0.388724948989323,,,,0.13145498844348352,0.6551870064671841
+s_rice,within-state links,0.5716406390535822,0.001,470.0,889.0,,
+s_rice,cross-border links,0.11634192658379074,0.057,266.0,262.0,,
+s_rice,"cross-border links, AP-TS excluded",0.14535180725809377,0.027,260.0,254.0,,
+s_rice,within-state links among border units,0.5814075621043004,0.001,250.0,251.0,,
+s_rice,"within-state links, state means removed",0.2200756057644291,0.001,470.0,889.0,,
+s_rice,"cross-border links, state means removed",0.007301920038690539,0.918,260.0,254.0,,
+s_rice,"within-state links, random 254-link subsets (mean; 2.5/97.5 pct)",0.5648768809380471,,,254.0,0.44031583056065016,0.6782661788901198
+s_rice,pair correlation over within links,0.5620326898456092,,,889.0,,
+s_rice,pair correlation over cross_noapts links,0.14444839499705278,,,254.0,,
+s_rice,"within(border units) minus cross(no AP-TS), unit bootstrap",0.4060015322486894,,,,0.16813664875451398,0.6254689799858538
+s_wheat,within-state links,0.4336129881812154,0.001,470.0,889.0,,
+s_wheat,cross-border links,0.3407147294315258,0.001,266.0,262.0,,
+s_wheat,"cross-border links, AP-TS excluded",0.34005308361783637,0.001,260.0,254.0,,
+s_wheat,within-state links among border units,0.5570199127373182,0.001,250.0,251.0,,
+s_wheat,"within-state links, state means removed",0.2536669647280392,0.001,470.0,889.0,,
+s_wheat,"cross-border links, state means removed",0.19914198179404183,0.004,260.0,254.0,,
+s_wheat,"within-state links, random 254-link subsets (mean; 2.5/97.5 pct)",0.41912709456426794,,,254.0,0.2962715063068046,0.5344551314989064
+s_wheat,pair correlation over within links,0.410855620612159,,,889.0,,
+s_wheat,pair correlation over cross_noapts links,0.3444214283324305,,,254.0,,
+s_wheat,"within(border units) minus cross(no AP-TS), unit bootstrap",0.19091706318529486,,,,-0.08079095538963547,0.4652903910163774
+s_pulses,within-state links,0.4096199768214868,0.001,470.0,889.0,,
+s_pulses,cross-border links,0.27428649623462237,0.001,266.0,262.0,,
+s_pulses,"cross-border links, AP-TS excluded",0.2813712069328678,0.003,260.0,254.0,,
+s_pulses,within-state links among border units,0.43330652515723017,0.001,250.0,251.0,,
+s_pulses,"within-state links, state means removed",0.2305149892045669,0.001,470.0,889.0,,
+s_pulses,"cross-border links, state means removed",0.2540201749236254,0.003,260.0,254.0,,
+s_pulses,"within-state links, random 254-link subsets (mean; 2.5/97.5 pct)",0.42506328131415516,,,254.0,0.29065668786863463,0.5463851095969692
+s_pulses,pair correlation over within links,0.423490356210972,,,889.0,,
+s_pulses,pair correlation over cross_noapts links,0.23672421942831096,,,254.0,,
+s_pulses,"within(border units) minus cross(no AP-TS), unit bootstrap",0.1593696201673683,,,,-0.18308130273798742,0.4845003353512653
+s_millets,within-state links,0.5996433130326112,0.001,470.0,889.0,,
+s_millets,cross-border links,0.5778731673360755,0.001,266.0,262.0,,
+s_millets,"cross-border links, AP-TS excluded",0.6152611881381166,0.001,260.0,254.0,,
+s_millets,within-state links among border units,0.6673446104009476,0.001,250.0,251.0,,
+s_millets,"within-state links, state means removed",0.26661906075179864,0.001,470.0,889.0,,
+s_millets,"cross-border links, state means removed",0.19030364980321268,0.008,260.0,254.0,,
+s_millets,"within-state links, random 254-link subsets (mean; 2.5/97.5 pct)",0.6223974443503869,,,254.0,0.5151210472181066,0.7215621372627061
+s_millets,pair correlation over within links,0.6394195959577714,,,889.0,,
+s_millets,pair correlation over cross_noapts links,0.6498695347055576,,,254.0,,
+s_millets,"within(border units) minus cross(no AP-TS), unit bootstrap",0.007759045754466445,,,,-0.2457357117794696,0.31696905794952174
+s_oilseeds,within-state links,0.5943729119145911,0.001,470.0,889.0,,
+s_oilseeds,cross-border links,0.42142130277428325,0.001,266.0,262.0,,
+s_oilseeds,"cross-border links, AP-TS excluded",0.4556552873849438,0.001,260.0,254.0,,
+s_oilseeds,within-state links among border units,0.5875745443141374,0.001,250.0,251.0,,
+s_oilseeds,"within-state links, state means removed",0.4264416297207561,0.001,470.0,889.0,,
+s_oilseeds,"cross-border links, state means removed",0.47742008611898284,0.001,260.0,254.0,,
+s_oilseeds,"within-state links, random 254-link subsets (mean; 2.5/97.5 pct)",0.5880328243000683,,,254.0,0.48111103053995075,0.6849781444278423
+s_oilseeds,pair correlation over within links,0.5980371238958385,,,889.0,,
+s_oilseeds,pair correlation over cross_noapts links,0.4498950610267601,,,254.0,,
+s_oilseeds,"within(border units) minus cross(no AP-TS), unit bootstrap",0.1130077493290985,,,,-0.16260238722334297,0.4175601779481639

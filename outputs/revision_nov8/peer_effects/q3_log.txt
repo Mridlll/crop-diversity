@@ -1,0 +1,195 @@
+units 604; mean neighbours 5.42 at 77 km; ring set mean size 2.4 (same state 1.5) at 104 km; same-state non-adjacent mean size 26.3
+cotton [entry]: L=0.05, established 75, at risk 411, events 12 (Gujarat 2; Haryana 2; Maharashtra 2; Rajasthan 2); 2001-2004: 2; 2005-2009: 5; 2010-2014: 1; 2015-2019: 4
+cotton [surge]: L=0.05, established 0, at risk 486, events 37 (Maharashtra 11; Telangana 8; Gujarat 8; Haryana 4); 2001-2004: 5; 2005-2009: 15; 2010-2014: 10; 2015-2019: 7
+soybean [entry]: L=0.05, established 47, at risk 439, events 24 (Maharashtra 10; Telangana 2; Chhattisgarh 2; Karnataka 2); 2001-2004: 9; 2005-2009: 10; 2010-2014: 4; 2015-2019: 1
+soybean [surge]: L=0.05, established 0, at risk 486, events 31 (Maharashtra 16; Madhya Pradesh 4; Rajasthan 4; Telangana 2); 2001-2004: 13; 2005-2009: 14; 2010-2014: 4; 2015-2019: 0
+maize [entry]: L=0.05, established 135, at risk 351, events 51 (Karnataka 10; Maharashtra 10; Tamil Nadu 7; Andhra Pradesh 4); 2001-2004: 12; 2005-2009: 20; 2010-2014: 10; 2015-2019: 9
+maize [surge]: L=0.05, established 0, at risk 486, events 65 (Karnataka 13; Tamil Nadu 7; Maharashtra 6; Bihar 5); 2001-2004: 10; 2005-2009: 23; 2010-2014: 17; 2015-2019: 15
+rabi_maize [entry]: L=0.02, established 5, at risk 408, events 26 (Andhra Pradesh 5; Maharashtra 5; Telangana 4; West Bengal 4); 2001-2004: 1; 2005-2009: 8; 2010-2014: 12; 2015-2019: 5
+rabi_maize [surge]: L=0.02, established 0, at risk 413, events 24 (Andhra Pradesh 5; Telangana 4; Maharashtra 4; West Bengal 4); 2001-2004: 1; 2005-2009: 8; 2010-2014: 11; 2015-2019: 4
+chickpea [entry]: L=0.05, established 81, at risk 405, events 50 (Maharashtra 17; Madhya Pradesh 8; Karnataka 7; Jharkhand 5); 2001-2004: 16; 2005-2009: 11; 2010-2014: 8; 2015-2019: 15
+chickpea [surge]: L=0.05, established 0, at risk 486, events 47 (Maharashtra 13; Madhya Pradesh 10; Karnataka 9; Andhra Pradesh 3); 2001-2004: 5; 2005-2009: 10; 2010-2014: 15; 2015-2019: 17
+moong [entry]: L=0.05, established 41, at risk 445, events 22 (Bihar 6; Rajasthan 6; Nagaland 3; Karnataka 2); 2001-2004: 7; 2005-2009: 1; 2010-2014: 6; 2015-2019: 8
+moong [surge]: L=0.05, established 0, at risk 486, events 24 (Rajasthan 11; Odisha 4; Nagaland 3; Tamil Nadu 3); 2001-2004: 6; 2005-2009: 4; 2010-2014: 6; 2015-2019: 8
+rice [entry]: L=0.05, established 380, at risk 106, events 7 (Madhya Pradesh 5; Rajasthan 1; Uttar Pradesh 1); 2001-2004: 0; 2005-2009: 1; 2010-2014: 3; 2015-2019: 3
+rice [surge]: L=0.05, established 0, at risk 486, events 107 (Odisha 26; Bihar 11; Madhya Pradesh 10; Punjab 10); 2001-2004: 37; 2005-2009: 33; 2010-2014: 19; 2015-2019: 18
+
+Hazard, main thresholds (coef = change in yearly event probability for 0 -> 1 share of growers):
+                                                         b            se       
+cluster                                              state   unit  state   unit
+mode  episode    spec                var                                       
+entry chickpea   nbr + ring          nbr             0.014  0.014  0.012  0.016
+                                     nbr minus ring  0.001  0.001  0.012  0.020
+                                     ring            0.013  0.013  0.008  0.010
+                 nbr only            nbr             0.021  0.021  0.010  0.013
+                 nbr split by border nbr_other      -0.001 -0.001  0.016  0.012
+                                     nbr_same        0.074  0.074  0.038  0.031
+                                     ring            0.021  0.021  0.022  0.018
+      cotton     nbr + ring          nbr             0.010  0.010  0.004  0.007
+                                     nbr minus ring  0.008  0.008  0.006  0.009
+                                     ring            0.003  0.003  0.007  0.006
+                 nbr only            nbr             0.005  0.005  0.005  0.006
+                 nbr split by border nbr_other       0.018  0.018  0.011  0.013
+                                     nbr_same        0.005  0.005  0.012  0.012
+                                     ring            0.006  0.006  0.009  0.008
+      maize      nbr + ring          nbr             0.008  0.008  0.012  0.011
+                                     nbr minus ring  0.005  0.005  0.014  0.012
+                                     ring            0.003  0.003  0.006  0.005
+                 nbr only            nbr             0.012  0.012  0.011  0.009
+                 nbr split by border nbr_other       0.005  0.005  0.008  0.008
+                                     nbr_same        0.009  0.009  0.018  0.014
+                                     ring           -0.001 -0.001  0.009  0.007
+      moong      nbr + ring          nbr            -0.002 -0.002  0.015  0.011
+                                     nbr minus ring -0.006 -0.006  0.012  0.012
+                                     ring            0.004  0.004  0.007  0.005
+                 nbr only            nbr             0.004  0.004  0.013  0.010
+                 nbr split by border nbr_other      -0.007 -0.007  0.006  0.005
+                                     nbr_same       -0.002 -0.002  0.009  0.014
+                                     ring           -0.011 -0.011  0.006  0.005
+      rabi_maize nbr + ring          nbr            -0.004 -0.004  0.025  0.026
+                                     nbr minus ring -0.012 -0.012  0.026  0.029
+                                     ring            0.008  0.008  0.005  0.010
+                 nbr only            nbr            -0.009 -0.009  0.013  0.017
+                 nbr split by border nbr_other      -0.020 -0.020  0.015  0.010
+                                     nbr_same        0.016  0.016  0.029  0.037
+                                     ring            0.007  0.007  0.006  0.012
+      rice       nbr + ring          nbr            -0.003 -0.003  0.008  0.011
+                                     nbr minus ring  0.001  0.001  0.010  0.012
+                                     ring           -0.004 -0.004  0.005  0.005
+                 nbr only            nbr            -0.009 -0.009  0.009  0.011
+      soybean    nbr + ring          nbr             0.049  0.049  0.027  0.021
+                                     nbr minus ring  0.041  0.041  0.021  0.021
+                                     ring            0.008  0.008  0.010  0.008
+                 nbr only            nbr             0.040  0.040  0.019  0.017
+                 nbr split by border nbr_other      -0.004 -0.004  0.007  0.009
+                                     nbr_same        0.061  0.061  0.018  0.035
+                                     ring            0.003  0.003  0.007  0.010
+surge chickpea   nbr + ring          nbr             0.094  0.094  0.034  0.032
+                                     nbr minus ring  0.083  0.083  0.038  0.040
+                                     ring            0.011  0.011  0.008  0.018
+                 nbr only            nbr             0.080  0.080  0.031  0.025
+                 nbr split by border nbr_other      -0.004 -0.004  0.032  0.019
+                                     nbr_same        0.056  0.056  0.044  0.030
+                                     ring            0.028  0.028  0.015  0.024
+      cotton     nbr + ring          nbr             0.092  0.092  0.028  0.033
+                                     nbr minus ring  0.007  0.007  0.054  0.063
+                                     ring            0.085  0.085  0.034  0.044
+                 nbr only            nbr             0.085  0.085  0.021  0.027
+                 nbr split by border nbr_other       0.022  0.022  0.017  0.026
+                                     nbr_same        0.080  0.080  0.097  0.071
+                                     ring            0.117  0.117  0.049  0.058
+      maize      nbr + ring          nbr             0.047  0.047  0.023  0.021
+                                     nbr minus ring  0.030  0.030  0.024  0.026
+                                     ring            0.017  0.017  0.007  0.012
+                 nbr only            nbr             0.036  0.036  0.018  0.014
+                 nbr split by border nbr_other       0.018  0.018  0.011  0.011
+                                     nbr_same        0.025  0.025  0.016  0.017
+                                     ring            0.014  0.014  0.009  0.014
+      moong      nbr + ring          nbr             0.037  0.037  0.012  0.028
+                                     nbr minus ring  0.037  0.037  0.017  0.031
+                                     ring           -0.000 -0.000  0.008  0.009
+                 nbr only            nbr             0.060  0.060  0.014  0.029
+                 nbr split by border nbr_other       0.000  0.000  0.001  0.002
+                                     nbr_same        0.026  0.026  0.003  0.042
+                                     ring           -0.008 -0.008  0.006  0.006
+      rabi_maize nbr + ring          nbr             0.055  0.055  0.039  0.044
+                                     nbr minus ring  0.059  0.059  0.050  0.045
+                                     ring           -0.004 -0.004  0.018  0.013
+                 nbr only            nbr             0.034  0.034  0.021  0.033
+                 nbr split by border nbr_other      -0.016 -0.016  0.010  0.016
+                                     nbr_same        0.097  0.097  0.057  0.065
+                                     ring           -0.009 -0.009  0.027  0.015
+      rice       nbr + ring          nbr             0.007  0.007  0.024  0.016
+                                     nbr minus ring  0.008  0.008  0.027  0.019
+                                     ring           -0.001 -0.001  0.007  0.007
+                 nbr only            nbr             0.023  0.023  0.021  0.013
+                 nbr split by border nbr_other      -0.005 -0.005  0.010  0.008
+                                     nbr_same       -0.034 -0.034  0.022  0.018
+                                     ring            0.013  0.013  0.011  0.010
+      soybean    nbr + ring          nbr             0.097  0.097  0.045  0.038
+                                     nbr minus ring  0.066  0.066  0.041  0.042
+                                     ring            0.031  0.031  0.014  0.016
+                 nbr only            nbr             0.060  0.060  0.036  0.027
+                 nbr split by border nbr_other       0.029  0.029  0.016  0.022
+                                     nbr_same        0.037  0.037  0.029  0.032
+                                     ring            0.034  0.034  0.021  0.027
+                     n  n_units  n_entries  mean_entry
+mode  episode                                         
+entry chickpea    6717      379         48    0.007146
+      cotton      7272      389         12    0.001650
+      maize       5880      336         46    0.007823
+      moong       7816      421         21    0.002687
+      rabi_maize  7037      380         22    0.003126
+      rice        1898      102          7    0.003688
+      soybean     7587      415         23    0.003032
+surge chickpea    8382      458         43    0.005130
+      cotton      8358      458         37    0.004427
+      maize       8163      458         59    0.007228
+      moong       8497      458         23    0.002707
+      rabi_maize  7146      385         20    0.002799
+      rice        7532      458        105    0.013941
+      soybean     8339      458         27    0.003238
+
+Sensitivity (nbr + ring, unit clusters):
+                                             b                           n_entries                                 se                     
+tag                             high threshold low threshold   main high threshold low threshold  main high threshold low threshold   main
+mode  episode    var                                                                                                                      
+entry chickpea   nbr                     0.008         0.003  0.014           24.0          27.0  41.0          0.014         0.009  0.016
+                 nbr minus ring         -0.006        -0.006  0.001           24.0          27.0  41.0          0.018         0.012  0.020
+                 ring                    0.013         0.009  0.013           24.0          27.0  41.0          0.012         0.007  0.010
+      cotton     nbr                    -0.013        -0.001  0.010           13.0          14.0  11.0          0.012         0.008  0.007
+                 nbr minus ring         -0.025        -0.004  0.008           13.0          14.0  11.0          0.017         0.011  0.009
+                 ring                    0.012         0.003  0.003           13.0          14.0  11.0          0.007         0.007  0.006
+      maize      nbr                     0.006        -0.001  0.008           29.0          34.0  38.0          0.010         0.009  0.011
+                 nbr minus ring          0.005        -0.005  0.005           29.0          34.0  38.0          0.012         0.011  0.012
+                 ring                    0.001         0.004  0.003           29.0          34.0  38.0          0.004         0.005  0.005
+      moong      nbr                     0.032         0.022 -0.002           13.0          17.0  18.0          0.017         0.009  0.011
+                 nbr minus ring          0.036         0.023 -0.006           13.0          17.0  18.0          0.018         0.011  0.012
+                 ring                   -0.005        -0.001  0.004           13.0          17.0  18.0          0.004         0.005  0.005
+      rabi_maize nbr                    -0.005         0.030 -0.004            9.0          21.0  18.0          0.037         0.027  0.026
+                 nbr minus ring         -0.060         0.017 -0.012            9.0          21.0  18.0          0.049         0.030  0.029
+                 ring                    0.055         0.013  0.008            9.0          21.0  18.0          0.037         0.010  0.010
+      rice       nbr                     0.026         0.017 -0.003           11.0           8.0   6.0          0.015         0.014  0.011
+                 nbr minus ring          0.035         0.025  0.001           11.0           8.0   6.0          0.017         0.016  0.012
+                 ring                   -0.009        -0.007 -0.004           11.0           8.0   6.0          0.006         0.008  0.005
+      soybean    nbr                     0.104         0.001  0.049           14.0          24.0  17.0          0.039         0.021  0.021
+                 nbr minus ring          0.092        -0.009  0.041           14.0          24.0  17.0          0.046         0.023  0.021
+                 ring                    0.013         0.010  0.008           14.0          24.0  17.0          0.015         0.008  0.008
+surge chickpea   nbr                     0.095         0.078  0.094           13.0          54.0  33.0          0.043         0.027  0.032
+                 nbr minus ring          0.088         0.079  0.083           13.0          54.0  33.0          0.047         0.033  0.040
+                 ring                    0.008        -0.002  0.011           13.0          54.0  33.0          0.017         0.015  0.018
+      cotton     nbr                     0.045         0.111  0.092           17.0          39.0  31.0          0.045         0.040  0.033
+                 nbr minus ring          0.080         0.100  0.007           17.0          39.0  31.0          0.060         0.055  0.063
+                 ring                   -0.035         0.011  0.085           17.0          39.0  31.0          0.023         0.026  0.044
+      maize      nbr                     0.068         0.052  0.047           29.0          72.0  49.0          0.029         0.019  0.021
+                 nbr minus ring          0.059         0.030  0.030           29.0          72.0  49.0          0.039         0.023  0.026
+                 ring                    0.008         0.021  0.017           29.0          72.0  49.0          0.018         0.011  0.012
+      moong      nbr                     0.149         0.029  0.037            9.0          26.0  17.0          0.073         0.019  0.028
+                 nbr minus ring          0.162         0.021  0.037            9.0          26.0  17.0          0.077         0.021  0.031
+                 ring                   -0.013         0.007 -0.000            9.0          26.0  17.0          0.009         0.010  0.009
+      rabi_maize nbr                    -0.007         0.108  0.055            6.0          22.0  15.0          0.056         0.045  0.044
+                 nbr minus ring         -0.030         0.118  0.059            6.0          22.0  15.0          0.067         0.050  0.045
+                 ring                    0.024        -0.010 -0.004            6.0          22.0  15.0          0.025         0.013  0.013
+      rice       nbr                     0.037         0.019  0.007           43.0         120.0  84.0          0.017         0.017  0.016
+                 nbr minus ring          0.041         0.018  0.008           43.0         120.0  84.0          0.019         0.019  0.019
+                 ring                   -0.004         0.002 -0.001           43.0         120.0  84.0          0.006         0.007  0.007
+      soybean    nbr                     0.184         0.121  0.097           13.0          30.0  22.0          0.054         0.040  0.038
+                 nbr minus ring          0.165         0.095  0.066           13.0          30.0  22.0          0.062         0.037  0.042
+                 ring                    0.019         0.026  0.031           13.0          30.0  22.0          0.014         0.012  0.016
+
+Wave or jump:
+   episode  mode  events_with_prior_grower  share_contiguous  share_contiguous_random_national  p_national  share_contiguous_random_within_state  p_within_state  median_km_nearest_grower  share_jumps_gt150km  share_atrisk_contiguous_mean
+    cotton entry                        12             0.917                             0.191       0.001                                 0.642           0.026                   100.420                0.083                         0.192
+    cotton surge                        32             0.750                             0.081       0.001                                 0.493           0.002                    96.917                0.188                         0.080
+   soybean entry                        24             0.750                             0.122       0.001                                 0.473           0.001                    87.211                0.208                         0.123
+   soybean surge                        29             0.414                             0.067       0.001                                 0.249           0.027                   172.574                0.517                         0.072
+     maize entry                        51             0.824                             0.516       0.001                                 0.644           0.002                    85.773                0.020                         0.520
+     maize surge                        60             0.467                             0.176       0.001                                 0.336           0.011                   126.761                0.400                         0.175
+rabi_maize entry                        26             0.500                             0.089       0.001                                 0.365           0.056                   107.055                0.423                         0.083
+rabi_maize surge                        23             0.391                             0.060       0.001                                 0.268           0.096                   175.455                0.565                         0.062
+  chickpea entry                        50             0.820                             0.207       0.001                                 0.656           0.001                    86.542                0.120                         0.209
+  chickpea surge                        44             0.636                             0.099       0.001                                 0.333           0.001                   121.352                0.341                         0.087
+     moong entry                        22             0.591                             0.200       0.002                                 0.376           0.018                   100.596                0.318                         0.200
+     moong surge                        23             0.522                             0.068       0.001                                 0.233           0.001                   157.569                0.522                         0.065
+      rice entry                         7             0.714                             0.602       0.429                                 0.655           0.544                    78.333                0.000                         0.602
+      rice surge                        91             0.495                             0.260       0.001                                 0.446           0.132                    97.096                0.341                         0.284

@@ -1,0 +1,14 @@
+APY rows 1998-2019 after script-98 cleaning: 336,040
+rows without a unit: 0
+D1 validation vs script 122 (single-child units): 11757 unit-years, max abs diff 1.78e-15
+unit-years 1998-2019: 13202, reliable 12365, D1 missing 0
+units 629, with polygon 628; 606-units with polygon 604
+units whose present-day state differs from 2011 state: ANDHRA PRADESH|ADILABAD -> TELANGANA; ANDHRA PRADESH|HYDERABAD -> TELANGANA; ANDHRA PRADESH|KARIMNAGAR -> TELANGANA; ANDHRA PRADESH|KHAMMAM -> TELANGANA; ANDHRA PRADESH|MAHBUBNAGAR -> TELANGANA; ANDHRA PRADESH|MEDAK -> TELANGANA; ANDHRA PRADESH|NALGONDA -> TELANGANA; ANDHRA PRADESH|NIZAMABAD -> TELANGANA; ANDHRA PRADESH|RANGAREDDY -> TELANGANA; ANDHRA PRADESH|WARANGAL -> TELANGANA
+  covariate rain_ann_mean: present for 603 of 605 sample units
+  covariate rain_ann_cv: present for 603 of 605 sample units
+  covariate elevation_mean_m: present for 605 of 605 sample units
+  covariate tri_mean: present for 605 of 605 sample units
+  covariate irr_share: present for 562 of 605 sample units
+window table: w1519 620 units, w9802 498 units
+pairs within 600 km among 604 sample units with centroids: 42,193; adjacent 1638 (same state 1230, cross-border 408)
+adjacent pairs: mean centroid distance 78.9 km (5-95%: 38-138)

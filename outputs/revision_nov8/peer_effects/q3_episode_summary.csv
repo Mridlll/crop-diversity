@@ -1,0 +1,15 @@
+episode,mode,threshold,established_1998_2000,at_risk,events,median_event_year,events_by_period,states_with_events,top_states
+cotton,entry,0.05,75,411,12,2008.5,2001-2004: 2; 2005-2009: 5; 2010-2014: 1; 2015-2019: 4,7,Gujarat 2; Haryana 2; Maharashtra 2; Rajasthan 2
+cotton,surge,0.05,0,486,37,2009.0,2001-2004: 5; 2005-2009: 15; 2010-2014: 10; 2015-2019: 7,9,Maharashtra 11; Telangana 8; Gujarat 8; Haryana 4
+soybean,entry,0.05,47,439,24,2008.0,2001-2004: 9; 2005-2009: 10; 2010-2014: 4; 2015-2019: 1,10,Maharashtra 10; Telangana 2; Chhattisgarh 2; Karnataka 2
+soybean,surge,0.05,0,486,31,2006.0,2001-2004: 13; 2005-2009: 14; 2010-2014: 4; 2015-2019: 0,8,Maharashtra 16; Madhya Pradesh 4; Rajasthan 4; Telangana 2
+maize,entry,0.05,135,351,51,2008.0,2001-2004: 12; 2005-2009: 20; 2010-2014: 10; 2015-2019: 9,11,Karnataka 10; Maharashtra 10; Tamil Nadu 7; Andhra Pradesh 4
+maize,surge,0.05,0,486,65,2009.0,2001-2004: 10; 2005-2009: 23; 2010-2014: 17; 2015-2019: 15,14,Karnataka 13; Tamil Nadu 7; Maharashtra 6; Bihar 5
+rabi_maize,entry,0.02,5,408,26,2011.0,2001-2004: 1; 2005-2009: 8; 2010-2014: 12; 2015-2019: 5,8,Andhra Pradesh 5; Maharashtra 5; Telangana 4; West Bengal 4
+rabi_maize,surge,0.02,0,413,24,2011.0,2001-2004: 1; 2005-2009: 8; 2010-2014: 11; 2015-2019: 4,8,Andhra Pradesh 5; Telangana 4; Maharashtra 4; West Bengal 4
+chickpea,entry,0.05,81,405,50,2006.5,2001-2004: 16; 2005-2009: 11; 2010-2014: 8; 2015-2019: 15,9,Maharashtra 17; Madhya Pradesh 8; Karnataka 7; Jharkhand 5
+chickpea,surge,0.05,0,486,47,2012.0,2001-2004: 5; 2005-2009: 10; 2010-2014: 15; 2015-2019: 17,9,Maharashtra 13; Madhya Pradesh 10; Karnataka 9; Andhra Pradesh 3
+moong,entry,0.05,41,445,22,2014.0,2001-2004: 7; 2005-2009: 1; 2010-2014: 6; 2015-2019: 8,8,Bihar 6; Rajasthan 6; Nagaland 3; Karnataka 2
+moong,surge,0.05,0,486,24,2011.5,2001-2004: 6; 2005-2009: 4; 2010-2014: 6; 2015-2019: 8,7,Rajasthan 11; Odisha 4; Nagaland 3; Tamil Nadu 3
+rice,entry,0.05,380,106,7,2012.0,2001-2004: 0; 2005-2009: 1; 2010-2014: 3; 2015-2019: 3,3,Madhya Pradesh 5; Rajasthan 1; Uttar Pradesh 1
+rice,surge,0.05,0,486,107,2006.0,2001-2004: 37; 2005-2009: 33; 2010-2014: 19; 2015-2019: 18,19,Odisha 26; Bihar 11; Madhya Pradesh 10; Punjab 10

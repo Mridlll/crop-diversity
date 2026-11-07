@@ -1,0 +1,203 @@
+adjacent pairs 1638: same state 1235, cross-border 395, Andhra Pradesh-Telangana 8
+geography gaps, mean by pair type (adjacent, AP-TS dropped):
+       dist_km  d_rain  d_raincv  d_elev  d_tri  d_irr
+cross                                                 
+0       75.626   1.818     0.037   1.557  2.560  0.132
+1       87.823   2.543     0.041   2.487  5.325  0.228
+
+A. Cross-border minus same-state, adjacent pairs (similarity and share gaps in points; D1 in crops):
+                                          b_cross            se       
+cluster                                     state   unit  state   unit
+window outcome   spec                                                 
+w1519  dD1       M1 distance                0.340  0.340  0.146  0.146
+                 M2 + geography gaps        0.139  0.139  0.159  0.150
+                 M3 + state-membership FE   0.149  0.149  0.131  0.131
+       g_millets M1 distance                0.310  0.310  1.320  0.727
+                 M2 + geography gaps       -0.041 -0.041  1.422  0.823
+                 M3 + state-membership FE   0.315  0.315  1.486  0.764
+       g_pulses  M1 distance                1.001  1.001  1.212  0.749
+                 M2 + geography gaps        0.466  0.466  1.454  0.801
+                 M3 + state-membership FE   0.597  0.597  1.493  0.789
+       g_rice    M1 distance                4.284  4.284  1.757  1.215
+                 M2 + geography gaps        1.949  1.949  1.643  1.156
+                 M3 + state-membership FE   1.771  1.771  1.355  1.023
+       g_wheat   M1 distance                1.573  1.573  1.248  0.676
+                 M2 + geography gaps        0.971  0.971  0.998  0.626
+                 M3 + state-membership FE   0.919  0.919  0.713  0.476
+       sim       M1 distance               -7.232 -7.232  2.463  1.574
+                 M2 + geography gaps       -3.420 -3.420  2.241  1.421
+                 M3 + state-membership FE  -4.071 -4.071  1.811  1.199
+w9802  dD1       M1 distance                0.167  0.167  0.180  0.140
+                 M2 + geography gaps       -0.038 -0.038  0.199  0.145
+                 M3 + state-membership FE   0.018  0.018  0.154  0.123
+       g_millets M1 distance               -0.021 -0.021  0.930  0.617
+                 M2 + geography gaps       -1.184 -1.184  1.087  0.723
+                 M3 + state-membership FE  -0.891 -0.891  0.958  0.620
+       g_pulses  M1 distance                0.736  0.736  0.948  0.809
+                 M2 + geography gaps        0.277  0.277  0.884  0.795
+                 M3 + state-membership FE   0.563  0.563  0.853  0.820
+       g_rice    M1 distance                3.648  3.648  2.150  1.414
+                 M2 + geography gaps        1.561  1.561  1.604  1.221
+                 M3 + state-membership FE   1.464  1.464  1.247  1.114
+       g_wheat   M1 distance                1.243  1.243  1.119  0.599
+                 M2 + geography gaps        0.960  0.960  1.001  0.560
+                 M3 + state-membership FE   0.501  0.501  0.732  0.441
+       sim       M1 distance               -8.166 -8.166  3.865  1.990
+                 M2 + geography gaps       -4.543 -4.543  2.518  1.420
+                 M3 + state-membership FE  -4.764 -4.764  2.414  1.374
+window  spec                    
+w1519   M1 distance                 1485
+        M2 + geography gaps         1485
+        M3 + state-membership FE    1485
+w9802   M1 distance                 1081
+        M2 + geography gaps         1081
+        M3 + state-membership FE    1081
+
+B. pair-years 30974, pairs 1638 (cross 395, AP-TS 8)
+Pair FE + year FE; cross-border x period (base 1998-2002), AP-TS x post-2014:
+                                 b            se       
+cluster                      state   unit  state   unit
+outcome   spec    term                                 
+dD1       periods nb_post14 -0.146 -0.146  0.044  0.528
+                  x_2003     0.143  0.143  0.096  0.075
+                  x_2008     0.096  0.096  0.096  0.086
+                  x_2013     0.122  0.122  0.168  0.102
+          trend   nb_post14 -0.141 -0.141  0.046  0.527
+                  x_trend    0.057  0.057  0.109  0.063
+g_millets periods nb_post14 -2.416 -2.416  0.267  0.611
+                  x_2003     0.058  0.058  0.377  0.296
+                  x_2008     0.098  0.098  0.427  0.366
+                  x_2013    -0.343 -0.343  0.493  0.378
+          trend   nb_post14 -2.396 -2.396  0.272  0.608
+                  x_trend   -0.265 -0.265  0.263  0.210
+g_pulses  periods nb_post14  1.828  1.828  0.392  2.184
+                  x_2003    -0.013 -0.013  0.390  0.306
+                  x_2008    -0.273 -0.273  0.557  0.408
+                  x_2013     0.133  0.133  0.779  0.507
+          trend   nb_post14  1.793  1.793  0.391  2.181
+                  x_trend    0.067  0.067  0.533  0.332
+g_rice    periods nb_post14 -3.637 -3.637  0.269  1.356
+                  x_2003    -0.148 -0.148  0.773  0.433
+                  x_2008     0.149  0.149  1.024  0.563
+                  x_2013     0.680  0.680  1.255  0.662
+          trend   nb_post14 -3.652 -3.652  0.277  1.355
+                  x_trend    0.530  0.530  0.694  0.403
+g_wheat   periods nb_post14 -0.074 -0.074  0.134  0.125
+                  x_2003    -0.157 -0.157  0.326  0.256
+                  x_2008    -0.307 -0.307  0.440  0.297
+                  x_2013     0.151  0.151  0.613  0.334
+          trend   nb_post14 -0.107 -0.107  0.131  0.123
+                  x_trend    0.137  0.137  0.385  0.192
+sim       periods nb_post14  0.260  0.260  0.434  1.093
+                  x_2003     0.612  0.612  1.116  0.616
+                  x_2008     0.509  0.509  1.449  0.774
+                  x_2013     0.137  0.137  1.603  0.916
+          trend   nb_post14  0.311  0.311  0.447  1.091
+                  x_trend   -0.012 -0.012  0.882  0.542
+  geography slope w1519 rice: R2 of signed same-state gaps on geography gaps 0.20
+  geography slope w1519 wheat: R2 of signed same-state gaps on geography gaps 0.04
+  geography slope w1519 millets: R2 of signed same-state gaps on geography gaps 0.10
+  geography slope w1519 pulses: R2 of signed same-state gaps on geography gaps 0.06
+  geography slope w1519 D1: R2 of signed same-state gaps on geography gaps 0.14
+
+C. Border gaps (state A minus state B, points of GCA; D1 in crops), 2015-19, highlighted borders:
+                        border     var  n_pairs  mean_a  mean_b  gap_pairFE  se_unit  geo_predicted_gap  gap_net_of_geography  se_net
+              Punjab | Haryana    rice       12   38.99   33.71       10.72     3.29               1.74                  8.98    3.02
+              Punjab | Haryana   wheat       12   50.29   45.39        4.82     0.88               0.34                  4.49    0.87
+              Punjab | Haryana millets       12    0.03    0.97       -0.93     0.35              -0.81                 -0.13    0.27
+              Punjab | Haryana  pulses       12    0.41    0.76       -0.25     0.08              -0.77                  0.52    0.18
+              Punjab | Haryana      D1       12    2.71    3.71       -1.15     0.10              -0.14                 -1.01    0.03
+           Haryana | Rajasthan    rice       13    9.62    0.40        5.57     2.93               6.07                 -0.50    1.91
+           Haryana | Rajasthan   wheat       13   35.37   16.18       14.38     2.65               1.54                 12.84    2.55
+           Haryana | Rajasthan millets       13   15.69   28.19       -3.95     1.88              -0.61                 -3.35    2.58
+           Haryana | Rajasthan  pulses       13    1.74   18.65      -13.61     4.76              -3.32                -10.29    4.60
+           Haryana | Rajasthan      D1       13    4.74    6.54       -1.56     0.52              -0.63                 -0.93    0.45
+            Punjab | Rajasthan    rice        3   39.07    1.75       36.37     0.42              10.85                 25.52    0.73
+            Punjab | Rajasthan   wheat        3   49.53   20.23       29.59     0.92               2.42                 27.17    0.56
+            Punjab | Rajasthan millets        3    0.00    1.63       -1.95     0.50              -2.88                  0.93    0.51
+            Punjab | Rajasthan  pulses        3    0.30   14.44      -14.66     1.00              -5.47                 -9.19    0.20
+            Punjab | Rajasthan      D1        3    2.86    6.75       -3.93     0.29              -0.93                 -3.01    0.14
+         Chhattisgarh | Odisha    rice       14   82.31   82.87        0.75     4.26              -0.35                  1.10    2.88
+         Chhattisgarh | Odisha   wheat       14    0.68    0.00        0.79     0.23               0.23                  0.56    0.78
+         Chhattisgarh | Odisha millets       14    3.10    2.67        0.24     1.00               0.09                  0.15    1.08
+         Chhattisgarh | Odisha  pulses       14    7.62    6.92        0.46     1.74               0.01                  0.45    1.60
+         Chhattisgarh | Odisha      D1       14    2.30    2.21        0.06     0.33               0.15                 -0.09    0.22
+            Jharkhand | Odisha    rice        6   75.13   94.01      -17.99     2.41              -4.25                -13.74    1.98
+            Jharkhand | Odisha   wheat        6    1.33    0.02        1.09     0.48               0.07                  1.02    0.29
+            Jharkhand | Odisha millets        6    1.07    0.14        0.70     0.46               1.65                 -0.95    0.88
+            Jharkhand | Odisha  pulses        6   14.17    3.39       10.16     0.96               0.68                  9.48    1.03
+            Jharkhand | Odisha      D1        6    2.73    1.45        1.24     0.28               0.44                  0.80    0.20
+      Chhattisgarh | Jharkhand    rice        5   66.98   59.57        2.84     4.36              -0.49                  3.33    4.54
+      Chhattisgarh | Jharkhand   wheat        5    2.16    6.33       -3.00     1.54              -0.72                 -2.28    1.42
+      Chhattisgarh | Jharkhand millets        5    2.05    1.71        0.38     1.29               0.12                  0.26    1.29
+      Chhattisgarh | Jharkhand  pulses        5    9.03   11.79       -2.78     0.87               0.54                 -3.31    0.82
+      Chhattisgarh | Jharkhand      D1        5    4.49    3.61        1.29     0.36              -0.02                  1.30    0.39
+         Telangana | Karnataka    rice        7   26.89   11.60       17.69     9.07               2.80                 14.88    7.94
+         Telangana | Karnataka   wheat        7    0.08    0.49       -0.60     0.18               0.56                 -1.16    0.48
+         Telangana | Karnataka millets        7    2.60   14.90      -12.27     1.15              -0.73                -11.54    1.30
+         Telangana | Karnataka  pulses        7   16.89   45.02      -34.69     7.59              -1.43                -33.26    7.25
+         Telangana | Karnataka      D1        7    6.50    6.78        0.13     0.47              -0.30                  0.43    0.36
+       Telangana | Maharashtra    rice        6   34.19   26.37       -5.48    18.69               0.48                 -5.95   16.24
+       Telangana | Maharashtra   wheat        6    0.19    2.68       -2.07     0.66               0.53                 -2.60    0.77
+       Telangana | Maharashtra millets        6    1.34    3.52       -2.30     2.16               0.25                 -2.56    1.61
+       Telangana | Maharashtra  pulses        6   10.96   20.70       -7.10     1.06              -0.86                 -6.25    1.03
+       Telangana | Maharashtra      D1        6    5.20    5.03        0.45     0.80              -0.04                  0.49    0.53
+    Andhra Pradesh | Karnataka    rice        8    9.06    7.90       -1.15     5.83              -0.51                 -0.65    5.02
+    Andhra Pradesh | Karnataka   wheat        8    0.00    0.02       -0.02     0.01               0.46                 -0.48    0.38
+    Andhra Pradesh | Karnataka millets        8    4.11   29.16      -24.07     7.94              -0.46                -23.61    7.63
+    Andhra Pradesh | Karnataka  pulses        8   16.57   15.37        1.64     2.40               0.18                  1.46    1.62
+    Andhra Pradesh | Karnataka      D1        8    7.27    7.24       -0.56     1.21              -0.01                 -0.55    1.34
+       Karnataka | Maharashtra    rice       10    1.80   16.94      -10.15     8.73              -2.27                 -7.88    6.21
+       Karnataka | Maharashtra   wheat       10    2.57    2.85       -0.69     1.43               0.46                 -1.15    1.12
+       Karnataka | Maharashtra millets       10   15.16   22.85      -13.75     8.01               0.93                -14.68    7.32
+       Karnataka | Maharashtra  pulses       10   47.80   17.31       26.85     8.54               0.24                 26.61    8.66
+       Karnataka | Maharashtra      D1       10    7.86    6.24        1.49     1.76               0.42                  1.07    1.40
+Madhya Pradesh | Uttar Pradesh    rice       25    8.62   12.02        0.52     1.78              -2.92                  3.45    1.62
+Madhya Pradesh | Uttar Pradesh   wheat       25   29.78   35.08       -3.82     2.42              -1.29                 -2.52    2.23
+Madhya Pradesh | Uttar Pradesh millets       25    5.57    8.34       -1.06     1.59              -0.34                 -0.72    1.55
+Madhya Pradesh | Uttar Pradesh  pulses       25   28.61   28.16       -6.88     3.45               2.18                 -9.05    3.54
+Madhya Pradesh | Uttar Pradesh      D1       25    7.06    6.64        0.62     0.44               0.34                  0.28    0.44
+           West Bengal | Bihar    rice        5   48.34   51.63       -2.25     7.45               1.62                 -3.88    6.92
+           West Bengal | Bihar   wheat        5    5.11   11.72       -6.11     1.63              -0.62                 -5.49    1.75
+           West Bengal | Bihar millets        5    3.38    0.04        2.02     1.94              -1.21                  3.23    1.00
+           West Bengal | Bihar  pulses        5    3.63    4.22       -1.77     1.79              -0.70                 -1.07    1.21
+           West Bengal | Bihar      D1        5    4.87    4.33        0.35     0.12              -0.29                  0.64    0.27
+    Telangana | Andhra Pradesh    rice        8   36.69   36.70       -2.26     5.80              -6.62                  4.37    6.42
+    Telangana | Andhra Pradesh   wheat        8    0.00    0.00       -0.00     0.00              -1.67                  1.67    0.14
+    Telangana | Andhra Pradesh millets        8    1.24    3.14       -1.53     0.79               1.14                 -2.67    0.87
+    Telangana | Andhra Pradesh  pulses        8    9.84   22.16      -12.33     2.91               3.29                -15.61    3.17
+    Telangana | Andhra Pradesh      D1        8    4.90    7.24       -1.84     0.58               0.76                 -2.60    0.68
+
+Across 256 border x crop cells in 2015-19: mean |raw gap| 5.67 pts, mean |geography-predicted| 1.85, mean |net| 5.46; corr(raw, predicted) 0.33; cells with |net| significant at 5% (unit-dyadic): 103
+
+Within-pair trend in the signed border gap (points per decade), highlighted borders, |trend| > 2 SE:
+                    border  highlight      var  gap_first5  gap_last5  trend_per_decade  se_unit    p  n_pair_years  n_pairs
+          Punjab | Haryana          1    wheat        5.68       5.02             -0.93     0.40 0.04           229       12
+       Haryana | Rajasthan          1  millets        1.92      -3.62             -2.00     0.24 0.00           259       13
+        Punjab | Rajasthan          1  millets       -4.58      -1.97              1.89     0.72 0.08            66        3
+        Punjab | Rajasthan          1 oilseeds      -15.81     -13.97              2.28     0.81 0.07            66        3
+        Punjab | Rajasthan          1     rice       26.21      36.36              5.90     2.40 0.09            66        3
+        Punjab | Rajasthan          1    wheat       25.00      29.57              1.85     0.35 0.01            66        3
+     Chhattisgarh | Odisha          1 oilseeds       -2.18       0.34              1.50     0.27 0.00           280       14
+     Chhattisgarh | Odisha          1     rice        8.69      -0.02             -2.72     1.05 0.02           280       14
+        Jharkhand | Odisha          1    maize       -0.24       2.10              1.43     0.38 0.01            68        6
+        Jharkhand | Odisha          1 oilseeds       -2.66       3.39              5.17     0.72 0.00            68        6
+        Jharkhand | Odisha          1   pulses       -2.94       7.00              8.92     0.76 0.00            68        6
+        Jharkhand | Odisha          1     rice        7.30     -13.22            -16.02     1.30 0.00            68        6
+        Jharkhand | Odisha          1    wheat       -0.09       1.02              1.05     0.28 0.01            68        6
+     Telangana | Karnataka          1   cotton        2.04      17.34              8.53     1.37 0.00           106        7
+     Telangana | Karnataka          1  millets      -14.70     -12.50              2.39     0.73 0.01           106        7
+     Telangana | Karnataka          1    wheat       -1.13      -0.60              0.33     0.04 0.00           106        7
+   Telangana | Maharashtra          1   cotton        5.26      15.77              7.40     1.00 0.00           132        6
+   Telangana | Maharashtra          1   pulses       -2.87      -6.85             -3.04     0.82 0.01           132        6
+Andhra Pradesh | Karnataka          1   cotton       -0.34       2.76              2.57     0.64 0.00           149        8
+Andhra Pradesh | Karnataka          1    maize       -5.49     -16.04             -4.31     1.45 0.02           149        8
+Andhra Pradesh | Karnataka          1 oilseeds       34.76      45.79              3.78     1.89 0.08           149        8
+Andhra Pradesh | Karnataka          1     rice       -3.93      -1.12             -2.12     0.96 0.06           149        8
+Andhra Pradesh | Karnataka          1    wheat       -0.24      -0.02              0.10     0.04 0.05           149        8
+   Karnataka | Maharashtra          1    wheat        1.15      -0.65             -0.63     0.28 0.05           196       10
+       West Bengal | Bihar          1 oilseeds        4.67       9.69              2.97     0.87 0.02           105        5
+Telangana | Andhra Pradesh          1   cotton        6.00      21.33             10.22     0.97 0.00           176        8
+Telangana | Andhra Pradesh          1  millets        8.79      -1.53             -6.09     2.44 0.04           176        8
+Telangana | Andhra Pradesh          1 oilseeds       11.54      -2.12             -7.91     1.35 0.00           176        8
+Telangana | Andhra Pradesh          1     rice      -16.06      -2.92              7.22     1.40 0.00           176        8

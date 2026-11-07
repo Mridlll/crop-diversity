@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neighbours: Do Districts Crop Like the Districts Next Door?</title>
+<meta name="description" content="How alike neighbouring districts' crop mixes are, what a state border does to that likeness, and whether new crops spread from district to district, 1998&ndash;99 to 2019&ndash;20.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/analysis.css?v=593ba334">
+<link rel="stylesheet" href="css/crop-groups.css?v=777c2429">
+<link rel="stylesheet" href="css/neighbours.css?v=1">
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html">Crop Diversity · India</a>
+    <div class="nav__links">
+      <a href="index.html">Overview</a>
+      <a href="measurement.html">Measurement</a>
+      <a href="irrigation.html">Irrigation</a>
+      <a href="markets.html">Markets</a>
+      <a href="crop-groups.html">Crop groups</a>
+      <a href="neighbours.html" aria-current="page">Neighbours</a>
+      <a href="data.html">Data &amp; methods</a>
+      <a href="diversity.html">Maps</a>
+    </div>
+  </div>
+</nav>
+
+<header class="mast">
+  <div class="prose">
+    <p class="mast__label">Neighbours</p>
+    <h1 class="mast__title">Do districts crop like the districts next door?</h1>
+    <div class="mast__rule"></div>
+    <p class="mast__sub">Districts that share a border grow much the same crops, and in any one year
+    their crop shares rise and fall together. Yet when a district changes course, its
+    neighbours' moves of the year before predict the change little better than the moves of districts
+    100 kilometres away that share no border with it.</p>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 01 ============ -->
+<section class="section scene-sec" id="s1">
+  <div class="scene fade">
+    <p class="scene__kicker">01 · Distance and the state line</p>
+    <h2 class="scene__h">Neighbours in the same state share about three-quarters of their crop mix, and a state line costs roughly as much likeness as 100 extra kilometres.</h2>
+  </div>
+  <div class="scene-fig scene-fig--wide fade">
+    <div class="figure__frame">
+      <div class="legend" aria-hidden="true">
+        <span class="legend__item"><svg width="22" height="10"><line x1="1" y1="5" x2="21" y2="5" stroke="#0E9BB5" stroke-width="2.2"/></svg>both districts in the same state</span>
+        <span class="legend__item"><svg width="22" height="10"><line x1="1" y1="5" x2="21" y2="5" stroke="#C63FD8" stroke-width="2.2"/></svg>districts in different states</span>
+        <span class="legend__item"><svg width="22" height="10"><line x1="1" y1="5" x2="21" y2="5" stroke="rgba(237,237,235,0.45)" stroke-width="1.2" stroke-dasharray="3 3"/></svg>same lines, 1998&ndash;2002</span>
+      </div>
+      <p class="readout readout--line" id="v1-read" aria-live="polite"></p>
+      <div id="v1" class="chart" role="img" aria-label="Line chart of how alike two districts' crop mixes are against the distance between them, 2015&ndash;19. Same-state pairs fall from about 85 at 30 kilometres to about 54 at 600 kilometres. Pairs in different states sit 5 to 11 points lower up to 250 kilometres and 3 to 7 points lower beyond. Adjacent same-state pairs average 77 and adjacent cross-border pairs 67, the level same-state pairs reach at about 190 kilometres, so a state line is worth roughly 100 kilometres of distance."></div>
+      <p class="figure__note"><span>Likeness of two districts' crop mixes, 100 for identical shares of
+      cropped land across nine crop groups and 0 for nothing in common, averaged over all pairs of
+      districts in 20 km bands of distance between their centres. The two large dots are pairs that
+      share a border. Hover or tap for each band.</span><button class="replay" data-scene="1" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Two districts' likeness is the share of their cropped land they have in common once that land
+    is split among rice, wheat, maize, millets, pulses, oilseeds, cotton, sugarcane and other crops.
+    Two adjacent districts in the same state score 77 on average in 2015&ndash;19. The score slips
+    steadily as districts lie further apart, to 63 for same-state districts 200 to 300 km apart and
+    to 48 at 500 to 600 km.</p>
+    <p>Adjacent districts on opposite sides of a state line score 67, a level that same-state
+    districts only fall to at about 190 km, which makes the line worth roughly 100 km of distance,
+    although that figure could plausibly sit anywhere between 45 and 170 km. Whether two districts
+    touch matters far less than whether they sit in one state: same-state districts 60 to 100 km
+    apart that share no border still score 75, while cross-border pairs at that distance score 67.
+    When the map is carved instead into 25 regions of similar size along made-up lines, neighbours on
+    opposite sides of those lines are no less alike, and districts one step inside a state border
+    are as alike as districts deep in the interior.</p>
+    <p>Part of what a state line marks is the land itself, because borders in India often run where
+    terrain and water change. Adjacent districts across a border differ about twice as much in
+    ruggedness as adjacent districts inside a state, and their irrigated shares differ by 23 points
+    against 13. Holding those differences fixed roughly halves the cost of the border, from 7.2
+    points of likeness to between 3 and 4. Some of what is left may be bookkeeping, because each state
+    keeps its own list of crops, and adjacent districts across a state line differ by about five more
+    crops in how many they report at all than neighbours inside a state do.</p>
+  </div>
+</section>
+
+<!-- ============ 02 ============ -->
+<section class="section scene-sec" id="s2">
+  <div class="scene fade">
+    <p class="scene__kicker">02 · How alike is your neighbour</p>
+    <h2 class="scene__h">Where a district has neighbours in two states, the one least like it usually lies across the state line.</h2>
+  </div>
+  <div class="scene-fig scene-fig--wide fade">
+    <div class="figure__frame">
+      <div class="xp-ctl">
+        <label class="ctl__lab" for="v2-pick">District</label>
+        <select id="v2-pick" class="xp-select"></select>
+      </div>
+      <p class="readout readout--line" id="v2-read" aria-live="polite"></p>
+      <div id="v2" class="chart" role="img" aria-label="Crop mix of the chosen district and each of its neighbours, as shares of cropped land in nine crop groups, with each neighbour's likeness score and a mark for neighbours in another state."></div>
+      <p class="figure__note"><span>Share of cropped land in each crop group, 2015&ndash;16 to
+      2019&ndash;20. The thin white tick in each neighbour's bar is the chosen district's own share.
+      Neighbours in another state are marked in magenta. Districts are on their 2011
+      boundaries.</span></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Sirsa, in Haryana, grows wheat and cotton with some rice. It shares 82 points of its mix with
+    Fatehabad on the Haryana side and 66 to 78 with the Punjab districts to its north, which grow the
+    same crops. Hanumangarh, across the Rajasthan line, shares only 50, since it gives a third of its
+    land to crops outside the eight main groups and a sixth to pulses.</p>
+    <p>Sirsa is a common case. Of the 356 districts with neighbours in two states, 63 percent have
+    their least similar neighbour across the state line, even though only 39 percent of their
+    neighbours lie there.</p>
+  </div>
+</section>
+
+<!-- ============ 03 ============ -->
+<section class="section scene-sec" id="s3">
+  <div class="scene fade">
+    <p class="scene__kicker">03 · Which crops differ at the border</p>
+    <h2 class="scene__h">Rice and wheat make up the largest part of the gap at a state line, with oilseeds close behind.</h2>
+  </div>
+  <div class="scene-fig scene-fig--wide fade">
+    <div class="figure__frame">
+      <div class="ctl ctl--narrow-only" id="v3-ctl" role="group" aria-label="Crop group"></div>
+      <div class="legend" aria-hidden="true">
+        <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="4.5" fill="#0E9BB5"/></svg>first-named state</span>
+        <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="4.5" fill="#7C5CE0"/></svg>second-named state</span>
+        <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="4" fill="none" stroke="#B3B3B0" stroke-width="1.3"/></svg>1998&ndash;2002</span>
+        <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="4.5" fill="#B3B3B0"/></svg>2015&ndash;19</span>
+      </div>
+      <div id="v3" class="chart" role="img" aria-label="Dumbbell charts for seven state borders and four crop groups. Each row shows the average share of cropped land in the border districts on each side, in 1998&ndash;2002 as hollow dots and in 2015&ndash;19 as filled dots. Rice and wheat show wide gaps on the Punjab, Haryana and Rajasthan borders. Pulses and millets gaps are large on a few southern borders and small elsewhere."></div>
+      <p class="figure__note"><span>Average share of cropped land in the border districts on each
+      side, in percent, for borders with at least eight pairs of adjacent districts. Each border
+      rests on 8 to 25 pairs, too few to test on its own. Hover or tap a row for the gap within pairs
+      and the part of it that measured geography predicts.</span><button class="replay" data-scene="3" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Before geography is held fixed, the gap in rice share between neighbours is 4.3 points wider
+    across a state line than inside a state, and the wheat gap 1.6 points wider, while pulses and
+    millets differ by a point or less. With distance, rainfall, elevation, ruggedness and irrigation
+    held fixed, the rice and wheat gaps shrink to about 2 and 1 points, and no crop group's gap is
+    statistically significant on its own. Taken together, rice and wheat account for about
+    two-fifths of the likeness lost at the line, oilseeds for about a quarter and crops outside the
+    main groups for a sixth. Pulses and millets show no gap that can be detected, although their
+    intervals are about as wide as rice's, so a small one cannot be ruled out. When each
+    cross-border pair is set against how alike neighbours are inside its own two states, a border
+    still costs about 3.5 to 4 points of likeness.</p>
+    <p>On a few borders the difference is plain to see. Haryana's border districts put 35 percent of their cropped land
+    under wheat in 2015&ndash;19, against 16 percent in the Rajasthan districts facing them, and
+    measured geography predicts only 1.5 points of the 14-point gap between paired districts.
+    Paired with the Haryana districts next door, Punjab's border districts grow 11 points more rice,
+    of which geography predicts 1.7. On the eastern side, Chhattisgarh's border districts grew 9 points more rice than
+    Odisha's in 1998&ndash;2002 and about the same by 2015&ndash;19.</p>
+    <p>Since rice and wheat are the crops that state agencies buy at the support price, procurement
+    is one candidate. The states that buy most also built the canals and tubewells, run their own seed
+    and extension services, and record crop area in their own ways, and a comparison of districts
+    cannot pull those apart. Pulses and millets differ little on average, although a few borders,
+    such as Karnataka against Maharashtra, divide pulse land sharply.</p>
+  </div>
+</section>
+
+<!-- ============ 04 ============ -->
+<section class="section scene-sec" id="s4">
+  <div class="scene fade">
+    <p class="scene__kicker">04 · Borders over time</p>
+    <h2 class="scene__h">On average borders did not pull further apart over two decades, though a few moved a long way.</h2>
+  </div>
+  <div class="scene-fig scene-fig--wide fade">
+    <div class="figure__frame">
+      <div id="v4" class="chart" role="img" aria-label="Six small line charts of the yearly gap in a crop's share of cropped land between paired border districts, first-named state minus second-named, 1998&ndash;99 to 2019&ndash;20. Telangana's cotton gap with Andhra Pradesh widens to about 20 points, most of it before 2014. Punjab's rice lead over Haryana holds near 10 points. Telangana's rice gap with Andhra Pradesh closes from about minus 18 to near zero. Chhattisgarh's rice gap with Odisha closes. Jharkhand's rice gap with Odisha falls sharply in the last years. Haryana's wheat gap with Rajasthan widens from about 8 to about 15 points."></div>
+      <p class="figure__note"><span>Gap in the crop's share of cropped land between paired border
+      districts, first-named state minus second-named, in percentage points, by crop year. Hollow
+      points are years in which fewer than half the pairs have a usable record. The dashed line marks
+      2014&ndash;15, when Telangana became a state. Hover or tap for each year.</span><button class="replay" data-scene="4" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Across all borders, adjacent districts in one state went from a likeness of 78.8 in
+    1998&ndash;99 to 76.0 in 2019&ndash;20, and adjacent districts in different states from 67.6 to
+    65.3. The gap between the two hardly moved. In 2013&ndash;19 it was 0.14 points narrower than in
+    1998&ndash;2002, and a widening of more than about 3 points can be ruled out.</p>
+    <p>Telangana's border districts moved far more into cotton than their neighbours. Their cotton
+    share ran 6 points above the Andhra Pradesh districts across the line in 1998&ndash;2002 and 21
+    points above them in 2015&ndash;19, and most pairs on the Maharashtra and Karnataka borders moved
+    the same way. About four-fifths of that rise came by 2010&ndash;13, while Telangana was still part
+    of Andhra Pradesh and its cotton share as a whole was climbing from 16 percent to 35 percent, so
+    the new state did not set it off. With three Telangana districts on each border, none of these
+    changes can be told apart from chance. Telangana's rice gap with Andhra Pradesh closed over the
+    same years, as its border districts moved towards the high rice shares of the Krishna and
+    Godavari districts. Punjab's rice lead over the Haryana districts next door, by contrast, sat
+    near 10 points from start to finish. Jharkhand's border
+    districts stayed within 6 points of the Odisha districts facing them on rice from 2008 to 2016,
+    then fell 19 to 32 points below them in 2018 and 2019. That fall rests on six pairs of districts
+    and two years, and could as easily come from how the record was kept.</p>
+    <p>Change in diversity and in rice share over the two decades was shared by neighbours inside a
+    state far more than by neighbours across a state line. Moran's I, a standard measure of how much
+    neighbouring values resemble each other where 0 means no resemblance, is 0.55 for diversity and
+    0.57 for rice inside states, against 0.18 and 0.15 across them. Most of that contrast comes from
+    whole states moving together, which a statewide change in how crops are recorded would also
+    produce. Wheat, pulses, millets and oilseeds show no clear contrast, and millets fell together on
+    both sides of borders, at 0.60 inside and 0.62 across, as a decline driven by climate and prices
+    would.</p>
+  </div>
+</section>
+
+<!-- ============ 05 ============ -->
+<section class="section scene-sec" id="s5">
+  <div class="scene fade">
+    <p class="scene__kicker">05 · How a crop spreads</p>
+    <h2 class="scene__h">New soybean land appeared next to districts that already grew it, so on a map the spread looks like a wave.</h2>
+  </div>
+  <div class="scene-fig scene-fig--wide fade">
+    <div class="figure__frame">
+      <div class="ctl ctl--scroll" id="v5-ctl" role="group" aria-label="Crop"></div>
+      <div class="legend" id="v5-legend" aria-hidden="true"></div>
+      <div id="v5" class="chart" role="img" aria-label="Six small maps of central and southern India for 2001, 2005, 2009, 2013, 2017 and 2019. Districts that already grew soybean in 1998&ndash;2000 cluster in Madhya Pradesh. Districts taking it up appear year by year along the edge of that block, mostly in Maharashtra and Rajasthan. A button switches to chickpea surges, which are more scattered."></div>
+      <p class="figure__note" id="v5-note"><span></span><button class="replay" data-scene="5" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>A district takes up soybean when the crop's share of its cropped land crosses 5 percent and
+    stays there. Three in four districts that took it up between 2001 and 2016 bordered a district
+    that already grew it. Among districts in the same state that resembled them in rainfall, terrain,
+    irrigation and starting share, only 56 percent would have, so suitable land alone does not
+    explain where soybean went next. Maize and cotton lean the same way, less strongly.</p>
+    <p>Chickpea is less clear. When districts first take it up, 82 percent sit next to an earlier
+    grower, yet similar districts in the same state would do so 77 percent of the time. Surges, where
+    a district already growing chickpea adds 5 points of cropped land to it, look patchier on the
+    map, with the nearest earlier surge more than 150 km away a third of the time, although 64
+    percent still border one against 43 percent among similar districts.</p>
+    <p>A wave on a map is what copying from neighbours would look like. A frontier of suitable soil,
+    a processing plant or traders moving outward would draw the same picture, which is why the
+    next comparison matters.</p>
+  </div>
+</section>
+
+<!-- ============ 06 ============ -->
+<section class="section scene-sec" id="s6">
+  <div class="scene fade">
+    <p class="scene__kicker">06 · Neighbours or the region</p>
+    <h2 class="scene__h">Districts about 100 km away that share no border predict take-up nearly as well as true neighbours.</h2>
+  </div>
+  <div class="scene-fig fade">
+    <div class="figure__frame">
+      <div class="legend" aria-hidden="true">
+        <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="4.5" fill="#0E9BB5"/></svg>neighbours already growing the crop</span>
+        <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="4" fill="none" stroke="#B3B3B0" stroke-width="1.4"/></svg>districts about 100 km away, no shared border</span>
+      </div>
+      <div id="v6" class="chart" role="img" aria-label="For fourteen kinds of take-up, the rise in a district's yearly chance of taking up the crop when its neighbours already grow it, next to the rise when districts about 100 kilometres away grow it, with 95 percent intervals. For cotton surges the two are nearly equal at about 9 points. For chickpea surges and soybean take-up neighbours sit higher than the ring. For most others both are near zero and their intervals overlap."></div>
+      <p class="figure__note"><span>Rise in a district's yearly chance of taking up the crop, in
+      percentage points, if all of the districts in the set already grow it against none, with 95
+      percent intervals. Comparisons are within state and year. Sorted by how far neighbours sit
+      above the distant ring. Hover or tap a row for the events and the base chance.</span><button class="replay" data-scene="6" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>The comparison that can separate a neighbour effect from a regional one sets each district's
+    neighbours against a ring of districts that share no border with it but lie about as far away,
+    104 km on average. Each estimate is a comparison within state (state fixed effects), made year by
+    year, so a statewide push such as a procurement drive or a state seed programme drops out.</p>
+    <p>Cotton is the crop whose spread is most often told as farmers learning from farmers, yet for
+    cotton surges the neighbours and the ring predict almost equally, 9.2 against 8.5 points of yearly
+    chance. Neighbours sit clearly above the ring only for chickpea surges and soybean take-up, by 8.3 and
+    4.1 points, and in both only neighbours in the same state carry that edge. Chickpea's edge
+    survives when the ring is limited to same-state districts at the same distance, whereas
+    soybean's comes and goes with how the ring is drawn. Soybean surges point the same way with a
+    wider interval. Tested
+    together with the other twelve, neither difference is statistically significant (q = 0.39, a
+    p-value adjusted for running 14 comparisons at once).</p>
+    <p>Year-on-year changes tell the same story. A district's pulse share moves 0.57 points for every
+    point its neighbours' share moves in the same year. Its neighbours' change of the year before
+    predicts 0.09 points of this year's change, and districts 100 km away in the same state predict
+    0.04, a difference the data cannot tell from zero. Shared weather, regional prices and programmes
+    aimed at clusters of districts all produce that pattern without any district learning from
+    another, and none of this rules learning out either: the intervals on the neighbour-against-ring
+    differences span about 4 to 12 points either way, against base yearly chances below 2 percent.</p>
+  </div>
+
+  <div class="scene scene--method fade">
+    <details class="method">
+      <summary>What the evidence can and cannot separate</summary>
+      <div class="method__body">
+        <p>Districts are held on their 2011 boundaries, with a district created later added back to
+        the one it was carved from, and Telangana counted as its own state throughout. Crop area
+        comes from district agricultural statistics for 1998&ndash;99 to 2019&ndash;20. A crop mix
+        is each of nine groups' share of <a href="measurement.html">gross cropped area</a>, which
+        counts a field once for every crop it carries in a year. Likeness between two districts is
+        100 minus half the summed absolute difference between their nine shares, so it is the share
+        of cropped land the two have in common. The early window is 1998&ndash;99 to
+        2002&ndash;03 and the late one 2015&ndash;16 to 2019&ndash;20, and district-years whose
+        annual totals are unreliable are left out.</p>
+        <p>Two districts are neighbours when their 2011 boundaries touch, at a tolerance of 500
+        metres; there are 1,638 such pairs, with centres 79 km apart on average. Pairs across the
+        Andhra Pradesh and Telangana line, a border only from 2014, are left out of the border
+        comparisons and followed on their own.</p>
+        <p>The border comparison takes adjacent pairs in 2015&ndash;19 and estimates how much less
+        alike a cross-border pair is, first holding distance fixed, then adding the gaps between the
+        two districts in long-run rainfall and its variability, elevation, ruggedness and irrigated
+        share, and finally comparing each cross-border pair with the average likeness inside its two
+        states. A placebo repeats the first step 500 times with India cut into 25 made-up regions.
+        Uncertainty allows any two pairs that share a district to be correlated, and a more
+        cautious version allows whole states to be. Measured geography leaves out soils and
+        groundwater depth, so the part of the border gap left after geography may still hold some
+        differences in land and water.</p>
+        <p>The border-over-time comparison follows every adjacent pair each year from
+        1998&ndash;99 to 2019&ndash;20, holding fixed everything constant about a pair and every
+        swing common to a year.</p>
+        <p>Take-up comes in two kinds. A district takes up a crop when its share crosses 5 percent of
+        cropped land (2 percent for rabi maize) and stays above it; it surges when the share rises 5
+        points above its own 1998&ndash;2000 level and stays there. The yearly chance of either is
+        compared across districts at risk, 2001&ndash;2019, within state and year, holding fixed the
+        starting share and the five geography measures. The ring is the districts that share no
+        border but lie at 0.75 to 1.5 times the district's average distance to its own neighbours,
+        2.4 districts on average and in any state. The benchmark for the maps asks how often a take-up
+        would border an earlier grower if it fell instead on one of the five districts in the same
+        state most like it in rainfall, rainfall variability, elevation, ruggedness, irrigated share
+        and starting share. Matching on state alone puts that chance at 47 percent for soybean and 66
+        percent for chickpea, which flatters the neighbour pattern.</p>
+        <p>Neighbouring districts can look alike for four reasons, and these comparisons speak to each
+        differently.</p>
+        <p><strong>Shared land and climate</strong> account for most of the likeness in levels.
+        Likeness falls smoothly with distance on both sides of state lines, rice and wheat belts run
+        straight across them, and neighbours that differ more in irrigation, ruggedness or rainfall
+        are less alike.</p>
+        <p><strong>Shared weather and prices</strong> fit the year-to-year record. Neighbours move
+        together strongly within a year, the link at a lag is about the same looking forward as
+        looking back, and districts 100 km away carry part of it.</p>
+        <p><strong>State policy and state markets</strong> fit the border record: the cost of
+        crossing a state line after geography, the weight of rice, wheat and oilseeds in it, changes
+        in diversity and rice share that move statewide, and a neighbour edge in chickpea and soybean
+        that stops at the state line. Procurement, input supply, extension and state seed and irrigation programmes are all
+        candidates, and programmes aimed at clusters of districts inside a state, such as the pulses
+        component of the food security mission, would produce the same within-state pattern. State
+        departments also compile the crop statistics, so a reporting practice that differs by state
+        looks like a border effect. Crop lists do change at state lines, by about five crops between
+        adjacent districts, so reporting cannot be ruled out, even though dropping minor crops and the
+        other-crops group moves the likeness gap by less than a point.</p>
+        <p><strong>Learning from neighbours</strong> would show up as neighbours predicting take-up
+        better than equally distant non-neighbours, at a lag, and across state lines as well as
+        within them, since farmers and traders cross them. No crop passes all three. District shares
+        are also too coarse to see copying between farmers inside a district or along a short
+        stretch of border, and a shock that is sharper near a border than 100 km away would pass the
+        ring comparison without any learning.</p>
+
+        <p><strong>How firm each result is.</strong> The fall in likeness with distance and the raw
+        cost of a state line hold under every measure of likeness, and the made-up regions produce no
+        gap like the real one. The figure of about 100 km has a 95 percent interval of roughly 45 to
+        170 km. The gap left after geography, 3.4 points, is the weakest number on the page. Once
+        whole states are allowed to be correlated it is only borderline significant, and it shrinks to
+        between 1.9 and 2.6 points when likeness is measured as a correlation of shares, when the other-crops
+        group is dropped, or when Telangana and Andhra Pradesh are left out. The version that sets each
+        pair against its own two states, 4.1, holds up better, staying between 2.6 and 5.0 as states
+        are dropped one at a time. No single crop group and no single border carries a gap that is
+        significant once geography is held fixed. The Moran's I across borders leaves out links
+        between Andhra Pradesh and Telangana, which lay in one state until 2014; with them it reads
+        0.11 for diversity and 0.12 for rice. Changes on a single border rest on a handful of
+        districts a side and are shown as description only. None of the take-up comparisons survives
+        a correction for running 14 at once.</p>
+        <p>The estimates behind each scene follow, with standard errors in brackets. The first
+        bracket allows pairs that share a district to be correlated; the second allows whole states
+        to be.</p>
+        <ul class="est" id="est-list"></ul>
+      </div>
+    </details>
+    <p><a href="data.html" class="next">Data and methods &rarr;</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <h4>Sources</h4>
+      <p style="font-size:.9rem">Crop area by district and season from district agricultural
+      statistics for 1997&ndash;98 to 2019&ndash;20, published by the Ministry of Agriculture and
+      Farmers Welfare. Daily gridded rainfall from the India Meteorological Department. Elevation and
+      terrain ruggedness from the SHRUG data platform, and irrigated land from the village tables of
+      the 2011 and 2001 censuses.</p>
+    </div>
+    <div>
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="irrigation.html">Irrigation</a></li>
+        <li><a href="markets.html">Markets</a></li>
+        <li><a href="crop-groups.html">Crop groups</a></li>
+        <li><a href="neighbours.html">Neighbours</a></li>
+        <li><a href="data.html">Data &amp; methods</a></li>
+        <li><a href="diversity.html">Maps</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Reference</h4>
+      <ul>
+        <li><a href="https://github.com/mridlll/crop-diversity">Repository</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js?v=e2b6885b"></script>
+<script src="js/neighbours.js?v=5"></script>
+</body>
+</html>

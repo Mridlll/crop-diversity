@@ -1,0 +1,280 @@
+series,year,n_pairs,sim,dD1,g_rice,g_wheat,g_pulses,g_millets,kind,state_a,state_b,var,gap
+Andhra Pradesh-Telangana,1998,8,64.66933998125,2.676586301546168,19.7308625,0.0129696999999999,7.99059125,10.3480154625,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,1999,8,64.356991694375,2.813080785208296,19.74705,0.016271625,8.686833749999998,9.1173955125,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2000,8,65.659899294375,2.39517756777304,16.2447125,0.0156527,11.22344125,7.540539787499999,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2001,8,62.508966668125005,2.3652920721587862,18.94003125,0.020865625,10.93824375,8.5645381,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2002,8,61.90269611125,2.812067537629684,13.80702375,0.01483895,15.41387875,8.392436375,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2003,8,65.548936826875,2.287108794552619,14.393428749999998,0.013342025,10.50087125,5.63270375,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2004,8,66.6490858819375,2.256714247082317,14.224615,0.0101879125,8.3866825,4.9567247875,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2005,8,65.677257323125,1.6833607637060557,15.33035,0.011956425,9.2715875,3.8841595125,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2006,8,65.011219045625,1.8632168104162168,15.8497,0.0100878712499999,9.86640625,3.9708828125,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2007,8,65.2185230625,2.0010761189634816,17.6384375,0.0,10.961705,2.76734775,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2008,8,66.928708451875,1.6417870113210846,15.9938125,0.01031813375,7.643283749999999,1.9646342375,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2009,8,63.5799080075,1.669934627262159,18.722325,0.007974435,7.37278375,2.8755605,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2010,8,70.264341019375,1.657898308144873,14.223562500000002,0.00798735375,8.47464875,1.4442034575,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2011,8,66.85153751437501,1.3923550883415228,12.7761,0.0031947837499999,11.0813575,1.4964651375,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2012,8,63.639621875,1.556522513273488,15.35520375,0.0,11.133305,2.28689425,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2013,8,67.639449851875,1.483366915851918,15.555125,0.0035688837499999,7.232025,1.2481649125,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2014,8,65.93055875925,1.600784069244317,14.477375,0.000605919,9.44433125,1.3747886125,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2015,8,63.4667201875,1.855093369166216,13.935575,0.001768975,11.553125,1.897303425,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2016,8,63.703419326,1.7175016118392776,13.172600000000005,0.0005256742499999,13.79295875,1.28051721125,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2017,8,64.6688777980625,2.0435976137904754,11.829022500000002,0.0003854038749999,14.04003875,2.00914705,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2018,8,64.0530383230625,1.971852252087932,11.262875,0.001253863875,12.7739225,1.933804615,"adjacent pairs, mean",,,,
+Andhra Pradesh-Telangana,2019,8,67.1150696175625,2.3496795695610357,11.711437500000002,0.000347898625,11.9844225,1.4421251037499998,"adjacent pairs, mean",,,,
+cross-border,1998,242,67.62273565849421,1.6831124953323324,15.119261891322314,5.776552203008265,8.035240008264463,7.0660481519008265,"adjacent pairs, mean",,,,
+cross-border,1999,211,65.78527800243437,1.9859665744097803,15.73013635250711,4.877686189729857,6.47830326872038,8.412947101232227,"adjacent pairs, mean",,,,
+cross-border,2000,230,67.71827405055001,1.870103276176136,14.13905861343478,4.868953456869566,6.258721586956522,7.431589950869565,"adjacent pairs, mean",,,,
+cross-border,2001,223,66.79467069211032,1.800677722410562,14.428927048726456,5.37362887729148,7.039091399103139,6.8371193955605385,"adjacent pairs, mean",,,,
+cross-border,2002,251,67.73603192493425,2.014185334963313,14.777773058446217,5.403437800366534,6.735775047808765,6.777919011828685,"adjacent pairs, mean",,,,
+cross-border,2003,294,69.58594183726701,1.9476713202876004,13.207805065707484,5.190643348095238,6.941440860544217,6.749650245088436,"adjacent pairs, mean",,,,
+cross-border,2004,301,67.9602208475814,1.9995640057655568,14.870837380631228,5.888572950083057,6.820473412425248,6.180054489136213,"adjacent pairs, mean",,,,
+cross-border,2005,299,67.91940154844984,2.064513322295463,15.677756447541809,5.717701099632107,6.620758681772575,6.184796498919733,"adjacent pairs, mean",,,,
+cross-border,2006,320,68.53107545118749,1.9572186881515308,14.80051388791875,4.956266892312501,7.273906930625,5.879623621675,"adjacent pairs, mean",,,,
+cross-border,2007,338,68.23019484497189,1.869232049858126,14.59747939328994,5.701613426834319,6.780837440769231,6.300854750928994,"adjacent pairs, mean",,,,
+cross-border,2008,384,68.38560072714714,1.9729803599339464,15.140140778179688,5.773445674401041,6.456758547135416,6.220095888192708,"adjacent pairs, mean",,,,
+cross-border,2009,383,67.12597367643629,2.005909627865581,15.982894756710182,5.679284117154047,6.683421699738904,6.260886478822455,"adjacent pairs, mean",,,,
+cross-border,2010,334,66.63796356785704,1.9173687830466453,14.98597126047904,5.218860993532934,8.13162735958084,7.30063633383533,"adjacent pairs, mean",,,,
+cross-border,2011,392,68.0183262831301,1.921035587585089,14.96181283010204,5.34332913757653,6.982078969387755,6.195592314515306,"adjacent pairs, mean",,,,
+cross-border,2012,344,67.0165666604157,1.7624701207990818,14.528408966162791,6.079844363357558,7.516393646802325,6.135366636494187,"adjacent pairs, mean",,,,
+cross-border,2013,389,67.1477608246401,1.8586965211607251,15.562127475784065,5.6599924224061695,7.197404019640104,5.845329701398457,"adjacent pairs, mean",,,,
+cross-border,2014,390,66.30039542017307,1.838103606925,15.84979589648718,5.659013444084615,7.7179497408076925,5.823374351784616,"adjacent pairs, mean",,,,
+cross-border,2015,380,66.4133650078121,2.048722508365917,15.946595407473684,5.964329556123684,7.557626327368421,5.9433076505421045,"adjacent pairs, mean",,,,
+cross-border,2016,385,67.59688532775975,2.0887328934514,15.425956147844156,5.312355806597402,8.068051497402598,5.578961618477922,"adjacent pairs, mean",,,,
+cross-border,2017,358,65.97482967653282,2.1636049536193016,16.06767681678771,5.367901957944134,8.447821768659217,6.428237919829608,"adjacent pairs, mean",,,,
+cross-border,2018,371,66.18512762163557,2.0202524883148896,16.017305609703502,5.7775747632533685,8.709856740161726,5.411413371533693,"adjacent pairs, mean",,,,
+cross-border,2019,367,65.33052390709456,2.1017003251171285,16.611597365291555,6.030207970411444,8.978672518991825,5.786659449245232,"adjacent pairs, mean",,,,
+same state,1998,847,78.82505365488595,1.3188398055210078,10.589953870672964,4.3610698805572605,5.1777706564344745,5.723533712285715,"adjacent pairs, mean",,,,
+same state,1999,761,77.74923522063614,1.545189244931213,10.988625826212878,3.968939644888305,4.976916273455979,6.096923232785808,"adjacent pairs, mean",,,,
+same state,2000,866,78.56821922721998,1.4864436883808865,10.379596704203232,3.969709204809469,5.046456944110854,5.66865936573903,"adjacent pairs, mean",,,,
+same state,2001,862,78.52085926433132,1.3963343821150578,10.245088371844547,4.131775364538283,5.348105673085847,5.611837024357309,"adjacent pairs, mean",,,,
+same state,2002,866,78.13365244684756,1.5090487113799869,10.321009613314088,4.20043467652194,5.475802196535796,5.468243875251733,"adjacent pairs, mean",,,,
+same state,2003,987,78.13438466526661,1.4535033547709164,9.759523318190476,4.2722374513323205,5.677338620871328,5.5025317482877405,"adjacent pairs, mean",,,,
+same state,2004,1003,77.84642501367468,1.3981240435304536,10.230163991298106,4.36619405769691,5.221016294182452,5.123213811141575,"adjacent pairs, mean",,,,
+same state,2005,1030,78.56897187146777,1.382308258100839,10.029897503606795,4.126494035601942,5.299329070669903,4.837680825293204,"adjacent pairs, mean",,,,
+same state,2006,1043,78.44339540406328,1.4029218410842152,10.003729879087247,4.549731139175456,5.507520582262704,4.872952649849473,"adjacent pairs, mean",,,,
+same state,2007,1107,78.03645167818848,1.3501716694798325,10.342718608191689,4.629435004802168,5.408846632222223,4.666891646593496,"adjacent pairs, mean",,,,
+same state,2008,1175,78.06217726385914,1.3335234255070536,9.998834101457872,4.102023038689362,5.240297666638297,4.807094297034042,"adjacent pairs, mean",,,,
+same state,2009,1209,77.4491837982058,1.3287128306639993,10.355749782486352,4.4787080291662535,5.1973276887510345,4.846219146956989,"adjacent pairs, mean",,,,
+same state,2010,1162,77.20036672442014,1.3206456214934494,10.653399749602409,4.730684178793459,5.735455262650602,4.491648097496558,"adjacent pairs, mean",,,,
+same state,2011,1227,76.99787578787478,1.3917780200823595,10.797090319250204,4.455792306829665,5.300580951344744,4.647165363652812,"adjacent pairs, mean",,,,
+same state,2012,1129,76.4473596491341,1.3402726789913255,10.857763182110718,4.799265133458813,5.269877176040744,4.556367468747564,"adjacent pairs, mean",,,,
+same state,2013,1188,77.57383377383123,1.4248210680964046,10.342221765267675,4.374274089824916,5.2613704080050505,4.59211329395202,"adjacent pairs, mean",,,,
+same state,2014,1209,77.54287016608755,1.3906188802511286,10.852227439391234,4.146795688226634,5.087247871674938,4.517392105284532,"adjacent pairs, mean",,,,
+same state,2015,1206,76.66619748317869,1.4458821697613689,10.892284599903814,4.460614110822554,5.532829986144279,4.502419432182421,"adjacent pairs, mean",,,,
+same state,2016,1200,76.82805691739446,1.451964593939467,10.476862191693334,4.382069579295833,6.12846985645,4.4276301696191664,"adjacent pairs, mean",,,,
+same state,2017,1172,76.46882746122488,1.4201282318694868,10.337536848501708,4.354557250165529,6.399766483583618,4.735794655275598,"adjacent pairs, mean",,,,
+same state,2018,1184,76.43172905423518,1.394812279964872,10.589079556076014,4.308019059277872,6.379756184180744,4.4060857188902025,"adjacent pairs, mean",,,,
+same state,2019,1179,75.96331045581253,1.43237676980239,11.051655942187448,4.327527303045802,6.117878434461408,4.548675504480916,"adjacent pairs, mean",,,,
+Telangana | Andhra Pradesh,1998,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-17.3713375
+Telangana | Andhra Pradesh,1999,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-19.1048
+Telangana | Andhra Pradesh,2000,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-14.346362499999998
+Telangana | Andhra Pradesh,2001,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-17.438268750000002
+Telangana | Andhra Pradesh,2002,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-12.020001249999998
+Telangana | Andhra Pradesh,2003,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-11.41902125
+Telangana | Andhra Pradesh,2004,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-13.192535
+Telangana | Andhra Pradesh,2005,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-13.117825000000002
+Telangana | Andhra Pradesh,2006,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-12.716075
+Telangana | Andhra Pradesh,2007,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-13.3885625
+Telangana | Andhra Pradesh,2008,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-11.7229875
+Telangana | Andhra Pradesh,2009,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-14.822549999999998
+Telangana | Andhra Pradesh,2010,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-8.156437500000001
+Telangana | Andhra Pradesh,2011,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-6.848525000000001
+Telangana | Andhra Pradesh,2012,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-10.73522125
+Telangana | Andhra Pradesh,2013,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-12.496924999999996
+Telangana | Andhra Pradesh,2014,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-10.569674999999998
+Telangana | Andhra Pradesh,2015,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-10.541280000000002
+Telangana | Andhra Pradesh,2016,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-4.465425000000002
+Telangana | Andhra Pradesh,2017,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-1.870102500000001
+Telangana | Andhra Pradesh,2018,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,-1.824649999999997
+Telangana | Andhra Pradesh,2019,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,rice,4.104787499999995
+Telangana | Andhra Pradesh,1998,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,3.736796375
+Telangana | Andhra Pradesh,1999,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,4.615137249999999
+Telangana | Andhra Pradesh,2000,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,4.619832125
+Telangana | Andhra Pradesh,2001,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,9.2656775
+Telangana | Andhra Pradesh,2002,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,7.7555305
+Telangana | Andhra Pradesh,2003,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,3.3032457500000003
+Telangana | Andhra Pradesh,2004,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,5.40132375
+Telangana | Andhra Pradesh,2005,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,5.83795125
+Telangana | Andhra Pradesh,2006,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,8.41402325
+Telangana | Andhra Pradesh,2007,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,10.166954375
+Telangana | Andhra Pradesh,2008,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,12.1393895
+Telangana | Andhra Pradesh,2009,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,15.85304425
+Telangana | Andhra Pradesh,2010,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,14.07647
+Telangana | Andhra Pradesh,2011,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,18.5477875
+Telangana | Andhra Pradesh,2012,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,22.91047625
+Telangana | Andhra Pradesh,2013,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,19.550651125
+Telangana | Andhra Pradesh,2014,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,20.07109125
+Telangana | Andhra Pradesh,2015,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,24.89934875
+Telangana | Andhra Pradesh,2016,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,18.335025125
+Telangana | Andhra Pradesh,2017,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,21.660997875000003
+Telangana | Andhra Pradesh,2018,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,22.907295875
+Telangana | Andhra Pradesh,2019,8,,,,,,,"signed border gap, A minus B, points",TELANGANA,ANDHRA PRADESH,cotton,18.82493675
+Telangana | Karnataka,1998,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,3.923223333333333
+Telangana | Karnataka,1999,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,2.388844666666667
+Telangana | Karnataka,2000,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,0.7425506666666667
+Telangana | Karnataka,2001,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,1.7722326666666672
+Telangana | Karnataka,2002,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,1.367817333333333
+Telangana | Karnataka,2003,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,0.9735200000000004
+Telangana | Karnataka,2004,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,2.4795866666666666
+Telangana | Karnataka,2005,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,2.998385333333333
+Telangana | Karnataka,2006,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,3.2708600000000003
+Telangana | Karnataka,2007,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,4.486247333333334
+Telangana | Karnataka,2008,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,6.381065333333333
+Telangana | Karnataka,2009,3,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,8.526784000000001
+Telangana | Karnataka,2010,7,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,11.89743085714286
+Telangana | Karnataka,2011,7,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,11.912711428571429
+Telangana | Karnataka,2012,7,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,16.045583714285716
+Telangana | Karnataka,2013,7,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,13.719526257142856
+Telangana | Karnataka,2014,7,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,13.37503374285714
+Telangana | Karnataka,2015,7,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,17.44127274285714
+Telangana | Karnataka,2016,7,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,11.734833485714285
+Telangana | Karnataka,2017,7,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,19.044827142857145
+Telangana | Karnataka,2018,7,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,19.56257257142857
+Telangana | Karnataka,2019,7,,,,,,,"signed border gap, A minus B, points",TELANGANA,KARNATAKA,cotton,18.89508057142857
+Jharkhand | Odisha,1998,1,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,2.1015000000000006
+Jharkhand | Odisha,2002,1,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,12.490199999999996
+Jharkhand | Odisha,2003,2,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,5.514599999999998
+Jharkhand | Odisha,2004,3,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,7.242699999999998
+Jharkhand | Odisha,2005,3,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,0.3943999999999945
+Jharkhand | Odisha,2006,3,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,-2.062666666666668
+Jharkhand | Odisha,2007,3,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,-0.0522666666666708
+Jharkhand | Odisha,2008,6,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,0.6731166666666696
+Jharkhand | Odisha,2009,6,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,1.0487000000000024
+Jharkhand | Odisha,2011,6,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,0.9416666666666664
+Jharkhand | Odisha,2013,6,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,-1.0948833333333277
+Jharkhand | Odisha,2014,6,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,-2.714383333333339
+Jharkhand | Odisha,2015,6,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,-5.527966666666665
+Jharkhand | Odisha,2016,6,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,0.5782000000000046
+Jharkhand | Odisha,2017,1,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,-38.281200000000005
+Jharkhand | Odisha,2018,4,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,-31.63135
+Jharkhand | Odisha,2019,5,,,,,,,"signed border gap, A minus B, points",JHARKHAND,ODISHA,rice,-19.28346
+Chhattisgarh | Odisha,1998,10,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,7.869239999999998
+Chhattisgarh | Odisha,1999,10,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,27.0402
+Chhattisgarh | Odisha,2000,13,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,6.735884615384614
+Chhattisgarh | Odisha,2001,13,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,4.417484615384616
+Chhattisgarh | Odisha,2002,13,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,1.44876923076923
+Chhattisgarh | Odisha,2003,13,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,1.6286692307692308
+Chhattisgarh | Odisha,2004,13,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-0.2078076923076882
+Chhattisgarh | Odisha,2005,13,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-7.72443076923077
+Chhattisgarh | Odisha,2006,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-7.337271428571429
+Chhattisgarh | Odisha,2007,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-5.702649999999998
+Chhattisgarh | Odisha,2008,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-6.224685714285712
+Chhattisgarh | Odisha,2009,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-4.696207142857142
+Chhattisgarh | Odisha,2010,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-0.145507142857144
+Chhattisgarh | Odisha,2011,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-1.821771428571427
+Chhattisgarh | Odisha,2013,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-3.0028499999999965
+Chhattisgarh | Odisha,2014,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-3.5604214285714293
+Chhattisgarh | Odisha,2015,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-6.3735214285714274
+Chhattisgarh | Odisha,2016,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-0.49555
+Chhattisgarh | Odisha,2017,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-4.386992857142857
+Chhattisgarh | Odisha,2018,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,-2.051678571428575
+Chhattisgarh | Odisha,2019,14,,,,,,,"signed border gap, A minus B, points",CHHATTISGARH,ODISHA,rice,13.18872857142857
+Punjab | Haryana,1998,8,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,4.4865537500000015
+Punjab | Haryana,1999,8,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,10.47506125
+Punjab | Haryana,2000,8,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,10.54958375
+Punjab | Haryana,2001,8,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,8.97276
+Punjab | Haryana,2002,8,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,11.135075
+Punjab | Haryana,2003,8,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,9.88323875
+Punjab | Haryana,2004,8,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,10.08456625
+Punjab | Haryana,2005,8,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,9.73900875
+Punjab | Haryana,2006,10,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,7.69958
+Punjab | Haryana,2007,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,10.371696666666669
+Punjab | Haryana,2008,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,9.883754166666668
+Punjab | Haryana,2009,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,9.720133333333331
+Punjab | Haryana,2010,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,10.604616666666669
+Punjab | Haryana,2011,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,9.458768333333332
+Punjab | Haryana,2012,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,10.097365833333331
+Punjab | Haryana,2013,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,9.143191666666668
+Punjab | Haryana,2014,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,8.939125
+Punjab | Haryana,2015,11,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,8.539099999999998
+Punjab | Haryana,2016,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,10.441658333333336
+Punjab | Haryana,2017,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,11.11105
+Punjab | Haryana,2018,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,11.842933333333336
+Punjab | Haryana,2019,12,,,,,,,"signed border gap, A minus B, points",PUNJAB,HARYANA,rice,10.461133333333333
+Haryana | Rajasthan,1998,11,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,6.3544136363636365
+Haryana | Rajasthan,1999,11,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,9.028965454545457
+Haryana | Rajasthan,2000,11,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,10.231066363636364
+Haryana | Rajasthan,2001,11,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,9.543527090909093
+Haryana | Rajasthan,2002,10,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,9.93187
+Haryana | Rajasthan,2003,11,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,10.727318818181816
+Haryana | Rajasthan,2004,11,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,11.427680272727272
+Haryana | Rajasthan,2005,11,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,9.436276363636363
+Haryana | Rajasthan,2006,11,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,11.628072727272723
+Haryana | Rajasthan,2007,11,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,13.39468090909091
+Haryana | Rajasthan,2008,13,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,15.031713846153847
+Haryana | Rajasthan,2009,13,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,21.824465384615387
+Haryana | Rajasthan,2010,13,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,14.327314615384616
+Haryana | Rajasthan,2011,13,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,12.803672307692306
+Haryana | Rajasthan,2012,13,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,11.419995384615389
+Haryana | Rajasthan,2013,13,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,14.965275384615383
+Haryana | Rajasthan,2014,13,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,15.904289230769232
+Haryana | Rajasthan,2015,10,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,27.410139999999995
+Haryana | Rajasthan,2016,10,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,13.745200000000002
+Haryana | Rajasthan,2017,13,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,10.814286923076924
+Haryana | Rajasthan,2018,13,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,10.519021538461535
+Haryana | Rajasthan,2019,13,,,,,,,"signed border gap, A minus B, points",HARYANA,RAJASTHAN,wheat,10.546343846153844
+Madhya Pradesh | Uttar Pradesh,1998,17,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,1.052029411764705
+Madhya Pradesh | Uttar Pradesh,1999,17,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-5.746729411764705
+Madhya Pradesh | Uttar Pradesh,2000,17,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-3.0278411764705866
+Madhya Pradesh | Uttar Pradesh,2001,17,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-3.912858823529412
+Madhya Pradesh | Uttar Pradesh,2002,17,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-6.380170588235295
+Madhya Pradesh | Uttar Pradesh,2003,23,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-2.68818695652174
+Madhya Pradesh | Uttar Pradesh,2004,18,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-12.231083333333332
+Madhya Pradesh | Uttar Pradesh,2005,12,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-12.903475
+Madhya Pradesh | Uttar Pradesh,2006,23,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-1.451578260869566
+Madhya Pradesh | Uttar Pradesh,2007,23,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-7.361677391304347
+Madhya Pradesh | Uttar Pradesh,2008,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-4.745024
+Madhya Pradesh | Uttar Pradesh,2009,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-4.559392
+Madhya Pradesh | Uttar Pradesh,2010,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-6.070024
+Madhya Pradesh | Uttar Pradesh,2011,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-4.320376
+Madhya Pradesh | Uttar Pradesh,2012,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-4.443036
+Madhya Pradesh | Uttar Pradesh,2013,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-5.556808
+Madhya Pradesh | Uttar Pradesh,2014,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-3.973255999999999
+Madhya Pradesh | Uttar Pradesh,2015,22,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-6.106518181818182
+Madhya Pradesh | Uttar Pradesh,2016,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-5.417488
+Madhya Pradesh | Uttar Pradesh,2017,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-8.996128
+Madhya Pradesh | Uttar Pradesh,2018,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,-1.3662959999999995
+Madhya Pradesh | Uttar Pradesh,2019,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,wheat,2.2602720000000014
+Madhya Pradesh | Uttar Pradesh,1998,17,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-16.98439705882353
+Madhya Pradesh | Uttar Pradesh,1999,17,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-1.9839729411764708
+Madhya Pradesh | Uttar Pradesh,2000,17,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-7.696852352941174
+Madhya Pradesh | Uttar Pradesh,2001,17,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-6.978961176470589
+Madhya Pradesh | Uttar Pradesh,2002,17,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-5.570065294117647
+Madhya Pradesh | Uttar Pradesh,2003,23,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-8.586479130434782
+Madhya Pradesh | Uttar Pradesh,2004,18,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,10.172086111111112
+Madhya Pradesh | Uttar Pradesh,2005,12,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,5.197725999999999
+Madhya Pradesh | Uttar Pradesh,2006,23,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-14.149335217391304
+Madhya Pradesh | Uttar Pradesh,2007,23,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-12.634031739130434
+Madhya Pradesh | Uttar Pradesh,2008,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-10.7770936
+Madhya Pradesh | Uttar Pradesh,2009,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-12.617572560000005
+Madhya Pradesh | Uttar Pradesh,2010,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-9.1914432
+Madhya Pradesh | Uttar Pradesh,2011,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-9.31301632
+Madhya Pradesh | Uttar Pradesh,2012,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-10.2750432
+Madhya Pradesh | Uttar Pradesh,2013,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-10.4918556
+Madhya Pradesh | Uttar Pradesh,2014,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-8.49718024
+Madhya Pradesh | Uttar Pradesh,2015,22,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-3.0155849090909075
+Madhya Pradesh | Uttar Pradesh,2016,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-6.1430476
+Madhya Pradesh | Uttar Pradesh,2017,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-5.692382080000001
+Madhya Pradesh | Uttar Pradesh,2018,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-7.923721359999999
+Madhya Pradesh | Uttar Pradesh,2019,25,,,,,,,"signed border gap, A minus B, points",MADHYA PRADESH,UTTAR PRADESH,pulses,-12.745276400000002
+West Bengal | Bihar,1998,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-8.106958
+West Bengal | Bihar,2000,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-7.119606
+West Bengal | Bihar,2001,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-9.407924
+West Bengal | Bihar,2002,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-8.646073999999999
+West Bengal | Bihar,2003,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-7.494242
+West Bengal | Bihar,2004,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-6.279684
+West Bengal | Bihar,2005,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-7.14641
+West Bengal | Bihar,2006,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-6.926383999999999
+West Bengal | Bihar,2007,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-5.989844
+West Bengal | Bihar,2008,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-8.109016
+West Bengal | Bihar,2009,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-7.6228
+West Bengal | Bihar,2010,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-6.691896
+West Bengal | Bihar,2011,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-6.921950000000001
+West Bengal | Bihar,2012,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-6.628711999999998
+West Bengal | Bihar,2013,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-6.444115999999999
+West Bengal | Bihar,2014,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-6.998968
+West Bengal | Bihar,2015,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-4.523708000000001
+West Bengal | Bihar,2016,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-0.3770639999999995
+West Bengal | Bihar,2017,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-10.193023
+West Bengal | Bihar,2018,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-8.6294802
+West Bengal | Bihar,2019,5,,,,,,,"signed border gap, A minus B, points",WEST BENGAL,BIHAR,wheat,-7.16851

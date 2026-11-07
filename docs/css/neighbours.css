@@ -1,0 +1,21 @@
+/* ================================================================
+   NEIGHBOURS PAGE: additions on top of analysis.css and crop-groups.css.
+   Nothing here changes other pages.
+   ================================================================ */
+
+/* district picker for the explorer */
+.xp-ctl { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: .7rem; }
+.xp-select {
+    background: var(--l2); color: var(--tx); border: 1px solid var(--hair-2); border-radius: 2px;
+    font-family: var(--font-mono); font-size: .76rem; padding: .4rem .6rem; min-height: 36px;
+    max-width: 100%; min-width: 16rem;
+}
+.xp-select:focus-visible { outline: 2px solid var(--c1); outline-offset: 2px; }
+.xp-select option, .xp-select optgroup { background: #17171a; color: var(--tx); }
+@media (max-width: 560px) { .xp-select { min-width: 0; width: 100%; } }
+
+/* crop buttons for the border dumbbells appear only when the four panels collapse to one */
+.ctl--narrow-only { display: none; }
+@media (max-width: 760px) { .ctl--narrow-only { display: flex; } }
+
+.legend { flex-wrap: wrap; row-gap: .4rem; }

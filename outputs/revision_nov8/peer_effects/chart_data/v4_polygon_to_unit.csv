@@ -1,0 +1,737 @@
+n,s,k,unit_key
+Kupwara,Jammu & Kashmir,jammu kashmir|kupwara,JAMMU KASHMIR|KUPWARA
+Bandipore,Jammu & Kashmir,jammu kashmir|bandipora,JAMMU KASHMIR|BANDIPORE
+Baramula,Jammu & Kashmir,jammu kashmir|baramulla,JAMMU KASHMIR|BARAMULA
+Ganderbal,Jammu & Kashmir,jammu kashmir|ganderbal,JAMMU KASHMIR|GANDERBAL
+Anantnag,Jammu & Kashmir,jammu kashmir|anantnag,JAMMU KASHMIR|ANANTNAG
+Kishtwar,Jammu & Kashmir,jammu kashmir|kishtwar,JAMMU KASHMIR|KISHTWAR
+Srinagar,Jammu & Kashmir,jammu kashmir|srinagar,JAMMU KASHMIR|SRINAGAR
+Badgam,Jammu & Kashmir,jammu kashmir|badgam,JAMMU KASHMIR|BADGAM
+Pulwama,Jammu & Kashmir,jammu kashmir|pulwama,JAMMU KASHMIR|PULWAMA
+Punch,Jammu & Kashmir,jammu kashmir|poonch,JAMMU KASHMIR|PUNCH
+Shupiyan,Jammu & Kashmir,jammu kashmir|shopian,JAMMU KASHMIR|SHUPIYAN
+Kulgam,Jammu & Kashmir,jammu kashmir|kulgam,JAMMU KASHMIR|KULGAM
+Rajouri,Jammu & Kashmir,jammu kashmir|rajauri,JAMMU KASHMIR|RAJOURI
+Ramban,Jammu & Kashmir,jammu kashmir|ramban,JAMMU KASHMIR|RAMBAN
+Reasi,Jammu & Kashmir,jammu kashmir|reasi,JAMMU KASHMIR|REASI
+Doda,Jammu & Kashmir,jammu kashmir|doda,JAMMU KASHMIR|DODA
+Jammu,Jammu & Kashmir,jammu kashmir|jammu,JAMMU KASHMIR|JAMMU
+Kathua,Jammu & Kashmir,jammu kashmir|kathua,JAMMU KASHMIR|KATHUA
+Udhampur,Jammu & Kashmir,jammu kashmir|udhampur,JAMMU KASHMIR|UDHAMPUR
+Samba,Jammu & Kashmir,jammu kashmir|samba,JAMMU KASHMIR|SAMBA
+Muzaffarabad,Jammu & Kashmir,,
+Mirpur,Jammu & Kashmir,,
+Lahul & Spiti,Himachal Pradesh,himachal pradesh|lahul and spiti,HIMACHAL PRADESH|LAHUL SPITI
+Chamba,Himachal Pradesh,himachal pradesh|chamba,HIMACHAL PRADESH|CHAMBA
+Kangra,Himachal Pradesh,himachal pradesh|kangra,HIMACHAL PRADESH|KANGRA
+Kullu,Himachal Pradesh,himachal pradesh|kullu,HIMACHAL PRADESH|KULLU
+Mandi,Himachal Pradesh,himachal pradesh|mandi,HIMACHAL PRADESH|MANDI
+Kinnaur,Himachal Pradesh,himachal pradesh|kinnaur,HIMACHAL PRADESH|KINNAUR
+Una,Himachal Pradesh,himachal pradesh|una,HIMACHAL PRADESH|UNA
+Shimla,Himachal Pradesh,himachal pradesh|shimla,HIMACHAL PRADESH|SHIMLA
+Solan,Himachal Pradesh,himachal pradesh|solan,HIMACHAL PRADESH|SOLAN
+Sirmaur,Himachal Pradesh,himachal pradesh|sirmaur,HIMACHAL PRADESH|SIRMAUR
+Hamirpur,Himachal Pradesh,himachal pradesh|hamirpur,HIMACHAL PRADESH|HAMIRPUR
+Bilaspur,Himachal Pradesh,himachal pradesh|bilaspur,HIMACHAL PRADESH|BILASPUR
+Gurdaspur,Punjab,punjab|gurdaspur,PUNJAB|GURDASPUR
+Hoshiarpur,Punjab,punjab|hoshiarpur,PUNJAB|HOSHIARPUR
+Amritsar,Punjab,punjab|amritsar,PUNJAB|AMRITSAR
+Jalandhar,Punjab,punjab|jalandhar,PUNJAB|JALANDHAR
+Tarn Taran,Punjab,punjab|tarn taran,PUNJAB|TARN TARAN
+Rupnagar,Punjab,punjab|rupnagar,PUNJAB|RUPNAGAR
+Shahid Bhagat Singh Nagar,Punjab,punjab|shahid bhagat singh nagar,PUNJAB|SHAHID BHAGAT SINGH NAGAR
+Fazilka,Punjab,punjab|fazilka,PUNJAB|FIROZPUR
+Moga,Punjab,punjab|moga,PUNJAB|MOGA
+Ludhiana,Punjab,punjab|ludhiana,PUNJAB|LUDHIANA
+Sahibzada Ajit Singh Nag*,Punjab,,PUNJAB|SAHIBZADA AJIT SINGH NAGAR
+Faridkot,Punjab,punjab|faridkot,PUNJAB|FARIDKOT
+Fatehgarh Sahib,Punjab,punjab|fatehgarh sahib,PUNJAB|FATEHGARH SAHIB
+Sri Muktsar Sahib,Punjab,,PUNJAB|MUKTSAR
+Sangrur,Punjab,punjab|sangrur,PUNJAB|SANGRUR
+Barnala,Punjab,punjab|barnala,PUNJAB|BARNALA
+Bathinda,Punjab,punjab|bathinda,PUNJAB|BATHINDA
+Patiala,Punjab,punjab|patiala,PUNJAB|PATIALA
+Mansa,Punjab,punjab|mansa,PUNJAB|MANSA
+Firozpur,Punjab,punjab|fazilka,PUNJAB|FIROZPUR
+Pathankot,Punjab,punjab|pathankot,PUNJAB|GURDASPUR
+Kapurthala,Punjab,punjab|kapurthala,PUNJAB|KAPURTHALA
+Chandigarh,Chandigarh,chandigarh|chandigarh,CHANDIGARH|CHANDIGARH
+Uttarkashi,Uttarakhand,uttar pradesh|uttar kashi,UTTARAKHAND|UTTARKASHI
+Chamoli,Uttarakhand,uttarakhand|chamoli,UTTARAKHAND|CHAMOLI
+Dehradun,Uttarakhand,uttarakhand|dehradun,UTTARAKHAND|DEHRADUN
+Tehri Garhwal,Uttarakhand,uttarakhand|tehri garhwal,UTTARAKHAND|TEHRI GARHWAL
+Rudraprayag,Uttarakhand,uttar pradesh|rudra prayag,UTTARAKHAND|RUDRAPRAYAG
+Pithoragarh,Uttarakhand,uttarakhand|pithoragarh,UTTARAKHAND|PITHORAGARH
+Bageshwar,Uttarakhand,uttarakhand|bageshwar,UTTARAKHAND|BAGESHWAR
+Hardwar,Uttarakhand,uttarakhand|haridwar,UTTARAKHAND|HARDWAR
+Garhwal,Uttarakhand,uttarakhand|pauri garhwal,UTTARAKHAND|GARHWAL
+"Almora
+",Uttarakhand,uttarakhand|almora,UTTARAKHAND|ALMORA
+Nainital,Uttarakhand,uttarakhand|nainital,UTTARAKHAND|NAINITAL
+Champawat,Uttarakhand,uttarakhand|champawat,UTTARAKHAND|CHAMPAWAT
+Udham Singh Nagar,Uttarakhand,uttar pradesh|udam singh nagar,UTTARAKHAND|UDHAM SINGH NAGAR
+Jhajjar,Haryana,haryana|jhajjar,HARYANA|JHAJJAR
+Gurugram,Haryana,,HARYANA|GURGAON
+Faridabad,Haryana,haryana|faridabad,HARYANA|FARIDABAD
+Mahendragarh,Haryana,haryana|mahendragarh,HARYANA|MAHENDRAGARH
+Rewari,Haryana,haryana|rewari,HARYANA|REWARI
+Nuh,Haryana,,HARYANA|MEWAT
+Palwal,Haryana,haryana|palwal,HARYANA|PALWAL
+Charki Dadri,Haryana,haryana|charki dadri,HARYANA|BHIWANI
+Yamunanagar,Haryana,haryana|yamunanagar,HARYANA|YAMUNANAGAR
+Kurukshetra,Haryana,haryana|kurukshetra,HARYANA|KURUKSHETRA
+Kaithal,Haryana,haryana|kaithal,HARYANA|KAITHAL
+Sirsa,Haryana,haryana|sirsa,HARYANA|SIRSA
+Karnal,Haryana,haryana|karnal,HARYANA|KARNAL
+Jind,Haryana,haryana|jind,HARYANA|JIND
+Fatehabad,Haryana,haryana|fatehabad,HARYANA|FATEHABAD
+Hisar,Haryana,haryana|hisar,HARYANA|HISAR
+Panipat,Haryana,haryana|panipat,HARYANA|PANIPAT
+Sonipat,Haryana,haryana|sonipat,HARYANA|SONIPAT
+Bhiwani,Haryana,haryana|bhiwani,HARYANA|BHIWANI
+Rohtak,Haryana,haryana|rohtak,HARYANA|ROHTAK
+Panchkula,Haryana,haryana|panchkula,HARYANA|PANCHKULA
+Ambala,Haryana,haryana|ambala,HARYANA|AMBALA
+North,Delhi,,
+North East,Delhi,,
+West,Delhi,,
+East,Delhi,,
+South West,Delhi,,
+Central,Delhi,,
+New Delhi,Delhi,,
+South,Delhi,,
+Shahdara,Delhi,,
+South East,Delhi,,
+North West,Delhi,,
+Churu,Rajasthan,rajasthan|churu,RAJASTHAN|CHURU
+Jhunjhunun,Rajasthan,rajasthan|jhunjhunu,RAJASTHAN|JHUNJHUNUN
+Jaisalmer,Rajasthan,rajasthan|jaisalmer,RAJASTHAN|JAISALMER
+Sikar,Rajasthan,rajasthan|sikar,RAJASTHAN|SIKAR
+Alwar,Rajasthan,rajasthan|alwar,RAJASTHAN|ALWAR
+Jaipur,Rajasthan,rajasthan|jaipur,RAJASTHAN|JAIPUR
+Jodhpur,Rajasthan,rajasthan|jodhpur,RAJASTHAN|JODHPUR
+Bharatpur,Rajasthan,rajasthan|bharatpur,RAJASTHAN|BHARATPUR
+Nagaur,Rajasthan,rajasthan|nagaur,RAJASTHAN|NAGAUR
+Dausa,Rajasthan,rajasthan|dausa,RAJASTHAN|DAUSA
+Karauli,Rajasthan,rajasthan|karauli,RAJASTHAN|KARAULI
+Dhaulpur,Rajasthan,rajasthan|dholpur,RAJASTHAN|DHAULPUR
+Barmer,Rajasthan,rajasthan|barmer,RAJASTHAN|BARMER
+Sawai Madhopur,Rajasthan,rajasthan|sawai madhopur,RAJASTHAN|SAWAI MADHOPUR
+Tonk,Rajasthan,rajasthan|tonk,RAJASTHAN|TONK
+Pali,Rajasthan,rajasthan|pali,RAJASTHAN|PALI
+Bhilwara,Rajasthan,rajasthan|bhilwara,RAJASTHAN|BHILWARA
+Jalor,Rajasthan,rajasthan|jalore,RAJASTHAN|JALOR
+Bundi,Rajasthan,rajasthan|bundi,RAJASTHAN|BUNDI
+Kota,Rajasthan,rajasthan|kota,RAJASTHAN|KOTA
+Sirohi,Rajasthan,rajasthan|sirohi,RAJASTHAN|SIROHI
+Baran,Rajasthan,rajasthan|baran,RAJASTHAN|BARAN
+Udaipur,Rajasthan,rajasthan|udaipur,RAJASTHAN|UDAIPUR
+Jhalawar,Rajasthan,rajasthan|jhalawar,RAJASTHAN|JHALAWAR
+Dungarpur,Rajasthan,rajasthan|dungarpur,RAJASTHAN|DUNGARPUR
+Banswara,Rajasthan,rajasthan|banswara,RAJASTHAN|BANSWARA
+Ajmer,Rajasthan,rajasthan|ajmer,RAJASTHAN|AJMER
+Rajsamand,Rajasthan,rajasthan|rajsamand,RAJASTHAN|RAJSAMAND
+Chittaurgarh,Rajasthan,rajasthan|chittorgarh,RAJASTHAN|CHITTAURGARH
+Ganganagar,Rajasthan,rajasthan|ganganagar,RAJASTHAN|GANGANAGAR
+Hanumangarh,Rajasthan,rajasthan|hanumangarh,RAJASTHAN|HANUMANGARH
+Bikaner,Rajasthan,rajasthan|bikaner,RAJASTHAN|BIKANER
+Pratapgarh,Rajasthan,rajasthan|pratapgarh,RAJASTHAN|PRATAPGARH
+Amroha,Uttar Pradesh,uttar pradesh|amroha,UTTAR PRADESH|JYOTIBA PHULE NAGAR
+Hapur,Uttar Pradesh,uttar pradesh|hapur,UTTAR PRADESH|GHAZIABAD
+Bareilly,Uttar Pradesh,uttar pradesh|bareilly,UTTAR PRADESH|BAREILLY
+Pilibhit,Uttar Pradesh,uttar pradesh|pilibhit,UTTAR PRADESH|PILIBHIT
+Bulandshahr,Uttar Pradesh,uttar pradesh|bulandshahr,UTTAR PRADESH|BULANDSHAHR
+Gautam Buddha Nagar,Uttar Pradesh,uttar pradesh|gautam buddha nagar,UTTAR PRADESH|GAUTAM BUDDHA NAGAR
+Kheri,Uttar Pradesh,uttar pradesh|kheri,UTTAR PRADESH|KHERI
+Budaun,Uttar Pradesh,uttar pradesh|budaun,UTTAR PRADESH|BUDAUN
+Bahraich,Uttar Pradesh,uttar pradesh|bahraich,UTTAR PRADESH|BAHRAICH
+Shahjahanpur,Uttar Pradesh,uttar pradesh|shahjahanpur,UTTAR PRADESH|SHAHJAHANPUR
+Aligarh,Uttar Pradesh,uttar pradesh|aligarh,UTTAR PRADESH|ALIGARH
+Kasganj,Uttar Pradesh,uttar pradesh|kasganj,UTTAR PRADESH|KANSHIRAM NAGAR
+Mathura,Uttar Pradesh,uttar pradesh|mathura,UTTAR PRADESH|MATHURA
+Shrawasti,Uttar Pradesh,uttar pradesh|shravasti,UTTAR PRADESH|SHRAWASTI
+Sitapur,Uttar Pradesh,uttar pradesh|sitapur,UTTAR PRADESH|SITAPUR
+Hathras,Uttar Pradesh,uttar pradesh|hathras,UTTAR PRADESH|MAHAMAYA NAGAR
+Etah,Uttar Pradesh,uttar pradesh|etah,UTTAR PRADESH|ETAH
+Hardoi,Uttar Pradesh,uttar pradesh|hardoi,UTTAR PRADESH|HARDOI
+Farrukhabad,Uttar Pradesh,uttar pradesh|farrukhabad,UTTAR PRADESH|FARRUKHABAD
+Firozabad,Uttar Pradesh,uttar pradesh|firozabad,UTTAR PRADESH|FIROZABAD
+Siddharthnagar,Uttar Pradesh,uttar pradesh|siddharth nagar,UTTAR PRADESH|SIDDHARTHNAGAR
+Mainpuri,Uttar Pradesh,uttar pradesh|mainpuri,UTTAR PRADESH|MAINPURI
+Mahrajganj,Uttar Pradesh,uttar pradesh|maharajganj,UTTAR PRADESH|MAHRAJGANJ
+Agra,Uttar Pradesh,uttar pradesh|agra,UTTAR PRADESH|AGRA
+Gonda,Uttar Pradesh,uttar pradesh|gonda,UTTAR PRADESH|GONDA
+Bara Banki,Uttar Pradesh,uttar pradesh|barabanki,UTTAR PRADESH|BARA BANKI
+Kushinagar,Uttar Pradesh,uttar pradesh|kushi nagar,UTTAR PRADESH|KUSHINAGAR
+Kannauj,Uttar Pradesh,uttar pradesh|kannauj,UTTAR PRADESH|KANNAUJ
+Lucknow,Uttar Pradesh,uttar pradesh|lucknow,UTTAR PRADESH|LUCKNOW
+Basti,Uttar Pradesh,uttar pradesh|basti,UTTAR PRADESH|BASTI
+Gorakhpur,Uttar Pradesh,uttar pradesh|gorakhpur,UTTAR PRADESH|GORAKHPUR
+Sant Kabir Nagar,Uttar Pradesh,uttar pradesh|sant kabeer nagar,UTTAR PRADESH|SANT KABIR NAGAR
+Unnao,Uttar Pradesh,uttar pradesh|unnao,UTTAR PRADESH|UNNAO
+Etawah,Uttar Pradesh,uttar pradesh|etawah,UTTAR PRADESH|ETAWAH
+Kanpur Nagar,Uttar Pradesh,uttar pradesh|kanpur nagar,UTTAR PRADESH|KANPUR NAGAR
+Auraiya,Uttar Pradesh,uttar pradesh|auraiya,UTTAR PRADESH|AURAIYA
+Faizabad,Uttar Pradesh,uttar pradesh|faizabad,UTTAR PRADESH|FAIZABAD
+Kanpur Dehat,Uttar Pradesh,uttar pradesh|kanpur dehat,UTTAR PRADESH|KANPUR DEHAT
+Deoria,Uttar Pradesh,uttar pradesh|deoria,UTTAR PRADESH|DEORIA
+Sultanpur,Uttar Pradesh,uttar pradesh|sultanpur,UTTAR PRADESH|SULTANPUR
+Ambedkar Nagar,Uttar Pradesh,uttar pradesh|ambedkar nagar,UTTAR PRADESH|AMBEDKAR NAGAR
+Rae Bareli,Uttar Pradesh,uttar pradesh|rae bareli,UTTAR PRADESH|RAE BARELI
+Jalaun,Uttar Pradesh,uttar pradesh|jalaun,UTTAR PRADESH|JALAUN
+Azamgarh,Uttar Pradesh,uttar pradesh|azamgarh,UTTAR PRADESH|AZAMGARH
+Mau,Uttar Pradesh,uttar pradesh|mau,UTTAR PRADESH|MAU
+Fatehpur,Uttar Pradesh,uttar pradesh|fatehpur,UTTAR PRADESH|FATEHPUR
+Ballia,Uttar Pradesh,uttar pradesh|ballia,UTTAR PRADESH|BALLIA
+Jaunpur,Uttar Pradesh,uttar pradesh|jaunpur,UTTAR PRADESH|JAUNPUR
+Jhansi,Uttar Pradesh,uttar pradesh|jhansi,UTTAR PRADESH|JHANSI
+Banda,Uttar Pradesh,uttar pradesh|banda,UTTAR PRADESH|BANDA
+Ghazipur,Uttar Pradesh,uttar pradesh|ghazipur,UTTAR PRADESH|GHAZIPUR
+Kaushambi,Uttar Pradesh,uttar pradesh|kaushambi,UTTAR PRADESH|KAUSHAMBI
+Prayagraj,Uttar Pradesh,,UTTAR PRADESH|ALLAHABAD
+Varanasi,Uttar Pradesh,uttar pradesh|varanasi,UTTAR PRADESH|VARANASI
+Chitrakoot,Uttar Pradesh,uttar pradesh|chitrakoot,UTTAR PRADESH|CHITRAKOOT
+Chandauli,Uttar Pradesh,uttar pradesh|chandauli,UTTAR PRADESH|CHANDAULI
+Bhadohi,Uttar Pradesh,,UTTAR PRADESH|SANT RAVIDAS NAGAR BHADOHI
+Mirzapur,Uttar Pradesh,uttar pradesh|mirzapur,UTTAR PRADESH|MIRZAPUR
+Lalitpur,Uttar Pradesh,uttar pradesh|lalitpur,UTTAR PRADESH|LALITPUR
+Sonbhadra,Uttar Pradesh,uttar pradesh|sonbhadra,UTTAR PRADESH|SONBHADRA
+Amethi,Uttar Pradesh,uttar pradesh|amethi,UTTAR PRADESH|SULTANPUR
+Ghaziabad,Uttar Pradesh,uttar pradesh|ghaziabad,UTTAR PRADESH|GHAZIABAD
+Sambhal,Uttar Pradesh,uttar pradesh|sambhal,UTTAR PRADESH|MORADABAD
+Mahoba,Uttar Pradesh,uttar pradesh|mahoba,UTTAR PRADESH|MAHOBA
+Saharanpur,Uttar Pradesh,uttar pradesh|saharanpur,UTTAR PRADESH|SAHARANPUR
+Bijnor,Uttar Pradesh,uttar pradesh|bijnor,UTTAR PRADESH|BIJNOR
+Muzaffarnagar,Uttar Pradesh,uttar pradesh|muzaffarnagar,UTTAR PRADESH|MUZAFFARNAGAR
+Baghpat,Uttar Pradesh,uttar pradesh|baghpat,UTTAR PRADESH|BAGHPAT
+Meerut,Uttar Pradesh,uttar pradesh|meerut,UTTAR PRADESH|MEERUT
+Moradabad,Uttar Pradesh,uttar pradesh|moradabad,UTTAR PRADESH|MORADABAD
+Rampur,Uttar Pradesh,uttar pradesh|rampur,UTTAR PRADESH|RAMPUR
+Shamli,Uttar Pradesh,uttar pradesh|shamli,UTTAR PRADESH|MUZAFFARNAGAR
+Balrampur,Uttar Pradesh,uttar pradesh|balrampur,UTTAR PRADESH|BALRAMPUR
+Hamirpur,Uttar Pradesh,uttar pradesh|hamirpur,UTTAR PRADESH|HAMIRPUR
+Pratapgarh,Uttar Pradesh,uttar pradesh|pratapgarh,UTTAR PRADESH|PRATAPGARH
+Pashchim Champaran,Bihar,bihar|pashchim champaran,BIHAR|PASHCHIM CHAMPARAN
+Purba Champaran,Bihar,bihar|purbi champaran,BIHAR|PURBA CHAMPARAN
+Sitamarhi,Bihar,bihar|sitamarhi,BIHAR|SITAMARHI
+Sheohar,Bihar,bihar|sheohar,BIHAR|SHEOHAR
+Gopalganj,Bihar,bihar|gopalganj,BIHAR|GOPALGANJ
+Samastipur,Bihar,bihar|samastipur,BIHAR|SAMASTIPUR
+Katihar,Bihar,bihar|katihar,BIHAR|KATIHAR
+Khagaria,Bihar,bihar|khagaria,BIHAR|KHAGARIA
+Bhojpur,Bihar,bihar|bhojpur,BIHAR|BHOJPUR
+Buxar,Bihar,bihar|buxar,BIHAR|BUXAR
+Darbhanga,Bihar,bihar|darbhanga,BIHAR|DARBHANGA
+Saharsa,Bihar,bihar|saharsa,BIHAR|SAHARSA
+Kaimur (Bhabua),Bihar,bihar|kaimur bhabua,BIHAR|KAIMUR BHABUA
+Rohtas,Bihar,bihar|rohtas,BIHAR|ROHTAS
+Jamui,Bihar,bihar|jamui,BIHAR|JAMUI
+Banka,Bihar,bihar|banka,BIHAR|BANKA
+Nawada,Bihar,bihar|nawada,BIHAR|NAWADA
+Gaya,Bihar,bihar|gaya,BIHAR|GAYA
+Munger,Bihar,bihar|munger,BIHAR|MUNGER
+Vaishali,Bihar,bihar|vaishali,BIHAR|VAISHALI
+Begusarai,Bihar,bihar|begusarai,BIHAR|BEGUSARAI
+Bhagalpur,Bihar,bihar|bhagalpur,BIHAR|BHAGALPUR
+Lakhisarai,Bihar,bihar|lakhisarai,BIHAR|LAKHISARAI
+Sheikhpura,Bihar,bihar|sheikhpura,BIHAR|SHEIKHPURA
+Arwal,Bihar,bihar|arwal,BIHAR|ARWAL
+Jehanabad,Bihar,bihar|jehanabad,BIHAR|JEHANABAD
+Nalanda,Bihar,bihar|nalanda,BIHAR|NALANDA
+Patna,Bihar,bihar|patna,BIHAR|PATNA
+Saran,Bihar,bihar|saran,BIHAR|SARAN
+Siwan,Bihar,bihar|siwan,BIHAR|SIWAN
+Muzaffarpur,Bihar,bihar|muzaffarpur,BIHAR|MUZAFFARPUR
+Madhepura,Bihar,bihar|madhepura,BIHAR|MADHEPURA
+Araria,Bihar,bihar|araria,BIHAR|ARARIA
+Supaul,Bihar,bihar|supaul,BIHAR|SUPAUL
+Madhubani,Bihar,bihar|madhubani,BIHAR|MADHUBANI
+Purnia,Bihar,bihar|purnia,BIHAR|PURNIA
+Kishanganj,Bihar,bihar|kishanganj,BIHAR|KISHANGANJ
+Aurangabad,Bihar,bihar|aurangabad,BIHAR|AURANGABAD
+North  District,Sikkim,sikkim|mangan,SIKKIM|NORTH DISTRICT
+West District,Sikkim,sikkim|gyalshing,SIKKIM|WEST DISTRICT
+South District,Sikkim,sikkim|namchi,SIKKIM|SOUTH DISTRICT
+East District,Sikkim,sikkim|gangtok,SIKKIM|EAST DISTRICT
+Upper Subansiri,Arunachal Pradesh,arunachal pradesh|upper subansiri,ARUNACHAL PRADESH|UPPER SUBANSIRI
+Anjaw,Arunachal Pradesh,arunachal pradesh|anjaw,ARUNACHAL PRADESH|ANJAW
+Changlang,Arunachal Pradesh,arunachal pradesh|changlang,ARUNACHAL PRADESH|CHANGLANG
+Tawang,Arunachal Pradesh,arunachal pradesh|tawang,ARUNACHAL PRADESH|TAWANG
+Papum Pare,Arunachal Pradesh,arunachal pradesh|papum pare,ARUNACHAL PRADESH|PAPUM PARE
+Tirap,Arunachal Pradesh,arunachal pradesh|tirap,ARUNACHAL PRADESH|TIRAP
+East Siang,Arunachal Pradesh,arunachal pradesh|east siang,ARUNACHAL PRADESH|EAST SIANG
+Lohit,Arunachal Pradesh,arunachal pradesh|lohit,ARUNACHAL PRADESH|LOHIT
+Kurung Kumey,Arunachal Pradesh,arunachal pradesh|kurung kumey,ARUNACHAL PRADESH|KURUNG KUMEY
+Lower Subansiri,Arunachal Pradesh,arunachal pradesh|lower subansiri,ARUNACHAL PRADESH|LOWER SUBANSIRI
+East Kameng,Arunachal Pradesh,arunachal pradesh|east kameng,ARUNACHAL PRADESH|EAST KAMENG
+West Kameng,Arunachal Pradesh,arunachal pradesh|west kameng,ARUNACHAL PRADESH|WEST KAMENG
+Kra Daadi,Arunachal Pradesh,arunachal pradesh|kra daadi,ARUNACHAL PRADESH|KURUNG KUMEY
+Namsai,Arunachal Pradesh,arunachal pradesh|namsai,ARUNACHAL PRADESH|LOHIT
+Longding,Arunachal Pradesh,arunachal pradesh|longding,ARUNACHAL PRADESH|TIRAP
+Upper Siang,Arunachal Pradesh,arunachal pradesh|upper siang,ARUNACHAL PRADESH|UPPER SIANG
+Lower Siang,Arunachal Pradesh,arunachal pradesh|lower siang,ARUNACHAL PRADESH|WEST SIANG
+Upper Dibang Valley,Arunachal Pradesh,,ARUNACHAL PRADESH|DIBANG VALLEY
+Lower Dibang Valley,Arunachal Pradesh,arunachal pradesh|lower dibang valley,ARUNACHAL PRADESH|LOWER DIBANG VALLEY
+Siang,Arunachal Pradesh,arunachal pradesh|siang,ARUNACHAL PRADESH|EAST SIANG
+Shi Yomi,Arunachal Pradesh,arunachal pradesh|shi yomi,ARUNACHAL PRADESH|WEST SIANG
+Pakke Kessang,Arunachal Pradesh,arunachal pradesh|pakke kessang,ARUNACHAL PRADESH|EAST KAMENG
+West Siang,Arunachal Pradesh,arunachal pradesh|west siang,ARUNACHAL PRADESH|WEST SIANG
+Lepa Rada,Arunachal Pradesh,arunachal pradesh|leparada,ARUNACHAL PRADESH|WEST SIANG
+Kamle,Arunachal Pradesh,arunachal pradesh|kamle,ARUNACHAL PRADESH|UPPER SUBANSIRI
+Mon,Nagaland,nagaland|mon,NAGALAND|MON
+Longleng,Nagaland,nagaland|longleng,NAGALAND|LONGLENG
+Mokokchung,Nagaland,nagaland|mokokchung,NAGALAND|MOKOKCHUNG
+Tuensang,Nagaland,nagaland|tuensang,NAGALAND|TUENSANG
+Kiphire,Nagaland,nagaland|kiphire,NAGALAND|KIPHIRE
+Peren,Nagaland,nagaland|peren,NAGALAND|PEREN
+Wokha,Nagaland,nagaland|wokha,NAGALAND|WOKHA
+Zunheboto,Nagaland,nagaland|zunheboto,NAGALAND|ZUNHEBOTO
+Phek,Nagaland,nagaland|phek,NAGALAND|PHEK
+Kohima,Nagaland,nagaland|kohima,NAGALAND|KOHIMA
+Dimapur,Nagaland,nagaland|dimapur,NAGALAND|DIMAPUR
+Kamjong,Manipur,,MANIPUR|UKHRUL
+Senapati,Manipur,manipur|senapati,MANIPUR|SENAPATI
+Tamenglong,Manipur,manipur|tamenglong,MANIPUR|TAMENGLONG
+Imphal West,Manipur,manipur|imphal west,MANIPUR|IMPHAL WEST
+Kakching,Manipur,,MANIPUR|THOUBAL
+Bishnupur,Manipur,manipur|bishnupur,MANIPUR|BISHNUPUR
+Chandel,Manipur,manipur|chandel,MANIPUR|CHANDEL
+Churachandpur,Manipur,manipur|churachandpur,MANIPUR|CHURACHANDPUR
+Imphal East,Manipur,manipur|imphal east,MANIPUR|IMPHAL EAST
+Jiribam,Manipur,,MANIPUR|IMPHAL EAST
+Kangpokpi,Manipur,,MANIPUR|SENAPATI
+Thoubal,Manipur,manipur|thoubal,MANIPUR|THOUBAL
+Tengnoupal,Manipur,,MANIPUR|CHANDEL
+Ukhrul,Manipur,manipur|ukhrul,MANIPUR|UKHRUL
+Noney,Manipur,,MANIPUR|TAMENGLONG
+Pherzawl,Manipur,,MANIPUR|CHURACHANDPUR
+Kolasib,Mizoram,mizoram|kolasib,MIZORAM|KOLASIB
+Mamit,Mizoram,mizoram|mamit,MIZORAM|MAMIT
+Serchhip,Mizoram,mizoram|serchhip,MIZORAM|SERCHHIP
+Lunglei,Mizoram,mizoram|lunglei,MIZORAM|LUNGLEI
+Saiha,Mizoram,mizoram|saiha,MIZORAM|SAIHA
+Lawngtlai,Mizoram,mizoram|lawngtlai,MIZORAM|LAWNGTLAI
+Hnahthial,Mizoram,,MIZORAM|LUNGLEI
+Saitual,Mizoram,,MIZORAM|AIZAWL
+Aizawl,Mizoram,mizoram|aizawl,MIZORAM|AIZAWL
+Champhai,Mizoram,mizoram|champhai,MIZORAM|CHAMPHAI
+Khawzawl,Mizoram,,MIZORAM|CHAMPHAI
+North Tripura,Tripura,tripura|north tripura,TRIPURA|NORTH TRIPURA
+Dhalai,Tripura,tripura|dhalai,TRIPURA|DHALAI
+Sipahijala,Tripura,tripura|sepahijala,TRIPURA|WEST TRIPURA
+Gomati,Tripura,tripura|gomati,TRIPURA|SOUTH TRIPURA
+Khowai,Tripura,tripura|khowai,TRIPURA|WEST TRIPURA
+West Tripura,Tripura,tripura|west tripura,TRIPURA|WEST TRIPURA
+South Tripura,Tripura,tripura|south tripura,TRIPURA|SOUTH TRIPURA
+Unokoti,Tripura,,TRIPURA|NORTH TRIPURA
+Ribhoi,Meghalaya,meghalaya|ri bhoi,MEGHALAYA|RIBHOI
+West Khasi Hills,Meghalaya,meghalaya|west khasi hills,MEGHALAYA|WEST KHASI HILLS
+East Jaintia Hills,Meghalaya,meghalaya|east jaintia hills,MEGHALAYA|JAINTIA HILLS
+East Khasi Hills,Meghalaya,meghalaya|east khasi hills,MEGHALAYA|EAST KHASI HILLS
+South Garo Hills,Meghalaya,meghalaya|south garo hills,MEGHALAYA|SOUTH GARO HILLS
+West Garo Hills,Meghalaya,meghalaya|west garo hills,MEGHALAYA|WEST GARO HILLS
+East Garo Hills,Meghalaya,meghalaya|east garo hills,MEGHALAYA|EAST GARO HILLS
+West Jaintia Hills,Meghalaya,meghalaya|west jaintia hills,MEGHALAYA|JAINTIA HILLS
+South West Khasi Hills,Meghalaya,meghalaya|south west khasi hills,MEGHALAYA|WEST KHASI HILLS
+North Garo Hills,Meghalaya,meghalaya|north garo hills,MEGHALAYA|EAST GARO HILLS
+South West Garo Hills,Meghalaya,meghalaya|south west garo hills,MEGHALAYA|WEST GARO HILLS
+Tinsukia,Assam,assam|tinsukia,ASSAM|TINSUKIA
+Dhemaji,Assam,assam|dhemaji,ASSAM|DHEMAJI
+Dibrugarh,Assam,assam|dibrugarh,ASSAM|DIBRUGARH
+Lakhimpur,Assam,assam|lakhimpur,ASSAM|LAKHIMPUR
+Sivasagar,Assam,assam|sivasagar,ASSAM|SIVASAGAR
+Jorhat,Assam,assam|jorhat,ASSAM|JORHAT
+Sonitpur,Assam,assam|sonitpur,ASSAM|SONITPUR
+Golaghat,Assam,assam|golaghat,ASSAM|GOLAGHAT
+Udalguri,Assam,assam|udalguri,ASSAM|UDALGURI
+Chirang,Assam,assam|chirang,ASSAM|CHIRANG
+Baksa,Assam,assam|baksa,ASSAM|BAKSA
+Nagaon,Assam,assam|nagaon,ASSAM|NAGAON
+Kokrajhar,Assam,assam|kokrajhar,ASSAM|KOKRAJHAR
+Darrang,Assam,assam|darrang,ASSAM|DARRANG
+Barpeta,Assam,assam|barpeta,ASSAM|BARPETA
+Nalbari,Assam,assam|nalbari,ASSAM|NALBARI
+Morigaon,Assam,assam|marigaon,ASSAM|MORIGAON
+Kamrup,Assam,assam|kamrup,ASSAM|KAMRUP
+Bongaigaon,Assam,assam|bongaigaon,ASSAM|BONGAIGAON
+Dhubri,Assam,assam|dhubri,ASSAM|DHUBRI
+Kamrup Metropolitan,Assam,assam|kamrup metro,ASSAM|KAMRUP METROPOLITAN
+Goalpara,Assam,assam|goalpara,ASSAM|GOALPARA
+Dima Hasao,Assam,assam|dima hasao,ASSAM|DIMA HASAO
+Cachar,Assam,assam|cachar,ASSAM|CACHAR
+Karimganj,Assam,assam|karimganj,ASSAM|KARIMGANJ
+Hailakandi,Assam,assam|hailakandi,ASSAM|HAILAKANDI
+Charaideo,Assam,assam|charaideo,ASSAM|SIVASAGAR
+Majuli,Assam,assam|majuli,ASSAM|JORHAT
+Biswanath,Assam,assam|biswanath,ASSAM|SONITPUR
+Hojai,Assam,assam|hojai,ASSAM|NAGAON
+South Salmara Mancachar,Assam,assam|south salmara mancachar,ASSAM|DHUBRI
+Karbi Anglong,Assam,assam|karbi anglong,ASSAM|KARBI ANGLONG
+West Karbi Anglong,Assam,assam|west karbi anglong,ASSAM|KARBI ANGLONG
+South Twenty Four Pargan*,West Bengal,,WEST BENGAL|SOUTH TWENTY FOUR PARGANAS
+Darjiling,West Bengal,west bengal|darjeeling,WEST BENGAL|DARJILING
+Jalpaiguri,West Bengal,west bengal|jalpaiguri,WEST BENGAL|JALPAIGURI
+Dakshin Dinajpur,West Bengal,west bengal|dakshin dinajpur,WEST BENGAL|DAKSHIN DINAJPUR
+Maldah,West Bengal,west bengal|maldah,WEST BENGAL|MALDAH
+Murshidabad,West Bengal,west bengal|murshidabad,WEST BENGAL|MURSHIDABAD
+Birbhum,West Bengal,west bengal|birbhum,WEST BENGAL|BIRBHUM
+Nadia,West Bengal,west bengal|nadia,WEST BENGAL|NADIA
+Purba Bardhaman,West Bengal,west bengal|purba bardhaman,WEST BENGAL|BARDDHAMAN
+Puruliya,West Bengal,west bengal|purulia,WEST BENGAL|PURULIYA
+Bankura,West Bengal,west bengal|bankura,WEST BENGAL|BANKURA
+North Twenty Four Pargan*,West Bengal,,WEST BENGAL|NORTH TWENTY FOUR PARGANAS
+Hooghly,West Bengal,west bengal|hooghly,WEST BENGAL|HUGLI
+Medinipur West,West Bengal,,WEST BENGAL|PASCHIM MEDINIPUR
+Howrah,West Bengal,west bengal|howrah,WEST BENGAL|HAORA
+Kolkata,West Bengal,,
+Purba Medinipur,West Bengal,west bengal|purba medinipur,WEST BENGAL|PURBA MEDINIPUR
+Alipurduar,West Bengal,west bengal|alipurduar,WEST BENGAL|JALPAIGURI
+Paschim Bardhaman,West Bengal,west bengal|paschim bardhaman,WEST BENGAL|BARDDHAMAN
+Kalimpong,West Bengal,west bengal|kalimpong,WEST BENGAL|DARJILING
+Jhargram,West Bengal,west bengal|jhargram,WEST BENGAL|PASCHIM MEDINIPUR
+Cooch Behar,West Bengal,west bengal|coochbehar,WEST BENGAL|KOCH BIHAR
+Uttar Dinajpur,West Bengal,west bengal|uttar dinajpur,WEST BENGAL|UTTAR DINAJPUR
+Sahibganj,Jharkhand,jharkhand|sahebganj,JHARKHAND|SAHIBGANJ
+Godda,Jharkhand,jharkhand|godda,JHARKHAND|GODDA
+Pakur,Jharkhand,jharkhand|pakur,JHARKHAND|PAKUR
+Giridih,Jharkhand,jharkhand|giridih,JHARKHAND|GIRIDIH
+Dumka,Jharkhand,jharkhand|dumka,JHARKHAND|DUMKA
+Deoghar,Jharkhand,jharkhand|deoghar,JHARKHAND|DEOGHAR
+Palamu,Jharkhand,jharkhand|palamu,JHARKHAND|PALAMU
+Chatra,Jharkhand,jharkhand|chatra,JHARKHAND|CHATRA
+Garhwa,Jharkhand,jharkhand|garhwa,JHARKHAND|GARHWA
+Jamtara,Jharkhand,jharkhand|jamtara,JHARKHAND|JAMTARA
+Dhanbad,Jharkhand,jharkhand|dhanbad,JHARKHAND|DHANBAD
+Latehar,Jharkhand,jharkhand|latehar,JHARKHAND|LATEHAR
+Bokaro,Jharkhand,jharkhand|bokaro,JHARKHAND|BOKARO
+Ramgarh,Jharkhand,jharkhand|ramgarh,JHARKHAND|RAMGARH
+Ranchi,Jharkhand,jharkhand|ranchi,JHARKHAND|RANCHI
+Lohardaga,Jharkhand,jharkhand|lohardaga,JHARKHAND|LOHARDAGA
+Gumla,Jharkhand,jharkhand|gumla,JHARKHAND|GUMLA
+Khunti,Jharkhand,jharkhand|khunti,JHARKHAND|KHUNTI
+Saraikela-Kharsawan,Jharkhand,jharkhand|saraikela kharsawan,JHARKHAND|SARAIKELA KHARSAWAN
+Purbi Singhbhum,Jharkhand,jharkhand|east singhbum,JHARKHAND|PURBI SINGHBHUM
+Pashchimi Singhbhum,Jharkhand,jharkhand|west singhbhum,JHARKHAND|PASHCHIMI SINGHBHUM
+Simdega,Jharkhand,jharkhand|simdega,JHARKHAND|SIMDEGA
+Kodarma,Jharkhand,jharkhand|koderma,JHARKHAND|KODARMA
+Hazaribagh,Jharkhand,jharkhand|hazaribagh,JHARKHAND|HAZARIBAGH
+Bhadrak,Odisha,odisha|bhadrak,ODISHA|BHADRAK
+Dhenkanal,Odisha,odisha|dhenkanal,ODISHA|DHENKANAL
+Jajapur,Odisha,odisha|jajapur,ODISHA|JAJAPUR
+Subarnapur,Odisha,odisha|sonepur,ODISHA|SUBARNAPUR
+Nuapada,Odisha,odisha|nuapada,ODISHA|NUAPADA
+Balangir,Odisha,odisha|balangir,ODISHA|BALANGIR
+Baudh,Odisha,odisha|boudh,ODISHA|BAUDH
+Cuttack,Odisha,odisha|cuttack,ODISHA|CUTTACK
+Kandhamal,Odisha,odisha|kandhamal,ODISHA|KANDHAMAL
+Nayagarh,Odisha,odisha|nayagarh,ODISHA|NAYAGARH
+Khordha,Odisha,odisha|khordha,ODISHA|KHORDHA
+Kalahandi,Odisha,odisha|kalahandi,ODISHA|KALAHANDI
+Jagatsinghapur,Odisha,odisha|jagatsinghapur,ODISHA|JAGATSINGHAPUR
+Puri,Odisha,odisha|puri,ODISHA|PURI
+Nabarangapur,Odisha,odisha|nabarangpur,ODISHA|NABARANGAPUR
+Rayagada,Odisha,odisha|rayagada,ODISHA|RAYAGADA
+Koraput,Odisha,odisha|koraput,ODISHA|KORAPUT
+Malkangiri,Odisha,odisha|malkangiri,ODISHA|MALKANGIRI
+Anugul,Odisha,odisha|anugul,ODISHA|ANUGUL
+Kendrapara,Odisha,odisha|kendrapara,ODISHA|KENDRAPARA
+Ganjam,Odisha,odisha|ganjam,ODISHA|GANJAM
+Gajapati,Odisha,odisha|gajapati,ODISHA|GAJAPATI
+Mayurbhanj,Odisha,odisha|mayurbhanj,ODISHA|MAYURBHANJ
+Sundargarh,Odisha,odisha|sundargarh,ODISHA|SUNDARGARH
+Kendujhar,Odisha,odisha|kendujhar,ODISHA|KENDUJHAR
+Baleshwar,Odisha,odisha|baleshwar,ODISHA|BALESHWAR
+Jharsuguda,Odisha,odisha|jharsuguda,ODISHA|JHARSUGUDA
+Bargarh,Odisha,odisha|bargarh,ODISHA|BARGARH
+Debagarh,Odisha,odisha|deogarh,ODISHA|DEBAGARH
+Sambalpur,Odisha,odisha|sambalpur,ODISHA|SAMBALPUR
+Mahasamund,Chhattisgarh,chhattisgarh|mahasamund,CHHATTISGARH|MAHASAMUND
+Uttar Bastar Kanker,Chhattisgarh,chhattisgarh|kanker,CHHATTISGARH|UTTAR BASTAR KANKER
+Narayanpur,Chhattisgarh,chhattisgarh|narayanpur,CHHATTISGARH|NARAYANPUR
+Dakshin Bastar Dantewada,Chhattisgarh,chhattisgarh|dakshin bastar dantewada,CHHATTISGARH|DAKSHIN BASTAR DANTEWADA
+Bastar,Chhattisgarh,chhattisgarh|bastar,CHHATTISGARH|BASTAR
+Kondagaon,Chhattisgarh,chhattisgarh|kondagaon,CHHATTISGARH|BASTAR
+Gariaband,Chhattisgarh,chhattisgarh|gariyaband,CHHATTISGARH|RAIPUR
+Raipur,Chhattisgarh,chhattisgarh|raipur,CHHATTISGARH|RAIPUR
+Durg,Chhattisgarh,chhattisgarh|durg,CHHATTISGARH|DURG
+Dhamtari,Chhattisgarh,chhattisgarh|dhamtari,CHHATTISGARH|DHAMTARI
+Balod,Chhattisgarh,chhattisgarh|balod,CHHATTISGARH|DURG
+Koriya,Chhattisgarh,chhattisgarh|korea,CHHATTISGARH|KORIYA
+Jashpur,Chhattisgarh,chhattisgarh|jashpur,CHHATTISGARH|JASHPUR
+Korba,Chhattisgarh,chhattisgarh|korba,CHHATTISGARH|KORBA
+Kabeerdham,Chhattisgarh,chhattisgarh|kabirdham,CHHATTISGARH|KABEERDHAM
+Janjgir - Champa,Chhattisgarh,chhattisgarh|janjgir champa,CHHATTISGARH|JANJGIR CHAMPA
+Bametara,Chhattisgarh,chhattisgarh|bemetara,CHHATTISGARH|DURG
+Rajnandgaon,Chhattisgarh,chhattisgarh|rajnandgaon,CHHATTISGARH|RAJNANDGAON
+Surajpur,Chhattisgarh,chhattisgarh|surajpur,CHHATTISGARH|SURGUJA
+Baloda Bazar,Chhattisgarh,chhattisgarh|baloda bazar,CHHATTISGARH|RAIPUR
+Mungeli,Chhattisgarh,chhattisgarh|mungeli,CHHATTISGARH|BILASPUR
+Surguja,Chhattisgarh,chhattisgarh|surguja,CHHATTISGARH|SURGUJA
+Balrampur,Chhattisgarh,chhattisgarh|balrampur,CHHATTISGARH|SURGUJA
+Bijapur,Chhattisgarh,chhattisgarh|bijapur,CHHATTISGARH|BIJAPUR
+Raigarh,Chhattisgarh,chhattisgarh|raigarh,CHHATTISGARH|RAIGARH
+Bilaspur,Chhattisgarh,chhattisgarh|bilaspur,CHHATTISGARH|BILASPUR
+Sukma,Chhattisgarh,chhattisgarh|sukma,CHHATTISGARH|DAKSHIN BASTAR DANTEWADA
+Burhanpur,Madhya Pradesh,madhya pradesh|burhanpur,MADHYA PRADESH|BURHANPUR
+Morena,Madhya Pradesh,madhya pradesh|morena,MADHYA PRADESH|MORENA
+Bhind,Madhya Pradesh,madhya pradesh|bhind,MADHYA PRADESH|BHIND
+Gwalior,Madhya Pradesh,madhya pradesh|gwalior,MADHYA PRADESH|GWALIOR
+Sheopur,Madhya Pradesh,madhya pradesh|sheopur,MADHYA PRADESH|SHEOPUR
+Shivpuri,Madhya Pradesh,madhya pradesh|shivpuri,MADHYA PRADESH|SHIVPURI
+Tikamgarh,Madhya Pradesh,madhya pradesh|tikamgarh,MADHYA PRADESH|TIKAMGARH
+Neemuch,Madhya Pradesh,madhya pradesh|neemuch,MADHYA PRADESH|NEEMUCH
+Rewa,Madhya Pradesh,madhya pradesh|rewa,MADHYA PRADESH|REWA
+Satna,Madhya Pradesh,madhya pradesh|satna,MADHYA PRADESH|SATNA
+Guna,Madhya Pradesh,madhya pradesh|guna,MADHYA PRADESH|GUNA
+Ashoknagar,Madhya Pradesh,madhya pradesh|ashoknagar,MADHYA PRADESH|ASHOKNAGAR
+Mandsaur,Madhya Pradesh,madhya pradesh|mandsaur,MADHYA PRADESH|MANDSAUR
+Singrauli,Madhya Pradesh,madhya pradesh|singrauli,MADHYA PRADESH|SINGRAULI
+Sidhi,Madhya Pradesh,madhya pradesh|sidhi,MADHYA PRADESH|SIDHI
+Sagar,Madhya Pradesh,madhya pradesh|sagar,MADHYA PRADESH|SAGAR
+Damoh,Madhya Pradesh,madhya pradesh|damoh,MADHYA PRADESH|DAMOH
+Shajapur,Madhya Pradesh,madhya pradesh|shajapur,MADHYA PRADESH|SHAJAPUR
+Vidisha,Madhya Pradesh,madhya pradesh|vidisha,MADHYA PRADESH|VIDISHA
+Rajgarh,Madhya Pradesh,madhya pradesh|rajgarh,MADHYA PRADESH|RAJGARH
+Shahdol,Madhya Pradesh,madhya pradesh|shahdol,MADHYA PRADESH|SHAHDOL
+Katni,Madhya Pradesh,madhya pradesh|katni,MADHYA PRADESH|KATNI
+Umaria,Madhya Pradesh,madhya pradesh|umaria,MADHYA PRADESH|UMARIA
+Ratlam,Madhya Pradesh,madhya pradesh|ratlam,MADHYA PRADESH|RATLAM
+Bhopal,Madhya Pradesh,madhya pradesh|bhopal,MADHYA PRADESH|BHOPAL
+Ujjain,Madhya Pradesh,madhya pradesh|ujjain,MADHYA PRADESH|UJJAIN
+Raisen,Madhya Pradesh,madhya pradesh|raisen,MADHYA PRADESH|RAISEN
+Sehore,Madhya Pradesh,madhya pradesh|sehore,MADHYA PRADESH|SEHORE
+Jabalpur,Madhya Pradesh,madhya pradesh|jabalpur,MADHYA PRADESH|JABALPUR
+Dewas,Madhya Pradesh,madhya pradesh|dewas,MADHYA PRADESH|DEWAS
+Anuppur,Madhya Pradesh,madhya pradesh|anuppur,MADHYA PRADESH|ANUPPUR
+Jhabua,Madhya Pradesh,madhya pradesh|jhabua,MADHYA PRADESH|JHABUA
+Dindori,Madhya Pradesh,madhya pradesh|dindori,MADHYA PRADESH|DINDORI
+Narsimhapur,Madhya Pradesh,madhya pradesh|narsinghpur,MADHYA PRADESH|NARSIMHAPUR
+Dhar,Madhya Pradesh,madhya pradesh|dhar,MADHYA PRADESH|DHAR
+Indore,Madhya Pradesh,madhya pradesh|indore,MADHYA PRADESH|INDORE
+Mandla,Madhya Pradesh,madhya pradesh|mandla,MADHYA PRADESH|MANDLA
+Hoshangabad,Madhya Pradesh,madhya pradesh|hoshangabad,MADHYA PRADESH|HOSHANGABAD
+Seoni,Madhya Pradesh,madhya pradesh|seoni,MADHYA PRADESH|SEONI
+Alirajpur,Madhya Pradesh,madhya pradesh|alirajpur,MADHYA PRADESH|ALIRAJPUR
+Chhindwara,Madhya Pradesh,madhya pradesh|chhindwara,MADHYA PRADESH|CHHINDWARA
+Harda,Madhya Pradesh,madhya pradesh|harda,MADHYA PRADESH|HARDA
+West Nimar,Madhya Pradesh,madhya pradesh|khargone,MADHYA PRADESH|WEST NIMAR
+East Nimar,Madhya Pradesh,madhya pradesh|khandwa,MADHYA PRADESH|EAST NIMAR
+Balaghat,Madhya Pradesh,madhya pradesh|balaghat,MADHYA PRADESH|BALAGHAT
+Barwani,Madhya Pradesh,madhya pradesh|barwani,MADHYA PRADESH|BARWANI
+Agar Malwa,Madhya Pradesh,madhya pradesh|agar malwa,MADHYA PRADESH|SHAJAPUR
+Datia,Madhya Pradesh,madhya pradesh|datia,MADHYA PRADESH|DATIA
+Chhatarpur,Madhya Pradesh,madhya pradesh|chhatarpur,MADHYA PRADESH|CHHATARPUR
+Panna,Madhya Pradesh,madhya pradesh|panna,MADHYA PRADESH|PANNA
+Betul,Madhya Pradesh,madhya pradesh|betul,MADHYA PRADESH|BETUL
+Niwari,Madhya Pradesh,madhya pradesh|niwari,MADHYA PRADESH|TIKAMGARH
+Valsad,Gujarat,gujarat|valsad,GUJARAT|VALSAD
+Amreli,Gujarat,gujarat|amreli,GUJARAT|AMRELI
+The Dangs,Gujarat,gujarat|dang,GUJARAT|THE DANGS
+Banas Kantha,Gujarat,gujarat|banas kantha,GUJARAT|BANAS KANTHA
+Patan,Gujarat,gujarat|patan,GUJARAT|PATAN
+Mahesana,Gujarat,gujarat|mahesana,GUJARAT|MAHESANA
+Gandhinagar,Gujarat,gujarat|gandhinagar,GUJARAT|GANDHINAGAR
+Ahmadabad,Gujarat,gujarat|ahmadabad,GUJARAT|AHMADABAD
+Panch Mahals,Gujarat,gujarat|panch mahals,GUJARAT|PANCH MAHALS
+Dohad,Gujarat,gujarat|dohad,GUJARAT|DOHAD
+Vadodara,Gujarat,gujarat|vadodara,GUJARAT|VADODARA
+Bharuch,Gujarat,gujarat|bharuch,GUJARAT|BHARUCH
+Porbandar,Gujarat,gujarat|porbandar,GUJARAT|PORBANDAR
+Narmada,Gujarat,gujarat|narmada,GUJARAT|NARMADA
+Surat,Gujarat,gujarat|surat,GUJARAT|SURAT
+Tapi,Gujarat,gujarat|tapi,GUJARAT|TAPI
+Aravalli,Gujarat,gujarat|aravalli,GUJARAT|SABAR KANTHA
+Botad,Gujarat,gujarat|botad,GUJARAT|BHAVNAGAR
+Chota Udaipur,Gujarat,,GUJARAT|VADODARA
+Mahisagar,Gujarat,gujarat|mahisagar,GUJARAT|PANCH MAHALS
+Gir Somnath,Gujarat,gujarat|gir somnath,GUJARAT|JUNAGADH
+Sabar Kantha,Gujarat,gujarat|sabar kantha,GUJARAT|SABAR KANTHA
+Kachchh,Gujarat,gujarat|kachchh,GUJARAT|KACHCHH
+Surendranagar,Gujarat,gujarat|surendranagar,GUJARAT|SURENDRANAGAR
+Rajkot,Gujarat,gujarat|rajkot,GUJARAT|RAJKOT
+Kheda,Gujarat,gujarat|kheda,GUJARAT|KHEDA
+Anand,Gujarat,gujarat|anand,GUJARAT|ANAND
+Bhavnagar,Gujarat,gujarat|bhavnagar,GUJARAT|BHAVNAGAR
+Junagadh,Gujarat,gujarat|junagadh,GUJARAT|JUNAGADH
+Jamnagar,Gujarat,gujarat|jamnagar,GUJARAT|JAMNAGAR
+Devbhumi Dwarka,Gujarat,gujarat|devbhumi dwarka,GUJARAT|JAMNAGAR
+Morbi,Gujarat,gujarat|morbi,GUJARAT|RAJKOT
+Navsari,Gujarat,gujarat|navsari,GUJARAT|NAVSARI
+Daman,Daman & Diu,,THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU|DAMAN
+Diu,Daman & Diu,,THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU|DIU
+Dadra & Nagar Haveli,Dadra & Nagar Have,,DADRA NAGAR HAVELI|DADRA NAGAR HAVELI
+Gondiya,Maharashtra,maharashtra|gondia,MAHARASHTRA|GONDIYA
+Bhandara,Maharashtra,maharashtra|bhandara,MAHARASHTRA|BHANDARA
+Jalgaon,Maharashtra,maharashtra|jalgaon,MAHARASHTRA|JALGAON
+Wardha,Maharashtra,maharashtra|wardha,MAHARASHTRA|WARDHA
+Buldana,Maharashtra,maharashtra|buldhana,MAHARASHTRA|BULDANA
+Akola,Maharashtra,maharashtra|akola,MAHARASHTRA|AKOLA
+Nashik,Maharashtra,maharashtra|nashik,MAHARASHTRA|NASHIK
+Gadchiroli,Maharashtra,maharashtra|gadchiroli,MAHARASHTRA|GADCHIROLI
+Washim,Maharashtra,maharashtra|washim,MAHARASHTRA|WASHIM
+Chandrapur,Maharashtra,maharashtra|chandrapur,MAHARASHTRA|CHANDRAPUR
+Yavatmal,Maharashtra,maharashtra|yavatmal,MAHARASHTRA|YAVATMAL
+Jalna,Maharashtra,maharashtra|jalna,MAHARASHTRA|JALNA
+Ahmadnagar,Maharashtra,maharashtra|ahmednagar,MAHARASHTRA|AHMADNAGAR
+Hingoli,Maharashtra,maharashtra|hingoli,MAHARASHTRA|HINGOLI
+Nanded,Maharashtra,maharashtra|nanded,MAHARASHTRA|NANDED
+Parbhani,Maharashtra,maharashtra|parbhani,MAHARASHTRA|PARBHANI
+Pune,Maharashtra,maharashtra|pune,MAHARASHTRA|PUNE
+Bid,Maharashtra,maharashtra|beed,MAHARASHTRA|BID
+Mumbai,Maharashtra,maharashtra|mumbai,MAHARASHTRA|MUMBAI
+Latur,Maharashtra,maharashtra|latur,MAHARASHTRA|LATUR
+Osmanabad,Maharashtra,maharashtra|osmanabad,MAHARASHTRA|OSMANABAD
+Solapur,Maharashtra,maharashtra|solapur,MAHARASHTRA|SOLAPUR
+Satara,Maharashtra,maharashtra|satara,MAHARASHTRA|SATARA
+Ratnagiri,Maharashtra,maharashtra|ratnagiri,MAHARASHTRA|RATNAGIRI
+Sangli,Maharashtra,maharashtra|sangli,MAHARASHTRA|SANGLI
+Kolhapur,Maharashtra,maharashtra|kolhapur,MAHARASHTRA|KOLHAPUR
+Sindhudurg,Maharashtra,maharashtra|sindhudurg,MAHARASHTRA|SINDHUDURG
+Thane,Maharashtra,maharashtra|thane,MAHARASHTRA|THANE
+Palghar,Maharashtra,maharashtra|palghar,MAHARASHTRA|THANE
+Nandurbar,Maharashtra,maharashtra|nandurbar,MAHARASHTRA|NANDURBAR
+Amravati,Maharashtra,maharashtra|amravati,MAHARASHTRA|AMRAVATI
+Dhule,Maharashtra,maharashtra|dhule,MAHARASHTRA|DHULE
+Nagpur,Maharashtra,maharashtra|nagpur,MAHARASHTRA|NAGPUR
+Aurangabad,Maharashtra,maharashtra|aurangabad,MAHARASHTRA|AURANGABAD
+Raigarh,Maharashtra,maharashtra|raigad,MAHARASHTRA|RAIGARH
+Mumbai Suburban,Maharashtra,maharashtra|mumbai suburban,MAHARASHTRA|MUMBAI SUBURBAN
+Srikakulam,Andhra Pradesh,andhra pradesh|srikakulam,ANDHRA PRADESH|SRIKAKULAM
+Vizianagaram,Andhra Pradesh,andhra pradesh|vizianagaram,ANDHRA PRADESH|VIZIANAGARAM
+Visakhapatnam,Andhra Pradesh,andhra pradesh|visakhapatanam,ANDHRA PRADESH|VISAKHAPATNAM
+Krishna,Andhra Pradesh,andhra pradesh|krishna,ANDHRA PRADESH|KRISHNA
+Guntur,Andhra Pradesh,andhra pradesh|guntur,ANDHRA PRADESH|GUNTUR
+East Godavari,Andhra Pradesh,andhra pradesh|east godavari,ANDHRA PRADESH|EAST GODAVARI
+Prakasam,Andhra Pradesh,andhra pradesh|prakasam,ANDHRA PRADESH|PRAKASAM
+Kurnool,Andhra Pradesh,andhra pradesh|kurnool,ANDHRA PRADESH|KURNOOL
+Anantapur,Andhra Pradesh,andhra pradesh|anantapur,ANDHRA PRADESH|ANANTAPUR
+Sri Potti Sriramulu Nell*,Andhra Pradesh,andhra pradesh|sri potti sriramulu nellore,ANDHRA PRADESH|SRI POTTI SRIRAMULU NELLORE
+West Godavari,Andhra Pradesh,andhra pradesh|west godavari,ANDHRA PRADESH|WEST GODAVARI
+Y.S.R.,Andhra Pradesh,,ANDHRA PRADESH|YSR KADAPA
+Chittoor,Andhra Pradesh,andhra pradesh|chittoor,ANDHRA PRADESH|CHITTOOR
+Bidar,Karnataka,karnataka|bidar,KARNATAKA|BIDAR
+Kalaburagi,Karnataka,karnataka|kalaburagi,KARNATAKA|GULBARGA
+Belagavi,Karnataka,karnataka|belagavi,KARNATAKA|BELGAUM
+Yadgir,Karnataka,karnataka|yadagiri,KARNATAKA|YADGIR
+Bagalkote,Karnataka,karnataka|bagalkote,KARNATAKA|BAGALKOT
+Raichur,Karnataka,karnataka|raichur,KARNATAKA|RAICHUR
+Koppal,Karnataka,karnataka|koppal,KARNATAKA|KOPPAL
+Gadag,Karnataka,karnataka|gadag,KARNATAKA|GADAG
+Ballari,Karnataka,karnataka|ballari,KARNATAKA|BELLARY
+Dharwad,Karnataka,karnataka|dharwad,KARNATAKA|DHARWAD
+Uttara Kannada,Karnataka,karnataka|uttara kannada,KARNATAKA|UTTARA KANNADA
+Haveri,Karnataka,karnataka|haveri,KARNATAKA|HAVERI
+Chitradurga,Karnataka,karnataka|chitradurga,KARNATAKA|CHITRADURGA
+Davanagere,Karnataka,karnataka|davangere,KARNATAKA|DAVANAGERE
+Shivamogga,Karnataka,karnataka|shivamogga,KARNATAKA|SHIMOGA
+Udupi,Karnataka,karnataka|udupi,KARNATAKA|UDUPI
+Chikkamagaluru,Karnataka,karnataka|chikkamagaluru,KARNATAKA|CHIKMAGALUR
+Chikkaballapura,Karnataka,karnataka|chikkaballapura,KARNATAKA|CHIKKABALLAPURA
+Hassan,Karnataka,karnataka|hassan,KARNATAKA|HASSAN
+Kolar,Karnataka,karnataka|kolar,KARNATAKA|KOLAR
+Bengaluru Rural,Karnataka,karnataka|bengaluru urban,KARNATAKA|BANGALORE RURAL
+Dakshina Kannada,Karnataka,karnataka|dakshina kannada,KARNATAKA|DAKSHINA KANNADA
+Bangalore,Karnataka,karnataka|bengaluru urban,KARNATAKA|BANGALORE
+Kodagu,Karnataka,karnataka|kodagu,KARNATAKA|KODAGU
+Chamarajanagara,Karnataka,karnataka|chamarajanagara,KARNATAKA|CHAMARAJANAGAR
+Tumakuru,Karnataka,karnataka|tumakuru,KARNATAKA|TUMKUR
+Ramanagara,Karnataka,karnataka|ramanagara,KARNATAKA|RAMANAGARA
+Mandya,Karnataka,karnataka|mandya,KARNATAKA|MANDYA
+Mysuru,Karnataka,karnataka|mysuru,KARNATAKA|MYSORE
+Vijayapura,Karnataka,karnataka|vijayapura,KARNATAKA|BIJAPUR
+North Goa,Goa,goa|north goa,GOA|NORTH GOA
+South Goa,Goa,goa|south goa,GOA|SOUTH GOA
+Lakshadweep,Lakshadweep,,
+Kasaragod,Kerala,kerala|kasaragod,KERALA|KASARAGOD
+Wayanad,Kerala,kerala|wayanad,KERALA|WAYANAD
+Kozhikode,Kerala,kerala|kozhikode,KERALA|KOZHIKODE
+Malappuram,Kerala,kerala|malappuram,KERALA|MALAPPURAM
+Palakkad,Kerala,kerala|palakkad,KERALA|PALAKKAD
+Thrissur,Kerala,kerala|thrissur,KERALA|THRISSUR
+Idukki,Kerala,kerala|idukki,KERALA|IDUKKI
+Ernakulam,Kerala,kerala|ernakulam,KERALA|ERNAKULAM
+Alappuzha,Kerala,kerala|alappuzha,KERALA|ALAPPUZHA
+Kottayam,Kerala,kerala|kottayam,KERALA|KOTTAYAM
+Pathanamthitta,Kerala,kerala|pathanamthitta,KERALA|PATHANAMTHITTA
+Kollam,Kerala,kerala|kollam,KERALA|KOLLAM
+Thiruvananthapuram,Kerala,kerala|thiruvananthapuram,KERALA|THIRUVANANTHAPURAM
+Kannur,Kerala,kerala|kannur,KERALA|KANNUR
+Krishnagiri,Tamil Nadu,tamil nadu|krishnagiri,TAMIL NADU|KRISHNAGIRI
+Tiruvannamalai,Tamil Nadu,tamil nadu|tiruvannamalai,TAMIL NADU|TIRUVANNAMALAI
+Dharmapuri,Tamil Nadu,tamil nadu|dharmapuri,TAMIL NADU|DHARMAPURI
+Salem,Tamil Nadu,tamil nadu|salem,TAMIL NADU|SALEM
+Erode,Tamil Nadu,tamil nadu|erode,TAMIL NADU|ERODE
+The Nilgiris,Tamil Nadu,tamil nadu|the nilgiris,TAMIL NADU|THE NILGIRIS
+Namakkal,Tamil Nadu,tamil nadu|namakkal,TAMIL NADU|NAMAKKAL
+Perambalur,Tamil Nadu,tamil nadu|perambalur,TAMIL NADU|PERAMBALUR
+Coimbatore,Tamil Nadu,tamil nadu|coimbatore,TAMIL NADU|COIMBATORE
+Tiruchirappalli,Tamil Nadu,tamil nadu|tiruchirappalli,TAMIL NADU|TIRUCHIRAPPALLI
+Ariyalur,Tamil Nadu,tamil nadu|ariyalur,TAMIL NADU|ARIYALUR
+Tiruppur,Tamil Nadu,tamil nadu|tiruppur,TAMIL NADU|TIRUPPUR
+Thanjavur,Tamil Nadu,tamil nadu|thanjavur,TAMIL NADU|THANJAVUR
+Karur,Tamil Nadu,tamil nadu|karur,TAMIL NADU|KARUR
+Thiruvarur,Tamil Nadu,tamil nadu|thiruvarur,TAMIL NADU|THIRUVARUR
+Dindigul,Tamil Nadu,tamil nadu|dindigul,TAMIL NADU|DINDIGUL
+Madurai,Tamil Nadu,tamil nadu|madurai,TAMIL NADU|MADURAI
+Theni,Tamil Nadu,tamil nadu|theni,TAMIL NADU|THENI
+Virudhunagar,Tamil Nadu,tamil nadu|virudhunagar,TAMIL NADU|VIRUDHUNAGAR
+Thoothukkudi,Tamil Nadu,tamil nadu|tuticorin,TAMIL NADU|THOOTHUKKUDI
+Kanniyakumari,Tamil Nadu,tamil nadu|kanniyakumari,TAMIL NADU|KANNIYAKUMARI
+Viluppuram,Tamil Nadu,tamil nadu|kallakurichi,TAMIL NADU|VILUPPURAM
+Cuddalore,Tamil Nadu,tamil nadu|cuddalore,TAMIL NADU|CUDDALORE
+Pudukkottai,Tamil Nadu,tamil nadu|pudukkottai,TAMIL NADU|PUDUKKOTTAI
+Sivaganga,Tamil Nadu,tamil nadu|sivaganga,TAMIL NADU|SIVAGANGA
+Ramanathapuram,Tamil Nadu,tamil nadu|ramanathapuram,TAMIL NADU|RAMANATHAPURAM
+Nagapattinam,Tamil Nadu,tamil nadu|nagapattinam,TAMIL NADU|NAGAPATTINAM
+Kallakurichi,Tamil Nadu,tamil nadu|kallakurichi,TAMIL NADU|VILUPPURAM
+Tenkasi,Tamil Nadu,tamil nadu|tenkasi,TAMIL NADU|TIRUNELVELI
+Tirunelveli,Tamil Nadu,tamil nadu|tirunelveli,TAMIL NADU|TIRUNELVELI
+Vellore,Tamil Nadu,tamil nadu|vellore,TAMIL NADU|VELLORE
+Ranipet,Tamil Nadu,tamil nadu|ranipet,TAMIL NADU|VELLORE
+Tirupathur,Tamil Nadu,tamil nadu|tirupathur,TAMIL NADU|VELLORE
+Kancheepuram,Tamil Nadu,tamil nadu|chengalpattu,TAMIL NADU|KANCHEEPURAM
+Chengalpattu,Tamil Nadu,tamil nadu|chengalpattu,TAMIL NADU|KANCHEEPURAM
+Chennai,Tamil Nadu,tamil nadu|chennai,TAMIL NADU|CHENNAI
+Thiruvallur,Tamil Nadu,tamil nadu|thiruvallur,TAMIL NADU|THIRUVALLUR
+Puducherry,Puducherry,puducherry|pondicherry,PUDUCHERRY|PUDUCHERRY
+Karaikal,Puducherry,puducherry|karaikal,PUDUCHERRY|KARAIKAL
+Mahe,Puducherry,puducherry|mahe,PUDUCHERRY|MAHE
+Yanam,Puducherry,puducherry|yanam,PUDUCHERRY|YANAM
+North  & Middle Andaman,Andaman & Nicobar,,ANDAMAN NICOBAR ISLANDS|NORTH MIDDLE ANDAMAN
+South Andaman,Andaman & Nicobar,,ANDAMAN NICOBAR ISLANDS|SOUTH ANDAMAN
+Nicobars,Andaman & Nicobar,,ANDAMAN NICOBAR ISLANDS|NICOBARS
+Adilabad,Telangana,telangana|adilabad,ANDHRA PRADESH|ADILABAD
+Hyderabad,Telangana,telangana|hyderabad,ANDHRA PRADESH|HYDERABAD
+Jagitial,Telangana,telangana|jagitial,ANDHRA PRADESH|KARIMNAGAR
+Jangoan,Telangana,telangana|jangoan,ANDHRA PRADESH|WARANGAL
+Mulugu,Telangana,telangana|mulugu,ANDHRA PRADESH|WARANGAL
+Jogulamba Gadwal,Telangana,,ANDHRA PRADESH|MAHBUBNAGAR
+Kamareddy,Telangana,telangana|kamareddy,ANDHRA PRADESH|NIZAMABAD
+Karimnagar,Telangana,telangana|karimnagar,ANDHRA PRADESH|KARIMNAGAR
+Khammam,Telangana,telangana|khammam,ANDHRA PRADESH|KHAMMAM
+Kumuram Bheem Asifabad,Telangana,telangana|komaram bheem asifabad,ANDHRA PRADESH|ADILABAD
+Mahabubabad,Telangana,telangana|mahabubabad,ANDHRA PRADESH|WARANGAL
+Mahabubnagar,Telangana,telangana|mahabubnagar,ANDHRA PRADESH|MAHBUBNAGAR
+Mancherial,Telangana,telangana|mancherial,ANDHRA PRADESH|ADILABAD
+Medak,Telangana,telangana|medak,ANDHRA PRADESH|MEDAK
+Medchal Malkajgiri,Telangana,telangana|medchal malkajgiri,ANDHRA PRADESH|RANGAREDDY
+Nagarkurnool,Telangana,telangana|nagarkurnool,ANDHRA PRADESH|MAHBUBNAGAR
+Nalgonda,Telangana,telangana|nalgonda,ANDHRA PRADESH|NALGONDA
+Nirmal,Telangana,telangana|nirmal,ANDHRA PRADESH|ADILABAD
+Nizamabad,Telangana,telangana|nizamabad,ANDHRA PRADESH|NIZAMABAD
+Peddapalli,Telangana,telangana|peddapalli,ANDHRA PRADESH|KARIMNAGAR
+Rajanna Sircilla,Telangana,,ANDHRA PRADESH|KARIMNAGAR
+Ranga Reddy,Telangana,,ANDHRA PRADESH|RANGAREDDY
+Sangareddy,Telangana,telangana|sangareddy,ANDHRA PRADESH|MEDAK
+Siddipet,Telangana,telangana|siddipet,ANDHRA PRADESH|MEDAK
+Suryapet,Telangana,telangana|suryapet,ANDHRA PRADESH|NALGONDA
+Vikarabad,Telangana,telangana|vikarabad,ANDHRA PRADESH|RANGAREDDY
+Wanaparthy,Telangana,telangana|wanaparthy,ANDHRA PRADESH|MAHBUBNAGAR
+Warangal Rural,Telangana,,ANDHRA PRADESH|WARANGAL
+Warangal Urban,Telangana,,ANDHRA PRADESH|WARANGAL
+Yadadri Bhuvanagiri,Telangana,,ANDHRA PRADESH|NALGONDA
+Bhadradri Kothagudem,Telangana,,ANDHRA PRADESH|KHAMMAM
+Jayashankar,Telangana,telangana|jayashankar,ANDHRA PRADESH|WARANGAL
+Narayanpet,Telangana,telangana|narayanapet,ANDHRA PRADESH|MAHBUBNAGAR
+Leh,Ladakh,,JAMMU KASHMIR|LEH LADAKH
+Kargil,Ladakh,ladakh|kargil,JAMMU KASHMIR|KARGIL

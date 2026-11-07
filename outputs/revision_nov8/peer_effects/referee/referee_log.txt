@@ -1,0 +1,354 @@
+================================================================================
+H1. Similarity falls with distance; adjacent same-state pairs share 77%
+measure                              sim_L1  sim_L1_no_other  sim_L1_gt1pct  sim_corr  sim_bhatt
+pairs                                                                                           
+adjacent, same state                   77.1             77.7           76.9      81.2       93.0
+adjacent, across a border              67.4             68.7           67.1      71.4       87.2
+not adjacent, 60-100 km, same state    75.2             76.2           74.9      80.5       91.3
+200-300 km, same state                 62.7             63.6           62.3      59.1       82.7
+200-300 km, across a border            57.7             58.9           57.2      56.1       78.7
+500-600 km, any                        48.4             49.7           47.8      38.4       71.1
+unit-bootstrap 95% CI, L1 measure:
+                              pairs    n  mean  lo95_unit_boot  hi95_unit_boot
+               adjacent, same state 1217  77.1            75.1            79.2
+          adjacent, across a border  391  67.4            63.4            71.5
+not adjacent, 60-100 km, same state  400  75.2            71.1            78.9
+             200-300 km, same state 2087  62.7            59.6            65.6
+        200-300 km, across a border 5205  57.7            55.4            59.9
+                    500-600 km, any 9643  48.4            46.8            50.4
+mean similarity by 50 km bin (upper edge):
+        measure  same_state   50  100  150  200  250  300  350  400  450  500  550  600
+         sim_L1           1 84.1 76.5 71.7 67.8 64.3 60.8 57.7 57.5 57.2 54.3 53.3 51.7
+         sim_L1           0 71.5 68.5 63.6 60.6 58.7 56.9 54.8 53.0 51.2 50.0 48.7 47.7
+sim_L1_no_other           1 85.1 77.1 72.3 68.6 65.1 61.7 59.1 58.6 58.5 55.8 54.8 53.1
+sim_L1_no_other           0 72.2 70.2 64.6 61.6 59.9 58.0 55.9 54.5 52.6 51.5 50.1 48.9
+       sim_corr           1 92.0 80.9 74.2 68.2 62.1 55.4 49.7 47.8 46.5 41.1 38.7 34.5
+       sim_corr           0 83.6 74.9 66.9 61.1 57.6 54.9 51.0 48.6 44.9 42.6 39.7 37.2
+
+cross-border adjacent similarity 67.41; same-state adjacent 77.11 at 76 km
+distance at which same-state pairs fall to 67.4: 20 km-bin rule 190 km, interpolated 185 km, linear 0-300 km fit 187 km (slope -8.42 pts per 100 km)
+border-equivalent km (crossing minus adjacent same-state mean km), unit bootstrap 95%: interpolated 109 [44, 169], linear 111 [68, 163]
+pairs <= 300 km, sim on cross + distance + adjacent: cross -6.31 (1.16), per 100 km -6.26 (0.57) -> border = 101 km
+
+================================================================================
+H2. Border effect on similarity, adjacent pairs
+               measure spec    n      b  se_unit  se_state  p_state  p_wild_state  mean_same  b_in_sd
+                sim_L1   M1 1485 -7.232    1.574     2.463    0.007         0.001     76.963   -0.453
+                sim_L1   M2 1485 -3.420    1.421     2.241    0.140         0.056     76.963   -0.214
+                sim_L1   M3 1485 -4.071    1.199     1.811    0.034         0.002     76.963   -0.255
+       sim_L1_no_other   M1 1485 -6.477    1.664     2.407    0.013         0.002     77.457   -0.379
+       sim_L1_no_other   M2 1485 -2.631    1.556     1.914    0.182         0.074     77.457   -0.154
+       sim_L1_no_other   M3 1485 -3.586    1.273     1.613    0.036         0.007     77.457   -0.210
+         sim_L1_gt1pct   M1 1485 -7.291    1.596     2.510    0.008           NaN     76.692   -0.454
+         sim_L1_gt1pct   M2 1485 -3.445    1.439     2.278    0.143         0.051     76.692   -0.214
+         sim_L1_gt1pct   M3 1485 -4.090    1.215     1.849    0.037           NaN     76.692   -0.255
+sim_L1_no_other_gt1pct   M1 1485 -6.519    1.683     2.442    0.013         0.001     77.272   -0.379
+sim_L1_no_other_gt1pct   M2 1485 -2.643    1.573     1.942    0.186         0.071     77.272   -0.154
+sim_L1_no_other_gt1pct   M3 1485 -3.588    1.287     1.639    0.039         0.006     77.272   -0.209
+              sim_corr   M1 1485 -6.917    2.649     3.916    0.090         0.029     80.764   -0.259
+              sim_corr   M2 1485 -2.027    2.665     4.307    0.642         0.529     80.764   -0.076
+              sim_corr   M3 1485 -3.848    2.232     3.215    0.243         0.146     80.764   -0.144
+             sim_bhatt   M1 1485 -4.269    1.034     1.838    0.029           NaN     92.798   -0.486
+             sim_bhatt   M2 1485 -1.865    0.845     1.460    0.214         0.115     92.798   -0.212
+             sim_bhatt   M3 1485 -2.275    0.729     1.205    0.071           NaN     92.798   -0.259
+               neg_dD1   M1 1485 -0.340    0.146     0.146    0.029           NaN     -1.397   -0.225
+               neg_dD1   M2 1485 -0.139    0.150     0.159    0.391         0.246     -1.397   -0.092
+               neg_dD1   M3 1485 -0.149    0.131     0.131    0.268           NaN     -1.397   -0.099
+               neg_dD0   M1 1497 -5.228    0.560     1.366    0.001           NaN     -2.957   -1.837
+               neg_dD0   M2 1497 -4.684    0.560     1.387    0.002         0.001     -2.957   -1.646
+               neg_dD0   M3 1497 -4.599    0.545     1.311    0.002           NaN     -2.957   -1.616
+1998-2002:
+               measure spec    n      b  se_unit  se_state  p_state
+                sim_L1   M1 1081 -8.166    1.990     3.865    0.046
+                sim_L1   M2 1081 -4.543    1.420     2.518    0.084
+                sim_L1   M3 1081 -4.764    1.374     2.414    0.061
+       sim_L1_no_other   M1 1081 -5.210    1.647     2.129    0.022
+       sim_L1_no_other   M2 1081 -1.865    1.425     1.493    0.224
+       sim_L1_no_other   M3 1081 -1.991    1.226     1.126    0.090
+sim_L1_no_other_gt1pct   M1 1081 -5.207    1.665     2.170    0.025
+sim_L1_no_other_gt1pct   M2 1081 -1.836    1.439     1.535    0.244
+sim_L1_no_other_gt1pct   M3 1081 -1.949    1.233     1.147    0.103
+placebo k-means partitions (500, 25 regions): M1 placebo border coef mean 1.54, sd 1.38, 2.5-97.5% [-1.08, 4.16]; real -7.23; share of placebos at or below real 0.000
+placebo k-means partitions (500, 25 regions): M2 placebo border coef mean 0.35, sd 1.30, 2.5-97.5% [-2.25, 2.86]; real -3.42; share of placebos at or below real 0.000
+placebo lines drawn inside true states (same-state pairs only), M2: mean 0.55, sd 1.39, share <= real M2 0.000
+
+similarity by adjacent pair type, 2015-19:
+                                  sim_L1_w1519      d_irr      d_tri      dist_km     
+                                          mean size  mean size  mean size    mean size
+ptype                                                                                 
+cross-border                             67.68  351  0.23  351  4.12  351   88.70  351
+same state, border-interior              75.64  403  0.14  403  2.41  403   80.60  403
+same state, both border districts        77.78  378  0.14  378  2.50  378   77.79  378
+same state, interior                     77.59  353  0.12  353  1.77  353   69.87  353
+  placebo 'border-interior vs interior' M1: 0.05 (1.59), n 756
+  placebo 'border-interior vs interior' M2: 1.03 (1.36), n 756
+  placebo 'both-border vs interior' M1: 1.28 (1.86), n 731
+  placebo 'both-border vs interior' M2: 2.09 (1.65), n 731
+  cross-border vs same-state pairs that include a border district, M1: -7.37 (1.54)
+  cross-border vs same-state pairs that include a border district, M2: -4.20 (1.37)
+  cross-border vs same-state pairs that include a border district, M3: -4.33 (1.21)
+sim_L1 M1: full -7.23; drop one state range [-8.71 (state MADHYA PRADESH), -6.08 (state KERALA)]
+sim_L1 M2: full -3.42; drop one state range [-4.21 (state JAMMU AND KASHMIR), -1.70 (state KARNATAKA)]; drop one border range [-4.19, -2.71]
+sim_L1 M3: full -4.07; drop one state range [-4.95 (state MADHYA PRADESH), -2.64 (state KARNATAKA)]; drop one border range [-4.81, -3.57]
+measure                         drop  kind spec     b  se_unit    n
+ sim_L1                       Punjab state   M1 -6.97     1.63 1415
+ sim_L1                       Punjab state   M2 -3.55     1.44 1415
+ sim_L1                       Punjab state   M3 -4.19     1.21 1415
+ sim_L1   Telangana + Andhra Pradesh state   M1 -6.24     1.63 1415
+ sim_L1   Telangana + Andhra Pradesh state   M2 -1.94     1.31 1415
+ sim_L1   Telangana + Andhra Pradesh state   M3 -2.79     1.10 1415
+ sim_L1             Punjab + Haryana state   M1 -6.45     1.71 1352
+ sim_L1             Punjab + Haryana state   M2 -2.93     1.48 1352
+ sim_L1             Punjab + Haryana state   M3 -3.68     1.21 1352
+ sim_L1 Punjab + Haryana + Rajasthan state   M1 -7.57     1.83 1245
+ sim_L1 Punjab + Haryana + Rajasthan state   M2 -3.56     1.62 1245
+ sim_L1 Punjab + Haryana + Rajasthan state   M3 -4.75     1.31 1245
+sim_L1_no_other_gt1pct M1: full -6.52; drop one state range [-7.96 (state MADHYA PRADESH), -5.23 (state KERALA)]
+sim_L1_no_other_gt1pct M2: full -2.64; drop one state range [-3.42 (state JAMMU AND KASHMIR), -1.33 (Telangana + Andhra Pradesh)]; drop one border range [-3.38, -1.98]
+sim_L1_no_other_gt1pct M3: full -3.59; drop one state range [-4.49 (state RAJASTHAN), -2.49 (state KARNATAKA)]; drop one border range [-4.40, -3.04]
+               measure                         drop  kind spec     b  se_unit    n
+sim_L1_no_other_gt1pct                       Punjab state   M1 -6.37     1.78 1415
+sim_L1_no_other_gt1pct                       Punjab state   M2 -2.85     1.62 1415
+sim_L1_no_other_gt1pct                       Punjab state   M3 -3.78     1.33 1415
+sim_L1_no_other_gt1pct   Telangana + Andhra Pradesh state   M1 -5.70     1.74 1415
+sim_L1_no_other_gt1pct   Telangana + Andhra Pradesh state   M2 -1.33     1.49 1415
+sim_L1_no_other_gt1pct   Telangana + Andhra Pradesh state   M3 -2.53     1.22 1415
+sim_L1_no_other_gt1pct             Punjab + Haryana state   M1 -5.87     1.87 1352
+sim_L1_no_other_gt1pct             Punjab + Haryana state   M2 -2.21     1.66 1352
+sim_L1_no_other_gt1pct             Punjab + Haryana state   M3 -3.27     1.34 1352
+sim_L1_no_other_gt1pct Punjab + Haryana + Rajasthan state   M1 -6.95     2.00 1245
+sim_L1_no_other_gt1pct Punjab + Haryana + Rajasthan state   M2 -2.82     1.83 1245
+sim_L1_no_other_gt1pct Punjab + Haryana + Rajasthan state   M3 -4.36     1.43 1245
+
+================================================================================
+H3. Per-group border gaps (absolute share gaps, points), adjacent pairs, 2015-19
+spec     outcome      b  se_unit  se_state  p_unit  p_state  p_wild_state  q_bh_unit  q_bh_state  q_bh_wild_state  holm_wild_state  share_of_sim_gap  mean_same
+  M1      sim_L1 -7.232    1.574     2.463   0.000    0.007           NaN        NaN         NaN              NaN              NaN               NaN     76.963
+  M1      g_rice  4.284    1.215     1.757   0.000    0.022           NaN      0.004       0.202              NaN              NaN             0.296     10.404
+  M1     g_wheat  1.573    0.676     1.248   0.020    0.220           NaN      0.081       0.626              NaN              NaN             0.109      4.347
+  M1     g_maize  1.915    0.864     1.761   0.027    0.288           NaN      0.081       0.626              NaN              NaN             0.132      5.691
+  M1   g_millets  0.310    0.727     1.320   0.670    0.817           NaN      0.754       0.910              NaN              NaN             0.021      4.477
+  M1    g_pulses  1.001    0.749     1.212   0.182    0.417           NaN      0.273       0.626              NaN              NaN             0.069      6.147
+  M1  g_oilseeds  1.713    0.874     1.365   0.051    0.222           NaN      0.091       0.626              NaN              NaN             0.118      5.268
+  M1    g_cotton -0.111    0.685     0.971   0.871    0.910           NaN      0.871       0.910              NaN              NaN            -0.008      3.031
+  M1 g_sugarcane  0.864    0.789     1.369   0.274    0.534           NaN      0.352       0.686              NaN              NaN             0.060      2.217
+  M1     g_other  2.915    1.473     3.119   0.048    0.359           NaN      0.091       0.626              NaN              NaN             0.202      4.492
+  M2      sim_L1 -3.420    1.421     2.241   0.016    0.140         0.039        NaN         NaN              NaN              NaN               NaN     76.963
+  M2      g_rice  1.949    1.156     1.643   0.092    0.247         0.147      0.365       0.977            0.690            1.000             0.285     10.404
+  M2     g_wheat  0.971    0.626     0.998   0.122    0.340         0.230      0.365       0.977            0.690            1.000             0.142      4.347
+  M2     g_maize  0.269    0.741     1.294   0.717    0.837         0.808      0.922       0.977            0.973            1.000             0.039      5.691
+  M2   g_millets -0.041    0.823     1.422   0.961    0.977         0.973      0.961       0.977            0.973            1.000            -0.006      4.477
+  M2    g_pulses  0.466    0.801     1.454   0.561    0.752         0.714      0.895       0.977            0.973            1.000             0.068      6.147
+  M2  g_oilseeds  1.663    0.960     1.512   0.084    0.282         0.192      0.365       0.977            0.690            1.000             0.243      5.268
+  M2    g_cotton -0.035    0.691     1.027   0.960    0.973         0.968      0.961       0.977            0.973            1.000            -0.005      3.031
+  M2 g_sugarcane  0.438    0.829     1.412   0.597    0.759         0.778      0.895       0.977            0.973            1.000             0.064      2.217
+  M2     g_other  1.159    0.984     1.647   0.239    0.488         0.377      0.538       0.977            0.848            1.000             0.170      4.492
+  M3      sim_L1 -4.071    1.199     1.811   0.001    0.034         0.002        NaN         NaN              NaN              NaN               NaN     76.963
+  M3      g_rice  1.771    1.023     1.355   0.084    0.204         0.116      0.209       0.629            0.381            0.954             0.217     10.404
+  M3     g_wheat  0.919    0.476     0.713   0.054    0.210         0.127      0.209       0.629            0.381            0.954             0.113      4.347
+  M3     g_maize  0.956    0.568     1.108   0.093    0.397         0.306      0.209       0.714            0.571            1.000             0.117      5.691
+  M3   g_millets  0.315    0.764     1.486   0.680    0.834         0.893      0.687       0.834            0.893            1.000             0.039      4.477
+  M3    g_pulses  0.597    0.789     1.493   0.449    0.693         0.692      0.674       0.834            0.893            1.000             0.073      6.147
+  M3  g_oilseeds  1.788    0.858     1.374   0.037    0.205         0.106      0.209       0.629            0.381            0.954             0.220      5.268
+  M3    g_cotton  0.192    0.476     0.636   0.687    0.766         0.728      0.687       0.834            0.893            1.000             0.024      3.031
+  M3 g_sugarcane  0.417    0.735     1.259   0.571    0.743         0.835      0.687       0.834            0.893            1.000             0.051      2.217
+  M3     g_other  1.186    0.795     1.199   0.136    0.333         0.317      0.245       0.714            0.571            1.000             0.146      4.492
+M1: share of the similarity border gap from rice+wheat 0.40, pulses+millets 0.09, other 0.20, cotton -0.01, oilseeds 0.12, maize 0.13, sugarcane 0.06
+M2: share of the similarity border gap from rice+wheat 0.43, pulses+millets 0.06, other 0.17, cotton -0.01, oilseeds 0.24, maize 0.04, sugarcane 0.06
+M3: share of the similarity border gap from rice+wheat 0.33, pulses+millets 0.11, other 0.15, cotton 0.02, oilseeds 0.22, maize 0.12, sugarcane 0.05
+border coefficient as a share of the same-state mean gap, M2: rice +0.19, wheat +0.22, maize +0.05, millets -0.01, pulses +0.08, oilseeds +0.32, cotton -0.01, sugarcane +0.20, other +0.26
+
+================================================================================
+H4. Widening, pair-year panel
+               outcome    spec    term cluster     b   se  lo95  hi95    p
+                sim_L1 periods  x_2013    unit  0.14 0.92 -1.66  1.93 0.88
+                sim_L1 periods  x_2013   state  0.14 1.60 -3.00  3.28 0.93
+                sim_L1   trend x_trend    unit -0.01 0.54 -1.07  1.05 0.98
+                sim_L1   trend x_trend   state -0.01 0.88 -1.74  1.72 0.99
+       sim_L1_no_other periods  x_2013    unit -0.54 0.72 -1.95  0.87 0.45
+       sim_L1_no_other periods  x_2013   state -0.54 0.87 -2.24  1.16 0.54
+       sim_L1_no_other   trend x_trend    unit -0.34 0.45 -1.23  0.55 0.45
+       sim_L1_no_other   trend x_trend   state -0.34 0.56 -1.43  0.75 0.54
+sim_L1_no_other_gt1pct periods  x_2013    unit -0.56 0.73 -1.99  0.87 0.44
+sim_L1_no_other_gt1pct periods  x_2013   state -0.56 0.88 -2.28  1.16 0.53
+sim_L1_no_other_gt1pct   trend x_trend    unit -0.36 0.46 -1.26  0.54 0.43
+sim_L1_no_other_gt1pct   trend x_trend   state -0.36 0.56 -1.47  0.74 0.53
+              sim_corr periods  x_2013    unit -0.19 1.91 -3.93  3.56 0.92
+              sim_corr periods  x_2013   state -0.19 3.36 -6.78  6.41 0.96
+              sim_corr   trend x_trend    unit -0.56 1.08 -2.67  1.55 0.60
+              sim_corr   trend x_trend   state -0.56 1.76 -4.00  2.89 0.75
+                g_rice periods  x_2013    unit  0.68 0.66 -0.62  1.98 0.31
+                g_rice periods  x_2013   state  0.68 1.26 -1.78  3.14 0.59
+                g_rice   trend x_trend    unit  0.53 0.40 -0.26  1.32 0.19
+                g_rice   trend x_trend   state  0.53 0.69 -0.83  1.89 0.45
+              g_cotton periods  x_2013    unit  0.14 0.32 -0.49  0.77 0.66
+              g_cotton periods  x_2013   state  0.14 0.37 -0.58  0.87 0.70
+              g_cotton   trend x_trend    unit  0.16 0.21 -0.25  0.56 0.44
+              g_cotton   trend x_trend   state  0.16 0.24 -0.30  0.62 0.51
+
+Telangana cotton borders, pair by pair (cotton share, Telangana side minus other side, points):
+                    border                    ts_unit                   other_unit  gap_9802  gap_1519  change  ts_9802  ts_1519  oth_9802  oth_1519  ts_2010_13  ts_2014_19  n_years_9802
+Telangana | Andhra Pradesh     ANDHRA PRADESH|KHAMMAM ANDHRA PRADESH|EAST GODAVARI      20.3      33.5    13.2     21.2     35.9       0.9       2.4        36.4        36.4             5
+Telangana | Andhra Pradesh ANDHRA PRADESH|MAHBUBNAGAR        ANDHRA PRADESH|GUNTUR     -11.3       1.5    12.9      6.9     27.3      18.2      25.8        21.4        27.1             5
+Telangana | Andhra Pradesh    ANDHRA PRADESH|NALGONDA        ANDHRA PRADESH|GUNTUR      -1.3      16.1    17.4     16.9     41.9      18.2      25.8        35.7        42.4             5
+Telangana | Andhra Pradesh     ANDHRA PRADESH|KHAMMAM       ANDHRA PRADESH|KRISHNA      15.5      27.2    11.7     21.2     35.9       5.7       8.6        36.4        36.4             5
+Telangana | Andhra Pradesh     ANDHRA PRADESH|KHAMMAM ANDHRA PRADESH|WEST GODAVARI      20.8      35.0    14.2     21.2     35.9       0.4       0.8        36.4        36.4             5
+Telangana | Andhra Pradesh    ANDHRA PRADESH|NALGONDA       ANDHRA PRADESH|KRISHNA      11.2      33.2    22.0     16.9     41.9       5.7       8.6        35.7        42.4             5
+Telangana | Andhra Pradesh ANDHRA PRADESH|MAHBUBNAGAR       ANDHRA PRADESH|KURNOOL      -5.4       4.8    10.3      6.9     27.3      12.3      22.5        21.4        27.1             5
+Telangana | Andhra Pradesh ANDHRA PRADESH|MAHBUBNAGAR      ANDHRA PRADESH|PRAKASAM      -1.7      19.2    20.9      6.9     27.3       8.6       8.1        21.4        27.1             5
+     Telangana | Karnataka ANDHRA PRADESH|MAHBUBNAGAR           KARNATAKA|GULBARGA       NaN      21.2     NaN      6.9     27.3       NaN       6.1        21.4        27.1             0
+     Telangana | Karnataka ANDHRA PRADESH|MAHBUBNAGAR            KARNATAKA|RAICHUR       0.6      13.7    13.0      6.9     27.3       6.3      13.6        21.4        27.1             5
+     Telangana | Karnataka ANDHRA PRADESH|MAHBUBNAGAR             KARNATAKA|YADGIR       NaN       3.6     NaN      6.9     27.3       NaN      23.7        21.4        27.1             0
+     Telangana | Karnataka       ANDHRA PRADESH|MEDAK              KARNATAKA|BIDAR       2.3      29.6    27.3      2.9     29.8       0.5       0.2        18.6        29.2             5
+     Telangana | Karnataka       ANDHRA PRADESH|MEDAK           KARNATAKA|GULBARGA       NaN      23.7     NaN      2.9     29.8       NaN       6.1        18.6        29.2             0
+     Telangana | Karnataka   ANDHRA PRADESH|NIZAMABAD              KARNATAKA|BIDAR       3.2       3.0    -0.2      3.7      3.2       0.5       0.2         4.0         3.3             5
+     Telangana | Karnataka  ANDHRA PRADESH|RANGAREDDY           KARNATAKA|GULBARGA       NaN      26.7     NaN      6.9     32.8       NaN       6.1        20.6        32.2             0
+   Telangana | Maharashtra    ANDHRA PRADESH|ADILABAD       MAHARASHTRA|CHANDRAPUR      20.2      16.6    -3.5     31.2     47.6      11.0      31.0        54.5        48.3             5
+   Telangana | Maharashtra    ANDHRA PRADESH|ADILABAD       MAHARASHTRA|GADCHIROLI      31.1      44.8    13.7     31.2     47.6       0.0       2.8        54.5        48.3             5
+   Telangana | Maharashtra    ANDHRA PRADESH|ADILABAD           MAHARASHTRA|NANDED      -1.1      19.5    20.6     31.2     47.6      32.3      28.1        54.5        48.3             5
+   Telangana | Maharashtra    ANDHRA PRADESH|ADILABAD         MAHARASHTRA|YAVATMAL     -15.5       5.7    21.2     31.2     47.6      46.6      41.9        54.5        48.3             5
+   Telangana | Maharashtra   ANDHRA PRADESH|NIZAMABAD           MAHARASHTRA|NANDED     -28.5     -24.9     3.6      3.7      3.2      32.3      28.1         4.0         3.3             5
+   Telangana | Maharashtra    ANDHRA PRADESH|WARANGAL       MAHARASHTRA|GADCHIROLI      25.4      32.9     7.5     25.4     35.6       0.0       2.8        37.1        36.3             5
+Telangana border units' cotton share gain 1998-2002 -> 2010-13: 113.1 pts summed over 8 units; 2010-13 -> 2014-19: 27.1; share of the gain before the 2014 split 0.81
+                   ts_unit  ts_9802  ts_2010_13  ts_2014_19  ts_1519
+    ANDHRA PRADESH|KHAMMAM     21.2        36.4        36.4     35.9
+ANDHRA PRADESH|MAHBUBNAGAR      6.9        21.4        27.1     27.3
+   ANDHRA PRADESH|NALGONDA     16.9        35.7        42.4     41.9
+      ANDHRA PRADESH|MEDAK      2.9        18.6        29.2     29.8
+  ANDHRA PRADESH|NIZAMABAD      3.7         4.0         3.3      3.2
+ ANDHRA PRADESH|RANGAREDDY      6.9        20.6        32.2     32.8
+   ANDHRA PRADESH|ADILABAD     31.2        54.5        48.3     47.6
+   ANDHRA PRADESH|WARANGAL     25.4        37.1        36.3     35.6
+  Telangana | Andhra Pradesh: 8 pairs with both windows, 3 Telangana units, 6 other units; mean change +15.3, positive in 8 of 8; exact sign-flip p over TS units 0.250 (smallest attainable 0.250)
+  Telangana | Karnataka: 3 pairs with both windows, 3 Telangana units, 2 other units; mean change +13.4, positive in 2 of 3; exact sign-flip p over TS units 0.500 (smallest attainable 0.250)
+  Telangana | Maharashtra: 6 pairs with both windows, 3 Telangana units, 4 other units; mean change +10.5, positive in 5 of 6; exact sign-flip p over TS units 0.250 (smallest attainable 0.250)
+Telangana cotton share of GCA, all units, by year: 1998: 16, 1999: 15, 2000: 13, 2001: 17, 2002: 14, 2003: 12, 2004: 17, 2005: 15, 2006: 16, 2007: 19, 2008: 22, 2009: 25, 2010: 25, 2011: 29, 2012: 35, 2013: 29, 2014: 33, 2015: 36, 2016: 25, 2017: 33, 2018: 34, 2019: 30
+Karnataka cotton share by year: 1998: 7, 2002: 4, 2008: 4, 2013: 6, 2015: 6, 2019: 7
+Maharashtra cotton share by year: 1998: 15, 2002: 15, 2008: 17, 2013: 20, 2015: 21, 2019: 21
+Andhra Pradesh cotton share by year: 1998: 8, 2002: 4, 2008: 4, 2013: 9, 2015: 9, 2019: 9
+
+================================================================================
+H5. Moran's I of changes 1998-2002 -> 2015-19
+       var                                                            links     I  p_perm  n_units  n_links   I_lo  I_hi
+        D1                                               within-state links 0.549   0.001    470.0    889.0    NaN   NaN
+        D1                                               cross-border links 0.109   0.092    266.0    262.0    NaN   NaN
+        D1                               cross-border links, AP-TS excluded 0.183   0.004    260.0    254.0    NaN   NaN
+        D1                            within-state links among border units 0.592   0.001    250.0    251.0    NaN   NaN
+        D1                          within-state links, state means removed 0.176   0.001    470.0    889.0    NaN   NaN
+        D1                          cross-border links, state means removed 0.029   0.642    260.0    254.0    NaN   NaN
+        D1 within-state links, random 254-link subsets (mean; 2.5/97.5 pct) 0.510     NaN      NaN    254.0  0.404 0.619
+        D1                               pair correlation over within links 0.493     NaN      NaN    889.0    NaN   NaN
+        D1                         pair correlation over cross_noapts links 0.204     NaN      NaN    254.0    NaN   NaN
+        D1       within(border units) minus cross(no AP-TS), unit bootstrap 0.389     NaN      NaN      NaN  0.131 0.655
+    s_rice                                               within-state links 0.572   0.001    470.0    889.0    NaN   NaN
+    s_rice                                               cross-border links 0.116   0.057    266.0    262.0    NaN   NaN
+    s_rice                               cross-border links, AP-TS excluded 0.145   0.027    260.0    254.0    NaN   NaN
+    s_rice                            within-state links among border units 0.581   0.001    250.0    251.0    NaN   NaN
+    s_rice                          within-state links, state means removed 0.220   0.001    470.0    889.0    NaN   NaN
+    s_rice                          cross-border links, state means removed 0.007   0.918    260.0    254.0    NaN   NaN
+    s_rice within-state links, random 254-link subsets (mean; 2.5/97.5 pct) 0.565     NaN      NaN    254.0  0.440 0.678
+    s_rice                               pair correlation over within links 0.562     NaN      NaN    889.0    NaN   NaN
+    s_rice                         pair correlation over cross_noapts links 0.144     NaN      NaN    254.0    NaN   NaN
+    s_rice       within(border units) minus cross(no AP-TS), unit bootstrap 0.406     NaN      NaN      NaN  0.168 0.625
+   s_wheat                                               within-state links 0.434   0.001    470.0    889.0    NaN   NaN
+   s_wheat                                               cross-border links 0.341   0.001    266.0    262.0    NaN   NaN
+   s_wheat                               cross-border links, AP-TS excluded 0.340   0.001    260.0    254.0    NaN   NaN
+   s_wheat                            within-state links among border units 0.557   0.001    250.0    251.0    NaN   NaN
+   s_wheat                          within-state links, state means removed 0.254   0.001    470.0    889.0    NaN   NaN
+   s_wheat                          cross-border links, state means removed 0.199   0.004    260.0    254.0    NaN   NaN
+   s_wheat within-state links, random 254-link subsets (mean; 2.5/97.5 pct) 0.419     NaN      NaN    254.0  0.296 0.534
+   s_wheat                               pair correlation over within links 0.411     NaN      NaN    889.0    NaN   NaN
+   s_wheat                         pair correlation over cross_noapts links 0.344     NaN      NaN    254.0    NaN   NaN
+   s_wheat       within(border units) minus cross(no AP-TS), unit bootstrap 0.191     NaN      NaN      NaN -0.081 0.465
+  s_pulses                                               within-state links 0.410   0.001    470.0    889.0    NaN   NaN
+  s_pulses                                               cross-border links 0.274   0.001    266.0    262.0    NaN   NaN
+  s_pulses                               cross-border links, AP-TS excluded 0.281   0.003    260.0    254.0    NaN   NaN
+  s_pulses                            within-state links among border units 0.433   0.001    250.0    251.0    NaN   NaN
+  s_pulses                          within-state links, state means removed 0.231   0.001    470.0    889.0    NaN   NaN
+  s_pulses                          cross-border links, state means removed 0.254   0.003    260.0    254.0    NaN   NaN
+  s_pulses within-state links, random 254-link subsets (mean; 2.5/97.5 pct) 0.425     NaN      NaN    254.0  0.291 0.546
+  s_pulses                               pair correlation over within links 0.423     NaN      NaN    889.0    NaN   NaN
+  s_pulses                         pair correlation over cross_noapts links 0.237     NaN      NaN    254.0    NaN   NaN
+  s_pulses       within(border units) minus cross(no AP-TS), unit bootstrap 0.159     NaN      NaN      NaN -0.183 0.485
+ s_millets                                               within-state links 0.600   0.001    470.0    889.0    NaN   NaN
+ s_millets                                               cross-border links 0.578   0.001    266.0    262.0    NaN   NaN
+ s_millets                               cross-border links, AP-TS excluded 0.615   0.001    260.0    254.0    NaN   NaN
+ s_millets                            within-state links among border units 0.667   0.001    250.0    251.0    NaN   NaN
+ s_millets                          within-state links, state means removed 0.267   0.001    470.0    889.0    NaN   NaN
+ s_millets                          cross-border links, state means removed 0.190   0.008    260.0    254.0    NaN   NaN
+ s_millets within-state links, random 254-link subsets (mean; 2.5/97.5 pct) 0.622     NaN      NaN    254.0  0.515 0.722
+ s_millets                               pair correlation over within links 0.639     NaN      NaN    889.0    NaN   NaN
+ s_millets                         pair correlation over cross_noapts links 0.650     NaN      NaN    254.0    NaN   NaN
+ s_millets       within(border units) minus cross(no AP-TS), unit bootstrap 0.008     NaN      NaN      NaN -0.246 0.317
+s_oilseeds                                               within-state links 0.594   0.001    470.0    889.0    NaN   NaN
+s_oilseeds                                               cross-border links 0.421   0.001    266.0    262.0    NaN   NaN
+s_oilseeds                               cross-border links, AP-TS excluded 0.456   0.001    260.0    254.0    NaN   NaN
+s_oilseeds                            within-state links among border units 0.588   0.001    250.0    251.0    NaN   NaN
+s_oilseeds                          within-state links, state means removed 0.426   0.001    470.0    889.0    NaN   NaN
+s_oilseeds                          cross-border links, state means removed 0.477   0.001    260.0    254.0    NaN   NaN
+s_oilseeds within-state links, random 254-link subsets (mean; 2.5/97.5 pct) 0.588     NaN      NaN    254.0  0.481 0.685
+s_oilseeds                               pair correlation over within links 0.598     NaN      NaN    889.0    NaN   NaN
+s_oilseeds                         pair correlation over cross_noapts links 0.450     NaN      NaN    254.0    NaN   NaN
+s_oilseeds       within(border units) minus cross(no AP-TS), unit bootstrap 0.113     NaN      NaN      NaN -0.163 0.418
+
+================================================================================
+H6/H7. Spread episodes (script 128 definitions, executed read-only up to its main loop)
+share of events adjacent to a grower: observed vs benchmarks (expected share under each draw rule):
+   episode  mode subset  events   obs  p_state  pval_state  p_state_bin  pval_state_bin  p_covnn_nat  pval_covnn_nat  p_covnn_state  pval_covnn_state  p_prop_state  pval_prop_state  n_absent_before  n_list_added  n_gca_jump30  n_not_sustained  n_suspect
+    cotton entry    all      12 0.917    0.640       0.019        0.740           0.091        0.583           0.008          0.717             0.058         0.690            0.046              0.0           0.0           1.0              1.0        2.0
+    cotton entry  clean      10 0.900    0.604       0.031        0.725           0.134        0.580           0.024          0.680             0.075         0.646            0.057              NaN           NaN           NaN              NaN        NaN
+    cotton surge    all      32 0.750    0.495       0.000        0.557           0.003        0.316           0.000          0.562             0.005         0.553            0.003              0.0           0.0           3.0              3.0        6.0
+    cotton surge  clean      26 0.731    0.508       0.004        0.559           0.020        0.312           0.000          0.577             0.032         0.568            0.029              NaN           NaN           NaN              NaN        NaN
+   soybean entry    all      24 0.750    0.472       0.000        0.462           0.000        0.400           0.000          0.562             0.007         0.507            0.000              1.0           2.0           1.0              2.0        5.0
+   soybean entry  clean      19 0.789    0.486       0.000        0.468           0.000        0.416           0.000          0.600             0.012         0.515            0.000              NaN           NaN           NaN              NaN        NaN
+   soybean surge    all      29 0.414    0.252       0.028        0.355           0.278        0.203           0.004          0.366             0.309         0.305            0.098              1.0           1.0           1.0              5.0        8.0
+   soybean surge  clean      21 0.476    0.260       0.018        0.356           0.133        0.200           0.001          0.390             0.210         0.334            0.085              NaN           NaN           NaN              NaN        NaN
+     maize entry    all      51 0.824    0.643       0.001        0.680           0.006        0.676           0.006          0.735             0.040         0.665            0.004              1.0           1.0           5.0              2.0        7.0
+     maize entry  clean      44 0.841    0.673       0.005        0.720           0.023        0.695           0.010          0.773             0.119         0.688            0.010              NaN           NaN           NaN              NaN        NaN
+     maize surge    all      60 0.467    0.336       0.007        0.333           0.005        0.323           0.005          0.369             0.026         0.355            0.020              1.0           1.0           6.0              9.0       15.0
+     maize surge  clean      45 0.556    0.372       0.002        0.366           0.001        0.333           0.000          0.412             0.010         0.394            0.006              NaN           NaN           NaN              NaN        NaN
+rabi_maize entry    all      26 0.500    0.362       0.057        0.404           0.148        0.231           0.001          0.415             0.169         0.368            0.067              1.0           0.0           3.0              1.0        4.0
+rabi_maize entry  clean      22 0.500    0.382       0.116        0.425           0.251        0.241           0.004          0.436             0.290         0.385            0.127              NaN           NaN           NaN              NaN        NaN
+rabi_maize surge    all      23 0.391    0.267       0.098        0.280           0.135        0.161           0.004          0.287             0.138         0.259            0.080              1.0           0.0           2.0              0.0        2.0
+rabi_maize surge  clean      21 0.429    0.288       0.090        0.302           0.123        0.167           0.002          0.314             0.148         0.279            0.070              NaN           NaN           NaN              NaN        NaN
+  chickpea entry    all      50 0.820    0.657       0.000        0.714           0.008        0.648           0.002          0.768             0.134         0.727            0.012              0.0           0.0           5.0              6.0        9.0
+  chickpea entry  clean      41 0.902    0.737       0.002        0.810           0.031        0.685           0.000          0.868             0.303         0.823            0.063              NaN           NaN           NaN              NaN        NaN
+  chickpea surge    all      44 0.636    0.333       0.000        0.409           0.000        0.339           0.000          0.427             0.000         0.367            0.000              0.0           0.0           3.0              8.0       11.0
+  chickpea surge  clean      33 0.727    0.367       0.000        0.447           0.000        0.376           0.000          0.509             0.001         0.412            0.000              NaN           NaN           NaN              NaN        NaN
+     moong entry    all      22 0.591    0.377       0.016        0.569           0.516        0.509           0.270          0.482             0.166         0.397            0.026              0.0           0.0           1.0              2.0        3.0
+     moong entry  clean      19 0.579    0.376       0.036        0.595           0.680        0.511           0.350          0.474             0.210         0.402            0.058              NaN           NaN           NaN              NaN        NaN
+     moong surge    all      23 0.522    0.236       0.000        0.380           0.025        0.248           0.001          0.348             0.011         0.290            0.002              0.0           0.0           4.0              3.0        7.0
+     moong surge  clean      16 0.438    0.207       0.011        0.351           0.228        0.219           0.028          0.300             0.089         0.260            0.048              NaN           NaN           NaN              NaN        NaN
+      rice entry    all       7 0.714    0.658       0.548        0.690           0.626        0.743           0.749          0.771             0.831         0.778            0.819              0.0           0.0           0.0              1.0        1.0
+      rice entry  clean       6 0.667    0.700       0.745        0.737           0.826        0.750           0.846          0.800             0.935         0.803            0.912              NaN           NaN           NaN              NaN        NaN
+      rice surge    all      91 0.495    0.446       0.150        0.430           0.058        0.376           0.007          0.470             0.306         0.443            0.132              0.0           0.0           6.0             11.0       17.0
+      rice surge  clean      74 0.514    0.461       0.158        0.442           0.069        0.364           0.002          0.484             0.297         0.458            0.146              NaN           NaN           NaN              NaN        NaN
+
+================================================================================
+H7. Neighbour minus ring
+cluster = unit: chickpea surge 0.083 (0.040) p 0.040 q 0.39; soybean entry 0.041 (0.021) p 0.055 q 0.39; soybean surge 0.066 (0.042) p 0.113 q 0.53; rabi_maize surge 0.059 (0.045) p 0.190 q 0.56; moong surge 0.037 (0.031) p 0.226 q 0.56; maize surge 0.030 (0.026) p 0.241 q 0.56; cotton entry 0.008 (0.009) p 0.374 q 0.75; moong entry -0.006 (0.012) p 0.621 q 0.87; maize entry 0.005 (0.012) p 0.658 q 0.87; rabi_maize entry -0.012 (0.029) p 0.679 q 0.87; rice surge 0.008 (0.019) p 0.685 q 0.87; cotton surge 0.007 (0.063) p 0.916 q 0.97; rice entry 0.001 (0.012) p 0.936 q 0.97; chickpea entry 0.001 (0.020) p 0.974 q 0.97
+cluster = state: chickpea surge 0.083 (0.038) p 0.028 q 0.20; moong surge 0.037 (0.017) p 0.029 q 0.20; soybean entry 0.041 (0.021) p 0.056 q 0.26; soybean surge 0.066 (0.041) p 0.105 q 0.37; maize surge 0.030 (0.024) p 0.204 q 0.47; cotton entry 0.008 (0.006) p 0.219 q 0.47; rabi_maize surge 0.059 (0.050) p 0.237 q 0.47; moong entry -0.006 (0.012) p 0.623 q 0.96; rabi_maize entry -0.012 (0.026) p 0.640 q 0.96; maize entry 0.005 (0.014) p 0.694 q 0.96; rice surge 0.008 (0.027) p 0.769 q 0.96; cotton surge 0.007 (0.054) p 0.903 q 0.96; rice entry 0.001 (0.010) p 0.926 q 0.96; chickpea entry 0.001 (0.012) p 0.959 q 0.96
+                                            b             p            se       
+cluster                                 state   unit  state   unit  state   unit
+episode  mode  ring                                                             
+chickpea surge 0.75-1.5x (main)         0.083  0.083  0.028  0.040  0.038  0.040
+               0.75-1.5x same state     0.102  0.102  0.052  0.025  0.053  0.046
+               1.0-2.0x                 0.126  0.126  0.001  0.002  0.036  0.041
+               second-order neighbours  0.131  0.131  0.001  0.001  0.041  0.039
+cotton   surge 0.75-1.5x (main)         0.007  0.007  0.903  0.916  0.054  0.063
+               0.75-1.5x same state     0.032  0.032  0.703  0.666  0.083  0.073
+               1.0-2.0x                 0.068  0.068  0.156  0.227  0.048  0.057
+               second-order neighbours  0.116  0.116  0.092  0.010  0.069  0.045
+maize    surge 0.75-1.5x (main)         0.030  0.030  0.204  0.241  0.024  0.026
+               0.75-1.5x same state     0.046  0.046  0.046  0.157  0.023  0.032
+               1.0-2.0x                 0.020  0.020  0.435  0.387  0.026  0.024
+               second-order neighbours  0.038  0.038  0.134  0.142  0.025  0.026
+soybean  entry 0.75-1.5x (main)         0.041  0.041  0.056  0.055  0.021  0.021
+               0.75-1.5x same state     0.040  0.040  0.096  0.087  0.024  0.023
+               1.0-2.0x                 0.031  0.031  0.210  0.116  0.025  0.020
+               second-order neighbours  0.032  0.032  0.040  0.179  0.015  0.024
+         surge 0.75-1.5x (main)         0.066  0.066  0.105  0.113  0.041  0.042
+               0.75-1.5x same state     0.059  0.059  0.166  0.138  0.043  0.040
+               1.0-2.0x                 0.013  0.013  0.683  0.662  0.031  0.029
+               second-order neighbours  0.006  0.006  0.822  0.866  0.027  0.036
+reproduction, max |b - b_orig| = 6.68e-17
