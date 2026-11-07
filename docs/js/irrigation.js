@@ -1,6 +1,7 @@
 /* ================================================================
    IRRIGATION PAGE: scene visuals.
-   Reads data/site_irrigation_story.json and data/districts.geojson.
+   Reads data/site_irrigation_story.json, data/site_irrigation_panel.json
+   and data/districts.geojson.
    Depends on site.js for svgEl, showTip, hideTip, loadJSON, loadGeo.
    Helper code follows the markets template; everything is wrapped so
    no name collides with site.js globals.
@@ -310,7 +311,7 @@ SC[2] = scene({
             });
             this.marks.push({ path, len, pts });
         });
-        T(svg, { class: 'mono', x: (m.l + W - m.r) / 2, y: H - 4, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, 'mean share of sown area irrigated in the group');
+        T(svg, { class: 'mono', x: (m.l + W - m.r) / 2, y: H - 4, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, 'mean share of sown area irrigated in the decile');
         /* hover bands */
         this.hl = E('rect', { y: top0 - 4, height: H - 40 - top0 + 4, fill: 'rgba(255,255,255,0.05)', opacity: 0 }, svg);
         svg.insertBefore(this.hl, svg.firstChild);
@@ -326,8 +327,8 @@ SC[2] = scene({
         this.show(1);
     },
     read(r) {
-        if (!r) { setRead('#v2-read', '<span class="dim">Hover or tap a group.</span> Peak of the effective number of crops: <b>5.86</b> in group 4, 44% irrigated.'); return; }
-        setRead('#v2-read', `<b>group ${r.dec}</b> <span class="dim">·</span> ${r.n} districts <span class="dim">·</span> ${pct(r.irr, 1)} irrigated ` +
+        if (!r) { setRead('#v2-read', '<span class="dim">Hover or tap a decile.</span> Peak of the effective number of crops: <b>5.89</b> in decile 4, 44% irrigated.'); return; }
+        setRead('#v2-read', `<b>decile ${r.dec}</b> <span class="dim">·</span> ${r.n} districts <span class="dim">·</span> ${pct(r.irr, 1)} irrigated ` +
             `<span class="dim">(${pct(r.lo, 1)} to ${pct(r.hi, 1)})</span><br>count of crops ${r.D0.toFixed(1)} <span class="dim">·</span> effective number ${r.D1.toFixed(2)} ` +
             `<span class="dim">·</span> number of main crops ${r.D2.toFixed(2)} <span class="dim">·</span> evenness ${r.E.toFixed(3)} <span class="dim">·</span> cereal share ${r.cereal.toFixed(3)}`);
     },
@@ -393,7 +394,7 @@ SC[3] = scene({
         });
         const n = document.createElement('p'); n.className = 'irr-key__ramp';
         n.innerHTML = this.mode === 'cont' ? 'Shading runs from 4% irrigated (darkest) to 98% (lightest). The groups above still pick out districts.'
-                                           : `<span style="display:inline-block;width:10px;height:10px;background:${OUTSIDE};border:1px solid rgba(255,255,255,.25);vertical-align:-1px;margin-right:.4rem"></span>outside the 606 districts`;
+                                           : `<span style="display:inline-block;width:10px;height:10px;background:${OUTSIDE};border:1px solid rgba(255,255,255,.25);vertical-align:-1px;margin-right:.4rem"></span>no usable record`;
         host.appendChild(n);
     },
     async render() {
@@ -412,7 +413,7 @@ SC[3] = scene({
             el.style.fill = OUTSIDE;
             const tip = ev => showTip(d ? `<strong>${d.n}</strong><br>${d.s}<br>irrigated ${pct(d.x)} of sown area<br>canal main source in ${pct(d.can)} of villages` +
                 `<br>effective number of crops ${d.D1.toFixed(2)}<br>count of crops ${d.D0.toFixed(1)}`
-                : `<strong>${pr.n}</strong><br>${pr.s}<br>outside the 606 districts`, ev);
+                : `<strong>${pr.n}</strong><br>${pr.s}<br>no usable record`, ev);
             el.addEventListener('mousemove', tip); el.addEventListener('click', tip);
             el.addEventListener('mouseenter', () => { el.setAttribute('stroke', TX); el.setAttribute('stroke-width', 1.1); });
             el.addEventListener('mouseleave', () => { el.setAttribute('stroke', d ? 'rgba(11,11,12,0.75)' : 'rgba(255,255,255,0.16)'); el.setAttribute('stroke-width', d ? .35 : .4); hideTip(); });
@@ -485,19 +486,19 @@ SC[4] = scene({
             });
             this.hls[si].dataset.edges = JSON.stringify(edges.map(e => X(e)));
         });
-        T(svg, { class: 'mono', x: W / 2, y: H - 4, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, 'mean share of sown area irrigated in the group');
+        T(svg, { class: 'mono', x: W / 2, y: H - 4, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, 'mean share of sown area irrigated in the decile');
         this.unfocus();
         this.show(1);
     },
     focus(i) {
         const r = D.profile[i];
         this.hls.forEach(h => { const e = JSON.parse(h.dataset.edges); h.setAttribute('x', e[i]); h.setAttribute('width', e[i + 1] - e[i]); h.setAttribute('opacity', 1); });
-        setRead('#v4-read', `<b>group ${r.dec}</b>, ${pct(r.irr)} irrigated <span class="dim">·</span> cereal ${r.cereal.toFixed(3)} <span class="dim">·</span> pulse ${r.pulse.toFixed(3)} ` +
+        setRead('#v4-read', `<b>decile ${r.dec}</b>, ${pct(r.irr)} irrigated <span class="dim">·</span> cereal ${r.cereal.toFixed(3)} <span class="dim">·</span> pulse ${r.pulse.toFixed(3)} ` +
             `<span class="dim">·</span> oilseed ${r.oilseed.toFixed(3)} <span class="dim">·</span> effective number of crops ${r.D1.toFixed(2)}`);
     },
     unfocus() {
         (this.hls || []).forEach(h => h.setAttribute('opacity', 0));
-        setRead('#v4-read', '<span class="dim">Hover or tap a group.</span> Cereal share is lowest in group 7 at <b>0.574</b> and highest in group 10 at <b>0.793</b>.');
+        setRead('#v4-read', '<span class="dim">Hover or tap a decile.</span> Cereal share is lowest in decile 7 at <b>0.583</b> and highest in decile 10 at <b>0.794</b>.');
     },
     show(t) {
         (this.marks || []).forEach(mk => {
@@ -571,7 +572,7 @@ SC[5] = scene({
     readDefault() {
         setRead('#v5-read', this.mode === 'tp'
             ? '<span class="dim">Hover or tap a row.</span> Effective number of crops: peak between <b>24%</b> and <b>51%</b> irrigated, median 27%.'
-            : '<span class="dim">Hover or tap a row.</span> Headline squared term <b>−6.88</b>, from −5.43 to −10.19 across the eight versions.');
+            : '<span class="dim">Hover or tap a row.</span> Headline squared term <b>−6.84</b>, from −5.44 to −10.42 across the eight versions.');
     },
     place(t) {
         const X = this.X;
@@ -613,7 +614,7 @@ SC[6] = scene({
         const host = $('#v6'); if (!host || !D) return;
         const W = host.clientWidth || 900, nar = W < 560;
         const lw = nar ? 92 : 150, bh = nar ? 22 : 24, gap = nar ? 9 : 10;
-        const bars = [{ lab: 'all districts', d: D.source_mix, all: true }].concat(D.profile.map(r => ({ lab: nar ? `${r.dec} · ${pct(r.irr)}` : `group ${r.dec} · ${pct(r.irr)} irr.`, d: r, r })));
+        const bars = [{ lab: 'all districts', d: D.source_mix, all: true }].concat(D.profile.map(r => ({ lab: nar ? `${r.dec} · ${pct(r.irr)}` : `decile ${r.dec} · ${pct(r.irr)} irr.`, d: r, r })));
         const H = 8 + bars.length * (bh + gap) + 18 + 34;
         const m = { l: lw + 10, r: 12 };
         const svg = svgFor(host, W, H);
@@ -627,7 +628,7 @@ SC[6] = scene({
         let y = 8;
         bars.forEach((b, bi) => {
             if (bi === 1) y += 18;
-            if (bi === 1) T(svg, { class: 'mono', x: 0, y: y - 8, fill: TX3, 'font-size': 10.5, 'letter-spacing': '.08em' }, nar ? 'GROUPS BY IRRIGATION' : 'TEN GROUPS, LEAST TO MOST IRRIGATED');
+            if (bi === 1) T(svg, { class: 'mono', x: 0, y: y - 8, fill: TX3, 'font-size': 10.5, 'letter-spacing': '.08em' }, nar ? 'DECILES BY IRRIGATION' : 'DECILES, LEAST TO MOST IRRIGATED');
             rowLabel(svg, lw, y + bh / 2, b.lab, lw, b.all ? TX : TX2, nar ? 10.5 : 11.5);
             const tot = SRCS.reduce((s, k) => s + b.d[k.k], 0);
             let acc = 0;
@@ -639,7 +640,7 @@ SC[6] = scene({
                 acc += v;
             });
             const hit = E('rect', { x: 0, y: y - gap / 2, width: W, height: bh + gap, fill: 'transparent' }, svg);
-            const f = () => setRead('#v6-read', `<b>${b.all ? 'all districts' : 'group ' + b.r.dec + ', ' + pct(b.r.irr) + ' irrigated'}</b> <span class="dim">·</span> ` +
+            const f = () => setRead('#v6-read', `<b>${b.all ? 'all districts' : 'decile ' + b.r.dec + ', ' + pct(b.r.irr) + ' irrigated'}</b> <span class="dim">·</span> ` +
                 SRCS.map(s => `${s.name} ${pct(b.d[s.k], 1)}`).join(' <span class="dim">·</span> '));
             hit.addEventListener('mousemove', f); hit.addEventListener('click', f);
             hit.addEventListener('mouseleave', () => this.readDefault());
@@ -648,7 +649,7 @@ SC[6] = scene({
         this.readDefault();
         this.grow(this.u);
     },
-    readDefault() { setRead('#v6-read', '<span class="dim">Hover or tap a bar.</span> Groundwater rises from <b>23%</b> of villages in group 1 to <b>78%</b> in group 10.'); },
+    readDefault() { setRead('#v6-read', '<span class="dim">Hover or tap a bar.</span> Groundwater rises from <b>23%</b> of villages in decile 1 to <b>78%</b> in decile 10.'); },
     grow(t) {
         (this.segsEl || []).forEach(s => {
             const k = easeOut(Math.max(0, Math.min(1, t * 1.5 - s.bi * 0.045)));
@@ -741,9 +742,9 @@ SC[7] = scene({
 /* ================================================================
    08 district characteristics dumbbell
    ================================================================ */
-const DIMN = { canal: 'canal village share', hold: 'mean holding size (log)', cult: 'cultivator share of agricultural workers',
-               landless: 'landless share of rural households', mandi: 'villages with a mandi', haat: 'villages with a weekly haat',
-               regular: 'villages with a regular market', fpo: 'villages with a producer organisation', cold: 'villages with a food storage warehouse',
+const DIMN = { canal: 'share of villages relying on canals', hold: 'mean holding size (log)', cult: 'cultivator share of agricultural workers',
+               landless: 'landless share of rural households', mandi: 'share of villages with a mandi', haat: 'share of villages with a weekly haat',
+               regular: 'share of villages with a regular market', fpo: 'share of villages with a producer organisation', cold: 'share of villages with a food storage warehouse',
                sc: 'Scheduled Caste population share', st: 'Scheduled Tribe population share', ci: 'cropping intensity' };
 SC[8] = scene({
     mode: 'sd', u: 1,
@@ -803,7 +804,7 @@ SC[8] = scene({
         this.place(this.u);
     },
     readDefault() {
-        setRead('#v8-read', '<span class="dim">Hover or tap a row.</span> Adjusted, per standard deviation: producer organisations <b>+0.37</b>, cropping intensity <b>+0.55</b>.');
+        setRead('#v8-read', '<span class="dim">Hover or tap a row.</span> Adjusted, per standard deviation: producer organisations <b>+0.36</b>, cropping intensity <b>+0.56</b>.');
     },
     place(t) {
         (this.items || []).forEach(it => {
@@ -815,6 +816,134 @@ SC[8] = scene({
     },
     prep() { this.u = 0; this.place(0); },
     play() { this.u = 0; this.place(0); tween(this, 1200, t => { this.u = t; this.place(t); }, () => { this.u = 1; this.place(1); }); },
+});
+
+/* ================================================================
+   09 inside each district: slope of the cross-district bend against
+   the slope within a district over time, and twenty-year changes.
+   Reads data/site_irrigation_panel.json.
+   ================================================================ */
+let DP = null;
+SC[9] = scene({
+    mode: 'slope', u: 1,
+    controls() {
+        segs($('#v9-mode'), [{ key: 'slope', name: 'effective number of crops' }, { key: 'ld', name: 'crops above a share of land' }],
+            k => { this.mode = k; cancel(this); this.played = true; this.u = 1; this.render(); }, this.mode);
+    },
+    acrossAt(x) {
+        const a = DP.across, g = [0.1, 0.2 * x];
+        const y = 0.1 * a.b1 + 0.2 * a.b2 * x;
+        let v = 0;
+        for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) v += g[i] * a.V[i][j] * g[j];
+        const s = Math.sqrt(Math.max(v, 0));
+        return [y, y - 1.96 * s, y + 1.96 * s];
+    },
+    render() {
+        const host = $('#v9'); if (!host || !DP) return;
+        if (this.mode === 'ld') return this.renderLD(host);
+        const W = host.clientWidth || 800, nar = W < 560;
+        const H = nar ? 320 : 380;
+        const m = { t: 22, r: nar ? 12 : 20, b: 44, l: nar ? 44 : 52 };
+        const svg = this.svg = svgFor(host, W, H);
+        const X = lin(0, 1, m.l, W - m.r);
+        const xs = []; for (let i = 0; i <= 80; i++) xs.push(0.02 + 0.96 * i / 80);
+        const A = xs.map(x => [x].concat(this.acrossAt(x)));
+        const lo = Math.min(...A.map(p => p[2])), hi = Math.max(...A.map(p => p[3]));
+        const Y = lin(Math.floor(lo * 10) / 10, Math.ceil(hi * 10) / 10, H - m.b, m.t);
+        Object.assign(this, { X, Y, m, W, H, A, nar });
+        const yt = niceTicks(Math.floor(lo * 10) / 10, Math.ceil(hi * 10) / 10, 5);
+        grid(svg, X, Y, [0, .2, .4, .6, .8, 1], yt, v => pct(v), v => Math.abs(v) < 1e-9 ? '0' : sgn(v, 1), m, W, H, { xgrid: false });
+        E('line', { x1: m.l, x2: W - m.r, y1: Y(0), y2: Y(0), stroke: ZERO, 'stroke-width': 1.2 }, svg);
+        T(svg, { class: 'mono', x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, 'share of net sown area irrigated');
+        T(svg, { class: 'mono', x: m.l, y: 11, fill: TX3, 'font-size': 11 }, nar ? 'change for 10 points more irrigated' : 'change in effective number of crops for 10 more points of sown area irrigated');
+        const path = (pts, k) => pts.map((p, i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ',' + Y(p[k]).toFixed(1)).join('');
+        const band = (pts) => path(pts, 3) + pts.slice().reverse().map(p => 'L' + X(p[0]).toFixed(1) + ',' + Y(p[2]).toFixed(1)).join('') + 'Z';
+        /* across districts */
+        this.aBand = E('path', { d: band(A), fill: 'rgba(237,237,235,0.13)' }, svg);
+        this.aLine = E('path', { d: path(A, 1), fill: 'none', stroke: LT, 'stroke-width': 2 }, svg);
+        const pk = DP.across.peak;
+        this.aPk = E('circle', { cx: X(pk), cy: Y(0), r: 4.5, fill: BG, stroke: LT, 'stroke-width': 1.6 }, svg);
+        this.aLab = T(svg, { class: 'mono', x: X(0.62), y: Y(this.acrossAt(0.62)[0]) - 12, fill: TX, 'font-size': nar ? 10.5 : 11.5, 'text-anchor': 'start' }, 'across districts in a state');
+        this.aPkT = T(svg, { class: 'mono', x: X(pk) + 8, y: Y(DP.within.b / 10 + 1.96 * DP.within.se / 10) - 9, fill: TX2, 'font-size': 10.5 }, 'peak of the bend, ' + pct(pk));
+        /* within a district */
+        const w = DP.within, b = w.b / 10, l = (w.b - 1.96 * w.se) / 10, h = (w.b + 1.96 * w.se) / 10;
+        const W0 = [[0.02, b, l, h], [0.98, b, l, h]];
+        this.wBand = E('path', { d: band(W0), fill: 'rgba(14,155,181,0.28)' }, svg);
+        this.wLine = E('path', { d: path(W0, 1), fill: 'none', stroke: CY, 'stroke-width': 2.4 }, svg);
+        this.wLab = T(svg, { class: 'mono', x: X(0.97), y: Y(l) + (nar ? 15 : 17), fill: '#3FC2DA', 'font-size': nar ? 10.5 : 11.5, 'text-anchor': 'end' }, 'same district over time');
+        this.hover(svg);
+        this.show(this.u);
+        this.readDefault();
+    },
+    show(u) {
+        if (this.mode !== 'slope' || !this.aLine) return;
+        const a = Math.max(0, Math.min(1, u / 0.55)), w = Math.max(0, Math.min(1, (u - 0.6) / 0.4));
+        const len = this.aLine.getTotalLength ? this.aLine.getTotalLength() : 0;
+        if (len) { this.aLine.style.strokeDasharray = len; this.aLine.style.strokeDashoffset = len * (1 - easeOut(a)); }
+        [this.aBand, this.aLab, this.aPk, this.aPkT].forEach(e => e.setAttribute('opacity', a >= 1 ? 1 : a * 0.6));
+        [this.wBand, this.wLine, this.wLab].forEach(e => e.setAttribute('opacity', easeOut(w)));
+    },
+    readDefault() {
+        const w = DP.within;
+        setRead('#v9-read', `<span class="dim">same district over time:</span> 10 more points irrigated goes with ` +
+            `<b>${sgn(w.b / 10, 3)}</b> effective crops <span class="dim">(95% range ${sgn((w.b - 1.96 * w.se) / 10, 2)} to ${sgn((w.b + 1.96 * w.se) / 10, 2)})</span>`);
+    },
+    hover(svg) {
+        const pick = ev => {
+            const [px] = svgPt(svg, ev);
+            const x = Math.max(0.02, Math.min(0.98, (px - this.m.l) / (this.W - this.m.l - this.m.r)));
+            const a = this.acrossAt(x), w = DP.within;
+            setRead('#v9-read', `at <b>${pct(x)}</b> irrigated, 10 more points goes with <b>${sgn(a[0], 2)}</b> effective crops across districts ` +
+                `<span class="dim">·</span> <b>${sgn(w.b / 10, 2)}</b> within a district over time`);
+        };
+        svg.addEventListener('mousemove', pick);
+        svg.addEventListener('click', pick);
+        svg.addEventListener('mouseleave', () => this.readDefault());
+    },
+    renderLD(host) {
+        const W = host.clientWidth || 800, nar = W < 560;
+        const rows = DP.longdiff.map(r => ({ name: r.key === 'D1' ? 'effective number of crops' : r.name.replace('crops on at least ', 'crops on ≥').replace(' of cropped area', ' of land'),
+            b: r.b / 10, lo: (r.b - 1.96 * r.se) / 10, hi: (r.b + 1.96 * r.se) / 10, p: r.p, key: r.key }));
+        const lw = nar ? 132 : 230, rowH = nar ? 46 : 44;
+        const m = { t: 18, r: nar ? 16 : 30, b: 46, l: lw };
+        const H = m.t + rows.length * rowH + m.b;
+        const svg = this.svg = svgFor(host, W, H);
+        const X = lin(-0.5, 0.2, m.l, W - m.r);
+        niceTicks(-0.5, 0.2, nar ? 4 : 7).forEach(v => {
+            E('line', { x1: X(v), x2: X(v), y1: m.t, y2: H - m.b, stroke: Math.abs(v) < 1e-9 ? ZERO : GRID }, svg);
+            T(svg, { class: 'mono', x: X(v), y: H - m.b + 17, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5 }, Math.abs(v) < 1e-9 ? '0' : sgn(v, 1));
+        });
+        T(svg, { class: 'mono', x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle', fill: TX3, 'font-size': 11 }, nar ? 'crops per 10 points more irrigated' : 'change in number of crops for 10 more points irrigated, 1998–2000 to 2017–19');
+        this.items = rows.map((r, i) => {
+            const y = m.t + rowH * (i + .5), sig = r.p < 0.05, col = r.key === 'D1' ? LT : CY;
+            rowLabel(svg, m.l - 12, y, r.name, lw - 16, TX2, nar ? 10.5 : 12);
+            const wh = E('line', { x1: X(0), x2: X(0), y1: y, y2: y, stroke: col, 'stroke-width': 1.6, opacity: .8 }, svg);
+            const dot = E('circle', { cx: X(0), cy: y, r: 5.5, fill: sig ? col : BG, stroke: col, 'stroke-width': 1.6 }, svg);
+            const val = T(svg, { class: 'mono', x: X(r.b), y: y - 10, 'text-anchor': 'middle', fill: TX, 'font-size': 10.5 }, '');
+            return { r, wh, dot, val };
+        });
+        this.X = X;
+        this.placeLD(this.u);
+        setRead('#v9-read', `<span class="dim">filled: p &lt; 0.05.</span> The leading crop's share of land does not move ` +
+            `<span class="dim">(${sgn(DP.top_share.b / 10 * 100, 2)} points per 10 points irrigated, p = ${DP.top_share.p.toFixed(2)})</span>`);
+    },
+    placeLD(u) {
+        if (!this.items) return;
+        const X = this.X, n = this.items.length;
+        this.items.forEach((it, i) => {
+            const e = easeOut(Math.max(0, Math.min(1, (u * (700 + 90 * n) - i * 90) / 700)));
+            const r = it.r;
+            it.dot.setAttribute('cx', X(r.b * e));
+            it.wh.setAttribute('x1', X(r.lo * e)); it.wh.setAttribute('x2', X(r.hi * e));
+            it.val.setAttribute('x', X(r.b * e)); it.val.textContent = e >= 1 ? sgn(r.b, 2) : '';
+        });
+    },
+    prep() { this.u = 0; if (this.mode === 'ld') this.placeLD(0); else this.show(0); },
+    play() {
+        this.u = 0;
+        tween(this, 1800, t => { this.u = t; if (this.mode === 'ld') this.placeLD(t); else this.show(t); },
+            () => { this.u = 1; if (this.mode === 'ld') this.placeLD(1); else this.show(1); });
+    },
 });
 
 /* ================================================================
@@ -843,12 +972,12 @@ function tables() {
 /* ================================================================
    wiring
    ================================================================ */
-const HOSTS = { 1: '#v1', 2: '#v2', 3: '#v3', 4: '#v4', 5: '#v5', 6: '#v6', 7: '#v7', 8: '#v8' };
+const HOSTS = { 1: '#v1', 2: '#v2', 3: '#v3', 4: '#v4', 5: '#v5', 6: '#v6', 7: '#v7', 8: '#v8', 9: '#v9' };
 let inited = false;
 function startPlay(sc) { if (sc.played) return; sc.played = true; sc.play(); }
 
 async function init() {
-    D = await loadJSON('data/site_irrigation_story.json');
+    [D, DP] = await Promise.all([loadJSON('data/site_irrigation_story.json'), loadJSON('data/site_irrigation_panel.json')]);
     Object.values(SC).forEach(sc => { if (sc.controls) sc.controls(); });
     tables();
     for (const k of Object.keys(SC)) {

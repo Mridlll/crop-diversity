@@ -13,7 +13,7 @@ Layers rebuilt:
   diversity      D0, D1, D2, evenness, dominant crop and its share, category shares
   calorie        food energy produced per hectare of cropped area, and the quadrant
   food           share of cropped area under crops that feed people
-  timeline       D0 and D1 per district per year, 1997-98 to 2019-20
+  timeline       D0 and D1 per district per year, 1998-99 to 2019-20 (scripts/_years.py)
 
 Outputs:
   docs/data/districts.geojson          the choropleth geometry, all layers attached
@@ -27,6 +27,8 @@ import warnings
 import geopandas as gpd
 import numpy as np
 import pandas as pd
+
+from _years import keep_years
 
 warnings.filterwarnings("ignore")
 
@@ -64,7 +66,7 @@ df = df[[p not in BOGUS for p in zip(df["state_name"], df["district_name"])]]
 for (s_, d_), new in REMAP.items():
     df.loc[(df["state_name"] == s_) & (df["district_name"] == d_), "state_name"] = new
 df["year_start"] = df["year"].str.split("-").str[0].astype(int)
-df = df[df["year_start"] <= 2019]
+df = keep_years(df)  # analysis window, scripts/_years.py
 df = (df.sort_values("area", ascending=False)
         .drop_duplicates(subset=["state_name", "district_name", "year", "season",
                                  "crop_name"], keep="first"))

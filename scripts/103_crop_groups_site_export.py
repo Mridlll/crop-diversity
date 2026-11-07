@@ -10,7 +10,7 @@ Reads only the crop-group outputs that passed the referee checks:
   - policy: NFSM 2007 event-time coefficients (script 99 policy) and the identified checks
     (referee_policy_es_checks.csv)
   - rainfall: dose-response bins re-estimated here on the cleaned samples the referee used
-    (annual-unreliable unit-years and 1997-98 dropped; mild GCA jumps also dropped for total
+    (annual-unreliable unit-years dropped, window from scripts/_years.py; mild GCA jumps also dropped for total
     rabi area), reusing script 100's data build and estimator unchanged
 Also copies the crop-name mapping and the state outlines used by the markets map.
 No APCNF, PMDS or RySS data.
@@ -25,6 +25,7 @@ import sys
 
 import numpy as np
 import pandas as pd
+from _years import keep_years
 
 REPO = "D:/crop-diversity"
 OUTD = REPO + "/outputs/crop_groups"
@@ -159,9 +160,9 @@ else:
         return dict(bins=out, dummy=dict(term=shock, b=r1(b, 4), se=r1(s, 4), p=r1(p, 4)),
                     units=int(rd["units"]), n=int(rd["n"]), clusters=int(rd["g"]))
 
-    # "clean" drops unit-years whose annual totals are flagged unreliable and 1997-98;
+    # "clean" drops unit-years whose annual totals are flagged unreliable and applies the _years.py window;
     # the total-area panel also drops milder GCA jumps. These are the referee's samples.
-    clean = lambda d: d[(d.flag_annual_unreliable == 0) & (d.year_start > 1997)]
+    clean = lambda d: keep_years(d[d.flag_annual_unreliable == 0])
     clean_m = lambda d: clean(d)[clean(d).f_gca_jump_mild == 0]
     rain = {}
     # A. total rabi area, all districts

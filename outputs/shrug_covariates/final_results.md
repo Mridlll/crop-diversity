@@ -2,10 +2,10 @@
 
 Diversity indices are the annual-mean rebuild from script 76: 2020-21 stub
 dropped, duplicate rows collapsed, every index measured per year then averaged
-across 1997-98 to 2019-20. Districts with under 10 years of data are excluded.
+across 1998-99 to 2019-20. Districts with under 10 years of data are excluded.
 
 Analysis set: 606 districts, 30 states. 64 sit on a shared pre-2011 parent.
-Median years of data per district: 23.
+Median years of data per district: 22.
 
 ## 1. The inverted U, on corrected indices
 
@@ -18,23 +18,23 @@ kept as one row for comparison.
 
 | specification | n | linear | squared | p(squared) | turning point | R2 |
 |---|---|---|---|---|---|---|
-| D1: no fixed effects | 606 | +10.444 | -10.185*** | 0.0000 | 0.513 | 0.065 |
-| D1: state fixed effects | 606 | +3.874 | -6.877*** | 0.0000 | 0.282 | 0.530 |
-| D1: PC11 VD irrigation | 573 | +2.749 | -5.428*** | 0.0000 | 0.253 | 0.534 |
-| D1: drop shared parents | 542 | +3.396 | -6.382*** | 0.0000 | 0.266 | 0.538 |
-| D1: inverse-parent weighted | 606 | +3.641 | -6.612*** | 0.0000 | 0.275 | 0.531 |
-| D1: drop source conflicts | 530 | +3.235 | -6.615*** | 0.0000 | 0.245 | 0.547 |
-| D1: full 23 years only | 506 | +3.107 | -6.270*** | 0.0000 | 0.248 | 0.516 |
-| D1: area weighted | 606 | +5.778 | -8.083*** | 0.0000 | 0.357 | 0.533 |
-| D0 richness | 606 | +10.088 | -10.910*** | 0.0001 | 0.462 | 0.828 |
-| D2 inverse Simpson | 606 | +1.760 | -3.925*** | 0.0001 | 0.224 | 0.500 |
-| evenness D1/D0 | 606 | +0.066 | -0.188** | 0.0132 | 0.177 | 0.543 |
-| Shannon (raw) | 606 | +0.936 | -1.432*** | 0.0000 | 0.327 | 0.578 |
-| Simpson (raw) | 606 | +0.268 | -0.367*** | 0.0003 | 0.364 | 0.611 |
-| ABI (composite, for comparison) | 606 | +0.310 | -0.417*** | 0.0000 | 0.372 | 0.668 |
+| D1: no fixed effects | 606 | +10.659 | -10.423*** | 0.0000 | 0.511 | 0.067 |
+| D1: state fixed effects | 606 | +3.811 | -6.836*** | 0.0000 | 0.279 | 0.534 |
+| D1: PC11 VD irrigation | 573 | +2.749 | -5.438*** | 0.0000 | 0.253 | 0.537 |
+| D1: drop shared parents | 542 | +3.392 | -6.384*** | 0.0000 | 0.266 | 0.542 |
+| D1: inverse-parent weighted | 606 | +3.614 | -6.597*** | 0.0000 | 0.274 | 0.535 |
+| D1: drop source conflicts | 530 | +3.166 | -6.571*** | 0.0000 | 0.241 | 0.551 |
+| D1: full panel only | 510 | +3.080 | -6.192*** | 0.0000 | 0.249 | 0.514 |
+| D1: area weighted | 606 | +5.763 | -8.178*** | 0.0000 | 0.352 | 0.539 |
+| D0 richness | 606 | +10.622 | -11.427*** | 0.0001 | 0.465 | 0.828 |
+| D2 inverse Simpson | 606 | +1.675 | -3.852*** | 0.0002 | 0.217 | 0.503 |
+| evenness D1/D0 | 606 | +0.054 | -0.175** | 0.0230 | 0.155 | 0.540 |
+| Shannon (raw) | 606 | +0.926 | -1.423*** | 0.0000 | 0.325 | 0.583 |
+| Simpson (raw) | 606 | +0.264 | -0.362*** | 0.0004 | 0.364 | 0.615 |
+| ABI (composite, for comparison) | 606 | +0.310 | -0.416*** | 0.0000 | 0.373 | 0.671 |
 
 **Sample robustness.** 8 of 8 D1 specifications keep a negative squared term
-significant at 5 percent. Turning points 0.245 to 0.513, median 0.271.
+significant at 5 percent. Turning points 0.241 to 0.511, median 0.270.
 
 **Index robustness.** 6 of 6 alternative indices agree, so the hump is not an
 artefact of one index choice. It shows in the plain count of crops (D0), in the
@@ -49,10 +49,10 @@ now, so that null was an artefact of pooling over years rather than a real resul
 
 | index | mean | reading |
 |---|---|---|
-| D0 richness | 21.2 | crops grown in an average year |
+| D0 richness | 21.4 | crops grown in an average year |
 | D1 exp(Shannon) | 4.9 | equally-common crops giving the same diversity |
 | D2 inverse Simpson | 3.5 | the same, weighted toward the dominant crops |
-| evenness D1/D0 | 0.254 | how evenly area is spread |
+| evenness D1/D0 | 0.250 | how evenly area is spread |
 
 The average district grows about 21 crops but is effectively growing about 5.
 That gap is the whole story of Indian cropping concentration, and a unitless
@@ -62,28 +62,28 @@ That gap is the whole story of Indian cropping concentration, and a unitless
 
 | decile | n | irrigation | D0 | D1 | D2 | evenness | ABI | cereal share |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 61 | 0.165 | 19.1 | 4.11 | 2.91 | 0.255 | 0.536 | 0.718 |
-| 2 | 61 | 0.300 | 21.2 | 4.99 | 3.52 | 0.261 | 0.584 | 0.669 |
-| 3 | 60 | 0.385 | 21.9 | 5.29 | 3.68 | 0.267 | 0.608 | 0.617 |
-| 4 | 61 | 0.444 | 21.1 | 5.86 | 4.00 | 0.286 | 0.617 | 0.638 |
-| 5 | 60 | 0.502 | 20.5 | 5.01 | 3.43 | 0.268 | 0.596 | 0.618 |
-| 6 | 61 | 0.563 | 22.1 | 5.63 | 3.90 | 0.278 | 0.633 | 0.587 |
-| 7 | 60 | 0.640 | 21.5 | 5.24 | 3.69 | 0.267 | 0.632 | 0.574 |
-| 8 | 61 | 0.718 | 24.3 | 4.96 | 3.56 | 0.213 | 0.662 | 0.604 |
-| 9 | 60 | 0.826 | 22.0 | 4.54 | 3.27 | 0.216 | 0.624 | 0.772 |
-| 10 | 61 | 0.922 | 18.0 | 3.71 | 2.86 | 0.228 | 0.550 | 0.793 |
+| 1 | 61 | 0.165 | 19.3 | 4.13 | 2.92 | 0.252 | 0.534 | 0.718 |
+| 2 | 61 | 0.300 | 21.5 | 5.00 | 3.51 | 0.256 | 0.581 | 0.670 |
+| 3 | 60 | 0.385 | 22.2 | 5.32 | 3.70 | 0.262 | 0.607 | 0.616 |
+| 4 | 61 | 0.444 | 21.3 | 5.89 | 4.02 | 0.282 | 0.615 | 0.638 |
+| 5 | 60 | 0.502 | 20.7 | 5.03 | 3.45 | 0.265 | 0.594 | 0.618 |
+| 6 | 61 | 0.563 | 22.4 | 5.67 | 3.91 | 0.273 | 0.631 | 0.594 |
+| 7 | 60 | 0.640 | 21.7 | 5.26 | 3.70 | 0.263 | 0.630 | 0.583 |
+| 8 | 61 | 0.718 | 24.5 | 4.99 | 3.58 | 0.212 | 0.659 | 0.612 |
+| 9 | 60 | 0.826 | 22.2 | 4.53 | 3.26 | 0.214 | 0.620 | 0.777 |
+| 10 | 61 | 0.922 | 18.1 | 3.69 | 2.84 | 0.224 | 0.545 | 0.794 |
 
 ## 3. Irrigation source, groundwater omitted
 
 | outcome | n | canal | surface | R2 |
 |---|---|---|---|---|
-| D1_exp_shannon | 606 | -0.310 | -2.030** | 0.537 |
-| D0_richness | 606 | -2.593*** | -0.467 | 0.833 |
-| D2_inv_simpson | 606 | -0.155 | -1.660** | 0.507 |
-| evenness_D1_D0 | 606 | +0.034* | -0.087 | 0.563 |
-| share_cereals | 606 | +0.022 | +0.300*** | 0.671 |
-| share_pulses | 606 | +0.073*** | -0.104*** | 0.445 |
-| share_oilseeds | 606 | -0.097*** | -0.164*** | 0.559 |
+| D1_exp_shannon | 606 | -0.315 | -2.030** | 0.540 |
+| D0_richness | 606 | -2.612*** | -0.422 | 0.833 |
+| D2_inv_simpson | 606 | -0.160 | -1.670** | 0.510 |
+| evenness_D1_D0 | 606 | +0.034* | -0.086 | 0.560 |
+| share_cereals | 606 | +0.017 | +0.297*** | 0.675 |
+| share_pulses | 606 | +0.071*** | -0.105*** | 0.445 |
+| share_oilseeds | 606 | -0.085*** | -0.152** | 0.551 |
 
 ## 4. The five dimensions
 
@@ -92,18 +92,18 @@ log mean holding size and state fixed effects.
 
 | dimension | n | raw | adjusted |
 |---|---|---|---|
-| irrigation share | 606 | -0.753** | +3.901*** |
-| canal village share | 606 | -1.265*** | -0.246 |
-| mean holding (log ha) | 606 | +0.339*** | +0.019 |
-| cultivator share of ag workers | 606 | -1.134*** | -0.060 |
-| landless share (SECC) | 592 | -0.204 | -0.939 |
-| mandi village share | 606 | -1.931 | -0.142 |
-| weekly haat village share | 606 | -0.148 | +0.857 |
-| regular market village share | 606 | -2.307*** | -0.716 |
-| FPO village share | 606 | +2.188*** | +1.905** |
-| cold storage village share | 606 | +6.308*** | +1.335 |
-| SC population share | 606 | +1.368 | +1.233 |
-| ST population share | 606 | -0.350 | +0.730 |
-| cropping intensity | 606 | +0.845** | +2.265*** |
+| irrigation share | 606 | -0.799** | +3.844*** |
+| canal village share | 606 | -1.268*** | -0.251 |
+| mean holding (log ha) | 606 | +0.354*** | +0.024 |
+| cultivator share of ag workers | 606 | -1.086** | -0.004 |
+| landless share (SECC) | 592 | -0.213 | -0.955 |
+| mandi village share | 606 | -1.987 | -0.130 |
+| weekly haat village share | 606 | -0.215 | +0.820 |
+| regular market village share | 606 | -2.310*** | -0.710 |
+| FPO village share | 606 | +2.197*** | +1.875** |
+| cold storage village share | 606 | +6.325*** | +1.269 |
+| SC population share | 606 | +1.269 | +1.235 |
+| ST population share | 606 | -0.331 | +0.704 |
+| cropping intensity | 606 | +0.848** | +2.315*** |
 
 Significance: *** p<0.01, ** p<0.05, * p<0.10.

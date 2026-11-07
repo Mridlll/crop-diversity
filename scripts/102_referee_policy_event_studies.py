@@ -28,6 +28,7 @@ import warnings
 import numpy as np
 import pandas as pd
 from scipy import stats
+from _years import keep_years, FIRST_YEAR
 
 warnings.simplefilter("ignore")
 REPO = r"D:/crop-diversity"
@@ -104,7 +105,7 @@ def fmt(e, s):
 # ---------------------------------------------------------------- data (as in 99)
 A = pd.read_csv(OUT + "/crop_group_panel_annual.csv")
 A["state"] = A["unit_key"].str.split("|").str[0]
-A = A[A["in_606"] == 1].copy()
+A = keep_years(A[A["in_606"] == 1]).copy()  # analysis window, scripts/_years.py
 A["yr"] = A["year_start"]
 A_ok = A[A["flag_annual_unreliable"] == 0].copy()
 cmap = pd.read_csv(OUT + "/crop_group_child_map.csv")[["div_key", "unit_key"]]
@@ -148,11 +149,11 @@ def add_events(p, ref=-1):
 
 uP = unit_treat("pulses")
 firstP = uP.apply(lambda r: r[r == 1].index.min(), axis=1)
-P07 = build_stack(A_ok, firstP, 2007, lambda f: f >= 2010, 1997, 2009, "P07",
+P07 = build_stack(A_ok, firstP, 2007, lambda f: f >= 2010, FIRST_YEAR, 2009, "P07",
                   exclude_states=("ASSAM", "JHARKHAND"))
 es, cols = add_events(P07)
 P07["post"] = ((P07.treat == 1) & (P07.e >= 0)).astype(float)
-P07["tr_lin"] = P07["treat"] * (P07["yr"] - 1997)
+P07["tr_lin"] = P07["treat"] * (P07["yr"] - FIRST_YEAR)
 rows = []
 
 w("=" * 78)
@@ -253,7 +254,7 @@ w("  " + ", ".join("{} {:+.4f}".format(t, v) for t, v in (gap[1] - gap[0]).items
 # ---------------------------------------------------------------- R3 short windows
 w("")
 w("R3  short-window DiD (post vs pre within window), P07")
-for lo in [1997, 2000, 2002, 2003, 2004]:
+for lo in [FIRST_YEAR, 2000, 2002, 2003, 2004]:
     sub = P07[P07.yr >= lo]
     for y in ["share_gca_pulses", "ln_area_ha_pulses"]:
         r = feols(sub, y, ["post"], ["u_s", "t_s"], "unit_key")
@@ -301,11 +302,11 @@ uR, uW = unit_treat("rice"), unit_treat("wheat")
 for comp, u_, ys in [("rice", uR, ["share_gca_rice", "ln_area_ha_rice"]),
                      ("wheat", uW, ["share_gca_wheat", "ln_area_ha_wheat", "share_gca_pulses"])]:
     first = u_.apply(lambda r: r[r == 1].index.min(), axis=1)
-    S = build_stack(A_ok, first, 2007, lambda f: f.isna() | (f >= 2014), 1997, 2013,
+    S = build_stack(A_ok, first, 2007, lambda f: f.isna() | (f >= 2014), FIRST_YEAR, 2013,
                     comp[0].upper() + "07")
     es_s, cols_s = add_events(S)
     S["post"] = ((S.treat == 1) & (S.e >= 0)).astype(float)
-    S["tr_lin"] = S["treat"] * (S["yr"] - 1997)
+    S["tr_lin"] = S["treat"] * (S["yr"] - FIRST_YEAR)
     for y in ys:
         r = feols(S, y, cols_s, ["u_s", "t_s"], "unit_key")
         co = ", ".join("{}:{:+.3f}".format(e, r["b"].get(c, np.nan)) for e, c in zip(es_s, cols_s))

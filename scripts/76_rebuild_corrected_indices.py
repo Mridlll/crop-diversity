@@ -43,6 +43,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
+from _years import keep_years, FIRST_YEAR, WINDOW_LABEL
+
 RAW = r"E:/CEEW Project/outputs/all_crops_apy_1997_2021_india_data_portal.csv"
 REPO = r"D:/crop-diversity"
 DIV = REPO + "/outputs/crop_diversity_analysis"
@@ -104,12 +106,13 @@ for y in sorted(yr.index)[-4:]:
     w("| {}-{} | {:,} | {:.1f} | {} |".format(
         y, str(y + 1)[-2:], int(yr.loc[y, "rows"]), yr.loc[y, "mha"],
         int(yr.loc[y, "dist"])))
-LAST = 2019
 before = len(df)
-df = df[df["year_start"] <= LAST]
+n_last = int((df["year_start"] > 2019).sum())
+df = keep_years(df)
 w("")
-w("Dropped {} rows in 2020-21. Usable range is 1997-98 to {}-{}, {} years.".format(
-    before - len(df), LAST, str(LAST + 1)[-2:], df["year_start"].nunique()))
+w("Dropped {} rows in 2020-21 (a stub) and {} rows in 1997-98 (broken: see _years.py).".format(
+    n_last, before - len(df) - n_last))
+w("Analysis window is {}, {} years.".format(WINDOW_LABEL, df["year_start"].nunique()))
 
 # ------------------------------------------------------------- defect 2
 K = ["district_key", "year", "season", "crop_name"]

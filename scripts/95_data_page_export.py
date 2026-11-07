@@ -21,6 +21,8 @@ import os
 
 import pandas as pd
 
+from _years import FIRST_YEAR, LAST_YEAR, N_YEARS, WINDOW_LABEL
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "outputs", "shrug_covariates")
 DIV = os.path.join(ROOT, "outputs", "crop_diversity_analysis")
@@ -125,13 +127,13 @@ dump("site_data_crosswalk.json", cwrows)
 a = pd.read_csv(os.path.join(DIV, "district_year_diversity_panel_corrected.csv"),
                 usecols=["district_key", "year_start"])
 a = a[a["year_start"] <= 2019]
-years = list(range(1997, 2020))
+years = list(range(FIRST_YEAR, LAST_YEAR + 1))
 n_all = a.groupby("year_start")["district_key"].nunique().reindex(years, fill_value=0)
 n_606 = a[a["district_key"].isin(in606)].groupby("year_start")["district_key"].nunique().reindex(years, fill_value=0)
 ny = p.loc[s5, "n_years"]
 coverage = {
     "years": years, "n_all": [int(x) for x in n_all], "n_606": [int(x) for x in n_606],
-    "years_606": {"all23": int((ny == 23).sum()), "ge22": int((ny >= 22).sum()),
+    "years_606": {"all_years": int((ny == N_YEARS).sum()), "all_but_one": int((ny >= N_YEARS - 1).sum()),
                   "lt20": int((ny < 20).sum()), "median": float(ny.median())},
     "sources": [
         {"name": "Census village directory", "year": 2011, "label": "2011"},
@@ -259,7 +261,7 @@ missing = set(pv.variable) - set(LBL)
 assert not missing, missing
 
 sources = [
-    {"id": "crop", "name": "Crop statistics", "year": "1997–98 to 2019–20", "level": "district"},
+    {"id": "crop", "name": "Crop statistics", "year": "1998–99 to 2019–20", "level": "district"},
     {"id": "ay", "name": "Mission Antyodaya", "year": "2019–20", "level": "village"},
     {"id": "vd", "name": "Census village directory", "year": "2011", "level": "village"},
     {"id": "pca", "name": "Census abstract", "year": "2011", "level": "village"},
@@ -333,14 +335,14 @@ dump("site_data_checks.json", checks)
 rb = pd.read_csv(os.path.join(OUT, "final_robustness.csv"))
 rb = rb[rb.spec.str.startswith("D1:")]
 NAMES = {
-    "D1: state fixed effects": "with the state baseline",
+    "D1: state fixed effects": "within state, the main estimate",
     "D1: PC11 VD irrigation": "census 2011 irrigated share",
     "D1: drop shared parents": "without the 64 districts that share a 2011 district",
     "D1: inverse-parent weighted": "weighted by one over the districts sharing a 2011 district",
     "D1: drop source conflicts": "without districts where the two irrigation sources differ by more than 0.30",
-    "D1: full 23 years only": "districts with 22 or more years",
+    "D1: full panel only": "districts missing at most one year",
     "D1: area weighted": "weighted by cropped area",
-    "D1: no fixed effects": "without the state baseline",
+    "D1: no fixed effects": "without the within-state comparison",
 }
 rob = [{"name": NAMES[r.spec], "n": int(r.n), "tp": round(float(r.tp), 3), "p2": float(r.p2),
         "r2": round(float(r.r2), 3)} for r in rb.itertuples()]
@@ -357,7 +359,7 @@ cols = [
      "def": "Establishments outside farming per 1,000 people, Economic Census 2013."},
     {"id": "conn", "name": "connectivity average",
      "def": "Average of standardised shares of villages with a paved road, public transport, a bank and a railway station."},
-    {"id": "fe", "name": "state baseline",
+    {"id": "fe", "name": "within state",
      "def": "Each state gets its own intercept, so a district is set only against districts in the same state."},
     {"id": "cl", "name": "grouped by 2011 district",
      "def": "Districts carved from the same 2011 district are treated as one group when measuring uncertainty."},
@@ -368,7 +370,7 @@ rows = [
     {"name": "irrigation source", "n": 606, "has": ["irr", "farm", "st", "fe", "cl"],
      "note": "Canal and surface-water shares of villages, groundwater left out as the comparison."},
     {"name": "single district measures", "n": 606, "has": ["irr", "farm", "fe", "cl"],
-     "note": "One district measure at a time, first on its own and then holding irrigation and farm size constant within the state baseline."},
+     "note": "One district measure at a time, first on its own and then holding irrigation and farm size constant within state."},
     {"name": "facility comparisons", "n": 606, "has": ["irr", "farm", "st", "nl", "ec", "conn", "fe", "cl"],
      "note": "One facility at a time. Benjamini-Hochberg correction across the ten crop categories."},
 ]

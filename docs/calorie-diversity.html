@@ -38,27 +38,16 @@
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">The first view shades each district by the food energy in its harvest per
-    hectare of cropped area. The second sorts districts into four groups by food energy and by the
-    effective number of crops. The group with varied cropping and high food energy holds about as
-    many districts as each of the other three.</p>
-    <div class="note">
-      <span class="note__label">How to read this map</span>
-      <p>In the first view, brighter cyan means more food energy per hectare. The colour key uses a
-      logarithmic scale, where equal steps stand for equal multiples of the value. In the second
-      view each colour is one of the four groups, named in the key under the map. The buttons above
-      the map switch views. Hover over a district to see its food energy, its effective number of
-      crops, its group and its largest crops. Food energy per hectare is the kilocalories in a
-      district&rsquo;s whole harvest divided by its cropped area. The effective number of crops is
-      the number of equally sized crops that would give the same spread of land.</p>
-    </div>
+    <p class="lead">Varied cropping and high food energy per hectare go together about as often as
+    any other pairing. Split at the median on food energy and again on the effective number of
+    crops, each of the four groups holds roughly a quarter of districts.</p>
   </div>
 
   <div class="figure figure--wide fade">
     <div class="figure__frame">
       <p class="figure__label">Interactive</p>
       <p class="figure__title">Food energy per hectare, and the four groups</p>
-      <p class="figure__sub">Choose a view. Hover over a district for its crops and its food energy.</p>
+      <p class="figure__sub">Choose a view. Brighter means more food energy per hectare, on a logarithmic scale. Hover over a district for its crops.</p>
       <div class="legend" id="tabs"></div>
       <div id="themap" class="chart"></div>
       <p class="figure__note">Energy is the food energy in a district's own harvest, per hectare of its cropped area, averaged across its years. Coconut is reported in nuts and is converted using the weight of its edible meat.</p>
@@ -68,17 +57,15 @@
   <div class="prose prose--flow fade">
     <h3>What is being measured</h3>
     <p>Each crop's harvest is converted to food energy using standard energy values per hundred
-    grams. These are summed across the district's crops and divided by its cropped area. The result
-    is the food energy one hectare in that district produces in a year. It describes the harvest
-    and leaves out what happens to it afterwards, including who eats it.</p>
+    grams. These are summed across the district's crops and divided by its cropped area, which
+    gives the food energy one hectare in that district produces in a year. It describes the
+    harvest and leaves out what happens to it afterwards, including who eats it.</p>
     <p>The median district produces about 5.9 million kilocalories a hectare. Values across
-    districts span two orders of magnitude, which is why the map uses a logarithmic scale.</p>
+    districts span two orders of magnitude.</p>
     <h3>The four groups</h3>
-    <p>Each district is placed above or below the median district on food energy per hectare and
-    again on the effective number of crops. That gives four groups of roughly equal size. The
-    diverse and energy-rich group has about as many districts as each of the others.</p>
-    <p>The concentrated and energy-rich group is the irrigated cereal belt, which gets a lot of
-    energy from a narrow rotation. The diverse and energy-poor group is mostly rainfed and upland.</p>
+    <p>The concentrated, energy-rich districts form the irrigated cereal belt, which gets a lot of
+    energy from a narrow rotation, while the diverse but energy-poor districts are mostly rainfed
+    and upland.</p>
   </div>
 </section>
 

@@ -43,7 +43,10 @@ REPO = r"D:/crop-diversity"
 COV = REPO + "/outputs/shrug_covariates"
 DIV = REPO + "/outputs/crop_diversity_analysis"
 OUT_JSON = REPO + "/docs/data/site_typology.json"
-OUT_LOG = COV + "/market_typology_log.txt"
+OUT_LOG = os.environ.get("CROPDIV_TYPOLOGY_LOG", COV + "/market_typology_log.txt")
+# facility shares: village shares by default; 112_market_pop_site_data.py points this at
+# the population-weighted shares the site uses
+MK_CSV = os.environ.get("CROPDIV_MARKET_COV", COV + "/market_covariates.csv")
 GEO = REPO + "/docs/data/districts.geojson"
 MIN_STATE = 8
 LOG = []
@@ -83,7 +86,7 @@ def key(state, dist):
 
 # ------------------------------------------------------------------ data
 fp = pd.read_csv(COV + "/final_panel.csv")
-mk = pd.read_csv(COV + "/market_covariates.csv")
+mk = pd.read_csv(MK_CSV)
 for t in (fp, mk):
     for c in ["pc11_state_id", "pc11_district_id"]:
         t[c] = pd.to_numeric(t[c], errors="coerce")

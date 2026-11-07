@@ -140,7 +140,7 @@ SC[1] = scene({
                 '<div class="ro-cols">' + fl.map(f => `<div><b>${esc(nm[f.s])}</b> <span>(${f.n})</span><br>${f.vars.map(esc).join(', ')}</div>`).join('') + '</div>';
         } else {
             const tot = SRC.sources.reduce((a, s) => a + s.n_vars, 0);
-            host.innerHTML = `<span class="readout__name">${tot} variables from seven sources</span>Mission Antyodaya supplies 49 of the 93 district measures, counting the ratios built from it. The census village directory supplies 23, the SECC 11 and the census abstract 10. Hover or tap a source or a group to list its variables.`;
+            host.innerHTML = `<span class="readout__name">Mission Antyodaya, reported by the gram panchayat</span>About half of the district measures come from what panchayats report about their own villages. Hover or tap a source or a group to list its variables.`;
         }
     },
     pick(s, g) {
@@ -296,7 +296,7 @@ SC[1] = scene({
 SC[2] = scene({
     mode: 'all', u: 1, m: 0,
     controls() {
-        segs($('#v2-ctl'), [{ key: 'all', name: 'all 725' }, { key: '606', name: 'the 606 analysed' }], k => {
+        segs($('#v2-ctl'), [{ key: 'all', name: 'all ' + CW.length }, { key: '606', name: 'the 606 analysed' }], k => {
             const from = this.m, to = k === '606' ? 1 : 0; this.mode = k;
             cancel(this);
             tween(this, 700, t => { this.m = lerp(from, to, easeOut(t)); this.draw(); });
@@ -321,7 +321,7 @@ SC[2] = scene({
         const Y = v => m.t + topH - (v - y0) / (y1 - y0) * topH;
         /* crop window band */
         const bandTop = m.t - 6, bandBot = m.t + topH + gap + lanes.length * laneH;
-        E('rect', { x: X(1997), y: bandTop, width: X(2020) - X(1997), height: bandBot - bandTop, fill: 'rgba(255,255,255,0.028)' }, svg);
+        E('rect', { x: X(1998), y: bandTop, width: X(2020) - X(1998), height: bandBot - bandTop, fill: 'rgba(255,255,255,0.028)' }, svg);
         T(svg, { x: X(2020) + 6, y: m.t + 4, fill: TX3, 'font-size': 10.5, class: 'mono' }, narrow ? '' : 'crop record ends');
         /* y grid */
         [500, 600, 700].forEach(v => {
@@ -332,7 +332,7 @@ SC[2] = scene({
         /* x axis */
         const xAxisY = bandBot + 6;
         E('line', { x1: m.l, x2: X(2024), y1: xAxisY, y2: xAxisY, stroke: AXIS }, svg);
-        const tks = narrow ? [1997, 2005, 2013, 2019] : [1997, 2001, 2005, 2009, 2013, 2017, 2019, 2023];
+        const tks = narrow ? [1998, 2005, 2013, 2019] : [1998, 2001, 2005, 2009, 2013, 2017, 2019, 2023];
         tks.forEach(v => {
             E('line', { x1: X(v + .5), x2: X(v + .5), y1: xAxisY, y2: xAxisY + 4, stroke: AXIS }, svg);
             T(svg, { x: X(v + .5), y: xAxisY + 17, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5, class: 'mono' }, v);
@@ -357,7 +357,7 @@ SC[2] = scene({
         const g = E('g', { 'clip-path': `url(#${cid})` }, svg);
         this.path = E('path', { fill: 'none', stroke: TX, 'stroke-width': 2, 'stroke-linejoin': 'round' }, g);
         this.endLab = T(g, { x: X(2020) + 6, y: 0, fill: TX, 'font-size': 11.5, class: 'mono' }, '');
-        this.startLab = T(g, { x: X(1997) + 4, y: 0, fill: TX2, 'font-size': 11, class: 'mono' }, '');
+        this.startLab = T(g, { x: X(1998) + 4, y: 0, fill: TX2, 'font-size': 11, class: 'mono' }, '');
         this.dot = E('circle', { r: 4, fill: TX, stroke: BG, 'stroke-width': 2, opacity: 0 }, svg);
         this.X = X; this.Y = Y;
         COV.years.forEach((yr, i) => {
@@ -409,7 +409,7 @@ const METH = [
 SC[3] = scene({
     mode: 'all', u: 1, hiPar: null,
     controls() {
-        segs($('#v3-ctl'), [{ key: 'all', name: 'all 725' }, { key: '606', name: 'the 606 analysed' }, { key: 'tg', name: 'Telangana' }],
+        segs($('#v3-ctl'), [{ key: 'all', name: 'all ' + CW.length }, { key: '606', name: 'the 606 analysed' }, { key: 'tg', name: 'Telangana' }],
             k => { this.mode = k; this.hiPar = null; this.paint(); this.readout(); }, this.mode);
     },
     render() {
@@ -509,7 +509,8 @@ SC[3] = scene({
         } else if (this.mode === '606') {
             host.innerHTML = '<span class="readout__name">The 606 analysed</span>Squares drawn as outlines are districts that leave the sample. Most of the renamed or new districts that leave are new districts with under ten years of crop data. 64 of the 606 share their 2011 district with another district in the crop record.';
         } else {
-            host.innerHTML = '<span class="readout__name">725 districts in the crop record</span>722 match a 2011 census district, 99.6 percent. The 141 traced to a 2011 district were renamed or created after 2011. A new district takes the village records of the district it was carved from.';
+            const nM = CW.filter(r => r.m !== 'unmatched').length, nP = CW.filter(r => r.m === 'parent_map').length;
+            host.innerHTML = `<span class="readout__name">${CW.length} districts in the crop record</span>${nM} match a 2011 census district, ${(nM / CW.length * 100).toFixed(1)} percent. The ${nP} traced to a 2011 district were renamed or created after 2011. A new district takes the village records of the district it was carved from.`;
         }
     },
     prep() { this.u = 0; this.paint(); },
@@ -528,7 +529,7 @@ SC[4] = scene({
         const H = top + FUN.steps.length * rowH;
         const svg = svgFor(host, W, H);
         const bw = W - gut;
-        const X = v => v / 725 * bw;
+        const X = v => v / FUN.steps[0].n * bw;
         const pid = 'v4h' + Math.random().toString(36).slice(2, 7);
         const pat = E('pattern', { id: pid, width: 5, height: 5, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' }, E('defs', {}, svg));
         E('line', { x1: 0, y1: 0, x2: 0, y2: 5, stroke: 'rgba(255,255,255,0.35)', 'stroke-width': 1.2 }, pat);
@@ -705,7 +706,7 @@ SC[6] = scene({
         });
         T(svg, { x: m.l, y: 10, fill: TX3, 'font-size': 10.5, class: 'mono' }, 'count of crops');
         E('line', { x1: m.l, x2: m.l + iw, y1: m.t + ih, y2: m.t + ih, stroke: AXIS }, svg);
-        [1, 5, 10, 15, 20, 23].forEach(v => T(svg, { x: X(v), y: m.t + ih + 18, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5, class: 'mono' }, v));
+        [1, 5, 10, 15, 20, 22].forEach(v => T(svg, { x: X(v), y: m.t + ih + 18, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5, class: 'mono' }, v));
         T(svg, { x: m.l + iw, y: H - 4, 'text-anchor': 'end', fill: TX3, 'font-size': 10.5, class: 'mono' }, 'years in the crop record');
         const rnd = mulberry(7);
         const pw = narrow ? 0.34 : 0.36;
@@ -904,6 +905,20 @@ async function init() {
         loadJSON('data/site_indices.json')]);
     IDX = ix.districts;
     K606 = new Set(FUN.keys606);
+    /* plain wording for the within-state comparison, and the robustness range as it now stands */
+    const ws = s => String(s).replace(/without the state baseline/g, 'without the within-state comparison')
+        .replace(/within the state baseline/g, 'within state').replace(/with the state baseline/g, 'within state, the main estimate')
+        .replace(/state baseline/g, 'within state');
+    MOD.cols.forEach(c => {
+        if (c.id === 'fe') { c.name = 'within state (state fixed effects)'; c.def = 'A district is set only against other districts in the same state.'; }
+        else { c.name = ws(c.name); c.def = ws(c.def); }
+    });
+    const tps = MOD.robust.map(o => o.tp);
+    MOD.rows.forEach(r => {
+        r.note = ws(r.note);
+        if (r.name === 'irrigation curve') r.note = r.note.replace(/from \d\.\d+ to \d\.\d+/, `from ${Math.min(...tps).toFixed(3)} to ${Math.max(...tps).toFixed(3)}`);
+    });
+    MOD.robust.forEach(o => { o.name = ws(o.name); });
     Object.values(SC).forEach(sc => { if (sc.controls) sc.controls(); });
     try { tables(); } catch (e) { console.error('tables', e); }
     for (const k of Object.keys(SC)) {

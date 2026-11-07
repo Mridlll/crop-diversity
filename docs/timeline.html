@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crop Diversity Year by Year</title>
-<meta name="description" content="District crop diversity animated across 1997-98 to 2019-20.">
+<meta name="description" content="District crop diversity animated across 1998-99 to 2019-20.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,57 +32,46 @@
     <p class="mast__label">District map</p>
     <h1 class="mast__title">Effective number of crops in each district, year by year</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">Twenty-three crop years, 1997&ndash;98 to 2019&ndash;20.</p>
+    <p class="mast__sub">Districts move from year to year while the national spread of land across crops stays flat.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">This map shows each district&rsquo;s effective number of crops one crop year
-    at a time. Weighted by cropped area, the national figure stays flat across the period. Among
-    the districts reporting in every year, 264 ended with a lower effective number of crops and 165
-    with a higher one.</p>
-    <div class="note">
-      <span class="note__label">How to read this map</span>
-      <p>Brighter cyan means a higher effective number of crops in the year shown. The colour scale
-      stays the same in every year, so a district that brightens has spread its land across more
-      crops. Drag the slider to pick a year, or press Play to step through them. Hover over a
-      district to see its effective number of crops and its count of crops for that year. Unshaded
-      districts have no record that year. The effective number of crops is the number of equally
-      sized crops that would give the same spread of land.</p>
-    </div>
+    <p class="lead">Weighted by cropped area, the national effective number of crops stays flat
+    from 1998&ndash;99 to 2019&ndash;20. District by district, 297 ended the period with a lower
+    effective number of crops and 203 with a higher one, although the median change is only about
+    a sixth of a crop.</p>
   </div>
 
   <div class="figure figure--wide fade">
     <div class="figure__frame">
       <p class="figure__label">Interactive</p>
       <p class="figure__title">Effective number of crops, by year</p>
-      <p class="figure__sub">Drag the slider or press Play. Districts with no record that year are unshaded.</p>
+      <p class="figure__sub">Drag the slider or press Play. Brighter means a higher effective number of crops, on the same scale every year.</p>
       <div class="legend" style="align-items:center;gap:1rem">
         <button id="play" style="background:none;border:1px solid rgba(255,255,255,.14);
           color:inherit;font:inherit;font-size:.8rem;cursor:pointer;padding:.25rem .8rem;
           border-radius:2px">Play</button>
-        <input id="yr" type="range" min="0" max="22" value="22" step="1"
+        <input id="yr" type="range" min="0" max="21" value="21" step="1"
           style="flex:1;min-width:200px;accent-color:#0E9BB5">
         <span id="yrlab" style="font-family:var(--font-mono);font-size:.85rem;
           min-width:5.5em"></span>
       </div>
       <div id="themap" class="chart"></div>
-      <p class="figure__note">A district enters the record when it is formed, so the number of districts shown climbs across the period. Comparisons across years are made on the districts reporting in every year.</p>
+      <p class="figure__note">Districts with no record that year are unshaded. The record starts in 1998&ndash;99 because the 1997&ndash;98 returns are broken, with whole seasons missing in some states.</p>
     </div>
   </div>
 
   <div class="prose prose--flow fade">
     <h3>Why the early years show fewer districts</h3>
-    <p>Districts enter the record when they are created, so the early years show fewer of them.
-    The totals quoted on this site use only the districts reporting in every year. A comparison of
-    1997 with 2019 across all available districts would partly pick up changes in district
-    boundaries.</p>
+    <p>Because districts enter the record when they are created, the early years show fewer of
+    them. National figures use only the districts that report in every year, which keeps new
+    districts from passing for change on the land.</p>
     <h3>Which way districts moved</h3>
-    <p>Comparing each district's first seven years with its last seven, 264 districts ended with
-    a lower effective number of crops and 165 with a higher one. Weighted by cropped area, the
-    national series is flat, because the losses are in districts that hold less of the country's
-    land.</p>
+    <p>Between 1998&ndash;2004 and 2013&ndash;2019 the median district lost 0.17 of an effective crop.
+    With districts weighted by their cropped land the fall is 0.20, which is not statistically
+    significant once each state's swings in reporting are allowed for.</p>
   </div>
 </section>
 
@@ -144,15 +133,18 @@ async function drawAll(){
     if (t) hit++;
   });
 
+  // 1997-98 returns are broken (whole seasons missing), so the map starts in 1998-99
+  const Y0 = Math.max(0, TL.years.indexOf(1998));
   const all = [];
   Object.keys(TL.districts).forEach(k =>
-    TL.districts[k].D1.forEach(v => { if (v != null) all.push(v); }));
+    TL.districts[k].D1.forEach((v, j) => { if (v != null && j >= Y0) all.push(v); }));
   all.sort((a,b)=>a-b);
   LO = all[Math.floor(all.length*0.02)]; HI = all[Math.floor(all.length*0.98)];
 
   const slider = document.getElementById('yr');
   const lab = document.getElementById('yrlab');
   const play = document.getElementById('play');
+  slider.min = Y0;
   slider.max = TL.years.length - 1;
   let i = TL.years.length - 1;
 
@@ -186,7 +178,7 @@ async function drawAll(){
   let timer = null;
   play.onclick = () => {
     if (timer) { clearInterval(timer); timer = null; play.textContent = 'Play'; return; }
-    if (i >= TL.years.length - 1) i = 0;
+    if (i >= TL.years.length - 1) i = Y0;
     play.textContent = 'Pause';
     timer = setInterval(() => {
       i = i + 1;

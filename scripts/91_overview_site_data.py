@@ -13,7 +13,7 @@ Contents
               name differs from the crop record, keyed "<geojson state>|<geojson name>",
               with the matching index values and the largest crop
   change      per-district change, 1998-2004 mean against 2013-2019 mean, for the
-              429 districts observed in all 23 years: name, state, dD1, dE, dD0
+              districts observed in every year of the window (scripts/_years.py): name, state, dD1, dE, dD0
   state_rings state outlines, copied from site_market_map.json so this page does
               not depend on that file at runtime
 
@@ -25,6 +25,8 @@ import os
 
 import numpy as np
 import pandas as pd
+
+from _years import keep_years
 
 RAW = r"E:/CEEW Project/outputs/all_crops_apy_1997_2021_india_data_portal.csv"
 REPO = r"D:/crop-diversity"
@@ -56,7 +58,7 @@ for (s_, d_), new in REMAP.items():
     df.loc[m, "state_name"] = new
 df["year_start"] = df["year"].str.split("-").str[0].astype(int)
 df["district_key"] = df["state_name"].str.upper() + "|" + df["district_name"].str.upper()
-df = df[df["year_start"] <= 2019]
+df = keep_years(df)  # analysis window, scripts/_years.py
 K = ["district_key", "year", "season", "crop_name"]
 df = df.sort_values("area", ascending=False).drop_duplicates(subset=K, keep="first")
 
@@ -157,7 +159,7 @@ mm = json.load(open(DOCS + "/site_market_map.json", encoding="utf-8"))
 
 out = {"note": "Overview page. examples: mean annual area shares. name_fix: geojson "
                "polygons joined to the crop record by name. change: [district, state, "
-               "dD1, dE, dD0], 2013-2019 mean minus 1998-2004 mean, 429 districts.",
+               "dD1, dE, dD0], 2013-2019 mean minus 1998-2004 mean, {} districts.".format(len(change)),
        "examples": examples, "name_fix": name_fix, "change": change,
        "state_rings": mm["state_rings"]}
 with open(DOCS + "/site_overview_examples.json", "w", encoding="utf-8") as f:

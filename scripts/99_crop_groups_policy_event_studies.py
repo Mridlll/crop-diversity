@@ -1,7 +1,7 @@
 """
 99_crop_groups_policy_event_studies.py
 
-Q2 policy event studies on the crop-group panel (2011-parent units, 1997-98 to 2019-20).
+Q2 policy event studies on the crop-group panel (2011-parent units, 1998-99 to 2019-20; 1997-98 is dropped through scripts/_years.py).
 
   A. NFSM-Pulses entry -> pulse share of GCA, log pulse area, rice and wheat share.
      Stacked event study: one stack per entry cohort, each with only clean controls
@@ -11,7 +11,7 @@ Q2 policy event studies on the crop-group panel (2011-parent units, 1997-98 to 2
      controls). Unit-by-stack FE and state-by-year-by-stack FE; SEs clustered on the
      2011-parent unit (= the shared-parent groups, 605 in the 606 sample).
        stack P07: NFSM-Pulses 2007-08 list vs same-state units entering 2010-11 or later,
-                  window 1997-98 .. 2009-10.  Main estimate.
+                  window 1998-99 .. 2009-10.  Main estimate.
        stack P10: 2010-11 state-wide expansion vs units entering 2014-15/2015-16.
                   All entry is state-wide, so only year FE are possible (no state-by-year);
                   reported as weak / descriptive.
@@ -47,6 +47,7 @@ from scipy import stats
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from _years import keep_years, FIRST_YEAR
 
 REPO = r"D:/crop-diversity"
 OUT = REPO + "/outputs/crop_groups"
@@ -133,7 +134,7 @@ w("Q2 policy event studies on crop-group shares")
 w("=" * 78)
 A = pd.read_csv(OUT + "/crop_group_panel_annual.csv")
 A["state"] = A["unit_key"].str.split("|").str[0]
-A = A[A["in_606"] == 1].copy()
+A = keep_years(A[A["in_606"] == 1]).copy()  # analysis window, scripts/_years.py
 A["yr"] = A["year_start"]
 GROUPS = ["rice", "wheat", "maize", "millets", "pulses", "oilseeds", "cotton",
           "sugarcane", "other"]
@@ -257,7 +258,7 @@ OUTC_P = [("share_gca_pulses", "pulse share of GCA"),
           ("share_gca_wheat", "wheat share of GCA")]
 
 # P07 main: 2007 list vs units first entering >= 2010, within state
-P07 = build_stack(A_ok, firstP, 2007, lambda f: f >= 2010, 1997, 2009, "P07",
+P07 = build_stack(A_ok, firstP, 2007, lambda f: f >= 2010, FIRST_YEAR, 2009, "P07",
                   exclude_states=("ASSAM", "JHARKHAND"))
 w("P07 stack: {} treated units, {} control units, states {}".format(
     P07[P07.treat == 1].unit_key.nunique(), P07[P07.treat == 0].unit_key.nunique(),
@@ -272,8 +273,6 @@ plot_es({lab: ev_store[("P07", y)] for y, lab in OUTC_P},
 
 # robustness for P07 pulse share
 for y in ["share_gca_pulses", "ln_area_ha_pulses"]:
-    o, _ = event_study(P07[P07.yr >= 1998], y, label="P07 drop 1997-98")
-    rows.append(o)
     bal = P07.groupby("unit_key").yr.transform("size") == P07.yr.nunique()
     o, _ = event_study(P07[bal], y, label="P07 balanced units")
     rows.append(o)
@@ -283,7 +282,7 @@ for y in ["share_gca_pulses", "ln_area_ha_pulses"]:
     rows.append(o)
     pw = P07.copy()
     pw["e"] = np.where(pw.treat == 1, pw.e, -999)
-    o, _ = event_study(A[(A.yr >= 1997) & (A.yr <= 2009)].assign(
+    o, _ = event_study(A[(A.yr >= FIRST_YEAR) & (A.yr <= 2009)].assign(
         treat=lambda d: (d.unit_key.map(firstP) == 2007).astype(int))
         .pipe(lambda d: d[(d.treat == 1) | (d.unit_key.map(firstP) >= 2010)])
         .pipe(lambda d: d[~d.state.isin(["ASSAM", "JHARKHAND"])])
@@ -323,7 +322,7 @@ for comp, first, ys in [("rice", firstR, [("share_gca_rice", "rice share"),
                         ("wheat", firstW, [("share_gca_wheat", "wheat share"),
                                            ("ln_area_ha_wheat", "log wheat area"),
                                            ("share_gca_pulses", "pulse share")])]:
-    S = build_stack(A_ok, first, 2007, lambda f: f.isna() | (f >= 2014), 1997, 2013,
+    S = build_stack(A_ok, first, 2007, lambda f: f.isna() | (f >= 2014), FIRST_YEAR, 2013,
                     comp[0].upper() + "07")
     w("{}07 stack: {} treated, {} controls, {} states".format(
         comp, S[S.treat == 1].unit_key.nunique(), S[S.treat == 0].unit_key.nunique(),

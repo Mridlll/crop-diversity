@@ -17,6 +17,7 @@ Output:
   docs/data/site_market_map.json
 """
 import json
+import os
 import re
 
 import geopandas as gpd
@@ -27,6 +28,9 @@ COV = REPO + "/outputs/shrug_covariates"
 DIV = REPO + "/outputs/crop_diversity_analysis"
 GEO = REPO + "/docs/data/districts.geojson"
 OUT = REPO + "/docs/data/site_market_map.json"
+# facility shares: village shares by default; 112_market_pop_site_data.py points this at
+# the population-weighted shares the site uses
+MK_CSV = os.environ.get("CROPDIV_MARKET_COV", COV + "/market_covariates.csv")
 
 ALIAS = {"orissa": "odisha", "pondicherry": "puducherry", "uttaranchal": "uttarakhand",
          "jammu and kashmir": "jammu kashmir", "nct of delhi": "delhi",
@@ -55,7 +59,7 @@ def title(s):
 
 
 fp = pd.read_csv(COV + "/final_panel.csv")
-mk = pd.read_csv(COV + "/market_covariates.csv")
+mk = pd.read_csv(MK_CSV)
 for t in (fp, mk):
     for c in ["pc11_state_id", "pc11_district_id"]:
         t[c] = pd.to_numeric(t[c], errors="coerce")

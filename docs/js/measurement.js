@@ -1,8 +1,9 @@
 /* ================================================================
    MEASUREMENT PAGE: scene visuals.
    Reads data/site_measurement_data.json, data/site_indices.json,
-   data/site_audit.json, data/site_markets.json,
-   data/site_monoculture.json and data/districts.geojson.
+   data/site_audit.json, data/site_markets_pop.json,
+   data/site_monoculture.json, data/site_measurement_rev.json
+   and data/districts.geojson.
    Depends on site.js for svgEl, lin, showTip, hideTip and loadJSON.
    Everything is wrapped so no name collides with site.js globals.
 
@@ -810,7 +811,7 @@ SC[5] = scene({
 /* ================================================================
    06 within a year
    ================================================================ */
-const YRS = 23, NCROP = 30;
+const YRS = 22, NCROP = 30;
 const GROWN = (() => {
     /* 12 crops every year, 18 occasional ones; fixed seed */
     const r = mulberry(23), g = [];
@@ -846,7 +847,7 @@ SC[6] = scene({
         this.uLab = T(svg, { x: xu + cw / 2, y: H - m.b + 14, 'text-anchor': 'middle', fill: TX2, 'font-size': 10, 'font-family': MONO }, 'all');
         this.counts = Array.from({ length: YRS }, (_, y) => GROWN.filter(r => r[y]).length);
         this.cT = this.counts.map((n, y) => T(svg, { x: m.l + y * cw + cw / 2, y: H - m.b + 14, 'text-anchor': 'middle', fill: C.D1, 'font-size': nar ? 7.5 : 9, 'font-family': MONO }, n));
-        T(svg, { x: m.l, y: H - 6, fill: TX3, 'font-size': 10.5, 'font-family': MONO }, '23 years →');
+        T(svg, { x: m.l, y: H - 6, fill: TX3, 'font-size': 10.5, 'font-family': MONO }, '22 years →');
         T(svg, { x: W - m.r, y: H - 6, 'text-anchor': 'end', fill: TX3, 'font-size': 10.5, 'font-family': MONO }, 'rows: 30 crops');
         this.draw(this.u === undefined ? 1 : this.u);
     },
@@ -1351,17 +1352,198 @@ SC.sys = scene({
     play() { this.u = 0; this.drawCal(0); later(this, 300, () => tween(this, 1300, t => { this.u = t; this.drawCal(t); })); },
 });
 
+/* ---------------- 07 within a season ---------------- */
+let REV = null;
+const SEAS_ROWS = [
+    { key: 'all', name: 'all districts' },
+    { key: 'rw', name: 'rice then wheat', col: HUE.vi },
+    { key: 'rr', name: 'rice twice a year', col: HUE.cy },
+    { key: 'pr', name: 'another two-season pair' },
+    { key: 'r1', name: 'rice, little second season' },
+    { key: 'ot', name: 'one main season or mixed' },
+];
+SC.seas = scene({
+    mode: 'mon', u: 1,
+    controls() {
+        segs($('#vss-ctl'), [{ key: 'mon', name: 'year-round crops with the monsoon' }, { key: 'own', name: 'year-round crops as a season' }],
+            k => { this.mode = k; pressSeg($('#vss-ctl'), k); this.move(); }, this.mode);
+    },
+    rows() {
+        const G = REV.seasons.groups, out = [];
+        SEAS_ROWS.forEach(r => { const g = G.find(x => x.key === r.key); out.push(Object.assign({}, r, { ann: g.ann, own: g.own, mon: g.mon, n: g.n, bs_own: g.bs_own, bs_mon: g.bs_mon })); });
+        REV.seasons.examples.forEach(e => {
+            const r = SEAS_ROWS.find(x => x.key === e.key);
+            out.push({ key: 'ex-' + e.key, name: e.d + ', ' + e.s, ex: true, col: r.col, ann: e.ann, own: e.own, mon: e.mon, sys: r.name });
+        });
+        return out;
+    },
+    render() {
+        const host = $('#vss'); if (!host || !REV) return;
+        const W = host.clientWidth || 760, nar = W < 560;
+        const rows = this.rows();
+        const rh = nar ? 44 : 34, gap = 18;
+        const m = { t: 22, r: nar ? 16 : 40, b: nar ? 44 : 34, l: nar ? 12 : 220 };
+        const H = m.t + rows.length * rh + gap + m.b + (nar ? 0 : 0);
+        const svg = svgFor(host, W, H), iw = W - m.l - m.r;
+        const X = lin(0, 7, m.l, m.l + iw);
+        [0, 1, 2, 3, 4, 5, 6, 7].forEach(v => {
+            E('line', { x1: X(v), x2: X(v), y1: m.t - 6, y2: H - m.b, stroke: v ? GRID : ZERO }, svg);
+            T(svg, { x: X(v), y: H - m.b + 16, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5 }, String(v));
+        });
+        T(svg, { x: m.l + iw, y: H - 2, 'text-anchor': 'end', fill: TX3, 'font-size': 10.5 }, 'effective number of crops');
+        this.marks = [];
+        rows.forEach((r, i) => {
+            const yc = m.t + i * rh + (r.ex ? gap : 0) + (nar ? rh - 14 : rh / 2);
+            const ly = nar ? yc - 15 : yc + 4;
+            const lab = T(svg, { x: nar ? m.l : m.l - 14, y: ly, 'text-anchor': nar ? 'start' : 'end', fill: r.key === 'rw' || r.key === 'rr' || r.ex ? TX : TX2, 'font-size': 11.5, 'font-style': r.ex ? 'italic' : 'normal' }, r.name);
+            if (r.col && !r.ex) E('circle', { cx: nar ? m.l - 0 : m.l - 14 - lab.getComputedTextLength() - 9, cy: ly - 4, r: 3.5, fill: r.col }, svg);
+            if (nar && r.col && !r.ex) lab.setAttribute('x', m.l + 10);
+            const line = E('line', { y1: yc, y2: yc, stroke: 'rgba(255,255,255,0.35)', 'stroke-width': 1.6 }, svg);
+            const a = E('circle', { cy: yc, r: 5, fill: BG, stroke: NEU, 'stroke-width': 1.6 }, svg);
+            const b = E('circle', { cy: yc, r: 5.5, fill: r.ex ? (r.col || C.D1) : C.D1 }, svg);
+            const ta = T(svg, { y: yc + 4, fill: TX2, 'font-size': 10.5, 'font-family': MONO }, '');
+            const tb = T(svg, { y: yc + 4, fill: TX, 'font-size': 10.5, 'font-family': MONO, 'text-anchor': 'end' }, '');
+            const hit = E('rect', { x: 0, y: yc - rh / 2 - (nar ? 8 : 0), width: W, height: rh, fill: 'transparent' }, svg);
+            const tip = ev => {
+                const w = r[this.mode], bs = r['bs_' + this.mode];
+                showTip(`<strong>${esc(r.name)}</strong>${r.ex ? '<br>' + esc(r.sys) : ''}<br>over the year ${r.ann.toFixed(2)}<br>within a season ${w.toFixed(2)}` +
+                    (bs != null ? `<br>share of annual diversity from the change of crops between seasons ${pct(bs)}<br>${r.n} districts` : ''), ev);
+                this.read(r);
+            };
+            hit.addEventListener('mousemove', tip); hit.addEventListener('click', tip); hit.addEventListener('mouseleave', hideTip);
+            this.marks.push({ r, line, a, b, ta, tb, X });
+        });
+        if (rows.some(r => r.ex)) {
+            const y = m.t + (rows.length - 2) * rh + gap / 2 + 2;
+            E('line', { x1: nar ? m.l : 8, x2: W - m.r, y1: y, y2: y, stroke: GRID, 'stroke-dasharray': '2 3' }, svg);
+        }
+        this.move(true);
+        this.read(rows[0]);
+    },
+    read(r) {
+        const el = $('#vss-read'); if (!el) return;
+        const w = r[this.mode];
+        el.textContent = `${r.name}: ${r.ann.toFixed(1)} effective crops over the year, ${w.toFixed(1)} within a season`;
+    },
+    move(now) {
+        if (!this.marks) return;
+        const from = this.marks.map(k => k.cur == null ? k.r.ann : k.cur);
+        const go = t => this.marks.forEach((k, i) => {
+            const target = lerp(k.r.ann, k.r[this.mode], easeOut(this.u));
+            const v = lerp(from[i], target, easeOut(t)), X = k.X;
+            k.cur = v;
+            k.a.setAttribute('cx', X(k.r.ann)); k.b.setAttribute('cx', X(v));
+            k.line.setAttribute('x1', X(v)); k.line.setAttribute('x2', X(k.r.ann));
+            k.ta.setAttribute('x', X(k.r.ann) + 9); k.ta.textContent = k.r.ann.toFixed(1);
+            k.tb.setAttribute('x', X(v) - 9); k.tb.textContent = this.u > .98 ? v.toFixed(1) : '';
+        });
+        if (now) { go(1); return; }
+        tween(this, 500, go);
+        const r = this.marks[0] && this.marks[0].r; if (r) this.read(r);
+    },
+    prep() { this.u = 0; this.marks && this.marks.forEach(k => { k.cur = k.r.ann; }); this.move(true); },
+    play() {
+        this.u = 0; this.marks && this.marks.forEach(k => { k.cur = k.r.ann; }); this.move(true);
+        later(this, 250, () => tween(this, 1100, t => { this.u = t; this.move(true); }));
+    },
+});
+
+/* ---------------- 10 count of crops with a minimum share of land ---------------- */
+const TH = [
+    { key: 'raw', name: 'every crop', short: 'every crop' },
+    { key: 't01', name: 'at least 0.1% of land', short: 'crops on at least 0.1% of land' },
+    { key: 't05', name: 'at least 0.5%', short: 'crops on at least 0.5% of land' },
+    { key: 't1', name: 'at least 1%', short: 'crops on at least 1% of land' },
+];
+SC.small = scene({
+    sel: 't01', u: 1,
+    controls() {
+        segs($('#vt-ctl'), TH.map(t => ({ key: t.key, name: t.name })), k => { this.sel = k; pressSeg($('#vt-ctl'), k); this.paint(); }, this.sel);
+    },
+    render() {
+        const host = $('#vt'); if (!host || !REV) return;
+        const S = REV.threshold.series;
+        const W = host.clientWidth || 760, nar = W < 560;
+        const m = { t: 18, r: nar ? 34 : 46, b: 30, l: nar ? 26 : 34 };
+        const H = nar ? 300 : 340, iw = W - m.l - m.r, ih = H - m.t - m.b;
+        const svg = this.svg = svgFor(host, W, H);
+        const y0 = S[0].year, y1 = S[S.length - 1].year;
+        const X = lin(y0, y1, m.l + (nar ? 32 : 40), m.l + iw), Y = lin(0, 27, m.t + ih, m.t);
+        [0, 5, 10, 15, 20, 25].forEach(v => {
+            E('line', { x1: m.l, x2: m.l + iw, y1: Y(v), y2: Y(v), stroke: v ? GRID : ZERO }, svg);
+            T(svg, { x: m.l - 7, y: Y(v) + 4, 'text-anchor': 'end', fill: TX3, 'font-size': 10.5 }, String(v));
+        });
+        (nar ? [1998, 2005, 2012, 2019] : [1998, 2001, 2004, 2007, 2010, 2013, 2016, 2019]).forEach(v =>
+            T(svg, { x: X(v), y: m.t + ih + 18, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5 }, String(v)));
+        T(svg, { x: m.l, y: m.t - 5, fill: TX3, 'font-size': 10.5 }, 'number of crops');
+        const path = k => S.map((t, i) => (i ? 'L' : 'M') + X(t.year).toFixed(1) + ',' + Y(t[k]).toFixed(1)).join('');
+        this.lines = TH.concat([{ key: 'D1', short: 'effective number of crops' }]).map(t => {
+            const p = E('path', { d: path(t.key), fill: 'none', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, svg);
+            const last = S[S.length - 1], first = S[0];
+            const lab = T(svg, { x: X(last.year) + 6, y: Y(last[t.key]) + 4, 'font-size': 11, 'font-family': MONO }, last[t.key].toFixed(1));
+            const lab0 = T(svg, { x: X(first.year) - 6, y: Y(first[t.key]) + 4, 'text-anchor': 'end', 'font-size': 11, 'font-family': MONO }, first[t.key].toFixed(1));
+            return { t, p, lab, lab0, len: p.getTotalLength ? p.getTotalLength() : 1000 };
+        });
+        const cross = E('line', { y1: m.t, y2: m.t + ih, stroke: 'rgba(255,255,255,0.35)', visibility: 'hidden' }, svg);
+        const hit = E('rect', { x: m.l, y: m.t, width: iw, height: ih, fill: 'transparent' }, svg);
+        const pick = ev => {
+            const r = svg.getBoundingClientRect(), k = W / r.width, x = (ev.clientX - r.left) * k;
+            let best = S[0], bd = 1e9;
+            S.forEach(t => { const d = Math.abs(X(t.year) - x); if (d < bd) { bd = d; best = t; } });
+            cross.setAttribute('x1', X(best.year)); cross.setAttribute('x2', X(best.year)); cross.setAttribute('visibility', 'visible');
+            showTip(`<strong>${best.year}&ndash;${String(best.year + 1).slice(2)}</strong>` + TH.map(t => `<br>${t.short} ${best[t.key].toFixed(1)}`).join('') +
+                `<br>effective number of crops ${best.D1.toFixed(1)}`, ev);
+        };
+        hit.addEventListener('mousemove', pick); hit.addEventListener('click', pick);
+        hit.addEventListener('mouseleave', () => { cross.setAttribute('visibility', 'hidden'); hideTip(); });
+        this.paint();
+    },
+    paint() {
+        if (!this.lines) return;
+        const S = REV.threshold.series, a = S[0], b = S[S.length - 1];
+        this.lines.forEach(l => {
+            const on = l.t.key === this.sel, d1 = l.t.key === 'D1', raw = l.t.key === 'raw';
+            const col = d1 ? C.D1 : on ? HUE.vi : raw ? 'rgba(237,237,235,0.55)' : 'rgba(255,255,255,0.18)';
+            l.p.setAttribute('stroke', col);
+            l.p.setAttribute('stroke-width', on ? 2.6 : 1.6);
+            if (d1) l.p.setAttribute('stroke-dasharray', this.u >= 1 ? '5 4' : `${l.len} ${l.len}`);
+            const showLab = on || d1 || raw;
+            l.lab.setAttribute('fill', on ? TX : d1 ? C.D1 : TX2);
+            l.lab0.setAttribute('fill', on ? TX : d1 ? C.D1 : TX2);
+            l.lab.setAttribute('visibility', showLab ? 'visible' : 'hidden');
+            l.lab0.setAttribute('visibility', showLab ? 'visible' : 'hidden');
+        });
+        const t = TH.find(x => x.key === this.sel);
+        const el = $('#vt-read');
+        if (el) el.textContent = `Counting ${t.short}: ${a[t.key].toFixed(1)} in 1998–99 and ${b[t.key].toFixed(1)} in 2019–20`;
+        this.place();
+    },
+    place() {
+        if (!this.lines) return;
+        const e = easeOut(this.u);
+        this.lines.forEach(l => {
+            if (l.t.key === 'D1' && this.u >= 1) { l.p.setAttribute('stroke-dasharray', '5 4'); l.p.removeAttribute('stroke-dashoffset'); }
+            else { l.p.setAttribute('stroke-dasharray', `${l.len} ${l.len}`); l.p.setAttribute('stroke-dashoffset', (l.len * (1 - e)).toFixed(1)); }
+            const o = this.u >= 1 ? 1 : Math.max(0, (this.u - .85) / .15);
+            l.lab.setAttribute('opacity', o.toFixed(2)); l.lab0.setAttribute('opacity', Math.min(1, this.u * 4).toFixed(2));
+        });
+    },
+    prep() { this.u = 0; this.place(); },
+    play() { this.u = 0; this.place(); tween(this, 1500, t => { this.u = t; this.place(); }); },
+});
+
 /* ================================================================
    wiring
    ================================================================ */
-const HOSTS = { 1: '#v1', 2: '#v2', 3: '#v3', 4: '#v4', 5: '#v5a', 6: '#v6a', scale: '#vs', mono: '#vm-toys', sys: '#vy-cal' };
+const HOSTS = { 1: '#v1', 2: '#v2', 3: '#v3', 4: '#v4', 5: '#v5a', 6: '#v6a', scale: '#vs', mono: '#vm-toys', sys: '#vy-cal', seas: '#vss', small: '#vt' };
 let inited = false;
 
 function startPlay(sc) { if (sc.played) return; sc.played = true; sc.play(); }
 
 async function init() {
-    [MD, IND, AUD, MKT, MN] = await Promise.all([loadJSON('data/site_measurement_data.json'), loadJSON('data/site_indices.json'),
-        loadJSON('data/site_audit.json'), loadJSON('data/site_markets.json').catch(() => null), loadJSON('data/site_monoculture.json')]);
+    [MD, IND, AUD, MKT, MN, REV] = await Promise.all([loadJSON('data/site_measurement_data.json'), loadJSON('data/site_indices.json'),
+        loadJSON('data/site_audit.json'), loadJSON('data/site_markets_pop.json').catch(() => null), loadJSON('data/site_monoculture.json'),
+        loadJSON('data/site_measurement_rev.json')]);
     DIST = Object.values(MN.districts);
     buildPresets();
     SC[3].data();

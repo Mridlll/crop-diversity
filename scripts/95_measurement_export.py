@@ -23,6 +23,8 @@ import json
 import numpy as np
 import pandas as pd
 
+from _years import keep_years
+
 REPO = r"D:/crop-diversity"
 DIV = REPO + "/outputs/crop_diversity_analysis"
 COV = REPO + "/outputs/shrug_covariates"
@@ -60,7 +62,7 @@ ann = pd.read_csv(DIV + "/district_year_diversity_panel_corrected.csv")
 viol = int(((ann["D0_richness"] < ann["D1_exp_shannon"] - 1e-9) |
             (ann["D1_exp_shannon"] < ann["D2_inv_simpson"] - 1e-9)).sum())
 out["panel"] = {"n_district_years": int(len(ann)), "violations": viol,
-                "first_year": "1997-98", "last_year": "2019-20"}
+                "first_year": "1998-99", "last_year": "2019-20"}
 
 # ------------------------------------------------ sample flag and stats
 ind = json.load(open(REPO + "/docs/data/site_indices.json"))["districts"]
@@ -126,7 +128,7 @@ pair = list(zip(df["state_name"], df["district_name"]))
 df = df[[p not in BOGUS for p in pair]]
 df["year_start"] = df["year"].str.split("-").str[0].astype(int)
 df["district_key"] = df["state_name"].str.upper() + "|" + df["district_name"].str.upper()
-df = df[df["year_start"] <= 2019]
+df = keep_years(df)  # analysis window, scripts/_years.py
 K = ["district_key", "year", "season", "crop_name"]
 df = df.sort_values("area", ascending=False).drop_duplicates(subset=K, keep="first")
 

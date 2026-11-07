@@ -12,6 +12,8 @@ Outputs:
 """
 import numpy as np
 import pandas as pd
+
+from _years import FIRST_YEAR, LAST_YEAR, N_YEARS, WINDOW_LABEL
 import statsmodels.formula.api as smf
 from scipy import stats
 
@@ -56,7 +58,7 @@ w("# Final results, on corrected diversity indices")
 w("")
 w("Diversity indices are the annual-mean rebuild from script 76: 2020-21 stub")
 w("dropped, duplicate rows collapsed, every index measured per year then averaged")
-w("across 1997-98 to 2019-20. Districts with under 10 years of data are excluded.")
+w("across " + WINDOW_LABEL + ". Districts with under 10 years of data are excluded.")
 w("")
 w("Analysis set: {} districts, {} states. {} sit on a shared pre-2011 parent.".format(
     len(d), d["state_name"].nunique(), int(d["flag_shared_parent"].sum())))
@@ -98,7 +100,7 @@ SPECS = [
     ("D1: drop shared parents", lambda: fit(d[~d["flag_shared_parent"]])),
     ("D1: inverse-parent weighted", lambda: fit(d, wt="w_parent")),
     ("D1: drop source conflicts", lambda: fit(d[~conflict])),
-    ("D1: full 23 years only", lambda: fit(d[d["n_years"] >= 22])),
+    ("D1: full panel only", lambda: fit(d[d["n_years"] >= N_YEARS - 1])),
     ("D1: area weighted", lambda: fit(d, wt="mean_annual_cropped_area")),
     ("D0 richness", lambda: fit(d, y="D0_richness")),
     ("D2 inverse Simpson", lambda: fit(d, y="D2_inv_simpson")),

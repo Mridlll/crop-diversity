@@ -23,6 +23,8 @@ import re
 import geopandas as gpd
 import numpy as np
 import pandas as pd
+
+from _years import FIRST_YEAR, LAST_YEAR, N_YEARS, WINDOW_LABEL
 import statsmodels.formula.api as smf
 
 REPO = r"D:/crop-diversity"
@@ -67,7 +69,7 @@ cov_bad = (p["flag_low_ay_coverage"].fillna(True).astype(bool)
 acct = dict(total=int(len(p)), few_years=int(few.sum()),
             coverage_only=int((~few & cov_bad).sum()), final=606,
             median_years=float(d["n_years"].median()),
-            years_23=int((d["n_years"] == 23).sum()), years_22plus=int((d["n_years"] >= 22).sum()),
+            years_all=int((d["n_years"] == N_YEARS).sum()), years_all_but_one=int((d["n_years"] >= N_YEARS - 1).sum()),
             shared_parent=int(d["flag_shared_parent"].sum()), groups=int(d["shrug_key"].nunique()))
 assert acct["total"] - acct["few_years"] - acct["coverage_only"] == 606
 print("accounting", acct)
@@ -101,8 +103,9 @@ def curve(y):
 
 
 curves = {"D1": curve(Y["D1"]), "D0": curve(Y["D0"])}
-assert abs(curves["D1"]["state"]["b2"] + 6.876783413117592) < 1e-9
-assert abs(curves["D1"]["pooled"]["b2"] + 10.185227455305288) < 1e-9
+_ref = pd.read_csv(COV + "/final_robustness.csv").set_index("spec")
+assert abs(curves["D1"]["state"]["b2"] - _ref.loc["D1: state fixed effects", "b2"]) < 1e-9
+assert abs(curves["D1"]["pooled"]["b2"] - _ref.loc["D1: no fixed effects", "b2"]) < 1e-9
 
 # ---------------------------------------------------------------- regimes and keys
 cut = lambda s: pd.cut(s, [-0.01, 0.40, 0.60, 1.01], labels=[0, 1, 2])
@@ -213,13 +216,13 @@ def fit(df, y="D1_exp_shannon", x="irr_share", fe=True, wt=None):
 
 conflict = d["flag_irr_source_conflict"].fillna(False).astype(bool)
 SPECS = [
-    ("no state baseline", "D1", "comparison", lambda: fit(d, fe=False)),
-    ("state baseline (headline)", "D1", "comparison", lambda: fit(d)),
+    ("all districts together", "D1", "comparison", lambda: fit(d, fe=False)),
+    ("within state (headline)", "D1", "comparison", lambda: fit(d)),
     ("irrigation from the 2011 village directory", "D1", "sample", lambda: fit(d, x="irr_share_vd11")),
     ("without districts sharing 2011 records", "D1", "sample", lambda: fit(d[~d["flag_shared_parent"]])),
     ("districts sharing 2011 records weighted down", "D1", "weighting", lambda: fit(d, wt="w_parent")),
     ("without source conflicts", "D1", "sample", lambda: fit(d[~conflict])),
-    ("at least 22 years of records", "D1", "sample", lambda: fit(d[d["n_years"] >= 22])),
+    ("missing at most one year of records", "D1", "sample", lambda: fit(d[d["n_years"] >= N_YEARS - 1])),
     ("weighted by cropped area", "D1", "weighting", lambda: fit(d, wt="mean_annual_cropped_area")),
     ("count of crops", "D0", "measure", lambda: fit(d, y="D0_richness")),
     ("number of main crops", "D2", "measure", lambda: fit(d, y="D2_inv_simpson")),
@@ -317,7 +320,7 @@ print(smeans.sort_values("mean").to_string())
 out = dict(
     note="Irrigation page scene data, 606 districts. x = irrigated share of net sown area "
          "(Mission Antyodaya 2019-20); D0 count of crops, D1 effective number, D2 dominant-"
-         "weighted, E evenness, annual means 1997-98 to 2019-20. g = irrigation group "
+         "weighted, E evenness, annual means 1998-99 to 2019-20. g = irrigation group "
          "(0 under 40%, 1 40-60%, 2 over 60%). k joins districts.geojson.",
     sample=acct, means={kk: r(d[c].mean(), 3) for kk, c in Y.items()},
     curve=curves, districts=dist, geo_by_name=geo_by_name, profile=prof, source_mix=mix, regimes=reg,

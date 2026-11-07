@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Data and Methods</title>
-<meta name="description" content="The measures of crop diversity come from crop area for 54 crops over 23 years. Village records summed to each district describe its land, irrigation, markets and caste make-up.">
+<meta name="description" content="Crop diversity comes from district crop records. What it is set against comes from village records added up to the district, most of them reported by the panchayats themselves.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -33,10 +33,9 @@
     <p class="mast__label">Data and methods</p>
     <h1 class="mast__title">Where the numbers come from and how districts were matched</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">The measures of crop diversity come from crop area for 54 crops over 23
-    years. Village records summed to each district describe its land, irrigation, markets and caste
-    make-up.</p>
-    <p class="mast__meta"><span>725 districts in the crop record</span><span>606 analysed</span><span>30 states</span><span>93 district measures</span><span>cropping 1997&ndash;98 to 2019&ndash;20</span></p>
+    <p class="mast__sub">Crop diversity comes from district crop records. What it is set against
+    comes from village records added up to the district, most of them reported by the panchayats
+    themselves.</p>
   </div>
 </header>
 
@@ -46,27 +45,21 @@
 <section class="section scene-sec" id="s1">
   <div class="scene fade">
     <p class="scene__kicker">01 · Sources</p>
-    <h2 class="scene__h">The 93 district measures are sums of village records, set beside crop statistics compiled for each district.</h2>
+    <h2 class="scene__h">Most of what is known about a district's villages comes from what its panchayats report about themselves.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
     <div class="figure__frame">
       <div id="v1" class="chart" role="img" aria-label="Seven sources feed six groups of district measures. Mission Antyodaya 2019–20 supplies 49 of the 93 district measures, counting the ratios built from it, and the 2011 census village directory 23. Crop statistics alone supply the crop diversity measures."></div>
       <div class="readout readout--panel" id="v1-read" aria-live="polite"></div>
-      <p class="figure__note"><span>Width is the number of variables. Ratios built from a source
-      are counted with it. Night lights and the Economic Census are district files, and the other
-      SHRUG sources are village records summed to the district. The six development measures
-      outside the 93 are night lights, non-farm businesses and the four shares of villages that make
-      up the connectivity average. Hover or tap a source to list its variables. SHRUG 2.1,
+      <p class="figure__note"><span>Width is the number of variables, with ratios counted under the
+      source they are built from. Hover or tap a source to list its variables. SHRUG 2.1,
       Development Data Lab; ISB India Data Portal.</span><button class="replay" data-scene="1" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
     <p>Crop area, production and yield for 54 crops come from district statistics that the ISB
     India Data Portal compiles from Ministry of Agriculture and Farmers Welfare publications. They
-    run from 1997&ndash;98 to 2019&ndash;20 and cover every reported season, from kharif and rabi to
-    whole-year crops. The crops
-    fall into ten categories: cereals, pulses, oilseeds, fibre crops, fruits, vegetables, spices,
-    sugar, fodder, and drugs and narcotics. Only reported crop area is included, so land outside the
+    cover every reported season, from kharif and rabi to whole-year crops. Land outside the
     reporting system, such as kitchen gardens, is missing.</p>
     <p>SHRUG 2.1 is an open dataset that gives Indian administrative records a single village
     identifier, so sources collected years apart can be joined village by village. Each village
@@ -90,28 +83,26 @@
 <section class="section scene-sec" id="s2">
   <div class="scene fade">
     <p class="scene__kicker">02 · Timing</p>
-    <h2 class="scene__h">Each district measure comes from a single year between 2011 and 2023, set against crop records that run over 23 years.</h2>
+    <h2 class="scene__h">Village facilities are seen in a single year, so every comparison is between districts and none follows a district through time.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
     <div class="figure__frame">
       <div class="ctl" id="v2-ctl" role="group" aria-label="Districts shown"></div>
-      <div id="v2" class="chart" role="img" aria-label="Districts in the crop record rise from 484 in 1997–98 to 699 in 2019–20 as new districts are created. The census sources sit at 2011 and 2012, the Economic Census at 2013, Mission Antyodaya at 2019–20 and night lights at 2023."></div>
+      <div id="v2" class="chart" role="img" aria-label="Districts in the crop record rise from 543 in 1998–99 to 699 in 2019–20 as new districts are created. The census sources sit at 2011 and 2012, the Economic Census at 2013, Mission Antyodaya at 2019–20 and night lights at 2023."></div>
       <p class="figure__note"><span>Crop years are labelled by their starting year. A district enters
-      the crop record in the year it first reports. 427 of the 606 analysed districts have all 23
-      years, and the median is 23. Hover or tap the line for the count in each
+      the crop record in the year it first reports. Hover or tap the line for the count in each
       year.</span><button class="replay" data-scene="2" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>The number of districts reporting crops grows from 484 in 1997&ndash;98 to 699 in
-    2019&ndash;20, because new districts were being created throughout the period. Of the 606
-    districts analysed, 427 have all 23 years and 67 have fewer than 20.</p>
-    <p>Each district's crop diversity is an average over the years it reports. The district
-    measures each come from one year. The census
-    measures are from 2011 and 2012, the Economic Census from 2013, the facility measures from
-    2019&ndash;20 and night lights from 2023, a few years after the last crop year. Every comparison
-    therefore sets a long-run cropping average against a single year of village records. The comparisons are
-    therefore between districts at one time, with no measure of change within a district.</p>
+    <p>Because new districts were created throughout the period, the number reporting crops grows
+    from 543 in 1998&ndash;99 to 699 in 2019&ndash;20.</p>
+    <p>A district's crop diversity is an average over the years it reports, while each village
+    measure comes from one year. The census measures are from 2011 and 2012, the Economic Census
+    from 2013, the facility measures from 2019&ndash;20 and night lights from 2023, a few years
+    after the last crop year. Since a long-run cropping average is set against a single year of
+    village records, the comparisons say how districts differ and cannot say how a district
+    changed.</p>
   </div>
 </section>
 
@@ -119,40 +110,32 @@
 <section class="section scene-sec" id="s3">
   <div class="scene fade">
     <p class="scene__kicker">03 · Matching districts</p>
-    <h2 class="scene__h">722 of the 725 districts in the crop record match a 2011 census district.</h2>
+    <h2 class="scene__h">A district carved out after 2011 carries the village records of the district it came from.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
     <div class="figure__frame">
       <div class="ctl ctl--scroll" id="v3-ctl" role="group" aria-label="Districts shown"></div>
       <div class="xgrid">
-        <div id="v3" class="chart" role="img" aria-label="725 squares, one per district. 534 match by exact name, 141 are renamed or new districts traced to their 2011 district, 47 match on a similar name and 3 are unmatched. Among the 606 analysed, 516 are exact matches."></div>
+        <div id="v3" class="chart" role="img" aria-label="One square per district. Most match a 2011 district by exact name. Renamed and new districts are traced to their 2011 district, a smaller group matches on a similar name, and two are unmatched."></div>
         <div class="readout readout--side" id="v3-read" aria-live="polite"></div>
       </div>
-      <p class="figure__note"><span>One square per district. Unmatched: Mumbai, Daman and Diu.
-      Matching uses the 2011 census frame that SHRUG is built on, with 631 districts. Hover or tap a
-      square for the district and the 2011 district it maps
-      to.</span><button class="replay" data-scene="3" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>One square per district. Hover or tap a square for the district
+      and the 2011 district it maps to.</span><button class="replay" data-scene="3" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>SHRUG uses 2011 census district boundaries and the crop record uses present-day district
+    <p>SHRUG uses 2011 census district boundaries, whereas the crop record uses present-day district
     names. Many districts were renamed or split after 2011, and Telangana became a state in 2014.
     The crop record lists 33 Telangana districts, and all of them trace back to ten districts that
     the 2011 census filed under Andhra Pradesh. Adilabad and Mahabubnagar have enough years under
     the Telangana name to enter the 606. Seven more of the ten, among them Karimnagar and Warangal,
     enter through the years up to 2012&ndash;13 that the crop record files under Andhra
     Pradesh.</p>
-    <p>An exact name match settles 534 districts. A list of renamed and newly created districts
-    settles 141 more. A renamed district such as Kalaburagi, called Gulbarga in 2011, keeps its old
-    record. Districts created after 2011 are traced to the district they were carved from. A similar
-    name within the same
-    state settles another 47. Twenty of those were too far apart to accept on the name alone, and
-    each was read against the census district list. Mumbai, Daman and Diu stay unmatched, and none
-    of them has meaningful farmland.</p>
-    <p>A district carved out after 2011 takes on its parent's village records,
-    which describe the whole 2011 district. 64 of the 606 analysed districts share their 2011 district with at least one other
-    district in the crop record. Inside the 606, only Amethi and Sultanpur share one with each
-    other, so the 606 districts form 605 groups when uncertainty is measured.</p>
+    <p>A renamed district such as Kalaburagi, called Gulbarga in 2011, keeps its old record. A
+    district carved out after 2011 takes on its parent's village records, which describe the whole
+    2011 district, so two districts from one parent share the same facility and land figures.
+    Districts that share a parent are grouped when uncertainty is measured. Daman and Diu find no
+    match, and neither has meaningful farmland.</p>
   </div>
 </section>
 
@@ -160,15 +143,14 @@
 <section class="section scene-sec" id="s4">
   <div class="scene fade">
     <p class="scene__kicker">04 · The sample</p>
-    <h2 class="scene__h">606 of the 725 districts have enough village records and enough years of crops to enter the results.</h2>
+    <h2 class="scene__h">Cities, most of Tripura and districts created in the last decade drop out of the estimates.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
-      <div id="v4" class="chart" role="img" aria-label="725 districts in the crop record. 722 match a 2011 district. 713 have a Mission Antyodaya record. 697 have Antyodaya reports from at least a quarter of their villages. 606 have at least ten years of crop data."></div>
+      <div id="v4" class="chart" role="img" aria-label="Districts leave the sample at each rule in turn: no match to a 2011 district, no Mission Antyodaya record, survey reports from under a quarter of villages, and fewer than ten years of crop data."></div>
       <div class="readout readout--panel" id="v4-read" aria-live="polite"></div>
       <p class="figure__note"><span>Coverage is villages in the survey over 2011 census villages in
-      the same district. The ten-year rule removes 91 districts, most of them created after 2011. Hover
-      or tap a removed slice to list its districts.</span><button class="replay" data-scene="4" aria-label="Replay animation">replay</button></p>
+      the same district. Hover or tap a removed slice to list its districts.</span><button class="replay" data-scene="4" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
@@ -179,10 +161,9 @@
     coverage. Jammu and Kashmir has three and Manipur two. These districts are left out, because
     figures built from a small fraction of a district's villages cannot be compared with figures
     built from all of them.</p>
-    <p>The last rule asks for at least ten years of crop data, and 91 districts fall below it.
-    Most of them were created after 2011. Thirty are in Telangana, where every district apart from
-    Adilabad and Mahabubnagar has seven years or fewer under the Telangana name. Every result rests
-    on the 606 districts that remain, across 30 states.</p>
+    <p>The last rule asks for at least ten years of crop data. Most of the districts that fall
+    below it were created after 2011, and thirty are in Telangana, where every district apart from
+    Adilabad and Mahabubnagar has seven years or fewer under the Telangana name.</p>
   </div>
 </section>
 
@@ -190,7 +171,7 @@
 <section class="section scene-sec" id="s5">
   <div class="scene fade">
     <p class="scene__kicker">05 · Measuring diversity</p>
-    <h2 class="scene__h">The average district grows 21.2 crops in a year and has an effective number of crops of 4.9.</h2>
+    <h2 class="scene__h">The average district grows 21.4 crops in a year and has an effective number of crops of 4.9.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
     <div class="figure__frame">
@@ -198,24 +179,19 @@
       <div id="v5" class="chart" role="img" aria-label="Distributions across 606 districts. The count of crops centres near 21, the effective number of crops near 5 and the number of main crops near 3.5."></div>
       <p class="figure__note"><span>Effective number of crops = exp(&minus;&Sigma; p ln p), where p is
       a crop's share of the district's cropped area in a year. The number of main crops is 1 /
-      &Sigma; p&sup2;. Evenness = effective number / count. Bins are half a crop wide. 606
-      districts.</span><button class="replay" data-scene="5" aria-label="Replay animation">replay</button></p>
+      &Sigma; p&sup2;. Evenness = effective number / count. Bins are half a crop wide.</span><button class="replay" data-scene="5" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>A district's cropping pattern is a set of crops and the share of cropped land each one
-    takes. A district with 70 percent of its land under cereals has a cereal share of 0.70, and the
-    shares across crops add up to one.</p>
-    <p>The count of crops is how many crops have any land in a year. The effective number of crops
-    weighs each crop by its land. It equals the number of equally sized crops that would spread
-    land the same way. The average district grows 21.2 crops. Most of its land sits under two or
-    three of them, and its effective number is 4.9. The number of main crops gives rare
-    crops even less weight, and the average district has 3.5 of them. Evenness divides the effective number
-    by the count and averages 0.254.</p>
-    <p>All three numbers are measured in crops, so a district with an effective number of 6 is
-    twice as diverse as one with 3. The effective number of crops is the main outcome throughout.
-    The three can only fall in the order count, effective number, number of main crops,
-    because each step gives rare crops less weight.</p>
+    <p>Every measure is built from the share of a district's cropped land under each crop in a
+    year, and a district's value is its average over the years from 1998&ndash;99 to 2019&ndash;20
+    that it reports. The average district in the sample grows 21.4 crops in a year. Most of its
+    land sits under two or three of them, though, which gives it an
+    <a href="measurement.html#s1">effective number of crops</a> of 4.9 and 3.5 main crops.
+    Evenness averages 0.250.</p>
+    <p>Since all three are measured in crops and each gives rare crops less weight than the one
+    before, they always fall in the order count, effective number, number of main crops. The
+    effective number of crops is the main outcome throughout.</p>
     <p><a href="measurement.html" class="next">How diversity is measured &rarr;</a></p>
   </div>
 </section>
@@ -230,25 +206,23 @@
     <div class="figure__frame">
       <div class="ctl" id="v6-ctl" role="group" aria-label="How the count is built"></div>
       <p class="readout readout--line" id="v6-read" aria-live="polite"></p>
-      <div id="v6" class="chart" role="img" aria-label="Count of crops against years of data for 725 districts. With years pooled, districts with more years have higher counts, correlation 0.51. Counting each year and then averaging lowers this to 0.26."></div>
-      <p class="figure__note"><span>725 districts in the crop record, spread a little sideways so
-      they do not sit on top of each other. Pooled counts every crop that appeared in any year.
+      <div id="v6" class="chart" role="img" aria-label="Count of crops against years of data, one dot per district. With years pooled, districts with more years have higher counts, correlation 0.51. Counting each year and then averaging lowers this to 0.27."></div>
+      <p class="figure__note"><span>Districts are spread a little sideways so they do not sit on top
+      of each other. Pooled counts every crop that appeared in any year.
       Year-by-year counts crops within each year and averages across years. The line is the median
       count of crops at each number of years.</span><button class="replay" data-scene="6" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
     <p>A district's count of crops can be built two ways. Pooling the land over all its years
-    counts every crop that ever appears, so a district observed for 23 years collects crops it grew
-    once, and it looks richer than an identical district observed for eight. Across the 725
-    districts, the pooled count averages 30.3 and correlates at 0.51 with the number of years
-    observed.</p>
-    <p>Here each measure is computed within a year and then averaged over the years a district has.
-    That brings the average count to 20.4 and the correlation with years observed to 0.26. Summing
-    crop areas across seasons gives India 194.9 million hectares of cropped area in 2019&ndash;20.
-    The Ministry of Agriculture puts gross sown area for that year at 211.4 million hectares, and
-    the reported crops cover 92 percent of it, so adding the seasons together does not count a
-    field twice.</p>
+    counts every crop that ever appears, so a district observed for 22 years collects crops it grew
+    once and looks richer than an identical district observed for eight. The pooled count averages
+    30.4 and correlates at 0.51 with the number of years observed. Counted within each year and
+    then averaged, the count averages 20.6, and its correlation with years observed falls to
+    0.27.</p>
+    <p>Crop areas summed across seasons come to 194.9 million hectares in 2019&ndash;20, which is
+    92 percent of the 211.4 million hectares of gross sown area the Ministry of Agriculture reports
+    for that year. Adding the seasons together therefore does not count a field twice.</p>
   </div>
 </section>
 
@@ -292,7 +266,7 @@
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
-      <div id="v8" class="chart" role="img" aria-label="A grid of four analyses against eight controls. All four include the state baseline and group districts by their 2011 district. Only the facility comparisons hold the development measures constant."></div>
+      <div id="v8" class="chart" role="img" aria-label="A grid of four analyses against eight controls. All four compare districts within state and group districts by their 2011 district. Only the facility comparisons hold the development measures constant."></div>
       <div class="readout readout--panel" id="v8-read" aria-live="polite"></div>
       <p class="figure__note"><span>Uncertainty ranges allow some districts to be more scattered than
       others and group districts from the same 2011 district. The 606 form 605 groups. Night lights
@@ -301,23 +275,21 @@
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Each result is a regression of a crop diversity measure on one district measure. Where the
-    relationship rises and then falls, the square of that measure is added too. Every regression
-    gives each state its own baseline, the state baseline (economists call it a state fixed effect),
-    so a district in Punjab is set only against other districts in Punjab. Anything that varies only
-    between states, such as state agricultural policy, is absorbed by the baseline and cannot be
-    estimated.</p>
-    <p>State baselines on their own account for 49 percent of the variation in the effective number
-    of crops between districts. Adding irrigated share and its square raises that to 53 percent.
-    Without state baselines the same irrigation terms account for 6.5 percent, and the peak moves
-    from 28 percent of sown area irrigated to 51 percent.</p>
+    <p>Each result is a regression of a crop diversity measure on one district measure, with the
+    square of that measure added where the relationship rises and then falls. Every regression is
+    a comparison within state (state fixed effects), so a district in Punjab is set only against
+    other districts in Punjab. Anything that varies only between states, such as state
+    agricultural policy, drops out and cannot be estimated.</p>
+    <p>Differences between states on their own account for 49 percent of the variation in the
+    effective number of crops between districts, and irrigated share with its square raises that
+    to 53 percent. Without the within-state comparison the same irrigation terms account for only
+    6.7 percent, while the peak moves from 28 percent of sown area irrigated to 51 percent.</p>
     <p>Irrigation, mandis, food storage warehouses and fertiliser shops were put where terrain,
-    groundwater and existing farming already favoured them. The results compare districts at one
-    point in time, so they cannot show what adding a mandi to a district would do. Average farm size, cultivable area
-    divided by the number of farmers, stands in for a farm census measure. It shows no link with
-    diversity, +0.019 on the effective number of crops once irrigation and the state baseline are held constant,
-    which may reflect a weak proxy. District procurement volumes are not published by any open
-    source and are missing here.</p>
+    groundwater and existing farming already favoured them. Since the results compare districts at
+    one point in time, they cannot show what adding a mandi to a district would do. Average farm
+    size, cultivable area divided by the number of farmers, stands in for a farm census measure.
+    Once irrigation is held constant within state its coefficient on the effective number of crops
+    is +0.024, which is not statistically significant and may only mean the proxy is weak.</p>
   </div>
 
   <div class="scene scene--method fade">
@@ -325,22 +297,26 @@
       <summary>How this was estimated</summary>
       <div class="method__body">
         <p><strong>Crop data.</strong> Areas are summed across seasons for each crop, district and
-        year. Whole-year rows overlap a named season in 441 crop-district-years, 0.6 percent of
-        whole-year rows. The 2020&ndash;21 year is left out
-        because only 13 districts report it. Summed cropped area is 182.2 million hectares in
-        1997&ndash;98 and 194.9 million hectares in 2019&ndash;20. Each index is computed within a
-        year, and a district's value is its average across the years it has. Of the 725 districts in
-        the crop record, 172 have fewer than 20 years.</p>
+        year. Crops filed as whole-year almost never also appear under a named season, so summing seasons does not count land twice. The
+        2020&ndash;21 year is left out because only 13 districts report it. Each index is computed
+        within a year, and a district's value is its average across the years it has between
+        1998&ndash;99 and 2019&ndash;20, 22 at most. The sample for estimates is 606 districts in 30
+        states, from 724 in the crop record.</p>
+        <p><strong>1997&ndash;98.</strong> The first year of the record is left out of every average
+        because its returns are broken. West Bengal files 50.8 million hectares of rabi niger seed,
+        28 percent of all area recorded in India that year, Odisha files 0.91 million hectares in
+        all against 5.23 million the next year, and twelve states file crop lists under three fifths
+        of their usual length.</p>
 
         <div class="tbl-wrap">
           <table class="tight">
             <caption>The diversity measures, 606 districts.</caption>
             <thead><tr><th>Measure</th><th>Definition</th><th>How much a rare crop counts</th><th class="num">Mean</th></tr></thead>
             <tbody>
-              <tr><td>Count of crops</td><td>number of crops with any area that year</td><td>fully, a crop on one hectare counts as much as the largest</td><td class="num">21.2</td></tr>
+              <tr><td>Count of crops</td><td>number of crops with any area that year</td><td>fully, a crop on one hectare counts as much as the largest</td><td class="num">21.4</td></tr>
               <tr><td>Effective number of crops</td><td>exp(&minus;&Sigma; p ln p), the exponential of the Shannon index</td><td>in proportion to its share of land</td><td class="num">4.9</td></tr>
               <tr><td>Number of main crops</td><td>1 / &Sigma; p&sup2;</td><td>barely, the largest crops decide it</td><td class="num">3.5</td></tr>
-              <tr><td>Evenness</td><td>effective number / count</td><td>the count is divided out</td><td class="num">0.254</td></tr>
+              <tr><td>Evenness</td><td>effective number / count</td><td>the count is divided out</td><td class="num">0.250</td></tr>
             </tbody>
           </table>
           <p class="tbl-note">p is a crop's share of the district's cropped area in that year. A 0-to-1 composite index of evenness and count appears in some results only for comparison.</p>
@@ -365,7 +341,7 @@
         <div class="tbl-wrap">
           <table class="tight" id="tbl-match">
             <caption>How each district in the crop record was matched to the 2011 census frame.</caption>
-            <thead><tr><th>Method</th><th class="num">Districts</th><th class="num">Share of 725</th><th class="num">In the 606</th></tr></thead>
+            <thead><tr><th>Method</th><th class="num">Districts</th><th class="num">Share of 724</th><th class="num">In the 606</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -382,7 +358,7 @@
             <thead><tr><th>Version</th><th class="num">Districts</th><th class="num">Peak, irrigated share</th><th class="num">Share of variation explained</th></tr></thead>
             <tbody></tbody>
           </table>
-          <p class="tbl-note">Every version keeps the squared term negative at p &lt; 0.0001. The peak runs from 0.245 to 0.513, with a median of 0.271.</p>
+          <p class="tbl-note">Every version keeps the squared term negative at p &lt; 0.0001. The peak runs from 0.241 to 0.511, with a median of 0.270.</p>
         </div>
 
         <div class="tbl-wrap">
@@ -401,16 +377,15 @@
           <p class="tbl-note">Census shares count the whole population and SECC shares count rural households, which is why their levels differ. Against SHRUG's district file only ratios are compared, because the two cover slightly different sets of villages.</p>
         </div>
 
-        <p><strong>The comparisons.</strong> The irrigation curve regresses the effective number of
-        crops on irrigated share and its square with the state baseline. The irrigation source
+        <p><strong>The comparisons.</strong> Every comparison is within state. The irrigation curve
+        regresses the effective number of crops on irrigated share and its square. The irrigation source
         comparison adds the canal and surface-water shares of villages, with groundwater left out as
         the comparison, and holds irrigated share and its square, log mean holding size and the
         Scheduled Tribe share constant. The single-measure results are shown first on their own and
-        then holding irrigated share, its square and log mean holding size constant within the state
-        baseline. The
-        facility comparisons hold constant irrigated share and its square, log mean holding size, the
+        then holding irrigated share, its square and log mean holding size constant. The facility
+        comparisons hold constant irrigated share and its square, log mean holding size, the
         Scheduled Tribe share, log night lights, non-farm establishments per 1,000 people and the
-        connectivity average, with the state baseline, and apply a Benjamini-Hochberg correction
+        connectivity average, and apply a Benjamini-Hochberg correction
         across the ten crop categories. Standard errors allow for unequal scatter and group
         districts by their 2011 district.</p>
       </div>
@@ -451,6 +426,6 @@
 </footer>
 
 <script src="js/site.js?v=e2b6885b"></script>
-<script src="js/data.js?v=4"></script>
+<script src="js/data.js?v=ee88b19a"></script>
 </body>
 </html>

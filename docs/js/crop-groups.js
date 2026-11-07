@@ -137,8 +137,8 @@ SC[1] = scene({
     readout() {
         const n = D.national[this.g];
         $('#v1-read').textContent = this.mode === 'ds'
-            ? `${CAP(NAME[this.g])}: ${sgn(n.d, 1)} points of gross cropped area across 467 districts, ${n.down} districts down and ${n.up} up.`
-            : `${CAP(NAME[this.g])}: ${n.s1.toFixed(1)} percent of gross cropped area across 467 districts in 2017–19, from ${n.s0.toFixed(1)} percent in 1998–2000.`;
+            ? `${CAP(NAME[this.g])}: ${sgn(n.d, 1)} points of gross cropped area nationally, ${n.down} districts down and ${n.up} up.`
+            : `${CAP(NAME[this.g])}: ${n.s1.toFixed(1)} percent of gross cropped area nationally in 2017–19, from ${n.s0.toFixed(1)} percent in 1998–2000.`;
     },
     async render() {
         const host = $('#v1'); if (!host) return;
@@ -155,7 +155,7 @@ SC[1] = scene({
             const pr = f.properties, uk = D.poly[pr.k], u = uk ? D.units[uk] : null;
             const el = E('path', { d: P.fpath(f), stroke: 'rgba(11,11,12,0.8)', 'stroke-width': 0.35 }, g);
             tipOn(el, () => {
-                if (!u) return `<strong>${pr.n}</strong><br>${pr.s}<br>not among the 467 districts compared`;
+                if (!u) return `<strong>${pr.n}</strong><br>${pr.s}<br>no usable record in one of the two periods`;
                 const gi = D.groups.indexOf(this.g);
                 const same = unitName(uk).toLowerCase() === String(pr.n).toLowerCase();
                 return `<strong>${pr.n}</strong><br>${pr.s}` + (same ? '' : `<br>counted within ${unitName(uk)} (2011 boundary)`) +
@@ -309,8 +309,8 @@ SC[4] = scene({
     readout() {
         const P = D.policy[this.k];
         $('#v4-read').textContent = this.k === 'pulses'
-            ? `${P.nt} mission districts against ${P.nc} others. Mean pulse share before entry ${P.mean.toFixed(0)}%. Change at entry against 2002–07: ${sgn(P.w02, 2)} points (${P.w02se.toFixed(2)}).`
-            : `${P.nt} mission districts against ${P.nc} others. Mean ${this.k} share before entry ${P.mean.toFixed(0)}%. Average after entry against before: ${sgn(P.did, 2)} points (${P.didse.toFixed(2)}).`;
+            ? `Mean pulse share before entry ${P.mean.toFixed(0)}%. Change at entry against 2002–07: ${sgn(P.w02, 2)} points (${P.w02se.toFixed(2)}).`
+            : `Mean ${this.k} share before entry ${P.mean.toFixed(0)}%. Average after entry against before: ${sgn(P.did, 2)} points (${P.didse.toFixed(2)}).`;
     },
     async render() {
         const host = $('#v4'); if (!host) return;
@@ -318,7 +318,7 @@ SC[4] = scene({
         const W = host.clientWidth || 900, nar = W < 560, H = nar ? 300 : 340;
         const svg = svgFor(host, W, H);
         const m = { l: nar ? 40 : 48, r: 10, t: 26, b: 44 };
-        const e0 = -10, e1 = 6;
+        const e0 = -9, e1 = 6;
         const X = e => m.l + (e - e0 + .5) / (e1 - e0 + 1) * (W - m.l - m.r);
         const ext = P.b.flatMap((b, i) => [b - 1.96 * P.se[i], b + 1.96 * P.se[i]]);
         const lo = Math.min(-3, Math.floor(Math.min(...ext))), hi = Math.max(3, Math.ceil(Math.max(...ext)) + 1);
@@ -329,7 +329,7 @@ SC[4] = scene({
         });
         if (this.k === 'pulses') {
             E('rect', { x: X(-5.5), y: m.t, width: X(-.5) - X(-5.5), height: H - m.t - m.b, fill: 'rgba(124,92,224,0.10)' }, svg);
-            T(svg, { x: (X(-5.5) + X(-.5)) / 2, y: m.t + 12, 'text-anchor': 'middle', fill: '#A996F0', 'font-size': 10, class: 'mono' }, '2002–07 baseline');
+            T(svg, { x: (X(-5.5) + X(-.5)) / 2, y: m.t + 12, 'text-anchor': 'middle', fill: '#A996F0', 'font-size': 10, class: 'mono' }, '2002–07 reference');
         }
         E('line', { x1: X(-.5), x2: X(-.5), y1: m.t, y2: H - m.b, stroke: 'rgba(255,255,255,0.35)', 'stroke-dasharray': '3 3' }, svg);
         T(svg, { x: X(-.5) + 5, y: m.t + 12, fill: TX2, 'font-size': 10, class: 'mono' }, 'entry 2007–08');

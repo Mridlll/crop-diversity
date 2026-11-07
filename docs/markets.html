@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Markets, Inputs and Crop Diversity</title>
-<meta name="description" content="District by district, we set the share of villages with each kind of rural facility against two measures of crop diversity: the count of crops and the effective number of crops.">
+<meta name="description" content="Districts where more people live near a weekly haat grow more crops without spreading their land more evenly, and districts with more producer organisations do both.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -33,10 +33,9 @@
     <p class="mast__label">Markets and inputs</p>
     <h1 class="mast__title">How rural markets and input shops line up with crop diversity</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">District by district, we set the share of villages with each kind of
-    rural facility against two measures of crop diversity: the count of crops and the effective
-    number of crops.</p>
-    <p class="mast__meta"><span>606 districts</span><span>30 states</span><span>facilities 2019&ndash;20</span><span>cropping 1997&ndash;98 to 2019&ndash;20</span></p>
+    <p class="mast__sub">Districts where more people live near a weekly haat grow more crops
+    without spreading their land more evenly, and districts with more producer organisations do
+    both. Most other facilities follow state lines.</p>
   </div>
 </header>
 
@@ -46,41 +45,31 @@
 <section class="section scene-sec" id="s1">
   <div class="scene fade">
     <p class="scene__kicker">01 · What exists</p>
-    <h2 class="scene__h">The average district has a mandi in three villages out of a hundred and a weekly haat in fourteen.</h2>
+    <h2 class="scene__h">In the average district, one rural resident in 28 lives in a village with a mandi, and one in five in a village with a weekly haat.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
       <div class="ctl ctl--scroll" id="v1-pick" role="group" aria-label="Facility"></div>
       <div class="ctl ctl--sub ctl--scroll" id="v1-level" role="group" aria-label="District"></div>
       <div class="vgrid">
-        <div id="v1" class="chart vgrid__chart" role="img" aria-label="A grid of 100 villages. In the average district, 3 have a mandi, 14 have a weekly haat and 23 have a producer organisation. Buttons show the other seven facilities and districts with low and high shares of villages."></div>
+        <div id="v1" class="chart vgrid__chart" role="img" aria-label="A grid of 100 rural residents. In the average district, 4 live in a village with a mandi, 19 in a village with a weekly haat and 28 in a village with a producer organisation. Buttons show the other seven facilities and districts with low and high shares."></div>
         <div class="readout" id="v1-read" aria-live="polite"></div>
       </div>
-      <p class="figure__note"><span>Each dot is one village in a district of 100. Average share of
-      villages across 606 districts. Low and high are the 10th and 90th percentiles, so one district
-      in ten lies below low and one in ten above high. Mission Antyodaya 2019&ndash;20, via SHRUG
-      2.1.</span><button class="replay" data-scene="1" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>Each dot is one in a hundred of a district's rural people. Low
+      and high are the 10th and 90th percentiles of districts.</span><button class="replay" data-scene="1" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>In each of 606 districts across 30 states, we take the share of villages that report a
-    facility in the 2019&ndash;20 Mission Antyodaya village survey. A district where 14 of every
-    100 villages have a weekly haat scores 14 percent.</p>
-    <p>The mandi, the regulated wholesale market where crops are auctioned under state rules, is
-    the rarest of the ten facilities covered here. In the average district, 3.0 percent of
-    villages have one, and 40 districts report none. Weekly haats are open-air markets that meet on
-    a fixed day each week, and at 14.3 percent of villages they are close to five times as common.
-    Producer organisations, registered groups of farmers that sell their members' produce and buy
-    inputs for them jointly, are the most widespread facility. They are present in 23.1 percent of
-    villages. Only five districts are without one.</p>
-    <p>A regular market is a permanent local market, which the survey records separately from
-    mandis and weekly haats. Farmers buy seed at a government seed centre, and a soil testing
-    centre tests their soil and advises on fertiliser. Custom hiring of machinery means a centre
-    that rents out tractors and other equipment to farmers who own none. Food storage warehouses hold
-    farm produce after harvest, and farm-gate processing covers primary processing such as milling
-    or grading in the village itself.</p>
-    <p>Fertiliser shops are in 3.3 percent of villages in a district at the 10th percentile, the
-    level a tenth of districts fall below, and in 39.8 percent at the 90th.</p>
+    <p>Because larger villages tend to be better served, a facility reaches a bigger share of a
+    district's rural people than of its villages. A fertiliser shop is within the village for 25.4
+    percent of rural people in the average district.</p>
+    <p>The mandi, the regulated wholesale market where crops are auctioned under state rules, is the
+    rarest facility, and 40 districts have none at all. Weekly haats, open-air markets that meet on
+    a fixed day, reach about five times as many people. Producer organisations, groups of farmers
+    that sell produce and buy inputs jointly, are the most widespread of all, reaching 28 percent
+    of rural people and missing from only five districts.</p>
+    <p>Supply varies widely between districts. A fertiliser shop reaches 6 percent of rural people in
+    a district at the 10th percentile and 55 percent at the 90th.</p>
   </div>
 </section>
 
@@ -93,27 +82,23 @@
   <div class="scene-fig fade">
     <div class="figure__frame">
       <div class="ctl" id="v2-ctl"></div>
-      <div id="v2" class="chart" role="img" aria-label="A network of ten facilities. Nine are drawn close together, joined by lines for correlations of 0.4 or more, and six of them closest together. The weekly haat is drawn apart with no lines, correlating between -0.21 and +0.06 with the others."></div>
-      <p class="figure__note"><span>Lines join facilities whose shares of villages correlate at 0.4
-      or more, and thicker lines mean higher correlation. Facilities common in the same districts
-      are drawn near each other. The weekly haat is drawn closer to the others than its
-      correlations would place it, so that it fits on the chart. Hover or tap a facility to read
-      its correlations. 606 districts.</span><button class="replay" data-scene="2" aria-label="Replay animation">replay</button></p>
+      <div id="v2" class="chart" role="img" aria-label="A network of ten facilities. Nine are drawn close together, joined by lines for correlations of 0.4 or more, and six of them closest together. The weekly haat is drawn apart with no lines, correlating between -0.34 and +0.04 with the others."></div>
+      <p class="figure__note"><span>Lines join facilities whose shares correlate across districts at
+      0.4 or more, and thicker lines mean higher correlation. The weekly haat is drawn closer to the
+      others than its correlations would place it, so that it fits. Hover or tap a facility to read
+      its correlations.</span><button class="replay" data-scene="2" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>A correlation runs from minus one to one and measures how far two facilities tend to be
-    common in the same districts. At zero, knowing one tells you nothing about the other. Across
-    the 606 districts, nine of the facilities correlate with each other at between 0.24 and 0.83.
-    Seed centres, soil testing, custom hiring of machinery, fertiliser shops, farm-gate processing
-    and producer organisations all correlate with each other at 0.63 or more. Custom hiring of
-    machinery and producer organisations are the closest pair, at 0.83.</p>
-    <p>Mandis, regular markets and weekly haats are where farmers sell, and together they make up
-    the output markets. The weekly haat correlates with the other nine facilities at between
-    &minus;0.21 and +0.06, and its lowest values are against the other two output markets, regular
-    markets at &minus;0.21 and mandis at &minus;0.15. Its correlations with the four input-supply
-    facilities, fertiliser shops, seed centres, soil testing and custom hiring of machinery, run
-    from &minus;0.10 to &minus;0.02.</p>
+    <p>Nine of the facilities tend to turn up in the same districts, with correlations between them
+    of 0.09 to 0.80. Seed centres, soil testing, custom hiring of machinery, fertiliser shops,
+    farm-gate processing and producer organisations form the tightest cluster, every pair at 0.57
+    or more, and custom hiring and producer organisations are the closest pair.</p>
+    <p>Mandis, regular markets and weekly haats are all places where farmers sell, yet the weekly
+    haat runs against the other two. Its correlation is &minus;0.34 with regular markets and
+    &minus;0.22 with mandis, and with the input-supply facilities it sits between &minus;0.15 and
+    &minus;0.05. Where weekly haats reach many people, the other kinds of market tend to be
+    scarce.</p>
   </div>
 </section>
 
@@ -121,23 +106,22 @@
 <section class="section scene-sec" id="s3">
   <div class="scene fade">
     <p class="scene__kicker">03 · Where weekly haats are</p>
-    <h2 class="scene__h">Weekly haats are most common across eastern and central India and the northeast.</h2>
+    <h2 class="scene__h">Weekly haats reach the most people across eastern and central India and the northeast.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
     <div class="figure__frame">
       <div class="ctl" id="v3-tabs" role="group" aria-label="Map layer"></div>
-      <div id="v3" class="chart" role="img" aria-label="Map of Indian districts shaded by the share of villages with a weekly haat. The highest shares are in Chhattisgarh, Jharkhand, Bihar, West Bengal, Assam and Meghalaya. Tabs switch to fertiliser shops, producer organisations and mandis."></div>
-      <p class="figure__note"><span>Share of villages with each facility, by district. The top and
-      bottom 2 percent of districts take the end colours of the scale. Hatched districts have no
-      facility record. State averages in the text are across the 606 districts used throughout.
-      Mission Antyodaya 2019&ndash;20.</span><button class="replay" data-scene="3" aria-label="Replay animation">replay</button></p>
+      <div id="v3" class="chart" role="img" aria-label="Map of Indian districts shaded by the share of rural people living in a village with a weekly haat. The highest shares are in Chhattisgarh, Jharkhand, Maharashtra, Bihar, West Bengal, Assam and Meghalaya. Tabs switch to fertiliser shops, producer organisations and mandis."></div>
+      <p class="figure__note"><span>Share of rural people living in a village with each facility. The
+      top and bottom 2 percent of districts take the end colours of the scale, and hatched districts
+      have no facility record.</span><button class="replay" data-scene="3" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Chhattisgarh has the highest state average, with a weekly haat in 31 percent of villages.
-    Jharkhand follows at 28 percent and Bihar at 25 percent, then Meghalaya and Assam at 23
-    percent and West Bengal at 22 percent. Switch the map to fertiliser shops or producer
-    organisations and the highest shares move to Kerala and Gujarat.</p>
+    <p>In Chhattisgarh 44 percent of rural people live in a village with a weekly haat, and in
+    Jharkhand 35 percent. Maharashtra, Meghalaya, Bihar, West Bengal and Assam follow at 26 to 31
+    percent. Fertiliser shops and producer organisations reach the most people in Kerala and
+    Gujarat.</p>
   </div>
 </section>
 
@@ -145,7 +129,7 @@
 <section class="section scene-sec" id="s4">
   <div class="scene fade">
     <p class="scene__kicker">04 · Development and state</p>
-    <h2 class="scene__h">Nine of the ten facilities are more common in districts with more non-farm businesses.</h2>
+    <h2 class="scene__h">Weekly haats are the one facility that is scarcer in districts with more non-farm businesses.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
@@ -153,29 +137,23 @@
         <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#B3B3B0"/></svg>with non-farm businesses</span>
         <span class="legend__item"><svg width="12" height="12"><path d="M6 1 L11 6 L6 11 L1 6 Z" fill="none" stroke="#B3B3B0" stroke-width="1.5"/></svg>with night lights</span>
       </div>
-      <div id="v4" class="chart" role="img" aria-label="For each facility, its correlation with non-farm businesses and with night lights. Nine facilities are to the right of zero on non-farm businesses. The weekly haat is the only one to the left, at -0.16."></div>
-      <p class="figure__note"><span>Correlation across 606 districts between each facility's share
-      of villages and either night-light brightness from satellite, on a log scale, or non-farm
-      businesses per 1,000 people.</span><button class="replay" data-scene="4" aria-label="Replay animation">replay</button></p>
+      <div id="v4" class="chart" role="img" aria-label="For each facility, its correlation with non-farm businesses and with night lights. Eight facilities are to the right of zero on non-farm businesses and food storage warehouses sit at zero. The weekly haat is the only one clearly to the left, at -0.18."></div>
+      <p class="figure__note"><span>Correlation across districts between each facility's share and
+      either night-light brightness seen from satellite, on a log scale, or non-farm businesses per
+      1,000 people.</span><button class="replay" data-scene="4" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Night lights are the brightness of a district seen from satellite at night, which tracks
-    economic activity. The count of non-farm businesses covers shops and other enterprises outside
-    farming, per 1,000 people, from the Economic Census. All facilities except the weekly haat
-    correlate positively with non-farm businesses, with fertiliser shops at +0.35 and regular
-    markets at +0.33. The weekly haat runs at &minus;0.16, and its correlation with night lights is
-    close to zero at +0.04.</p>
-    <p>Districts with many fertiliser shops also tend to be richer, so each comparison holds night
-    lights and non-farm businesses constant, meaning it sets districts against others with similar
-    values of both. The same goes for an average of paved road, public transport, bank and railway
-    access, the share of sown area irrigated, average farm size, and the share of people from
-    Scheduled Tribes (communities the Constitution lists for protection).</p>
-    <p>Each comparison also uses a state baseline, which compares each district only with
-    districts in its own state, so a district in Bihar is only ever set against other districts in
-    Bihar. That removes everything a state's districts share, such as policy, rainfall and the way
-    records are kept, and keeps crop patterns common to a whole state from being counted as a link
-    with weekly haats. Economists call it a state fixed effect.</p>
+    <p>Night lights track economic activity, and the count of non-farm businesses covers shops and
+    other enterprises outside farming. Custom hiring of machinery, fertiliser shops, regular
+    markets and producer organisations are all more common where there are more such businesses,
+    at +0.31 to +0.33. The weekly haat runs the other way, at &minus;0.18, and has almost no link
+    with night lights.</p>
+    <p>Because richer districts have more of nearly everything, the links with cropping below hold
+    night lights, non-farm businesses, road, bank and rail access, irrigation, farm size and the
+    share of people from Scheduled Tribes constant. Each is also a comparison within state (state
+    fixed effects), so that a crop pattern common to a whole state is not read as a link with any
+    facility.</p>
   </div>
 </section>
 
@@ -189,24 +167,19 @@
     <div class="figure__frame">
       <div class="ctl" id="v5-ctl" role="group" aria-label="The example district"></div>
       <div id="v5" class="chart" role="img" aria-label="A bar split among 20 crops, with one cereal taking 62 percent. Its effective number of crops is 4.9. Adding a small crop moves it to 5.1. Moving ten percent of the land from the cereal to four other crops moves it to 6.0. Twenty equal crops give 20."></div>
-      <p class="figure__note"><span>Illustration with invented shares. Effective number of crops =
-      exp(Shannon index of land shares). Land shares are shares of gross cropped area, which counts
-      a field twice if it carries two crops in a year. District averages, measured in each year and
-      then averaged over 1997&ndash;98 to 2019&ndash;20: count of crops 21.2, effective number of
-      crops 4.9.</span><button class="replay" data-scene="5" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>Illustration with invented shares. Land shares are shares of gross
+      cropped area, which counts a field twice if it carries two crops in a year.</span><button class="replay" data-scene="5" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>The count of crops is how many different crops a district grows at all, and the average
-    district grows 21.2. The effective number of crops weighs each crop by how much land it
-    covers. It equals the number of equally sized crops that would give the same spread of land. A
-    district split evenly across 20 crops scores 20, and the score falls as any one crop takes a
-    larger part of the land. The average district's effective number of crops is 4.9.</p>
-    <p>The example district here grows 20 crops, with 62 percent of its land under one cereal, and
-    its effective number of crops is 4.9. Adding a twenty-first crop on one percent of the land
-    raises the count by one and the effective number of crops to 5.1. Moving ten percent of the
-    land from the cereal to the next four largest crops leaves the count at 20 and lifts the
-    effective number of crops to 6.0.</p>
+    <p>The average district grows 21.4 crops, yet its
+    <a href="measurement.html#s1">effective number of crops</a>, which weighs each crop by its
+    land, is only 4.9.</p>
+    <p>The example district grows 20 crops with 62 percent of its land under one cereal, which
+    gives it the same effective number of 4.9. A twenty-first crop on one percent of the land
+    raises the count by one but the effective number only to 5.1, whereas moving ten percent of
+    the land from the cereal to the next four largest crops leaves the count at 20 and lifts the
+    effective number to 6.0.</p>
   </div>
 </section>
 
@@ -220,25 +193,21 @@
     <div class="figure__frame">
       <div class="ctl ctl--scroll" id="v12-pick" role="group" aria-label="Map layer"></div>
       <div id="v12" class="chart" role="img" aria-label="Map of Indian districts with state borders, shaded by the count of crops. Buttons switch the shading to the effective number of crops or to any of the ten facilities."></div>
-      <p class="figure__note"><span>Count of crops and effective number of crops are district averages over
-      1997&ndash;98 to 2019&ndash;20. Facilities are shares of villages, Mission Antyodaya 2019&ndash;20. The
-      top and bottom 2 percent of districts take the end colours of the scale. White lines are state
-      borders. Hatched districts are outside the 606. Hover or tap a district for its
-      value.</span><button class="replay" data-scene="12" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>Crop measures are district averages over 1998&ndash;99 to
+      2019&ndash;20, facilities are shares of rural people with one in the village, and hatched
+      districts have no usable record. Hover or tap a district for its value.</span><button class="replay" data-scene="12" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>The map opens on the count of crops. Among the 23 states with at least eight districts,
-    Chhattisgarh has the highest average, at 31.6 crops per district, with Karnataka at 29.7 and Assam
-    at 29.0. Punjab is lowest, and its districts grow 9.1 crops on average.</p>
-    <p>Switch to the effective number of crops and the brightest districts move south. Karnataka leads
-    at 8.0, followed by Tamil Nadu at 7.0 and Andhra Pradesh at 6.9, and Odisha is lowest at 2.5.
-    Chhattisgarh drops to 3.1 and Assam to 3.2. Rice is the largest crop by area in every district of
-    both states and covers about three quarters of the land, so the many other crops there share what
-    is left.</p>
-    <p>Among the facility layers, fertiliser shops and producer organisations are far more common in
-    Kerala, where they are in 83 and 86 percent of villages, and in Gujarat, at 55 and 66 percent,
-    than anywhere else.</p>
+    <p>Among the larger states, Chhattisgarh grows the most crops, 31.9 per district on average,
+    ahead of Karnataka at 30.1 and Assam at 29.2. Punjab's districts grow 9.1.</p>
+    <p>On the effective number of crops the brightest districts move south. Karnataka leads at 8.1,
+    followed by Tamil Nadu at 7.0 and Andhra Pradesh at 6.9, while Odisha is lowest at 2.4.
+    Chhattisgarh drops to 3.1 and Assam to 3.2, because rice is the largest crop in every one of
+    their districts and covers about three quarters of the land, leaving the many other crops to
+    share what is left.</p>
+    <p>Fertiliser shops and producer organisations reach far more people in Kerala, 86 and 87
+    percent, and in Gujarat, 60 and 66 percent, than anywhere else.</p>
   </div>
 </section>
 
@@ -251,25 +220,24 @@
   <div class="scene-fig fade">
     <div class="figure__frame">
       <div class="ctl" id="v13-ctl" role="group" aria-label="Measure"></div>
-      <div id="v13" class="chart" role="img" aria-label="One row per state, 23 states sorted by their average effective number of crops, with every district drawn as a dot. Karnataka is at the top with an average of 8.0 and Odisha at the bottom with 2.5. A bar below splits the spread across districts into 49 percent between states and 51 percent within them."></div>
+      <div id="v13" class="chart" role="img" aria-label="One line per state, 23 states sorted by their average effective number of crops, with every district drawn as a dot. Karnataka is at the top with an average of 8.1 and Odisha at the bottom with 2.4. A bar below splits the spread across districts into 49 percent between states and 51 percent within them."></div>
       <div id="v13-split" class="chart split" aria-hidden="true"></div>
-      <p class="figure__note"><span>Each dot is a district and each white tick a state average. The dashed
-      line is the average across all 580 districts in the 23 states with at least eight districts. The
-      bar is the share of the spread across districts that lies between states.</span><button class="replay" data-scene="13" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>Each dot is a district and each white tick a state average. The
+      dashed line is the average across districts. The bar is the share of the spread across
+      districts that lies between states.</span><button class="replay" data-scene="13" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Karnataka's districts average 8.0 on the effective number of crops and Odisha's 2.5, and inside
-    Karnataka alone they still run from 3.8 to 14.3. To split the spread, picture every district given
-    its state's average. The spread that would remain is the part between states, and the bar under the
-    chart gives it as a share of the total. For the effective number of crops that share is 49 percent.
-    Switch to the count of crops and it rises to 82 percent, so a district's state goes most of the way
-    to predicting how many crops it grows.</p>
-    <p>Facilities divide along state lines too. Between 64 and 79 percent of the spread in fertiliser
-    shops, producer organisations, custom hiring of machinery, farm-gate processing, regular markets and
-    seed centres lies between states. A comparison across all districts at once would mostly be a
-    comparison of states, which is why the comparisons that follow set each district against others in
-    its own state.</p>
+    <p>Karnataka's districts average 8.1 on the effective number of crops and Odisha's 2.4, even
+    though inside Karnataka alone they run from 3.8 to 14.3. If every district took its state's
+    average, it would keep 49 percent of the spread in the effective number of crops. For the count
+    of crops it would keep 82 percent, which means a district's state goes most of the way to
+    predicting how many crops it grows.</p>
+    <p>Facilities divide along state lines too, with between 60 and 77 percent of the spread in
+    fertiliser shops, producer organisations, custom hiring of machinery, farm-gate processing,
+    regular markets and seed centres lying between states. Set side by side across the whole
+    country, districts would mostly be compared as members of their states, which is why each link
+    between facilities and cropping is read within state.</p>
   </div>
 </section>
 
@@ -277,42 +245,47 @@
 <section class="section scene-sec" id="s14">
   <div class="scene fade">
     <p class="scene__kicker">08 · Six groups of district</p>
-    <h2 class="scene__h">The best-supplied districts have a higher effective number of crops, a gap that disappears among districts of the same state.</h2>
+    <h2 class="scene__h">The best-supplied districts have a higher effective number of crops, a gap that mostly comes from the states they are in.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
     <div class="figure__frame">
       <div class="tgrid">
-        <div id="v14" class="chart tgrid__map" role="img" aria-label="Map of districts in six groups. Shading from dark to light violet gives the bottom, middle and top third of facility supply. Hatching marks districts with many weekly haats, which appear in all three thirds and most of all across eastern and central India."></div>
+        <div id="v14" class="chart tgrid__map" role="img" aria-label="Map of districts in six groups. Shading from dark to light violet gives the bottom, middle and top third of facility supply. Hatching marks districts where many people live near a weekly haat, which appear in all three thirds and most of all across eastern and central India."></div>
         <div id="v14-cards" class="tcards" role="group" aria-label="The six groups. Select one to show it alone on the map."></div>
       </div>
       <p class="figure__note"><span>Shading: a district's supply of the nine facilities other than the
-      weekly haat, as its average percentile rank across them, cut into thirds. Hatching: share of villages
-      with a weekly haat above the median of 12.6 percent. On each card the white dot is the group's average over
-      1997&ndash;98 to 2019&ndash;20 and the faint ticks mark the other five groups. Select a card to show
-      its group alone.</span><button class="replay" data-scene="14" aria-label="Replay animation">replay</button></p>
+      weekly haat, as its average percentile rank across them, cut into thirds. Hatching: more than
+      17.9 percent of rural people, the median, live in a village with a weekly haat. On each card
+      the white dot is the group's average and the faint ticks show the other five groups. Select a
+      card to show its group alone.</span><button class="replay" data-scene="14" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>The map sorts districts on two scales at once. The shade of violet gives a district's supply of
-    the nine facilities that rise and fall together, cut into thirds from the least to the best
-    supplied. Districts where more than 12.6 percent of villages have a weekly haat, the median, carry
-    hatching on top. Because weekly haats bear no relation to the other facilities (a correlation of
-    0.02), haat-rich districts turn up in every third. Districts do not fall into natural clusters on
-    these facilities, so the six groups are bands along the two scales.</p>
-    <p>Supply climbs steeply across the thirds. A fertiliser shop is in 5 to 8 percent of villages in a
-    bottom-third district and in 31 to 33 percent in the top third, and producer organisations go from 9
-    to 11 percent up to 39 to 41 percent. Over the same thirds the effective number of crops rises from
-    about 4.4 to about 5.6, while cereals' share of the land falls from 75 to 56 percent.</p>
-    <p>That gap goes with the states the districts sit in. Among districts of the same state, the thirds
-    differ in the effective number of crops and in cereal share by amounts well within chance, with every
-    p value above 0.2. A p value is the chance of seeing a gap at least this large if there were none, and
-    below 0.05 is the usual bar. The state a district sits in accounts for 49 percent of the spread in
-    the effective number of crops, close to ten times the 5 percent that goes with its group.</p>
-    <p>The weekly haat split holds up better on the count of crops. Within each third the haat-rich half
-    grows 2.4 to 3.5 more crops and spreads its land less evenly. Evenness, the effective number of crops
-    divided by the count, is 0.22 to 0.25 there and 0.27 to 0.29 in the other half. Inside states the
-    haat-rich half still grows 1.4 more crops (p = 0.002). Its effective number of crops is 0.21 higher,
-    at p = 0.43.</p>
+    <p>Districts differ in two ways at once: how well supplied they are with the nine facilities
+    that rise and fall together, and whether weekly haats reach more people than in the median
+    district. Since weekly haats bear almost no relation to the other facilities (a correlation of
+    &minus;0.06), haat-rich districts turn up among the worst and the best supplied alike. Nor do
+    districts fall into natural clusters, so the six groups are cuts through a continuous
+    spread.</p>
+    <p>Supply climbs steeply from the bottom third to the top. A fertiliser shop reaches 11 to 13
+    percent of rural people in a bottom-third district and 40 to 45 percent in the top third, and
+    producer organisations go from 11 to 14 percent up to 46 percent. Over the same thirds the
+    effective number of crops rises from about 4.3 to between 5.4 and 6.4, while cereals' share of
+    the land falls from 75 to 80 percent down to 52 to 57 percent.</p>
+    <p>Most of that gap goes with the states the districts sit in. Within state, the thirds differ
+    in the effective number of crops by amounts that are not statistically significant (p = 0.053
+    for the three together), and state accounts for 49 percent of the spread against 9 percent for
+    the six groups. Cereal share holds up better within state, where middle- and top-third
+    districts put about 4 points less of their land under cereals than bottom-third ones
+    (p = 0.001). The top third is no lower than the middle, though, and only one of the four
+    diversity and crop measures compared shows such a gap, so it needs confirming before it
+    carries weight.</p>
+    <p>The weekly haat split matters more for the count of crops. Within each third the haat-rich
+    half grows 3.0 to 4.8 more crops, and in the bottom and middle thirds it spreads its land less
+    evenly, with an <a href="measurement.html#s2">evenness</a> of 0.20 to 0.23 against 0.26 to
+    0.29. Within state the haat-rich half still grows 1.1 more crops (p = 0.006), while its
+    effective number of crops is 0.16 higher, which is not statistically significant
+    (p = 0.36).</p>
   </div>
 </section>
 
@@ -320,46 +293,39 @@
 <section class="section scene-sec" id="s6">
   <div class="scene fade">
     <p class="scene__kicker">09 · The result</p>
-    <h2 class="scene__h">Weekly haats and producer organisations each go with a different measure of crop diversity.</h2>
+    <h2 class="scene__h">Districts where more people live near a weekly haat grow more crops without spreading their land more evenly among them.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
     <div class="figure__frame">
+      <div class="ctl" id="v6-ctl" role="group" aria-label="Measure of each facility"></div>
       <div class="pair">
         <div><p class="duo__t">Count of crops</p>
-          <div id="v6a" class="chart" role="img" aria-label="Ten facilities' links to the count of crops. The weekly haat is far right and filled at +7.33. The producer organisation is hollow, meaning p is above 0.05, at +2.39."></div></div>
+          <div id="v6a" class="chart" role="img" aria-label="Ten facilities' links to the count of crops. The weekly haat is far right and filled at +6.28. The producer organisation is filled at +3.38."></div></div>
         <div><p class="duo__t">Effective number of crops</p>
-          <div id="v6b" class="chart" role="img" aria-label="Ten facilities' links to the effective number of crops. The weekly haat is hollow, meaning p is above 0.05, at +0.49. The producer organisation is the only filled positive dot, at +1.95."></div></div>
+          <div id="v6b" class="chart" role="img" aria-label="Ten facilities' links to the effective number of crops. The weekly haat is hollow, meaning p is above 0.05, at +0.55. The producer organisation is the only filled positive dot, at +1.89."></div></div>
       </div>
-      <p class="figure__note"><span>One comparison per facility, with the state baseline and development,
-      irrigation, farm size and Scheduled Tribe share held constant. Each figure is the change if
-      every village had the facility, against none. Filled dots: p &lt; 0.05. Lines show the range
-      the true value very likely falls in (approximate 95 percent interval). 606
-      districts.</span><button class="replay" data-scene="6" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>Change from no rural resident to all of them having the facility
+      in the village, within state and with development, irrigation, farm size and Scheduled Tribe
+      share held constant. Filled dots have p &lt; 0.05; lines are 95 percent intervals.</span><button class="replay" data-scene="6" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Each dot comes from a separate statistical comparison that looks at one facility at a time,
-    with the state baseline and the development measures above held constant. The number plotted,
-    called a coefficient, is the change in crop diversity as a facility's share of villages goes
-    from none to all, a far wider gap than separates most districts. A more realistic step is one
-    standard deviation, the typical distance of a district from the average. For weekly haats that
-    is 11.7 percent of villages.</p>
-    <p>On the count of crops, the weekly haat has the largest coefficient, +7.33. A rise of one
-    standard deviation in the share of villages with a weekly haat goes with about 0.9 more crops,
-    against an average of 21.2. On the effective number of crops the weekly haat coefficient falls
-    to +0.49, at p = 0.56. A p value below 0.05, which we call the five percent level, is the usual
-    bar for a clear link. A link to
-    the count of crops with almost none to the effective number of crops is the pattern you would
-    expect if the extra crops sit on small plots while one staple still covers most of the land.
-    A third measure, evenness, is the effective number of crops divided by the
-    count of crops. It averages 0.254 and is 0.071 lower where every village has a weekly haat, in
-    a comparison that includes all three output markets together (p = 0.055).</p>
-    <p>Producer organisations show the reverse pattern across the two measures. They are the only
-    facility with a clear positive link to the effective number of crops, +1.95 at p = 0.032, or
-    about 0.4 more for one standard deviation more villages with one. Their coefficient on the
-    count of crops is +2.39 at p = 0.19, too imprecise to separate from zero. Seed centres also go
-    with a higher count of crops, as do food storage warehouses and farm-gate processing, all with weaker
-    evidence than the weekly haat.</p>
+    <p>Each coefficient is the change in crop diversity as a facility's reach goes from no one to
+    everyone, a far wider gap than separates most districts. One standard deviation, the typical
+    distance of a district from the average, is a more realistic step, and for weekly haats it is
+    15 percent of rural people.</p>
+    <p>On the count of crops the weekly haat has the largest coefficient, +6.28, so a district one
+    standard deviation above average grows about 0.9 more crops, against an average of 21.4. Its
+    coefficient on the effective number of crops is +0.55, which is not statistically significant
+    (p = 0.44). That is what you would expect if the extra crops sit on small plots while one
+    staple still covers most of the land. Where everyone has a weekly haat, evenness is 0.051
+    lower once all three output markets are taken together, although that too falls short of
+    statistical significance (p = 0.094).</p>
+    <p>Producer organisations go with more of both. Their coefficient on the effective number of
+    crops is +1.89 (p = 0.017), about 0.4 for one standard deviation, and on the count of crops
+    +3.38 (p = 0.024). Seed centres, food storage warehouses and farm-gate processing also go with
+    a longer list of crops, at +4.4 to +5.3, whereas districts where more people live near a
+    regular market grow fewer (&minus;3.48, p = 0.040).</p>
   </div>
 </section>
 
@@ -367,26 +333,23 @@
 <section class="section scene-sec" id="s7">
   <div class="scene fade">
     <p class="scene__kicker">10 · How firm the weekly haat result is</p>
-    <h2 class="scene__h">The weekly haat link to the count of crops stays between +6.4 and +8.0 across six adjusted versions of the comparison.</h2>
+    <h2 class="scene__h">The weekly haat link to the count of crops stays between +5.2 and +6.9 across six adjusted versions of the comparison.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
-      <div id="v7" class="chart" role="img" aria-label="The weekly haat coefficient on the count of crops under seven versions of the comparison. It is 16.99 with no adjustment and 7.18 once the state baseline is added. The five later versions all fall between 6.44 and 8.02."></div>
-      <p class="figure__note"><span>Weekly haat coefficient on the count of crops: the change if
-      every village had one, against none. All p &lt; 0.0001. 606 districts except where
-      shown.</span><button class="replay" data-scene="7" aria-label="Replay animation">replay</button></p>
+      <div id="v7" class="chart" role="img" aria-label="The weekly haat coefficient on the count of crops under seven versions of the comparison. It is 14.42 with no adjustment and 6.02 within state. The later versions all fall between 5.22 and 6.91."></div>
+      <p class="figure__note"><span>Weekly haat coefficient on the count of crops: the change from no
+      rural resident to all of them living in a village with one. Every p is 0.0001 or below.</span><button class="replay" data-scene="7" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Before any adjustment, the weekly haat coefficient is +16.99. Adding the state baseline cuts
-    it to +7.18, so most of the raw link came from where weekly haats are, in
-    eastern and central India. Adding irrigation and then the full set of development measures
-    leaves it close to +7. Leaving out the 64 districts that share their 2011 district with
-    another district gives +8.02. The figure is +6.44 once the 30 districts without a weekly
-    haat are set aside, and +6.87 with all nine other facilities in the same comparison.</p>
-    <p>All versions have p &lt; 0.0001. Measuring weekly haats per 100,000 people, in place of the
-    share of villages, gives 0.054 more crops for each extra weekly haat per 100,000 people, at p
-    = 0.008.</p>
+    <p>Before any adjustment the weekly haat coefficient is +14.42. Within state it falls to
+    +6.02, so most of the raw link reflects where weekly haats are, in eastern and central India.
+    After that it hardly moves. Whether irrigation and development are held constant, districts
+    carved from a split 2011 district or those with no haat at all are set aside, or the nine other
+    facilities enter the same comparison, it stays between +5.2 and +6.9, which means the link does
+    not hang on any one control or any one group of districts. Counted as weekly haats per 100,000
+    people, each extra haat goes with 0.055 more crops (p = 0.007).</p>
   </div>
 </section>
 
@@ -401,39 +364,33 @@
       <div class="duo">
         <div class="duo__a">
           <div class="ctl" id="v8-ctl" role="group" aria-label="Cropland grid"></div>
-          <div id="v8a" class="chart" role="img" aria-label="A 100-square grid of an average district's cropland: 66 cereal, 10 pulses, 24 other. One standard deviation more fertiliser shops removes about three pulse squares."></div>
+          <div id="v8a" class="chart" role="img" aria-label="A 100-square grid of an average district's cropland: 66 cereal, 10 pulses, 24 other. One standard deviation more fertiliser shops removes about two pulse squares."></div>
           <div class="readout readout--sm" id="v8-read" aria-live="polite"></div>
         </div>
         <div class="duo__b">
-          <p class="duo__t">Change in pulse share, percentage points, if every village had the facility</p>
-          <div id="v8b" class="chart" role="img" aria-label="Each facility's link to pulse share, with fertiliser shops furthest left at -17.4 points."></div>
+          <p class="duo__t">Change in pulse share, percentage points, if every rural resident had the facility in the village</p>
+          <div id="v8b" class="chart" role="img" aria-label="Each facility's link to pulse share, with fertiliser shops furthest left at -12.2 points."></div>
         </div>
       </div>
-      <p class="figure__note"><span>Share of cropped area, with all years from 1997&ndash;98 to
-      2019&ndash;20 added together. One comparison per facility. One standard deviation of the share
-      of villages with a fertiliser shop is 17.6 percent of villages. Filled dots: p &lt; 0.05. q
-      values: Benjamini-Hochberg across ten crop categories, with facilities compared together by
-      group.</span><button class="replay" data-scene="8" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>Share of cropped area over 1998&ndash;99 to 2019&ndash;20, one
+      comparison per facility. One standard deviation of fertiliser-shop reach is 19.2 percent of
+      rural people, and filled dots have p &lt; 0.05.</span><button class="replay" data-scene="8" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Facilities also line up with which crops take a district's land. In the average district,
-    pulses cover 10.1 percent of cropped area and cereals 66 percent. Fertiliser shops go with a
-    pulse share 17.4 percentage points lower if every village had one, which comes to about 3.1
-    points for one standard deviation more villages with a fertiliser shop. In the grid, three of
-    the ten pulse squares go to other crops. Food storage warehouses, at &minus;17.2, and regular markets,
-    at &minus;9.4, also go with less land under pulses.</p>
-    <p>With many facilities and ten crop categories tested, some links will look significant by
-    chance. A standard correction for testing many links at once (Benjamini-Hochberg) raises the
-    bar to allow for that. Its q value plays the part of p, and below 0.05 still counts as clear.
-    The fertiliser shop result passes it easily when the four input-supply facilities are in the
-    same comparison, at &minus;19.0 points with q = 0.0004. Regular markets on pulses (q = 0.006)
-    and weekly haats on the share of land under sugar crops, +11.1 points (q = 0.010), also
-    pass.</p>
-    <p>Cereal shares move in mixed directions across facilities, and only fertiliser shops clear
-    the five percent level, at &minus;19.8 points. With food storage warehouses and farm-gate processing
-    in the same comparison, producer organisations go with a cereal share 22.2 points lower, with
-    more land under vegetables (+5.7) and under fruit (+3.2).</p>
+    <p>In the average district pulses cover 10.2 percent of cropped area and cereals 66 percent.
+    Fertiliser shops go with a pulse share 12.2 percentage points lower if every rural resident had
+    one in the village, or about 2.3 points for one standard deviation more, close to a quarter of
+    the average district's pulse land. Districts where more people live near a regular market
+    also put less land under pulses, by 8.2 points.</p>
+    <p>With this many facilities and ten crop categories, some links will look significant by
+    chance. The pulse links hold up after a Benjamini-Hochberg correction for that, whose q value
+    reads like p: fertiliser shops come out at &minus;14.4 points when the four input-supply
+    facilities are compared together (q = 0.003), and regular markets at q = 0.005. Weekly haats
+    pass too, with 10.1 points more land under sugar crops (q = 0.003).</p>
+    <p>Fertiliser shops also go with less land under cereals, 22.3 points less in the input-supply
+    comparison (q = 0.025), and with more under fibre crops, mostly cotton, at +13.0 points
+    (q = 0.025).</p>
   </div>
 </section>
 
@@ -441,23 +398,23 @@
 <section class="section scene-sec" id="s9">
   <div class="scene fade">
     <p class="scene__kicker">12 · Mandis and cereals</p>
-    <h2 class="scene__h">Districts with more mandis have a slightly smaller cereal share, a result just short of the five percent level (p = 0.054).</h2>
+    <h2 class="scene__h">Mandis show no clear link to how much of a district's land goes to cereals.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
-      <div id="v9" class="chart" role="img" aria-label="Each facility's link to cereal share. The mandi dot is at -23.5 points, left of zero, with an interval that just reaches zero. Fertiliser shops, at -19.8, are the only link clear of the five percent level."></div>
-      <p class="figure__note"><span>One comparison per facility, with the state baseline and all
-      measures held constant. Change in cereal share of cropped area, in percentage points, if every village had
-      the facility. Filled dots: p &lt; 0.05. Lines show the range the true value very likely falls
-      in (approximate 95 percent interval). 606 districts.</span><button class="replay" data-scene="9" aria-label="Replay animation">replay</button></p>
+      <div id="v9" class="chart" role="img" aria-label="Each facility's link to cereal share. The mandi dot is at -15.3 points with an interval that spans zero. Fertiliser shops, at -21.6, are the only clear link."></div>
+      <p class="figure__note"><span>Change in cereal share of cropped area, in percentage points, from
+      no rural resident to all of them having the facility in the village, within state with all
+      measures held constant. Filled dots have p &lt; 0.05; lines are 95 percent intervals.</span><button class="replay" data-scene="9" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Districts with more mandis are often expected to grow more cereals. Across districts, the
-    cereal share is 23.5 percentage points lower where every village has a mandi, at p = 0.054.
-    One standard deviation of the share of villages with a mandi is 5.2 percent of villages, which
-    puts the realistic gap at about 1.2 points of cropped area against an average cereal share of
-    66 percent.</p>
+    <p>Mandis, where the state buys grain at support prices, are often expected to pull districts
+    toward cereals. Yet where everyone lives near one, the cereal share is 15.3 points lower, a
+    difference that is not statistically significant (p = 0.17). One standard deviation of mandi
+    reach, 5.5 percent of rural people, would move cereal share by less than a point against an
+    average of 66 percent. Fertiliser shops have the one clear cereal link, at &minus;21.6 points
+    (p = 0.003).</p>
   </div>
 </section>
 
@@ -465,7 +422,7 @@
 <section class="section scene-sec" id="s10">
   <div class="scene fade">
     <p class="scene__kicker">13 · Markets and irrigation</p>
-    <h2 class="scene__h">Where a larger share of villages has a mandi, the effective number of crops peaks at a lower irrigation share and bends down less sharply.</h2>
+    <h2 class="scene__h">At high irrigation the effective number of crops falls more gently where more people live near a mandi, a difference just short of statistical significance.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
@@ -474,32 +431,27 @@
         <span class="legend__item"><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="#9A9A98" stroke-width="2" stroke-dasharray="4 3"/></svg>one standard deviation below the average district</span>
         <span class="legend__item"><svg width="26" height="10"><line id="v10-sw" x1="1" y1="5" x2="25" y2="5" stroke="#C63FD8" stroke-width="2.5"/></svg>one standard deviation above</span>
       </div>
-      <div id="v10" class="chart" role="img" aria-label="Two curves of the effective number of crops against irrigation. Where few villages have a mandi, the curve rises to a peak at 36 percent irrigated and then falls steeply. Where more villages have one, it peaks at 15 percent and bends down more gently. Both end about 2.5 below an unirrigated district. Tabs show the same pattern for four other measures."></div>
+      <div id="v10" class="chart" role="img" aria-label="Two curves of the effective number of crops against irrigation. Where few people live near a mandi, the curve rises to a peak at 36 percent irrigated and then falls steeply. Where more do, it peaks at 15 percent and bends down more gently. Both end between 2.3 and 2.8 below an unirrigated district. Tabs show four other measures, where the two curves are closer."></div>
       <p class="readout readout--line" id="v10-read" aria-live="polite"></p>
       <p class="figure__note"><span>Curves start at zero for an unirrigated district, and only their
       shape is estimated. Low and high are one standard deviation below and above each measure's
-      mean. Post-harvest: food storage warehouses and farm-gate processing. 606 districts, with the state
-      baseline and all measures held constant.</span><button class="replay" data-scene="10" aria-label="Replay animation">replay</button></p>
+      mean. Post-harvest: food storage warehouses and farm-gate processing.</span><button class="replay" data-scene="10" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
     <p>Across districts, the effective number of crops climbs with irrigation up to somewhere
-    between a quarter and a half of sown area irrigated, and falls after that. A natural guess is
-    that more markets and input supply speed the move into a few irrigated staples, which would
-    make that fall steeper where they are common.</p>
-    <p>Each pair of lines shows the curve for districts one standard deviation below and above the
-    average on each of the five tabs. The bend is a number for how sharply the curve turns down at
-    high irrigation, and the more negative it is, the sharper the fall. For mandis, the bend is
-    &minus;8.98 in districts with a low share of villages with a mandi and &minus;3.74 in districts
-    with a high share, a difference significant at p = 0.033. The curve peaks at a lower irrigation
-    share where more villages have a mandi, about 15 percent against 36 percent where fewer do.
-    Because it barely rises before turning, the high-share curve runs below the low-share curve at
-    every irrigation level, and both end about 2.5 below an unirrigated district at full
-    irrigation.</p>
-    <p>On all five tabs the high-share curve bends down less sharply, with p between 0.056 and
-    0.143 for fertiliser shops and the three group averages (output markets, input supply and
-    post-harvest). Each group average combines its facilities' shares of villages on a common
-    scale.</p>
+    between a quarter and a half of sown area irrigated, and falls after that. If markets and
+    input supply sped the move into a few irrigated staples, that fall would be steeper where they
+    are common.</p>
+    <p>For mandis it runs the other way. The bend, a number for how sharply the curve turns down at
+    high irrigation, is &minus;8.21 where mandis reach one standard deviation fewer people than
+    average and &minus;4.06 where they reach one standard deviation more (p = 0.060 for the
+    difference). The curve also peaks earlier in the better-served districts, at about 15 percent
+    irrigated against 36 percent, and because it barely rises before turning it runs below the
+    other curve all the way along.</p>
+    <p>Fertiliser shops make no difference to the shape (p = 0.95). Where output markets, input
+    supply or post-harvest facilities are more common, the fall is gentler too, though none of
+    those differences is statistically significant (p between 0.24 and 0.69).</p>
   </div>
 </section>
 
@@ -511,8 +463,8 @@
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
-      <div id="v11" class="chart" role="img" aria-label="A timeline. Cropping measures average 23 agricultural years from 1997-98 to 2019-20. Facilities come from a single survey in 2019-20."></div>
-      <p class="figure__note"><span>Cropping: district crop area, 1997&ndash;98 to 2019&ndash;20.
+      <div id="v11" class="chart" role="img" aria-label="A timeline. Cropping measures average 22 agricultural years from 1998-99 to 2019-20. Facilities come from a single survey in 2019-20."></div>
+      <p class="figure__note"><span>Cropping: district crop area, 1998&ndash;99 to 2019&ndash;20.
       Facilities: Mission Antyodaya 2019&ndash;20.</span><button class="replay" data-scene="11" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
@@ -520,74 +472,75 @@
     <p>Facilities may well be built where there is already a surplus to trade, so a district's
     crops can shape its markets as much as the other way round. The timing makes the direction
     harder to read, because facilities are recorded in 2019&ndash;20 while the cropping measures
-    average every year from 1997&ndash;98 to 2019&ndash;20. Whether a new weekly haat or producer
-    organisation would change what farmers grow is a question these comparisons cannot
-    answer.</p>
+    average every year from 1998&ndash;99 to 2019&ndash;20. Whether a new weekly haat or producer
+    organisation would change what farmers grow remains open.</p>
   </div>
 
   <div class="scene scene--method fade">
     <details class="method">
       <summary>How this was estimated</summary>
       <div class="method__body">
-        <p>The sample is 606 districts in 30 states that have both a long-run crop record and a
-        2019&ndash;20 facility record. Each facility is the share of a district's villages
-        reporting it. Each group average puts its facilities' shares on a common scale (distance
-        from the mean in standard deviations) and averages them. Output markets combine mandis,
-        regular markets and weekly haats, and input supply combines fertiliser shops, seed
-        centres, soil testing and custom hiring of machinery. The post-harvest average covers
-        food storage warehouses and farm-gate processing, and the connectivity average covers paved
-        roads, public transport, banks and railways.</p>
-        <p>The outcomes are the count of crops (mean 21.2), the effective number of crops (the
-        exponential of the Shannon index of land shares, mean 4.9), evenness (the effective number
-        of crops divided by the count, mean 0.254), and each crop category's share of gross
-        cropped area with all years from 1997&ndash;98 to 2019&ndash;20 added together (cereals
-        0.66, pulses 0.10). The diversity measures are computed within each year and then averaged
-        across years. Each adjusted model controls for the share of sown area irrigated and its
+        <p>The sample is 606 districts in 30 states with both a long-run crop record and a
+        2019&ndash;20 facility record. Each facility is the share of a district's rural population,
+        counted in the 2011 census, that lives in a village reporting the facility in the Mission
+        Antyodaya 2019&ndash;20 survey. Across districts these population shares correlate with
+        plain village shares at 0.92 to 0.97, and weighting by the survey's own 2019&ndash;20
+        population gives shares that correlate with village shares just as closely. Each group average puts its facilities' shares
+        on a common scale (distance from the mean in standard deviations) and averages them. Output
+        markets combine mandis, regular markets and weekly haats, and input supply combines
+        fertiliser shops, seed centres, soil testing and custom hiring of machinery. The
+        post-harvest average covers food storage warehouses and farm-gate processing, and the
+        connectivity average covers paved roads, public transport, banks and railways, all on the
+        same population basis.</p>
+        <p>A regular market is a permanent local market, recorded apart from mandis and weekly
+        haats.</p>
+        <p>The outcomes are the count of crops (mean 21.4), the effective number of crops (mean
+        4.9) and evenness (mean 0.250), all <a href="measurement.html#s2">defined on the
+        Measurement page</a>, and each crop category's share of gross cropped area with all years
+        from 1998&ndash;99 to 2019&ndash;20 added together (cereals 0.66, pulses 0.10). The diversity
+        measures are computed within each year and then averaged across years. Each adjusted model controls for the share of sown area irrigated and its
         square, log mean holding size, the Scheduled Tribe population share, log night lights,
-        non-farm businesses per 1,000 people, and the connectivity average. All of them also
-        include the state baseline.</p>
-        <p>The uncertainty ranges allow some districts to be more scattered than others. Districts
-        split from the same 2011 district are treated as one group when measuring uncertainty,
-        because their figures are likely to rise and fall together. In this sample almost none of
-        those districts has a partner from the same 2011 district, so the 606 districts form 605
-        groups. Leaving out all 64 districts that share their 2011 district with another district puts the weekly haat
-        result at +8.02, across 542 districts.</p>
-        <p>The main results put one facility in each comparison, because the facilities overlap
-        so much that putting them together blurs each one's estimate. Within the input-supply
-        group, the variance inflation factor (how far a coefficient's uncertainty grows because
-        that facility is predictable from the others) runs from 3.4 to 4.1. Facilities are also
-        compared together in groups. The output markets form one group and the input-supply
-        facilities another, and a third holds food storage warehouses, farm-gate processing and producer
-        organisations. For each facility in those groups, q values apply a Benjamini-Hochberg
-        correction across the ten crop categories.</p>
+        non-farm businesses per 1,000 people, and the connectivity average, with state fixed
+        effects.</p>
+        <p>The uncertainty ranges allow some districts to be more scattered than others, and
+        districts split from the same 2011 district are treated as one group because their figures
+        are likely to rise and fall together. Leaving out every district that shares its 2011
+        district with another puts the weekly haat result at +6.91.</p>
+        <p>The main results put one facility in each comparison, because the facilities overlap so
+        much that putting them together blurs each one's estimate. Facilities are also compared
+        together in groups: the output markets, the input-supply facilities, and food storage
+        warehouses, farm-gate processing and producer organisations. For each facility in those
+        groups, q values apply a Benjamini-Hochberg correction across the ten crop categories.</p>
+        <p>Measured by the share of villages in place of the share of people, the weekly haat
+        coefficient is +7.36 on the count of crops and +0.46 on the effective number, and producer
+        organisations are +1.92 on the effective number. On village shares mandis go with a cereal
+        share 23.5 points lower (p = 0.054), food storage warehouses with a pulse share 17.1 points
+        lower (p = 0.009), and the mandi bend differs between low and high shares at p = 0.030.
+        None of these three reaches p &lt; 0.05 on population shares, and the fertiliser-shop link
+        to cereals is clearer on population shares.</p>
         <p>In the irrigation comparison, the curve's shape is allowed to change with each
-        facility's share of villages. The bend and peak are read at one standard deviation below
-        and above the mean. Across versions of the model the peak falls between about a quarter
-        and a half of sown area irrigated, and between 15 and 36 percent at high and low shares of
-        villages with a mandi.</p>
+        facility's share. The bend and peak are read at one standard deviation below and above the
+        mean.</p>
 
         <p>The six groups of district rest on two measures. Facility supply is a district's average
-        percentile rank on the nine facilities other than the weekly haat, cut into thirds at 0.40 and 0.60.
-        The weekly haat split is at the median share of villages, 0.126, and the two measures correlate at
-        0.017. A k-means search on the facility shares, for three to six groups under three scalings
-        and once more without the weekly haat, gives silhouette scores between 0.15 and 0.38 (the
-        score runs from &minus;1 to 1 and measures how cleanly groups separate). The first principal
-        component carries 59 percent of the variance and loads on every facility except the weekly haat,
-        and the second, with 11 percent, loads mainly on the weekly haat. The one group that recurs
-        across solutions holds 37 districts, 23 in Gujarat and 13 in Kerala, and is better read as a
-        feature of those two states. Resampling districts moves 4.8 percent of them to another group on
-        average, and measuring supply as an average standard score in place of an average rank leaves 86.8
-        percent in the same group.</p>
-        <p>The state comparisons use the 23 states with at least eight districts, 580 districts in all. The
-        between-state share is the part of the spread across districts that the state a district is in
-        explains. Adjusting it for the number of states lowers it by at most 0.02, and computing it over
-        all 30 states changes it by at most 0.04. The within-state tests on the six groups include the state
-        baseline and measure uncertainty allowing districts in the same state to rise and fall
-        together.</p>
+        percentile rank on the nine facilities other than the weekly haat, cut into thirds at 0.40
+        and 0.59. The weekly haat split is at the median share, 0.179, and the two measures
+        correlate at &minus;0.06. A k-means search on the facility shares, for three to six groups
+        under three scalings and once more without the weekly haat, gives silhouette scores between
+        0.15 and 0.33 (the score runs from &minus;1 to 1 and measures how cleanly groups separate).
+        The one group that recurs across solutions holds 39 districts, 23 in Gujarat and 13 in
+        Kerala, and is better read as a feature of those two states. Resampling districts moves 4.7
+        percent of them to another group on average, and measuring supply as an average standard
+        score in place of an average rank leaves 88.9 percent in the same group.</p>
+        <p>The state comparisons use the 23 states with at least eight districts. The between-state
+        share is the part of the spread across districts that the state a district is in explains;
+        adjusting it for the number of states lowers it by at most 0.03. The within-state
+        comparisons of the six groups include state fixed effects and let districts in the same
+        state rise and fall together when measuring uncertainty.</p>
 
         <div class="tbl-wrap">
           <table class="tight" id="tbl-a">
-            <caption>Share of a district's villages reporting each facility, 606 districts.</caption>
+            <caption>Share of a district's rural people living in a village with each facility.</caption>
             <thead><tr><th>Facility</th><th class="num">Mean</th><th class="num">10th percentile</th><th class="num">90th percentile</th><th class="num">Districts with none</th><th class="num">Correlation with night lights</th><th class="num">Correlation with non-farm businesses</th></tr></thead>
             <tbody></tbody>
           </table>
@@ -595,7 +548,7 @@
 
         <div class="tbl-wrap">
           <table class="tight" id="tbl-b">
-            <caption>One facility per comparison, with the state baseline and all measures held constant, 606 districts. Each figure is the change if every village had the facility, against none. Crop shares are in percentage points.</caption>
+            <caption>One facility per comparison, with state fixed effects and all measures held constant. Each figure is the change from no rural resident to all of them living in a village with the facility. Crop shares are in percentage points.</caption>
             <thead><tr><th>Facility</th><th class="num">Count of crops</th><th class="num">Effective number of crops</th><th class="num">Cereal share</th><th class="num">Pulse share</th></tr></thead>
             <tbody></tbody>
           </table>
@@ -605,16 +558,16 @@
         <div class="tbl-wrap">
           <table class="tight" id="tbl-c">
             <caption>The weekly haat coefficient on the count of crops, by version of the comparison.</caption>
-            <thead><tr><th>Version</th><th class="num">Districts</th><th class="num">Coefficient</th><th class="num">p</th></tr></thead>
+            <thead><tr><th>Version</th><th class="num">Districts</th><th class="num">Share of people</th><th class="num">p</th><th class="num">Share of villages</th></tr></thead>
             <tbody>
-              <tr><td>No adjustment</td><td class="num">606</td><td class="num pos">+16.99</td><td class="num">&lt; 0.0001</td></tr>
-              <tr><td>State baseline only</td><td class="num">606</td><td class="num pos">+7.18</td><td class="num">&lt; 0.0001</td></tr>
-              <tr><td>Adding irrigation</td><td class="num">606</td><td class="num pos">+6.99</td><td class="num">&lt; 0.0001</td></tr>
-              <tr><td>All measures held constant</td><td class="num">606</td><td class="num pos">+7.33</td><td class="num">&lt; 0.0001</td></tr>
-              <tr><td>Without districts that share a 2011 district</td><td class="num">542</td><td class="num pos">+8.02</td><td class="num">&lt; 0.0001</td></tr>
-              <tr><td>Without districts that have no weekly haat</td><td class="num">576</td><td class="num pos">+6.44</td><td class="num">&lt; 0.0001</td></tr>
-              <tr><td>With all nine other facilities</td><td class="num">606</td><td class="num pos">+6.87</td><td class="num">&lt; 0.0001</td></tr>
-              <tr><td>Weekly haats per 100,000 people</td><td class="num">606</td><td class="num pos">+0.054</td><td class="num">0.008</td></tr>
+              <tr><td>No adjustment</td><td class="num">606</td><td class="num pos">+14.42</td><td class="num">&lt; 0.0001</td><td class="num">+16.40</td></tr>
+              <tr><td>Within state (state fixed effects) only</td><td class="num">606</td><td class="num pos">+6.02</td><td class="num">&lt; 0.0001</td><td class="num">+7.21</td></tr>
+              <tr><td>Adding irrigation</td><td class="num">606</td><td class="num pos">+5.94</td><td class="num">&lt; 0.0001</td><td class="num">+7.00</td></tr>
+              <tr><td>All measures held constant</td><td class="num">606</td><td class="num pos">+6.28</td><td class="num">&lt; 0.0001</td><td class="num">+7.36</td></tr>
+              <tr><td>Without districts that share a 2011 district</td><td class="num">542</td><td class="num pos">+6.91</td><td class="num">&lt; 0.0001</td><td class="num">+7.92</td></tr>
+              <tr><td>Without districts that have no weekly haat</td><td class="num">576</td><td class="num pos">+5.64</td><td class="num">&lt; 0.0001</td><td class="num">+6.46</td></tr>
+              <tr><td>With all nine other facilities</td><td class="num">606</td><td class="num pos">+5.22</td><td class="num">0.0001</td><td class="num">+6.88</td></tr>
+              <tr><td>Weekly haats per 100,000 people</td><td class="num">606</td><td class="num pos">+0.055</td><td class="num">0.007</td><td class="num">&ndash;</td></tr>
             </tbody>
           </table>
         </div>
@@ -631,8 +584,9 @@
     <div>
       <h4>Sources</h4>
       <p style="font-size:.9rem">Facility data come from the Mission Antyodaya 2019&ndash;20 village
-      survey, as compiled in SHRUG 2.1 by the Development Data Lab, and summed to districts.
-      Cropping is district agricultural statistics for 1997&ndash;98 to 2019&ndash;20. Night
+      survey, as compiled in SHRUG 2.1 by the Development Data Lab, weighted by 2011 census village
+      population.
+      Cropping is district agricultural statistics for 1998&ndash;99 to 2019&ndash;20. Night
       lights from satellite imagery and Economic Census business counts provide the development
       measures.</p>
     </div>
@@ -658,6 +612,6 @@
 </footer>
 
 <script src="js/site.js?v=e2b6885b"></script>
-<script src="js/markets.js?v=7"></script>
+<script src="js/markets.js?v=e1a68ab1"></script>
 </body>
 </html>

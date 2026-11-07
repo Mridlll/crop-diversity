@@ -1,7 +1,9 @@
 /* ================================================================
    MARKETS PAGE: scene visuals.
-   Reads data/site_markets.json, data/site_market_map.json,
-   data/site_typology.json and data/districts.geojson.
+   Reads data/site_markets.json, data/site_markets_pop.json,
+   data/site_market_map.json, data/site_typology.json and
+   data/districts.geojson. Facilities are population shares: the share
+   of a district's rural people living in a village with the facility.
    Depends on site.js for svgEl, lin, showTip, hideTip, safeTip,
    loadJSON, loadGeo, rampCyan and corrMatrix. Everything here is
    wrapped so no name collides with site.js globals.
@@ -30,11 +32,10 @@ const HAS = { 'mandi': 'a mandi', 'regular market': 'a regular market', 'weekly 
               'fertiliser shop': 'a fertiliser shop', 'seed centre': 'a seed centre', 'soil testing': 'soil testing',
               'custom hiring': 'a custom hiring centre for machinery', 'cold storage': 'a food storage warehouse',
               'farm-gate processing': 'farm-gate processing', 'FPO': 'a producer organisation' };
-/* standard deviation of the village share, where it is known */
-const SD = { 'weekly haat': .117, 'mandi': .052, 'regular market': .147, 'fertiliser shop': .176,
-             'cold storage': .081, 'FPO': .194 };
+/* standard deviation of each facility's population share, filled from the data at init */
+let SD = {}, SDV = {};
 /* outcome means not carried in the export */
-const MEAN = { D0: 21.2, D1: 4.9, pulses: 10.1, cereals: 66 };
+const MEAN = { D0: 21.4, D1: 4.9, pulses: 10.2, cereals: 66 };
 
 const OFF = 'rgba(255,255,255,0.075)';
 const TX = '#EDEDEB', TX2 = '#B3B3B0', TX3 = '#7E7E7C', BG = '#0B0B0C';
@@ -218,8 +219,8 @@ SC[1] = scene({
         if (!this.fac) { r.innerHTML = '&nbsp;'; return; }
         const d = MK.descriptives.find(x => x.name === this.fac);
         const lv = LEVELS.find(l => l.key === this.lvl);
-        r.innerHTML = `<span class="readout__name">${(d[this.lvl] * 100).toFixed(1)} percent of villages have ${HAS[this.fac] || lab(this.fac)}</span>` +
-            `${lv.desc}<br>${d.zero} of ${MK.n} districts report none`;
+        r.innerHTML = `<span class="readout__name">${(d[this.lvl] * 100).toFixed(1)} percent of rural people live in a village with ${HAS[this.fac] || lab(this.fac)}</span>` +
+            `${lv.desc}<br>${d.zero ? d.zero + (d.zero === 1 ? ' district has' : ' districts have') + ' none' : 'every district has at least one'}`;
     },
     set(fac, lvl, anim) {
         this.fac = fac; this.lvl = lvl;
@@ -489,7 +490,7 @@ SC[3] = scene({
                 showTip(safeTip(p => {
                     const v = p[L.key];
                     return `<strong>${p.n}</strong><br>${p.s}<br>` +
-                        (v == null ? 'no facility record' : `${L.name}: ${(v * 100).toFixed(0)}% of villages`) +
+                        (v == null ? 'no facility record' : `${L.name}: ${(v * 100).toFixed(0)}% of rural people`) +
                         (p.D0 != null ? `<br>count of crops ${p.D0.toFixed(1)}` : '');
                 }, pr), ev);
             });
@@ -519,7 +520,7 @@ SC[3] = scene({
         const key = this.layer, L = LAYERS.find(l => l.key === key), r = this.range(key);
         this.kLo.textContent = (r[0] * 100).toFixed(0) + '%';
         this.kHi.textContent = (r[1] * 100).toFixed(0) + '%';
-        this.kLab.textContent = 'share of villages with a ' + L.name;
+        this.kLab.textContent = 'share of rural people with a ' + L.name + ' in their village';
         const lim = this.filled >= 1 ? Infinity : Math.floor(this.filled * this.order.length);
         const rank = new Map(this.order.map((p, i) => [p, i]));
         this.paths.forEach(p => {
@@ -729,22 +730,23 @@ function coefChart(host, rows, o) {
     return api;
 }
 const OUT = {
-    D0: { key: 'D0_richness', name: 'Count of crops', axis: 'change in count of crops if every village had one (mean 21.2)', axisN: 'change in count of crops (mean 21.2)', tipName: 'count of crops', unit: '', k: 1, dec: 2 },
-    D1: { key: 'D1_exp_shannon', name: 'Effective number of crops', axis: 'change in effective number of crops if every village had one (mean 4.9)', axisN: 'change in effective number of crops (mean 4.9)', tipName: 'effective number of crops', unit: '', k: 1, dec: 2 },
+    D0: { key: 'D0_richness', name: 'Count of crops', axis: 'change in count of crops if every rural resident had one in the village (mean 21.4)', axisN: 'change in count of crops (mean 21.4)', tipName: 'count of crops', unit: '', k: 1, dec: 2 },
+    D1: { key: 'D1_exp_shannon', name: 'Effective number of crops', axis: 'change in effective number of crops if every rural resident had one in the village (mean 4.9)', axisN: 'change in effective number of crops (mean 4.9)', tipName: 'effective number of crops', unit: '', k: 1, dec: 2 },
     pul: { key: 'share_pulses', axis: 'percentage points of cropped area', axisN: 'percentage points of cropped area', tipName: 'pulse share', unit: ' percentage points', k: 100, dec: 1 },
-    cer: { key: 'share_cereals', axis: 'change in cereal share, percentage points, if every village had one', axisN: 'change in cereal share, percentage points', tipName: 'cereal share', unit: ' percentage points', k: 100, dec: 1 },
+    cer: { key: 'share_cereals', axis: 'change in cereal share, percentage points, if every rural resident had one in the village', axisN: 'change in cereal share, percentage points', tipName: 'cereal share', unit: ' percentage points', k: 100, dec: 1 },
 };
-function rowsFor(out) {
+function rowsFor(out, src) {
     const O = OUT[out];
-    return MK.solo.filter(r => r.outcome === O.key).map(r => {
+    return (src === 'village' ? MK.solo_village : MK.solo).filter(r => r.outcome === O.key).map(r => {
         const b = r.b * O.k, c = ci(b, r.p);
-        return { fac: r.facility, label: lab(r.facility), b, p: r.p, lo: c[0], hi: c[1], color: colOf(r.facility), out };
+        return { fac: r.facility, label: lab(r.facility), b, p: r.p, lo: c[0], hi: c[1], color: colOf(r.facility), out, src };
     });
 }
 function coefTip(r) {
-    const O = OUT[r.out], sd = SD[r.fac];
-    return `<strong>${r.label}</strong><br>${O.tipName}: ${sgn(r.b, O.dec)}${O.unit} if every village had one, against none<br>p = ${fmtP(r.p)}` +
-        (sd ? `<br>one standard deviation more (${(sd * 100).toFixed(1)} percent of villages): ${sgn(r.b * sd, O.dec)}${O.unit}` : '');
+    const O = OUT[r.out], v = r.src === 'village', sd = v ? SDV[r.fac] : SD[r.fac];
+    const who = v ? 'villages' : 'rural people';
+    return `<strong>${r.label}</strong><br>${O.tipName}: ${sgn(r.b, O.dec)}${O.unit} going from no ${v ? 'village' : 'resident'} to all with one, share of ${who}<br>p = ${fmtP(r.p)}` +
+        (sd ? `<br>one standard deviation more (${(sd * 100).toFixed(1)} percent of ${who}): ${sgn(r.b * sd, O.dec)}${O.unit}` : '');
 }
 const axLab = (O, nar) => nar ? O.axisN : O.axis;
 function domainOf(rows) {
@@ -757,12 +759,16 @@ function domainOf(rows) {
    06 coefficient plot with outcome toggle
    ================================================================ */
 SC[6] = scene({
-    u: 1,
+    u: 1, src: 'pop',
+    controls() {
+        segs($('#v6-ctl'), [{ key: 'pop', name: 'share of rural people' }, { key: 'village', name: 'share of villages' }],
+            k => { this.src = k; cancel(this); this.played = true; this.u = 1; this.render(); }, this.src);
+    },
     order() {
         if (!this._ord) this._ord = rowsFor('D0').sort((a, b) => b.b - a.b).map(r => r.fac);
         return this._ord;
     },
-    rowsOf(out) { const R = rowsFor(out); return this.order().map(f => R.find(r => r.fac === f)); },
+    rowsOf(out) { const R = rowsFor(out, this.src); return this.order().map(f => R.find(r => r.fac === f)); },
     render() {
         const ha = $('#v6a'), hb = $('#v6b'); if (!ha || !hb) return;
         this.panels = [['D0', ha], ['D1', hb]].map(([out, host]) => {
@@ -789,17 +795,9 @@ SC[6] = scene({
 });
 
 /* ================================================================
-   07 specification ladder (values not carried in the export)
+   07 specification ladder, read from site_markets_pop.json at init
    ================================================================ */
-const LADDER = [
-    { label: 'No adjustment', b: 16.99, n: 606 },
-    { label: 'State baseline only', b: 7.18, n: 606 },
-    { label: 'Adding irrigation', b: 6.99, n: 606 },
-    { label: 'All measures held constant', b: 7.33, n: 606 },
-    { label: 'Without districts carved from a split 2011 district', b: 8.02, n: 542 },
-    { label: 'Without districts that have no weekly haat', b: 6.44, n: 576 },
-    { label: 'With all nine other facilities', b: 6.87, n: 606 },
-];
+let LADDER = [];
 SC[7] = scene({
     u: 1,
     render() {
@@ -809,14 +807,16 @@ SC[7] = scene({
         const m = { t: 44, r: nar ? 44 : 60, b: 46, l: lw };
         const H = m.t + LADDER.length * rowH + m.b;
         const svg = svgFor(host, W, H);
-        const X = lin(0, 18, m.l, W - m.r);
-        const band = E('rect', { x: X(6.4), width: X(8.0) - X(6.4), y: m.t, height: LADDER.length * rowH, fill: 'rgba(14,155,181,0.10)' }, svg);
-        const bandT = T(svg, { x: (X(6.4) + X(8.0)) / 2, y: 13, 'text-anchor': 'middle', fill: '#3FC2DA', 'font-size': 10.5, 'font-family': MONO }, '+6.4 to +8.0');
-        niceTicks(0, 18, nar ? 4 : 6).forEach(v => {
+        const xmax = Math.ceil(Math.max(...LADDER.map(r => r.b)) / 2) * 2 + 2;
+        const X = lin(0, xmax, m.l, W - m.r);
+        const adj = LADDER.slice(1).map(r => r.b), a0 = Math.min(...adj), a1 = Math.max(...adj);
+        const band = E('rect', { x: X(a0), width: X(a1) - X(a0), y: m.t, height: LADDER.length * rowH, fill: 'rgba(14,155,181,0.10)' }, svg);
+        const bandT = T(svg, { x: (X(a0) + X(a1)) / 2, y: 13, 'text-anchor': 'middle', fill: '#3FC2DA', 'font-size': 10.5, 'font-family': MONO }, sgn(a0, 1) + ' to ' + sgn(a1, 1));
+        niceTicks(0, xmax, nar ? 4 : 6).forEach(v => {
             E('line', { x1: X(v), x2: X(v), y1: m.t, y2: H - m.b, stroke: v === 0 ? ZERO : GRID, 'shape-rendering': 'crispEdges' }, svg);
             T(svg, { x: X(v), y: H - m.b + 17, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5, 'font-family': MONO }, v === 0 ? '0' : '+' + v);
         });
-        T(svg, { x: (m.l + W - m.r) / 2, y: H - 8, 'text-anchor': 'middle', fill: TX3, 'font-size': 11.5 }, nar ? 'change in count of crops' : 'change in count of crops if every village had a weekly haat');
+        T(svg, { x: (m.l + W - m.r) / 2, y: H - 8, 'text-anchor': 'middle', fill: TX3, 'font-size': 11.5 }, nar ? 'change in count of crops' : 'change in count of crops if every rural resident had a weekly haat in the village');
         const yOf = i => m.t + rowH * (i + .5);
         this.rows = LADDER.map((r, i) => {
             const y = yOf(i);
@@ -829,7 +829,7 @@ SC[7] = scene({
         /* connector from the raw estimate to the within-state estimate */
         const cx0 = X(LADDER[0].b), cy0 = yOf(0), cx1 = X(LADDER[1].b), cy1 = yOf(1);
         const con = E('path', { d: `M${cx0 - 7} ${cy0 + 3}L${cx1 + 64} ${cy1}`, fill: 'none', stroke: 'rgba(255,255,255,0.35)', 'stroke-width': 1.2, 'stroke-dasharray': '2 4' }, svg);
-        const conT = T(svg, { x: cx0 - 12, y: cy0 - 9, 'text-anchor': 'end', fill: TX2, 'font-size': 10.5, 'font-family': MONO }, 'adding the state baseline');
+        const conT = T(svg, { x: cx0 - 12, y: cy0 - 9, 'text-anchor': 'end', fill: TX2, 'font-size': 10.5, 'font-family': MONO }, 'comparing within state');
         const ghost = E('circle', { r: 6, fill: '#0E9BB5', opacity: 0 }, svg);
         Object.assign(this, { band, bandT, con, conT, ghost, cx0, cy0, cx1, cy1 });
         this.show(this.u);
@@ -976,7 +976,7 @@ SC[9] = scene({
 });
 
 /* ================================================================
-   10 irrigation curves at low and high shares of villages
+   10 irrigation curves at low and high facility shares
    ================================================================ */
 const MEAS = [
     { key: 'mandi village share', name: 'mandi', color: '#C63FD8' },
@@ -1093,21 +1093,21 @@ SC[11] = scene({
         const W = host.clientWidth || 800, nar = W < 560;
         const H = 150, m = { l: 14, r: 14 };
         const svg = svgFor(host, W, H);
-        const X = lin(1997, 2020, m.l, W - m.r);
+        const X = lin(1998, 2020, m.l, W - m.r);
         const yA = 92;
-        E('line', { x1: X(1997), x2: X(2020), y1: yA, y2: yA, stroke: ZERO }, svg);
-        [1997, 2000, 2005, 2010, 2015, 2020].forEach(v => {
+        E('line', { x1: X(1998), x2: X(2020), y1: yA, y2: yA, stroke: ZERO }, svg);
+        [2000, 2005, 2010, 2015, 2020].forEach(v => {
             if (nar && (v === 2005 || v === 2015)) return;
             E('line', { x1: X(v), x2: X(v), y1: yA, y2: yA + 5, stroke: ZERO }, svg);
             T(svg, { x: X(v), y: yA + 20, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5, 'font-family': MONO }, v);
         });
-        const tw = Math.max(3, (X(1998) - X(1997)) * .32);
+        const tw = Math.max(3, (X(1999) - X(1998)) * .32);
         this.ticks = [];
-        for (let y = 1997; y < 2020; y++) {
+        for (let y = 1998; y < 2020; y++) {
             this.ticks.push(E('rect', { x: X(y + .5) - tw / 2, y: yA - 30, width: tw, height: 24, rx: 1 }, svg));
         }
-        E('path', { d: `M${X(1997.1)} ${yA - 38}V${yA - 44}H${X(2019.9)}V${yA - 38}`, fill: 'none', stroke: 'rgba(255,255,255,0.25)' }, svg);
-        this.tA = T(svg, { x: X(1997.1), y: yA - 52, fill: TX2, 'font-size': 11, 'font-family': MONO }, nar ? '23 years averaged for cropping' : 'cropping: 23 agricultural years averaged, 1997–98 to 2019–20');
+        E('path', { d: `M${X(1998.1)} ${yA - 38}V${yA - 44}H${X(2019.9)}V${yA - 38}`, fill: 'none', stroke: 'rgba(255,255,255,0.25)' }, svg);
+        this.tA = T(svg, { x: X(1998.1), y: yA - 52, fill: TX2, 'font-size': 11, 'font-family': MONO }, nar ? '22 years averaged for cropping' : 'cropping: 22 agricultural years averaged, 1998–99 to 2019–20');
         this.dot = E('circle', { cx: X(2019.5), cy: yA + 40, r: 6, fill: '#0E9BB5' }, svg);
         this.dotT = T(svg, { x: X(2019.5) - 12, y: yA + 44, 'text-anchor': 'end', fill: '#3FC2DA', 'font-size': 11, 'font-family': MONO }, 'facility survey, 2019–20');
         this.dotL = E('line', { x1: X(2019.5), x2: X(2019.5), y1: yA + 2, y2: yA + 33, stroke: 'rgba(14,155,181,0.6)', 'stroke-dasharray': '2 3' }, svg);
@@ -1115,14 +1115,14 @@ SC[11] = scene({
     },
     show(u) {
         if (!this.ticks) return;
-        const ms = u * (23 * 40 + 600);
+        const ms = u * (22 * 40 + 600);
         this.ticks.forEach((t, i) => { t.style.fill = ms >= i * 40 + 40 ? NEU : OFF; });
-        const d = Math.max(0, Math.min(1, (ms - 23 * 40) / 600));
+        const d = Math.max(0, Math.min(1, (ms - 22 * 40) / 600));
         this.dot.setAttribute('opacity', d); this.dotT.setAttribute('opacity', d); this.dotL.setAttribute('opacity', d);
         this.tA.setAttribute('opacity', Math.min(1, ms / 400));
     },
     prep() { this.u = 0; this.show(0); },
-    play() { this.u = 0; tween(this, 23 * 40 + 600, t => { this.u = t; this.show(t); }); },
+    play() { this.u = 0; tween(this, 22 * 40 + 600, t => { this.u = t; this.show(t); }); },
     reset() {},
 });
 
@@ -1213,7 +1213,7 @@ const ML = [
     { key: 'D1', name: 'effective number of crops', fmt: v => v.toFixed(1), kf: v => v.toFixed(1), kl: 'effective number of crops' },
 ].concat(['mandi', 'regular market', 'weekly haat', 'fertiliser shop', 'seed centre', 'soil testing',
           'custom hiring', 'cold storage', 'farm-gate processing', 'FPO'].map((f, i) => ({
-    key: 'f' + i, i, f, name: lab(f), fmt: v => pct0(v) + ' of villages', kf: pct0, kl: 'share of villages with ' + HAS[f]
+    key: 'f' + i, i, f, name: lab(f), fmt: v => pct0(v) + ' of rural people', kf: pct0, kl: 'share of rural people with ' + HAS[f] + ' in the village'
 })));
 const mmVal = (d, L) => d == null ? null : (L.i != null ? d.f[L.i] : d[L.key]);
 SC[12] = scene({
@@ -1246,7 +1246,7 @@ SC[12] = scene({
             el.style.fill = NODATA;
             tipOn(el, () => {
                 const L = ML.find(l => l.key === this.layer), v = mmVal(d, L);
-                return `<strong>${pr.n}</strong><br>${pr.s}<br>` + (v == null ? 'not among the 606 districts' : `${L.name}: ${L.fmt(v)}`);
+                return `<strong>${pr.n}</strong><br>${pr.s}<br>` + (v == null ? 'no usable record' : `${L.name}: ${L.fmt(v)}`);
             });
             el.addEventListener('mouseenter', () => { el.setAttribute('stroke', TX); el.setAttribute('stroke-width', 1.1); });
             el.addEventListener('mouseleave', () => { el.setAttribute('stroke', 'rgba(11,11,12,0.8)'); el.setAttribute('stroke-width', 0.35); hideTip(); });
@@ -1346,7 +1346,7 @@ SC[13] = scene({
         ];
         this.barW = [X(v.between), W - X(v.between) - 2];
         T(svg, { x: 0, y: 36, 'font-size': 11, 'font-family': MONO, fill: TX }, `between states ${pct0(v.between)}`);
-        T(svg, { x: W, y: 36, 'text-anchor': 'end', 'font-size': 11, 'font-family': MONO, fill: TX2 }, `within states ${pct0(v.within)}`);
+        T(svg, { x: W, y: 36, 'text-anchor': 'end', 'font-size': 11, 'font-family': MONO, fill: TX2 }, `within state ${pct0(v.within)}`);
     },
     draw(u) {
         if (!this.dots) return;
@@ -1424,7 +1424,7 @@ SC[14] = scene({
             const dd = P.fpath(f);
             const el = E('path', { d: dd, stroke: 'rgba(11,11,12,0.8)', 'stroke-width': 0.35 }, g1);
             const ov = ty && ty.haat ? E('path', { d: dd, fill: this.hat, opacity: 0 }, g2) : null;
-            tipOn(el, () => `<strong>${pr.n}</strong><br>${pr.s}<br>` + (ty ? `${ty.name}<br>weekly haat in ${pct0(d.haat)} of villages` : 'not among the 606 districts'));
+            tipOn(el, () => `<strong>${pr.n}</strong><br>${pr.s}<br>` + (ty ? `${ty.name}<br>${pct0(d.haat)} of rural people have a weekly haat in the village` : 'not among the districts compared'));
             el.addEventListener('mouseleave', hideTip);
             this.paths.push({ el, ov, ty });
         });
@@ -1459,7 +1459,13 @@ function startPlay(sc) {
 }
 
 async function init() {
-    [MK, MM, TY] = await Promise.all([loadJSON('data/site_markets.json'), loadJSON('data/site_market_map.json'), loadJSON('data/site_typology.json')]);
+    let MP;
+    [MK, MP, MM, TY] = await Promise.all([loadJSON('data/site_markets.json'), loadJSON('data/site_markets_pop.json'),
+                                         loadJSON('data/site_market_map.json'), loadJSON('data/site_typology.json')]);
+    /* the page reads population shares; village shares stay for the comparison toggle */
+    ['descriptives', 'corr', 'solo', 'solo_village', 'interaction', 'scatter', 'n'].forEach(k => { MK[k] = MP[k]; });
+    LADDER = MP.ladder;
+    MP.descriptives.forEach(d => { SD[d.name] = d.sd; SDV[d.name] = d.sd_village; });
     Object.values(SC).forEach(sc => { if (sc.controls) sc.controls(); });
     tables();
     for (const k of Object.keys(SC)) {

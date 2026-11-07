@@ -19,7 +19,7 @@ measures, and a monoculture and cropping-system layer.
                     few    fewer than 10 crops a year, and neither of the above
                     mixed  everything else
                   Also the 50 and 80 percent thresholds, correlations with D0 and
-                  D1, and the trend 1997-98 to 2019-20.
+                  D1, and the trend 1998-99 to 2019-20.
 
   (C) systems     the season-by-season cropping system. Seasons are grouped into
                   three slots: monsoon (Kharif, Autumn, Winter), rabi (Rabi),
@@ -53,6 +53,8 @@ from collections import Counter
 
 import numpy as np
 import pandas as pd
+
+from _years import keep_years
 from scipy import stats
 
 RAW = r"E:/CEEW Project/outputs/all_crops_apy_1997_2021_india_data_portal.csv"
@@ -132,7 +134,7 @@ for (s_, d_), new in REMAP.items():
     df.loc[m, "state_name"] = new
 df["year_start"] = df["year"].str.split("-").str[0].astype(int)
 df["district_key"] = df["state_name"].str.upper() + "|" + df["district_name"].str.upper()
-df = df[df["year_start"] <= 2019]
+df = keep_years(df)  # analysis window, scripts/_years.py
 K = ["district_key", "year", "season", "crop_name"]
 df = df.sort_values("area", ascending=False).drop_duplicates(subset=K, keep="first")
 
@@ -144,7 +146,7 @@ fp = pd.read_csv(COV + "/final_panel.csv")
 S606 = set(fp.loc[fp["in_final"] == True, "div_key"])
 assert len(S606) == 606
 ind["in606"] = ind["district_key"].isin(S606)
-assert len(ind) == 725 and ind["in606"].sum() == 606
+assert len(ind) == 724 and ind["in606"].sum() == 606  # Mumbai has crop rows only in 1997-98
 ann = pd.read_csv(DIV + "/district_year_diversity_panel_corrected.csv")
 
 # ================================================================== (A) scale
@@ -473,7 +475,7 @@ for f in ["rice-rice", "rice-wheat", "rice-only"]:
 cav = {}
 st_rice = df[df["crop_name"] == "Rice"].groupby(["state_name", "slot"])["area"].sum().unstack(fill_value=0)
 cav["rice_one_slot_states"] = sorted(title(s) for s, row in st_rice.iterrows()
-                                     if row.sum() > 1e5 * 23 and (row[["rabi", "sum"]].sum() / row.sum()) < 0.01)
+                                     if row.sum() > 1e5 * 22 and (row[["rabi", "sum"]].sum() / row.sum()) < 0.01)
 tn = df[(df["state_name"] == "Tamil Nadu") & (df["crop_name"] == "Rice")]
 cav["tamil_nadu_rice_split_years"] = sorted(
     "{}-{}".format(y, str(y + 1)[-2:]) for y in tn.loc[tn["season"] != "Kharif", "year_start"].unique())

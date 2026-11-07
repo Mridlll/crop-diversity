@@ -32,53 +32,37 @@
     <p class="mast__label">District map</p>
     <h1 class="mast__title">Crop diversity in each district, on four measures</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">Each district&rsquo;s average over the years it reports, 1997&ndash;98 to 2019&ndash;20.</p>
+    <p class="mast__sub">Although Chhattisgarh and Assam record long crop lists, rice holds most of their land.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="prose fade">
-    <p class="lead">This map shades every Indian district by how varied its cropping is. You can
-    switch between four measures of that variety. They differ in how much weight each gives to the
-    small crops a district grows on a little of its land.</p>
-    <div class="note">
-      <span class="note__label">How to read this map</span>
-      <p>Brighter cyan means more varied cropping on the measure you have picked, and dark slate
-      means less. The buttons above the map switch the measure. Hover over a district to see its
-      count of crops, its effective number of crops, its evenness and its largest crops with their
-      share of its land. The count of crops is how many different crops a district grows at all.
-      The effective number of crops is the number of equally sized crops that would give the same
-      spread of land, so a district split evenly across 20 crops scores 20.</p>
-    </div>
+    <p class="lead">The rice districts of the east record long crop lists, yet rice holds so much
+    of their land that they fall to the bottom once each crop is weighted by its area.</p>
   </div>
 
   <div class="figure figure--wide fade">
     <div class="figure__frame">
       <p class="figure__label">Interactive</p>
       <p class="figure__title">Crop diversity by district</p>
-      <p class="figure__sub">Choose a measure. Hover a district for its crop composition.</p>
+      <p class="figure__sub">Choose a measure. Brighter means more varied cropping. Hover over a district for its largest crops.</p>
       <div class="legend" id="tabs"></div>
       <div id="themap" class="chart"></div>
-      <p class="figure__note">Unshaded districts have no agricultural record, and most of them are urban. Values average each district's own years between 1997&ndash;98 and 2019&ndash;20.</p>
+      <p class="figure__note">Unshaded districts have no agricultural record, and most of them are urban. Each value averages a district's years from 1998&ndash;99 to 2019&ndash;20.</p>
     </div>
   </div>
 
   <div class="prose prose--flow fade">
-    <h3>What the four measures do</h3>
-    <p>The count of crops treats every crop the same, so a crop on one hectare counts as much as
-    the staple. The effective number of crops weighs each crop by the land it covers. The
-    number of main crops leans harder on the largest crops and depends almost entirely on the
-    one or two that take most of the land.</p>
-    <p>Evenness is the effective number of crops divided by the count of crops. It runs from close
-    to zero up to one and describes only how evenly land is spread across the crops a district
-    grows. A district that grows many crops can still have low evenness.</p>
     <h3>Where the measures disagree</h3>
-    <p>Chhattisgarh and Assam grow a lot of crops and are bright on the count of crops. Switch to
-    the effective number of crops and they turn dark, because rice takes a large share of their
-    land.</p>
-    <p>Karnataka, interior Andhra Pradesh, Madhya Pradesh and Rajasthan stay among the brighter
-    districts on the count of crops, the effective number of crops and the number of main crops.
-    On evenness they sit near the middle.</p>
+    <p>The count of crops gives a crop on one hectare the same weight as the staple, whereas the
+    <a href="measurement.html#s1">effective number of crops</a> and the number of main crops weigh
+    each crop by the land it covers. Chhattisgarh and Assam grow many crops, yet rice takes so much
+    of their land that they drop near the bottom on the effective number.</p>
+    <p>Karnataka, interior Andhra Pradesh, Madhya Pradesh and Rajasthan stay near the top on the
+    count of crops, the effective number of crops and the number of main crops, although their
+    evenness, the effective number divided by the count, is no better than middling. A district
+    can grow many crops and still spread its land unevenly across them.</p>
   </div>
 </section>
 

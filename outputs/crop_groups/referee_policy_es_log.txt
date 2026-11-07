@@ -1,44 +1,44 @@
 ==============================================================================
 Referee checks on script 99 (policy event studies)
 ==============================================================================
-R0 reproduce P07 DiD share_gca_pulses: +0.0103 (0.0038)  n 4944 G 432
-R0 reproduce P07 DiD ln_area_ha_pulses: +0.1438 (0.0390)  n 4928 G 432
+R0 reproduce P07 DiD share_gca_pulses: +0.0088 (0.0037)  n 4691 G 432
+R0 reproduce P07 DiD ln_area_ha_pulses: +0.1107 (0.0386)  n 4677 G 432
 
 R1  treated linear trend in script 99
-  share_gca_pulses: design has 13 columns, numerical rank 12 -> RANK DEFICIENT (trend spanned by event dummies + unit FE)
+  share_gca_pulses: design has 12 columns, numerical rank 11 -> RANK DEFICIENT (trend spanned by event dummies + unit FE)
     R^2 of demeaned treated-trend on demeaned event dummies: 1.0000000000
-    script-99 'avg post with trend' (pinv min-norm, arbitrary): -0.0088 (0.0032)
-    (a) DiD with treated linear trend (post + treat*t): post -0.0050 (0.0044)  trend +0.0025 (0.0008)
+    script-99 'avg post with trend' (pinv min-norm, arbitrary): -0.0082 (0.0031)
+    (a) DiD with treated linear trend (post + treat*t): post -0.0029 (0.0040)  trend +0.0020 (0.0007)
     (a') same, window 2002-2009: post +0.0092 (0.0034)
-    (b) pre-period trend +0.00286/yr extrapolated; post DiD on detrended y: -0.0072 (0.0044) (bootstrap 199)
-  ln_area_ha_pulses: design has 13 columns, numerical rank 12 -> RANK DEFICIENT (trend spanned by event dummies + unit FE)
+    (b) pre-period trend +0.00241/yr extrapolated; post DiD on detrended y: -0.0051 (0.0040) (bootstrap 199)
+  ln_area_ha_pulses: design has 12 columns, numerical rank 11 -> RANK DEFICIENT (trend spanned by event dummies + unit FE)
     R^2 of demeaned treated-trend on demeaned event dummies: 1.0000000000
-    script-99 'avg post with trend' (pinv min-norm, arbitrary): -0.0568 (0.0291)
-    (a) DiD with treated linear trend (post + treat*t): post -0.2013 (0.0630)  trend +0.0565 (0.0099)
+    script-99 'avg post with trend' (pinv min-norm, arbitrary): -0.0367 (0.0289)
+    (a) DiD with treated linear trend (post + treat*t): post -0.1526 (0.0595)  trend +0.0455 (0.0092)
     (a') same, window 2002-2009: post -0.0734 (0.0593)
-    (b) pre-period trend +0.05991/yr extrapolated; post DiD on detrended y: -0.2219 (0.0698) (bootstrap 199)
+    (b) pre-period trend +0.04859/yr extrapolated; post DiD on detrended y: -0.1702 (0.0666) (bootstrap 199)
 
 R2  P07 pulse share: mean post coefficient minus alternative pre baselines
   share_gca_pulses   e=-1 only          -0.0030 (0.0027)
   share_gca_pulses   e=-2..-1           +0.0040 (0.0027)
   share_gca_pulses   e=-3..-1           +0.0065 (0.0031)
-  share_gca_pulses   e=-3..-2           +0.0113 (0.0039)
-  share_gca_pulses   e=-5..-1           +0.0037 (0.0035)
+  share_gca_pulses   e=-3..-2           +0.0112 (0.0039)
+  share_gca_pulses   e=-5..-1           +0.0036 (0.0035)
   share_gca_pulses   e=-4..-1           +0.0042 (0.0032)
-  share_gca_pulses   e=-10..-1 (all)    +0.0116 (0.0039)
+  share_gca_pulses   e=-10..-1 (all)    +0.0082 (0.0035)
   ln_area_ha_pulses  e=-1 only          +0.0233 (0.0224)
-  ln_area_ha_pulses  e=-2..-1           -0.0251 (0.0432)
-  ln_area_ha_pulses  e=-3..-1           -0.0487 (0.0538)
-  ln_area_ha_pulses  e=-3..-2           -0.0848 (0.0780)
-  ln_area_ha_pulses  e=-5..-1           +0.0117 (0.0411)
-  ln_area_ha_pulses  e=-4..-1           -0.0111 (0.0447)
-  ln_area_ha_pulses  e=-10..-1 (all)    +0.1732 (0.0407)
+  ln_area_ha_pulses  e=-2..-1           -0.0252 (0.0432)
+  ln_area_ha_pulses  e=-3..-1           -0.0488 (0.0538)
+  ln_area_ha_pulses  e=-3..-2           -0.0849 (0.0779)
+  ln_area_ha_pulses  e=-5..-1           +0.0111 (0.0411)
+  ln_area_ha_pulses  e=-4..-1           -0.0112 (0.0447)
+  ln_area_ha_pulses  e=-10..-1 (all)    +0.1122 (0.0361)
   raw within-state-year deviation of pulse share, treated minus control, by year:
-  1997 +0.0707, 1998 +0.0800, 1999 +0.0809, 2000 +0.0823, 2001 +0.0888, 2002 +0.0929, 2003 +0.1019, 2004 +0.0853, 2005 +0.0828, 2006 +0.1017, 2007 +0.1037, 2008 +0.0916, 2009 +0.0882
+  1998 +0.0800, 1999 +0.0809, 2000 +0.0823, 2001 +0.0888, 2002 +0.0929, 2003 +0.1019, 2004 +0.0853, 2005 +0.0828, 2006 +0.1017, 2007 +0.1037, 2008 +0.0916, 2009 +0.0882
 
 R3  short-window DiD (post vs pre within window), P07
-  window 1997-2009 share_gca_pulses   DiD +0.0103 (0.0038)
-  window 1997-2009 ln_area_ha_pulses  DiD +0.1438 (0.0390)
+  window 1998-2009 share_gca_pulses   DiD +0.0088 (0.0037)
+  window 1998-2009 ln_area_ha_pulses  DiD +0.1107 (0.0386)
   window 2000-2009 share_gca_pulses   DiD +0.0059 (0.0036)
   window 2000-2009 ln_area_ha_pulses  DiD +0.0669 (0.0384)
   window 2002-2009 share_gca_pulses   DiD +0.0036 (0.0035)
@@ -49,40 +49,40 @@ R3  short-window DiD (post vs pre within window), P07
   window 2004-2009 ln_area_ha_pulses  DiD -0.0479 (0.0534)
 
 R4  leave-one-state-out, P07 pulse share: DiD and post-vs-(e-4..-1)
-  drop ANDHRA PRADESH   DiD +0.0110 (0.0038)  post-vs-pre4 +0.0049 (0.0033)  (treated units 14)
-  drop BIHAR            DiD +0.0110 (0.0041)  post-vs-pre4 +0.0049 (0.0035)  (treated units 13)
-  drop CHHATTISGARH     DiD +0.0107 (0.0039)  post-vs-pre4 +0.0047 (0.0033)  (treated units 8)
-  drop GUJARAT          DiD +0.0111 (0.0039)  post-vs-pre4 +0.0043 (0.0034)  (treated units 11)
-  drop HARYANA          DiD +0.0108 (0.0039)  post-vs-pre4 +0.0045 (0.0033)  (treated units 5)
-  drop KARNATAKA        DiD +0.0091 (0.0040)  post-vs-pre4 +0.0036 (0.0034)  (treated units 12)
-  drop MADHYA PRADESH   DiD +0.0062 (0.0037)  post-vs-pre4 +0.0047 (0.0032)  (treated units 20)
-  drop MAHARASHTRA      DiD +0.0116 (0.0040)  post-vs-pre4 +0.0041 (0.0034)  (treated units 18)
-  drop ODISHA           DiD +0.0114 (0.0040)  post-vs-pre4 +0.0046 (0.0034)  (treated units 10)
-  drop PUNJAB           DiD +0.0106 (0.0039)  post-vs-pre4 +0.0043 (0.0033)  (treated units 5)
-  drop RAJASTHAN        DiD +0.0110 (0.0038)  post-vs-pre4 +0.0056 (0.0033)  (treated units 15)
-  drop TAMIL NADU       DiD +0.0088 (0.0037)  post-vs-pre4 +0.0028 (0.0032)  (treated units 12)
-  drop UTTAR PRADESH    DiD +0.0096 (0.0039)  post-vs-pre4 +0.0013 (0.0032)  (treated units 19)
-  drop WEST BENGAL      DiD +0.0111 (0.0039)  post-vs-pre4 +0.0047 (0.0033)  (treated units 5)
+  drop ANDHRA PRADESH   DiD +0.0095 (0.0038)  post-vs-pre4 +0.0049 (0.0033)  (treated units 14)
+  drop BIHAR            DiD +0.0097 (0.0040)  post-vs-pre4 +0.0048 (0.0035)  (treated units 13)
+  drop CHHATTISGARH     DiD +0.0092 (0.0038)  post-vs-pre4 +0.0047 (0.0033)  (treated units 8)
+  drop GUJARAT          DiD +0.0095 (0.0038)  post-vs-pre4 +0.0042 (0.0034)  (treated units 11)
+  drop HARYANA          DiD +0.0092 (0.0038)  post-vs-pre4 +0.0045 (0.0033)  (treated units 5)
+  drop KARNATAKA        DiD +0.0078 (0.0039)  post-vs-pre4 +0.0036 (0.0034)  (treated units 12)
+  drop MADHYA PRADESH   DiD +0.0058 (0.0036)  post-vs-pre4 +0.0047 (0.0032)  (treated units 20)
+  drop MAHARASHTRA      DiD +0.0095 (0.0039)  post-vs-pre4 +0.0041 (0.0034)  (treated units 18)
+  drop ODISHA           DiD +0.0098 (0.0038)  post-vs-pre4 +0.0045 (0.0034)  (treated units 10)
+  drop PUNJAB           DiD +0.0091 (0.0038)  post-vs-pre4 +0.0043 (0.0033)  (treated units 5)
+  drop RAJASTHAN        DiD +0.0096 (0.0037)  post-vs-pre4 +0.0056 (0.0033)  (treated units 15)
+  drop TAMIL NADU       DiD +0.0071 (0.0036)  post-vs-pre4 +0.0028 (0.0032)  (treated units 12)
+  drop UTTAR PRADESH    DiD +0.0080 (0.0038)  post-vs-pre4 +0.0013 (0.0032)  (treated units 19)
+  drop WEST BENGAL      DiD +0.0095 (0.0038)  post-vs-pre4 +0.0047 (0.0033)  (treated units 5)
 
 R5  2011-parent units with mixed child treatment in NFSM-Pulses 2007
   mixed units: 22 (ANDHRA PRADESH|ADILABAD, ANDHRA PRADESH|KHAMMAM, ANDHRA PRADESH|MAHBUBNAGAR, ANDHRA PRADESH|NALGONDA, ANDHRA PRADESH|NIZAMABAD, ANDHRA PRADESH|WARANGAL, CHHATTISGARH|BILASPUR, CHHATTISGARH|DURG, CHHATTISGARH|KABEERDHAM, CHHATTISGARH|RAIPUR)
-  P07 pulse share DiD dropping mixed units: +0.0123 (0.0041)
+  P07 pulse share DiD dropping mixed units: +0.0105 (0.0040)
   confidence of 2007-08 pulses list rows: {'high': 725}
 
 R6  NFSM-Rice and NFSM-Wheat 2007: event coefficients for outcomes not in the headline
-  rice07 share_gca_rice     -10:-0.017, -9:-0.007, -8:-0.016, -7:-0.004, -6:-0.003, -5:+0.009, -4:+0.005, -3:+0.010, -2:+0.005, 0:+0.001, 1:-0.001, 2:+0.002, 3:-0.007, 4:-0.003, 5:-0.002, 6:-0.004
-      DiD with treated linear trend: -0.0127 (0.0043)
-  rice07 ln_area_ha_rice    -10:-0.121, -9:-0.147, -8:-0.206, -7:-0.122, -6:-0.109, -5:-0.018, -4:+0.006, -3:-0.008, -2:-0.038, 0:+0.007, 1:-0.007, 2:+0.026, 3:-0.012, 4:-0.004, 5:+0.054, 6:+0.034
-      DiD with treated linear trend: -0.0495 (0.0208)
+  rice07 share_gca_rice     -9:-0.007, -8:-0.016, -7:-0.003, -6:-0.003, -5:+0.009, -4:+0.005, -3:+0.010, -2:+0.005, 0:+0.001, 1:-0.001, 2:+0.002, 3:-0.006, 4:-0.003, 5:-0.002, 6:-0.004
+      DiD with treated linear trend: -0.0106 (0.0039)
+  rice07 ln_area_ha_rice    -9:-0.148, -8:-0.208, -7:-0.123, -6:-0.110, -5:-0.019, -4:+0.005, -3:-0.008, -2:-0.038, 0:+0.007, 1:-0.006, 2:+0.027, 3:-0.011, 4:-0.004, 5:+0.055, 6:+0.035
+      DiD with treated linear trend: -0.0546 (0.0201)
       rice07 TN units in stack: 31
-      rice07 drop Tamil Nadu, share_gca_rice DiD -0.0013 (0.0049)
-      rice07 drop Tamil Nadu, ln_area_ha_rice DiD +0.0782 (0.0352)
-  wheat07 share_gca_wheat    -10:+0.018, -9:+0.003, -8:+0.005, -7:+0.000, -6:+0.010, -5:+0.008, -4:+0.004, -3:+0.014, -2:+0.005, 0:+0.001, 1:+0.000, 2:+0.004, 3:-0.003, 4:-0.002, 5:+0.007, 6:+0.006
-      DiD with treated linear trend: -0.0034 (0.0042)
-  wheat07 ln_area_ha_wheat   -10:+0.054, -9:+0.012, -8:+0.071, -7:+0.081, -6:+0.087, -5:+0.104, -4:+0.026, -3:+0.068, -2:+0.020, 0:-0.029, 1:+0.004, 2:+0.005, 3:+0.003, 4:-0.001, 5:+0.031, 6:+0.018
-      DiD with treated linear trend: -0.0384 (0.0237)
-  wheat07 share_gca_pulses   -10:-0.028, -9:-0.024, -8:-0.016, -7:-0.008, -6:-0.009, -5:-0.005, -4:-0.008, -3:-0.012, -2:-0.013, 0:+0.004, 1:+0.001, 2:-0.002, 3:-0.004, 4:-0.002, 5:-0.006, 6:-0.006
-      DiD with treated linear trend: +0.0011 (0.0051)
+      rice07 drop Tamil Nadu, share_gca_rice DiD -0.0025 (0.0048)
+      rice07 drop Tamil Nadu, ln_area_ha_rice DiD +0.0756 (0.0346)
+  wheat07 share_gca_wheat    -9:+0.003, -8:+0.005, -7:+0.000, -6:+0.010, -5:+0.008, -4:+0.004, -3:+0.014, -2:+0.005, 0:+0.001, 1:+0.000, 2:+0.004, 3:-0.003, 4:-0.002, 5:+0.007, 6:+0.006
+      DiD with treated linear trend: -0.0064 (0.0040)
+  wheat07 ln_area_ha_wheat   -9:+0.012, -8:+0.072, -7:+0.081, -6:+0.087, -5:+0.104, -4:+0.025, -3:+0.068, -2:+0.020, 0:-0.029, 1:+0.004, 2:+0.005, 3:+0.003, 4:-0.001, 5:+0.031, 6:+0.018
+      DiD with treated linear trend: -0.0380 (0.0233)
+  wheat07 share_gca_pulses   -9:-0.024, -8:-0.016, -7:-0.008, -6:-0.009, -5:-0.005, -4:-0.008, -3:-0.012, -2:-0.013, 0:+0.004, 1:+0.001, 2:-0.002, 3:-0.004, 4:-0.002, 5:-0.006, 6:-0.006
+      DiD with treated linear trend: +0.0040 (0.0042)
 
 R7  Odisha Millets Mission
   total millet area (ha) by cohort and year:

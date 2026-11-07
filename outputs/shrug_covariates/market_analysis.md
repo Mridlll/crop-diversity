@@ -80,28 +80,28 @@ balanced cropping pattern. That distinction is invisible in a composite index.
 
 | outcome | mandi | weekly haat | regular market |
 |---|---|---|---|
-| D1_exp_shannon | +0.113 | +0.398 | -0.598 |
-| D0_richness | +2.820 | +7.269*** | -1.123 |
-| D2_inv_simpson | +0.174 | +0.185 | -0.512 |
-| evenness_D1_D0 | -0.037 | -0.071* | -0.016 |
-| share: cereals | -0.240* | -0.058 | +0.015 |
-| share: drugs_and_narcotics | +0.006 | -0.005 | +0.028 |
-| share: fiber_crops | +0.185* | +0.050 | -0.004 |
+| D1_exp_shannon | +0.110 | +0.369 | -0.597 |
+| D0_richness | +2.808 | +7.286*** | -1.227 |
+| D2_inv_simpson | +0.196 | +0.162 | -0.508 |
+| evenness_D1_D0 | -0.035 | -0.073* | -0.013 |
+| share: cereals | -0.243* | -0.063 | +0.009 |
+| share: drugs_and_narcotics | +0.007 | -0.005 | +0.028 |
+| share: fiber_crops | +0.187* | +0.051 | -0.002 |
 | share: fodder | -0.005 | -0.002 | +0.005 |
-| share: fruits | +0.029 | +0.012 | +0.014 |
-| share: oilseeds | -0.058 | +0.017 | +0.120 |
-| share: pulses | -0.100 | -0.092** | -0.122*** (q) |
-| share: spices | +0.178 | -0.024 | +0.010 |
-| share: sugar | -0.015 | +0.111*** (q) | -0.073** |
-| share: vegetable | +0.020 | -0.009 | +0.007 |
+| share: fruits | +0.031 | +0.012 | +0.013 |
+| share: oilseeds | -0.056 | +0.023 | +0.125 |
+| share: pulses | -0.102 | -0.093** | -0.122*** (q) |
+| share: spices | +0.174 | -0.024 | +0.011 |
+| share: sugar | -0.013 | +0.111*** (q) | -0.074** |
+| share: vegetable | +0.021 | -0.010 | +0.007 |
 
 Stars are uncorrected p values. `(q)` marks results surviving a
 Benjamini-Hochberg correction at 5 percent across the 10 crop-category
 outcomes, applied separately for each market type.
 
 **The haat result, read properly.** Weekly haats go with +7.3 crops on D0
-(p < 0.01) but only +0.40 on D1 (p = 0.63), and evenness is *negative*
-at -0.071 (p = 0.05). So haat districts grow more crops, and they grow them on
+(p < 0.01) but only +0.37 on D1 (p = 0.66), and evenness is *negative*
+at -0.073 (p = 0.05). So haat districts grow more crops, and they grow them on
 small patches around the same dominant staple. That is a real finding about
 smallholder marketing, and it is much weaker than 'haats make districts diverse'.
 An index that averages richness and evenness together would have reported the
@@ -113,31 +113,31 @@ Fertiliser shops, seed centres, soil testing and custom hiring, entered together
 
 | outcome | fertiliser shop | seed centre | soil testing | custom hiring |
 |---|---|---|---|---|
-| D1_exp_shannon | +0.449 | -1.214 | +1.044 | +0.033 |
-| D0_richness | -0.535 | +5.450** | -1.359 | +0.339 |
-| D2_inv_simpson | +0.425 | -1.062 | +0.843 | -0.048 |
-| evenness_D1_D0 | +0.001 | -0.098 | +0.067 | -0.003 |
-| share: cereals | -0.241** | -0.035 | +0.221 | +0.023 |
+| D1_exp_shannon | +0.482 | -1.164 | +1.019 | -0.026 |
+| D0_richness | -0.567 | +5.588** | -1.441 | +0.282 |
+| D2_inv_simpson | +0.445 | -1.018 | +0.817 | -0.084 |
+| evenness_D1_D0 | +0.004 | -0.101 | +0.069 | -0.007 |
+| share: cereals | -0.232** | -0.044 | +0.228 | +0.015 |
 | share: drugs_and_narcotics | +0.008 | +0.004 | +0.028 | -0.017 |
-| share: fiber_crops | +0.129** | -0.152* | +0.070 | +0.118 |
-| share: fodder | -0.006 | -0.009 | +0.005 | -0.019 |
-| share: fruits | +0.012 | +0.027 | -0.041 | +0.034* |
-| share: oilseeds | +0.121 | +0.117 | -0.189 | -0.068 |
-| share: pulses | -0.190*** (q) | +0.052 | -0.053 | +0.029 |
-| share: spices | +0.074 | -0.150 | +0.033 | +0.047 |
-| share: sugar | +0.061* | +0.131* | -0.154** | -0.095* |
-| share: vegetable | +0.032 | +0.015 | +0.079* | -0.052** |
+| share: fiber_crops | +0.140** | -0.159** | +0.073 | +0.114 |
+| share: fodder | -0.007 | -0.009 | +0.005 | -0.019 |
+| share: fruits | +0.012 | +0.027 | -0.040 | +0.034* |
+| share: oilseeds | +0.096 | +0.134 | -0.201 | -0.050 |
+| share: pulses | -0.187*** (q) | +0.053 | -0.055 | +0.028 |
+| share: spices | +0.075 | -0.153 | +0.036 | +0.045 |
+| share: sugar | +0.062* | +0.132* | -0.154** | -0.097* |
+| share: vegetable | +0.032 | +0.014 | +0.080* | -0.054** |
 
 Post-harvest infrastructure, entered on its own:
 
 | outcome | cold storage | farm-gate processing | FPO |
 |---|---|---|---|
-| D1_exp_shannon | -0.265 | -1.048 | +2.385** |
-| D0_richness | +4.786 | +2.156 | +0.474 |
-| share: vegetable | -0.006 | -0.083*** | +0.057** |
-| share: fruits | -0.038* | +0.031 | +0.032** |
-| share: spices | -0.075 | +0.009 | +0.082 |
-| share: cereals | +0.244* | +0.081 | -0.222*** |
+| D1_exp_shannon | -0.314 | -1.059 | +2.371** |
+| D0_richness | +4.772 | +2.202 | +0.443 |
+| share: vegetable | -0.007 | -0.085*** | +0.058** |
+| share: fruits | -0.037* | +0.030 | +0.033** |
+| share: spices | -0.076 | +0.011 | +0.081 |
+| share: cereals | +0.234 | +0.080 | -0.223*** |
 
 **FPOs run the opposite way to haats.** They lift D1 without lifting D0, meaning
 they go with area spread more evenly across the crops a district already grows,
@@ -160,11 +160,11 @@ below and above the mean of the infrastructure measure.
 
 | infrastructure | n | curvature at low | curvature at high | interaction | p |
 |---|---|---|---|---|---|
-| mandi village share | 606 | -8.978 | -3.741 | +2.619** | 0.0330 |
-| fertiliser shop village share | 606 | -8.198 | -5.136 | +1.531 | 0.1430 |
-| output-market index | 606 | -8.460 | -4.467 | +1.996 | 0.1023 |
-| input-supply index | 606 | -8.759 | -4.300 | +2.230* | 0.0556 |
-| post-harvest index | 606 | -8.626 | -4.433 | +2.097* | 0.0867 |
+| mandi village share | 606 | -9.007 | -3.637 | +2.685** | 0.0301 |
+| fertiliser shop village share | 606 | -8.185 | -5.102 | +1.541 | 0.1442 |
+| output-market index | 606 | -8.480 | -4.382 | +2.049* | 0.0983 |
+| input-supply index | 606 | -8.740 | -4.264 | +2.238* | 0.0564 |
+| post-harvest index | 606 | -8.639 | -4.352 | +2.143* | 0.0826 |
 
 ## E. A market typology
 
@@ -173,16 +173,16 @@ density, giving four types.
 
 | type | n | irrigation | D1 | D0 | cereal | pulses | vegetables |
 |---|---|---|---|---|---|---|---|
-| output high, input high | 183 | 0.595 | 4.89 | 21.2 | 0.608 | 0.081 | 0.019 |
-| output high, input low | 120 | 0.512 | 3.79 | 20.8 | 0.780 | 0.080 | 0.023 |
-| output low, input high | 120 | 0.554 | 5.99 | 23.0 | 0.561 | 0.133 | 0.010 |
-| output low, input low | 183 | 0.515 | 5.03 | 20.2 | 0.696 | 0.115 | 0.018 |
+| output high, input high | 183 | 0.595 | 4.90 | 21.4 | 0.617 | 0.082 | 0.019 |
+| output high, input low | 120 | 0.512 | 3.78 | 20.9 | 0.780 | 0.080 | 0.023 |
+| output low, input high | 120 | 0.554 | 6.02 | 23.4 | 0.560 | 0.133 | 0.010 |
+| output low, input low | 183 | 0.515 | 5.06 | 20.4 | 0.697 | 0.116 | 0.018 |
 
 Adjusted differences against 'output high, input high' as the reference:
 
-  output high, input low             -0.1179 (p = 0.5502)
-  output low, input high             +0.0397 (p = 0.8929)
-  output low, input low              -0.0699 (p = 0.7668)
+  output high, input low             -0.1201 (p = 0.5460)
+  output low, input high             +0.0395 (p = 0.8945)
+  output low, input low              -0.0605 (p = 0.7989)
 
 ## F. Checks on the market layer
 
@@ -205,16 +205,16 @@ that facility as the only market variable, plus the full control set.
 
 | facility | D1 effective crops | D0 richness | cereal share | pulse share |
 |---|---|---|---|---|
-| mandi | +0.228 | +1.880 | -0.235* | -0.046 |
-| regular market | -0.690 | -2.875 | +0.049 | -0.094*** |
-| weekly haat | +0.488 | +7.331*** | -0.050 | -0.068 |
-| fertiliser shop | +0.278 | +1.099 | -0.198** | -0.174*** |
-| seed centre | -0.379 | +4.527** | -0.010 | -0.057 |
-| soil testing | +0.317 | +2.665 | +0.111 | -0.075 |
-| custom hiring | +0.111 | +1.753 | -0.032 | -0.056 |
-| cold storage | +0.750 | +6.337** | +0.141 | -0.172*** |
-| farm-gate processing | +0.204 | +3.962** | +0.035 | -0.053 |
-| FPO | +1.949** | +2.394 | -0.134* | -0.066* |
+| mandi | +0.230 | +1.897 | -0.235* | -0.048 |
+| regular market | -0.683 | -2.982 | +0.044 | -0.093*** |
+| weekly haat | +0.459 | +7.365*** | -0.054 | -0.069 |
+| fertiliser shop | +0.304 | +1.077 | -0.193** | -0.172*** |
+| seed centre | -0.350 | +4.581** | -0.013 | -0.056 |
+| soil testing | +0.319 | +2.653 | +0.112 | -0.076 |
+| custom hiring | +0.078 | +1.708 | -0.036 | -0.056 |
+| cold storage | +0.684 | +6.328** | +0.128 | -0.171*** |
+| farm-gate processing | +0.169 | +3.986** | +0.030 | -0.053 |
+| FPO | +1.919** | +2.376 | -0.139* | -0.069* |
 
 ### F3. What the development controls are doing
 
@@ -223,32 +223,32 @@ facility that does not load on the common infrastructure factor.
 
 | specification | n | haat coefficient on D0 richness | p |
 |---|---|---|---|
-| bivariate | 606 | +16.994*** | 0.0000 |
-| state FE only | 606 | +7.182*** | 0.0000 |
-| + irrigation | 606 | +6.989*** | 0.0000 |
-| full controls | 606 | +7.331*** | 0.0000 |
-| full, drop shared parents | 542 | +8.016*** | 0.0000 |
-| full, drop no-haat districts | 576 | +6.440*** | 0.0000 |
-| full, with all other facilities | 606 | +6.867*** | 0.0000 |
+| bivariate | 606 | +16.405*** | 0.0000 |
+| state FE only | 606 | +7.205*** | 0.0000 |
+| + irrigation | 606 | +7.001*** | 0.0000 |
+| full controls | 606 | +7.365*** | 0.0000 |
+| full, drop shared parents | 542 | +7.920*** | 0.0000 |
+| full, drop no-haat districts | 576 | +6.464*** | 0.0000 |
+| full, with all other facilities | 606 | +6.878*** | 0.0000 |
 
 And the same for the haat measured per 100,000 people rather than as a village share:
 
-  haats per 100k population: +0.0541 (p = 0.0075, n = 606)
+  haats per 100k population: +0.0554 (p = 0.0068, n = 606)
 
 Scale: a one standard deviation rise in haat village share (0.117) goes with
-+0.9 crops, against a mean richness of 21.2.
++0.9 crops, against a mean richness of 21.4.
 
 ### F4. What did not hold
 
 Written down so it is not quietly dropped.
 
 - The opening hypothesis was that dense mandi networks push districts toward
-  cereals. The coefficient is **negative** (-0.240), so within a state and at a
+  cereals. The coefficient is **negative** (-0.243), so within a state and at a
   given level of irrigation, more mandis goes with *fewer* cereals, not more.
 - The second hypothesis was that the irrigation downslope is steeper where market
   and input infrastructure is dense. Every interaction in section D is **positive**,
   meaning the curve is flatter there, and only the mandi one approaches
-  significance (p = 0.033). The Punjab story does not show up in this
+  significance (p = 0.030). The Punjab story does not show up in this
   cross-section.
 - The market typology in section E has large raw differences that vanish entirely
   once the controls go in. All three adjusted contrasts are null.

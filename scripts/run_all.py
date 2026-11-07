@@ -11,6 +11,9 @@ and stops at the first failure.
 Order matters. In particular script 71 validates a column that script 72
 creates, so 72 MUST run before 71.
 
+The analysis window, 1998-99 to 2019-20, is set once in _years.py. 1997-98 is
+broken in the raw file and every multi-year district average leaves it out.
+
 Requirements: pandas, numpy, scipy, statsmodels, and geopandas for the map steps.
 On this machine `geo_env` carries all of them:
   C:/Users/Mridul/anaconda3/envs/geo_env/python.exe
@@ -53,6 +56,20 @@ STEPS = [
      "Rebuild every map layer on the corrected basis"),
     ("86", "86_build_map_pages.py",
      "Write the four interactive map pages"),
+    ("89", "89_market_typology.py",
+     "Market typology on village shares (112 rewrites the site file on population shares)"),
+    ("90", "90_market_map_layers.py",
+     "Market map layers on village shares (112 rewrites the site file on population shares)"),
+    ("91", "91_overview_site_data.py",
+     "Overview page: example districts, name fixes, district change"),
+    ("92", "92_irrigation_site_data.py",
+     "Irrigation page: curves, groups, robustness"),
+    ("95a", "95_data_page_export.py",
+     "Data and methods page tables"),
+    ("95b", "95_measurement_export.py",
+     "Measurement page data"),
+    ("96", "96_monoculture_baseline.py",
+     "Reference scale, monoculture and cropping systems"),
     # Crop groups. Two fetch scripts run once by hand and are not repeated here
     # because they download from the web: 97_imd_district_rainfall.py (IMD grids,
     # about 810 MB into data_raw/) and 97_policy_nfsm_omm_msp.py (NFSM, OMM, MSP).
@@ -82,6 +99,33 @@ STEPS = [
      "Crop groups: referee checks on the policy event studies"),
     ("103", "103_crop_groups_site_export.py",
      "Crop groups: export the page data to docs/data/site_crop_groups.json"),
+    # Revision of November 2026: within-district irrigation panel, seasons, the
+    # count-of-crops threshold panel and population-weighted market facilities.
+    # 104i needs the DES Land Use Statistics extract in outputs/revision_nov8/raw_lus/
+    # and 105 reads the rainfall panel from step 99c. One-off referee checks are run
+    # by hand and not repeated here: 106 and 107 (irrigation IV feasibility),
+    # 108_d0_1997_followups.py and 109_d0_referee_checks.py (the 1997-98 break).
+    # Deliverables outside the site, also by hand: 87 (workbook), 88 (results doc).
+    ("104i", "104_irrigation_panel_build.py",
+     "Irrigation panel: district-year irrigation from Land Use Statistics"),
+    ("104s", "104_season_separated_diversity.py",
+     "Seasons: diversity within and between seasons (needs 104i and 98)"),
+    ("107s", "107_seasons_supplement.py",
+     "Seasons: supplementary checks"),
+    ("105", "105_irrigation_panel_estimates.py",
+     "Irrigation panel: within-district estimates"),
+    ("108i", "108_irrigation_referee.py",
+     "Irrigation panel: referee checks"),
+    ("111", "111_irrigation_panel_site_data.py",
+     "Irrigation page: within-district panel data"),
+    ("104d", "104_d0_threshold_and_1997.py",
+     "Count of crops above share thresholds; the 1997-98 break"),
+    ("110", "110_measurement_revision_site_data.py",
+     "Measurement page: threshold series and seasons (needs 104d, 104s, 96)"),
+    ("104m", "104_market_pop_weighted.py",
+     "Markets: facilities as shares of rural population"),
+    ("112", "112_market_pop_site_data.py",
+     "Markets page on population shares (reruns 89 and 90 on them)"),
     ("83", "83_deck_figures.py",
      "Deck figures in the CEEW palette"),
     ("84", "84_build_deck.py",
@@ -90,7 +134,8 @@ STEPS = [
 
 # The map and deck steps need geopandas. A run under an interpreter without it
 # skips them rather than failing the whole pipeline.
-OPTIONAL = {"85": "geopandas", "86": "geopandas", "83": "geopandas"}
+OPTIONAL = {"85": "geopandas", "86": "geopandas", "83": "geopandas", "89": "sklearn",
+            "90": "geopandas", "112": "sklearn"}
 
 INPUTS = {
     "SHRUG 2.1 extract": r"D:/SHRUG_2.1_Data/extracted/shrug-antyodaya-dta/antyodaya_shrid.dta",

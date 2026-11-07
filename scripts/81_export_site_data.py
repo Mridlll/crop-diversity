@@ -122,8 +122,7 @@ print("  balanced panel: {} districts x {} years".format(len(bal_keys), len(yrs_
 
 # District-level change. The national series is area-weighted, so it can sit flat
 # while most districts move. Those are different questions and both get answered.
-# 1997 is dropped from the change window: it sits far below every later year on
-# every index, which is a reporting artefact rather than an agronomic fact.
+# The panel starts in 1998-99 (scripts/_years.py): 1997-98 is broken data.
 early = bal_panel[bal_panel["year_start"].between(1998, 2004)]
 late = bal_panel[bal_panel["year_start"].between(2013, 2019)]
 ch = (early.groupby("district_key")[["D0_richness", "D1_exp_shannon", "evenness_D1_D0"]]

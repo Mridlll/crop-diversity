@@ -1,7 +1,8 @@
 /* ================================================================
    OVERVIEW PAGE (index.html): scene visuals.
    Reads data/site_overview.json, data/site_indices.json,
-   data/site_overview_examples.json and data/districts.geojson.
+   data/site_overview_examples.json, data/site_measurement_rev.json
+   and data/districts.geojson.
    Depends on site.js for svgEl, lin, showTip, hideTip, loadJSON,
    loadGeo and rampCyan. Everything is wrapped so no name collides
    with site.js globals.
@@ -110,7 +111,7 @@ function nearestTip(svg, pts, maxD, html, onHi) {
     svg.addEventListener('mouseleave', () => { onHi(-1); hideTip(); });
 }
 
-let OV = null, IX = null, EX = null;
+let OV = null, IX = null, EX = null, REV = null;
 const SC = {};
 
 /* ================================================================
@@ -180,7 +181,7 @@ SC[1] = scene({
 });
 
 /* ================================================================
-   02 count of crops against the effective number, 725 districts
+   02 count of crops against the effective number, all crop-record districts
    ================================================================ */
 const EXK = ['TRIPURA|SEPAHIJALA', 'CHHATTISGARH|RAIPUR', 'PUNJAB|LUDHIANA', 'KARNATAKA|BELAGAVI', 'KARNATAKA|CHAMARAJANAGARA'];
 const EXLAB = { 'TRIPURA|SEPAHIJALA': ['Sipahijala', 'below'], 'CHHATTISGARH|RAIPUR': ['Raipur', 'below'],
@@ -495,7 +496,7 @@ SC[5] = scene({
 });
 
 /* ================================================================
-   06 what land is used for, by quarter of districts
+   06 what land is used for, by quartile of districts
    ================================================================ */
 const CATS = [
     { key: 'cereals', name: 'cereals', col: CY, v: r => r.share_cereals },
@@ -504,7 +505,7 @@ const CATS = [
     { key: 'fibre', name: 'fibre crops', col: MG, v: r => r.share_fiber_crops },
     { key: 'other', name: 'other', col: NEU3, v: r => 1 - r.share_cereals - r.share_oilseeds - r.share_pulses - r.share_fiber_crops },
 ];
-const QN = ['lowest quarter', 'second quarter', 'third quarter', 'highest quarter'];
+const QN = ['bottom quartile', 'second quartile', 'third quartile', 'top quartile'];
 SC[6] = scene({
     sel: 'all', u: 1,
     controls() {
@@ -575,37 +576,39 @@ SC[6] = scene({
 });
 
 /* ================================================================
-   07 national series, 429 districts, area-weighted
+   07 national series, districts reporting in every year, area-weighted
    ================================================================ */
 SC[7] = scene({
     u: 1,
     render() {
         const host = $('#v7'); if (!host) return;
-        const tr = OV.trend_balanced;
+        /* 1997-98 returns are broken, so the series starts in 1998-99; the dashed
+           line counts only crops on at least 0.1% of a district's land */
+        const t01 = {};
+        if (REV) REV.threshold.series.forEach(t => { t01[t.year] = t.t01; });
+        const tr = OV.trend_balanced.filter(t => t.year >= 1998).map(t => Object.assign({}, t, { T01: t01[t.year] }));
         const W = host.clientWidth || 800, nar = W < 560;
         const m = { t: 16, r: nar ? 38 : 50, b: 32, l: nar ? 28 : 40 };
         const H = nar ? 300 : 340, iw = W - m.l - m.r, ih = H - m.t - m.b;
         const svg = this.svg = svgFor(host, W, H);
-        const X = lin(tr[0].year, tr[tr.length - 1].year, m.l + (nar ? 12 : 18), m.l + iw), Y = lin(0, 28, m.t + ih, m.t);
+        const X = lin(tr[0].year, tr[tr.length - 1].year, m.l + (nar ? 32 : 40), m.l + iw), Y = lin(0, 28, m.t + ih, m.t);
         [0, 5, 10, 15, 20, 25].forEach(v => {
             E('line', { x1: m.l, x2: m.l + iw, y1: Y(v), y2: Y(v), stroke: v ? GRID : ZERO }, svg);
             T(svg, { x: m.l - 8, y: Y(v) + 4, 'text-anchor': 'end', fill: TX3, 'font-size': 10.5 }, String(v));
         });
-        (nar ? [1997, 2005, 2012, 2019] : [1997, 2001, 2005, 2009, 2013, 2017, 2019]).forEach(v =>
+        (nar ? [1998, 2005, 2012, 2019] : [1998, 2001, 2004, 2007, 2010, 2013, 2016, 2019]).forEach(v =>
             T(svg, { x: X(v), y: m.t + ih + 18, 'text-anchor': 'middle', fill: TX3, 'font-size': 10.5 }, String(v)));
         T(svg, { x: m.l, y: m.t - 4, fill: TX3, 'font-size': 10.5 }, 'number of crops');
-        const body = tr.filter(t => t.year >= 1998);
-        this.lines = [['D0', NEU], ['D1', CY]].map(([k, col]) => {
-            const d = body.map((t, i) => (i ? 'L' : 'M') + X(t.year).toFixed(1) + ',' + Y(t[k]).toFixed(1)).join('');
+        const keys = [['D0', NEU, false], ['D1', CY, false]];
+        if (REV) keys.splice(1, 0, ['T01', NEU, true]);
+        this.lines = keys.map(([k, col, dash]) => {
+            const d = tr.map((t, i) => (i ? 'L' : 'M') + X(t.year).toFixed(1) + ',' + Y(t[k]).toFixed(1)).join('');
             const p = E('path', { d, fill: 'none', stroke: col, 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, svg);
-            const first = tr[0];
-            const h = E('circle', { cx: X(first.year), cy: Y(first[k]), r: 4, fill: BG, stroke: col, 'stroke-width': 1.6 }, svg);
-            const last = tr[tr.length - 1];
+            const first = tr[0], last = tr[tr.length - 1];
+            const h = T(svg, { x: X(first.year) - 6, y: Y(first[k]) + 4, 'text-anchor': 'end', fill: TX2, 'font-size': 11 }, first[k].toFixed(1));
             const lab = T(svg, { x: X(last.year) + 7, y: Y(last[k]) + 4, fill: TX, 'font-size': 11 }, last[k].toFixed(1));
-            return { p, h, lab, len: 0 };
+            return { p, h, lab, len: 0, dash };
         });
-        const f = tr[0];
-        this.note = T(svg, { x: X(f.year) + 9, y: Y(f.D1) + 18, fill: TX2, 'font-size': 10.5 }, 'first year of the record');
         const cross = E('line', { y1: m.t, y2: m.t + ih, stroke: 'rgba(255,255,255,0.35)', visibility: 'hidden' }, svg);
         const hit = E('rect', { x: m.l, y: m.t, width: iw, height: ih, fill: 'transparent' }, svg);
         const pick = ev => {
@@ -613,7 +616,9 @@ SC[7] = scene({
             let best = tr[0], bd = 1e9;
             tr.forEach(t => { const d = Math.abs(X(t.year) - x); if (d < bd) { bd = d; best = t; } });
             cross.setAttribute('x1', X(best.year)); cross.setAttribute('x2', X(best.year)); cross.setAttribute('visibility', 'visible');
-            showTip(`<strong>${best.year}&ndash;${String(best.year + 1).slice(2)}</strong><br>count of crops ${best.D0.toFixed(1)}<br>effective number of crops ${best.D1.toFixed(1)}<br>evenness ${best.E.toFixed(2)}<br>${best.n} districts`, ev);
+            showTip(`<strong>${best.year}&ndash;${String(best.year + 1).slice(2)}</strong><br>count of crops ${best.D0.toFixed(1)}` +
+                (best.T01 != null ? `<br>crops on at least 0.1% of the land ${best.T01.toFixed(1)}` : '') +
+                `<br>effective number of crops ${best.D1.toFixed(1)}<br>evenness ${best.E.toFixed(2)}`, ev);
         };
         hit.addEventListener('mousemove', pick); hit.addEventListener('click', pick);
         hit.addEventListener('mouseleave', () => { cross.setAttribute('visibility', 'hidden'); hideTip(); });
@@ -623,20 +628,22 @@ SC[7] = scene({
     place() {
         const e = easeIO(this.u);
         this.lines.forEach(l => {
-            l.p.setAttribute('stroke-dasharray', `${l.len} ${l.len}`);
-            l.p.setAttribute('stroke-dashoffset', (l.len * (1 - e)).toFixed(1));
+            if (l.dash && this.u >= 1) { l.p.setAttribute('stroke-dasharray', '5 4'); l.p.removeAttribute('stroke-dashoffset'); }
+            else {
+                l.p.setAttribute('stroke-dasharray', `${l.len} ${l.len}`);
+                l.p.setAttribute('stroke-dashoffset', (l.len * (1 - e)).toFixed(1));
+            }
             const o = this.u >= 1 ? 1 : Math.max(0, (this.u - .85) / .15);
             l.lab.setAttribute('opacity', o.toFixed(2));
             l.h.setAttribute('opacity', Math.min(1, this.u * 4).toFixed(2));
         });
-        this.note.setAttribute('opacity', Math.min(1, this.u * 4).toFixed(2));
     },
     prep() { this.u = 0; this.place(); },
     play() { this.u = 0; this.place(); tween(this, 1600, t => { this.u = t; this.place(); }); },
 });
 
 /* ================================================================
-   08 district change, 429 districts as a beeswarm
+   08 district change, districts reporting in every year, as a beeswarm
    ================================================================ */
 const CH = [
     { key: 'dD1', i: 2, name: 'effective number of crops', d: 2, med: () => OV.change.dD1_median, up: () => OV.change.D1_up, dn: () => OV.change.D1_down },
@@ -730,7 +737,8 @@ let inited = false;
 function startPlay(sc) { if (sc.played) return; sc.played = true; sc.play(); }
 
 async function init() {
-    [OV, IX, EX] = await Promise.all([loadJSON('data/site_overview.json'), loadJSON('data/site_indices.json'), loadJSON('data/site_overview_examples.json')]);
+    [OV, IX, EX, REV] = await Promise.all([loadJSON('data/site_overview.json'), loadJSON('data/site_indices.json'), loadJSON('data/site_overview_examples.json'),
+        loadJSON('data/site_measurement_rev.json').catch(() => null)]);
     Object.values(SC).forEach(sc => { if (sc.controls) sc.controls(); });
     for (const k of Object.keys(SC)) {
         const sc = SC[k];

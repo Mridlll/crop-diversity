@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How Crop Diversity Is Measured</title>
-<meta name="description" content="Each district's crop diversity is measured in units of crops. Every measure is computed within a single year and then averaged over 23 years.">
+<meta name="description" content="A typical Indian district grows twenty-odd crops in a year and gives most of its land to two or three of them.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -33,9 +33,8 @@
     <p class="mast__label">Measurement</p>
     <h1 class="mast__title">How crop diversity is measured</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">Each district's crop diversity is measured in units of crops. Every
-    measure is computed within a single year and then averaged over 23 years.</p>
-    <p class="mast__meta"><span>606 districts</span><span>30 states</span><span>54 crops</span><span>cropping 1997&ndash;98 to 2019&ndash;20</span></p>
+    <p class="mast__sub">A typical district grows twenty-odd crops in a year and gives most of its
+    land to two or three of them.</p>
   </div>
 </header>
 
@@ -66,16 +65,17 @@
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>The count of crops is how many different crops a district grows in a year. The effective
-    number of crops weighs each crop by the land it covers. It equals the number of equally sized
-    crops that would give the same spread of land. When every crop has the same share the two
-    measures agree, and the effective number falls as any one crop takes more of the land.</p>
+    <p>The count of crops is how many different crops a district grows in a year, each counted once
+    whatever its area. The effective number of crops weighs each crop by its share of gross cropped
+    area, the land under crops in a year, in which a field sown in both the monsoon and the winter
+    season counts twice. It equals the number of equally sized crops that would spread the land the
+    same way. When every crop has the same share the two measures agree, and the effective number
+    falls as any one crop takes more of the land.</p>
     <p>Twenty crops with rice on 80 percent of the land give an effective number of crops of 2.97 at
     most, and less if the other nineteen are uneven. Bankura in West Bengal grew 23 crops in
-    2019&ndash;20 with rice on 78 percent of its land, and its effective number of crops was 2.4.
-    Across the 606 districts the average count of crops is 21.2 and the average effective
-    number of crops is 4.9.</p>
-    <p>Evenness is the effective number of crops divided by the count. It averages 0.254, so the
+    2019&ndash;20, yet with rice on 78 percent of its land its effective number of crops was 2.4.
+    The average district grows 21.4 crops in a year and has an effective number of 4.9.</p>
+    <p>Evenness is the effective number of crops divided by the count. It averages 0.250, so the
     typical district spreads its land about as evenly as a quarter of its crops sharing it equally
     would.</p>
   </div>
@@ -94,8 +94,7 @@
       <div id="v2" class="chart" role="img" aria-label="A falling curve of the number of crops as more weight goes to the largest crops. For the example district it starts at 20 crops, passes 4.9 at the effective number of crops and 2.5 at the number of main crops. For twenty equal crops it stays flat at 20."></div>
       <p class="figure__note"><span>D(q) = (&Sigma; p<sub>i</sub><sup>q</sup>)<sup>1/(1&minus;q)</sup>,
       where p<sub>i</sub> is crop i's share of the land, with D1 taken as the limit
-      exp(&minus;&Sigma; p ln p). The faint line is the previous example. The ordering held in all
-      14,089 district-years measured.</span><button class="replay" data-scene="2" aria-label="Replay animation">replay</button></p>
+      exp(&minus;&Sigma; p ln p). The faint line is the previous example.</span><button class="replay" data-scene="2" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
@@ -103,14 +102,11 @@
     much the largest crops count. At q = 0 every crop counts once, whatever its area, which gives the
     count of crops, D0. At q = 1 each crop counts in proportion to its land, which gives the
     effective number of crops, D1. At q = 2 the dominant crops govern the result, which gives the
-    number of main crops, D2. It counts crops with extra weight on those holding large shares of
-    the land, so small crops barely register. Technically it is the inverse Simpson index, one
-    divided by the chance that two plots picked at random carry the same crop.</p>
+    number of main crops, D2, in which small crops barely register.</p>
     <p>All three are in units of crops, so they can be read side by side. A doubling of the
     effective number of crops means diversity doubled. The Shannon index itself is measured in
     logarithms, so a doubling of it has no such reading. The curve can only fall or stay flat as q
-    rises, so a district's effective number of crops is never above its count of crops. Every
-    district-year in the data follows this ordering.</p>
+    rises, so a district's effective number of crops is never above its count of crops.</p>
   </div>
 </section>
 
@@ -118,32 +114,31 @@
 <section class="section scene-sec" id="s3">
   <div class="scene fade">
     <p class="scene__kicker">03 · Reading the scale</p>
-    <h2 class="scene__h">The middle 80 percent of districts have an effective number of crops between 2.4 and 8.1.</h2>
+    <h2 class="scene__h">The middle 80 percent of districts have an effective number of crops between 2.4 and 8.2.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
     <div class="figure__frame">
       <div class="ctl" id="vs-ctl" role="group" aria-label="Measure"></div>
-      <div id="vs" class="chart" role="img" aria-label="A number line for the effective number of crops with one dot per district. Reference marks sit at 1, one crop on all the land, and 2, two crops on equal land. The lowest district is Bhadrak in Odisha at 1.38, the median is 4.35, the average 4.93 and the highest Chamarajanagara in Karnataka at 14.3. The middle 80 percent of districts lie between 2.4 and 8.1. Buttons switch to the count of crops and the number of main crops."></div>
+      <div id="vs" class="chart" role="img" aria-label="A number line for the effective number of crops with one dot per district. Reference marks sit at 1, one crop on all the land, and 2, two crops on equal land. The lowest district is Bhadrak in Odisha at 1.27, the median is 4.37, the average 4.95 and the highest Chamarajanagara in Karnataka at 14.3. The middle 80 percent of districts lie between 2.4 and 8.2. Buttons switch to the count of crops and the number of main crops."></div>
       <p class="readout readout--line" id="vs-read" aria-live="polite"></p>
-      <p class="figure__note"><span>Each dot is one of 606 districts, placed at the average of its
-      yearly values over 1997&ndash;98 to 2019&ndash;20. The shaded band holds the middle 80 percent
-      of districts. The marks at 1 and 2 stand for one crop on all the land and two crops on equal
+      <p class="figure__note"><span>Each dot is a district at the average of its yearly values. The
+      shaded band holds the middle 80 percent of districts. The marks at 1 and 2 stand for one crop on all the land and two crops on equal
       land. Lowest and highest are the districts at each end of the measure shown. Hover or tap a
       dot or a mark.</span><button class="replay" data-scene="scale" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
     <p>On the effective number of crops, 1 means a single crop on all of a district's land and 2
-    means two crops on equal halves. No district in the sample comes down to 1. The lowest is
-    Bhadrak in Odisha at 1.38, where rice held about nine tenths of the land in an average year.
-    One district in ten sits below 2.4, in the band marked low on the chart.</p>
-    <p>Half of the districts sit below 4.3. The average is higher at 4.9, since a smaller group of
-    districts reaches far above the rest. Above 8.1 counts as high, and one district in ten gets
-    there. Chamarajanagara in Karnataka is the highest at 14.3.</p>
+    means two crops on equal halves. Although no district in the sample comes down to 1, Bhadrak in
+    Odisha gets close at 1.27, with rice on 96 percent of its land in an average year. The bottom
+    decile sits below 2.4, in the band marked low.</p>
+    <p>The median district has 4.4. The average is higher at 4.9 because a smaller group of
+    districts reaches far above the rest, and the top decile starts at 8.2. Chamarajanagara in
+    Karnataka is the highest at 14.3.</p>
     <p>The count of crops runs along a longer stretch of the same axis. The median district grows
-    22.4 crops in a year and one in ten grows fewer than 11.1. Kargil in Ladakh has the shortest
-    list at 3.7 crops a year, and at the far end Belagavi in Karnataka grows 36.6. The number of
-    main crops is the lowest of the three, running from 1.13 in Bijapur, Chhattisgarh to 10.9 in
+    22.7 crops in a year while the bottom decile grows fewer than 11.1. Kargil in Ladakh has the
+    shortest list at 3.9 crops a year, and at the far end Belagavi in Karnataka grows 37.6. The
+    number of main crops is the lowest of the three, running from 1.09 in Bhadrak to 10.9 in
     Chamarajanagara with a median of 3.0.</p>
   </div>
 </section>
@@ -152,7 +147,7 @@
 <section class="section scene-sec" id="s4">
   <div class="scene fade">
     <p class="scene__kicker">04 · Across districts</p>
-    <h2 class="scene__h">Across districts the count of crops centres near 22 and the effective number of crops near 4.</h2>
+    <h2 class="scene__h">Districts with long crop lists do not reliably spread their land more evenly.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
     <div class="figure__frame">
@@ -162,25 +157,22 @@
           <input type="search" id="v3-find" list="v3-list" autocomplete="off" placeholder="type a name">
           <datalist id="v3-list"></datalist></label>
       </div>
-      <div id="v3" class="chart" role="img" aria-label="Three strips of 606 dots each. The count of crops spreads from about 4 to 37 with a median of 22.4. The effective number of crops sits between 2 and 8 for most districts, median 4.3. The number of main crops sits lower still, median 3.0."></div>
+      <div id="v3" class="chart" role="img" aria-label="Three strips of 606 dots each. The count of crops spreads from about 4 to 38 with a median of 22.7. The effective number of crops sits between 2 and 8 for most districts, median 4.4. The number of main crops sits lower still, median 3.0."></div>
       <p class="readout readout--line" id="v3-read" aria-live="polite"></p>
-      <p class="figure__note"><span>One dot per district, the average of its yearly values over
-      1997&ndash;98 to 2019&ndash;20. White ticks are medians. One district in ten lies below and one
-      in ten above: count of crops 11.1 and 29.3, effective number of crops 2.4 and 8.1. Hover, tap
-      or search for a district to follow it across the strips. 606
-      districts.</span><button class="replay" data-scene="3" aria-label="Replay animation">replay</button></p>
+      <p class="figure__note"><span>One dot per district, the average of its yearly values. White
+      ticks are medians. Hover, tap or search for a district to follow it across the
+      strips.</span><button class="replay" data-scene="3" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>In most districts a large count of crops sits on land held mostly by a few of them. The gap
-    between the top strip and the middle one is made of crops that are grown on areas too small to
-    change how the district's land is spread.</p>
+    <p>In most districts a long list of crops sits on land held mostly by a few of them. The gap
+    between the count and the effective number is made of crops grown on areas too small to change
+    how the district's land is spread.</p>
     <p>The effective number of crops and the number of main crops rise and fall together across
     districts, with a correlation of 0.97. The count of crops moves much more on its own, with a
     correlation of 0.50 with the effective number. Evenness is lower where more crops are grown,
     with a correlation of &minus;0.38 with the count, because added crops usually arrive on small
-    plots. For this reason the site reports the count of crops and the effective number of
-    crops separately.</p>
+    plots.</p>
   </div>
 </section>
 
@@ -188,7 +180,7 @@
 <section class="section scene-sec" id="s5">
   <div class="scene fade">
     <p class="scene__kicker">05 · Monoculture</p>
-    <h2 class="scene__h">In 119 of the 606 districts one crop holds at least two thirds of the land, and in 116 of them that crop is rice.</h2>
+    <h2 class="scene__h">In 120 of the 606 districts one crop holds at least two thirds of the land, and in 117 of them that crop is rice.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
     <div class="figure__frame">
@@ -197,33 +189,33 @@
         <div class="ctl" id="vm-ctl" role="group" aria-label="View"></div>
         <div class="legend" id="vm-leg" aria-hidden="true"></div>
       </div>
-      <div id="vm" class="chart" role="img" aria-label="606 districts placed by the share of land under their largest crop. 119 sit at or above two thirds, almost all of them rice districts in Odisha, Assam, Jharkhand, Chhattisgarh and West Bengal. Another 88 districts, where no single crop reaches two thirds, give at least 80 percent of their land to two crops, mostly in Uttar Pradesh, Bihar and Punjab. A button switches to a map of the same classes."></div>
+      <div id="vm" class="chart" role="img" aria-label="606 districts placed by the share of land under their largest crop. 120 sit at or above two thirds, almost all of them rice districts in Odisha, Assam, Jharkhand, Chhattisgarh and West Bengal. Another 91 districts, where no single crop reaches two thirds, give at least 80 percent of their land to two crops, mostly in Uttar Pradesh, Bihar and Punjab. A button switches to a map of the same classes."></div>
       <p class="readout readout--line" id="vm-read" aria-live="polite"></p>
       <p class="figure__note"><span>Top: invented districts, fifty plots per season, each plot an
       equal piece of land. Empty plots are fallow. Below: the largest crop's share is its average
       share of gross cropped area over the years a district reports, so land cropped in two seasons
       counts twice. Near-monoculture means the largest crop holds at least two thirds. Two crops
       hold the year when the two largest hold at least 80 percent and neither reaches two thirds.
-      Few crops means fewer than 10 a year. 606 districts.</span><button class="replay" data-scene="mono" aria-label="Replay animation">replay</button></p>
+      Few crops means fewer than 10 a year.</span><button class="replay" data-scene="mono" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>A district counts here as near-monoculture when its largest crop holds at least two thirds of
-    its cropped land in an average year. That describes 119 districts. Rice is the crop in 116 of
-    them, and they lie mostly in Odisha, Assam, Jharkhand, Chhattisgarh and West Bengal. These
-    districts still grow about 17 crops a year, and their median effective number of crops is
+    <p>A district counts as near-monoculture when its largest crop holds at least two thirds of its
+    cropped land in an average year. That describes 120 districts, and rice is the crop in 117 of
+    them, mostly in Odisha, Assam, Jharkhand, Chhattisgarh and West Bengal. Even so, these
+    districts still grow about 17 crops a year, while their median effective number of crops is
     2.6.</p>
-    <p>Growing few crops is a separate condition. Only 24 districts grow fewer than 10 crops a year
-    with no single crop on two thirds of the land and no two crops on four fifths. Most of them are in the hills of Arunachal
-    Pradesh, Sikkim, Jammu and Kashmir and Himachal Pradesh, with four in Punjab. Their median
-    effective number of crops is 3.4.</p>
-    <p>Another 88 districts give at least 80 percent of their land to two crops. Rice is the larger
-    of the pair in 37 and wheat in 37, mostly in Uttar Pradesh, Bihar and Punjab. Across all 606
-    districts the largest crop's share has a correlation of &minus;0.81 with the effective number
-    of crops and &minus;0.28 with the count of crops.</p>
-    <p>Among 555 districts observed in both 1998&ndash;99 to 2004&ndash;05 and 2013&ndash;14 to
-    2019&ndash;20, near-monoculture districts went from 133 to 114. The median share of the
-    largest crop moved from 0.48 to 0.46, a change that chance could easily produce (p = 0.11).</p>
+    <p>Growing few crops is a separate condition. Only 25 districts grow fewer than 10 crops a year
+    without one crop on two thirds of the land or two crops on 80 percent. Most of them lie in the
+    hills of Arunachal Pradesh, Sikkim, Jammu and Kashmir and Himachal Pradesh, with four in
+    Punjab, and their median effective number of crops is 3.3.</p>
+    <p>Another 91 districts give at least 80 percent of their land to two crops, mostly in Uttar
+    Pradesh, Bihar and Punjab; wheat is the larger of the pair in 38 and rice in 37. Across all 606
+    districts the largest crop's share has a correlation of &minus;0.80 with the effective number
+    of crops but only &minus;0.27 with the count of crops.</p>
+    <p>Between 1998&ndash;2004 and 2013&ndash;2019, near-monoculture districts went from 133 to 114.
+    The median share of the largest crop moved from 0.48 to 0.46, a change that is not
+    statistically significant (p = 0.11).</p>
   </div>
 </section>
 
@@ -238,68 +230,109 @@
       <div class="ctl" id="vy-ctl" role="group" aria-label="Highlight a cropping system"></div>
       <div id="vy" class="chart" role="img" aria-label="Map of districts coloured by their cropping system. Rice then wheat runs across Punjab, Haryana, Uttar Pradesh and Bihar. Rice twice a year appears in West Bengal, Assam, Andhra Pradesh, Telangana and Odisha. Rice with little second season covers Odisha, Chhattisgarh, Jharkhand and the north east. Other two-season pairs such as soybean then wheat fill Madhya Pradesh and Rajasthan."></div>
       <p class="duo__t cal__t">A typical year in three systems, as a share of the year's cropped land</p>
-      <div id="vy-cal" class="cal" role="img" aria-label="Three season strips. Rice then wheat: rice on 38 percent of the year's land in the monsoon and wheat on 42 percent in rabi; 22.4 crops, an effective number of 3.87 and 2.87 main crops. Rice twice a year: rice on 51 percent in the monsoon and 17 percent in rabi or summer; 24.8 crops, an effective number of 3.60 and 2.07 main crops. Rice with little second season: rice on 67 percent in the monsoon; 17.2 crops, an effective number of 3.07 and 2.04 main crops."></div>
+      <div id="vy-cal" class="cal" role="img" aria-label="Three season strips. Rice then wheat: rice on 38 percent of the year's land in the monsoon and wheat on 42 percent in rabi; 22.5 crops, an effective number of 3.88 and 2.88 main crops. Rice twice a year: rice on 52 percent in the monsoon and 18 percent in rabi or summer; 25.2 crops, an effective number of 3.68 and 2.08 main crops. Rice with little second season: rice on 67 percent in the monsoon; 17.5 crops, an effective number of 3.10 and 2.04 main crops."></div>
       <p class="figure__note"><span>Map: each district's most frequent pattern across the years it
-      reports, for all 725 districts with a crop record. The monsoon season covers kharif and the
-      autumn and winter rice crops. The second season is rabi and summer together. Strips and
-      figures are medians over the analysis districts in each system (117, 39 and 161). Hover or
+      reports. The monsoon season covers kharif and the autumn and winter rice crops, and the
+      second season is rabi and summer together. Strips are medians within each system. Hover or
       tap a district.</span><button class="replay" data-scene="sys" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
     <p>Each year a district's land is split by season. Rice then wheat means rice leads the monsoon
     season and wheat leads rabi, each on at least a fifth of the year's land. Rice twice a year
-    means rice also leads rabi or summer on at least a tenth of the land. A district takes the
-    pattern it shows most often, and the median district shows that pattern in 83 percent of its
-    years. Rice then wheat covers 117 of the 606 districts, in Uttar Pradesh, Bihar, Punjab and
+    means rice also leads rabi or summer on at least 10 percent of the land. A district takes the
+    pattern it shows most often, and the median district shows that pattern in 86 percent of its
+    years. Rice then wheat covers 116 of the 606 districts, in Uttar Pradesh, Bihar, Punjab and
     Haryana. Rice twice a year covers 39, in West Bengal, Assam, Andhra Pradesh, Telangana and
     Odisha.</p>
-    <p>All measures on this site add a district's seasons into one year. A second rice crop raises
-    rice's share without adding a crop, so districts growing rice twice end up with rice on 69
-    percent of their land and 2.1 main crops. The 161 districts that grow rice in the monsoon and
-    little afterwards have 2.0. Wheat after rice counts as a second crop, which gives rice then
-    wheat districts 2.9 main crops, with the two crops together on 80 percent of the land. A district
-    with a low score on the diversity maps may grow rice once a year or twice, and the map above
-    shows which.</p>
+    <p>When a district's seasons are added into one year, a second rice crop raises rice's share
+    without adding a crop. Districts growing rice twice end up with rice on 69 percent of their
+    land and 2.1 main crops, much like the 159 districts that grow rice in the monsoon and little
+    afterwards, which have 2.0. Wheat after rice, by contrast, counts as a second crop, so rice then
+    wheat districts reach 2.9 main crops even though the two crops together hold 80 percent of the
+    land.</p>
   </div>
 </section>
 
 <!-- ============ 07 ============ -->
+<section class="section scene-sec" id="ss">
+  <div class="scene fade">
+    <p class="scene__kicker">07 · Within a season</p>
+    <h2 class="scene__h">In any one season the typical district grows between 2.6 and 3.0 effective crops, against 4.9 over the whole year.</h2>
+  </div>
+  <div class="scene-fig scene-fig--wide fade">
+    <div class="figure__frame">
+      <div class="ctl" id="vss-ctl" role="group" aria-label="Where year-round crops sit"></div>
+      <div class="legend" aria-hidden="true">
+        <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#B3B3B0" stroke-width="1.6"/></svg>over the year</span>
+        <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#0E9BB5"/></svg>within a season</span>
+      </div>
+      <div id="vss" class="chart" role="img" aria-label="Effective number of crops over a year and within a season, by cropping system. Across all districts it falls from 4.9 over the year to between 2.6 and 3.0 within a season. Rice then wheat districts fall from 4.2 to between 2.0 and 2.1. Districts growing rice twice fall from 3.7 to between 2.2 and 2.5. Ludhiana falls from 2.3 to between 1.1 and 1.2, and Purba Bardhaman from 2.1 to between 1.3 and 1.5."></div>
+      <p class="readout readout--line" id="vss-read" aria-live="polite"></p>
+      <p class="figure__note"><span>District means within each cropping system, with two districts
+      for scale. Sugarcane, coconut and other year-round crops can sit with the monsoon crops that
+      share their fields, or count as a season of their own. Hover or tap a cropping system for its
+      values.</span><button class="replay" data-scene="seas" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Adding a district's seasons into one year counts wheat after rice as a second crop, even
+    though the two never share a field at the same time. Taken one season at a time, the typical
+    district grows between 2.6 and 3.0 effective crops. Between a third and two fifths of annual
+    diversity, measured on the Shannon index, comes from districts growing different crops in
+    different seasons.</p>
+    <p>Rice then wheat districts lose the most when seasons are separated. They average 4.2
+    effective crops over a year but 2.0 to 2.1 within a season. Ludhiana grows 2.3 effective crops
+    over a year and only 1.1 to 1.2 in any one season, because rice fills its monsoon and wheat its
+    rabi. In a comparison within state (state fixed effects), the change of crops between seasons
+    makes up 9 percentage points more of their annual diversity than elsewhere, and ranked on
+    diversity within a season these districts drop between 64 and 75 places on average.</p>
+    <p>Districts that grow rice twice barely move in the ranking, since a second rice crop never
+    added a crop in the first place. Purba Bardhaman grows 2.1 effective crops over a year and
+    between 1.3 and 1.5 in a season.</p>
+    <p>Where cropping intensity is higher, land spreads across more seasons, yet the crop mixes in
+    those seasons are no more distinct from each other, and rabi carries fewer crops. The fall in
+    diversity across the most irrigated districts therefore happens within seasons, while the change
+    of crops between seasons holds up as irrigation rises.</p>
+  </div>
+</section>
+
+<!-- ============ 08 ============ -->
 <section class="section scene-sec" id="s7">
   <div class="scene fade">
-    <p class="scene__kicker">07 · A rescaled score</p>
+    <p class="scene__kicker">08 · A rescaled score</p>
     <h2 class="scene__h">A score rescaled between the sample's least and most diverse districts changes when other districts enter or leave the sample.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
       <div class="ctl" id="v4-mode" role="group" aria-label="View"></div>
       <div class="ctl ctl--sub" id="v4-ctl" role="group" aria-label="Change the sample"></div>
-      <div id="v4" class="chart" role="img" aria-label="A row of districts on a 0 to 1 scale. Adding three single-crop districts lowers the minimum and raises the score of every district below the top, with no change to any district's crops. A histogram of 200 random subsamples shows the average shift is 0.0024 and the largest 0.0156."></div>
+      <div id="v4" class="chart" role="img" aria-label="A row of districts on a 0 to 1 scale. Adding three single-crop districts lowers the minimum and raises the score of every district below the top, with no change to any district's crops. A histogram of 200 random subsamples shows the average shift is 0.0032 and the largest 0.019."></div>
       <div id="v4-w" class="chart wbar" aria-hidden="true"></div>
       <p class="figure__note"><span>Toy: invented districts, scored on the effective number of crops
-      rescaled from 0 to 1. Data: composite = mean of min-max rescaled count of crops, Shannon and
-      Simpson, across 725 districts, recomputed on 200 random draws of 80 percent of them. Composite
-      standard deviation 0.18.</span><button class="replay" data-scene="4" aria-label="Replay animation">replay</button></p>
+      rescaled from 0 to 1. Data: the composite averages the rescaled count of crops, Shannon and
+      Simpson indices, recomputed with a random fifth of districts left out each time.</span><button class="replay" data-scene="4" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
     <p>A common way to combine diversity measures rescales each one so the least diverse district in
     the sample scores zero and the most diverse scores one, then averages them. A district's score
-    then depends on which other districts are in the sample. Redrawing 80 percent of districts at
-    random 200 times, with every district's crops held fixed, moved a district's composite score by
-    0.0024 on average and by 0.0156 at most. Both are small next to the composite's standard
-    deviation, the typical distance of a district's score from the average, which is 0.18.</p>
-    <p>The equal weights also have no stated basis. Shannon and Simpson belong to the same family and
-    correlate at 0.944 here, so a composite of them with the count gives what is close to a single land-weighted
-    measure two thirds of the weight. The effective numbers need no rescaling. Each is a property of the district alone,
-    measured in crops.</p>
+    then depends on which other districts are in the sample. With a random fifth of districts left
+    out and every district's crops unchanged, a district's composite score moves by 0.0032 on
+    average and by 0.019 at most. Both are small next to the composite's standard deviation, the
+    typical distance of a district's score from the average, which is 0.18, yet they show the score
+    is not a property of the district alone.</p>
+    <p>The equal weights also have no stated basis. Since Shannon and Simpson belong to the same
+    family and correlate at 0.943 here, a composite of the two with the count hands what is close to
+    a single land-weighted measure two thirds of the weight. The effective numbers need no
+    rescaling, because each is measured in crops and depends on the district alone.</p>
   </div>
 </section>
 
 <!-- ============ 08 ============ -->
 <section class="section scene-sec" id="s8">
   <div class="scene fade">
-    <p class="scene__kicker">08 · Two kinds of change</p>
+    <p class="scene__kicker">09 · Two kinds of change</p>
     <h2 class="scene__h">The count of crops and the effective number of crops respond to different changes in a district's land.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
@@ -312,40 +345,73 @@
           <div id="v5b" class="chart pair__grid" role="img" aria-label="Moving ten percent of the land from the cereal to four other crops leaves the count at 20 and raises the effective number by 1.1."></div>
           <div class="deltas" id="v5b-d"></div></div>
       </div>
-      <p class="duo__t coef__t">Market facilities, difference between every village having one and none</p>
+      <p class="duo__t coef__t">Market facilities, from no rural resident to every one living in a village with the facility</p>
       <div class="pair pair--coef">
-        <div><p class="duo__t duo__t--sm">Count of crops</p><div id="v5c" class="chart" role="img" aria-label="Weekly haat +7.33 on the count of crops, clear of zero. Producer organisation +2.39, with an interval spanning zero."></div></div>
-        <div><p class="duo__t duo__t--sm">Effective number of crops</p><div id="v5d" class="chart" role="img" aria-label="Weekly haat +0.49 on the effective number of crops, with an interval spanning zero. Producer organisation +1.95, clear of zero."></div></div>
+        <div><p class="duo__t duo__t--sm">Count of crops</p><div id="v5c" class="chart" role="img" aria-label="Weekly haat +6.28 on the count of crops, clear of zero. Producer organisation +3.38, also clear of zero."></div></div>
+        <div><p class="duo__t duo__t--sm">Effective number of crops</p><div id="v5d" class="chart" role="img" aria-label="Weekly haat +0.55 on the effective number of crops, with an interval spanning zero. Producer organisation +1.89, clear of zero."></div></div>
       </div>
       <p class="figure__note"><span>Invented shares as in scene 01, starting from 20 crops with one
       cereal on 62 percent. White plots are the land that changed. The composite change is
       rescaled against the range across the 606 districts. Market coefficients come from one
-      comparison per facility, with the state baseline and development measures held constant.
-      Filled dots: p &lt; 0.05. Lines show an approximate 95 percent interval. 606
-      districts.</span><button class="replay" data-scene="5" aria-label="Replay animation">replay</button></p>
+      comparison per facility, within state and with development measures held constant.
+      Filled dots: p &lt; 0.05. Lines show an approximate 95 percent interval.</span><button class="replay" data-scene="5" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
     <p>A single score that mixes the count of crops with how evenly land is spread cannot separate a
     district that adds a twenty-first crop on a small plot from one that moves land among the crops
     it already grows. The two measures keep them apart. In the example a crop added on one percent of the
-    land raises the count by one and the effective number of crops by 0.2. Moving a tenth of the
+    land raises the count by one and the effective number of crops by 0.2. Moving 10 percent of the
     land from the main cereal to the next four crops raises the effective number by 1.1, with the
     count still at 20.</p>
-    <p>The market results follow this split. Going from no village with a weekly haat to every
-    village having one goes with 7.33 more crops on the count of crops (p &lt; 0.001) and 0.49 on
-    the effective number of crops (p = 0.56). A p value is the chance of seeing a link at least
-    this large if there were none, and below 0.05 is the usual bar. One standard deviation of the
-    share of villages with a weekly haat is 11.7 percentage points, which goes with about 0.9 more
-    crops. Producer organisations have a clear link to the effective number of
-    crops (+1.95, p = 0.032) and an imprecise one to the count (+2.39, p = 0.19).</p>
+    <p>The market results follow this split. A district where every rural resident lives in a
+    village with a weekly haat records 6.28 more crops than one where none does (p &lt; 0.001), yet
+    its effective number of crops is only 0.55 higher (p = 0.44). A p value is the chance of seeing
+    a link at least this large if there were none, and below 0.05 is the usual bar. One standard
+    deviation of the haat share is 15 percentage points of the rural population, which goes with
+    about 0.9 more crops. Producer organisations go with more of both, +1.89 on the effective
+    number (p = 0.017) and +3.38 on the count (p = 0.024).</p>
   </div>
 </section>
 
-<!-- ============ 09 ============ -->
+<!-- ============ 10 ============ -->
+<section class="section scene-sec" id="st">
+  <div class="scene fade">
+    <p class="scene__kicker">10 · Small crops over time</p>
+    <h2 class="scene__h">The count of crops rose from 21.2 to 25.3 between 1998&ndash;99 and 2019&ndash;20, and all of the rise came from crops on less than 0.1 percent of a district's land.</h2>
+  </div>
+  <div class="scene-fig fade">
+    <div class="figure__frame">
+      <div class="ctl" id="vt-ctl" role="group" aria-label="Smallest share of land a crop needs to count"></div>
+      <div id="vt" class="chart" role="img" aria-label="Lines from 1998-99 to 2019-20. Counting every crop, the count rises from 21.2 to 25.3. Counting only crops on at least 0.1 percent of the land, it stays at 14.4. At 0.5 percent it goes from 10.4 to 9.9, and at 1 percent from 8.4 to 8.0. The effective number of crops goes from 5.6 to 5.5."></div>
+      <p class="readout readout--line" id="vt-read" aria-live="polite"></p>
+      <p class="figure__note"><span>Means weighted by cropped area, over districts that report in
+      every year. A crop counts in a year only when it holds at least the chosen share of the
+      district's cropped land. Hover or tap for a year's values.</span><button class="replay" data-scene="small" aria-label="Replay animation">replay</button></p>
+    </div>
+  </div>
+  <div class="prose prose--flow scene-prose fade">
+    <p>Counting only crops that hold at least 0.1 percent of a district's land, the average district
+    grew 14.4 crops in 1998&ndash;99 and the same in 2019&ndash;20. The crops below that line went from
+    6.8 to 11.0 per district, more than the whole rise.</p>
+    <p>The starting year carries much of it. In 1998&ndash;99 several states filed crop lists far
+    shorter than usual, and Madhya Pradesh named 17 crops where it usually names 36. Measured from
+    1999&ndash;2000 the rise is 1.62 crops, and from 2002&ndash;03 only 0.44. Leaving out Madhya
+    Pradesh, Andhra Pradesh, Chhattisgarh and Nagaland, whose 1998&ndash;99 lists had collapsed, cuts
+    the rise to 1.69, and once Odisha and Karnataka, whose lists were also short that year, are left
+    out as well, no rise remains.</p>
+    <p>Counts that need a crop to hold half a percent or one percent of the land fell between
+    1998&ndash;2004 and 2013&ndash;2019, by 0.8 and 0.6 crops. The effective number of crops was 5.6 at
+    the start and 5.5 at the end, and its trend is not statistically significant once each state's
+    swings in reporting are allowed for. Longer crop lists mostly mean fuller returns, while the
+    spread of land across crops has hardly moved.</p>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
 <section class="section scene-sec" id="s9">
   <div class="scene fade">
-    <p class="scene__kicker">09 · Within a year</p>
+    <p class="scene__kicker">11 · Within a year</p>
     <h2 class="scene__h">Counting every crop a district records across two decades gives about one and a half times the count in a typical year.</h2>
   </div>
   <div class="scene-fig scene-fig--wide fade">
@@ -353,7 +419,7 @@
       <div class="pair pair--years">
         <div>
           <div class="ctl" id="v6-ctl" role="group" aria-label="How crops are counted"></div>
-          <div id="v6a" class="chart" role="img" aria-label="An invented district over 23 years. Each column is a year and each row a crop. It grows about 21 crops a year from a set of 30, so a count across all years gives 30."></div>
+          <div id="v6a" class="chart" role="img" aria-label="An invented district over 22 years. Each column is a year and each row a crop. It grows about 21 crops a year from a set of 30, so a count across all years gives 30."></div>
           <p class="readout readout--line" id="v6-read" aria-live="polite"></p>
         </div>
         <div>
@@ -365,35 +431,41 @@
         </div>
       </div>
       <p class="figure__note"><span>Left: an invented district. Right: district means, grouped by
-      years of data, for groups of at least five districts; dot size follows the number of districts.
-      The groups shown hold 743 of 755 districts. Over all 755, the correlation with years of data is
-      0.545 for the count across all years and 0.309 for the yearly average.</span><button class="replay" data-scene="6" aria-label="Replay animation">replay</button></p>
+      years of data, for groups of at least five districts; dot size follows the number of
+      districts.</span><button class="replay" data-scene="6" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>A crop grown once in twenty-three years adds as much to a count taken across the whole period
-    as a crop grown every year. Counting that way gives about one and a half times the count in a
-    typical year. It also rises with the number of years a district has data for, since each extra
-    year is another chance to record a rare crop. About a quarter of districts have fewer than twenty
-    years of data. Every measure on this site is computed within each year and then averaged across
-    the years a district has.</p>
+    <p>A crop grown once in two decades adds as much to a count taken across the whole period as a
+    crop grown every year. Counting that way gives about one and a half times the count in a typical
+    year. It also rises with the number of years a district has data for, since each extra year is
+    another chance to record a rare crop, and about a quarter of districts have fewer than twenty
+    years of data. Counted within each year and then averaged, the count of crops is far less tied
+    to how long a district has been recorded: its correlation with years of data falls from 0.51 to
+    0.27.</p>
     <p>The choice changes rankings and results. Ranked by the count of crops, districts move a median
-    of 74 places between the two ways of counting, and 277 of 725 move by more than 100. Most of
-    those that move furthest recorded many crops across the period and grew few in any one year.
-    Ranchi recorded 40 crops over 21 years and grew 12.6 in a typical year. Counted each year, the
-    count of crops peaks at moderate irrigation like the other measures (p = 0.0001 for the peak).
-    A count taken across all years shows no clear peak (p = 0.19).</p>
+    of 76 places between the two ways of counting, and 276 of 724 move by more than 100. Those that
+    move furthest mostly recorded many crops across the period while growing few in any one year;
+    Ranchi recorded 40 crops in all yet grew 11.6 in a typical year. Counted each year, the count of
+    crops peaks at moderate irrigation like the other measures (p = 0.0001 for the peak), whereas a
+    count taken across all years shows no clear peak (p = 0.19).</p>
   </div>
 
   <div class="scene scene--method fade">
     <details class="method">
       <summary>How this was estimated</summary>
       <div class="method__body">
-        <p><strong>Source.</strong> District crop area, production and yield, 1997&ndash;98 to
+        <p><strong>Source.</strong> District crop area, production and yield, 1998&ndash;99 to
         2019&ndash;20, covering 54 crops, summed across seasons to gross cropped area per crop,
-        district and year. The source also holds 2020&ndash;21, with only 319 rows from 13 districts (0.9
-        million hectares against 194.9 million the year before), so the series stops at
-        2019&ndash;20. That gives 23 usable years.</p>
+        district and year. The series stops at 2019&ndash;20 because only 13 districts report the
+        year after.</p>
+        <p><strong>Why every figure starts in 1998&ndash;99.</strong> The 1997&ndash;98 returns
+        are broken. West Bengal files 50.8 million hectares of rabi niger seed, 28 percent of all
+        area recorded in India that year, against under 8,000 hectares the year after. Odisha files
+        0.91 million hectares in all against 5.23 million the next year, Chhattisgarh's kharif area
+        is 0.48 million hectares against 4.56 million, and twelve states file crop lists under three
+        fifths of their usual length. That year is left out of every district average as well as
+        every change over time.</p>
         <p><strong>Seasons.</strong> Rows marked Whole Year are treated as their own crop-season
         lines. They overlap a named season for the same crop, district and year in 0.64 percent of
         cases, and only 34 of those 441 come within 2 percent of the seasonal sum, so summing
@@ -403,14 +475,29 @@
        <p><strong>Formulas.</strong> p<sub>i</sub> is crop i's share of the year's gross cropped
         area. D0 is the number of crops with positive area. D1 = exp(&minus;&Sigma; p<sub>i</sub> ln
         p<sub>i</sub>). D2 = 1/&Sigma; p<sub>i</sub><sup>2</sup>. Evenness = D1/D0. Each is computed
-        for every district-year (14,089 observations) and averaged over the years a district has.
+        for every district-year (13,605 observations) and averaged over the years a district has.
         D0 &ge; D1 &ge; D2 held in every observation.</p>
-        <p><strong>Sample.</strong> Means for the 606-district analysis sample are 21.2 for the
-        count of crops, 4.9 for the effective number of crops, 3.5 for the number of main crops and 0.254 for evenness.
-        Means for all 725 districts with a crop record are 20.4, 4.71, 3.33 and 0.264. A count
-        taken across all years is a median 1.50 times the yearly average over the 725 districts, and
-        172 of them have fewer than 20 years of data. Over all 755 districts in the crop
-        statistics the figures are 1.49 and 205.</p>
+        <p><strong>Minimum share of land.</strong> A crop's share is its area summed across seasons
+        divided by the district's gross cropped area that year. The thresholded counts keep crops at
+        or above 0.1, 0.5 or 1 percent. The national series weights districts by cropped area and
+        uses the 500 districts present in every year. Uncertainty on changes groups districts by
+        state, since states file the returns, and comes from a bootstrap over the 28 states. The
+        falls of 0.8 and 0.6 crops have 95 percent intervals of &minus;1.69 to &minus;0.14 and
+        &minus;1.13 to &minus;0.09.</p>
+        <p><strong>Seasons within a year.</strong> The monsoon season pools kharif, autumn and winter
+        records, and rabi and summer are kept apart. Annual Shannon entropy splits exactly into a
+        land-weighted average of the entropy within each season and a remainder that comes from
+        crops differing between seasons. The within-season effective number of crops is the
+        exponential of the first part. Year-round crops either join the monsoon season or form a
+        season of their own, and the two give the range quoted. Years where seasons cannot be read,
+        or where year-round crops hold half the land, are left out, and a district needs five
+        readable years. That removes Tamil Nadu, Kerala and one Andaman district and leaves 560
+        districts. Autumn and winter rice in Assam both fall in the monsoon season.</p>
+        <p><strong>Sample.</strong> Means for the 606-district analysis sample are 21.4 for the
+        count of crops, 4.9 for the effective number of crops, 3.5 for the number of main crops and
+        0.250 for evenness. Means for all 724 districts with a crop record are 20.6, 4.73, 3.34 and
+        0.260. A count taken across all years is a median 1.49 times the yearly average over the 724
+        districts, and 172 of them have fewer than 20 years of data.</p>
         <p><strong>Largest crop.</strong> For each district and year, every crop's share of gross
         cropped area, with seasons summed. Each crop's share is averaged over the years, counting zero
         in years it is absent, and the largest crop is the one with the highest average share. The
@@ -423,7 +510,7 @@
         <p><strong>Seasons.</strong> The monsoon season groups the Kharif, Autumn and Winter season
         records, and rabi and summer are read as recorded. Whole Year records count in the annual
         measures and lead no season. Each district-year gets a pattern and a district takes its most
-        frequent one. In 83 of the 725 districts that pattern holds in fewer than half the years.
+        frequent one. In 70 of the 724 districts that pattern holds in fewer than half the years.
         Where Whole Year records hold at least half the land the seasons cannot be read, which is
         the case for 26 of the 606 districts, 13 of them in Kerala and 6 in Tamil Nadu. Autumn and
         winter rice, the aus and aman crops of the east, fall in the same season, so a district
@@ -450,7 +537,7 @@
     <div>
       <h4>Sources</h4>
       <p style="font-size:.9rem">Cropping is district agricultural statistics on crop area for
-      1997&ndash;98 to 2019&ndash;20. Facility data on the markets page come from the Mission Antyodaya
+      1998&ndash;99 to 2019&ndash;20. Facility data on the markets page come from the Mission Antyodaya
       2019&ndash;20 village survey, as compiled in SHRUG 2.1 by the Development Data Lab.</p>
     </div>
     <div>
@@ -476,6 +563,6 @@
 </footer>
 
 <script src="js/site.js?v=e2b6885b"></script>
-<script src="js/measurement.js?v=6"></script>
+<script src="js/measurement.js?v=72597a98"></script>
 </body>
 </html>
