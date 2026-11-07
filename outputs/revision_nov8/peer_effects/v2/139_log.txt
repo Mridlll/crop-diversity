@@ -1,0 +1,120 @@
+APY rows for the eight crops 1998-2019: 101,605
+
+share of a state's units that ever report the crop (606 sample, reliable years):
+crop                 rice  wheat  maize  gram   tur  groundnut  mustard  cotton
+state                                                                          
+ANDAMAN AND NICOBAR  1.00   0.00   1.00  0.00  1.00       1.00     1.00    0.00
+ANDHRA PRADESH       1.00   0.62   1.00  1.00  1.00       1.00     0.92    1.00
+ARUNACHAL PRADESH    1.00   0.81   1.00  0.00  0.69       1.00     1.00    0.00
+ASSAM                1.00   1.00   1.00  1.00  1.00       0.00     1.00    1.00
+BIHAR                1.00   1.00   1.00  1.00  1.00       0.55     1.00    0.03
+CHHATTISGARH         1.00   1.00   1.00  1.00  1.00       0.94     1.00    0.50
+GOA                  1.00   0.00   0.00  0.00  0.00       1.00     0.00    0.00
+GUJARAT              0.85   1.00   1.00  1.00  1.00       1.00     0.92    0.88
+HARYANA              1.00   1.00   1.00  1.00  1.00       0.80     1.00    1.00
+HIMACHAL PRADESH     0.92   1.00   1.00  0.83  0.75       0.67     1.00    0.58
+JAMMU AND KASHMIR    0.89   0.84   0.89  0.26  0.05       0.11     0.95    0.21
+JHARKHAND            1.00   1.00   1.00  1.00  1.00       0.71     1.00    0.00
+KARNATAKA            1.00   0.93   1.00  1.00  1.00       0.97     0.93    0.97
+KERALA               1.00   0.07   0.36  0.57  0.50       0.21     0.00    0.21
+MADHYA PRADESH       1.00   1.00   1.00  1.00  1.00       1.00     1.00    0.92
+MAHARASHTRA          0.97   0.91   0.97  0.97  1.00       1.00     1.00    0.88
+MANIPUR              1.00   1.00   1.00  1.00  1.00       1.00     1.00    0.14
+MEGHALAYA            1.00   0.57   1.00  0.43  0.43       0.00     1.00    0.43
+MIZORAM              1.00   0.12   1.00  0.38  1.00       0.75     1.00    0.75
+NAGALAND             1.00   0.82   1.00  1.00  1.00       1.00     1.00    0.45
+ODISHA               1.00   1.00   1.00  1.00  1.00       1.00     1.00    0.53
+PUNJAB               1.00   1.00   0.95  1.00  1.00       0.45     1.00    0.60
+RAJASTHAN            0.79   1.00   1.00  1.00  0.97       1.00     1.00    1.00
+SIKKIM               1.00   1.00   1.00  0.00  0.00       0.00     1.00    0.00
+TAMIL NADU           1.00   0.29   1.00  0.87  0.97       1.00     0.61    1.00
+TELANGANA            1.00   0.89   1.00  1.00  1.00       1.00     0.78    1.00
+UTTAR PRADESH        1.00   1.00   1.00  1.00  1.00       0.99     1.00    0.56
+UTTARAKHAND          1.00   1.00   1.00  1.00  1.00       0.69     1.00    0.15
+WEST BENGAL          1.00   1.00   1.00  1.00  0.94       1.00     1.00    0.50
+
+crop share of the state's GCA, percent:
+crop                 rice  wheat  maize  gram  tur  groundnut  mustard  cotton
+state                                                                         
+ANDAMAN AND NICOBAR  35.2    0.0    0.4   0.0  0.2        0.0      0.0     0.0
+ANDHRA PRADESH       33.8    0.0    2.8   5.6  2.9       16.6      0.1     6.6
+ARUNACHAL PRADESH    50.1    1.6   28.1   0.0  0.1        0.1      2.5     0.0
+ASSAM                74.3    1.3    0.7   0.1  0.2        0.0      7.8     0.0
+BIHAR                45.6   29.3    9.3   0.8  0.4        0.0      1.2     0.0
+CHHATTISGARH         71.7    1.8    2.0   4.6  1.0        0.5      0.9     0.0
+GOA                  35.7    0.0    0.0   0.0  0.0        2.2      0.0     0.0
+GUJARAT               6.7    9.8    4.0   1.6  2.5       19.5      2.5    24.5
+HARYANA              21.3   41.8    0.2   1.7  0.3        0.0      8.9    10.4
+HIMACHAL PRADESH      9.5   43.9   36.0   0.1  0.0        0.0      1.0     0.0
+JAMMU AND KASHMIR    27.9   28.6   31.9   0.1  0.0        0.0      5.5     0.0
+JHARKHAND            73.2    5.3    6.7   2.4  2.5        0.1      2.5     0.0
+KARNATAKA            12.2    2.1   10.0   6.3  5.3        7.0      0.0     5.1
+KERALA               15.6    0.0    0.0   0.0  0.0        0.1      0.0     0.1
+MADHYA PRADESH        8.7   24.2    4.3  12.8  1.8        1.0      3.2     2.6
+MAHARASHTRA           6.7    4.9    3.5   6.2  5.7        1.9      0.0    17.7
+MANIPUR              69.8    0.5    3.9   0.2  0.1        0.6      6.6     0.0
+MEGHALAYA            47.6    0.5    7.7   0.4  0.4        0.0      3.6     3.2
+MIZORAM              70.7    0.0   12.2   0.0  0.3        0.0      0.7     0.3
+NAGALAND             45.3    0.8   16.0   0.2  0.8        0.3      6.7     0.1
+ODISHA               81.2    0.1    1.4   0.2  0.7        1.4      0.3     0.2
+PUNJAB               38.9   49.2    2.0   0.1  0.1        0.0      0.5     7.0
+RAJASTHAN             0.7   12.6    4.0   6.2  0.1        1.8     11.8     2.3
+SIKKIM               15.8    5.1   51.9   0.0  0.0        0.0      6.1     0.0
+TAMIL NADU           39.0    0.0    4.4   0.1  0.9        9.7      0.0     2.8
+TELANGANA            30.9    0.2   11.3   1.7  5.2        3.9      0.0    23.8
+UTTAR PRADESH        25.0   40.6    3.3   2.7  1.2        0.4      2.7     0.0
+UTTARAKHAND          25.5   33.1    2.4   0.1  0.2        0.1      1.2     0.0
+WEST BENGAL          69.2    4.0    1.4   0.4  0.0        0.7      5.5     0.0
+state x crop never reported: Andaman And Nicobar wheat; Andaman And Nicobar gram; Andaman And Nicobar cotton; Arunachal Pradesh gram; Arunachal Pradesh cotton; Assam groundnut; Goa wheat; Goa maize; Goa gram; Goa tur; Goa mustard; Goa cotton; Jharkhand cotton; Kerala mustard; Meghalaya groundnut; Sikkim gram; Sikkim tur; Sikkim groundnut; Sikkim cotton
+crop absent from a state's record while the state across the line grows it on >1% of GCA: Goa (vs Karnataka) cotton 5.1%; Goa (vs Karnataka) gram 6.3%; Goa (vs Karnataka) maize 10.0%; Goa (vs Karnataka) tur 5.3%; Goa (vs Karnataka) wheat 2.1%; Goa (vs Maharashtra) cotton 17.7%; Goa (vs Maharashtra) gram 6.2%; Goa (vs Maharashtra) maize 3.5%; Goa (vs Maharashtra) tur 5.7%; Goa (vs Maharashtra) wheat 4.9%
+
+rice window share vs pe_unit_period, 2015-19: max |diff| 1.71e-07
+w9802: eight crops' mean share of GCA across 606 units 56.4 percent
+w1519: eight crops' mean share of GCA across 606 units 70.4 percent
+
+likeness by pair class:
+measure                                          sim9  sim8  sim8_gca
+window pairs                                                         
+w1519  adjacent, same state                      77.1  79.3      56.1
+       adjacent, across a border                 67.4  70.9      48.3
+       not adjacent, 60-100 km, same state       75.2  79.1      63.1
+       not adjacent, 60-100 km, across a border  67.3  74.7      55.8
+       200-300 km, same state                    62.7  67.2      46.7
+       500-600 km, any                           48.4  51.1      36.3
+w9802  adjacent, same state                      79.1  80.8      55.2
+       adjacent, across a border                 69.5  74.0      49.7
+       not adjacent, 60-100 km, same state       77.4  82.3      65.2
+       not adjacent, 60-100 km, across a border  67.4  75.1      57.6
+       200-300 km, same state                    65.4  68.6      47.0
+       500-600 km, any                           49.2  51.4      35.6
+
+border gap, adjacent pairs (same sample for all three measures):
+window                            measure spec    n      b  se_unit  p_unit  se_state  p_state  mean_same  mean_cross  p_wild_state
+ w1519                               sim9   M1 1485 -7.232    1.574   0.000     2.463    0.007     76.963      67.680         0.002
+ w1519                               sim9   M2 1485 -3.420    1.421   0.016     2.241    0.140     76.963      67.680         0.045
+ w1519                               sim9   M3 1485 -4.071    1.199   0.001     1.811    0.034     76.963      67.680         0.003
+ w1519                               sim8   M1 1485 -6.117    1.766   0.001     2.334    0.015     79.184      70.482         0.003
+ w1519                               sim8   M2 1485 -3.216    1.728   0.063     2.092    0.137     79.184      70.482         0.037
+ w1519                               sim8   M3 1485 -4.347    1.340   0.001     1.918    0.033     79.184      70.482         0.011
+ w1519                           sim8_gca   M1 1485 -5.203    2.125   0.015     4.004    0.206     56.332      47.785         0.031
+ w1519                           sim8_gca   M2 1485 -2.011    2.080   0.334     3.441    0.564     56.332      47.785         0.373
+ w1519                           sim8_gca   M3 1485 -3.388    1.240   0.007     1.391    0.023     56.332      47.785         0.010
+ w9802                               sim9   M1 1081 -8.166    1.990   0.000     3.865    0.046     79.023      69.492           NaN
+ w9802                               sim9   M2 1081 -4.543    1.420   0.001     2.518    0.084     79.023      69.492           NaN
+ w9802                               sim9   M3 1081 -4.764    1.374   0.001     2.414    0.061     79.023      69.492           NaN
+ w9802                               sim8   M1 1081 -4.289    1.656   0.010     2.116    0.054     80.661      74.147           NaN
+ w9802                               sim8   M2 1081 -2.568    1.596   0.108     1.840    0.176     80.661      74.147           NaN
+ w9802                               sim8   M3 1081 -2.549    1.342   0.058     1.614    0.128     80.661      74.147           NaN
+ w9802                           sim8_gca   M1 1081 -2.894    2.367   0.222     3.958    0.472     55.032      49.051           NaN
+ w9802                           sim8_gca   M2 1081 -0.776    2.334   0.740     3.155    0.808     55.032      49.051           NaN
+ w9802                           sim8_gca   M3 1081 -2.602    1.432   0.070     1.904    0.185     55.032      49.051           NaN
+ w1519 sim8, suspect states dropped (Goa)   M1 1480 -6.136    1.772   0.001     2.385    0.017     79.172      70.469           NaN
+ w1519 sim8, suspect states dropped (Goa)   M2 1480 -3.381    1.738   0.052     2.201    0.138     79.172      70.469           NaN
+ w1519 sim8, suspect states dropped (Goa)   M3 1480 -4.470    1.347   0.001     1.953    0.032     79.172      70.469           NaN
+
+border-equivalent km, 2015-19:
+ measure  cross_adjacent_mean  same_adjacent_mean  same_adjacent_km  equiv_interp  equiv_interp_lo  equiv_interp_hi  equiv_linear  equiv_linear_lo  equiv_linear_hi  reg_cross  reg_per100km  equiv_reg
+    sim9                67.41               77.11             75.65        109.25            36.79           175.75        110.91            59.38           168.55      -6.31         -6.26     100.83
+    sim8                70.91               79.29             75.56        117.96            30.94           188.40        119.20            51.26           191.66      -4.76         -6.54      72.80
+sim8_gca                48.33               56.09             75.56        146.85            55.25           243.53        147.43            74.71           255.14      -3.10         -6.94      44.76
+script 132 reference (nine groups): interp 109, linear 111, regression 101

@@ -1,0 +1,335 @@
+chickpea surge: done
+chickpea entry: done
+soybean entry: done
+soybean surge: done
+cotton surge: done
+cotton entry: done
+maize entry: done
+maize surge: done
+moong entry: done
+moong surge: done
+rabi_maize entry: done
+rabi_maize surge: done
+rice surge: done
+
+=== chickpea surge ===
+                                                                          b              se        
+cluster                                                                unit   state    unit   state
+spec                                                     var                                       
+S1 nbr + ring (128)                                      nbr         0.0943  0.0943  0.0318  0.0341
+                                                         ring        0.0113  0.0113  0.0175  0.0081
+S2 border units: nbr_same + nbr_other + ring (128 split) ring        0.0282  0.0282  0.0241  0.0149
+                                                         nbr_same    0.0557  0.0557  0.0303  0.0444
+                                                         nbr_other  -0.0045 -0.0045  0.0193  0.0316
+S3 border units: four sets                               nbr_same    0.0664  0.0664  0.0538  0.0785
+                                                         nbr_other  -0.0140 -0.0140  0.0225  0.0296
+                                                         ring_same   0.0235  0.0235  0.0270  0.0247
+                                                         ring_other  0.0230  0.0230  0.0259  0.0173
+S4 same-state only: nbr_same + ring_same                 nbr_same    0.1008  0.1008  0.0328  0.0589
+                                                         ring_same   0.0040  0.0040  0.0188  0.0149
+S5 S3 without AP and TS                                  nbr_same    0.0343  0.0343  0.0492  0.0659
+                                                         nbr_other  -0.0307 -0.0307  0.0257  0.0339
+                                                         ring_same   0.0416  0.0416  0.0245  0.0172
+                                                         ring_other  0.0321  0.0321  0.0320  0.0264
+S6 S3 with 2011 states before 2014                       nbr_same    0.0933  0.0933  0.0534  0.0801
+                                                         nbr_other  -0.0188 -0.0188  0.0226  0.0312
+                                                         ring_same   0.0165  0.0165  0.0283  0.0269
+                                                         ring_other  0.0310  0.0310  0.0321  0.0217
+                                                             n  n_units  n_events
+spec                                                                             
+S1 nbr + ring (128)                                       6769      370        33
+S2 border units: nbr_same + nbr_other + ring (128 split)  3817      208        17
+S3 border units: four sets                                1845      102        10
+S4 same-state only: nbr_same + ring_same                  5702      312        31
+S5 S3 without AP and TS                                   1733       94         7
+S6 S3 with 2011 states before 2014                        1819      101        10
+                                                                                             b              se               p        
+cluster                                                                                   unit   state    unit   state    unit   state
+spec                                                     test                                                                         
+S1 nbr + ring (128)                                      nbr minus ring                 0.0830  0.0830  0.0404  0.0379  0.0397  0.0284
+S2 border units: nbr_same + nbr_other + ring (128 split) nbr_same minus nbr_other       0.0602  0.0602  0.0336  0.0539  0.0737  0.2647
+S3 border units: four sets                               nbr_same minus nbr_other       0.0803  0.0803  0.0540  0.0951  0.1369  0.3983
+                                                         nbr_same minus ring_same       0.0428  0.0428  0.0703  0.0996  0.5420  0.6672
+                                                         nbr_other minus ring_other    -0.0370 -0.0370  0.0372  0.0315  0.3193  0.2393
+                                                         edge within minus edge across  0.0799  0.0799  0.0696  0.1006  0.2510  0.4272
+                                                         ring_same minus ring_other     0.0005  0.0005  0.0347  0.0170  0.9886  0.9768
+S4 same-state only: nbr_same + ring_same                 nbr_same minus ring_same       0.0969  0.0969  0.0413  0.0644  0.0190  0.1325
+S5 S3 without AP and TS                                  nbr_same minus nbr_other       0.0649  0.0649  0.0536  0.0967  0.2260  0.5021
+                                                         nbr_same minus ring_same      -0.0073 -0.0073  0.0642  0.0816  0.9097  0.9289
+                                                         nbr_other minus ring_other    -0.0628 -0.0628  0.0441  0.0376  0.1543  0.0950
+                                                         edge within minus edge across  0.0555  0.0555  0.0715  0.1020  0.4378  0.5864
+                                                         ring_same minus ring_other     0.0094  0.0094  0.0381  0.0205  0.8044  0.6452
+S6 S3 with 2011 states before 2014                       nbr_same minus nbr_other       0.1121  0.1121  0.0581  0.1042  0.0538  0.2823
+                                                         nbr_same minus ring_same       0.0767  0.0767  0.0709  0.1028  0.2787  0.4555
+                                                         nbr_other minus ring_other    -0.0498 -0.0498  0.0427  0.0299  0.2437  0.0957
+                                                         edge within minus edge across  0.1265  0.1265  0.0782  0.1126  0.1058  0.2614
+                                                         ring_same minus ring_other    -0.0145 -0.0145  0.0405  0.0242  0.7209  0.5501
+
+=== chickpea entry ===
+                                                                          b              se        
+cluster                                                                unit   state    unit   state
+spec                                                     var                                       
+S1 nbr + ring (128)                                      nbr         0.0139  0.0139  0.0156  0.0117
+                                                         ring        0.0132  0.0132  0.0102  0.0081
+S2 border units: nbr_same + nbr_other + ring (128 split) ring        0.0206  0.0206  0.0177  0.0217
+                                                         nbr_same    0.0740  0.0740  0.0313  0.0381
+                                                         nbr_other  -0.0007 -0.0007  0.0124  0.0159
+S3 border units: four sets                               nbr_same    0.0684  0.0684  0.0539  0.0461
+                                                         nbr_other   0.0160  0.0160  0.0175  0.0253
+                                                         ring_same   0.0353  0.0353  0.0184  0.0197
+                                                         ring_other -0.0050 -0.0050  0.0136  0.0121
+S4 same-state only: nbr_same + ring_same                 nbr_same    0.0278  0.0278  0.0198  0.0223
+                                                         ring_same   0.0148  0.0148  0.0115  0.0089
+S5 S3 without AP and TS                                  nbr_same    0.0165  0.0165  0.0536  0.0436
+                                                         nbr_other   0.0075  0.0075  0.0152  0.0230
+                                                         ring_same   0.0592  0.0592  0.0175  0.0174
+                                                         ring_other -0.0017 -0.0017  0.0136  0.0145
+S6 S3 with 2011 states before 2014                       nbr_same    0.0340  0.0340  0.0569  0.0439
+                                                         nbr_other   0.0206  0.0206  0.0161  0.0232
+                                                         ring_same   0.0376  0.0376  0.0232  0.0225
+                                                         ring_other -0.0097 -0.0097  0.0157  0.0129
+                                                             n  n_units  n_events
+spec                                                                             
+S1 nbr + ring (128)                                       5243      299        41
+S2 border units: nbr_same + nbr_other + ring (128 split)  2877      166        27
+S3 border units: four sets                                1281       77        15
+S4 same-state only: nbr_same + ring_same                  4399      253        38
+S5 S3 without AP and TS                                   1195       69        11
+S6 S3 with 2011 states before 2014                        1253       75        14
+                                                                                             b              se               p        
+cluster                                                                                   unit   state    unit   state    unit   state
+spec                                                     test                                                                         
+S1 nbr + ring (128)                                      nbr minus ring                 0.0006  0.0006  0.0197  0.0123  0.9744  0.9590
+S2 border units: nbr_same + nbr_other + ring (128 split) nbr_same minus nbr_other       0.0747  0.0747  0.0355  0.0463  0.0353  0.1071
+S3 border units: four sets                               nbr_same minus nbr_other       0.0525  0.0525  0.0581  0.0545  0.3664  0.3359
+                                                         nbr_same minus ring_same       0.0331  0.0331  0.0629  0.0574  0.5985  0.5641
+                                                         nbr_other minus ring_other     0.0210  0.0210  0.0275  0.0330  0.4443  0.5249
+                                                         edge within minus edge across  0.0121  0.0121  0.0703  0.0604  0.8632  0.8411
+                                                         ring_same minus ring_other     0.0403  0.0403  0.0217  0.0215  0.0636  0.0611
+S4 same-state only: nbr_same + ring_same                 nbr_same minus ring_same       0.0130  0.0130  0.0234  0.0208  0.5772  0.5306
+S5 S3 without AP and TS                                  nbr_same minus nbr_other       0.0090  0.0090  0.0593  0.0581  0.8790  0.8765
+                                                         nbr_same minus ring_same      -0.0427 -0.0427  0.0599  0.0457  0.4760  0.3499
+                                                         nbr_other minus ring_other     0.0092  0.0092  0.0258  0.0337  0.7219  0.7853
+                                                         edge within minus edge across -0.0519 -0.0519  0.0673  0.0562  0.4408  0.3561
+                                                         ring_same minus ring_other     0.0609  0.0609  0.0158  0.0149  0.0001  0.0000
+S6 S3 with 2011 states before 2014                       nbr_same minus nbr_other       0.0134  0.0134  0.0612  0.0549  0.8272  0.8077
+                                                         nbr_same minus ring_same      -0.0036 -0.0036  0.0680  0.0519  0.9578  0.9447
+                                                         nbr_other minus ring_other     0.0303  0.0303  0.0273  0.0319  0.2670  0.3411
+                                                         edge within minus edge across -0.0339 -0.0339  0.0769  0.0545  0.6591  0.5333
+                                                         ring_same minus ring_other     0.0473  0.0473  0.0249  0.0214  0.0579  0.0269
+
+=== soybean entry ===
+                                                                          b              se        
+cluster                                                                unit   state    unit   state
+spec                                                     var                                       
+S1 nbr + ring (128)                                      nbr         0.0489  0.0489  0.0213  0.0266
+                                                         ring        0.0081  0.0081  0.0075  0.0095
+S2 border units: nbr_same + nbr_other + ring (128 split) ring        0.0029  0.0029  0.0099  0.0071
+                                                         nbr_same    0.0611  0.0611  0.0346  0.0183
+                                                         nbr_other  -0.0037 -0.0037  0.0085  0.0075
+S3 border units: four sets                               nbr_same    0.1272  0.1272  0.0593  0.0415
+                                                         nbr_other   0.0218  0.0218  0.0164  0.0206
+                                                         ring_same   0.0054  0.0054  0.0290  0.0284
+                                                         ring_other -0.0060 -0.0060  0.0114  0.0167
+S4 same-state only: nbr_same + ring_same                 nbr_same    0.0792  0.0792  0.0310  0.0396
+                                                         ring_same   0.0154  0.0154  0.0160  0.0201
+S5 S3 without AP and TS                                  nbr_same    0.1308  0.1308  0.0673  0.0478
+                                                         nbr_other   0.0119  0.0119  0.0161  0.0200
+                                                         ring_same   0.0287  0.0287  0.0345  0.0253
+                                                         ring_other -0.0203 -0.0203  0.0105  0.0187
+S6 S3 with 2011 states before 2014                       nbr_same    0.1359  0.1359  0.0607  0.0413
+                                                         nbr_other   0.0206  0.0206  0.0159  0.0192
+                                                         ring_same   0.0012  0.0012  0.0304  0.0334
+                                                         ring_other -0.0087 -0.0087  0.0112  0.0153
+                                                             n  n_units  n_events
+spec                                                                             
+S1 nbr + ring (128)                                       6149      335        17
+S2 border units: nbr_same + nbr_other + ring (128 split)  3391      185        10
+S3 border units: four sets                                1585       88         7
+S4 same-state only: nbr_same + ring_same                  5138      281        16
+S5 S3 without AP and TS                                   1461       80         5
+S6 S3 with 2011 states before 2014                        1546       89         7
+                                                                                             b              se               p        
+cluster                                                                                   unit   state    unit   state    unit   state
+spec                                                     test                                                                         
+S1 nbr + ring (128)                                      nbr minus ring                 0.0408  0.0408  0.0213  0.0213  0.0554  0.0555
+S2 border units: nbr_same + nbr_other + ring (128 split) nbr_same minus nbr_other       0.0647  0.0647  0.0389  0.0189  0.0958  0.0006
+S3 border units: four sets                               nbr_same minus nbr_other       0.1054  0.1054  0.0606  0.0443  0.0820  0.0174
+                                                         nbr_same minus ring_same       0.1218  0.1218  0.0497  0.0346  0.0143  0.0004
+                                                         nbr_other minus ring_other     0.0277  0.0277  0.0213  0.0298  0.1936  0.3517
+                                                         edge within minus edge across  0.0941  0.0941  0.0473  0.0476  0.0468  0.0479
+                                                         ring_same minus ring_other     0.0113  0.0113  0.0328  0.0435  0.7293  0.7941
+S4 same-state only: nbr_same + ring_same                 nbr_same minus ring_same       0.0638  0.0638  0.0263  0.0227  0.0153  0.0049
+S5 S3 without AP and TS                                  nbr_same minus nbr_other       0.1189  0.1189  0.0660  0.0425  0.0716  0.0052
+                                                         nbr_same minus ring_same       0.1021  0.1021  0.0472  0.0377  0.0305  0.0067
+                                                         nbr_other minus ring_other     0.0321  0.0321  0.0242  0.0378  0.1835  0.3947
+                                                         edge within minus edge across  0.0700  0.0700  0.0429  0.0474  0.1029  0.1400
+                                                         ring_same minus ring_other     0.0490  0.0490  0.0398  0.0383  0.2183  0.2015
+S6 S3 with 2011 states before 2014                       nbr_same minus nbr_other       0.1152  0.1152  0.0624  0.0424  0.0649  0.0065
+                                                         nbr_same minus ring_same       0.1347  0.1347  0.0511  0.0409  0.0083  0.0010
+                                                         nbr_other minus ring_other     0.0293  0.0293  0.0211  0.0296  0.1651  0.3221
+                                                         edge within minus edge across  0.1054  0.1054  0.0489  0.0521  0.0312  0.0433
+                                                         ring_same minus ring_other     0.0099  0.0099  0.0349  0.0467  0.7775  0.8326
+
+=== soybean surge ===
+                                                                          b              se        
+cluster                                                                unit   state    unit   state
+spec                                                     var                                       
+S1 nbr + ring (128)                                      nbr         0.0968  0.0968  0.0385  0.0446
+                                                         ring        0.0309  0.0309  0.0164  0.0145
+S2 border units: nbr_same + nbr_other + ring (128 split) ring        0.0340  0.0340  0.0272  0.0211
+                                                         nbr_same    0.0367  0.0367  0.0316  0.0285
+                                                         nbr_other   0.0289  0.0289  0.0217  0.0158
+S3 border units: four sets                               nbr_same    0.0661  0.0661  0.0363  0.0502
+                                                         nbr_other   0.0780  0.0780  0.0344  0.0493
+                                                         ring_same   0.0193  0.0193  0.0278  0.0182
+                                                         ring_other -0.0033 -0.0033  0.0107  0.0147
+S4 same-state only: nbr_same + ring_same                 nbr_same    0.0507  0.0507  0.0295  0.0401
+                                                         ring_same   0.0312  0.0312  0.0177  0.0107
+S5 S3 without AP and TS                                  nbr_same    0.0596  0.0596  0.0394  0.0560
+                                                         nbr_other   0.1059  0.1059  0.0422  0.0737
+                                                         ring_same   0.0329  0.0329  0.0300  0.0159
+                                                         ring_other -0.0053 -0.0053  0.0116  0.0173
+S6 S3 with 2011 states before 2014                       nbr_same    0.0667  0.0667  0.0368  0.0510
+                                                         nbr_other   0.0775  0.0775  0.0338  0.0503
+                                                         ring_same   0.0164  0.0164  0.0279  0.0199
+                                                         ring_other -0.0039 -0.0039  0.0105  0.0146
+                                                             n  n_units  n_events
+spec                                                                             
+S1 nbr + ring (128)                                       6737      370        22
+S2 border units: nbr_same + nbr_other + ring (128 split)  3795      208        11
+S3 border units: four sets                                1825      102         8
+S4 same-state only: nbr_same + ring_same                  5650      312        21
+S5 S3 without AP and TS                                   1701       94         6
+S6 S3 with 2011 states before 2014                        1786      103         8
+                                                                                             b              se               p        
+cluster                                                                                   unit   state    unit   state    unit   state
+spec                                                     test                                                                         
+S1 nbr + ring (128)                                      nbr minus ring                 0.0659  0.0659  0.0416  0.0407  0.1128  0.1053
+S2 border units: nbr_same + nbr_other + ring (128 split) nbr_same minus nbr_other       0.0078  0.0078  0.0288  0.0272  0.7877  0.7748
+S3 border units: four sets                               nbr_same minus nbr_other      -0.0120 -0.0120  0.0370  0.0388  0.7459  0.7572
+                                                         nbr_same minus ring_same       0.0468  0.0468  0.0510  0.0654  0.3591  0.4747
+                                                         nbr_other minus ring_other     0.0813  0.0813  0.0374  0.0571  0.0297  0.1544
+                                                         edge within minus edge across -0.0346 -0.0346  0.0476  0.0503  0.4676  0.4925
+                                                         ring_same minus ring_other     0.0226  0.0226  0.0238  0.0180  0.3433  0.2092
+S4 same-state only: nbr_same + ring_same                 nbr_same minus ring_same       0.0195  0.0195  0.0345  0.0375  0.5722  0.6032
+S5 S3 without AP and TS                                  nbr_same minus nbr_other      -0.0463 -0.0463  0.0417  0.0439  0.2674  0.2920
+                                                         nbr_same minus ring_same       0.0268  0.0268  0.0530  0.0717  0.6135  0.7092
+                                                         nbr_other minus ring_other     0.1113  0.1113  0.0431  0.0775  0.0098  0.1510
+                                                         edge within minus edge across -0.0845 -0.0845  0.0471  0.0339  0.0731  0.0127
+                                                         ring_same minus ring_other     0.0382  0.0382  0.0266  0.0173  0.1508  0.0273
+S6 S3 with 2011 states before 2014                       nbr_same minus nbr_other      -0.0107 -0.0107  0.0370  0.0413  0.7716  0.7952
+                                                         nbr_same minus ring_same       0.0504  0.0504  0.0521  0.0672  0.3341  0.4537
+                                                         nbr_other minus ring_other     0.0814  0.0814  0.0370  0.0574  0.0278  0.1562
+                                                         edge within minus edge across -0.0310 -0.0310  0.0487  0.0547  0.5243  0.5708
+                                                         ring_same minus ring_other     0.0203  0.0203  0.0242  0.0202  0.4022  0.3163
+
+=== cotton surge ===
+                                                                          b              se        
+cluster                                                                unit   state    unit   state
+spec                                                     var                                       
+S1 nbr + ring (128)                                      nbr         0.0918  0.0918  0.0332  0.0279
+                                                         ring        0.0852  0.0852  0.0442  0.0344
+S2 border units: nbr_same + nbr_other + ring (128 split) ring        0.1172  0.1172  0.0576  0.0490
+                                                         nbr_same    0.0798  0.0798  0.0710  0.0973
+                                                         nbr_other   0.0222  0.0222  0.0255  0.0175
+S3 border units: four sets                               nbr_same   -0.0521 -0.0521  0.0851  0.1345
+                                                         nbr_other  -0.0147 -0.0147  0.0227  0.0234
+                                                         ring_same   0.0617  0.0617  0.0453  0.0907
+                                                         ring_other -0.0059 -0.0059  0.0087  0.0039
+S4 same-state only: nbr_same + ring_same                 nbr_same    0.1011  0.1011  0.0536  0.0664
+                                                         ring_same   0.0963  0.0963  0.0546  0.0574
+S6 S3 with 2011 states before 2014                       nbr_same    0.0077  0.0077  0.0735  0.0828
+                                                         nbr_other  -0.0156 -0.0156  0.0226  0.0231
+                                                         ring_same   0.0680  0.0680  0.0535  0.0979
+                                                         ring_other -0.0014 -0.0014  0.0080  0.0042
+                                                             n  n_units  n_events
+spec                                                                             
+S1 nbr + ring (128)                                       6763      370        31
+S2 border units: nbr_same + nbr_other + ring (128 split)  3802      208        20
+S3 border units: four sets                                1836      102        10
+S4 same-state only: nbr_same + ring_same                  5676      312        29
+S6 S3 with 2011 states before 2014                        1810      101         8
+                                                                                             b              se               p        
+cluster                                                                                   unit   state    unit   state    unit   state
+spec                                                     test                                                                         
+S1 nbr + ring (128)                                      nbr minus ring                 0.0066  0.0066  0.0628  0.0541  0.9161  0.9027
+S2 border units: nbr_same + nbr_other + ring (128 split) nbr_same minus nbr_other       0.0576  0.0576  0.0802  0.0993  0.4728  0.5619
+S3 border units: four sets                               nbr_same minus nbr_other      -0.0374 -0.0374  0.0959  0.1381  0.6961  0.7863
+                                                         nbr_same minus ring_same      -0.1139 -0.1139  0.1152  0.2250  0.3229  0.6128
+                                                         nbr_other minus ring_other    -0.0088 -0.0088  0.0265  0.0223  0.7398  0.6927
+                                                         edge within minus edge across -0.1051 -0.1051  0.1245  0.2292  0.3988  0.6467
+                                                         ring_same minus ring_other     0.0676  0.0676  0.0457  0.0931  0.1392  0.4675
+S4 same-state only: nbr_same + ring_same                 nbr_same minus ring_same       0.0048  0.0048  0.0871  0.1222  0.9558  0.9685
+S6 S3 with 2011 states before 2014                       nbr_same minus nbr_other       0.0233  0.0233  0.0852  0.0864  0.7847  0.7878
+                                                         nbr_same minus ring_same      -0.0603 -0.0603  0.1020  0.1747  0.5541  0.7298
+                                                         nbr_other minus ring_other    -0.0141 -0.0141  0.0262  0.0250  0.5904  0.5721
+                                                         edge within minus edge across -0.0462 -0.0462  0.1107  0.1776  0.6763  0.7947
+                                                         ring_same minus ring_other     0.0695  0.0695  0.0521  0.0979  0.1825  0.4777
+
+reproduction of script 128 nbr + ring: max |b - b_128| = 9.37e-17 over 26 terms
+reproduction of script 128 split: max |b - b_128| = 9.80e-17 over 39 terms
+
+chickpea surge: events by year: 2001: 3, 2002: 1, 2003: 1, 2006: 3, 2007: 1, 2008: 4, 2009: 2, 2010: 6, 2011: 2, 2012: 3, 2013: 1, 2014: 3, 2015: 5, 2016: 2, 2017: 8, 2018: 2
+  events in an NFSM-pulses unit that year: 34 of 47; at-risk unit-years covered 0.51; events 2007-2009 7
+  states with within-state variation in NFSM pulses coverage, by year: 2007: 15, 2008: 15, 2009: 15, 2010: 1, 2011: 1, 2012: 1, 2013: 1, 2014: 1, 2015: 0, 2016: 0, 2017: 0, 2018: 0, 2019: 0
+
+chickpea entry: events by year: 2001: 10, 2002: 3, 2003: 1, 2004: 2, 2005: 3, 2006: 6, 2007: 2, 2010: 1, 2011: 1, 2012: 2, 2013: 2, 2014: 2, 2015: 5, 2016: 3, 2017: 5, 2018: 2
+  events in an NFSM-pulses unit that year: 22 of 50; at-risk unit-years covered 0.48; events 2007-2009 2
+  states with within-state variation in NFSM pulses coverage, by year: 2007: 14, 2008: 14, 2009: 14, 2010: 1, 2011: 1, 2012: 1, 2013: 1, 2014: 1, 2015: 0, 2016: 0, 2017: 0, 2018: 0, 2019: 0
+                                                                         b              se               p        
+cluster                                                               unit   state    unit   state    unit   state
+mode  spec                                        var                                                             
+surge base: nbr + ring                            nbr               0.0943  0.0943  0.0318  0.0341  0.0030  0.0057
+                                                  ring              0.0113  0.0113  0.0175  0.0081  0.5206  0.1636
+                                                  nbr minus ring    0.0830  0.0830  0.0404  0.0379  0.0397  0.0284
+      + NFSM own, nbr share, ring share           nbr               0.0941  0.0941  0.0317  0.0338  0.0030  0.0053
+                                                  ring              0.0111  0.0111  0.0176  0.0083  0.5296  0.1823
+                                                  nbr minus ring    0.0830  0.0830  0.0403  0.0378  0.0392  0.0281
+                                                  nf_own           -0.0058 -0.0058  0.0069  0.0050  0.4023  0.2514
+                                                  nf_nbr            0.0049  0.0049  0.0131  0.0095  0.7112  0.6096
+                                                  nf_ring           0.0055  0.0055  0.0083  0.0069  0.5076  0.4262
+      base, 2007-2019 only                        nbr               0.0894  0.0894  0.0325  0.0316  0.0060  0.0047
+                                                  ring              0.0118  0.0118  0.0182  0.0080  0.5175  0.1402
+                                                  nbr minus ring    0.0776  0.0776  0.0417  0.0354  0.0631  0.0283
+      same-state nbrs split by shared NFSM status nbr_same_nfmatch  0.0913  0.0913  0.1716  0.0128  0.5946  0.0000
+                                                  nbr_same_nfdiff   0.0596  0.0596  0.0619  0.0519  0.3358  0.2511
+entry base: nbr + ring                            nbr               0.0139  0.0139  0.0156  0.0117  0.3742  0.2367
+                                                  ring              0.0132  0.0132  0.0102  0.0081  0.1959  0.1025
+                                                  nbr minus ring    0.0006  0.0006  0.0197  0.0123  0.9744  0.9590
+      + NFSM own, nbr share, ring share           nbr               0.0141  0.0141  0.0157  0.0121  0.3681  0.2430
+                                                  ring              0.0137  0.0137  0.0103  0.0084  0.1834  0.1046
+                                                  nbr minus ring    0.0004  0.0004  0.0198  0.0126  0.9826  0.9728
+                                                  nf_own           -0.0032 -0.0032  0.0043  0.0037  0.4486  0.3852
+                                                  nf_nbr            0.0125  0.0125  0.0130  0.0157  0.3370  0.4276
+                                                  nf_ring          -0.0113 -0.0113  0.0062  0.0062  0.0673  0.0693
+      base, 2007-2019 only                        nbr               0.0104  0.0104  0.0141  0.0157  0.4605  0.5062
+                                                  ring              0.0027  0.0027  0.0075  0.0063  0.7192  0.6720
+                                                  nbr minus ring    0.0077  0.0077  0.0173  0.0195  0.6545  0.6928
+
+Event-year gap for pairs where both units have the event:
+ episode  mode                 pairs  n_pairs  share_same_year  share_within_1y  share_within_2y  median_gap
+chickpea surge  adjacent, same state       52            0.231            0.423            0.500         2.5
+chickpea surge adjacent, other state        9            0.000            0.222            0.222         4.0
+chickpea surge      ring, same state        1            0.000            1.000            1.000         1.0
+chickpea surge     ring, other state        2            0.000            0.000            0.000         3.5
+chickpea entry  adjacent, same state       45            0.222            0.311            0.356         4.0
+chickpea entry adjacent, other state       13            0.000            0.000            0.077         8.0
+chickpea entry      ring, same state        5            0.400            0.400            0.400         3.0
+chickpea entry     ring, other state        2            0.000            0.000            0.000         3.0
+ soybean entry  adjacent, same state       15            0.067            0.333            0.400         4.0
+ soybean entry adjacent, other state        6            0.167            0.333            0.500         3.0
+ soybean entry      ring, same state        0              NaN              NaN              NaN         NaN
+ soybean entry     ring, other state        0              NaN              NaN              NaN         NaN
+ soybean surge  adjacent, same state       30            0.167            0.433            0.600         2.0
+ soybean surge adjacent, other state        8            0.000            0.375            0.500         2.5
+ soybean surge      ring, same state        3            0.000            0.000            0.667         2.0
+ soybean surge     ring, other state        0              NaN              NaN              NaN         NaN
+  cotton surge  adjacent, same state       40            0.175            0.425            0.625         2.0
+  cotton surge adjacent, other state       11            0.182            0.273            0.273         6.0
+  cotton surge      ring, same state        5            0.000            0.400            0.600         2.0
+  cotton surge     ring, other state        1            0.000            0.000            0.000         8.0
+  cotton entry  adjacent, same state        3            0.000            0.333            0.667         2.0
+  cotton entry adjacent, other state        2            0.000            1.000            1.000         1.0
+  cotton entry      ring, same state        0              NaN              NaN              NaN         NaN
+  cotton entry     ring, other state        0              NaN              NaN              NaN         NaN

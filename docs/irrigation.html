@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Irrigation and Crop Diversity</title>
-<meta name="description" content="Within the same state, the effective number of crops changes little across Indian districts until irrigation covers about half of sown area, and falls beyond that. Districts already heavily irrigated in 1991 grow fewer crops today.">
+<meta name="description" content="Within each Indian state, districts that were already heavily irrigated in 1991 grow fewer crops in effective terms today, and crop diversity falls once irrigation covers more than about half of sown area. Where irrigation spread later, the records show no matching fall.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,11 +32,13 @@
 <header class="mast">
   <div class="prose">
     <p class="mast__label">Irrigation</p>
-    <h1 class="mast__title">How irrigation lines up with crop diversity</h1>
+    <h1 class="mast__title">Districts irrigated early grow fewer crops today</h1>
     <div class="mast__rule"></div>
-    <p class="mast__sub">Set against other districts of the same state, crop diversity changes
-    little until irrigation covers about half of sown area, and falls once it covers more. When a
-    district's own irrigation rises over the years, its diversity barely moves.</p>
+    <p class="mast__sub">Within each state, the districts that were already heavily irrigated in
+    1991 grow about two fewer crops in effective terms today than the least irrigated, and crop
+    diversity falls once irrigation covers more than about half of sown area. Where irrigation
+    spread after 1991, no matching fall shows up, although the records follow that spread too
+    loosely to rule one out.</p>
   </div>
 </header>
 
@@ -70,9 +72,11 @@
     effective number drops, by 1.05 in the fourth quintile (p = 0.07) and by 2.14 in the most
     irrigated, above 77 percent (p = 0.013), about two-fifths of what the average
     district grows. By deciles, none of the first seven differs significantly from the least irrigated.</p>
-    <p>A straight line drawn through districts below 30 percent irrigated has a slope that is not
-    statistically significant (p = 0.12), whereas above 30 percent the effective number of crops
-    falls by about 0.4 for every 10 more points of sown area irrigated (p = 0.022).</p>
+    <p>Where the fall begins is less certain than the fall itself. The best-fitting bend sits at 43
+    percent irrigated, yet anywhere from about 30 to 70 percent fits almost as well, and the years
+    since 2015 put it nearer 60. With the bend drawn at half of sown area, the line below it is flat
+    (p = 0.61), while above it the effective number of crops falls by about 0.6 for every 10 more
+    points irrigated (p = 0.037).</p>
     <p>Because canal commands and tubewell belts were built where soils, aquifers and terrain
     already favoured some kinds of farming, these figures describe how districts differ from one
     another. A district that added irrigation need not follow them.</p>
@@ -101,10 +105,10 @@
     over 2017&ndash;18 to 2021&ndash;22 it grows 1.98 fewer, and in 2020&ndash;21 and 2021&ndash;22
     alone 2.67 fewer, with p between 0.009 and 0.023.</p>
     <p>The second and third quintiles stay within a third of a crop of the least irrigated in every
-    recent set of years, and none of those gaps is statistically significant. Above 30 percent
-    irrigated, the effective number of crops in 2017&ndash;18 to 2021&ndash;22 falls by about 0.3
-    for every 10 more points of sown area irrigated (p = 0.044), while below 30 percent the slope is
-    close to zero (p = 0.60).</p>
+    recent set of years, and none of those gaps is statistically significant. Once more than half
+    of sown area is irrigated, the effective number of crops in 2017&ndash;18 to 2021&ndash;22 falls
+    by about 0.5 for every 10 more points irrigated (p = 0.032), while below half the slope is close
+    to zero (p = 0.79).</p>
   </div>
 </section>
 
@@ -134,6 +138,11 @@
     irrigated quintile of the same state (p = 0.002), and 1.95 fewer over 1998&ndash;99 to
     2019&ndash;20 (p = 0.003). The fourth quintile sits lower as well, by 0.62 and 0.84, although
     neither gap is statistically significant.</p>
+    <p>The gap at the top is the firm part. A smooth curve through all 539 districts bends downward
+    clearly in 2017&ndash;18 to 2021&ndash;22 (p = 0.010), yet over the full period its p is 0.11,
+    and it weakens to 0.19 when the 1991 totals are taken as villages reported them, without filling
+    blanks from the irrigation sources. Among the drier districts of 1991 there is no rise to match
+    the later decline.</p>
   </div>
 </section>
 
@@ -161,6 +170,10 @@
     <p>The answer stays the same when districts whose cropped area grew by more than half or shrank
     by more than a third are left out, since such large moves can mark a change of district boundaries rather than of
     farming.</p>
+    <p>Because the census and the yearly land-use figures disagree so widely about how far
+    irrigation spread in each district, a modest change in either direction could hide inside these
+    estimates. For how a district's crops compare with its neighbours', see the
+    <a href="neighbours.html">Neighbours</a> page.</p>
   </div>
 </section>
 
@@ -168,24 +181,38 @@
 <section class="section scene-sec" id="s9">
   <div class="scene fade">
     <p class="scene__kicker">05 · Inside each district</p>
-    <h2 class="scene__h">When a district's own irrigated share rises over the years, its effective number of crops barely moves.</h2>
+    <h2 class="scene__h">A district's effective number of crops barely moves as its own irrigated share rises, although the yearly irrigation figures are too noisy to rule out a real fall.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
-      <div id="v9" class="chart" role="img" aria-label="What 10 more percentage points of irrigated sown area goes with. Across districts in the same state, above 30 percent irrigated, the effective number of crops is about 0.41 lower. Within the same district over time, the change is between minus 0.06 and plus 0.02."></div>
+      <div id="v9" class="chart" role="img" aria-label="What 10 more percentage points of irrigated sown area goes with. Across districts in the same state, above half irrigated, the effective number of crops is about 0.57 lower. Within the same district over time, the change is between minus 0.06 and plus 0.02, or between minus 0.52 and plus 0.13 once noise in the yearly irrigation figures is allowed for."></div>
       <p class="readout readout--line" id="v9-read" aria-live="polite"></p>
       <p class="figure__note"><span>Change in the effective number of crops for 10 more percentage
       points of sown area irrigated, with 95 percent intervals. The district's own change uses net
       irrigated over net sown area from the yearly land-use statistics, 1998&ndash;99 to
-      2019&ndash;20.</span><button class="replay" data-scene="9" aria-label="Replay animation">replay</button></p>
+      2019&ndash;20. The third row scales the second up for the noise in those figures, judged
+      against the census.</span><button class="replay" data-scene="9" aria-label="Replay animation">replay</button></p>
     </div>
   </div>
   <div class="prose prose--flow scene-prose fade">
-    <p>Across districts of the same state, once irrigation passes 30 percent of sown area, every 10
-    more points goes with about 0.4 fewer effective crops. Inside a district the line goes flat.
+    <p>Across districts of the same state, once irrigation passes half of sown area, every 10
+    more points goes with about 0.6 fewer effective crops. Inside a district the line goes flat.
     Holding the district and its state's year fixed, 10 more percentage points of irrigation go
     with a change of between &minus;0.06 and +0.02 in the effective number of crops, on a mean of
     4.9.</p>
+    <p>That flat line proves less than it seems. Between 2001 and 2011 the yearly land-use figures
+    and the census village directories ought to agree on how much each district's irrigation grew,
+    yet within a state the two changes correlate at only 0.13. If each record makes its own
+    mistakes, only about an eighth of the change in the yearly figures is real, somewhere between 2
+    and 27 percent, and a slope drawn mostly on noise sinks toward zero. Scaled up for that noise,
+    the range inside a district widens to between &minus;0.52 and +0.13 per 10 points, which only
+    just excludes the fall seen across districts. With a slightly noisier record it would not.</p>
+    <p>Letting the census change stand in for the yearly figures does not settle it, because the
+    census change predicts the yearly change too weakly (a first-stage F of 4, against the usual bar
+    of 10), and its estimate of +0.68 per 10 points comes with a 95 percent interval from
+    &minus;0.22 to +1.57. So the comparison inside districts rules out a large fall that the yearly
+    figures record cleanly. It cannot rule out that districts gaining irrigation slowly lose crops
+    at the pace the comparison across districts suggests.</p>
     <p>Districts that were already well irrigated show a more negative slope over time than drier
     ones, although once uncertainty is allowed to run across whole states that difference is not
     statistically significant (p = 0.11).</p>
@@ -424,7 +451,7 @@
 <section class="section scene-sec" id="s8">
   <div class="scene fade">
     <p class="scene__kicker">13 · Other district characteristics</p>
-    <h2 class="scene__h">Producer organisations and cropping intensity are the two district characteristics still linked to the effective number of crops within state once irrigation and holding size are held constant.</h2>
+    <h2 class="scene__h">Farmer collectives and cropping intensity are the two district characteristics still linked to the effective number of crops within state once irrigation and holding size are held constant.</h2>
   </div>
   <div class="scene-fig fade">
     <div class="figure__frame">
@@ -434,7 +461,7 @@
         <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="#0E9BB5"/></svg>adjusted, p &lt; 0.05</span>
         <span class="legend__item"><svg width="12" height="12"><circle cx="6" cy="6" r="4.2" fill="none" stroke="#0E9BB5" stroke-width="1.6"/></svg>adjusted, p &ge; 0.05</span>
       </div>
-      <div id="v8" class="chart" role="img" aria-label="Twelve district characteristics against the effective number of crops, alone and adjusted. After adjustment only producer organisations, at +0.36 per standard deviation, and cropping intensity, at +0.56, remain clearly positive. Food storage warehouses, regular markets, canal dependence, cultivator share and holding size shrink toward zero."></div>
+      <div id="v8" class="chart" role="img" aria-label="Twelve district characteristics against the effective number of crops, alone and adjusted. After adjustment only farmer collectives (a producer organisation or a primary agricultural credit society), at +0.36 per standard deviation, and cropping intensity, at +0.56, remain clearly positive. Food storage warehouses, regular markets, canal dependence, cultivator share and holding size shrink toward zero."></div>
       <p class="readout readout--line" id="v8-read" aria-live="polite"></p>
       <p class="figure__note"><span>Adjusted means within state, with irrigated share, its square and
       mean holding size held constant. Facilities are shares of villages, and values are per standard
@@ -444,7 +471,7 @@
   <div class="prose prose--flow scene-prose fade">
     <p>Within state, and with irrigation and farm size held constant, two characteristics keep a
     clear association with the effective number of crops. A district where every village has a
-    producer organisation scores 1.88 higher than one where none does (p = 0.029), or about 0.36
+    farmer collective (a producer organisation or a primary agricultural credit society) scores 1.88 higher than one where none does (p = 0.029), or about 0.36
     for one standard deviation in the share of villages that have one. Cropping intensity, gross
     cropped area over net sown area, carries +2.31 per unit (p &lt; 0.0001), about 0.56 for one
     standard deviation.</p>
@@ -476,8 +503,23 @@
         number of states. Every p-value in the first four charts and in the source chart comes from
         a wild cluster bootstrap by state (restricted, Webb weights, 9,999 draws), which is more
         cautious than the intervals drawn, so a whisker can just clear zero while p sits a little
-        above 0.05. The two-piece line has a single change of slope at 30 percent irrigated, and 85
-        percent of districts lie above that point.</p>
+        above 0.05.</p>
+        <p><strong>Where the line bends.</strong> The two-piece line has a single change of slope,
+        placed at half of sown area irrigated, with 56 percent of districts above it. Every bend from
+        20 to 80 percent, a point apart, was fitted with state fixed effects. The best fit is at 43
+        percent; bends whose fit is not significantly worse (likelihood ratio, 95 percent) run from 36
+        to 65 percent, and a wild cluster bootstrap by state (Webb weights, 1,999 draws) puts the 95
+        percent interval at 29 to 72 percent. Half lies inside both, so the round figure is drawn. A
+        bent line fits better than a straight one with p = 0.077 over 1998&ndash;99 to 2019&ndash;20
+        and p = 0.021 in 2017&ndash;18 to 2021&ndash;22, where the best bend is at 58 percent (largest
+        Wald statistic over all bends, bootstrapped by state). Leaving out one state at a time moves
+        the best bend between 42 and 60 percent. On the other irrigation records it sits lower, at 16
+        percent on the land-use statistics averaged over 1998&ndash;99 to 2019&ndash;20 and at 19
+        percent on the 2011 census, both of which run below the village records of 2019&ndash;20, so
+        where the fall begins depends on which record measures irrigation. Among the other measures
+        of diversity, the number of main crops at 0.5 percent bends at 57 percent, the count of crops
+        at 38 percent and the number of main crops by inverse Simpson at 42 percent, none of them
+        more precisely.</p>
         <p><strong>Recent years.</strong> Crop records extend to 2021&ndash;22. From 2020&ndash;21 a
         few crops are listed differently, so the windows reaching past 2019&ndash;20 leave out six
         minor crops (niger seed, coriander, garlic, turmeric, cashewnut and banana) in every year,
@@ -537,7 +579,23 @@
         &minus;1.06 (0.73), and with state clusters the squared term has p = 0.11. Lagging irrigation
         by a year weakens the curvature and next year's irrigation shows some of its own, which
         points to year-specific reporting moving both series. The comparison across districts in the
-        same chart is the slope above 30 percent irrigated from the two-piece line.</p>
+        same chart is the slope above half irrigated from the two-piece line.</p>
+        <p><strong>Noise in the yearly irrigation figures.</strong> Year-on-year changes in a
+        district's land-use irrigated share are negatively correlated (&minus;0.30), as reporting
+        noise that comes and goes would make them. Read that way, such noise makes up about a fifth
+        of the variation the within-district slope uses, which on its own would barely move it.
+        Slower errors are larger. Over 388 districts in 18 states with both records, the change in
+        the land-use share from 2000&ndash;01 to 2002&ndash;03 to 2010&ndash;11 to 2012&ndash;13 and
+        the change in the census village-directory share from 2001 to 2011 correlate at 0.13 within
+        state, so if the two records err independently the signal is 12 percent of the land-use
+        change (state bootstrap, 2 to 27 percent) and 15 percent of the census change. The third row
+        of the chart divides the within-district slope and its interval by 0.12. In a long
+        difference of the effective number of crops over the same years, the land-use change
+        instrumented by the census change has a first-stage F of 4.0 and an estimate of +6.8 per unit
+        (95 percent interval &minus;2.2 to +15.7); the Anderson-Rubin interval, which stays valid
+        with a weak instrument, has no upper end. Other windows, leaving out districts that share
+        2011 records or changed territory, and setting spike years aside give the same picture, with
+        first-stage F between 1.8 and 7.1.</p>
         <p>No source of variation in irrigation clears both hurdles of a strong first stage and a
         credible exclusion. Shift-share instruments built from each district's starting mix of
         canal, tank and well irrigation and each source's growth in other states mostly track
@@ -629,6 +687,6 @@
   </div>
 </footer>
 <script src="js/site.js?v=e2b6885b"></script>
-<script src="js/irrigation.js?v=c4911b1c"></script>
+<script src="js/irrigation.js?v=80e25102"></script>
 </body>
 </html>

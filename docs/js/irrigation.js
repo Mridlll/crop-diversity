@@ -719,7 +719,7 @@ SC[7] = scene({
    ================================================================ */
 const DIMN = { canal: 'share of villages relying on canals', hold: 'mean holding size (log)', cult: 'cultivator share of agricultural workers',
                landless: 'landless share of rural households', mandi: 'share of villages with a mandi', haat: 'share of villages with a weekly haat',
-               regular: 'share of villages with a regular market', fpo: 'share of villages with a producer organisation', cold: 'share of villages with a food storage warehouse',
+               regular: 'share of villages with a regular market', fpo: 'share of villages with a farmer collective (producer organisation or credit society)', cold: 'share of villages with a food storage warehouse',
                sc: 'Scheduled Caste population share', st: 'Scheduled Tribe population share', ci: 'cropping intensity' };
 SC[8] = scene({
     mode: 'sd', u: 1,
@@ -779,7 +779,7 @@ SC[8] = scene({
         this.place(this.u);
     },
     readDefault() {
-        setRead('#v8-read', '<span class="dim">Hover or tap a row.</span> Adjusted, per standard deviation: producer organisations <b>+0.36</b>, cropping intensity <b>+0.56</b>.');
+        setRead('#v8-read', '<span class="dim">Hover or tap a row.</span> Adjusted, per standard deviation: farmer collectives <b>+0.36</b>, cropping intensity <b>+0.56</b>.');
     },
     place(t) {
         (this.items || []).forEach(it => {
@@ -854,8 +854,9 @@ const rowScene = o => scene(Object.assign({
 }, o));
 
 /* ================================================================
-   05 inside each district: the slope across districts above 30 percent
-   irrigated against the slope inside a district over time.
+   05 inside each district: the slope across districts above the knot of
+   the two-piece line (V.spline.full.knot, 0.50) against the slope inside a district over time,
+   and that slope scaled up for noise in the yearly irrigation figures (V.attenuation, script 135).
    Reads data/site_irrigation_panel.json and site_irrigation_v2.json.
    ================================================================ */
 let DP = null;
@@ -864,10 +865,11 @@ SC[9] = rowScene({
     xlab: 'change in effective number of crops for 10 more points of sown area irrigated',
     xlabN: 'per 10 points more irrigated',
     rows() {
-        const s = V.spline.full, w = DP.within;
+        const s = V.spline.full, w = DP.within, A = V.attenuation;
         return [
-            { name: 'across districts in a state, above 30% irrigated', b: s.above / 10, ci: [s.above_ci[0] / 10, s.above_ci[1] / 10], p: s.above_p, col: LT },
+            { name: `across districts in a state, above ${Math.round(s.knot * 100)}% irrigated`, b: s.above / 10, ci: [s.above_ci[0] / 10, s.above_ci[1] / 10], p: s.above_p, col: LT },
             { name: 'same district over time', b: w.b / 10, ci: [(w.b - 1.96 * w.se) / 10, (w.b + 1.96 * w.se) / 10], p: w.p, col: CY },
+            { name: 'same district, allowing for noisy irrigation records', b: A.within_corr_b / 10, ci: [A.within_corr_ci[0] / 10, A.within_corr_ci[1] / 10], p: w.p, col: GY },
         ];
     },
     text(r) {

@@ -1,7 +1,8 @@
 /* ================================================================
    MARKETS PAGE: scene visuals.
    Reads data/site_markets.json, data/site_markets_pop.json,
-   data/site_market_map.json, data/site_typology.json and
+   data/site_market_map.json, data/site_typology.json,
+   data/site_markets_v2.json and
    data/districts.geojson. Facilities are population shares: the share
    of a district's rural people living in a village with the facility.
    Depends on site.js for svgEl, lin, showTip, hideTip, safeTip,
@@ -24,14 +25,14 @@ const RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: r
 const NEU = '#B3B3B0';
 const ID = { 'weekly haat': '#0E9BB5', 'FPO': '#1FA35A', 'fertiliser shop': '#7C5CE0', 'mandi': '#C63FD8' };
 const colOf = f => ID[f] || NEU;
-const LBL = { 'FPO': 'producer organisation', 'custom hiring': 'custom hiring of machinery',
+const LBL = { 'FPO': 'farmer collective', 'custom hiring': 'custom hiring of machinery',
               'cold storage': 'food storage warehouse' };
 const lab = f => LBL[f] || f;
 /* what a village with the facility "has", for readouts */
 const HAS = { 'mandi': 'a mandi', 'regular market': 'a regular market', 'weekly haat': 'a weekly haat',
               'fertiliser shop': 'a fertiliser shop', 'seed centre': 'a seed centre', 'soil testing': 'soil testing',
               'custom hiring': 'a custom hiring centre for machinery', 'cold storage': 'a food storage warehouse',
-              'farm-gate processing': 'farm-gate processing', 'FPO': 'a producer organisation' };
+              'farm-gate processing': 'farm-gate processing', 'FPO': 'a farmer collective' };
 /* standard deviation of each facility's population share, filled from the data at init */
 let SD = {}, SDV = {};
 /* outcome means not carried in the export */
@@ -130,6 +131,7 @@ const scene = o => Object.assign({ run: 0, timers: [], played: false }, o);
 
 /* segmented buttons */
 function segs(host, items, onPick, cur) {
+    if (!host) return;
     host.innerHTML = '';
     items.forEach(it => {
         const b = document.createElement('button');
@@ -431,7 +433,7 @@ SC[2] = scene({
 const LAYERS = [
     { key: 'haat', f: 'weekly haat', name: 'weekly haat' },
     { key: 'fert', f: 'fertiliser shop', name: 'fertiliser shop' },
-    { key: 'fpo', f: 'FPO', name: 'producer organisation' },
+    { key: 'fpo', f: 'FPO', name: 'farmer collective' },
     { key: 'mandi', f: 'mandi', name: 'mandi' },
 ];
 const NODATA = 'rgba(255,255,255,0.035)';
@@ -688,7 +690,7 @@ SC[5] = scene({
 function coefChart(host, rows, o) {
     const W = host.clientWidth || 700, nar = W < 560;
     const lw = o.labelW ? o.labelW(nar) : (nar ? 120 : 200);
-    const rowH = nar ? 32 : 32;
+    const rowH = o.rowH || 32;
     const m = { t: o.top || 12, r: nar ? 18 : 30, b: 48, l: lw };
     const H = m.t + rows.length * rowH + m.b;
     const svg = svgFor(host, W, H);
@@ -1127,12 +1129,68 @@ SC[11] = scene({
 });
 
 /* ================================================================
+   15 what the extra haat crops are: area floors, then crop by crop
+   ================================================================ */
+let MV = null;
+const HAAT = '#0E9BB5';
+SC[15] = scene({
+    v: 'floor', u: 1,
+    controls() {
+        segs($('#v15-ctl'), [{ key: 'floor', name: 'Crops counted above an area floor' }, { key: 'crop', name: 'Crop by crop' }],
+            k => { this.v = k; pressSeg($('#v15-ctl'), k); cancel(this); this.played = true; this.u = 1; this.render(); }, this.v);
+    },
+    rows() {
+        if (this.v === 'floor') {
+            const L = { D0: 'every crop grown', D0_01: 'crops on at least 0.1% of the land', D0_05: 'crops on at least 0.5%',
+                        D0_1: 'crops on at least 1%', D1: 'effective number of crops' };
+            return MV.thresholds.map(r => ({ label: L[r.key], b: r.b, lo: r.lo, hi: r.hi, sig: r.p_wild < 0.05,
+                                             color: HAAT, kind: 'floor', r }));
+        }
+        return MV.crops.slice().sort((a, b) => b.b - a.b).map(r => ({
+            label: r.name, b: r.b * 100, lo: r.lo * 100, hi: r.hi * 100,
+            sig: r.p_wild !== null && r.p_wild < 0.05, color: r.b > 0 ? HAAT : NEU, kind: 'crop', r }));
+    },
+    tip(it) {
+        const r = it.r, sd = MV.sd_haat;
+        if (it.kind === 'floor') {
+            return `<strong>${it.label}</strong><br>${sgn(r.b, 2)} if every rural resident had a weekly haat in the village` +
+                `<br>one standard deviation more haat reach (${(sd * 100).toFixed(0)} percent of rural people): ${sgn(r.b * sd, 2)}` +
+                `<br>district average ${r.mean.toFixed(1)}<br>p = ${fmtP(r.p_wild)}, districts in a state allowed to move together`;
+        }
+        return `<strong>${it.label}</strong><br>grown in ${(r.presence * 100).toFixed(0)} percent of a district's years on average, on ${r.share < 0.1 ? 'under 0.1' : r.share.toFixed(1)} percent of its cropped area` +
+            `<br>${sgn(r.b * 100 * sd, 1)} percentage points of years for one standard deviation more haat reach` +
+            (r.drop6 ? '<br>one of the six crops the source stops reporting after 2019&ndash;20' : '');
+    },
+    render() {
+        const host = $('#v15'); if (!host || !MV) return;
+        const R = this.rows(), crop = this.v === 'crop';
+        const ch = coefChart(host, R, { tip: it => this.tip(it), rowH: crop ? 25 : 34, labelW: nar => nar ? 132 : 230 });
+        const d = domainOf(R);
+        ch.axis(d[0], d[1], crop ? (ch.nar ? 'change in share of years grown, points' : 'change in percentage points of years grown, if every rural resident had a weekly haat')
+                               : (ch.nar ? 'change in crops' : 'change in crops if every rural resident had a weekly haat in the village'));
+        this.ch = ch; this.R = R;
+        this.drawAt(this.u);
+    },
+    drawAt(u) {
+        if (!this.ch) return;
+        const e = easeOut(u);
+        this.ch.items.forEach((it, i) => {
+            const r = this.R[i]; it.cur = r;
+            this.ch.place(it, r.b * e, lerp(0, r.lo, e), lerp(0, r.hi, e), r.sig, this.v === 'floor' && u >= 1, 2);
+        });
+    },
+    prep() { this.u = 0; this.drawAt(0); },
+    play() { this.u = 0; tween(this, 900, t => { this.u = t; this.drawAt(t); }); },
+    reset() {},
+});
+
+/* ================================================================
    method tables
    ================================================================ */
 const GROUPS = [
     ['Output markets', ['mandi', 'regular market', 'weekly haat']],
     ['Input supply', ['fertiliser shop', 'seed centre', 'soil testing', 'custom hiring']],
-    ['Post-harvest facilities and producer organisations', ['cold storage', 'farm-gate processing', 'FPO']],
+    ['Post-harvest facilities and farmer collectives', ['cold storage', 'farm-gate processing', 'FPO']],
 ];
 const stars = p => p < 0.01 ? ' ***' : p < 0.05 ? ' **' : p < 0.10 ? ' *' : '';
 const pct = v => (v * 100).toFixed(1) + '%';
@@ -1449,7 +1507,7 @@ SC[14] = scene({
 /* ================================================================
    wiring
    ================================================================ */
-const HOSTS = { 1: '#v1', 2: '#v2', 3: '#v3', 4: '#v4', 5: '#v5', 6: '#v6a', 7: '#v7', 8: '#v8b', 9: '#v9', 10: '#v10', 11: '#v11', 12: '#v12', 13: '#v13', 14: '#v14' };
+const HOSTS = { 1: '#v1', 2: '#v2', 3: '#v3', 4: '#v4', 5: '#v5', 6: '#v6a', 7: '#v7', 8: '#v8b', 9: '#v9', 10: '#v10', 11: '#v11', 12: '#v12', 13: '#v13', 14: '#v14', 15: '#v15' };
 let inited = false;
 
 function startPlay(sc) {
@@ -1460,8 +1518,9 @@ function startPlay(sc) {
 
 async function init() {
     let MP;
-    [MK, MP, MM, TY] = await Promise.all([loadJSON('data/site_markets.json'), loadJSON('data/site_markets_pop.json'),
-                                         loadJSON('data/site_market_map.json'), loadJSON('data/site_typology.json')]);
+    [MK, MP, MM, TY, MV] = await Promise.all([loadJSON('data/site_markets.json'), loadJSON('data/site_markets_pop.json'),
+                                         loadJSON('data/site_market_map.json'), loadJSON('data/site_typology.json'),
+                                         loadJSON('data/site_markets_v2.json')]);
     /* the page reads population shares; village shares stay for the comparison toggle */
     ['descriptives', 'corr', 'solo', 'solo_village', 'interaction', 'scatter', 'n'].forEach(k => { MK[k] = MP[k]; });
     LADDER = MP.ladder;

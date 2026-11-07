@@ -1,0 +1,37 @@
+measure,window,pairs,n,mean
+sim9,w1519,"adjacent, same state",1217,77.11408022678441
+sim9,w1519,"adjacent, across a border",391,67.41226447226794
+sim9,w1519,"not adjacent, 60-100 km, same state",400,75.21691729051844
+sim9,w1519,"not adjacent, 60-100 km, across a border",211,67.30841647779314
+sim9,w1519,"200-300 km, same state",2087,62.7220210615014
+sim9,w1519,"500-600 km, any",9643,48.39643438343009
+sim9,w9802,"adjacent, same state",886,79.06098994790625
+sim9,w9802,"adjacent, across a border",257,69.48863401448017
+sim9,w9802,"not adjacent, 60-100 km, same state",238,77.41213076596837
+sim9,w9802,"not adjacent, 60-100 km, across a border",135,67.40250111823417
+sim9,w9802,"200-300 km, same state",1492,65.36396595326778
+sim9,w9802,"500-600 km, any",6837,49.213599400134235
+sim8,w1519,"adjacent, same state",1228,79.29217544761707
+sim8,w1519,"adjacent, across a border",392,70.91142666761576
+sim8,w1519,"not adjacent, 60-100 km, same state",410,79.05691109707246
+sim8,w1519,"not adjacent, 60-100 km, across a border",211,74.69602019712566
+sim8,w1519,"200-300 km, same state",2099,67.17482329181652
+sim8,w1519,"500-600 km, any",9718,51.07421153624769
+sim8,w9802,"adjacent, same state",904,80.84815051604406
+sim8,w9802,"adjacent, across a border",259,74.01439179911534
+sim8,w9802,"not adjacent, 60-100 km, same state",245,82.29324004488231
+sim8,w9802,"not adjacent, 60-100 km, across a border",137,75.08856807273543
+sim8,w9802,"200-300 km, same state",1546,68.62588956480697
+sim8,w9802,"500-600 km, any",6979,51.39280352434369
+sim8_gca,w1519,"adjacent, same state",1228,56.093698816796355
+sim8_gca,w1519,"adjacent, across a border",392,48.328509921256966
+sim8_gca,w1519,"not adjacent, 60-100 km, same state",410,63.108606820555494
+sim8_gca,w1519,"not adjacent, 60-100 km, across a border",211,55.78576353258432
+sim8_gca,w1519,"200-300 km, same state",2099,46.67541530590454
+sim8_gca,w1519,"500-600 km, any",9718,36.311578447245786
+sim8_gca,w9802,"adjacent, same state",904,55.213706577783014
+sim8_gca,w9802,"adjacent, across a border",259,49.66482326134458
+sim8_gca,w9802,"not adjacent, 60-100 km, same state",245,65.1784747718208
+sim8_gca,w9802,"not adjacent, 60-100 km, across a border",137,57.6096878237631
+sim8_gca,w9802,"200-300 km, same state",1546,47.03615864881141
+sim8_gca,w9802,"500-600 km, any",6979,35.61572172125383

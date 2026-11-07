@@ -534,6 +534,66 @@ SC[6] = scene({
     play() { tween(this, 1000, t => this.draw(t)); },
 });
 
+/* ================================================================
+   07  leads and lags: neighbours' change years before and after
+   ================================================================ */
+const LL = [['chickpea', 'Chickpea'], ['soybean', 'Soybean'], ['cotton', 'Cotton'], ['pulses', 'All pulses']];
+SC[7] = scene({
+    async render() {
+        const host = $('#v7'); if (!host || !D.leadlag) return;
+        const O = D.leadlag.outcomes;
+        const W = host.clientWidth || 900, nar = W < 560, cols = 2;
+        const gap = nar ? 14 : 30, pw = (W - gap) / cols, ph = nar ? 196 : 230;
+        const H = 2 * ph + 16;
+        const svg = svgFor(host, W, H);
+        const lo = -0.45, hi = 0.45;
+        this.pts = [];
+        LL.forEach(([o, lab], i) => {
+            const R = O[o]; if (!R) return;
+            const ox = (i % cols) * (pw + gap), oy = Math.floor(i / cols) * (ph + 16);
+            const m = { l: nar ? 30 : 36, r: 6, t: 34, b: 34 };
+            /* x: position -3..3, left = neighbours' change earlier; data k > 0 means earlier */
+            const X = pos => ox + m.l + (pos + 3.5) / 7 * (pw - m.l - m.r);
+            const Y = v => oy + m.t + (hi - Math.max(lo, Math.min(hi, v))) / (hi - lo) * (ph - m.t - m.b);
+            const g = E('g', {}, svg);
+            E('rect', { x: X(-3.5), y: oy + m.t - 4, width: X(-0.5) - X(-3.5), height: ph - m.t - m.b + 8, fill: 'rgba(255,255,255,0.025)' }, g);
+            T(g, { x: ox, y: oy + 13, fill: TX, 'font-size': nar ? 11 : 12, class: 'mono' }, lab);
+            [-0.4, -0.2, 0, 0.2, 0.4].forEach(t => {
+                E('line', { x1: ox + m.l, x2: ox + pw - m.r, y1: Y(t), y2: Y(t), stroke: t ? GRID : ZERO }, g);
+                T(g, { x: ox + m.l - 5, y: Y(t) + 3.5, 'text-anchor': 'end', fill: TX3, 'font-size': 9, class: 'mono' }, t > 0 ? '+' + t.toFixed(1) : (t < 0 ? '−' + (-t).toFixed(1) : '0'));
+            });
+            [-3, -2, -1, 0, 1, 2, 3].forEach(p => T(g, { x: X(p), y: oy + ph - m.b + 14, 'text-anchor': 'middle', fill: TX3, 'font-size': 9.5, class: 'mono' },
+                p === 0 ? 'same' : (p < 0 ? String(p).replace('-', '−') : '+' + p)));
+            T(g, { x: X(-2), y: oy + ph - 4, 'text-anchor': 'middle', fill: TX3, 'font-size': nar ? 8.5 : 9.5, class: 'mono' }, nar ? '← years earlier' : '← neighbours, years earlier');
+            T(g, { x: X(2), y: oy + ph - 4, 'text-anchor': 'middle', fill: TX3, 'font-size': nar ? 8.5 : 9.5, class: 'mono' }, nar ? 'years later →' : 'years later →');
+            const ci = (b, s) => `${sgn(b, 2)} (95%: ${sgn(b - 1.96 * s, 2)} to ${sgn(b + 1.96 * s, 2)})`;
+            const when = k => k === 0 ? 'in the same year' : (k > 0 ? `${k} year${k > 1 ? 's' : ''} earlier` : `${-k} year${k < -1 ? 's' : ''} later`);
+            [['nb', CY, -0.13], ['rg', TX2, 0.13]].forEach(([key, col, dx]) => {
+                R[key].forEach(([k, b, se]) => {
+                    const pos = -k, x = X(pos) + dx * (pw / 7);
+                    const els = [];
+                    const off = b > hi;
+                    if (off) {
+                        els.push(E('path', { d: `M${x - 4},${Y(hi) + 6}L${x},${Y(hi) - 1}L${x + 4},${Y(hi) + 6}Z`, fill: col }, g));
+                        if (key === 'nb') els.push(T(g, { x: x + 7, y: Y(hi) + 7, fill: col, 'font-size': 9.5, class: 'mono' }, b.toFixed(2)));
+                    } else {
+                        els.push(E('line', { x1: x, x2: x, y1: Y(b - 1.96 * se), y2: Y(b + 1.96 * se), stroke: col, 'stroke-width': key === 'nb' ? 1.5 : 1.2 }, g));
+                        els.push(key === 'nb' ? E('circle', { cx: x, cy: Y(b), r: 3.8, fill: col }, g)
+                            : E('circle', { cx: x, cy: Y(b), r: 3.3, fill: '#0B0B0C', stroke: col, 'stroke-width': 1.3 }, g));
+                    }
+                    const hit = E('rect', { x: x - 0.13 * pw / 7, y: oy + m.t - 4, width: 0.26 * pw / 7, height: ph - m.t - m.b + 8, fill: 'transparent' }, g);
+                    tipOn(hit, () => `<strong>${lab}</strong>, ${key === 'nb' ? 'neighbours' : 'same-state districts about 100 km away'}, change ${when(k)}<br>` +
+                        `${ci(b, se)} points per point` + (key === 'nb' ? `<br>years-earlier minus years-later sum: ${sgn(R.lag_minus_lead.no_own.b, 2)}, p = ${R.lag_minus_lead.no_own.p.toFixed(2)}` : ''));
+                    this.pts.push({ els, pos });
+                });
+            });
+        });
+        this.draw(this.played || RM ? 1 : 0);
+    },
+    draw(u) { (this.pts || []).forEach(p => { const on = u >= (p.pos + 3.5) / 7 - 1e-9 ? 1 : 0; p.els.forEach(e => { e.style.opacity = on; }); }); },
+    play() { tween(this, 1100, t => this.draw(t)); },
+});
+
 /* ---------- estimates list in the method drawer ---------- */
 function estimates() {
     const ul = $('#est-list'); if (!ul) return;
@@ -567,6 +627,15 @@ function estimates() {
         `Moran's I of change, 1998–2002 to 2015–19, within states against across borders (links between Andhra Pradesh and Telangana left out): diversity ${mo('D1', 'within-state links')} and ${mo('D1', 'cross-border links, AP-TS excluded')}; rice ${mo('s_rice', 'within-state links')} and ${mo('s_rice', 'cross-border links, AP-TS excluded')}; with state means removed, diversity ${mo('D1', 'within-state links, state means removed')} and ${mo('D1', 'cross-border links, state means removed')}.`,
         `Take-ups next to an earlier grower, against the five most similar districts in the same state: ${wv('soybean', 'entry')}; ${wv('maize', 'entry')}; ${wv('cotton', 'entry')}; ${wv('chickpea', 'entry')}; ${wv('chickpea', 'surge')}.`,
         `Take-up, rise in yearly chance in percentage points, neighbours against the ring: chickpea surge ${f3(H1.nb)} (${f3(H1.nbse)}) against ${f3(H1.rg)} (${f3(H1.rgse)}), difference ${f3(H1.d)} (${f3(H1.dse)}), q = ${H1.q.toFixed(2)}; soybean take-up ${f3(H2.nb)} (${f3(H2.nbse)}) against ${f3(H2.rg)} (${f3(H2.rgse)}), difference ${f3(H2.d)} (${f3(H2.dse)}), q = ${H2.q.toFixed(2)}; cotton surge ${f3(H3.nb)} (${f3(H3.nbse)}) against ${f3(H3.rg)} (${f3(H3.rgse)}).`,
+        ...(D.common_border ? [(() => { const c = D.common_border.sim8, k = c.km;
+            return `Cost of a state line on the eight crops every state records (rice, wheat, maize, chickpea, pigeon pea, groundnut, rapeseed and mustard, cotton), adjacent pairs 2015–19: distance held fixed ${sgn(c.M1.b, 1)} (${c.M1.se.toFixed(1)}; ${c.M1.se_state.toFixed(1)}), p = ${c.M1.p_wild.toFixed(3)} with whole states resampled; adding geography ${sgn(c.M2.b, 1)} (${c.M2.se.toFixed(1)}; ${c.M2.se_state.toFixed(1)}), p = ${c.M2.p_wild.toFixed(3)}; against each pair's own two states ${sgn(c.M3.b, 1)} (${c.M3.se.toFixed(1)}; ${c.M3.se_state.toFixed(1)}), p = ${c.M3.p_wild.toFixed(3)}. Adjacent pairs ${c.adj_same} in one state against ${c.adj_cross} across a line; distance worth a state line ${k.interp} km (95 percent interval ${k.lo} to ${k.hi}), ${k.linear} km from a straight-line fit, ${k.reg} km from a regression on all pairs within 300 km.`; })()] : []),
+        ...(D.within_cross ? [(() => { const R = D.within_cross.rows, f = v => (100 * v).toFixed(1);
+            const one = (ep, mode, lab) => { const r = R.find(x => x.ep === ep && x.mode === mode); return r ? `${lab}: same-state neighbours ${f(r.same)} (${f(r.same_se)}), other-state ${f(r.other)} (${f(r.other_se)}), difference ${f(r.diff)} (${f(r.diff_se)}), p = ${r.diff_p.toFixed(2)}, or ${r.diff_p_state.toFixed(3)} with whole states correlated, ${r.ev} take-ups; neighbour edge over the ring, within minus across, ${f(r.edge_diff)} (${f(r.edge_diff_se)}), p = ${r.edge_diff_p.toFixed(2)}` : ''; };
+            const n = D.within_cross.nfsm_chickpea_surge;
+            return `Take-up among districts with neighbours on both sides of a state line, rise in yearly chance in percentage points. ${one('chickpea', 'surge', 'Chickpea surge')}; ${one('soybean', 'entry', 'soybean take-up')}; ${one('soybean', 'surge', 'soybean surge')}; ${one('cotton', 'surge', 'cotton surge')}. Chickpea surge, neighbours minus ring, ${f(n.base)} before and ${f(n.with_nfsm)} (${f(n.with_nfsm_se)}) after holding the pulses mission's district lists fixed.`; })()] : []),
+        ...(D.leadlag ? [(() => { const O = D.leadlag.outcomes, at = (o, k) => O[o].nb.find(x => x[0] === k);
+            const one = (o, lab) => `${lab} ${at(o, 0)[1].toFixed(2)} in the same year, ${sgn(at(o, 1)[1], 2)} (${at(o, 1)[2].toFixed(2)}) a year earlier and ${sgn(at(o, -1)[1], 2)} (${at(o, -1)[2].toFixed(2)}) a year later; three years earlier minus three later ${sgn(O[o].lag_minus_lead.no_own.b, 2)} (${O[o].lag_minus_lead.no_own.se.toFixed(2)}), p = ${O[o].lag_minus_lead.no_own.p.toFixed(2)}`;
+            return `Year-on-year change in a crop's share on neighbours' change from three years earlier to three later, estimated together with the ring: ${one('chickpea', 'chickpea')}; ${one('soybean', 'soybean')}; ${one('cotton', 'cotton')}; ${one('pulses', 'all pulses')}. Across seven crops tested the smallest p-value, for all pulses, adjusts to q = 0.23.`; })()] : []),
         `Year-on-year change in pulse share: neighbours in the same year ${D.yoy.pulses.same_year.toFixed(2)} (${D.yoy.pulses.same_year_se.toFixed(2)}); neighbours a year earlier ${D.yoy.pulses.hr_nbr.toFixed(3)} (${D.yoy.pulses.hr_nbr_se.toFixed(3)}) against same-state districts about 100 km away ${D.yoy.pulses.hr_ring.toFixed(3)} (${D.yoy.pulses.hr_ring_se.toFixed(3)}), difference ${D.yoy.pulses.hr_diff.toFixed(3)} (${D.yoy.pulses.hr_diff_se.toFixed(3)}). Uncertainty here lets a district's years move together.`,
     ];
     ul.innerHTML = items.map(s => `<li>${s}</li>`).join('');
@@ -575,7 +644,7 @@ function estimates() {
 /* ================================================================
    wiring
    ================================================================ */
-const HOSTS = { 1: '#v1', 2: '#v2', 3: '#v3', 4: '#v4', 5: '#v5', 6: '#v6' };
+const HOSTS = { 1: '#v1', 2: '#v2', 3: '#v3', 4: '#v4', 5: '#v5', 6: '#v6', 7: '#v7' };
 let inited = false;
 function startPlay(sc) { if (sc.played) return; sc.played = true; sc.play(); }
 

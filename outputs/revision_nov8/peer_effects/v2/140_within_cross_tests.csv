@@ -1,0 +1,349 @@
+episode,mode,spec,cluster,test,b,se,p,n,n_events
+chickpea,surge,S1 nbr + ring (128),unit,nbr minus ring,0.08301655894671031,0.04035217517613622,0.039657308381658866,6769,33
+chickpea,surge,S1 nbr + ring (128),state,nbr minus ring,0.08301655894671031,0.03788844695931776,0.028446117218265825,6769,33
+chickpea,surge,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.06016668499220612,0.03364099809931464,0.07369652615176593,3817,17
+chickpea,surge,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.06016668499220612,0.05394796053270913,0.26473360118067346,3817,17
+chickpea,surge,S3 border units: four sets,unit,nbr_same minus nbr_other,0.08034868600081946,0.05401805869643436,0.1368983224693696,1845,10
+chickpea,surge,S3 border units: four sets,unit,nbr_same minus ring_same,0.042843382639441346,0.07025189961413059,0.5419587090127758,1845,10
+chickpea,surge,S3 border units: four sets,unit,nbr_other minus ring_other,-0.037010717882628164,0.03716678049739201,0.31934683521849017,1845,10
+chickpea,surge,S3 border units: four sets,unit,edge within minus edge across,0.07985410052206951,0.06956383821985963,0.25099933952476117,1845,10
+chickpea,surge,S3 border units: four sets,unit,ring_same minus ring_other,0.0004945854787499378,0.03473542809127839,0.9886395877246303,1845,10
+chickpea,surge,S3 border units: four sets,state,nbr_same minus nbr_other,0.08034868600081946,0.09512063842884046,0.3982766995776992,1845,10
+chickpea,surge,S3 border units: four sets,state,nbr_same minus ring_same,0.042843382639441346,0.0996226889201339,0.6671545586875205,1845,10
+chickpea,surge,S3 border units: four sets,state,nbr_other minus ring_other,-0.037010717882628164,0.03145115251806162,0.2392880161770976,1845,10
+chickpea,surge,S3 border units: four sets,state,edge within minus edge across,0.07985410052206951,0.10056375906134668,0.42715794395188944,1845,10
+chickpea,surge,S3 border units: four sets,state,ring_same minus ring_other,0.0004945854787499378,0.017005457809268647,0.9767976554648524,1845,10
+chickpea,surge,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,0.09686994397640213,0.0412988626044308,0.01899730644450831,5702,31
+chickpea,surge,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,0.09686994397640213,0.06439222435924744,0.13248527141183628,5702,31
+chickpea,surge,S5 S3 without AP and TS,unit,nbr_same minus nbr_other,0.06493171167423187,0.05363564683131013,0.22604590169190542,1733,7
+chickpea,surge,S5 S3 without AP and TS,unit,nbr_same minus ring_same,-0.00728260668665584,0.06422037002421896,0.9097132332385978,1733,7
+chickpea,surge,S5 S3 without AP and TS,unit,nbr_other minus ring_other,-0.06276973582784817,0.04406192070634787,0.15427861302805557,1733,7
+chickpea,surge,S5 S3 without AP and TS,unit,edge within minus edge across,0.05548712914119233,0.07151439485204764,0.43781537989203645,1733,7
+chickpea,surge,S5 S3 without AP and TS,unit,ring_same minus ring_other,0.009444582533039543,0.03813742423082326,0.8044082762033526,1733,7
+chickpea,surge,S5 S3 without AP and TS,state,nbr_same minus nbr_other,0.06493171167423187,0.09674439517627086,0.5021137127912056,1733,7
+chickpea,surge,S5 S3 without AP and TS,state,nbr_same minus ring_same,-0.00728260668665584,0.08159939052170195,0.9288845825814309,1733,7
+chickpea,surge,S5 S3 without AP and TS,state,nbr_other minus ring_other,-0.06276973582784817,0.037597063986722884,0.09501075959238423,1733,7
+chickpea,surge,S5 S3 without AP and TS,state,edge within minus edge across,0.05548712914119233,0.10199585496901555,0.5864321350969302,1733,7
+chickpea,surge,S5 S3 without AP and TS,state,ring_same minus ring_other,0.009444582533039543,0.02051335082502202,0.6452208849130352,1733,7
+chickpea,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus nbr_other,0.11205047448163138,0.058098234581050935,0.0537757934385584,1819,10
+chickpea,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus ring_same,0.0767423336445566,0.07085172802399684,0.27874633085870626,1819,10
+chickpea,surge,S6 S3 with 2011 states before 2014,unit,nbr_other minus ring_other,-0.04976855841369138,0.042691420690358015,0.24370573579360544,1819,10
+chickpea,surge,S6 S3 with 2011 states before 2014,unit,edge within minus edge across,0.12651089205824798,0.07821162656626762,0.10576050673741902,1819,10
+chickpea,surge,S6 S3 with 2011 states before 2014,unit,ring_same minus ring_other,-0.014460417576616588,0.040478862691591816,0.7209167910009384,1819,10
+chickpea,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus nbr_other,0.11205047448163138,0.10422341505565522,0.2823304708061073,1819,10
+chickpea,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus ring_same,0.0767423336445566,0.10283122709460639,0.45548980075621737,1819,10
+chickpea,surge,S6 S3 with 2011 states before 2014,state,nbr_other minus ring_other,-0.04976855841369138,0.02986840536766525,0.0956614448359429,1819,10
+chickpea,surge,S6 S3 with 2011 states before 2014,state,edge within minus edge across,0.12651089205824798,0.11264306207958229,0.26138948797835393,1819,10
+chickpea,surge,S6 S3 with 2011 states before 2014,state,ring_same minus ring_other,-0.014460417576616588,0.024197031711330044,0.5500993777317058,1819,10
+chickpea,entry,S1 nbr + ring (128),unit,nbr minus ring,0.0006323898934142789,0.019708277882863643,0.9744022505150887,5243,41
+chickpea,entry,S1 nbr + ring (128),state,nbr minus ring,0.0006323898934142789,0.012315035134413147,0.9590457956364092,5243,41
+chickpea,entry,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.07467103013915867,0.035482752707084037,0.03534080530579883,2877,27
+chickpea,entry,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.07467103013915867,0.04634022997075768,0.10710016535600797,2877,27
+chickpea,entry,S3 border units: four sets,unit,nbr_same minus nbr_other,0.05245439507829807,0.05807400872535246,0.36640193686347855,1281,15
+chickpea,entry,S3 border units: four sets,unit,nbr_same minus ring_same,0.03311064247433108,0.0628730112025457,0.5984524483540506,1281,15
+chickpea,entry,S3 border units: four sets,unit,nbr_other minus ring_other,0.02100330550205286,0.027454310597348416,0.4442551064334541,1281,15
+chickpea,entry,S3 border units: four sets,unit,edge within minus edge across,0.012107336972278216,0.07027595759277634,0.8632152256331621,1281,15
+chickpea,entry,S3 border units: four sets,unit,ring_same minus ring_other,0.04034705810601985,0.02174706950640852,0.06355523549275463,1281,15
+chickpea,entry,S3 border units: four sets,state,nbr_same minus nbr_other,0.05245439507829807,0.054513322967005236,0.3359337111394104,1281,15
+chickpea,entry,S3 border units: four sets,state,nbr_same minus ring_same,0.03311064247433108,0.05741184932843185,0.5641276695004487,1281,15
+chickpea,entry,S3 border units: four sets,state,nbr_other minus ring_other,0.02100330550205286,0.03303082627048356,0.524861276059646,1281,15
+chickpea,entry,S3 border units: four sets,state,edge within minus edge across,0.012107336972278216,0.06039835672394632,0.8411223612566903,1281,15
+chickpea,entry,S3 border units: four sets,state,ring_same minus ring_other,0.04034705810601985,0.02154478190969633,0.061108893343398564,1281,15
+chickpea,entry,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,0.013031629378965546,0.02337348937300432,0.5771592940370142,4399,38
+chickpea,entry,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,0.013031629378965546,0.02078314209988658,0.5306403339516108,4399,38
+chickpea,entry,S5 S3 without AP and TS,unit,nbr_same minus nbr_other,0.009029383407719992,0.05932166745844464,0.8790208761885067,1195,11
+chickpea,entry,S5 S3 without AP and TS,unit,nbr_same minus ring_same,-0.04269653903084368,0.05990192449942201,0.4759855682907721,1195,11
+chickpea,entry,S5 S3 without AP and TS,unit,nbr_other minus ring_other,0.009181420919422194,0.025792357042150563,0.721859676044563,1195,11
+chickpea,entry,S5 S3 without AP and TS,unit,edge within minus edge across,-0.051877959950265874,0.06729600648887059,0.44077088846252155,1195,11
+chickpea,entry,S5 S3 without AP and TS,unit,ring_same minus ring_other,0.060907343357985866,0.0157952315797502,0.00011522973338309117,1195,11
+chickpea,entry,S5 S3 without AP and TS,state,nbr_same minus nbr_other,0.009029383407719992,0.058077843346579665,0.8764505164502344,1195,11
+chickpea,entry,S5 S3 without AP and TS,state,nbr_same minus ring_same,-0.04269653903084368,0.045670617432982896,0.34985023318243624,1195,11
+chickpea,entry,S5 S3 without AP and TS,state,nbr_other minus ring_other,0.009181420919422194,0.033700857481701076,0.7852846482027397,1195,11
+chickpea,entry,S5 S3 without AP and TS,state,edge within minus edge across,-0.051877959950265874,0.056216714970885734,0.3561005431840665,1195,11
+chickpea,entry,S5 S3 without AP and TS,state,ring_same minus ring_other,0.060907343357985866,0.014942683122612644,4.580427701839903e-05,1195,11
+chickpea,entry,S6 S3 with 2011 states before 2014,unit,nbr_same minus nbr_other,0.01335362456550445,0.06118568720109888,0.8272362607950724,1253,14
+chickpea,entry,S6 S3 with 2011 states before 2014,unit,nbr_same minus ring_same,-0.0036009375327424736,0.06802984406062985,0.9577863006571232,1253,14
+chickpea,entry,S6 S3 with 2011 states before 2014,unit,nbr_other minus ring_other,0.030347087987969965,0.027337234704260055,0.2669555630295749,1253,14
+chickpea,entry,S6 S3 with 2011 states before 2014,unit,edge within minus edge across,-0.03394802552071244,0.07694271268931695,0.6590597395083035,1253,14
+chickpea,entry,S6 S3 with 2011 states before 2014,unit,ring_same minus ring_other,0.04730165008621689,0.02494344486976741,0.05791299255334762,1253,14
+chickpea,entry,S6 S3 with 2011 states before 2014,state,nbr_same minus nbr_other,0.01335362456550445,0.05487118355932855,0.807724080892795,1253,14
+chickpea,entry,S6 S3 with 2011 states before 2014,state,nbr_same minus ring_same,-0.0036009375327424736,0.05192098359780654,0.9447076956608084,1253,14
+chickpea,entry,S6 S3 with 2011 states before 2014,state,nbr_other minus ring_other,0.030347087987969965,0.03187943959015264,0.3411310032250572,1253,14
+chickpea,entry,S6 S3 with 2011 states before 2014,state,edge within minus edge across,-0.03394802552071244,0.05449964271380753,0.5333478495701018,1253,14
+chickpea,entry,S6 S3 with 2011 states before 2014,state,ring_same minus ring_other,0.04730165008621689,0.02138010603953058,0.026938058984431315,1253,14
+soybean,entry,S1 nbr + ring (128),unit,nbr minus ring,0.04082193781036675,0.02130466389537762,0.05535194229194705,6149,17
+soybean,entry,S1 nbr + ring (128),state,nbr minus ring,0.04082193781036675,0.021319003224321616,0.055516156778464346,6149,17
+soybean,entry,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.0647170476151427,0.03885534943411503,0.09579527788001009,3391,10
+soybean,entry,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.0647170476151427,0.01887336920618741,0.0006057782339711191,3391,10
+soybean,entry,S3 border units: four sets,unit,nbr_same minus nbr_other,0.10542978959539488,0.06062568018519049,0.08202973858178005,1585,7
+soybean,entry,S3 border units: four sets,unit,nbr_same minus ring_same,0.1217943865925632,0.04972167744690278,0.01430456209155617,1585,7
+soybean,entry,S3 border units: four sets,unit,nbr_other minus ring_other,0.02771361206726474,0.02131671490426818,0.19357070036961532,1585,7
+soybean,entry,S3 border units: four sets,unit,edge within minus edge across,0.09408077452529845,0.04733240164060365,0.04684918151307353,1585,7
+soybean,entry,S3 border units: four sets,unit,ring_same minus ring_other,0.011349015070096417,0.03279122640677307,0.7292682140464971,1585,7
+soybean,entry,S3 border units: four sets,state,nbr_same minus nbr_other,0.10542978959539488,0.0443407028304732,0.017420033458663938,1585,7
+soybean,entry,S3 border units: four sets,state,nbr_same minus ring_same,0.1217943865925632,0.034569716699846174,0.0004264457805465098,1585,7
+soybean,entry,S3 border units: four sets,state,nbr_other minus ring_other,0.02771361206726474,0.029758300697869736,0.35170350018435725,1585,7
+soybean,entry,S3 border units: four sets,state,edge within minus edge across,0.09408077452529845,0.047550598179414615,0.04786778756536676,1585,7
+soybean,entry,S3 border units: four sets,state,ring_same minus ring_other,0.011349015070096417,0.0434905161550359,0.7941281421498041,1585,7
+soybean,entry,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,0.06378433519541833,0.02629064247711786,0.015261092531301916,5138,16
+soybean,entry,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,0.06378433519541833,0.022659765808622088,0.004879669953134643,5138,16
+soybean,entry,S5 S3 without AP and TS,unit,nbr_same minus nbr_other,0.11894060756815877,0.06601550219771062,0.07159148005451185,1461,5
+soybean,entry,S5 S3 without AP and TS,unit,nbr_same minus ring_same,0.10211026424264452,0.04719758854235542,0.030505541400200085,1461,5
+soybean,entry,S5 S3 without AP and TS,unit,nbr_other minus ring_other,0.03214908526662133,0.02416973734453447,0.18347281856082243,1461,5
+soybean,entry,S5 S3 without AP and TS,unit,edge within minus edge across,0.06996117897602319,0.042899964824977495,0.10293293908385807,1461,5
+soybean,entry,S5 S3 without AP and TS,unit,ring_same minus ring_other,0.04897942859213559,0.03978244222830606,0.218254785064958,1461,5
+soybean,entry,S5 S3 without AP and TS,state,nbr_same minus nbr_other,0.11894060756815877,0.04253265201332426,0.005166675512466909,1461,5
+soybean,entry,S5 S3 without AP and TS,state,nbr_same minus ring_same,0.10211026424264452,0.03769129133895695,0.006746175658904877,1461,5
+soybean,entry,S5 S3 without AP and TS,state,nbr_other minus ring_other,0.03214908526662133,0.03777593747701201,0.3947434360334712,1461,5
+soybean,entry,S5 S3 without AP and TS,state,edge within minus edge across,0.06996117897602319,0.04740320400696475,0.13997759207499808,1461,5
+soybean,entry,S5 S3 without AP and TS,state,ring_same minus ring_other,0.04897942859213559,0.038343521848556626,0.20146645964197152,1461,5
+soybean,entry,S6 S3 with 2011 states before 2014,unit,nbr_same minus nbr_other,0.11522749906464033,0.06243332282353355,0.06494900677577489,1546,7
+soybean,entry,S6 S3 with 2011 states before 2014,unit,nbr_same minus ring_same,0.13469379328584338,0.05105583878076286,0.008335569351659395,1546,7
+soybean,entry,S6 S3 with 2011 states before 2014,unit,nbr_other minus ring_other,0.02933335744579025,0.021131883957788474,0.16510386886582795,1546,7
+soybean,entry,S6 S3 with 2011 states before 2014,unit,edge within minus edge across,0.10536043584005314,0.04889598481066165,0.031178500532061615,1546,7
+soybean,entry,S6 S3 with 2011 states before 2014,unit,ring_same minus ring_other,0.009867063224587217,0.034919460458449444,0.7775093059685307,1546,7
+soybean,entry,S6 S3 with 2011 states before 2014,state,nbr_same minus nbr_other,0.11522749906464033,0.042370841481007566,0.006538071526910688,1546,7
+soybean,entry,S6 S3 with 2011 states before 2014,state,nbr_same minus ring_same,0.13469379328584338,0.040931913254824676,0.0009994584025168588,1546,7
+soybean,entry,S6 S3 with 2011 states before 2014,state,nbr_other minus ring_other,0.02933335744579025,0.02962324320258289,0.32206941058829974,1546,7
+soybean,entry,S6 S3 with 2011 states before 2014,state,edge within minus edge across,0.10536043584005314,0.05214413445185281,0.043325167197176766,1546,7
+soybean,entry,S6 S3 with 2011 states before 2014,state,ring_same minus ring_other,0.009867063224587217,0.0466744367623278,0.8325736974708915,1546,7
+soybean,surge,S1 nbr + ring (128),unit,nbr minus ring,0.0659105242648769,0.04156583956048038,0.11280971352479395,6737,22
+soybean,surge,S1 nbr + ring (128),state,nbr minus ring,0.0659105242648769,0.04068842451477192,0.1052572164256508,6737,22
+soybean,surge,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.007767875269482576,0.028847460551488208,0.7877187270686268,3795,11
+soybean,surge,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.007767875269482576,0.02715131982954578,0.7748048413258044,3795,11
+soybean,surge,S3 border units: four sets,unit,nbr_same minus nbr_other,-0.011982764839704951,0.03697490251430146,0.7458787287869368,1825,8
+soybean,surge,S3 border units: four sets,unit,nbr_same minus ring_same,0.046755169537982595,0.05098256618780812,0.3590999215360644,1825,8
+soybean,surge,S3 border units: four sets,unit,nbr_other minus ring_other,0.08131139844103645,0.03738969389577288,0.029652542479481184,1825,8
+soybean,surge,S3 border units: four sets,unit,edge within minus edge across,-0.034556228903053855,0.047574212492067024,0.4676152213146597,1825,8
+soybean,surge,S3 border units: four sets,unit,ring_same minus ring_other,0.022573464063348897,0.02381811567766858,0.34326005537424586,1825,8
+soybean,surge,S3 border units: four sets,state,nbr_same minus nbr_other,-0.011982764839704951,0.03875555589481298,0.7571782856261146,1825,8
+soybean,surge,S3 border units: four sets,state,nbr_same minus ring_same,0.046755169537982595,0.06541046699746388,0.4747348297062193,1825,8
+soybean,surge,S3 border units: four sets,state,nbr_other minus ring_other,0.08131139844103645,0.05708872659263296,0.15436002686100586,1825,8
+soybean,surge,S3 border units: four sets,state,edge within minus edge across,-0.034556228903053855,0.050347135718647996,0.49248651205205995,1825,8
+soybean,surge,S3 border units: four sets,state,ring_same minus ring_other,0.022573464063348897,0.01797418681883917,0.20915862702099408,1825,8
+soybean,surge,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,0.019506292953323564,0.03453839825392308,0.5722293920729767,5650,21
+soybean,surge,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,0.019506292953323564,0.037527497634357344,0.6032122725575607,5650,21
+soybean,surge,S5 S3 without AP and TS,unit,nbr_same minus nbr_other,-0.04628488628502157,0.04173687161228461,0.26744366387831153,1701,6
+soybean,surge,S5 S3 without AP and TS,unit,nbr_same minus ring_same,0.02675176005805909,0.0529661519940966,0.6135077397750732,1701,6
+soybean,surge,S5 S3 without AP and TS,unit,nbr_other minus ring_other,0.11125645700869348,0.0430523216999642,0.009760092154415064,1701,6
+soybean,surge,S5 S3 without AP and TS,unit,edge within minus edge across,-0.0845046969506344,0.047149471264451064,0.07308933900090597,1701,6
+soybean,surge,S5 S3 without AP and TS,unit,ring_same minus ring_other,0.03821981066561281,0.0266012204160587,0.1507836222557108,1701,6
+soybean,surge,S5 S3 without AP and TS,state,nbr_same minus nbr_other,-0.04628488628502157,0.043926279460116485,0.29202273263745515,1701,6
+soybean,surge,S5 S3 without AP and TS,state,nbr_same minus ring_same,0.02675176005805909,0.07172364285781031,0.7091604679613637,1701,6
+soybean,surge,S5 S3 without AP and TS,state,nbr_other minus ring_other,0.11125645700869348,0.07747686471041589,0.15100351917027383,1701,6
+soybean,surge,S5 S3 without AP and TS,state,edge within minus edge across,-0.0845046969506344,0.03390730371522533,0.012694488602079048,1701,6
+soybean,surge,S5 S3 without AP and TS,state,ring_same minus ring_other,0.03821981066561281,0.01731366597994494,0.027279578224467853,1701,6
+soybean,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus nbr_other,-0.01073456931975715,0.036984037084367,0.7716259685779406,1786,8
+soybean,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus ring_same,0.05036519718533987,0.05214001605651192,0.3340639352118694,1786,8
+soybean,surge,S6 S3 with 2011 states before 2014,unit,nbr_other minus ring_other,0.08135394587657045,0.03698709220317385,0.027840782678706346,1786,8
+soybean,surge,S6 S3 with 2011 states before 2014,unit,edge within minus edge across,-0.030988748691230583,0.04866753038707445,0.5242917323700991,1786,8
+soybean,surge,S6 S3 with 2011 states before 2014,unit,ring_same minus ring_other,0.02025417937147344,0.024176904916402838,0.4021716534654609,1786,8
+soybean,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus nbr_other,-0.01073456931975715,0.04134958818445934,0.7951683022475066,1786,8
+soybean,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus ring_same,0.05036519718533987,0.06722706504221461,0.4537485014862809,1786,8
+soybean,surge,S6 S3 with 2011 states before 2014,state,nbr_other minus ring_other,0.08135394587657045,0.05737043386163301,0.15617717434319728,1786,8
+soybean,surge,S6 S3 with 2011 states before 2014,state,edge within minus edge across,-0.030988748691230583,0.0546612618253173,0.5707662216820208,1786,8
+soybean,surge,S6 S3 with 2011 states before 2014,state,ring_same minus ring_other,0.02025417937147344,0.020211778091000842,0.31629633615717356,1786,8
+cotton,surge,S1 nbr + ring (128),unit,nbr minus ring,0.006615790869491267,0.0627908821941391,0.9160883410941889,6763,31
+cotton,surge,S1 nbr + ring (128),state,nbr minus ring,0.006615790869491267,0.05411302055676702,0.902694090558104,6763,31
+cotton,surge,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.05757725086462276,0.08019615357778945,0.47278486903467,3802,20
+cotton,surge,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.05757725086462276,0.09926187945072511,0.5618781985739831,3802,20
+cotton,surge,S3 border units: four sets,unit,nbr_same minus nbr_other,-0.03744652226124902,0.09586585086025629,0.696082739253846,1836,10
+cotton,surge,S3 border units: four sets,unit,nbr_same minus ring_same,-0.11386682915844641,0.11519019219260865,0.3229022073272819,1836,10
+cotton,surge,S3 border units: four sets,unit,nbr_other minus ring_other,-0.008793068880489419,0.026471801362445098,0.7397628742878437,1836,10
+cotton,surge,S3 border units: four sets,unit,edge within minus edge across,-0.10507376027795699,0.12452684727168184,0.39879012250444734,1836,10
+cotton,surge,S3 border units: four sets,unit,ring_same minus ring_other,0.06762723801670797,0.04572729605938653,0.13916038018984636,1836,10
+cotton,surge,S3 border units: four sets,state,nbr_same minus nbr_other,-0.03744652226124902,0.13810393393090345,0.786277668612104,1836,10
+cotton,surge,S3 border units: four sets,state,nbr_same minus ring_same,-0.11386682915844641,0.22500079056006642,0.6128053912496931,1836,10
+cotton,surge,S3 border units: four sets,state,nbr_other minus ring_other,-0.008793068880489419,0.022250505288701088,0.6927062641525066,1836,10
+cotton,surge,S3 border units: four sets,state,edge within minus edge across,-0.10507376027795699,0.229209467221823,0.6466521160105638,1836,10
+cotton,surge,S3 border units: four sets,state,ring_same minus ring_other,0.06762723801670797,0.09307145098770775,0.4674610094360767,1836,10
+cotton,surge,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,0.004825767306512241,0.08714817982836368,0.9558402896772145,5676,29
+cotton,surge,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,0.004825767306512241,0.12223839121824019,0.9685090317704942,5676,29
+cotton,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus nbr_other,0.02326936265291053,0.0851825228442065,0.7847220625408237,1810,8
+cotton,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus ring_same,-0.06033552452804636,0.10197129795422451,0.5540573583771509,1810,8
+cotton,surge,S6 S3 with 2011 states before 2014,unit,nbr_other minus ring_other,-0.014118675899426529,0.02622932096107747,0.5903848881014194,1810,8
+cotton,surge,S6 S3 with 2011 states before 2014,unit,edge within minus edge across,-0.04621684862861983,0.11069632758224063,0.6763052469220256,1810,8
+cotton,surge,S6 S3 with 2011 states before 2014,unit,ring_same minus ring_other,0.06948621128153036,0.05212582336692718,0.18251613610444128,1810,8
+cotton,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus nbr_other,0.02326936265291053,0.08644538378191832,0.7877912213525912,1810,8
+cotton,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus ring_same,-0.06033552452804636,0.17467093282408816,0.7297756703249563,1810,8
+cotton,surge,S6 S3 with 2011 states before 2014,state,nbr_other minus ring_other,-0.014118675899426529,0.024992551542339,0.5721313452357373,1810,8
+cotton,surge,S6 S3 with 2011 states before 2014,state,edge within minus edge across,-0.04621684862861983,0.17761734134164808,0.7947059588888147,1810,8
+cotton,surge,S6 S3 with 2011 states before 2014,state,ring_same minus ring_other,0.06948621128153036,0.09786223599023676,0.47767863951785405,1810,8
+cotton,entry,S1 nbr + ring (128),unit,nbr minus ring,0.007803788686705263,0.008777866946055824,0.37398685689842426,5873,11
+cotton,entry,S1 nbr + ring (128),state,nbr minus ring,0.007803788686705263,0.006355233506935455,0.21947284449238136,5873,11
+cotton,entry,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,-0.013571214530391675,0.019959450250716975,0.49654289929832285,3206,8
+cotton,entry,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,-0.013571214530391675,0.018744436445816953,0.4690577912025371,3206,8
+cotton,entry,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,-0.0002736880644744077,0.010919755645282947,0.9800042576493719,4847,11
+cotton,entry,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,-0.0002736880644744077,0.007400626933866361,0.9704995647864338,4847,11
+maize,entry,S1 nbr + ring (128),unit,nbr minus ring,0.005371493619309118,0.012134706396419876,0.6580149885201072,4832,38
+maize,entry,S1 nbr + ring (128),state,nbr minus ring,0.005371493619309118,0.013630175844223743,0.6935158058538412,4832,38
+maize,entry,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.0036849577716464082,0.0152208989534289,0.8087037912686762,2702,20
+maize,entry,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.0036849577716464082,0.01761136222497796,0.8342628231743731,2702,20
+maize,entry,S3 border units: four sets,unit,nbr_same minus nbr_other,-0.013646670839297258,0.0224675279377547,0.5435886077991725,1354,5
+maize,entry,S3 border units: four sets,unit,nbr_same minus ring_same,-0.0007788352277562673,0.01936670049007683,0.9679215804066617,1354,5
+maize,entry,S3 border units: four sets,unit,nbr_other minus ring_other,0.008311360689779109,0.013907307920953824,0.5500899011420644,1354,5
+maize,entry,S3 border units: four sets,unit,edge within minus edge across,-0.009090195917535376,0.021292846860224635,0.6694426011432608,1354,5
+maize,entry,S3 border units: four sets,unit,ring_same minus ring_other,-0.004556474921761881,0.005888850961661794,0.43908100702687447,1354,5
+maize,entry,S3 border units: four sets,state,nbr_same minus nbr_other,-0.013646670839297258,0.016687513686429366,0.41348432955579195,1354,5
+maize,entry,S3 border units: four sets,state,nbr_same minus ring_same,-0.0007788352277562673,0.01970378432871416,0.9684700759309838,1354,5
+maize,entry,S3 border units: four sets,state,nbr_other minus ring_other,0.008311360689779109,0.019303995424018675,0.6667946443832443,1354,5
+maize,entry,S3 border units: four sets,state,edge within minus edge across,-0.009090195917535376,0.018979267582349208,0.6319713614951834,1354,5
+maize,entry,S3 border units: four sets,state,ring_same minus ring_other,-0.004556474921761881,0.006772197717800233,0.5010613563263027,1354,5
+maize,entry,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,-0.00195997253082243,0.011738387393496768,0.8673927164381725,4065,27
+maize,entry,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,-0.00195997253082243,0.012708828467872421,0.877435218163324,4065,27
+maize,surge,S1 nbr + ring (128),unit,nbr minus ring,0.03033005462310746,0.025864318602590464,0.24093213509005262,6558,49
+maize,surge,S1 nbr + ring (128),state,nbr minus ring,0.03033005462310746,0.0238707688508381,0.2038731383084097,6558,49
+maize,surge,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.007122341281563922,0.017730409775552496,0.6879033435726494,3654,30
+maize,surge,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.007122341281563922,0.010334073449799737,0.49069145844837503,3654,30
+maize,surge,S3 border units: four sets,unit,nbr_same minus nbr_other,0.022117052929321396,0.036939141435146566,0.5493442676433928,1819,9
+maize,surge,S3 border units: four sets,unit,nbr_same minus ring_same,0.02106621080590312,0.02988298302520073,0.4808371474143782,1819,9
+maize,surge,S3 border units: four sets,unit,nbr_other minus ring_other,-0.024778872305033856,0.03523165117109939,0.4818608165777578,1819,9
+maize,surge,S3 border units: four sets,unit,edge within minus edge across,0.04584508311093698,0.041815606783251746,0.2729199595678623,1819,9
+maize,surge,S3 border units: four sets,unit,ring_same minus ring_other,-0.02372803018161558,0.0300196165411843,0.4292839868581616,1819,9
+maize,surge,S3 border units: four sets,state,nbr_same minus nbr_other,0.022117052929321396,0.03804159450463371,0.5609767446547795,1819,9
+maize,surge,S3 border units: four sets,state,nbr_same minus ring_same,0.02106621080590312,0.03282177259849165,0.520979364416731,1819,9
+maize,surge,S3 border units: four sets,state,nbr_other minus ring_other,-0.024778872305033856,0.046804875923966156,0.5965225008408158,1819,9
+maize,surge,S3 border units: four sets,state,edge within minus edge across,0.04584508311093698,0.0493597557529398,0.35299545414309885,1819,9
+maize,surge,S3 border units: four sets,state,ring_same minus ring_other,-0.02372803018161558,0.038506261010274434,0.5377544368675349,1819,9
+maize,surge,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,0.022605014619559,0.02915283052079297,0.4381051621593596,5553,36
+maize,surge,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,0.022605014619559,0.01824309594160635,0.21530857991783114,5553,36
+maize,surge,S5 S3 without AP and TS,unit,nbr_same minus nbr_other,0.034494142638396716,0.0430065873133058,0.4225144963395946,1714,6
+maize,surge,S5 S3 without AP and TS,unit,nbr_same minus ring_same,0.048908470014586175,0.040671144462842625,0.22915635880780727,1714,6
+maize,surge,S5 S3 without AP and TS,unit,nbr_other minus ring_other,0.017652532338789766,0.01973602624927289,0.37109082706851904,1714,6
+maize,surge,S5 S3 without AP and TS,unit,edge within minus edge across,0.03125593767579641,0.042194737532703856,0.4588423656160019,1714,6
+maize,surge,S5 S3 without AP and TS,unit,ring_same minus ring_other,0.003238204962600303,0.01103381997445388,0.769155320765605,1714,6
+maize,surge,S5 S3 without AP and TS,state,nbr_same minus nbr_other,0.034494142638396716,0.03935361102390025,0.3807485752781643,1714,6
+maize,surge,S5 S3 without AP and TS,state,nbr_same minus ring_same,0.048908470014586175,0.038748573434940446,0.20687663724003214,1714,6
+maize,surge,S5 S3 without AP and TS,state,nbr_other minus ring_other,0.017652532338789766,0.009869456590684953,0.07367889403832388,1714,6
+maize,surge,S5 S3 without AP and TS,state,edge within minus edge across,0.03125593767579641,0.03808824981993387,0.41186337861734823,1714,6
+maize,surge,S5 S3 without AP and TS,state,ring_same minus ring_other,0.003238204962600303,0.00466814031619861,0.487881649725631,1714,6
+maize,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus nbr_other,0.02705759443811696,0.03589059811497007,0.4509147499358134,1792,7
+maize,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus ring_same,0.03763712607266056,0.030954206222023217,0.22402416610101994,1792,7
+maize,surge,S6 S3 with 2011 states before 2014,unit,nbr_other minus ring_other,0.015485629287935062,0.01823034898941206,0.3956352328451411,1792,7
+maize,surge,S6 S3 with 2011 states before 2014,unit,edge within minus edge across,0.022151496784725496,0.03476786497297983,0.524043035547531,1792,7
+maize,surge,S6 S3 with 2011 states before 2014,unit,ring_same minus ring_other,0.004906097653391464,0.010363722735327104,0.6359339341321585,1792,7
+maize,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus nbr_other,0.02705759443811696,0.03393952239117995,0.4253176540068092,1792,7
+maize,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus ring_same,0.03763712607266056,0.03134922785730141,0.22991577126467344,1792,7
+maize,surge,S6 S3 with 2011 states before 2014,state,nbr_other minus ring_other,0.015485629287935062,0.011296945627562512,0.1704434877529648,1792,7
+maize,surge,S6 S3 with 2011 states before 2014,state,edge within minus edge across,0.022151496784725496,0.032505952772914126,0.49558065923836814,1792,7
+maize,surge,S6 S3 with 2011 states before 2014,state,ring_same minus ring_other,0.004906097653391464,0.006395837085414721,0.44303590973868323,1792,7
+moong,entry,S1 nbr + ring (128),unit,nbr minus ring,-0.00589913963745289,0.011945094139849618,0.6214088725367365,6285,18
+moong,entry,S1 nbr + ring (128),state,nbr minus ring,-0.00589913963745289,0.012011645215587945,0.6233427284498936,6285,18
+moong,entry,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.0057971007296310755,0.01485398632612325,0.6963351381223318,3655,8
+moong,entry,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.0057971007296310755,0.012486376037760738,0.6424513930608419,3655,8
+moong,entry,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,-0.015113726470945412,0.01321790159143912,0.2528606912022804,5237,16
+moong,entry,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,-0.015113726470945412,0.013849509624713988,0.275148627965195,5237,16
+moong,surge,S1 nbr + ring (128),unit,nbr minus ring,0.037091317825145166,0.030603129206730393,0.22550831264003635,6877,17
+moong,surge,S1 nbr + ring (128),state,nbr minus ring,0.037091317825145166,0.01695894652047433,0.028733477881686887,6877,17
+moong,surge,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.025911539908019438,0.04130157606336698,0.5304140284547839,3930,5
+moong,surge,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.025911539908019438,0.002735512479863581,2.7380118240184048e-21,3930,5
+moong,surge,S3 border units: four sets,unit,nbr_same minus nbr_other,0.08803469590148857,0.06922163962215194,0.2034513017551004,1916,5
+moong,surge,S3 border units: four sets,unit,nbr_same minus ring_same,-0.03701669152585757,0.13056315408943556,0.7767816217026212,1916,5
+moong,surge,S3 border units: four sets,unit,nbr_other minus ring_other,0.0009712847020008322,0.005238903798595759,0.8529165153791247,1916,5
+moong,surge,S3 border units: four sets,unit,edge within minus edge across,-0.037987976227858405,0.13109006107461582,0.7719804737387703,1916,5
+moong,surge,S3 border units: four sets,unit,ring_same minus ring_other,0.12602267212934698,0.09823595328989507,0.19954220931081423,1916,5
+moong,surge,S3 border units: four sets,state,nbr_same minus nbr_other,0.08803469590148857,0.010514707594915946,5.639456490657087e-17,1916,5
+moong,surge,S3 border units: four sets,state,nbr_same minus ring_same,-0.03701669152585757,0.09351354527031555,0.6922207801044475,1916,5
+moong,surge,S3 border units: four sets,state,nbr_other minus ring_other,0.0009712847020008322,0.0019423542498034165,0.6170360797849617,1916,5
+moong,surge,S3 border units: four sets,state,edge within minus edge across,-0.037987976227858405,0.09465862543352362,0.688187832723157,1916,5
+moong,surge,S3 border units: four sets,state,ring_same minus ring_other,0.12602267212934698,0.10378226830900651,0.2246336869061739,1916,5
+moong,surge,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,0.013045077775207295,0.03259837265514486,0.6890270845615012,5775,17
+moong,surge,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,0.013045077775207295,0.021373317305942385,0.5416339000810337,5775,17
+moong,surge,S5 S3 without AP and TS,unit,nbr_same minus nbr_other,0.08708216466758381,0.06925499811345827,0.20860396891796784,1764,5
+moong,surge,S5 S3 without AP and TS,unit,nbr_same minus ring_same,-0.038052758084507796,0.13075587724948137,0.7710349548587212,1764,5
+moong,surge,S5 S3 without AP and TS,unit,nbr_other minus ring_other,0.0010026559544446144,0.005411099784235617,0.8529967580100942,1764,5
+moong,surge,S5 S3 without AP and TS,unit,edge within minus edge across,-0.03905541403895241,0.1312883259904223,0.7661014539665031,1764,5
+moong,surge,S5 S3 without AP and TS,unit,ring_same minus ring_other,0.12613757870653622,0.09838004468911168,0.19979144233864032,1764,5
+moong,surge,S5 S3 without AP and TS,state,nbr_same minus nbr_other,0.08708216466758381,0.01045260929035551,8.006671783239465e-17,1764,5
+moong,surge,S5 S3 without AP and TS,state,nbr_same minus ring_same,-0.038052758084507796,0.09478754003729732,0.6880865125670795,1764,5
+moong,surge,S5 S3 without AP and TS,state,nbr_other minus ring_other,0.0010026559544446144,0.0021959680116301655,0.6479661217775811,1764,5
+moong,surge,S5 S3 without AP and TS,state,edge within minus edge across,-0.03905541403895241,0.09608938809124229,0.6844128881957605,1764,5
+moong,surge,S5 S3 without AP and TS,state,ring_same minus ring_other,0.12613757870653622,0.10447710491635716,0.22730789810665508,1764,5
+moong,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus nbr_other,0.08828561584114256,0.06921702579069611,0.2021359042467321,1877,5
+moong,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus ring_same,-0.036859039016594417,0.13052993807661872,0.7776521777040006,1877,5
+moong,surge,S6 S3 with 2011 states before 2014,unit,nbr_other minus ring_other,0.001193935051575305,0.0052107944827876436,0.8187700081683261,1877,5
+moong,surge,S6 S3 with 2011 states before 2014,unit,edge within minus edge across,-0.03805297406816972,0.1310770614341866,0.771579133800198,1877,5
+moong,surge,S6 S3 with 2011 states before 2014,unit,ring_same minus ring_other,0.1263385899093123,0.09820913371586976,0.1982951152637532,1877,5
+moong,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus nbr_other,0.08828561584114256,0.010591506170092718,7.716422350902006e-17,1877,5
+moong,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus ring_same,-0.036859039016594417,0.0933631876579324,0.6929964039130749,1877,5
+moong,surge,S6 S3 with 2011 states before 2014,state,nbr_other minus ring_other,0.001193935051575305,0.002061009703056656,0.5623893414272056,1877,5
+moong,surge,S6 S3 with 2011 states before 2014,state,edge within minus edge across,-0.03805297406816972,0.0946639453831902,0.6876990461759954,1877,5
+moong,surge,S6 S3 with 2011 states before 2014,state,ring_same minus ring_other,0.1263385899093123,0.1039918356571817,0.2244082365184339,1877,5
+rabi_maize,entry,S1 nbr + ring (128),unit,nbr minus ring,-0.012028981518991967,0.02906121144372847,0.6789335813502847,5554,18
+rabi_maize,entry,S1 nbr + ring (128),state,nbr minus ring,-0.012028981518991967,0.025700797061116307,0.6397565287477525,5554,18
+rabi_maize,entry,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.03516887909937427,0.038327559314078045,0.3588350043384999,3054,13
+rabi_maize,entry,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.03516887909937427,0.027706101128795603,0.2043144640460961,3054,13
+rabi_maize,entry,S3 border units: four sets,unit,nbr_same minus nbr_other,0.040252625400295505,0.03771006630031761,0.28578046845866467,1539,6
+rabi_maize,entry,S3 border units: four sets,unit,nbr_same minus ring_same,-0.07223992039445509,0.08517695125715602,0.3963734685590221,1539,6
+rabi_maize,entry,S3 border units: four sets,unit,nbr_other minus ring_other,-0.02453517849598258,0.020161575792248337,0.22363175484829012,1539,6
+rabi_maize,entry,S3 border units: four sets,unit,edge within minus edge across,-0.047704741898472514,0.08465742315589386,0.5730921767780759,1539,6
+rabi_maize,entry,S3 border units: four sets,unit,ring_same minus ring_other,0.08795736729876802,0.06586480600229361,0.1817379885185313,1539,6
+rabi_maize,entry,S3 border units: four sets,state,nbr_same minus nbr_other,0.040252625400295505,0.019233940109441502,0.0363677754414674,1539,6
+rabi_maize,entry,S3 border units: four sets,state,nbr_same minus ring_same,-0.07223992039445509,0.07474222343991907,0.3337835984521078,1539,6
+rabi_maize,entry,S3 border units: four sets,state,nbr_other minus ring_other,-0.02453517849598258,0.03251471228058746,0.45049683916228445,1539,6
+rabi_maize,entry,S3 border units: four sets,state,edge within minus edge across,-0.047704741898472514,0.06832854166974311,0.48507267956122846,1539,6
+rabi_maize,entry,S3 border units: four sets,state,ring_same minus ring_other,0.08795736729876802,0.07751593087694986,0.25650081816435255,1539,6
+rabi_maize,entry,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,-0.02456133131158636,0.034000429607736665,0.4700590544315132,4733,13
+rabi_maize,entry,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,-0.02456133131158636,0.020547477375924383,0.23195213242738266,4733,13
+rabi_maize,entry,S6 S3 with 2011 states before 2014,unit,nbr_same minus nbr_other,0.022838329254555784,0.038344039569211764,0.5514316846815992,1533,5
+rabi_maize,entry,S6 S3 with 2011 states before 2014,unit,nbr_same minus ring_same,0.060560184494500374,0.044730582621526786,0.17577221631916384,1533,5
+rabi_maize,entry,S6 S3 with 2011 states before 2014,unit,nbr_other minus ring_other,-0.0032966489765187453,0.014941354417875629,0.8253733503916149,1533,5
+rabi_maize,entry,S6 S3 with 2011 states before 2014,unit,edge within minus edge across,0.06385683347101911,0.038210214122416646,0.0946825749215116,1533,5
+rabi_maize,entry,S6 S3 with 2011 states before 2014,unit,ring_same minus ring_other,-0.04101850421646334,0.01546028110746872,0.007974351663879567,1533,5
+rabi_maize,entry,S6 S3 with 2011 states before 2014,state,nbr_same minus nbr_other,0.022838329254555784,0.008392837261018266,0.006505147942749617,1533,5
+rabi_maize,entry,S6 S3 with 2011 states before 2014,state,nbr_same minus ring_same,0.060560184494500374,0.03800486331817849,0.11105140198477274,1533,5
+rabi_maize,entry,S6 S3 with 2011 states before 2014,state,nbr_other minus ring_other,-0.0032966489765187453,0.014340959692577303,0.8181877725487342,1533,5
+rabi_maize,entry,S6 S3 with 2011 states before 2014,state,edge within minus edge across,0.06385683347101911,0.025118499740713562,0.011014979994655673,1533,5
+rabi_maize,entry,S6 S3 with 2011 states before 2014,state,ring_same minus ring_other,-0.04101850421646334,0.01745345129329946,0.018765050640243846,1533,5
+rabi_maize,surge,S1 nbr + ring (128),unit,nbr minus ring,0.058886098964199655,0.044949945549542306,0.19018326525293272,5638,15
+rabi_maize,surge,S1 nbr + ring (128),state,nbr minus ring,0.058886098964199655,0.04976641774617669,0.23671020041475255,5638,15
+rabi_maize,surge,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,0.11356282181729284,0.06663411602720332,0.08832982490195364,3106,12
+rabi_maize,surge,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,0.11356282181729284,0.05282959183083479,0.031586372078560666,3106,12
+rabi_maize,surge,S3 border units: four sets,unit,nbr_same minus nbr_other,-0.018386241936662363,0.08560291463625255,0.8299347668387349,1560,6
+rabi_maize,surge,S3 border units: four sets,unit,nbr_same minus ring_same,0.10542826105856187,0.09767075810165068,0.28039829754538725,1560,6
+rabi_maize,surge,S3 border units: four sets,unit,nbr_other minus ring_other,-0.026933692257376813,0.02886129203049415,0.3507107312091402,1560,6
+rabi_maize,surge,S3 border units: four sets,unit,edge within minus edge across,0.1323619533159387,0.11345235503157602,0.24334190243304044,1560,6
+rabi_maize,surge,S3 border units: four sets,unit,ring_same minus ring_other,-0.15074819525260105,0.09236750596120187,0.10266939334978954,1560,6
+rabi_maize,surge,S3 border units: four sets,state,nbr_same minus nbr_other,-0.018386241936662363,0.08426976628765899,0.8272864235601206,1560,6
+rabi_maize,surge,S3 border units: four sets,state,nbr_same minus ring_same,0.10542826105856187,0.05272451665622565,0.04554282307274318,1560,6
+rabi_maize,surge,S3 border units: four sets,state,nbr_other minus ring_other,-0.026933692257376813,0.0335146387037212,0.42160512164995945,1560,6
+rabi_maize,surge,S3 border units: four sets,state,edge within minus edge across,0.1323619533159387,0.04724344827549768,0.005083417330517725,1560,6
+rabi_maize,surge,S3 border units: four sets,state,ring_same minus ring_other,-0.15074819525260105,0.05814377503982021,0.009523136810935673,1560,6
+rabi_maize,surge,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,0.08781738410145083,0.0618903290064776,0.15592253639794298,4822,10
+rabi_maize,surge,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,0.08781738410145083,0.04377725745850815,0.04485574682396329,4822,10
+rice,surge,S1 nbr + ring (128),unit,nbr minus ring,0.0078885418033176,0.019471112648871764,0.6853740308140406,6061,84
+rice,surge,S1 nbr + ring (128),state,nbr minus ring,0.0078885418033176,0.02684876723557951,0.7689000904591661,6061,84
+rice,surge,S2 border units: nbr_same + nbr_other + ring (128 split),unit,nbr_same minus nbr_other,-0.028853230662181185,0.01971885507184995,0.14340431082380756,3484,41
+rice,surge,S2 border units: nbr_same + nbr_other + ring (128 split),state,nbr_same minus nbr_other,-0.028853230662181185,0.02721249294056008,0.2890110740562516,3484,41
+rice,surge,S3 border units: four sets,unit,nbr_same minus nbr_other,0.013327788581858695,0.024624715459791918,0.5883447566360251,1703,18
+rice,surge,S3 border units: four sets,unit,nbr_same minus ring_same,0.01623009169641526,0.03565034177822008,0.6489238723186943,1703,18
+rice,surge,S3 border units: four sets,unit,nbr_other minus ring_other,-0.013665225615661162,0.010376495569627659,0.18785862282808008,1703,18
+rice,surge,S3 border units: four sets,unit,edge within minus edge across,0.029895317312076425,0.03975955274077263,0.4521095402024895,1703,18
+rice,surge,S3 border units: four sets,unit,ring_same minus ring_other,-0.016567528730217728,0.026496962510041633,0.5317994883731765,1703,18
+rice,surge,S3 border units: four sets,state,nbr_same minus nbr_other,0.013327788581858695,0.03402366168648714,0.6952642458294953,1703,18
+rice,surge,S3 border units: four sets,state,nbr_same minus ring_same,0.01623009169641526,0.04184546508359247,0.6981212393784852,1703,18
+rice,surge,S3 border units: four sets,state,nbr_other minus ring_other,-0.013665225615661162,0.009370409056849976,0.1447473417600163,1703,18
+rice,surge,S3 border units: four sets,state,edge within minus edge across,0.029895317312076425,0.046229561197527275,0.5178448853977725,1703,18
+rice,surge,S3 border units: four sets,state,ring_same minus ring_other,-0.016567528730217728,0.03241873695244124,0.6093174884855486,1703,18
+rice,surge,S4 same-state only: nbr_same + ring_same,unit,nbr_same minus ring_same,0.022566918723014272,0.022367034166843793,0.31300505552751634,5090,72
+rice,surge,S4 same-state only: nbr_same + ring_same,state,nbr_same minus ring_same,0.022566918723014272,0.03359559912402617,0.5017603956929036,5090,72
+rice,surge,S5 S3 without AP and TS,unit,nbr_same minus nbr_other,0.010938154082209904,0.026788949888685274,0.6830472507419125,1565,17
+rice,surge,S5 S3 without AP and TS,unit,nbr_same minus ring_same,0.014924917813127252,0.03720255516008246,0.6882876691592925,1565,17
+rice,surge,S5 S3 without AP and TS,unit,nbr_other minus ring_other,-0.012511891930761816,0.013096894904344025,0.3394094775211681,1565,17
+rice,surge,S5 S3 without AP and TS,unit,edge within minus edge across,0.027436809743889068,0.04205727027977892,0.5141639183590493,1565,17
+rice,surge,S5 S3 without AP and TS,unit,ring_same minus ring_other,-0.016498655661679164,0.026921531437840897,0.539980559066406,1565,17
+rice,surge,S5 S3 without AP and TS,state,nbr_same minus nbr_other,0.010938154082209904,0.034497528843469995,0.7511899904984707,1565,17
+rice,surge,S5 S3 without AP and TS,state,nbr_same minus ring_same,0.014924917813127252,0.04316060697202568,0.7294933747804309,1565,17
+rice,surge,S5 S3 without AP and TS,state,nbr_other minus ring_other,-0.012511891930761816,0.009869547949104432,0.20489547670602015,1565,17
+rice,surge,S5 S3 without AP and TS,state,edge within minus edge across,0.027436809743889068,0.046850297213687345,0.5581260460849455,1565,17
+rice,surge,S5 S3 without AP and TS,state,ring_same minus ring_other,-0.016498655661679164,0.03270431880564872,0.6139245231427846,1565,17
+rice,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus nbr_other,0.01153258119670034,0.02552396239502617,0.6513889360571228,1672,17
+rice,surge,S6 S3 with 2011 states before 2014,unit,nbr_same minus ring_same,0.016673074088726713,0.03659096572809395,0.6486338091029835,1672,17
+rice,surge,S6 S3 with 2011 states before 2014,unit,nbr_other minus ring_other,-0.011852158458130058,0.010903116651382126,0.2770177326852292,1672,17
+rice,surge,S6 S3 with 2011 states before 2014,unit,edge within minus edge across,0.028525232546856773,0.040604199552444854,0.48235538986548265,1672,17
+rice,surge,S6 S3 with 2011 states before 2014,unit,ring_same minus ring_other,-0.016992651350156433,0.02664121422231879,0.5235822547847201,1672,17
+rice,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus nbr_other,0.01153258119670034,0.03398611933651516,0.7343595644226696,1672,17
+rice,surge,S6 S3 with 2011 states before 2014,state,nbr_same minus ring_same,0.016673074088726713,0.042595914768060336,0.6954836687240656,1672,17
+rice,surge,S6 S3 with 2011 states before 2014,state,nbr_other minus ring_other,-0.011852158458130058,0.008354958733133102,0.15602216006811068,1672,17
+rice,surge,S6 S3 with 2011 states before 2014,state,edge within minus edge across,0.028525232546856773,0.04614470236067987,0.5364638276807212,1672,17
+rice,surge,S6 S3 with 2011 states before 2014,state,ring_same minus ring_other,-0.016992651350156433,0.03238167463553454,0.5997491016800833,1672,17

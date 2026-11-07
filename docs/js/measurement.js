@@ -783,7 +783,7 @@ SC[5] = scene({
             const host = $(sel); if (!host) return;
             const W = host.clientWidth || 400, nar = W < 420;
             const m = { t: 12, r: 16, b: 34, l: nar ? 112 : 150 }, rowH = 34;
-            const rows = [['weekly haat', 'weekly haat'], ['FPO', 'producer organisation']];
+            const rows = [['weekly haat', 'weekly haat'], ['FPO', 'farmer collective']];
             const H = m.t + rows.length * rowH + m.b;
             const svg = svgFor(host, W, H);
             const X = lin(dom[0], dom[1], m.l, W - m.r);

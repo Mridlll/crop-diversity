@@ -15,7 +15,11 @@ Contents
   tenths    the same by tenth (decile), full period
   districts each district's effective number of crops net of its state, full period, so the
             mean of the dots in each fifth equals that fifth's coefficient
-  spline    two-piece line with a knot at 0.30, read from the referee CSV
+  spline    two-piece line at the knot chosen by 134_irrigation_threshold.py (estimated knot
+            0.43, bootstrap 95% 0.29 to 0.72, so the round 0.50 inside it is used), read from
+            outputs/revision_nov8/irrigation_v3/threshold_spline.csv; knot_est carries the
+            estimate and its intervals from threshold_summary.csv
+  attenuation  noise in the yearly land-use irrigation share and the corrected within slope (135)
   y1991     fifths of the census 1991 irrigated share, full period and 2017-18 to 2021-22
   change    1991-2011 change in irrigated share against the change in the effective number
             of crops (long differences), read from the referee CSV
@@ -26,7 +30,8 @@ Every interval uses state-clustered (CR1) standard errors with t(G-1) critical v
 p-value shown on the site is the wild cluster restricted bootstrap by state (Webb weights,
 9,999 draws), the referee's method.
 
-Needs: outputs of 121 and 122 (and 124 for the referee CSV).
+Needs: outputs of 121 and 122 (and 124 for the referee CSV, 134 for the spline, 135 for the
+attenuation block).
 
 Usage:
   C:/Users/mridu/anaconda3/envs/geo_env/python.exe scripts/130_irrigation_v2_site_data.py
@@ -141,16 +146,34 @@ def ref(label):
     return r.iloc[0]
 
 
+V3 = REPO + "/outputs/revision_nov8/irrigation_v3"
+SPL = pd.read_csv(V3 + "/threshold_spline.csv")
+SPL = SPL[SPL["chosen"] & (SPL["y"] == "D1")]
 OUT["spline"] = {}
-for key, t in [("full", "full"), ("w1721", "w1721")]:
-    lo, hi = ref("spline {} D1 below".format(t)), ref("spline {} D1 above".format(t))
-    tc = stats.t.ppf(0.975, hi["G"] - 1)
-    OUT["spline"][key] = dict(knot=0.30, below=r4(lo["b"]), below_p=r4(lo["p_wcr"]),
-                              below_ci=[r4(lo["b"] - tc * lo["se"]), r4(lo["b"] + tc * lo["se"])],
-                              above=r4(hi["b"]), above_p=r4(hi["p_wcr"]),
-                              above_ci=[r4(hi["b"] - tc * hi["se"]), r4(hi["b"] + tc * hi["se"])],
-                              n=int(lo["n"]), G=int(hi["G"]))
-OUT["share_above_030"] = r4((WINDOWS[0][2]["irr_share"].dropna() > 0.30).mean())
+for key in ["full", "w1721"]:
+    r = SPL[SPL["window"] == key].iloc[0]
+    OUT["spline"][key] = dict(knot=r4(r["knot"]), below=r4(r["below"]), below_p=r4(r["below_p"]),
+                              below_ci=[r4(r["below_lo"]), r4(r["below_hi"])],
+                              above=r4(r["above"]), above_p=r4(r["above_p"]),
+                              above_ci=[r4(r["above_lo"]), r4(r["above_hi"])],
+                              n=int(r["n"]), G=int(r["G"]), share_above=r4(r["share_above"]))
+KS = pd.read_csv(V3 + "/threshold_summary.csv").set_index("label")
+ke = KS.loc["main"]
+OUT["knot_est"] = dict(knot=r4(ke["knot"]), boot_ci=[r4(ke["boot_lo"]), r4(ke["boot_hi"])],
+                       lr_ci=[r4(ke["lr_ci95_lo"]), r4(ke["lr_ci95_hi"])], supwald_p=r4(ke["supwald_p"]),
+                       recent_knot=r4(KS.loc["window b 2017-18 to 2021-22 (flags dropped, six crops removed)", "knot"]),
+                       recent_supwald_p=r4(KS.loc["window b 2017-18 to 2021-22 (flags dropped, six crops removed)", "supwald_p"]))
+OUT["share_above_knot"] = OUT["spline"]["full"]["share_above"]
+# noise in the yearly land-use irrigation series (135_irrigation_attenuation.py)
+AT = pd.read_csv(V3 + "/attenuation_results.csv")
+c = AT[(AT["part"] == "C") & AT["label"].str.startswith("main")].iloc[0]
+f = AT[(AT["part"] == "F") & (AT["label"] == "within corrected by decadal signal share (census comparison)")].iloc[0]
+iv = AT[(AT["part"] == "D") & AT["label"].str.startswith("main") & (AT["y"] == "dD1") & (AT["cluster"] == "shrug_key")].iloc[0]
+yn = AT[(AT["part"] == "B") & (AT["label"] == "yearly noise all years")].iloc[0]
+OUT["attenuation"] = dict(corr=r4(c["corr"]), signal=r4(c["lam_lus"]), signal_ci=[r4(c["lam_lus_lo"]), r4(c["lam_lus_hi"])],
+                          n=int(c["n"]), yearly_noise_share=r4(1 - yn["reliability_within"]),
+                          within_corr_b=r4(f["b"]), within_corr_ci=[r4(f["lo"]), r4(f["hi"])],
+                          iv=r4(iv["iv"]), iv_ci=[r4(iv["iv_lo"]), r4(iv["iv_hi"])], iv_F=r4(iv["F"]))
 
 # ---------------------------------------------------------------- 1991 irrigation, fifths
 print("fifths of the census 1991 irrigated share, D1, terrain controls, within state")
