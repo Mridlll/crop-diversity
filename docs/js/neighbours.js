@@ -481,9 +481,9 @@ SC[5] = scene({
             });
             const so = E('g', { 'pointer-events': 'none', 'clip-path': `url(#${cid})` }, g);
             rings.forEach(d => E('path', { d, fill: 'none', stroke: 'rgba(237,237,235,0.4)', 'stroke-width': 0.6, 'stroke-linejoin': 'round' }, so));
-            T(g, { x: 2, y: 15, fill: TX, 'font-size': 12, class: 'mono' }, fy(py));
+            T(g, { x: pw / 2, y: 15, 'text-anchor': 'middle', fill: TX, 'font-size': 12, class: 'mono' }, fy(py));
             const nAll = Object.values(U).filter(u => u.st === 'at_risk' && u.y && u.y <= py).length;
-            T(g, { x: 2, y: 30, fill: TX3, 'font-size': W < 560 ? 9.5 : 10.5, class: 'mono' }, this.ep === 'soybean_entry' ? `${nAll} district${nAll === 1 ? ' has' : 's have'} taken it up` : `${nAll} district${nAll === 1 ? '' : 's'} with a surge`);
+            T(g, { x: pw / 2, y: 30, 'text-anchor': 'middle', fill: TX3, 'font-size': W < 560 ? 9.5 : 10.5, class: 'mono' }, `${nAll} district${nAll === 1 ? '' : 's'} so far`);
             this.panels.push(g);
         });
         this.draw(this.played || RM ? 1 : 0);
