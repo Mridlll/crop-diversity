@@ -427,21 +427,23 @@ SC[5] = scene({
         /* frame on the districts involved in this crop */
         let x0 = 180, x1 = -180, ya = 90, yb = -90;
         const walk = c => { if (typeof c[0] === 'number') { x0 = Math.min(x0, c[0]); x1 = Math.max(x1, c[0]); ya = Math.min(ya, c[1]); yb = Math.max(yb, c[1]); } else c.forEach(walk); };
-        /* the peninsula and the plains: the few take-ups in the hills and the north-east are counted but fall outside the frame */
-        x0 = 67.6; x1 = 88.6; ya = 8; yb = 31.2; void walk;
-        const W = host.clientWidth || 900, cols = W < 760 ? 2 : 3, rowsN = Math.ceil(PY.length / cols), gap = W < 560 ? 8 : 14;
-        const pw = (W - gap * (cols - 1)) / cols, kx = Math.cos((ya + yb) / 2 * Math.PI / 180);
-        const sc = (pw - 4) / ((x1 - x0) * kx), ph = Math.min(pw * 1.25, (yb - ya) * sc) + 22;
+        /* the whole country in every panel, scaled to fit both the width and a height cap */
+        geo.features.forEach(f => walk(f.geometry.coordinates));
+        const W = host.clientWidth || 900, cols = W < 760 ? 2 : 3, rowsN = Math.ceil(PY.length / cols), gap = W < 560 ? 10 : 18;
+        const pw = (W - gap * (cols - 1)) / cols, kx = Math.cos((ya + yb) / 2 * Math.PI / 180), HEAD = 28;
+        const sc = Math.min((pw - 8) / ((x1 - x0) * kx), (pw * 1.1) / (yb - ya));
+        const mw = (x1 - x0) * kx * sc, mh = (yb - ya) * sc, ox = (pw - mw) / 2;
+        const ph = HEAD + mh + 4;
         const H = rowsN * ph + (rowsN - 1) * gap + 2;
         const svg = svgFor(host, W, H);
-        const PXl = v => 2 + (v - x0) * kx * sc, PYl = v => 22 + (yb - v) * sc;
+        const PXl = v => ox + (v - x0) * kx * sc, PYl = v => HEAD + 2 + (yb - v) * sc;
         const ring = c => c.map((p, i) => (i ? 'L' : 'M') + PXl(p[0]).toFixed(1) + ',' + PYl(p[1]).toFixed(1)).join('') + 'Z';
         const path = (c, d) => d === 1 ? ring(c) : c.map(k => path(k, d - 1)).join('');
         const hid = 'h5' + Math.random().toString(36).slice(2, 7), cid = 'c5' + Math.random().toString(36).slice(2, 7);
         const defs = E('defs', {}, svg);
         const pat = E('pattern', { id: hid, width: 5, height: 5, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' }, defs);
         E('line', { x1: 0, y1: 0, x2: 0, y2: 5, stroke: 'rgba(255,255,255,0.20)', 'stroke-width': 1 }, pat);
-        E('rect', { x: 0, y: 20, width: pw, height: ph - 20 }, E('clipPath', { id: cid }, defs));
+        E('rect', { x: 0, y: HEAD - 2, width: pw, height: ph - HEAD + 2 }, E('clipPath', { id: cid }, defs));
         /* features in view, path strings built once */
         const feats = [];
         geo.features.forEach(f => {
@@ -479,9 +481,9 @@ SC[5] = scene({
             });
             const so = E('g', { 'pointer-events': 'none', 'clip-path': `url(#${cid})` }, g);
             rings.forEach(d => E('path', { d, fill: 'none', stroke: 'rgba(237,237,235,0.4)', 'stroke-width': 0.6, 'stroke-linejoin': 'round' }, so));
-            T(g, { x: 2, y: 13, fill: TX, 'font-size': 12, class: 'mono' }, fy(py));
+            T(g, { x: 2, y: 15, fill: TX, 'font-size': 12, class: 'mono' }, fy(py));
             const nAll = Object.values(U).filter(u => u.st === 'at_risk' && u.y && u.y <= py).length;
-            T(g, { x: pw - 2, y: 13, 'text-anchor': 'end', fill: TX3, 'font-size': W < 560 ? 9 : 10, class: 'mono' }, `${nAll} district${nAll === 1 ? '' : 's'} so far`);
+            T(g, { x: pw - 2, y: 15, 'text-anchor': 'end', fill: TX3, 'font-size': W < 560 ? 9 : 10, class: 'mono' }, `${nAll} district${nAll === 1 ? '' : 's'} so far`);
             this.panels.push(g);
         });
         this.draw(this.played || RM ? 1 : 0);
