@@ -430,7 +430,7 @@ SC[5] = scene({
         /* the whole country in every panel, scaled to fit both the width and a height cap */
         geo.features.forEach(f => walk(f.geometry.coordinates));
         const W = host.clientWidth || 900, cols = W < 760 ? 2 : 3, rowsN = Math.ceil(PY.length / cols), gap = W < 560 ? 10 : 18;
-        const pw = (W - gap * (cols - 1)) / cols, kx = Math.cos((ya + yb) / 2 * Math.PI / 180), HEAD = 28;
+        const pw = (W - gap * (cols - 1)) / cols, kx = Math.cos((ya + yb) / 2 * Math.PI / 180), HEAD = 36;
         const sc = Math.min((pw - 8) / ((x1 - x0) * kx), (pw * 1.1) / (yb - ya));
         const mw = (x1 - x0) * kx * sc, mh = (yb - ya) * sc, ox = (pw - mw) / 2;
         const ph = HEAD + mh + 4;
@@ -483,7 +483,7 @@ SC[5] = scene({
             rings.forEach(d => E('path', { d, fill: 'none', stroke: 'rgba(237,237,235,0.4)', 'stroke-width': 0.6, 'stroke-linejoin': 'round' }, so));
             T(g, { x: 2, y: 15, fill: TX, 'font-size': 12, class: 'mono' }, fy(py));
             const nAll = Object.values(U).filter(u => u.st === 'at_risk' && u.y && u.y <= py).length;
-            T(g, { x: pw - 2, y: 15, 'text-anchor': 'end', fill: TX3, 'font-size': W < 560 ? 9 : 10, class: 'mono' }, `${nAll} district${nAll === 1 ? '' : 's'} so far`);
+            T(g, { x: 2, y: 30, fill: TX3, 'font-size': W < 560 ? 9.5 : 10.5, class: 'mono' }, this.ep === 'soybean_entry' ? `${nAll} district${nAll === 1 ? ' has' : 's have'} taken it up` : `${nAll} district${nAll === 1 ? '' : 's'} with a surge`);
             this.panels.push(g);
         });
         this.draw(this.played || RM ? 1 : 0);
