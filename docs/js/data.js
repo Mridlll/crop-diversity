@@ -785,7 +785,7 @@ SC[7] = scene({
             const lab = vals.map(o => (o.hollow ? 'rho ' : 'r ') + o.v.toFixed(3)).join(' · ');
             T(svg, { x: X(Math.min(...vals.map(o => o.v))) - 12, y: cy + 4, 'text-anchor': 'end', fill: TX2, 'font-size': 11, class: 'mono' }, lab);
             const hit = E('rect', { x: 0, y: y, width: W, height: rowH, fill: 'transparent' }, svg);
-            tipOn(hit, `<strong>${esc(c.measure)}</strong><br>${esc(c.against)}<br>${c.n} districts` +
+            tipOn(hit, `<strong>${esc(c.measure)}</strong><br>${esc(c.against)}<br>${c.n} ${c.unit || 'districts'}` +
                 (c.r != null ? `<br>r ${c.r.toFixed(3)}` : '') + (c.rho != null ? `<br>rho ${c.rho.toFixed(3)}` : '') +
                 (c.mean_a != null ? `<br>mean ${c.mean_a.toFixed(3)} (${c.la}) against ${c.mean_b.toFixed(3)} (${c.lb})` : ''));
         });

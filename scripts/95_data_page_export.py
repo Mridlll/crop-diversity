@@ -1,4 +1,8 @@
 """
+95_data_page_export.py
+(Two scripts share the number 95: 95_data_page_export.py is run_all step "95a" and
+ 95_measurement_export.py is step "95b".)
+
 USAGE
     python scripts/95_data_page_export.py [--out docs/data]
 
@@ -310,12 +314,15 @@ dump("site_data_sources.json", {"sources": sources, "groups": groups, "flows": l
                                "modules_direct": {k: int(v) for k, v in pv.module.value_counts().items()}})
 
 # ------------------------------------------------------------------ checks
-# from the validation run (scripts/71): C3, C4 and C9. The state-level comparisons
-# (C5, C6) rest on reference values that have not been confirmed and are left out.
+# from the validation run (scripts/71): C3, C4, C6 and C9. C6 compares state totals
+# with DES Land Use Statistics 2017-20 (reference values from script 133). C5, state
+# cropping intensity, agrees only at rho 0.698 and is left out of the chart.
 checks = [
     {"measure": "Irrigated share", "against": "Mission Antyodaya 2019–20 against census village records 2011",
      "stat": "rho", "value": 0.812, "r": 0.816, "rho": 0.812, "n": 582, "mean_a": 0.554, "mean_b": 0.474,
      "la": "survey", "lb": "census"},
+    {"measure": "Irrigated share", "against": "Mission Antyodaya 2019–20 against DES land-use statistics 2017–20, state totals",
+     "stat": "rho", "value": 0.912, "r": 0.934, "rho": 0.912, "n": 21, "unit": "states"},
     {"measure": "Scheduled Caste share", "against": "census 2011 against SECC 2012",
      "stat": "r", "value": 0.942, "r": 0.942, "n": 609, "mean_a": 0.151, "mean_b": 0.051,
      "la": "census", "lb": "SECC"},

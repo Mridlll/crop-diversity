@@ -47,68 +47,79 @@ ST: n=609, Pearson r = 0.990, mean PC11 0.183 vs SECC 0.065.
 
 ## C5 and C6. External anchor at state level
 
-Reference values are published state figures for cropping intensity and
-gross irrigated area as a share of gross cropped area (DES Land Use Statistics,
-around 2018-19). They are used for RANK agreement only, not level matching.
-
-> UNCONFIRMED: the reference column is entered from memory of the DES tables and
-> must be re-checked against the published source before it appears in any report.
+Reference values are published DES Land Use Statistics figures, summed from the
+district tables to the state for 2017-18 to 2019-20 (script
+`133_validate_state_irrigation.py`, file `state_irrigation_reference_lus.csv`).
+Irrigation share is net irrigated area over net area sown, the same concept as the
+Antyodaya share; cropping intensity is cropped area over net area sown. Andhra
+Pradesh is compared with Andhra Pradesh and Telangana combined, because the SHRUG
+table uses undivided 2011 Andhra Pradesh. Maharashtra and West Bengal report no
+district net irrigated area in these years, so C6 has no reference for them.
+Until November 2026 this column was typed in from memory; that column is shown
+as `earlier` for the record and is not used in any statistic.
 
 ### C5 cropping intensity
 
-| state | districts | SHRUG | reference | diff |
-|---|---|---|---|---|
-| punjab | 20 | 2.07 | 1.90 | +0.17 |
-| haryana | 20 | 2.06 | 1.87 | +0.19 |
-| west bengal | 18 | 1.68 | 1.85 | -0.17 |
-| himachal pradesh | 12 | 1.90 | 1.77 | +0.13 |
-| uttar pradesh | 71 | 1.92 | 1.68 | +0.24 |
-| madhya pradesh | 50 | 1.88 | 1.62 | +0.26 |
-| odisha | 30 | 1.51 | 1.60 | -0.09 |
-| uttarakhand | 13 | 1.95 | 1.58 | +0.37 |
-| assam | 26 | 1.66 | 1.50 | +0.16 |
-| rajasthan | 33 | 1.68 | 1.47 | +0.21 |
-| bihar | 38 | 1.94 | 1.44 | +0.50 |
-| kerala | 14 | 1.17 | 1.35 | -0.18 |
-| maharashtra | 33 | 1.69 | 1.35 | +0.34 |
-| andhra pradesh | 22 | 1.64 | 1.30 | +0.34 |
-| gujarat | 26 | 1.80 | 1.28 | +0.52 |
-| chhattisgarh | 18 | 1.35 | 1.25 | +0.10 |
-| karnataka | 30 | 1.65 | 1.24 | +0.41 |
-| tamil nadu | 31 | 1.58 | 1.21 | +0.37 |
-| jharkhand | 24 | 1.63 | 1.20 | +0.43 |
+| state | districts | Antyodaya / SHRUG | DES LUS 2017-20 | diff | earlier (retired) |
+|---|---|---|---|---|---|
+| west bengal | 18 | 1.68 | 1.91 | -0.23 | 1.85 |
+| punjab | 20 | 2.07 | 1.90 | +0.17 | 1.90 |
+| haryana | 20 | 2.06 | 1.85 | +0.20 | 1.87 |
+| madhya pradesh | 50 | 1.88 | 1.73 | +0.15 | 1.62 |
+| himachal pradesh | 12 | 1.90 | 1.69 | +0.21 | 1.77 |
+| uttar pradesh | 71 | 1.92 | 1.63 | +0.29 | 1.68 |
+| uttarakhand | 13 | 1.95 | 1.59 | +0.37 | 1.58 |
+| assam | 26 | 1.66 | 1.48 | +0.19 | 1.50 |
+| rajasthan | 33 | 1.68 | 1.45 | +0.23 | 1.47 |
+| bihar | 38 | 1.94 | 1.44 | +0.50 | 1.44 |
+| jharkhand | 24 | 1.63 | 1.40 | +0.23 | 1.20 |
+| nagaland | 11 | 1.79 | 1.38 | +0.41 |  |
+| arunachal pradesh | 16 | 1.98 | 1.36 | +0.62 |  |
+| gujarat | 26 | 1.80 | 1.35 | +0.46 | 1.28 |
+| kerala | 14 | 1.17 | 1.27 | -0.10 | 1.35 |
+| karnataka | 30 | 1.65 | 1.26 | +0.40 | 1.24 |
+| andhra pradesh | 22 | 1.64 | 1.25 | +0.38 | 1.30 |
+| tamil nadu | 31 | 1.58 | 1.24 | +0.34 | 1.21 |
+| meghalaya | 7 | 1.76 | 1.23 | +0.54 |  |
+| chhattisgarh | 18 | 1.35 | 1.21 | +0.15 | 1.25 |
+| goa | 2 | 1.33 | 1.17 | +0.16 |  |
+| odisha | 30 | 1.51 | 1.14 | +0.37 | 1.60 |
 
-Spearman rho = 0.653, Pearson r = 0.613, mean absolute difference = 0.273.
+Spearman rho = 0.698, Pearson r = 0.666, mean absolute difference = 0.304, 22 states.
+Gaps of 0.10 or more: odisha (1.51 against 1.14), goa (1.33 against 1.17), chhattisgarh (1.35 against 1.21), meghalaya (1.76 against 1.23), tamil nadu (1.58 against 1.24), andhra pradesh (1.64 against 1.25), karnataka (1.65 against 1.26), gujarat (1.80 against 1.35), arunachal pradesh (1.98 against 1.36), nagaland (1.79 against 1.38), jharkhand (1.63 against 1.40), bihar (1.94 against 1.44), rajasthan (1.68 against 1.45), assam (1.66 against 1.48), uttarakhand (1.95 against 1.59), uttar pradesh (1.92 against 1.63), himachal pradesh (1.90 against 1.69), madhya pradesh (1.88 against 1.73), haryana (2.06 against 1.85), punjab (2.07 against 1.90), west bengal (1.68 against 1.91).
 
-**C5 cropping intensity: WARN**  Rank agreement with published state figures rho = 0.653, MAE 0.273.
+**C5 cropping intensity: WARN**  Rank agreement with DES Land Use Statistics 2017-20, rho = 0.698, MAE 0.304, 22 states.
 
 ### C6 irrigation share
 
-| state | districts | SHRUG | reference | diff |
-|---|---|---|---|---|
-| punjab | 20 | 0.92 | 0.98 | -0.06 |
-| haryana | 20 | 0.86 | 0.91 | -0.05 |
-| uttar pradesh | 71 | 0.83 | 0.85 | -0.02 |
-| bihar | 38 | 0.72 | 0.68 | +0.04 |
-| west bengal | 18 | 0.62 | 0.61 | +0.01 |
-| tamil nadu | 31 | 0.49 | 0.58 | -0.10 |
-| andhra pradesh | 22 | 0.53 | 0.56 | -0.02 |
-| madhya pradesh | 50 | 0.61 | 0.52 | +0.09 |
-| gujarat | 26 | 0.57 | 0.52 | +0.05 |
-| uttarakhand | 13 | 0.42 | 0.50 | -0.08 |
-| rajasthan | 33 | 0.46 | 0.44 | +0.02 |
-| karnataka | 30 | 0.40 | 0.36 | +0.04 |
-| odisha | 30 | 0.37 | 0.35 | +0.02 |
-| chhattisgarh | 18 | 0.39 | 0.34 | +0.05 |
-| himachal pradesh | 12 | 0.24 | 0.22 | +0.02 |
-| maharashtra | 33 | 0.54 | 0.21 | +0.33 |
-| kerala | 14 | 0.24 | 0.18 | +0.06 |
-| jharkhand | 24 | 0.45 | 0.12 | +0.33 |
-| assam | 26 | 0.35 | 0.11 | +0.24 |
+| state | districts | Antyodaya / SHRUG | DES LUS 2017-20 | diff | earlier (retired) |
+|---|---|---|---|---|---|
+| punjab | 20 | 0.92 | 1.00 | -0.08 | 0.98 |
+| haryana | 20 | 0.86 | 0.93 | -0.07 | 0.91 |
+| uttar pradesh | 71 | 0.83 | 0.87 | -0.04 | 0.85 |
+| madhya pradesh | 50 | 0.61 | 0.75 | -0.14 | 0.52 |
+| bihar | 38 | 0.72 | 0.60 | +0.12 | 0.68 |
+| tamil nadu | 31 | 0.49 | 0.56 | -0.08 | 0.58 |
+| gujarat | 26 | 0.57 | 0.51 | +0.06 | 0.52 |
+| uttarakhand | 13 | 0.42 | 0.49 | -0.07 | 0.50 |
+| andhra pradesh | 22 | 0.53 | 0.49 | +0.04 | 0.56 |
+| rajasthan | 33 | 0.46 | 0.47 | -0.00 | 0.44 |
+| meghalaya | 7 | 0.45 | 0.40 | +0.05 |  |
+| karnataka | 30 | 0.40 | 0.36 | +0.04 | 0.36 |
+| chhattisgarh | 18 | 0.39 | 0.33 | +0.06 | 0.34 |
+| nagaland | 11 | 0.43 | 0.31 | +0.13 |  |
+| odisha | 30 | 0.37 | 0.27 | +0.10 | 0.35 |
+| arunachal pradesh | 16 | 0.39 | 0.24 | +0.15 |  |
+| himachal pradesh | 12 | 0.24 | 0.21 | +0.03 | 0.22 |
+| kerala | 14 | 0.24 | 0.20 | +0.04 | 0.18 |
+| jharkhand | 24 | 0.45 | 0.18 | +0.27 | 0.12 |
+| goa | 2 | 0.19 | 0.14 | +0.05 |  |
+| assam | 26 | 0.35 | 0.14 | +0.21 | 0.11 |
 
-Spearman rho = 0.852, Pearson r = 0.890, mean absolute difference = 0.087.
+Spearman rho = 0.912, Pearson r = 0.934, mean absolute difference = 0.088, 21 states.
+Gaps of 0.10 or more: assam (0.35 against 0.14), jharkhand (0.45 against 0.18), arunachal pradesh (0.39 against 0.24), odisha (0.37 against 0.27), nagaland (0.43 against 0.31), bihar (0.72 against 0.60), madhya pradesh (0.61 against 0.75).
 
-**C6 irrigation share: PASS**  Rank agreement with published state figures rho = 0.852, MAE 0.087.
+**C6 irrigation share: PASS**  Rank agreement with DES Land Use Statistics 2017-20, rho = 0.912, MAE 0.088, 21 states.
 
 ## C7. Old scraped irrigation_pct vs new SHRUG measure
 
@@ -199,8 +210,8 @@ come from the same village set on both sides.
 | C2 internal consistency | PASS | 0 issue(s). |
 | C3 irrigation cross-source | PASS | Two independent sources 8 years apart agree at rho = 0.812. |
 | C4 caste cross-source | PASS | SC share agrees across census and SECC at r = 0.942. |
-| C5 cropping intensity | WARN | Rank agreement with published state figures rho = 0.653, MAE 0.273. |
-| C6 irrigation share | PASS | Rank agreement with published state figures rho = 0.852, MAE 0.087. |
+| C5 cropping intensity | WARN | Rank agreement with DES Land Use Statistics 2017-20, rho = 0.698, MAE 0.304, 22 states. |
+| C6 irrigation share | PASS | Rank agreement with DES Land Use Statistics 2017-20, rho = 0.912, MAE 0.088, 21 states. |
 | C7 old vs new irrigation | WARN | rho = 0.656 between the scraped variable and the SHRUG measure. Low agreement means the original regime finding rests on a noisy variable. |
 | C8 coverage | WARN | 26 districts excluded from headline analysis for thin Antyodaya coverage. |
 | C9 aggregation invariance | PASS | Every ratio reproduces SHRUG's own district file at r >= 0.9923. |

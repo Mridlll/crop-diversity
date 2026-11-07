@@ -16,7 +16,7 @@ broken in the raw file and every multi-year district average leaves it out.
 
 Requirements: pandas, numpy, scipy, statsmodels, and geopandas for the map steps.
 On this machine `geo_env` carries all of them:
-  C:/Users/Mridul/anaconda3/envs/geo_env/python.exe
+  C:/Users/mridu/anaconda3/envs/geo_env/python.exe
 """
 import argparse
 import os
@@ -33,7 +33,7 @@ STEPS = [
     ("72", "72_fix_and_crosswalk.py",
      "Correct the irrigation denominator, build the district crosswalk"),
     ("71", "71_validate_shrug_covariates.py",
-     "Nine validation checks (must run AFTER 72)"),
+     "Nine validation checks (must run AFTER 72; C5/C6 read the committed output of 133)"),
     ("75", "75_audit_diversity_construction.py",
      "Audit how the diversity indices were built, against the raw APY file"),
     ("76", "76_rebuild_corrected_indices.py",

@@ -29,6 +29,11 @@ def code(s):
     C.append(nbf.v4.new_code_cell(s.strip("\n")))
 
 
+# Superseded notice, added 7 November 2026.
+md(r'''
+> **Superseded.** This notebook was built in September 2026 on an earlier basis. It includes 1997-98, reports the audit of the original build against the 23-year window, and presents an inverted U in irrigation with a turning point. Several of its result cells read files that have since been rebuilt, so it will not run end to end. Do not quote its numbers. The current refereed results are in `outputs/ANALYSIS_INDEX.md` and on the live site https://mridlll.github.io/crop-diversity/. On the current basis the window is 1998-99 to 2019-20 (22 years, 724 districts, 606 in the analysis sample), the outcomes are Hill numbers computed for each district-year and then averaged, and within a state the effective number of crops is flat across the less irrigated districts and lower in the most irrigated ones (fifths against the least irrigated fifth: +0.12, -0.55, -1.05 and -2.14 effective crops). The rise in the raw count of crops is a reporting effect.
+''')
+
 md(r"""
 # Agrobiodiversity and rural structure: SHRUG covariates for the crop-diversity panel
 

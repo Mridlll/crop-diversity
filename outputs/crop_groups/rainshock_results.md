@@ -1,5 +1,20 @@
 # Q3. Monsoon shocks and the crop-group mix (script 99_crop_groups_rainfall_shocks.py)
 
+## Status after referee (Nov 2026)
+
+Written 7 November 2026. Referee: `referee_rainshock_results.md` (script 100_referee_rainshock_checks), `referee_rainshock_followups_log.txt` (script 101). Site: Crop groups page, section 05.
+
+- Next-kharif millet share after an excess monsoon, -0.59 pp (0.17), "robust to every check": **refuted in share form**. On the cleaned sample (annual-unreliable unit-years, mild GCA jumps and 1997-98 dropped) it is **-0.22 to -0.24 (0.13 to 0.14), p 0.09 to 0.10**; about half the original came from the single weak year kharif 1997-98, and the bins are not monotone. The **area form survives**: log next-kharif millet area **-0.047 (0.018) to -0.054 (0.017)** in millet-growing units. The note's "millet area itself does not fall significantly" is overtaken by that estimate.
+- "No reallocation away from rice", resting on log rabi rice area -0.005 (0.012) over all units: the referee changed the estimand. In units that grow rabi rice a deficient monsoon cuts log rabi rice area by **-0.30 (0.07), -0.255 (0.063) after cleaning**. Survives in that form.
+- Total rabi area after a deficient monsoon, -0.073 (0.014) -> **-0.063 (0.013)** cleaned; two-sided bins -0.118 (0.027) at 40 percent or more short and -0.053 (0.013) at 20 to 40; permuting whole rainfall years p 0.003; state-clustered p 0.012. Survives.
+- Rabi millet share after a drought, +0.39 (0.11) -> **+0.21 (0.10), p 0.04** cleaned; rabi millet area does not move (log +0.002, 0.028). Still a denominator effect.
+- Rabi pulses in the least irrigated third, log -0.208 -> **-0.221 (0.055)** cleaned.
+- Rabi wheat share: unstable across fixed-effect choices, no claim, as the note already says.
+
+The original analysis below is kept unchanged for the record, apart from the sentences marked [corrected Nov 2026]. Where it disagrees with this block, this block and `outputs/ANALYSIS_INDEX.md` hold.
+
+---
+
 Note on the filename: `rainfall_results.md` already holds the rainfall data note, so this
 results note is `rainshock_results.md` to avoid overwriting it.
 

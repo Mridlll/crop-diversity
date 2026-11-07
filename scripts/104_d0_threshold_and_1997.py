@@ -14,9 +14,10 @@ Two checks on the diversity trend.
 (2) Why 1997-98 sits far below every later year (D1 about 3.8 against 5.2+).
     Established from the raw APY rows.
 
-Cleaning is exactly script 76's. Samples: the 725 crop-record districts, and the
-balanced panel of districts present in all 23 years (429), which is the site's
-national series. Standard errors cluster on the 2011 SHRUG parent district
+Cleaning is exactly script 76's. Samples: the 725 crop-record districts (724 once 1997-98
+is dropped; one district exists only in 1997-98), and the balanced panel of districts
+present in all 23 years including 1997-98 (429). The site's national series now uses
+the 500 districts present in all 22 years from 1998-99 (script 110). Standard errors cluster on the 2011 SHRUG parent district
 (district_crosswalk.csv shrug_key; own key where unmatched); bootstrap resamples
 those clusters.
 

@@ -1,0 +1,32 @@
+state,nsa_all,nia,nsa_irr,gca,nsa_ci,district_years_irr,lus_irr_share,lus_cropping_intensity,irr_coverage_of_nsa,thin,source,window
+andhra pradesh,17979620.0,8437216.0,17979620.0,22028123.0,17979620.0,39.0,0.4693,1.2252,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+arunachal pradesh,701400.0,166025.0,701400.0,956700.0,701400.0,67.0,0.2367,1.364,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+assam,8145463.0,1147031.0,8145463.0,12024770.0,8145463.0,81.0,0.1408,1.4763,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+bihar,15486259.0,9278406.0,15486259.0,22228371.0,15486259.0,114.0,0.5991,1.4354,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+chhattisgarh,13904316.0,4594308.0,13904316.0,16820828.0,13904316.0,81.0,0.3304,1.2098,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+goa,383495.0,54555.0,383495.0,448345.0,383495.0,6.0,0.1423,1.1691,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+gujarat,29067859.0,14947408.0,29067859.0,39156677.0,29067859.0,99.0,0.5142,1.3471,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+haryana,10669350.0,9920926.0,10669350.0,19771122.0,10669350.0,66.0,0.9299,1.8531,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+himachal pradesh,1615568.0,343475.0,1615568.0,2723333.0,1615568.0,36.0,0.2126,1.6857,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+jammu and kashmir,2145904.0,929578.0,2145904.0,3335668.0,2145904.0,60.0,0.4332,1.5544,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+jharkhand,4015803.0,710943.0,4015803.0,5616947.0,4015803.0,72.0,0.177,1.3987,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+karnataka,31363748.0,11421803.0,31363748.0,39375375.0,31363748.0,90.0,0.3642,1.2554,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+kerala,6100105.0,1206099.0,6100105.0,7737248.0,6100105.0,42.0,0.1977,1.2684,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+ladakh,39517.0,39517.0,39517.0,43172.0,39517.0,4.0,1.0,1.0925,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+lakshadweep,6954.0,,,7300.0,6954.0,0.0,,1.0498,0.0,True,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+madhya pradesh,45907730.0,34422445.0,45907730.0,79505709.0,45907730.0,155.0,0.7498,1.7319,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+meghalaya,762567.0,304858.0,762567.0,934286.0,762567.0,33.0,0.3998,1.2252,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+nagaland,1152435.0,353900.0,1152435.0,1588685.0,1152435.0,33.0,0.3071,1.3785,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+odisha,11971241.0,3198975.0,11971241.0,13698574.0,11971241.0,90.0,0.2672,1.1443,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+puducherry,14682.0,39508.0,14682.0,20240.0,14682.0,6.0,,1.3786,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+punjab,12369090.0,12359901.0,12369090.0,23467333.0,12369090.0,66.0,0.9993,1.8973,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+rajasthan,53712972.0,25088870.0,53712972.0,77897793.0,53712972.0,99.0,0.4671,1.4503,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+tamil nadu,13959280.0,7864519.0,13959280.0,17343796.0,13959280.0,100.0,0.5634,1.2425,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+telangana,14852815.0,7535723.0,14852815.0,19076641.0,14852815.0,92.0,0.5074,1.2844,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+the dadra and nagar haveli and daman and diu,61299.0,7960.0,59073.0,65931.0,61299.0,4.0,0.1347,1.0756,0.964,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+tripura,766011.0,256301.0,766011.0,1460770.0,766011.0,24.0,0.3346,1.907,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+uttar pradesh,49447023.0,43058559.0,49447023.0,80831673.0,49447023.0,225.0,0.8708,1.6347,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+uttarakhand,1958909.0,969010.0,1958909.0,3112812.0,1958909.0,39.0,0.4947,1.5891,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+west bengal,15745349.0,,,30004501.0,15745349.0,0.0,,1.9056,0.0,True,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+andhra pradesh (undivided),32832435.0,15972939.0,32832435.0,41104764.0,32832435.0,131.0,0.4865,1.252,1.0,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20
+india,364306764.0,198657819.0,348552235.0,541282723.0,364306764.0,1823.0,0.57,1.4858,0.957,False,"DES Land Use Statistics, raw district tables",2017-18 to 2019-20

@@ -1,5 +1,22 @@
 # Q1. Crop-group trends 1998-99 to 2019-20, and the Andhra Pradesh / Telangana rice check
 
+## Status after referee (Nov 2026)
+
+Written 7 November 2026. Referee: `referee_trends_results.md` (script 99_crop_groups_trends_referee), `referee_fix_trends_national_endpoint.csv`, `referee_fix_end18_*`. Site: Crop groups page.
+
+- Andhra Pradesh (residual) rice share -7.3 pp (SE 1.9) -> **-2.7 pp (2.0), -442 kha (143)**. The original was inflated by APY "Niger Seed" for Andhra Pradesh 2015-16 to 2019-20 (0.86 to 1.34 Mha a year, yields 0.23 to 15.8 t/ha, absent before 2015). The Andhra Pradesh oilseed share is corrected to -12.9 pp (-1.01 Mha). **Refuted**; left off the page.
+- Gujarat pulses -12.0 pp -> **-0.3 pp**. The original start window carried 1998-99 Whole Year "Moth" of 2.90 Mha against 0.01 to 0.04 in other years. **Refuted**.
+- National pulses, area-weighted +2.26 (0.64) -> **+2.86 (0.60)** once the Gujarat moth row is removed; district mean +0.93 (0.38). The gain is a post-2015 step concentrated in Rajasthan (+8.2 pp), Madhya Pradesh and north Karnataka. Refereed-weakened: the typical district gain is small.
+- Millets -5.55 (0.59) -> **-5.58 (0.59), -7.05 Mha (0.93)**, 358 districts down and 72 up; range across six specifications -5.24 to -5.74; with a 2016-18 end window -5.26 (0.52). Maharashtra alone lost 3.45 Mha; without it the national fall is about 3.5 points. Survives.
+- Wheat +1.34 -> **+1.35 (0.34)**, maize +1.27 -> **+1.28 (0.33)**, cotton **+1.73 (0.53)**. Survive.
+- Telangana rice +7.8 pp (1.8): holds with the 2017-19 end window, but with a **2016-18 end window it halves to +3.1 pp (1.5), +420 kha**, FE slope +1.70 (0.71), p 0.044. Half the endpoint gain is the single year 2019-20 (rice area 3.2 Mha against 0.9 to 2.0 before). The share Telangana lost from dryland crops went to cotton (+17.8 pp) more than to rice.
+- Millets giving way to maize (section 5): exploratory, not repeated on the corrected sample and not on the page.
+- Window: 1997-98 is not used anywhere in this note's endpoints; the panel file still carries it and `_years.py` removes it.
+
+The original analysis below is kept unchanged for the record, apart from the sentences marked [corrected Nov 2026]. Where it disagrees with this block, this block and `outputs/ANALYSIS_INDEX.md` hold.
+
+---
+
 Script: `scripts/99_crop_groups_trends.py` (about 1 minute). Full printed output: `trends_log.txt`.
 Input is the crop-group panel from scripts 97 and 98 (APY area, 2011 parent districts). The crop-name mapping is the panel's: rice; wheat; maize; millets = jowar, bajra, ragi, small millets; pulses = the 13 APY pulse names; oilseeds = the 10 listed oilseeds; cotton; sugarcane; other = the remaining 22 names, including coconut, guar, barley and other cereals (see `crop_group_panel_results.md`). Outcomes are shares of annual gross cropped area (GCA) and area in hectares. No APCNF, PMDS or RySS data is used.
 

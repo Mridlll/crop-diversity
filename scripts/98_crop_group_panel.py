@@ -1,9 +1,10 @@
 """
-97_crop_group_panel.py
+98_crop_group_panel.py  (titled 97_crop_group_panel.py in earlier copies; renumbered, file name is 98)
 
 District x year x season crop-group panel on constant 2011 (PC11) district
 boundaries, 1997-98 to 2019-20, with group area, shares of gross cropped area,
-annual totals and data-defect flags.
+annual totals and data-defect flags. The panel keeps 1997-98; every analysis
+script drops it through _years.py.
 
 Cleaning is script 76's (and 96's), unchanged:
   bogus state-district pairs dropped; Uttarakhand, Chhattisgarh and Jharkhand

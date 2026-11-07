@@ -8,8 +8,9 @@ for anything. Nine checks, each either PASS, WARN or FAIL, written to a report.
   C2  Internal consistency: shares in [0,1], partitions sum to 1, no negatives
   C3  Cross-source irrigation: Antyodaya 2019 vs PC11 Village Directory 2011
   C4  Cross-source caste: PC11 population abstract vs SECC 2012
-  C5  External anchor: state cropping intensity vs published DES ranking
-  C6  External anchor: state irrigation share vs published DES ranking
+  C5  External anchor: state cropping intensity vs DES Land Use Statistics 2017-20
+  C6  External anchor: state irrigation share (NIA/NSA) vs DES Land Use Statistics
+      2017-20; reference values from scripts/133_validate_state_irrigation.py
   C7  Old vs new: repo scraped irrigation_pct vs SHRUG measure
   C8  Coverage: which districts and states are too thin to trust
   C9  Aggregation invariance: shrid-built district totals vs SHRUG's own
@@ -225,26 +226,37 @@ verdict("C4 caste cross-source", "PASS" if rr >= 0.85 else "WARN",
 
 # ------------------------------------------------------------------ C5/C6
 head("C5 and C6. External anchor at state level")
-w("Reference values are published state figures for cropping intensity and")
-w("gross irrigated area as a share of gross cropped area (DES Land Use Statistics,")
-w("around 2018-19). They are used for RANK agreement only, not level matching.")
-w("")
-w("> UNCONFIRMED: the reference column is entered from memory of the DES tables and")
-w("> must be re-checked against the published source before it appears in any report.")
+w("Reference values are published DES Land Use Statistics figures, summed from the")
+w("district tables to the state for 2017-18 to 2019-20 (script")
+w("`133_validate_state_irrigation.py`, file `state_irrigation_reference_lus.csv`).")
+w("Irrigation share is net irrigated area over net area sown, the same concept as the")
+w("Antyodaya share; cropping intensity is cropped area over net area sown. Andhra")
+w("Pradesh is compared with Andhra Pradesh and Telangana combined, because the SHRUG")
+w("table uses undivided 2011 Andhra Pradesh. Maharashtra and West Bengal report no")
+w("district net irrigated area in these years, so C6 has no reference for them.")
+w("Until November 2026 this column was typed in from memory; that column is shown")
+w("as `earlier` for the record and is not used in any statistic.")
 
-REF_CI = {"punjab": 1.90, "haryana": 1.87, "west bengal": 1.85, "uttar pradesh": 1.68,
+# Retired: values typed from memory in September 2026 (gross irrigated / gross cropped).
+OLD_CI = {"punjab": 1.90, "haryana": 1.87, "west bengal": 1.85, "uttar pradesh": 1.68,
           "himachal pradesh": 1.77, "bihar": 1.44, "madhya pradesh": 1.62,
           "rajasthan": 1.47, "maharashtra": 1.35, "karnataka": 1.24,
           "andhra pradesh": 1.30, "tamil nadu": 1.21, "gujarat": 1.28,
           "odisha": 1.60, "assam": 1.50, "jharkhand": 1.20, "chhattisgarh": 1.25,
           "uttarakhand": 1.58, "kerala": 1.35, "telangana": 1.30}
-REF_IRR = {"punjab": 0.985, "haryana": 0.905, "uttar pradesh": 0.852, "bihar": 0.680,
+OLD_IRR = {"punjab": 0.985, "haryana": 0.905, "uttar pradesh": 0.852, "bihar": 0.680,
            "tamil nadu": 0.585, "west bengal": 0.615, "andhra pradesh": 0.555,
            "gujarat": 0.52, "madhya pradesh": 0.52, "rajasthan": 0.44,
            "karnataka": 0.36, "maharashtra": 0.21, "odisha": 0.35,
            "assam": 0.11, "jharkhand": 0.12, "chhattisgarh": 0.34,
            "himachal pradesh": 0.22, "uttarakhand": 0.50, "kerala": 0.18,
            "telangana": 0.50}
+
+LUS = pd.read_csv(OUT + "/state_irrigation_reference_lus.csv", index_col="state")
+LUS = LUS.rename(index={"andhra pradesh": "andhra pradesh (13 districts)",
+                        "andhra pradesh (undivided)": "andhra pradesh"})
+REF_CI = LUS["lus_cropping_intensity"].dropna().to_dict()
+REF_IRR = LUS.loc[~LUS["thin"].astype(bool), "lus_irr_share"].dropna().to_dict()
 
 use = sh[~sh["flag_low_ay_coverage"].fillna(True) & ~sh["flag_no_antyodaya"]]
 gs = use.groupby("state_name").agg(
@@ -255,10 +267,11 @@ gs = use.groupby("state_name").agg(
 gs["ci"] = gs["gca"] / gs["nsa"]
 gs["irr_share"] = gs["irr"] / (gs["irr"] + gs["unirr"])
 
-for lab, ref, col, key in [("C5 cropping intensity", REF_CI, "ci", "ci"),
-                           ("C6 irrigation share", REF_IRR, "irr_share", "irr")]:
+for lab, ref, old, col in [("C5 cropping intensity", REF_CI, OLD_CI, "ci"),
+                           ("C6 irrigation share", REF_IRR, OLD_IRR, "irr_share")]:
     t = gs.copy()
     t["ref"] = t.index.map(ref)
+    t["old"] = t.index.map(old)
     t = t.dropna(subset=["ref"])
     rho = stats.spearmanr(t[col], t["ref"])[0]
     r = stats.pearsonr(t[col], t["ref"])[0]
@@ -266,16 +279,22 @@ for lab, ref, col, key in [("C5 cropping intensity", REF_CI, "ci", "ci"),
     w("")
     w("### " + lab)
     w("")
-    w("| state | districts | SHRUG | reference | diff |")
-    w("|---|---|---|---|---|")
+    w("| state | districts | Antyodaya / SHRUG | DES LUS 2017-20 | diff | earlier (retired) |")
+    w("|---|---|---|---|---|---|")
     for s_, row in t.sort_values("ref", ascending=False).iterrows():
-        w("| {} | {} | {:.2f} | {:.2f} | {:+.2f} |".format(
-            s_, int(row["nd"]), row[col], row["ref"], row[col] - row["ref"]))
+        w("| {} | {} | {:.2f} | {:.2f} | {:+.2f} | {} |".format(
+            s_, int(row["nd"]), row[col], row["ref"], row[col] - row["ref"],
+            "" if pd.isna(row["old"]) else "{:.2f}".format(row["old"])))
     w("")
-    w("Spearman rho = {:.3f}, Pearson r = {:.3f}, mean absolute difference = {:.3f}.".format(
-        rho, r, mae))
+    w("Spearman rho = {:.3f}, Pearson r = {:.3f}, mean absolute difference = {:.3f}, "
+      "{} states.".format(rho, r, mae, len(t)))
+    big = t[(t[col] - t["ref"]).abs() >= 0.10].sort_values("ref")
+    if len(big):
+        w("Gaps of 0.10 or more: " + ", ".join(
+            "{} ({:.2f} against {:.2f})".format(s_, rw[col], rw["ref"]) for s_, rw in big.iterrows()) + ".")
     st = "PASS" if rho >= 0.75 else ("WARN" if rho >= 0.55 else "FAIL")
-    verdict(lab, st, "Rank agreement with published state figures rho = {:.3f}, MAE {:.3f}.".format(rho, mae))
+    verdict(lab, st, "Rank agreement with DES Land Use Statistics 2017-20, rho = {:.3f}, "
+            "MAE {:.3f}, {} states.".format(rho, mae, len(t)))
 
 
 # ------------------------------------------------------------------ C7

@@ -12,7 +12,7 @@ Deck at `deck/crop_diversity.pptx`, 15 slides. Everything regenerates from
 `python scripts/run_all.py` (16 steps, about 155 seconds).
 
 ## Environment (CHANGED 2026-09-01, older memory is out of date)
-`C:\Users\Mridul\anaconda3\envs\geo_env\python.exe` now runs EVERYTHING.
+`C:\Users\mridu\anaconda3\envs\geo_env\python.exe` now runs EVERYTHING (spelling corrected Nov 2026: the user folder is `mridu`).
 statsmodels 0.14.6 and nbformat added; numpy 1.26.4, scipy 1.13.1 and geopandas 1.0.1
 deliberately left untouched and verified afterwards.
 A `sitecustomize.py` in that env's site-packages sets GDAL_DATA and PROJ_LIB, because

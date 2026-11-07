@@ -1,5 +1,21 @@
 # The market layer: mandis, haats and fertiliser shops
 
+## Status after referee (Nov 2026)
+
+Written 7 November 2026. Site basis since script 112: population shares (version W, the share of a district's 2011 rural population living in a village with the facility). This note uses village shares (version U). Sources: `outputs/revision_nov8/market_pop_weighted_results.md`, `market_pw_coefs.csv`, `market_pw_robust_haat.csv`, `market_pw_interaction.csv`; state clustering in `outputs/revision_nov8/irrigation_v2/irrigation_v2_results.md`.
+
+- Section D opening, "Diversity peaks near 37 percent irrigation and falls after": **wrong and out of date**. The 37 percent is an ABI-era turning point. The current result is flat-then-falling: within state, the effective number of crops is flat across the less irrigated districts and falls once irrigation passes about half of sown area (fifths +0.12, -0.55, -1.05, -2.14 against the least irrigated fifth; knot 0.30, about -0.4 crops per 10 points above it). Corrected in place below.
+- Weekly haat on the count of crops, U +7.365 -> **W +6.276 (1.231)**, p < 0.001; six adjusted versions +5.22 to +6.91; one SD of haat share (0.15) is about 0.9 crops on a mean of 21.4. State-clustered p 0.000 to 0.007 in every window. With the six crops removed for the 2020-22 extension it falls to +4.61 to +4.86. Survives. Haat on D1: W +0.553 (0.717), p 0.441; on evenness W **-0.046 (0.028), p 0.103**, so the negative evenness reading is not statistically significant on population shares.
+- FPO, "lift D1 without lifting D0": on population shares FPOs go with both. **D1 W +1.886 (0.790), p 0.017; D0 W +3.380 (1.494), p 0.024**. State-clustered D1 p 0.156 (site window), 0.110 and 0.094 in the recent windows. Refereed-weakened.
+- Fertiliser shops on pulse share, U -0.172 -> **W -0.123 (0.035)**; cereal share W -0.216 (0.073), p 0.003. State-clustered pulse p 0.027 over the full period, 0.104 and 0.108 in the recent windows. Refereed-weakened.
+- Mandis on cereal share, U -0.235 (p 0.054) -> **W -0.153 (0.112), p 0.172**. The opening hypothesis (more mandis, more cereals) remains refuted.
+- Section D mandi interaction, U p 0.030 -> **W: curvature -8.21 at low mandi density against -4.06 at high, difference p 0.060**; fertiliser shop p 0.95. Exploratory; significance depends on weighting.
+- Reweighting changed 31 signs and 20 calls at 5 percent across 280 cells; the headline claims above are the ones that moved.
+
+The original analysis below is kept unchanged for the record, apart from the sentences marked [corrected Nov 2026]. Where it disagrees with this block, this block and `outputs/ANALYSIS_INDEX.md` hold.
+
+---
+
 Analysis set: 606 districts, 30 states.
 Crop-category outcomes available: cereals, drugs_and_narcotics, fiber_crops, fodder, fruits, oilseeds, pulses, spices, sugar, vegetable.
 
@@ -146,7 +162,7 @@ rebalance area. Only one index family can tell those apart.
 
 ## D. Does market infrastructure explain the irrigation downslope?
 
-Diversity peaks near 37 percent irrigation and falls after. The standard story
+[corrected Nov 2026] Within state, diversity is flat across the less irrigated districts and falls once irrigation passes about half of sown area (the 37 percent peak first written here was an ABI-era number). The standard story
 about the fall is Punjab: assured procurement plus dense input supply makes the
 cereal package the only rational choice. If that is right, the downslope should
 be steeper where mandis and fertiliser shops are dense.

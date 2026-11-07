@@ -1,182 +1,113 @@
-# Crop Diversity & Agro-Biodiversity in Indian Agriculture (1997-2021)
+# Crop diversity in Indian districts, 1998-99 to 2019-20
 
-District-level analysis of crop diversification patterns across 725 Indian districts, 54 crops, and 24 agricultural years — examining the relationship between irrigation infrastructure and agricultural biodiversity.
+District-level study of what Indian farmers grow and how varied it is: 724 districts, 54 crops, 22 agricultural years (1998-99 to 2019-20), set against irrigation, markets, monsoon shocks and neighbouring districts. Diversity is measured with Hill numbers computed for each district-year and then averaged.
 
-## Interactive Maps
+**Live site: https://mridlll.github.io/crop-diversity/**
 
-**[Crop Diversity Map](https://mridlll.github.io/crop-diversity/diversity.html)** — hover over any district to see diversity indices, irrigation status, dominant crops, and crop composition.
+| Page | What it covers |
+|---|---|
+| [Overview](https://mridlll.github.io/crop-diversity/index.html) | The main results in one scroll |
+| [Measurement](https://mridlll.github.io/crop-diversity/measurement.html) | How diversity is counted, the count-of-crops artefact, seasons and rotation |
+| [Irrigation](https://mridlll.github.io/crop-diversity/irrigation.html) | Diversity across the irrigation gradient, over time and by water source |
+| [Markets](https://mridlll.github.io/crop-diversity/markets.html) | Haats, mandis, input shops and producer organisations |
+| [Crop groups](https://mridlll.github.io/crop-diversity/crop-groups.html) | Which crops gained and lost land, monsoon shocks, policy events |
+| [Neighbours](https://mridlll.github.io/crop-diversity/neighbours.html) | How alike neighbouring districts are, state borders, spread of new crops |
+| [Data and methods](https://mridlll.github.io/crop-diversity/data.html) | Sources, sample, checks and models |
+| Maps: [diversity](https://mridlll.github.io/crop-diversity/diversity.html), [year by year](https://mridlll.github.io/crop-diversity/timeline.html), [calorie diversity](https://mridlll.github.io/crop-diversity/calorie-diversity.html), [food and non-food](https://mridlll.github.io/crop-diversity/food-nonfood.html) | District maps |
 
-**[Calorie-Diversity Map](https://mridlll.github.io/crop-diversity/calorie-diversity.html)** — hover over any district to see diversity indices alongside caloric productivity and quadrant classification.
+Every analysis in the repository, where its numbers live and how far it survived the referee passes is listed in **[outputs/ANALYSIS_INDEX.md](outputs/ANALYSIS_INDEX.md)**. Where this README and a results note disagree, the index holds.
 
-**[Diversity Timeline](https://mridlll.github.io/crop-diversity/timeline.html)** — animated year-by-year diversity timeline (1997-2020).
+## Key findings
 
-**[Food vs Non-Food Map](https://mridlll.github.io/crop-diversity/food-nonfood.html)** — food vs non-food crop breakdown hover map.
+All results are within-state comparisons (state fixed effects) unless stated, with standard errors clustered on the 2011 parent district and checked by a wild cluster bootstrap by state.
 
-## Key Findings
+1. **Districts grow many crops but rely on a few.** The average district records 20.6 crops in a year, yet its effective number of crops (exp of Shannon entropy over area shares) is 4.73 and its number of main crops is 3.34.
 
-1. **Semi-irrigated districts are the most diverse** (ABI 0.69) — more than both rainfed (0.62) and fully irrigated (0.67) districts
-2. **Diversity is declining nationally**: 357 districts losing diversity vs 233 gaining; median Shannon index declined by 0.05 over two decades
-3. **Irrigation drives monoculture**: irrigated districts are 53% wheat-dominant; rainfed are 60% rice-dominant; semi-irrigated maintain mixed cropping
-4. **Karnataka is the most diverse state** (ABI 0.85), **Punjab the least** among major states (0.44)
-5. **Irrigated districts allocate 67% of area to cereals** vs 53% in semi-irrigated, with pulses and oilseeds crowded out
+2. **The rise in the count of crops is a reporting effect.** In the 500 districts observed every year, the raw count rises from 21.2 to 25.3 between 1998-99 and 2019-20. The whole rise sits in crops holding under 0.1 percent of a district's area, and once those are left out the count is flat or falling (at 0.5 percent of area it falls slightly). State-year reporting shocks explain 77 percent of the year-on-year change in the raw count. The effective number of crops is flat nationally (area-weighted 5.58 in 1998-99, 5.48 in 2019-20), and in the median district it changed by -0.17 between 1998-2004 and 2013-2019; the area-weighted change of -0.20 is not statistically significant once state-wide swings are allowed for.
 
-## Indices
+3. **1997-98 is dropped because its records are broken.** That year West Bengal files 50.8 million ha of rabi niger seed (28 percent of all area recorded nationally), Odisha has no kharif returns, Tamil Nadu, Himachal Pradesh and Tripura are absent, and twelve states file crop lists under 60 percent of their usual length. Every average and change starts in 1998-99.
 
-| Index | What It Measures | Range |
-|-------|-----------------|-------|
-| **Shannon (H')** | Information entropy — sensitivity to rare crops | 0 to ~2.5 |
-| **Simpson (1-D)** | Probability two random hectares differ in crop | 0 to 1 |
-| **Crop Richness (S)** | Count of distinct crops grown | 1 to 50+ |
-| **Agro-Biodiversity Index (ABI)** | Normalized composite of above three | 0 to 1 |
+4. **Diversity is flat across the less irrigated districts and falls once irrigation passes about half of sown area.** Against the least irrigated fifth of districts in the same state, the effective number of crops differs by +0.12, -0.55, -1.05 and -2.14 crops across the higher fifths (wild bootstrap p 0.013 for the top fifth). Above an irrigated share of 0.30 it falls by about 0.4 crops for every 10 percentage points. The fall holds in 2015-16 to 2019-20 and in 2017-18 to 2021-22. Irrigation measured in the 1991 census predicts lower diversity today, although only near significance over the full period. Inside a district over time, more irrigation barely moves the effective number (a 10-point rise moves it by between -0.06 and +0.02 crops). The data cannot tell canal water from groundwater; tank and lake irrigation carries the strongest negative link (-0.48 crops per within-state standard deviation, p 0.008).
 
-ABI is computed as the equal-weighted mean of min-max normalized Shannon, Simpson, and Richness indices. Full methodology with worked examples and robustness checks is in the [Jupyter notebook](notebooks/crop_diversity_analysis.ipynb).
+5. **A third to two fifths of annual diversity is rotation between seasons.** Splitting the year into seasons, between-season variety accounts for 0.34 to 0.42 of annual Shannon entropy across 560 districts. Rice-wheat districts drop 100 to 190 rank places once seasons are separated, because their annual diversity is mostly two crops in turn.
 
-## Calorie-Diversity Overlay
+6. **Weekly haats go with more crops, while producer organisations go with more even cropping.** Measured as the share of a district's rural population living in a village with the facility, a full haat share goes with 6.3 more crops counted (about 0.9 crops per standard deviation) but no change in the effective number. Producer organisations go with +1.9 effective crops, which is only near significance when errors are clustered by state (p 0.09 to 0.16). Fertiliser shops go with a lower pulse share, and mandis do not pull districts toward cereals.
 
-**[Explore the calorie-diversity interactive map](https://mridlll.github.io/crop-diversity/calorie-diversity.html)** — hover over any district to see diversity indices alongside caloric productivity, with quadrant classification.
+7. **Millets are the one large, uniform retreat.** Between 1998-2000 and 2017-2019 millets lost 5.6 percentage points of gross cropped area (7.05 million ha), falling in 358 districts and rising in 72; Maharashtra alone lost 3.45 million ha. Wheat (+1.35), maize (+1.28) and cotton (+1.73) gained share. Rice has no robust trend, and pulses rose through a step after 2015 (+2.86 points area-weighted, +0.93 in the typical district). A monsoon 20 percent or more short shrinks the next rabi area by about 6 percent, almost entirely in the less irrigated districts.
 
-District-level calorie production is computed by multiplying crop production (tonnes) by IFCT 2017 energy conversion factors (kcal per 100g), yielding total kcal produced per hectare of gross cropped area. This caloric productivity metric is then overlaid with the Agro-Biodiversity Index to classify districts into four quadrants:
+8. **Neighbouring districts grow much the same crops, and a state border costs about 100 km of likeness.** Adjacent districts in the same state share 77 percent of their crop mix, falling to 63 percent at 200 to 300 km and 48 percent at 500 to 600 km. Adjacent districts across a state line share 67 percent, which same-state pairs reach at about 190 km (border equivalent 109 km, interval 44 to 169). Borders did not pull apart between 1998-2002 and 2015-19. The data show no evidence of districts learning crops from their neighbours, and they cannot rule it out either.
 
-| Quadrant | ABI | Kcal/ha | Description |
-|----------|-----|---------|-------------|
-| **Diverse & Calorie-Rich** | High | High | Best of both worlds — high biodiversity with strong caloric output |
-| **Monoculture Breadbasket** | Low | High | High caloric productivity driven by specialization in few crops |
-| **Diverse & Calorie-Poor** | High | Low | Biodiverse cropping but low caloric output per hectare |
-| **Vulnerable** | Low | Low | Low diversity and low caloric productivity — most at-risk districts |
+## Superseded earlier results
 
-**Quadrant distribution** (725 districts):
-- Diverse & Calorie-Rich: 23.6%
-- Monoculture Breadbasket: 26.3%
-- Diverse & Calorie-Poor: 26.2%
-- Vulnerable: 23.9%
+The first version of this repository (scripts 57 to 65) reported findings that later checks overturned. They are kept in the history and in a few exploratory pages, marked as superseded:
 
-**Key insight:** The correlation between diversity (ABI) and caloric productivity (kcal/ha) is weakly negative — the assumed tradeoff between biodiversity and food production is overstated. Many districts achieve both high diversity and high caloric output, suggesting that crop diversification need not come at the cost of food security.
+- "Semi-irrigated districts are the most diverse" (ABI 0.69 against 0.62 rainfed and 0.67 irrigated) and the related claims about irrigation regimes rest on a hand-scraped irrigation list of unknown vintage. It agrees with the Mission Antyodaya village survey at a rank correlation of only 0.656 and records zero irrigation for heavily irrigated districts such as Harda. Rebuilt on the survey, the regime pattern disappears.
+- The Agro-Biodiversity Index (ABI) and the indices behind it pooled all years, so crop richness counted every crop ever recorded and tracked how long a district was observed (pooled richness averaged 30.4 against 20.6 in a typical year). The ABI is also sample-dependent. It survives only as a comparison row on the Measurement page.
+- National and state statistics from that version (357 districts losing diversity, Karnataka ABI 0.85, Punjab 0.44, the ABI-calorie quadrant shares and the ABI-calorie correlation of -0.18) were computed on the pooled index over 1997-98 to 2020-21 and have not been re-estimated.
+- An inverted U in irrigation with diversity peaking near a quarter of sown area irrigated was the irrigation headline until November 2026. The squared term survives every check, but the rising side does not, so it was replaced by finding 4.
 
-### Coconut Exclusion Analysis
+The static gallery and the ABI-calorie scatter pages on the site carry a banner saying they belong to this earlier version.
 
-154 districts are flagged as coconut-dominant (>50% of kcal derived from coconut). Coconut's extreme caloric density distorts the kcal/ha distribution (range: 752 to 75.5M kcal/ha), so log-scale visualization is used for choropleth maps. When these 154 districts are excluded, the Pearson correlation between ABI and kcal/ha shifts from **-0.18 to +0.02**, effectively eliminating the apparent diversity-productivity tradeoff. Ex-coconut maps and scatter plots are provided as separate outputs (suffixed `_ex_coconut`).
+## Measures
 
-## Repository Structure
+| Measure | Definition | Site name |
+|---|---|---|
+| D0 | Crops with positive area in the district-year | Count of crops |
+| D1 | exp(Shannon entropy of area shares) | Effective number of crops (main outcome) |
+| D2 | 1 / sum of squared area shares (inverse Simpson) | Number of main crops |
+| D1 / D0 | Evenness | Evenness |
+| D0 at 0.5 percent | Crops holding at least 0.5 percent of the district's gross cropped area | Count of main crops |
+
+Each measure is computed per district-year and then averaged over a district's years. Seasons are summed into annual gross cropped area.
+
+## Data sources
+
+| Source | Use |
+|---|---|
+| District crop area, production and yield (APY), ISB India Data Portal, from Ministry of Agriculture and Farmers Welfare publications | Crop mix, 1998-99 to 2019-20 (extension to 2022-23 from the DES district file for recent windows) |
+| SHRUG 2.1 (Development Data Lab): Mission Antyodaya 2019-20, Census village directories 1991, 2001 and 2011, Census 2011 population abstract, SECC 2012, night lights, Economic Census 2013, terrain | Irrigation, markets, farm structure and controls |
+| DES Land Use Statistics, district tables (India Data Portal) | Irrigation and cropping intensity by year, 1998-99 to 2019-20 |
+| IMD 0.25-degree gridded daily rainfall | Monsoon shocks |
+| NFSM district lists, Odisha Millets Mission documents, MSP series | Policy event studies |
+| CGWB well readings | Groundwater depth (instrument checks) |
+| IFCT 2017 (NIN Hyderabad) | Calorie conversion factors |
+| Census 2011 district boundaries | Maps (735 polygons) |
+
+Full provenance, local paths and rebuild scripts are in section 1 of `outputs/ANALYSIS_INDEX.md`.
+
+## Repository structure
 
 ```
-scripts/
-  57_crop_diversity_agro_biodiversity.py   # Core computation of all indices
-  58_crop_diversity_dashboard.py           # Plotly Dash interactive dashboard
-  59_crop_diversity_static_maps.py         # Publication-quality static maps + GIFs
-  60_crop_diversity_hover_map.py           # Folium interactive hover map
-  61_generate_notebook.py                  # Generates the analysis notebook
-  62_district_calorie_production.py        # Kcal/ha computation using IFCT 2017 factors
-  63_calorie_diversity_hover_map.py        # Calorie-diversity quadrant interactive map
-  64_generate_timeline_data.py             # Generates GeoJSON for animated timeline page
-  65_food_nonfood_hover_map.py             # Food vs non-food crop breakdown hover map
-
-notebooks/
-  crop_diversity_analysis.ipynb            # Full analysis with methodology & results
-
-outputs/crop_diversity_analysis/
-  district_diversity_indices.csv           # Main dataset: 725 districts, all indices
-  district_diversity_calorie_merged.csv    # Diversity + caloric productivity merged
-  district_year_diversity_panel.csv        # Yearly panel (14,136 observations)
-  district_diversity_change.csv            # Early vs Late period comparison
-  state_diversity_summary.csv              # State-level rankings
-  crop_diversity_hover_map.html            # Self-contained interactive map
-  calorie_diversity_hover_map.html         # Calorie-diversity quadrant map
-  kcal_per_hectare_choropleth.png          # Kcal/ha choropleth
-  quadrant_map.png                         # Four-quadrant classification map
-  bivariate_abi_kcal_map.png              # Bivariate ABI × kcal map
-  abi_vs_kcal_scatter.png                  # ABI vs kcal/ha scatter plot
-  kcal_per_hectare_choropleth_ex_coconut.png  # Ex-coconut linear choropleth (P2-P98 winsorized)
-  quadrant_map_ex_coconut.png              # Quadrant map with coconut-excluded thresholds
-  bivariate_abi_kcal_map_ex_coconut.png    # Bivariate map with ex-coconut terciles
-  abi_vs_kcal_scatter_ex_coconut.png       # Scatter plot with coconut districts as hollow diamonds
-  food_nonfood_hover_map.html              # Food vs non-food interactive map
-  maps/                                    # 9 static maps (PNG)
+scripts/        numbered analysis scripts; run_all.py runs the main pipeline in order
+  _years.py     the one place that sets the window (1998-99 to 2019-20)
+  57-65         first version (pooled ABI, scraped irrigation), superseded
+  70-96         SHRUG covariates, corrected indices, site data
+  97-103        crop groups: panel, trends, policy, rainfall shocks, neighbours, referees
+  104-112       November 2026 revision: count-of-crops artefact, seasons, irrigation panel, markets by population
+  120-133       irrigation v2 (recent windows, 1991 census), peer effects, state validation
+outputs/        results notes (*.md), tables and logs; ANALYSIS_INDEX.md is the map
+docs/           the live site (GitHub Pages)
+deck/, notebooks/, outputs/deliverables/   slides, notebooks, workbook and Word results
 ```
 
-## Data Sources
+## Reproducing the analysis
 
-| Source | Description | Coverage |
-|--------|-------------|----------|
-| **[ISB India Data Portal](https://www.india-data-portal.org/)** | District-level area, production, and yield for 54 crops | 725 districts, 1997-2021 |
-| **Government of India (scraped)** | District-level gross irrigated area as % of gross cropped area | 503 districts classified |
-| **IFCT 2017 (NIN, Hyderabad)** | Energy conversion factors (kcal per 100g) for Indian food items | 54 crops mapped |
-| **Census of India 2011** | District boundary shapefiles | 735 districts |
-
-### Crop Production Data
-
-Area, production, and yield data for all major crops at the district-year-season level was sourced from the **Indian School of Business (ISB) India Data Portal**, which aggregates data originally published by the Ministry of Agriculture & Farmers Welfare, Government of India. The dataset covers 54 crops across Kharif, Rabi, and whole-year seasons for agricultural years 1997-98 through 2020-21.
-
-### Irrigation Data
-
-Irrigation statistics were **scraped from multiple Government of India sources** including the Minor Irrigation Census, agricultural census publications, and state-level irrigation department data. No single consolidated dataset existed at the district level — the data was assembled through web scraping and manual compilation from official government portals. Districts were classified into three regimes:
-
-- **Rainfed** (<40% gross irrigated area): 240 districts
-- **Semi-Irrigated** (40-60%): 101 districts
-- **Irrigated** (>60%): 162 districts
-
-### Shapefiles
-
-Census 2011 district boundaries (735 districts). District name matching between data sources achieved **96.6% coverage** (710/735 districts) through normalized matching + 96 manual corrections for spelling, transliteration, and administrative reorganization differences (e.g., Telangana bifurcation, district renaming like Prayagraj/Allahabad, Gurugram/Gurgaon).
-
-## Static Maps
-
-Nine publication-quality maps are included in `outputs/crop_diversity_analysis/maps/`:
-
-| Map | Description |
-|-----|-------------|
-| Shannon Index | District-level Shannon diversity (H') |
-| Simpson Index | District-level Simpson diversity (1-D) |
-| Crop Richness | Number of distinct crops per district |
-| ABI | Agro-Biodiversity Index composite |
-| Irrigation Regime | Rainfed / Semi-Irrigated / Irrigated classification |
-| Diversity Change | Early (pre-2005) vs Late (post-2015) Shannon change |
-| Combined Panel (2x2) | All four indices side-by-side |
-| Irrigation x Diversity (1x3) | ABI by irrigation regime |
-| Top/Bottom 20 | Most and least diverse districts |
-
-## Reproducing the Analysis
+The interpreter on the author's machine is `C:\Users\mridu\anaconda3\envs\geo_env\python.exe` (pandas, numpy 1.26.4, scipy, statsmodels, geopandas). Bare `python` is broken there, so call it by full path.
 
 ```bash
-# 1. Compute diversity indices (requires raw crop data + shapefiles)
-python scripts/57_crop_diversity_agro_biodiversity.py
-
-# 2. Generate static maps and animated GIFs
-python scripts/59_crop_diversity_static_maps.py
-
-# 3. Generate interactive hover map
-python scripts/60_crop_diversity_hover_map.py
-
-# 4. Generate Jupyter notebook
-python scripts/61_generate_notebook.py
-
-# 5. Compute district-level calorie production (requires IFCT 2017 factors)
-python scripts/62_district_calorie_production.py
-
-# 6. Generate calorie-diversity interactive map
-python scripts/63_calorie_diversity_hover_map.py
-
-# 7. Generate GeoJSON data for animated timeline page
-python scripts/64_generate_timeline_data.py
-
-# 8. Generate food vs non-food crop breakdown hover map
-python scripts/65_food_nonfood_hover_map.py
-
-# 9. Launch interactive dashboard (opens at http://127.0.0.1:8050)
-python scripts/58_crop_diversity_dashboard.py
+C:/Users/mridu/anaconda3/envs/geo_env/python.exe scripts/run_all.py --check   # verify inputs
+C:/Users/mridu/anaconda3/envs/geo_env/python.exe scripts/run_all.py           # full pipeline
+C:/Users/mridu/anaconda3/envs/geo_env/python.exe scripts/run_all.py --from 98 # resume
 ```
 
-### Requirements
-
-```
-pandas, geopandas, numpy, matplotlib, plotly, dash, dash-bootstrap-components, folium, imageio, pillow
-```
+Three inputs sit outside the repository (the raw APY file, SHRUG 2.1 and the district shapefile), and the rainfall grids, land-use tables, policy PDFs and groundwater readings were fetched by hand. The irrigation v2 and peer-effects chains, and a few one-off referee scripts, run by hand around `run_all.py`. The full run order, ordering traps and runtimes are in section 4 of `outputs/ANALYSIS_INDEX.md`.
 
 ## References
 
-1. Shannon, C.E. (1948). "A Mathematical Theory of Communication." *Bell System Technical Journal*, 27(3), 379-423.
-2. Simpson, E.H. (1949). "Measurement of Diversity." *Nature*, 163, 688.
-3. Di Falco, S. & Chavas, J.P. (2009). "On Crop Biodiversity, Risk Exposure, and Food Security in the Highlands of Ethiopia." *American Journal of Agricultural Economics*, 91(3), 599-611.
-4. Lin, B.B. (2011). "Resilience in Agriculture through Crop Diversification." *BioScience*, 61(3), 183-193.
+1. Hill, M.O. (1973). "Diversity and Evenness: A Unifying Notation and Its Consequences." *Ecology*, 54(2), 427-432.
+2. Jost, L. (2006). "Entropy and Diversity." *Oikos*, 113(2), 363-375.
+3. Shannon, C.E. (1948). "A Mathematical Theory of Communication." *Bell System Technical Journal*, 27(3), 379-423.
+4. Di Falco, S. and Chavas, J.P. (2009). "On Crop Biodiversity, Risk Exposure, and Food Security in the Highlands of Ethiopia." *American Journal of Agricultural Economics*, 91(3), 599-611.
 5. Birthal, P.S. et al. (2015). "Crop Diversification and Resilience of Agriculture to Climatic Shocks." *Indian Journal of Agricultural Economics*, 70(1).
 
 ## License

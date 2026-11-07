@@ -54,4 +54,4 @@ establish or rule out spread).
   Sannhamp, Sweet Potato, Tapioca, Tobacco, Turmeric.
 
 ## Not done
-- Not committed. Script 103 is not yet in `run_all.py`.
+- Done since this note was written: the page is committed (46bc376) and script 103 runs as a step of `run_all.py` after 102 [updated Nov 2026].

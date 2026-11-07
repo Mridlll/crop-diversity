@@ -1,5 +1,18 @@
 # Final results, on corrected diversity indices
 
+## Status after referee (Nov 2026)
+
+Written 7 November 2026. Replacement on the site: Irrigation page (commit bcf97f7), `docs/data/site_irrigation_v2.json`; referee `outputs/revision_nov8/irrigation_v2/referee/referee_raw_repro_infer_q1x_q2_q3_q4_mt.md` (scripts 124, 130). Markets: `outputs/revision_nov8/market_pop_weighted_results.md` (scripts 104_market_pop_weighted, 112).
+
+- Section 1, "the inverted U" with a D1 turning point of 0.279: **superseded by flat-then-falling**. The squared term below is right (it survives all eight sample versions and the recent windows, -6.78 for 2015-20 and -6.46 for 2017-22), but the rising arm is not significant, so there is no interior peak to report. Within state, fifths of irrigated share against the least irrigated fifth: **+0.12 (SE 0.16), -0.55 (0.36), -1.05 (wild p 0.072), -2.14 (wild p 0.013)**. Two-piece line with a knot at 0.30: **+2.91 per unit below (p 0.119), -4.10 per unit above (p 0.022)**, about -0.4 crops per 10 points; 85 percent of districts lie above the knot. The decile table in section 2 shows the same shape: none of the first seven deciles differs significantly from the first.
+- "6 of 6 alternative indices agree": evenness does not hold up in the recent windows (squared term -0.165, state wild p 0.166).
+- Section 3, irrigation source: exploratory. The later source split on census 2011 shares cannot tell canal from groundwater (interaction wild p 0.614); tank and lake irrigation carries the strongest negative link, **-9.28 per unit (state SE 0.93), wild p 0.008**, -0.48 crops per within-state SD.
+- Section 4, FPO +1.875 on village shares -> **+1.886 (0.790), p 0.017** on population shares, the site's basis; state-clustered p 0.156 (full window), 0.110 and 0.094 in the recent windows. Cropping intensity +2.315 is partly mechanical (gross over net sown) and has no referee pass.
+
+The original analysis below is kept unchanged for the record, apart from the sentences marked [corrected Nov 2026]. Where it disagrees with this block, this block and `outputs/ANALYSIS_INDEX.md` hold.
+
+---
+
 Diversity indices are the annual-mean rebuild from script 76: 2020-21 stub
 dropped, duplicate rows collapsed, every index measured per year then averaged
 across 1998-99 to 2019-20. Districts with under 10 years of data are excluded.

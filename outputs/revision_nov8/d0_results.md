@@ -1,12 +1,28 @@
 # D0 noise and the 1997-98 break
 
+## Status after referee (Nov 2026)
+
+Written 7 November 2026. Referee: `d0_referee_raw.md` (script 109). Site numbers: `measurement_rev_log.txt`, `docs/data/site_overview.json`.
+
+- Endpoint rise in raw D0 after removing collapsed state-years: +2.32 (0.38) -> **+1.31 (0.37)** [+0.61, +2.07] on a common set of 365 districts. The +2.32 compared 365 districts in 2019-20 with 429 in 1998-99. With Odisha and Karnataka also removed (315 districts) the rise is **-0.32 (0.24)** (`d0_referee_raw.md`, section 2).
+- "The site already reports that the median district's count fell by 0.29": wrong. The Overview page and `site_overview.json` report a median change of **+0.286** (258 districts up, 238 down) on the 500-district panel, 1998-2004 to 2013-2019, not statistically significant once state swings are allowed. The -0.29 is this note's own 429-district window median. Corrected in place below.
+- Balanced panel: this note uses 429 districts (present in all 23 years, 1997-98 included) and 21.2 to 24.9. Since 1997-98 was dropped everywhere the site uses **500 districts** (all 22 years, 1998-99 to 2019-20): raw D0 21.24 -> 25.35 (+4.11, SE 0.41), D0 at 0.1 percent -0.04 (0.23), D1 -0.10 (0.12). The Measurement page says leaving out four states cuts the rise to 1.69.
+- Madhya Pradesh's +2.92 of the +3.71 splits into **+1.83 within the state and +1.09 from reweighting** across states (`d0_referee_raw.md`, table 1).
+- Clustering on state widens the raw endpoint interval to **+3.71 [+0.43, +7.77]**. State-year means explain R2 **0.77** of year-on-year change in raw D0 (0.48 at 0.5 percent, 0.45 for D1), against 0.05 for year alone, so the reporting breaks are state-year shocks.
+- "All 725 districts (n = 13,605)": 13,605 district-years is the sample without 1997-98, which has **724** districts. 725 includes one district seen only in 1997-98.
+- Unchanged: every thresholded count is flat or falling, D1 is flat at the endpoints, 1997-98 is unusable.
+
+The original analysis below is kept unchanged for the record, apart from the sentences marked [corrected Nov 2026]. Where it disagrees with this block, this block and `outputs/ANALYSIS_INDEX.md` hold.
+
+---
+
 Scripts: `scripts/104_d0_threshold_and_1997.py` (main), `scripts/108_d0_1997_followups.py` (1997 decomposition, endpoint robustness). Full numeric output in `d0_results_raw.md` and `d0_followups_raw.md`; tables in `d0_*.csv`, `y1997_*.csv`.
 
 ## Data and method
 
 - Raw APY (`all_crops_apy_1997_2021_india_data_portal.csv`), cleaned exactly as script 76 (bogus pairs dropped, Uttarakhand/Chhattisgarh/Jharkhand remaps, 2020-21 dropped, duplicate cells collapsed to the max). Raw D0 and D1 reproduce script 76's corrected panel exactly on all 14,089 district-years.
 - Thresholded D0: per district-year, crops summed over seasons, share = crop area / district gross cropped area; count crops with share >= 0.1%, 0.5%, 1%.
-- Main sample is the site's: balanced panel of 429 districts present in all 23 years, area-weighted by district cropped area. "Endpoint" = 1998-99 vs 2019-20 (the site's 21.2 to 24.9). "Window" = district change between 1998-2004 and 2013-2019 seven-year means. Robustness on the 606-district analysis sample (427 of them balanced) and on all 725 districts.
+- Main sample is the site's: balanced panel of 429 districts present in all 23 years, area-weighted by district cropped area. "Endpoint" = 1998-99 vs 2019-20 (21.2 to 24.9 on this panel; the site now uses the 500-district panel, 21.2 to 25.3) [corrected Nov 2026]. "Window" = district change between 1998-2004 and 2013-2019 seven-year means. Robustness on the 606-district analysis sample (427 of them balanced) and on all 725 districts.
 - Inference: cluster bootstrap on the 2011 parent (2000 draws in script 108, 1000 in 104; 429 clusters in the balanced panel) and cluster-robust OLS on the same groups for FE trends.
 
 ## 1. D0 with a minimum-share threshold
@@ -24,7 +40,7 @@ Balanced 429, area-weighted, cluster-bootstrap SE and 95% CI:
 District medians at the endpoints: raw D0 21 to 25; 0.1% 13 to 14; 0.5% 9 to 9; 1% 7 to 7; D1 4.6 to 4.5.
 
 Within-district linear trend per decade, district FE, 1998-2019, balanced (n = 9,438 district-years), unweighted / area-weighted:
-raw D0 -0.11 (0.15) / -0.22 (0.14); 0.1% -0.45 (0.12) / -0.69 (0.11); 0.5% -0.38 (0.07) / -0.53 (0.08); 1% -0.27 (0.06) / -0.37 (0.07); D1 -0.085 (0.036) / -0.124 (0.054). On all 725 districts (n = 13,605) the unweighted raw D0 trend is +0.54 (0.14) per decade while 0.5% is -0.09 (0.07) and D1 +0.01 (0.04).
+raw D0 -0.11 (0.15) / -0.22 (0.14); 0.1% -0.45 (0.12) / -0.69 (0.11); 0.5% -0.38 (0.07) / -0.53 (0.08); 1% -0.27 (0.06) / -0.37 (0.07); D1 -0.085 (0.036) / -0.124 (0.054). On all 724 districts (n = 13,605) [corrected Nov 2026] the unweighted raw D0 trend is +0.54 (0.14) per decade while 0.5% is -0.09 (0.07) and D1 +0.01 (0.04).
 
 How much of the rise survives: none. At 0.1% the endpoint change is zero (-2% of the raw rise); at 0.5% and 1% it is negative. Every threshold falls on the window comparison and on the FE trend.
 
@@ -100,7 +116,7 @@ Holds:
 - 1997-98 is unusable and the reasons are documented row by row.
 
 Does not hold:
-- "The count of crops rose from 21.2 to 24.9" as a statement about diversification. It is an endpoint comparison against 1998-99, which is itself under-reported (Madhya Pradesh, Odisha, Andhra Pradesh, Chhattisgarh, Nagaland), and the rise is entirely in crops below 0.1% of district area. Starting from 1999-2000 the rise is +1.25; ending in 2015-17 it turns negative; on seven-year windows raw D0 falls (-0.78 aw, -0.65 unweighted). The site already reports that the median district's count fell by 0.29.
+- "The count of crops rose from 21.2 to 24.9" as a statement about diversification. It is an endpoint comparison against 1998-99, which is itself under-reported (Madhya Pradesh, Odisha, Andhra Pradesh, Chhattisgarh, Nagaland), and the rise is entirely in crops below 0.1% of district area. Starting from 1999-2000 the rise is +1.25; ending in 2015-17 it turns negative; on seven-year windows raw D0 falls (-0.78 aw, -0.65 unweighted). On this 429-district panel the median district's window change is -0.29; the site's Overview, on the 500-district panel, reports +0.286 (258 up, 238 down), not statistically significant [corrected Nov 2026].
 - Raw D0 rising on all 725 districts (+0.54 per decade unweighted) is not mirrored by any thresholded count; it reflects districts with fuller crop lists later in the record.
 
 Limits: the reporting explanation is inferred from the pattern (state-wide list collapses and recoveries, crop names that do not exist before 1999); there is no APY metadata on the coverage of each return to confirm it. The 60% collapse cut-off is a judgement call; at it, 3% of balanced district-years are affected. We could not separate genuine small-area horticulture spread from better recording of it, since both look identical in APY.

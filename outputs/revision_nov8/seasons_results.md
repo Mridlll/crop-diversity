@@ -1,5 +1,17 @@
 # Seasons and double counting: season-separated crop diversity
 
+## Status after referee (Nov 2026)
+
+Written 7 November 2026. Site numbers: `seasons_supplement_log.txt`, `measurement_rev_log.txt`, `docs/data/site_measurement_rev.json` (script 110).
+
+- Sample: this note uses **561** season-reliable districts; the supplement, the measurement log and the Measurement page use **560**. Annual D1 squared term in irrigation -7.12 (1.40), turning point 0.322 -> **-7.05 (1.41), 0.314** on 560. Between-season share of annual entropy 0.420 -> **0.418**. The page quotes the between share as a range, a third to two fifths (0.34 under the "Whole Year joins the monsoon" variant to 0.42).
+- Turning points in this note are compared with "the site's quoted range of 0.245-0.513": the site no longer quotes a turning point. The irrigation page replaced the inverted U with flat-then-falling (commit bcf97f7). Corrected in place below.
+- The annual-D1-on-cropping-intensity coefficient should not be quoted; its sign depends on the intensity measure (null on LUS and SECC, positive on the APY bound and Antyodaya). No referee pass on that part.
+
+The original analysis below is kept unchanged for the record, apart from the sentences marked [corrected Nov 2026]. Where it disagrees with this block, this block and `outputs/ANALYSIS_INDEX.md` hold.
+
+---
+
 Scripts: `scripts/104_season_separated_diversity.py` (construction, estimates), `scripts/107_seasons_supplement.py` (extra checks). Outputs in `outputs/revision_nov8/seasons_*`. Logs: `seasons_log.txt`, `seasons_supplement_log.txt`.
 
 ## Data and method
@@ -145,7 +157,7 @@ Proportionally, the irrigated downslope is steeper within season than annually, 
 **What holds, and what does not:**
 - **The downslope holds** on every within-season index, in all three samples. The p98 slope is significant at p < 0.001 everywhere (largest p 0.0002, D0_ws in the drop-shared-parents sample). It also survives a LUS CI control: b2 on D1_ws is -4.28 (SE 0.88) and on A_alpha -3.38 (SE 0.69). It survives GCA weighting: D1_ws -4.59 (SE 1.33) and A_alpha -4.06 (SE 1.05).
 - **The upslope does not hold as a separate finding within season.** On the clean within-season indices (A_alpha, D1_ws_noW, kharif D1, rabi D1), the slope at low irrigation is positive but not significant (p 0.18-0.35). The turning point moves left to about 0.22, with a CI reaching down to 0.09. On these indices the shape reads better as flat, then falling past about a fifth to a third irrigated, than as a clean inverted U. On annual D1 and on D1_ws the upslope is significant (p 0.017 and 0.034). Part of the annual rise from low to moderate irrigation is therefore the second season appearing.
-- Turning points on annual D1 here (0.32 on 561; 0.28 on 606) sit inside the site's quoted range of 0.245-0.513. The within-season ones (0.22-0.30) sit at or below its lower edge.
+- Turning points on annual D1 here (0.32 on 561; 0.28 on 606) sit inside the 0.245-0.513 range then quoted on the site [corrected Nov 2026: the site no longer quotes turning points]. The within-season ones (0.22-0.30) sit at or below its lower edge.
 
 ## Robustness summary
 

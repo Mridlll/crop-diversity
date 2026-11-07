@@ -1,5 +1,8 @@
 """
 97_policy_nfsm_omm_msp.py
+(Three scripts share the number 97: 97_crop_group_adjacency.py runs inside run_all
+ as step "97"; 97_imd_district_rainfall.py and 97_policy_nfsm_omm_msp.py run by hand
+ before step 99c. Their inputs do not overlap.)
 
 USAGE
     C:/Users/mridu/anaconda3/envs/geo_env/python.exe scripts/97_policy_nfsm_omm_msp.py

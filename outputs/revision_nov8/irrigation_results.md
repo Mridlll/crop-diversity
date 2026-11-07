@@ -1,5 +1,19 @@
 # Irrigation panel: within-district irrigation and crop diversity, 1998-2019
 
+## Status after referee (Nov 2026)
+
+Written 7 November 2026. Referee: `irrigation_referee_raw.md` (script 108). Site replacement: commit bcf97f7, `docs/data/site_irrigation_v2.json`, `irrigation_v2/referee/referee_raw_repro_infer_q1x_q2_q3_q4_mt.md`.
+
+- Cross-sectional inverted U with a peak at 0.273 (LUS) "matching the site's 0.279": **superseded**. The site no longer reports a turning point. Within state the effective number of crops is flat across the less irrigated districts and falls once irrigation passes about half of sown area: fifths of irrigated share against the least irrigated fifth **+0.12 (SE 0.16), -0.55 (0.36), -1.05 (wild p 0.072), -2.14 (wild p 0.013)**; a two-piece line with a knot at 0.30 has slope **+2.91 below (p 0.119)** and **-4.10 per unit above (p 0.022)**, about -0.4 crops per 10 points. None of the first seven deciles differs significantly from the first. The squared term survives every check (-5.44 to -8.18); the rising arm, and with it the interior peak, does not. Corrected in place below.
+- Decomposition of the within curvature: irr x baseline -3.726 (0.934) -> **-3.673 (0.945)**; own-path curvature -1.266 (0.636), p = 0.047 -> **-1.061 (0.731), p = 0.148**, not statistically significant (`irrigation_referee_raw.md` R2). Most of the within hump is the cross-sectional hump reappearing as slopes that differ by baseline irrigation.
+- "A within-district quadratic is significant for every index": not under state clustering (R7). D1 squared term **p 0.105**, D2 0.163, evenness 0.291; D0 0.017 and D0 at 0.5 percent 0.003 stay significant.
+- Fall in the count of main crops (D0 at 0.5 percent) within districts, -0.815 (0.290): **-0.130 (0.271), p 0.633** once each district has its own linear trend (R5). Refereed-weakened; the long difference (-2.52) is unchanged but not on the page.
+- Unchanged: the within linear slope of D1 is a precise zero (-0.225, SE 0.192); no instrument works; the lag-one-year version weakens the curvature to -0.638 (0.416).
+
+The original analysis below is kept unchanged for the record, apart from the sentences marked [corrected Nov 2026]. Where it disagrees with this block, this block and `outputs/ANALYSIS_INDEX.md` hold.
+
+---
+
 Scripts: `scripts/104_irrigation_panel_build.py` (panel), `105_irrigation_panel_estimates.py`
 (estimates), `106_irrigation_iv_feasibility.py` and `107_irrigation_iv_recentred_cgwb.py`
 (instruments), helper `_revision_fe.py`. Raw tables: `irrigation_panel_results_raw.md`,
@@ -228,7 +242,7 @@ remove only the state-wide part of those.
 
 Holds:
 - The cross-sectional inverted U, on new and independent irrigation data. LUS
-  1998-2019 means give a peak of 0.273 (0.047), matching the site's 0.279 from Antyodaya.
+  1998-2019 means give a peak of 0.273 (0.047), close to the 0.279 then quoted from Antyodaya. [corrected Nov 2026: the site no longer reports a turning point; see the status block.]
 - A within-district quadratic is significant for every index in the main specification
   and survives spikes, territory splits, area breaks, weighting, the GIA/GCA measure,
   rainfall controls and dropping shared parents.

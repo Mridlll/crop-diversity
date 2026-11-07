@@ -10,7 +10,7 @@ SOURCE
   (DES district-wise data, 1997-98 to 2022-23, 115 crop names, hectares/tonnes).
   Downloaded to data_raw/apy_2020plus/dwes.csv. The package's second resource
   (UPAG, 30 crops, 2013-14 to 2024-25) is read only for a cross-check; its 30-crop
-  list is 55 percent of the 54-crop list the site uses and fails the project's own
+  list covers 28 of the 54 crop names the site uses (52 percent, apy_extend_log.md) and fails the project's own
   60 percent test, so it is not merged.
 
 WHAT IT DOES

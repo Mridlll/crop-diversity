@@ -1,5 +1,7 @@
 """
 95_measurement_export.py
+(Two scripts share the number 95: 95_data_page_export.py is run_all step "95a" and
+ 95_measurement_export.py is step "95b".)
 
 USAGE:
     python scripts/95_measurement_export.py

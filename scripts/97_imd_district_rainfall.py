@@ -1,5 +1,8 @@
 """
 97_imd_district_rainfall.py
+(Three scripts share the number 97: 97_crop_group_adjacency.py runs inside run_all
+ as step "97"; 97_imd_district_rainfall.py and 97_policy_nfsm_omm_msp.py run by hand
+ before step 99c. Their inputs do not overlap.)
 
 District-level seasonal rainfall, 1990-2020, from IMD's 0.25-degree gridded daily
 rainfall (Pai et al. 2014), aggregated to the district polygons of

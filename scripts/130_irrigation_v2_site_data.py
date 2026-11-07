@@ -200,6 +200,10 @@ for v, term, lab in [("sh_tk", "sh_tk", "tanks and lakes"), ("sh_can", "sh_can_c
                                        p=r4(r["p_wcr"])))
     print("  {:<20} within-state SD {:.3f}: {:+.3f} per SD, 95% {:+.3f} to {:+.3f}, wild p {:.3f}".format(
         lab, wsd, r["b"] * wsd, (r["b"] - tc2 * r["se"]) * wsd, (r["b"] + tc2 * r["se"]) * wsd, r["p_wcr"]))
+# Cite one bootstrap run for the tank term: the referee's (124), which also supplies the
+# leave-four-states-out p below. This script's own wild draw gives 0.009 for the same term.
+OUT["sources"]["rows"][0]["p"] = r4(ref("Q2 D tank share, D1")["p_wcr"])
+OUT["sources"]["tank_p_source"] = "referee_results_repro_infer_q1x_q2_q3_q4_mt.csv (124), Webb, 9,999 draws"
 inter = ref("Q2 C interaction irr^2 x gw, D1")
 OUT["sources"]["gw_vs_canal_curve_p"] = r4(inter["p_wcr"])
 raw = open(OUTV + "/referee/referee_raw_repro_infer_q1x_q2_q3_q4_mt.md", encoding="utf-8").read()

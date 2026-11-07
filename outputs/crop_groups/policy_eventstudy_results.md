@@ -1,5 +1,19 @@
 # Q2 policy event studies: NFSM, Odisha Millets Mission, 2018-19 MSP
 
+## Status after referee (Nov 2026)
+
+Written 7 November 2026. Referee: `referee_policy_es_results.md`, `referee_policy_es_checks.csv` (script 102). Site: Crop groups page, section 04.
+
+- NFSM-Pulses 2007 with a treated-specific linear trend, -0.0088 (0.0032) on share and -0.057 (0.029) on log area: **refuted as arbitrary**. A treated trend plus saturated event dummies is collinear (R2 1.0000, rank 12 of 13 columns), so the number is not an estimate and should not be quoted.
+- NFSM-Pulses 2007 DiD +0.0103 (0.0038): survives as **no detectable increase**. It comes from catch-up before entry (-0.034 at e = -10 to about zero by e = -4); short window +0.0036 (0.0035); post against e = -4 to -1 +0.0042 (0.0032); area +0.009 (0.041). Rises above about 0.010 of GCA (6 percent of the 0.18 mean) are ruled out. Rice and wheat 2007 unchanged (-0.0015, -0.0047).
+- Odisha Millets Mission ATT -0.0011 (CI -0.008 to +0.006): **refuted as reported**. APY lists 13 to 14 crops for Odisha from 2005-06 to 2018-19 and 39 in 2019-20, so the millet group is ragi alone until 2019-20, and the 16 untreated districts hold 28 to 462 ha of millets in total. With a fixed basket the ragi share ATT is -0.0052 (0.0030), reshuffle p 0.04, but there is no valid control group, so no effect is identified in either direction.
+- 2018-19 MSP increase: null survives. Smallest raw p 0.06, Holm 0.56, BH q 0.42, permutation p 0.60.
+- Window: the "Drop 1997-98" row is now the default; 1997-98 is excluded everywhere by `_years.py`.
+
+The original analysis below is kept unchanged for the record, apart from the sentences marked [corrected Nov 2026]. Where it disagrees with this block, this block and `outputs/ANALYSIS_INDEX.md` hold.
+
+---
+
 Script: `scripts/99_crop_groups_policy_event_studies.py` (runs in about 4 minutes). Log: `policy_es_log.txt`.
 Policy inputs, sources and confidence are documented in `policy_results.md`. No APCNF, PMDS or RySS data are used.
 

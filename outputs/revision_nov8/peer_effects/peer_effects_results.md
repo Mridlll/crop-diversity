@@ -1,5 +1,21 @@
 # District peer effects: are cropping patterns shaped by the neighbours?
 
+## Status after referee (Nov 2026)
+
+Written 7 November 2026. Referee: `referee/` folder and `referee/referee_log.txt` (script 132). Site: Neighbours page, `docs/data/site_neighbours.json`.
+
+- "What holds" item 4, "the border gap is a rice and wheat gap": **refereed-weakened**. After geography (M2) the rice gap is **+1.95 (state wild p 0.147)** and wheat **+0.97 (0.230)**; BH q across the nine groups is 0.69 to 0.98. Rice and wheat together account for 0.43 (M2) or 0.33 (M3) of the similarity gap, oilseeds for 0.24 or 0.22. The pattern across crops is suggestive only; no single crop gap is significant once geography is held (`referee/h3_group_border_gaps.csv`).
+- Item 6, cross-border Moran's I of change 0.11 (D1) and 0.12 (rice) -> **0.18 (p 0.004) and 0.15** with the Andhra Pradesh-Telangana links excluded, the values the page quotes. With state means removed the cross-border I is 0.029 (D1) and 0.007 (rice) (`referee/h5_moran_checks.csv`).
+- Item 3, the geography-adjusted border effect -3.42 (1.42 / 2.24): state p 0.140, **wild p 0.056**, the weakest number on the page. It shrinks to **-1.33 to -2.64** when similarity leaves out "other", when Telangana and Andhra Pradesh are dropped, or with a correlation measure (`referee/h2_border_by_measure.csv`, `h2_leave_out.csv`). M1 (-7.23, wild p 0.001) and M3 (-4.07, wild p 0.002) hold.
+- Item 2, "about 110 km": border-equivalent distance **109 km [44, 169]**; the interval is wide. 500 random partitions give a mean placebo "border" of +1.54 (SD 1.38) against the real -7.23, none as low.
+- Item 7, the wave: against suitability-matched benchmarks (five most similar districts in the same state) only **soybean entry holds, 0.750 against 0.562 (p 0.007)**; cotton entry 0.917 against 0.717 (p 0.058) and chickpea entry 0.820 against 0.768 (p 0.134) do not (`referee/h6_wave_benchmarks.csv`).
+- Telangana cotton borders (item 4 and 5): 8 of 8 pairs positive, exact sign-flip p **0.250**, the smallest attainable with 8 pairs; 81 percent of the gain came before the 2014 split (`referee/h4_telangana_cotton_pairs.csv`).
+- Unchanged: distance decay (E1), no average widening of borders (+0.14, SE 0.92), and the hazard result, read as no evidence of learning from neighbours that the data also cannot rule out.
+
+The original analysis below is kept unchanged for the record, apart from the sentences marked [corrected Nov 2026]. Where it disagrees with this block, this block and `outputs/ANALYSIS_INDEX.md` hold.
+
+---
+
 ## Short answer
 
 Neighbouring districts grow much the same crops. Two adjacent districts in the same state share on average 77% of their crop mix. That falls to 63% for same-state districts 200 to 300 km apart and to 48% at 500 to 600 km. A state border costs about as much similarity as an extra 110 km of distance. Adjacent districts on opposite sides of a border share 67%, the level same-state pairs reach at about 190 km.

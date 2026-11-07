@@ -6,6 +6,11 @@ Figures for the crop diversity deck, drawn in the CEEW palette.
 Figures carry data only. No titles, no captions, no legends that restate the
 slide. The slide title names the page and the footnote line carries definitions.
 
+Basis (rebuilt 7 November 2026): window 1998-99 to 2019-20; irrigation shown as
+fifths and tenths of the irrigation share from docs/data/site_irrigation_v2.json;
+market coefficients on population-weighted shares (version W) from
+outputs/revision_nov8.
+
 Output: deck/figs/*.png at 300 dpi
 """
 import os
@@ -25,6 +30,7 @@ REPO = r"D:/crop-diversity"
 COV = REPO + "/outputs/shrug_covariates"
 DIV = REPO + "/outputs/crop_diversity_analysis"
 OUT = REPO + "/deck/figs"
+PWD = REPO + "/outputs/revision_nov8"
 os.makedirs(OUT, exist_ok=True)
 
 sys.path.insert(0, r"D:/Alternative Proteins/demand_pathways/deck")
@@ -152,29 +158,31 @@ save(fig, "f4_trend")
 
 
 # ------------------------------------------------------- 5. irrigation shape
-# The ten decile means sit on top of the fitted curve so the raw track and the fit
-# read together. The annotated turn is the unadjusted one, which is the first row of
-# the robustness table; state fixed effects move it and the slide footnote says so.
+# Within-state difference in the effective number of crops against the least
+# irrigated group, by fifth (large markers, state-clustered intervals) and by tenth
+# (small markers). No curve is fitted: the shape is read from the groups.
+import json  # noqa: E402
+IRR = json.load(open(REPO + "/docs/data/site_irrigation_v2.json", encoding="utf-8"))
+fifths = IRR["fifths"]["full"]["rows"]
+tenths = IRR["tenths"]["rows"]
 fig, ax = plt.subplots(figsize=(5.0, 2.9))
-ax.scatter(d["irr_share"], d["D1_exp_shannon"], s=6, alpha=.30, color=MUTED,
-           linewidths=0)
-cf = np.polyfit(d["irr_share"], d["D1_exp_shannon"], 2)
-xs = np.linspace(d["irr_share"].min(), d["irr_share"].max(), 200)
-ax.plot(xs, np.polyval(cf, xs), color=ORANGE, lw=2.4, zorder=4)
-_dec = d.assign(_d=pd.qcut(d["irr_share"], 10, labels=False))
-_dm = _dec.groupby("_d").agg(x=("irr_share", "mean"), y=("D1_exp_shannon", "mean"))
-ax.plot(_dm["x"], _dm["y"], color=BLUE_D, lw=1.0, ls="-", marker="o", ms=5.2,
-        zorder=5)
-tp = -cf[1] / (2 * cf[0])
-ax.axvline(tp, color=ORANGE, lw=1, ls=":")
-ax.annotate("turns at {:.0f}%".format(tp * 100), xy=(tp, ax.get_ylim()[1] * .93),
-            xytext=(tp + .04, ax.get_ylim()[1] * .93), color=ORANGE, fontsize=8.4)
-ax.text(.02, .95, "decile means", transform=ax.transAxes, fontsize=8.2,
-        color=BLUE_D, va="top")
-ax.set(xlabel="Share of sown area irrigated", ylabel="Effective number of crops",
-       ylim=(0, d["D1_exp_shannon"].max() * 1.05))
-ax.set_xticks([0, .2, .4, .6, .8, 1.0])
-ax.set_xticklabels(["0", "20%", "40%", "60%", "80%", "100%"])
+ax.axhline(0, color=INK, lw=1)
+ax.axvline(0.30, color=MUTED, lw=1, ls=":")
+ax.plot([r["irr"] for r in tenths], [r["b"] for r in tenths], color=MUTED, lw=.9,
+        marker="o", ms=3.6, zorder=3)
+for r in fifths[1:]:
+    ax.plot([r["irr"], r["irr"]], r["ci"], color=BLUE_D, lw=1.6, zorder=4)
+ax.plot([r["irr"] for r in fifths], [r["b"] for r in fifths], color="none",
+        marker="o", ms=7.5, markerfacecolor=BLUE_D, markeredgecolor="white", zorder=5)
+ax.text(.985, .94, "fifths, with 95% intervals", transform=ax.transAxes,
+        fontsize=8.2, color=BLUE_D, ha="right", va="top")
+ax.text(.985, .85, "tenths", transform=ax.transAxes, fontsize=8.2, color=MUTED,
+        ha="right", va="top")
+ax.text(0.31, ax.get_ylim()[0] + .15, "knot at 30%", fontsize=8.0, color=MUTED)
+ax.set(xlabel="Share of sown area irrigated (group mean)",
+       ylabel="Effective crops against least irrigated")
+ax.set_xticks([0.2, .4, .6, .8, 1.0])
+ax.set_xticklabels(["20%", "40%", "60%", "80%", "100%"])
 save(fig, "f5_irrigation_shape")
 
 mapfig("irr", SEQ_ORANGE, "f6_map_irrigation", vmin=0, vmax=1,
@@ -249,7 +257,14 @@ mapfig("haat", SEQ_BLUE, "f9_map_haat", vmin=0, vmax=.5, fmt="{:.0%}",
 # ------------------------------------------------------------- 10. solo effects
 # Both panels carry the SAME row order, set once by the crops-grown effect, so the
 # shared label column on the left applies to the panel on the right as well.
-solo = pd.read_csv(COV + "/market_results_solo.csv")
+_pw = pd.read_csv(PWD + "/market_pw_coefs.csv")
+_pw = _pw[(_pw["version"] == "W") & (_pw["block"] == "solo")]
+_FN = {"mandi": "mandi", "regular_market": "regular market",
+       "weekly_haat": "weekly haat", "fert_shop": "fertiliser shop",
+       "seed_centre": "seed centre", "soil_test": "soil testing",
+       "custom_hire": "custom hiring", "storage": "cold storage",
+       "farmgate_proc": "farm-gate processing", "fpo": "FPO"}
+solo = _pw.assign(facility=_pw["facility"].map(_FN))[["facility", "outcome", "b", "p"]]
 order = (solo[solo["outcome"] == "D0_richness"]
          .sort_values("b")["facility"].tolist())
 fig, axes = plt.subplots(1, 2, figsize=(7.4, 3.2))
@@ -279,7 +294,12 @@ save(fig, "f10_market_solo")
 
 
 # --------------------------------------------------------- 11. interaction
-inter = pd.read_csv(COV + "/market_results_interaction.csv").iloc[::-1]
+def _wint():
+    t = pd.read_csv(PWD + "/market_pw_interaction.csv")
+    return t[t["version"] == "W"].reset_index(drop=True)
+
+
+inter = _wint().iloc[::-1]
 fig, ax = plt.subplots(figsize=(5.4, 2.7))
 yy = np.arange(len(inter))
 for i, r in enumerate(inter.itertuples()):
@@ -288,8 +308,8 @@ for i, r in enumerate(inter.itertuples()):
                linewidths=1.3, zorder=3)
     ax.scatter(r.curv_hi, i, s=38, color=ORANGE, zorder=3)
 ax.set_yticks(yy)
-ax.set_yticklabels([m.replace(" village share", "").replace(" index", "")
-                    for m in inter["measure"]], fontsize=8)
+ax.set_yticklabels([m.replace(" index", "") for m in inter["measure"]],
+                   fontsize=8)
 ax.set(xlabel="Coefficient on irrigation squared")
 ax.grid(axis="y", b=False)
 ax.text(.03, .06, "hollow = low density, filled = high density",
@@ -330,7 +350,7 @@ save(fig, "f12_map_effective_large")
 
 
 # ------------------------------------------------------ 13. the trend, wide
-# Three series on the fixed panel of 429 districts. Evenness is unitless and the
+# Three series on the fixed panel of 500 districts. Evenness is unitless and the
 # other two are counts, so evenness takes a right-hand axis of its own. Series are
 # named at the right-hand end instead of in a legend.
 tr = [t for t in ov["trend_balanced"] if t["year"] >= 1998]
@@ -353,7 +373,7 @@ save(fig, "f13_trend_wide")
 
 
 # ----------------------------------------------- 14. the interaction, wide
-inter_w = pd.read_csv(COV + "/market_results_interaction.csv").iloc[::-1]
+inter_w = _wint().iloc[::-1]
 fig, ax = plt.subplots(figsize=(10.4, 1.9))
 yy = np.arange(len(inter_w))
 for i, r in enumerate(inter_w.itertuples()):
@@ -362,8 +382,8 @@ for i, r in enumerate(inter_w.itertuples()):
                linewidths=1.4, zorder=3)
     ax.scatter(r.curv_hi, i, s=52, color=ORANGE, zorder=3)
 ax.set_yticks(yy)
-ax.set_yticklabels([m.replace(" village share", "").replace(" index", "")
-                    for m in inter_w["measure"]], fontsize=9)
+ax.set_yticklabels([m.replace(" index", "") for m in inter_w["measure"]],
+                   fontsize=9)
 ax.set(xlabel="Coefficient on the square of the irrigation share",
        ylim=(-0.95, len(inter_w) - 0.45))
 ax.grid(axis="y", b=False)
